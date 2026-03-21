@@ -25,6 +25,9 @@ sudo -u $APP_USER git -C "$APP_DIR" pull
 info "Installing dependencies…"
 sudo -u $APP_USER bash -c "cd $APP_DIR && npm ci --silent"
 
+info "Generating Prisma client…"
+sudo -u $APP_USER bash -c "cd $APP_DIR && npx prisma generate"
+
 info "Running database migrations…"
 sudo -u $APP_USER bash -c "cd $APP_DIR && npx prisma migrate deploy"
 
