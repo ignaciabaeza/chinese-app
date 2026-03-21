@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -35,6 +34,19 @@ model CardProgress {
 
   @@unique([userId, wordId])
   @@map("card_progress")
+}
+
+model Sentence {
+  id          String   @id @default(cuid())
+  level       Int
+  chinese     String
+  pinyin      String
+  english     String
+  grammar     String
+  pattern     String
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("sentences")
 }
 
 model StudySession {

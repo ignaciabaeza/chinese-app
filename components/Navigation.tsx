@@ -8,6 +8,7 @@ import { useAuth } from "@/components/AuthProvider";
 const links = [
   { href: "/", label: "Dashboard", icon: "⬡" },
   { href: "/flashcards", label: "Flashcards", icon: "◈" },
+  { href: "/sentences", label: "Sentences", icon: "文" },
   { href: "/vocabulary", label: "Vocabulary", icon: "◉" },
   { href: "/progress", label: "Progress", icon: "◎" },
   { href: "/chat", label: "AI Tutor", icon: "⟐" },
