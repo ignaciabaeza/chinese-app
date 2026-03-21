@@ -37,6 +37,9 @@ APP_DIR="/opt/chinese-app"
 APP_USER="appuser"
 NODE_VERSION="20"
 
+# URL-encode the DB password so special characters don't break the connection string
+DB_PASSWORD_ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('${DB_PASSWORD}', safe=''))")
+
 echo ""
 info "Starting setup with:"
 echo "  Repo:    $REPO_URL"
@@ -120,7 +123,7 @@ success "Repository cloned to $APP_DIR"
 # ── 9. Write .env ─────────────────────────────────────────────────────────────
 info "Writing .env file…"
 cat > "$APP_DIR/.env" <<ENV
-DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@localhost:5432/${DB_NAME}"
+DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD_ENCODED}@localhost:5432/${DB_NAME}"
 JWT_SECRET="${JWT_SECRET}"
 ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}"
 NODE_ENV="production"
