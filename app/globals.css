@@ -1,26 +1,231 @@
 @import "tailwindcss";
 
+@theme {
+  /* Navy palette */
+  --color-navy-dark: #2D3561;
+  --color-navy: #3A4275;
+  --color-floral: #4A5A9A;
+  --color-floral-light: #6070B0;
+
+  /* Parchment palette */
+  --color-parchment: #E8DEC8;
+  --color-parchment-dark: #D4C9A8;
+
+  /* Accents */
+  --color-gold: #C9A84C;
+  --color-gold-dim: rgba(201, 168, 76, 0.15);
+  --color-rose-antique: #C4857A;
+  --color-crane: #F0EDE4;
+  --color-ink: #2A1F0E;
+  --color-muted: #A09880;
+
+  /* Fonts */
+  --font-display: "Noto Serif SC", "STSong", "SimSun", serif;
+  --font-heading: "Cinzel", "IM Fell English SC", serif;
+  --font-body: "Lora", Georgia, serif;
+  --font-pinyin: "Cormorant Garamond", serif;
+}
+
+/* ─── Design tokens ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #2D3561;
+  --bg-secondary: #3A4275;
+  --bg-parchment: #E8DEC8;
+  --bg-parchment-dark: #D4C9A8;
+  --accent-gold: #C9A84C;
+  --accent-rose: #C4857A;
+  --accent-crane-white: #F0EDE4;
+  --floral-blue: #4A5A9A;
+  --text-primary: #F0EDE4;
+  --text-parchment: #2A1F0E;
+  --text-muted: #A09880;
+  --text-gold: #C9A84C;
+  --border-subtle: rgba(201, 168, 76, 0.25);
+  --shadow-ink: rgba(0, 0, 0, 0.4);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ─── Base ─── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Lora", Georgia, serif;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='%234A5A9A' stroke-width='0.7'%3E%3Ccircle cx='100' cy='100' r='11'/%3E%3Cellipse cx='100' cy='75' rx='7' ry='21'/%3E%3Cellipse cx='100' cy='75' rx='7' ry='21' transform='rotate(45 100 100)'/%3E%3Cellipse cx='100' cy='75' rx='7' ry='21' transform='rotate(90 100 100)'/%3E%3Cellipse cx='100' cy='75' rx='7' ry='21' transform='rotate(135 100 100)'/%3E%3Cellipse cx='100' cy='75' rx='7' ry='21' transform='rotate(180 100 100)'/%3E%3Cellipse cx='100' cy='75' rx='7' ry='21' transform='rotate(225 100 100)'/%3E%3Cellipse cx='100' cy='75' rx='7' ry='21' transform='rotate(270 100 100)'/%3E%3Cellipse cx='100' cy='75' rx='7' ry='21' transform='rotate(315 100 100)'/%3E%3Cellipse cx='100' cy='63' rx='5' ry='13' transform='rotate(22.5 100 100)'/%3E%3Cellipse cx='100' cy='63' rx='5' ry='13' transform='rotate(67.5 100 100)'/%3E%3Cellipse cx='100' cy='63' rx='5' ry='13' transform='rotate(112.5 100 100)'/%3E%3Cellipse cx='100' cy='63' rx='5' ry='13' transform='rotate(157.5 100 100)'/%3E%3Cellipse cx='100' cy='63' rx='5' ry='13' transform='rotate(202.5 100 100)'/%3E%3Cellipse cx='100' cy='63' rx='5' ry='13' transform='rotate(247.5 100 100)'/%3E%3Cellipse cx='100' cy='63' rx='5' ry='13' transform='rotate(292.5 100 100)'/%3E%3Cellipse cx='100' cy='63' rx='5' ry='13' transform='rotate(337.5 100 100)'/%3E%3Ccircle cx='100' cy='100' r='32' stroke-dasharray='4 3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  min-height: 100vh;
 }
+
+/* ─── Typography ─── */
+.font-display { font-family: "Noto Serif SC", "STSong", "SimSun", serif; }
+.font-heading { font-family: "Cinzel", serif; }
+.font-pinyin  { font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; }
+
+/* ─── Chinese character sizes ─── */
+.chinese-xl {
+  font-size: clamp(4rem, 10vw, 6rem);
+  line-height: 1;
+  font-family: "Noto Serif SC", "STSong", serif;
+}
+.chinese-lg {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  line-height: 1.2;
+  font-family: "Noto Serif SC", "STSong", serif;
+}
+.chinese-md {
+  font-size: 1.5rem;
+  font-family: "Noto Serif SC", "STSong", serif;
+}
+
+/* ─── Moon circle (flashcard hero) ─── */
+.moon-circle {
+  width: clamp(240px, 55vw, 300px);
+  height: clamp(240px, 55vw, 300px);
+  background: var(--accent-rose);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 60px rgba(196, 133, 122, 0.25), inset 0 0 40px rgba(0,0,0,0.15);
+}
+.moon-circle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.08) 0%, transparent 60%);
+}
+
+/* ─── Parchment panel ─── */
+.parchment-panel {
+  background: var(--bg-parchment);
+  color: var(--text-parchment);
+  border: 1px solid var(--accent-gold);
+  border-radius: 1rem;
+}
+
+/* ─── Gold button ─── */
+.btn-gold {
+  background: transparent;
+  border: 1.5px solid var(--accent-gold);
+  color: var(--accent-gold);
+  font-family: "Cinzel", serif;
+  letter-spacing: 0.08em;
+  padding: 0.6em 2em;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  box-shadow: 0 0 16px rgba(201, 168, 76, 0.35);
+}
+
+/* ─── Card flip ─── */
+.card-flip {
+  perspective: 1200px;
+}
+.card-inner {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* ─── Animations ─── */
+@keyframes float-crane {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes drift-cloud {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50%       { transform: translateX(4px) translateY(-2px); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes brush-fill {
+  from { width: 0%; }
+  to   { width: var(--fill-pct); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-float   { animation: float-crane 4s ease-in-out infinite; }
+.animate-drift   { animation: drift-cloud 6s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.5s ease-out both; }
+.animate-spin    { animation: spin 1s linear infinite; }
+
+/* ─── Gold glow on hover ─── */
+.hover-glow:hover {
+  box-shadow: 0 0 14px rgba(201, 168, 76, 0.4);
+}
+
+/* ─── Input — parchment style ─── */
+.input-parchment {
+  background: var(--bg-parchment);
+  color: var(--text-parchment);
+  border: none;
+  border-bottom: 1.5px solid var(--accent-gold);
+  border-radius: 0;
+  outline: none;
+  padding: 0.5rem 0.25rem;
+  font-family: "Lora", serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-parchment::placeholder { color: #A09880; }
+.input-parchment:focus {
+  border-bottom-color: var(--accent-gold);
+  box-shadow: 0 2px 8px rgba(201, 168, 76, 0.2);
+}
+
+/* ─── Badge / tag ─── */
+.badge-gold {
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid var(--accent-gold);
+  color: var(--text-gold);
+  font-family: "Cinzel", serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.15em 0.65em;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+/* ─── Ink-brush progress bar ─── */
+.progress-ink {
+  height: 4px;
+  background: rgba(201, 168, 76, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-ink-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-gold), #E8C76A);
+  border-radius: 2px;
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1e2448; }
+::-webkit-scrollbar-thumb { background: #4A5A9A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
+
+/* ─── Chat message styles ─── */
+.chat-message p { margin-bottom: 0.5rem; }
+.chat-message strong { color: var(--accent-gold); }
+.chat-message em { color: var(--text-muted); }
