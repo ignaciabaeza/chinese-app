@@ -29,6 +29,6 @@ info "Building…"
 sudo -u $APP_USER bash -c "cd $APP_DIR && npm run build"
 
 info "Restarting app…"
-sudo -u $APP_USER pm2 restart chinese-app
+sudo -u $APP_USER /usr/bin/pm2 restart chinese-app
 
 success "Deploy complete — $(date)"

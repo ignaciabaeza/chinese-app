@@ -36,7 +36,7 @@ DB_USER="chinese_app_user"
 APP_DIR="/opt/chinese-app"
 APP_USER="appuser"
 NODE_VERSION="20"
-PM2_BIN="/usr/local/bin/pm2"
+PM2_BIN="/usr/bin/pm2"
 
 # URL-encode the DB password — pass as command-line argument to python3
 DB_PASSWORD_ENCODED=$(python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1], safe=''))" "$DB_PASSWORD")
