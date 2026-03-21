@@ -156,15 +156,51 @@ info "Installing npm dependencies…"
 sudo -H -u $APP_USER bash -c "cd $APP_DIR && npm ci"
 success "Dependencies installed"
 
-# ── 12. Generate Prisma client ────────────────────────────────────────────────
-info "Generating Prisma client…"
-sudo -H -u $APP_USER bash -c "cd $APP_DIR && npx prisma generate"
-success "Prisma client generated"
-
-# ── 13. Apply database schema ─────────────────────────────────────────────────
+# ── 12. Apply database schema ─────────────────────────────────────────────────
 info "Applying database schema…"
-# Use db push — works whether or not migration files exist in the repo
-sudo -H -u $APP_USER bash -c "cd $APP_DIR && npx prisma db push --accept-data-loss"
+sudo -u postgres psql -d "$DB_NAME" <<SCHEMA
+CREATE TABLE IF NOT EXISTS users (
+  id TEXT PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE TABLE IF NOT EXISTS card_progress (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  word_id TEXT NOT NULL,
+  ease_factor DOUBLE PRECISION NOT NULL DEFAULT 2.5,
+  interval INTEGER NOT NULL DEFAULT 0,
+  repetitions INTEGER NOT NULL DEFAULT 0,
+  next_review BIGINT NOT NULL,
+  last_review BIGINT NOT NULL DEFAULT 0,
+  correct INTEGER NOT NULL DEFAULT 0,
+  incorrect INTEGER NOT NULL DEFAULT 0,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  UNIQUE (user_id, word_id)
+);
+CREATE TABLE IF NOT EXISTS sentences (
+  id TEXT PRIMARY KEY,
+  level INTEGER NOT NULL,
+  chinese TEXT NOT NULL,
+  pinyin TEXT NOT NULL,
+  english TEXT NOT NULL,
+  grammar TEXT NOT NULL,
+  pattern TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE TABLE IF NOT EXISTS study_sessions (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  date TEXT NOT NULL,
+  cards_studied INTEGER NOT NULL,
+  correct INTEGER NOT NULL,
+  incorrect INTEGER NOT NULL,
+  level TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+SCHEMA
 success "Database schema applied"
 
 # ── 14. Build Next.js ─────────────────────────────────────────────────────────

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { pool } from "@/lib/db";
 import { hashPassword, signToken, COOKIE_NAME, COOKIE_MAX_AGE } from "@/lib/auth";
+import { randomUUID } from "crypto";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,19 +14,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Password must be at least 6 characters" }, { status: 400 });
     }
 
-    const existing = await prisma.user.findUnique({ where: { email } });
-    if (existing) {
+    const existing = await pool.query("SELECT id FROM users WHERE email = $1 LIMIT 1", [email]);
+    if (existing.rows.length > 0) {
       return NextResponse.json({ error: "Email already registered" }, { status: 409 });
     }
 
     const passwordHash = await hashPassword(password);
-    const user = await prisma.user.create({
-      data: { email, passwordHash },
-      select: { id: true, email: true },
-    });
+    const { rows } = await pool.query(
+      "INSERT INTO users (id, email, password_hash, created_at, updated_at) VALUES ($1, $2, $3, NOW(), NOW()) RETURNING id, email",
+      [randomUUID(), email, passwordHash]
+    );
+    const user = rows[0];
 
     const token = signToken({ userId: user.id, email: user.email });
-
     const response = NextResponse.json({ user }, { status: 201 });
     response.cookies.set(COOKIE_NAME, token, {
       httpOnly: true,

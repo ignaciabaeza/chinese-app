@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { pool } from "@/lib/db";
 import Anthropic from "@anthropic-ai/sdk";
+import { randomUUID } from "crypto";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -13,20 +14,13 @@ const GRAMMAR_FOCUS: Record<number, string> = {
   6: "literary patterns, 4-character idioms (成语), classical connectives, concessive clauses, formal rhetoric, abstract noun phrases",
 };
 
-async function generateSentences(level: number): Promise<Array<{
-  chinese: string;
-  pinyin: string;
-  english: string;
-  grammar: string;
-  pattern: string;
-}>> {
+async function generateSentences(level: number) {
   const response = await client.messages.create({
     model: "claude-opus-4-6",
     max_tokens: 4096,
-    messages: [
-      {
-        role: "user",
-        content: `Generate exactly 20 Mandarin Chinese flashcard sentences for HSK level ${level} learners.
+    messages: [{
+      role: "user",
+      content: `Generate exactly 20 Mandarin Chinese flashcard sentences for HSK level ${level} learners.
 
 Grammar focus: ${GRAMMAR_FOCUS[level]}
 
@@ -47,55 +41,86 @@ Each object must have these exact keys:
 
 Example format:
 [{"chinese":"...","pinyin":"...","english":"...","grammar":"...","pattern":"..."}]`,
-      },
-    ],
+    }],
   });
 
   const text = response.content[0].type === "text" ? response.content[0].text : "";
-  return JSON.parse(text.trim());
+  return JSON.parse(text.trim()) as Array<{
+    chinese: string; pinyin: string; english: string; grammar: string; pattern: string;
+  }>;
 }
 
-// GET /api/sentences?level=2 — fetch sentences for a level, generate if none exist
+// GET /api/sentences?level=2
 export async function GET(request: NextRequest) {
   const level = parseInt(request.nextUrl.searchParams.get("level") ?? "1");
   if (level < 1 || level > 6) {
     return NextResponse.json({ error: "Level must be 1–6" }, { status: 400 });
   }
 
-  const existing = await prisma.sentence.findMany({ where: { level } });
-  if (existing.length > 0) {
-    return NextResponse.json({ sentences: existing });
-  }
-
-  // None in DB — generate and save
-  const generated = await generateSentences(level);
-  const saved = await prisma.$transaction(
-    generated.map((s) =>
-      prisma.sentence.create({
-        data: { level, chinese: s.chinese, pinyin: s.pinyin, english: s.english, grammar: s.grammar, pattern: s.pattern },
-      })
-    )
+  const { rows } = await pool.query(
+    "SELECT id, level, chinese, pinyin, english, grammar, pattern FROM sentences WHERE level = $1",
+    [level]
   );
 
+  if (rows.length > 0) {
+    return NextResponse.json({ sentences: rows });
+  }
+
+  const generated = await generateSentences(level);
+  const dbClient = await pool.connect();
+  try {
+    await dbClient.query("BEGIN");
+    for (const s of generated) {
+      await dbClient.query(
+        "INSERT INTO sentences (id, level, chinese, pinyin, english, grammar, pattern, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())",
+        [randomUUID(), level, s.chinese, s.pinyin, s.english, s.grammar, s.pattern]
+      );
+    }
+    await dbClient.query("COMMIT");
+  } catch (err) {
+    await dbClient.query("ROLLBACK");
+    throw err;
+  } finally {
+    dbClient.release();
+  }
+
+  const { rows: saved } = await pool.query(
+    "SELECT id, level, chinese, pinyin, english, grammar, pattern FROM sentences WHERE level = $1",
+    [level]
+  );
   return NextResponse.json({ sentences: saved });
 }
 
-// POST /api/sentences/refresh?level=2 — delete existing and regenerate
+// POST /api/sentences/refresh?level=2
 export async function POST(request: NextRequest) {
   const level = parseInt(request.nextUrl.searchParams.get("level") ?? "1");
   if (level < 1 || level > 6) {
     return NextResponse.json({ error: "Level must be 1–6" }, { status: 400 });
   }
 
-  await prisma.sentence.deleteMany({ where: { level } });
-  const generated = await generateSentences(level);
-  const saved = await prisma.$transaction(
-    generated.map((s) =>
-      prisma.sentence.create({
-        data: { level, chinese: s.chinese, pinyin: s.pinyin, english: s.english, grammar: s.grammar, pattern: s.pattern },
-      })
-    )
-  );
+  await pool.query("DELETE FROM sentences WHERE level = $1", [level]);
 
+  const generated = await generateSentences(level);
+  const dbClient = await pool.connect();
+  try {
+    await dbClient.query("BEGIN");
+    for (const s of generated) {
+      await dbClient.query(
+        "INSERT INTO sentences (id, level, chinese, pinyin, english, grammar, pattern, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())",
+        [randomUUID(), level, s.chinese, s.pinyin, s.english, s.grammar, s.pattern]
+      );
+    }
+    await dbClient.query("COMMIT");
+  } catch (err) {
+    await dbClient.query("ROLLBACK");
+    throw err;
+  } finally {
+    dbClient.release();
+  }
+
+  const { rows: saved } = await pool.query(
+    "SELECT id, level, chinese, pinyin, english, grammar, pattern FROM sentences WHERE level = $1",
+    [level]
+  );
   return NextResponse.json({ sentences: saved, refreshed: true });
 }
