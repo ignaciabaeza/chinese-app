@@ -15,7 +15,7 @@ A mobile-first HSK vocabulary flashcard app with spaced-repetition, an AI tutor,
 | Framework | Next.js 16.2.1 (App Router) |
 | Language | TypeScript 5 |
 | Styling | Tailwind CSS v4 + CSS custom properties |
-| Database | PostgreSQL via Prisma 7 |
+| Database | PostgreSQL via `pg` (node-postgres) |
 | Auth | JWT (jsonwebtoken) in httpOnly cookies |
 | Passwords | bcryptjs (12 rounds) |
 | AI | Anthropic SDK (`@anthropic-ai/sdk`) — claude-opus-4-6 |
@@ -111,10 +111,11 @@ chinese_app/
 │   └── vocabulary.ts             # Full HSK 1–6 word list (~5000 words)
 ├── lib/
 │   ├── auth.ts                   # JWT sign/verify, bcrypt hash/compare, cookie helpers
-│   ├── db.ts                     # Prisma client singleton (hot-reload safe)
+│   ├── db.ts                     # pg connection pool singleton (hot-reload safe)
 │   └── progress.ts               # SM-2 algorithm, localStorage read/write, server sync
-├── prisma/
-│   └── schema.prisma             # User, CardProgress, StudySession models
+├── scripts/
+│   ├── setup.sh                  # One-time EC2 server setup (Ubuntu 24.04)
+│   └── deploy.sh                 # Re-deploy latest code on server
 ├── .env                          # DATABASE_URL, JWT_SECRET, ANTHROPIC_API_KEY
 └── CLAUDE.md                     # This file
 ```
@@ -126,42 +127,54 @@ chinese_app/
 ### `users`
 | Column | Type | Notes |
 |---|---|---|
-| id | String (cuid) | Primary key |
-| email | String | Unique |
-| password_hash | String | bcrypt, 12 rounds |
-| created_at | DateTime | Auto |
-| updated_at | DateTime | Auto |
+| id | TEXT | Primary key, `randomUUID()` |
+| email | TEXT | Unique |
+| password_hash | TEXT | bcrypt, 12 rounds |
+| created_at | TIMESTAMPTZ | Auto |
+| updated_at | TIMESTAMPTZ | Auto |
 
 ### `card_progress`
 | Column | Type | Notes |
 |---|---|---|
-| id | String (cuid) | Primary key |
-| user_id | String | FK → users |
-| word_id | String | Matches `Word.id` in vocabulary.ts |
-| ease_factor | Float | SM-2 ease factor, default 2.5 |
-| interval | Int | Days until next review |
-| repetitions | Int | Successful review count |
-| next_review | BigInt | Unix timestamp (ms) |
-| last_review | BigInt | Unix timestamp (ms) |
-| correct | Int | Lifetime correct count |
-| incorrect | Int | Lifetime incorrect count |
-| updated_at | DateTime | Auto |
+| id | TEXT | Primary key, `randomUUID()` |
+| user_id | TEXT | FK → users (CASCADE delete) |
+| word_id | TEXT | Matches `Word.id` in vocabulary.ts |
+| ease_factor | DOUBLE PRECISION | SM-2 ease factor, default 2.5 |
+| interval | INTEGER | Days until next review |
+| repetitions | INTEGER | Successful review count |
+| next_review | BIGINT | Unix timestamp (ms) — pg returns as string, use `Number()` |
+| last_review | BIGINT | Unix timestamp (ms) — pg returns as string, use `Number()` |
+| correct | INTEGER | Lifetime correct count |
+| incorrect | INTEGER | Lifetime incorrect count |
+| updated_at | TIMESTAMPTZ | Auto |
 
 **Unique constraint:** `(user_id, word_id)`
 
-**BigInt note:** Prisma maps PostgreSQL `BIGINT` to JS `BigInt`. Must convert on read (`Number(row.nextReview)`) and on write (`BigInt(entry.nextReview)`) because `JSON.stringify` cannot serialize `BigInt`.
+**BIGINT note:** `pg` returns BIGINT columns as strings (not JS BigInt). Always wrap with `Number(row.next_review)` before returning JSON.
+
+### `sentences`
+| Column | Type | Notes |
+|---|---|---|
+| id | TEXT | Primary key, `randomUUID()` |
+| level | INTEGER | HSK level 1–6 |
+| chinese | TEXT | Simplified Chinese sentence |
+| pinyin | TEXT | Pinyin with tone marks |
+| english | TEXT | English translation |
+| grammar | TEXT | Grammar point explanation |
+| pattern | TEXT | Abstract sentence pattern |
+| created_at | TIMESTAMPTZ | Auto |
 
 ### `study_sessions`
 | Column | Type | Notes |
 |---|---|---|
-| id | String (cuid) | Primary key |
-| user_id | String | FK → users |
-| date | String | ISO date string e.g. "2026-03-21" |
-| cards_studied | Int | Total cards in session |
-| correct | Int | |
-| incorrect | Int | |
-| level | String | HSK level or "all" |
-| created_at | DateTime | Auto |
+| id | TEXT | Primary key, `randomUUID()` |
+| user_id | TEXT | FK → users (CASCADE delete) |
+| date | TEXT | ISO date string e.g. "2026-03-21" |
+| cards_studied | INTEGER | Total cards in session |
+| correct | INTEGER | |
+| incorrect | INTEGER | |
+| level | TEXT | HSK level or "all" |
+| created_at | TIMESTAMPTZ | Auto |
 
 ---
 
@@ -262,20 +275,23 @@ npm install
 
 # 2. Fill in .env with real values (DATABASE_URL, JWT_SECRET, ANTHROPIC_API_KEY)
 
-# 3. Create database tables
-npx prisma migrate dev --name init
+# 3. Create database tables (run against your PostgreSQL instance)
+psql $DATABASE_URL < scripts/schema.sql
 
 # 4. Run dev server
 npm run dev
 ```
 
+The schema SQL is also embedded in `scripts/setup.sh` for the EC2 deployment path.
+
 ---
 
 ## Key Patterns & Gotchas
 
-- **Prisma 7 breaking change:** `url` is no longer allowed in `datasource db {}` in `schema.prisma`. The connection URL lives in `prisma.config.ts` (`datasource.url`) and is passed to `PrismaClient` via `datasourceUrl: process.env.DATABASE_URL` in `lib/db.ts`
-- **Prisma singleton:** `lib/db.ts` stores the client on `globalThis` to survive Next.js hot reloads
-- **BigInt serialization:** always convert `BigInt → Number` before returning JSON from API routes
+- **Database client:** `lib/db.ts` exports a `pg` connection pool singleton stored on `globalThis` to survive Next.js hot reloads. Use `pool.query(sql, params)` for simple queries; `pool.connect()` + manual `BEGIN/COMMIT/ROLLBACK` for transactions
+- **BIGINT columns:** `pg` returns PostgreSQL BIGINT as a string. Always wrap with `Number(row.next_review)` before returning JSON — do NOT use JS `BigInt`
+- **Column naming:** PostgreSQL returns snake_case column names (`word_id`, `ease_factor`, `next_review`). Map to camelCase manually when building response objects
+- **IDs:** generated with `randomUUID()` from Node.js built-in `crypto` module
 - **Auth in route handlers:** use `getAuthFromRequest(request)` — reads cookie synchronously from `NextRequest`
 - **Setting cookies:** only possible on `NextResponse`, not returned from `request`
 - **`"use client"` boundary:** `AuthProvider`, `Navigation`, all page components are client components; API routes and `lib/db.ts` / `lib/auth.ts` are server-only
