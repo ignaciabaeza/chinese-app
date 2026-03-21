@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================================================
-# setup.sh — One-time server setup for 汉语学习 on EC2 (Amazon Linux 2023)
+# setup.sh — One-time server setup for 汉语学习 on EC2 (Ubuntu 24.04 LTS)
 #
 # Run this ONCE on a fresh EC2 t3.micro instance:
 #   chmod +x setup.sh && sudo ./setup.sh
@@ -46,27 +46,30 @@ echo ""
 
 # ── 1. System update ──────────────────────────────────────────────────────────
 info "Updating system packages…"
-dnf update -y -q
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -q
+apt-get upgrade -y -q
 success "System updated"
 
-# ── 2. Install Node.js 20 ─────────────────────────────────────────────────────
+# ── 2. Install essentials ─────────────────────────────────────────────────────
+info "Installing git, curl, openssl…"
+apt-get install -y -q git curl openssl ca-certificates gnupg
+success "Essentials installed"
+
+# ── 3. Install Node.js 20 ─────────────────────────────────────────────────────
 info "Installing Node.js ${NODE_VERSION}…"
-dnf install -y nodejs --allowerasing 2>/dev/null || {
-  curl -fsSL https://rpm.nodesource.com/setup_${NODE_VERSION}.x | bash -
-  dnf install -y nodejs
-}
-node --version && npm --version
+curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash -
+apt-get install -y -q nodejs
 success "Node.js installed: $(node --version)"
 
-# ── 3. Install PostgreSQL 16 ──────────────────────────────────────────────────
+# ── 4. Install PostgreSQL 16 ──────────────────────────────────────────────────
 info "Installing PostgreSQL 16…"
-dnf install -y postgresql16 postgresql16-server
-postgresql-setup --initdb
+apt-get install -y -q postgresql postgresql-contrib
 systemctl enable postgresql
 systemctl start postgresql
 success "PostgreSQL installed and running"
 
-# ── 4. Configure PostgreSQL ───────────────────────────────────────────────────
+# ── 5. Configure PostgreSQL ───────────────────────────────────────────────────
 info "Creating database and user…"
 sudo -u postgres psql <<SQL
 DO \$\$
@@ -82,29 +85,28 @@ SELECT 'CREATE DATABASE ${DB_NAME} OWNER ${DB_USER}'
 GRANT ALL PRIVILEGES ON DATABASE ${DB_NAME} TO ${DB_USER};
 SQL
 
-# Allow local password auth — update pg_hba.conf
-PG_HBA=$(find /var/lib/pgsql -name "pg_hba.conf" 2>/dev/null | head -1)
+# Ubuntu PostgreSQL uses peer auth by default for local connections.
+# Switch to md5 so our app user can authenticate with a password.
+PG_HBA=$(find /etc/postgresql -name "pg_hba.conf" 2>/dev/null | head -1)
 if [[ -n "$PG_HBA" ]]; then
-  # Replace ident with md5 for local connections
-  sed -i 's/^local\s\+all\s\+all\s\+ident/local   all             all                                     md5/' "$PG_HBA"
-  sed -i 's/^host\s\+all\s\+all\s\+127\.0\.0\.1\/32\s\+ident/host    all             all             127.0.0.1\/32            md5/' "$PG_HBA"
+  sed -i 's/^local\s\+all\s\+all\s\+peer/local   all             all                                     md5/' "$PG_HBA"
   systemctl restart postgresql
 fi
 success "Database '${DB_NAME}' and user '${DB_USER}' ready"
 
-# ── 5. Create app system user ─────────────────────────────────────────────────
+# ── 6. Create app system user ─────────────────────────────────────────────────
 info "Creating system user '${APP_USER}'…"
 if ! id "$APP_USER" &>/dev/null; then
   useradd -r -m -d /home/$APP_USER -s /bin/bash $APP_USER
 fi
 success "User '${APP_USER}' ready"
 
-# ── 6. Install PM2 globally ───────────────────────────────────────────────────
+# ── 7. Install PM2 globally ───────────────────────────────────────────────────
 info "Installing PM2…"
 npm install -g pm2 --silent
 success "PM2 installed: $(pm2 --version)"
 
-# ── 7. Clone the repository ───────────────────────────────────────────────────
+# ── 8. Clone the repository ───────────────────────────────────────────────────
 info "Cloning repository…"
 if [[ -d "$APP_DIR" ]]; then
   warn "Directory $APP_DIR already exists — pulling latest"
@@ -115,7 +117,7 @@ fi
 chown -R $APP_USER:$APP_USER "$APP_DIR"
 success "Repository cloned to $APP_DIR"
 
-# ── 8. Write .env ─────────────────────────────────────────────────────────────
+# ── 9. Write .env ─────────────────────────────────────────────────────────────
 info "Writing .env file…"
 cat > "$APP_DIR/.env" <<ENV
 DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@localhost:5432/${DB_NAME}"
@@ -127,7 +129,7 @@ chown $APP_USER:$APP_USER "$APP_DIR/.env"
 chmod 600 "$APP_DIR/.env"
 success ".env written"
 
-# ── 9. Install dependencies, migrate, build ───────────────────────────────────
+# ── 10. Install dependencies, migrate, build ──────────────────────────────────
 info "Installing npm dependencies…"
 sudo -u $APP_USER bash -c "cd $APP_DIR && npm ci --silent"
 
@@ -138,7 +140,7 @@ info "Building Next.js app (this takes a minute)…"
 sudo -u $APP_USER bash -c "cd $APP_DIR && npm run build"
 success "App built successfully"
 
-# ── 10. Start app with PM2 ────────────────────────────────────────────────────
+# ── 11. Start app with PM2 ────────────────────────────────────────────────────
 info "Starting app with PM2…"
 sudo -u $APP_USER bash -c "
   cd $APP_DIR
@@ -151,12 +153,15 @@ env PATH=$PATH:/usr/bin pm2 startup systemd -u $APP_USER --hp /home/$APP_USER
 sudo -u $APP_USER pm2 save
 success "App running with PM2"
 
-# ── 11. Install and configure Nginx ───────────────────────────────────────────
+# ── 12. Install and configure Nginx ───────────────────────────────────────────
 info "Installing Nginx…"
-dnf install -y nginx
+apt-get install -y -q nginx
 systemctl enable nginx
 
-cat > /etc/nginx/conf.d/chinese-app.conf <<NGINX
+# Remove default site
+rm -f /etc/nginx/sites-enabled/default
+
+cat > /etc/nginx/sites-available/chinese-app <<NGINX
 server {
     listen 80;
     server_name ${APP_DOMAIN};
@@ -187,20 +192,9 @@ server {
 }
 NGINX
 
-# Remove default Nginx config
-rm -f /etc/nginx/conf.d/default.conf
+ln -sf /etc/nginx/sites-available/chinese-app /etc/nginx/sites-enabled/chinese-app
 nginx -t && systemctl restart nginx
 success "Nginx configured and running"
-
-# ── 12. Open firewall ports ───────────────────────────────────────────────────
-info "Configuring firewall…"
-# Amazon Linux 2023 uses nftables via firewalld
-if command -v firewall-cmd &>/dev/null; then
-  firewall-cmd --permanent --add-service=http
-  firewall-cmd --permanent --add-service=https
-  firewall-cmd --reload
-fi
-success "Ports 80 and 443 open"
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""
@@ -214,8 +208,8 @@ echo "  Logs:        sudo -u ${APP_USER} pm2 logs chinese-app"
 echo "  Status:      sudo -u ${APP_USER} pm2 status"
 echo "  Restart app: sudo -u ${APP_USER} pm2 restart chinese-app"
 echo ""
-echo -e "${YELLOW}Next step — enable HTTPS:${NC}"
-echo "  sudo dnf install -y certbot python3-certbot-nginx"
+echo -e "${YELLOW}Next step — enable HTTPS (requires a real domain):${NC}"
+echo "  sudo apt-get install -y certbot python3-certbot-nginx"
 echo "  sudo certbot --nginx -d ${APP_DOMAIN}"
 echo ""
 echo -e "${YELLOW}Remember to open ports 80 and 443 in your EC2 Security Group!${NC}"

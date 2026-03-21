@@ -2,7 +2,7 @@
 # =============================================================================
 # deploy.sh — Re-deploy latest code on the server
 #
-# Run this on the EC2 t3.micro whenever you push new changes:
+# Run this on the EC2 t3.micro (Ubuntu) whenever you push new changes:
 #   sudo ./scripts/deploy.sh
 # =============================================================================
 set -euo pipefail
