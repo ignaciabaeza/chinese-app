@@ -111,6 +111,7 @@ success "PM2 installed: $(pm2 --version)"
 
 # ── 8. Clone the repository ───────────────────────────────────────────────────
 info "Cloning repository…"
+git config --global --add safe.directory "$APP_DIR"
 if [[ -d "$APP_DIR" ]]; then
   warn "Directory $APP_DIR already exists — pulling latest"
   cd "$APP_DIR" && git pull
