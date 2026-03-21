@@ -38,12 +38,8 @@ APP_USER="appuser"
 NODE_VERSION="20"
 PM2_BIN="/usr/local/bin/pm2"
 
-# URL-encode the DB password — pass via env var to avoid shell injection
-DB_PASSWORD_ENCODED=$(python3 - <<PYEOF
-import urllib.parse, os
-print(urllib.parse.quote(os.environ.get('DB_PASSWORD',''), safe=''))
-PYEOF
-)
+# URL-encode the DB password — pass as command-line argument to python3
+DB_PASSWORD_ENCODED=$(python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1], safe=''))" "$DB_PASSWORD")
 
 echo ""
 info "Starting setup with:"
