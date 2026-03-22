@@ -61,17 +61,17 @@ body {
 
 /* ─── Chinese character sizes ─── */
 .chinese-xl {
-  font-size: clamp(4rem, 10vw, 6rem);
+  font-size: clamp(4.5rem, 14vw, 7.5rem);
   line-height: 1;
   font-family: "Noto Serif SC", "STSong", serif;
 }
 .chinese-lg {
-  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-size: clamp(2.8rem, 8vw, 4.2rem);
   line-height: 1.2;
   font-family: "Noto Serif SC", "STSong", serif;
 }
 .chinese-md {
-  font-size: 1.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
   font-family: "Noto Serif SC", "STSong", serif;
 }
 

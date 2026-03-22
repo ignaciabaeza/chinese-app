@@ -123,7 +123,7 @@ export default function FlashcardsPage() {
       : 0;
 
   return (
-    <div className="max-w-lg mx-auto space-y-5 animate-fade-up">
+    <div className="max-w-xl mx-auto space-y-5 animate-fade-up">
       {/* Progress bar */}
       <div className="flex items-center gap-3">
         <div className="flex-1 progress-ink">
@@ -147,7 +147,7 @@ export default function FlashcardsPage() {
       </div>
 
       {/* Card */}
-      <div className="card-flip" style={{ height: "320px" }} onClick={() => setFlipped((f) => !f)}>
+      <div className="card-flip" style={{ height: "400px" }} onClick={() => setFlipped((f) => !f)}>
         <div className={`card-inner relative h-full cursor-pointer ${flipped ? "flipped" : ""}`}>
           {/* ── Front: navy + moon circle ── */}
           <div
@@ -160,7 +160,7 @@ export default function FlashcardsPage() {
             </div>
 
             {/* Moon circle */}
-            <div className="moon-circle" style={{ width: "180px", height: "180px" }}>
+            <div className="moon-circle">
               <div
                 className={`${chineseFontClass} text-center leading-none font-bold`}
                 style={{ color: "var(--accent-crane-white)", zIndex: 1 }}
@@ -168,7 +168,7 @@ export default function FlashcardsPage() {
                 {currentWord.chinese}
               </div>
               <div
-                className="mt-2 text-xs tracking-widest font-pinyin text-center"
+                className="mt-2 text-xl tracking-widest font-pinyin text-center"
                 style={{ color: "rgba(240,237,228,0.8)", fontStyle: "italic", zIndex: 1, lineHeight: 1.3 }}
               >
                 {currentWord.pinyin}
@@ -200,13 +200,13 @@ export default function FlashcardsPage() {
               </div>
             )}
             <div
-              className="text-lg mb-3 font-pinyin"
+              className="text-xl mb-3 font-pinyin"
               style={{ color: "#5A3F20", fontStyle: "italic" }}
             >
               {currentWord.pinyin}
             </div>
             <div
-              className="text-base text-center leading-relaxed font-body"
+              className="text-lg text-center leading-relaxed font-body"
               style={{ color: "var(--text-parchment)", fontFamily: "Lora, serif" }}
             >
               {currentWord.english}
