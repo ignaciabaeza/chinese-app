@@ -71,14 +71,18 @@ export default function SentencesPage() {
     }));
 
     const remaining = queue.slice(1);
-    if (remaining.length === 0) {
-      setDone(true);
-      setCurrent(null);
-    } else {
-      setQueue(remaining);
-      setCurrent(remaining[0]);
-      setFlipped(false);
-    }
+
+    // Flip card back first, then advance after animation completes
+    setFlipped(false);
+    setTimeout(() => {
+      if (remaining.length === 0) {
+        setDone(true);
+        setCurrent(null);
+      } else {
+        setQueue(remaining);
+        setCurrent(remaining[0]);
+      }
+    }, 400);
   }
 
   async function handleRefresh() {
@@ -243,13 +247,13 @@ export default function SentencesPage() {
       {current && (
         <div
           className="card-flip w-full mb-6 cursor-pointer"
-          style={{ height: "360px" }}
+          style={{ height: "400px" }}
           onClick={() => !flipped && setFlipped(true)}
         >
-          <div className={`card-inner ${flipped ? "flipped" : ""}`}>
-            {/* Front — Chinese sentence */}
+          <div className={`card-inner relative h-full ${flipped ? "flipped" : ""}`}>
+            {/* Front — Chinese sentence + pinyin */}
             <div
-              className="card-front rounded-2xl flex flex-col items-center justify-center p-8 gap-4"
+              className="card-front absolute inset-0 rounded-2xl flex flex-col items-center justify-center p-8 gap-3"
               style={{
                 background: "var(--bg-secondary)",
                 border: "1px solid var(--border-subtle)",
@@ -257,7 +261,7 @@ export default function SentencesPage() {
               }}
             >
               <div
-                className="text-xs tracking-widest mb-2"
+                className="text-xs tracking-widest"
                 style={{ fontFamily: "Cinzel, serif", color: "var(--accent-gold)", opacity: 0.7 }}
               >
                 HSK {current.level} · SENTENCE
@@ -274,16 +278,28 @@ export default function SentencesPage() {
                 {current.chinese}
               </div>
               <div
-                className="text-xs mt-4 text-center"
+                className="text-center"
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontSize: "clamp(0.95rem, 3vw, 1.15rem)",
+                  color: "rgba(201,168,76,0.75)",
+                  fontStyle: "italic",
+                  letterSpacing: "0.03em",
+                }}
+              >
+                {current.pinyin}
+              </div>
+              <div
+                className="text-xs mt-2 text-center"
                 style={{ color: "var(--text-muted)", fontFamily: "Lora, serif", fontStyle: "italic" }}
               >
                 tap to reveal
               </div>
             </div>
 
-            {/* Back — pinyin, translation, grammar note */}
+            {/* Back — translation, grammar note */}
             <div
-              className="card-back rounded-2xl flex flex-col justify-between p-8"
+              className="card-back absolute inset-0 rounded-2xl flex flex-col justify-between p-8"
               style={{ background: "var(--bg-parchment)" }}
             >
               <div className="flex flex-col gap-3">
