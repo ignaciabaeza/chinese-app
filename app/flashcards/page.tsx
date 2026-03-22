@@ -28,6 +28,7 @@ export default function FlashcardsPage() {
   const [queue, setQueue] = useState<Word[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const [showPinyin, setShowPinyin] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
   const [sessionStats, setSessionStats] = useState({ correct: 0, incorrect: 0 });
   const [progress, setProgress] = useState<Record<string, CardProgress>>({});
@@ -53,6 +54,7 @@ export default function FlashcardsPage() {
     setQueue(words);
     setCurrentIndex(0);
     setFlipped(false);
+    setShowPinyin(false);
     setTransitioning(false);
     setSessionStats({ correct: 0, incorrect: 0 });
     setFinished(false);
@@ -80,6 +82,7 @@ export default function FlashcardsPage() {
     // Flip card back first, then advance after animation completes
     setTransitioning(true);
     setFlipped(false);
+    setShowPinyin(false);
     setTimeout(() => {
       if (isLast) {
         saveSession({
@@ -167,17 +170,36 @@ export default function FlashcardsPage() {
               >
                 {currentWord.chinese}
               </div>
-              <div
-                className="mt-2 text-xl tracking-widest font-pinyin text-center"
-                style={{ color: "rgba(240,237,228,0.8)", fontStyle: "italic", zIndex: 1, lineHeight: 1.3 }}
-              >
-                {currentWord.pinyin}
-              </div>
+              {showPinyin && (
+                <div
+                  className="mt-2 text-xl tracking-widest font-pinyin text-center"
+                  style={{ color: "rgba(240,237,228,0.8)", fontStyle: "italic", zIndex: 1, lineHeight: 1.3 }}
+                >
+                  {currentWord.pinyin}
+                </div>
+              )}
             </div>
 
-            <p className="mt-5 text-xs" style={{ color: "var(--text-muted)" }}>
-              tap to reveal meaning
-            </p>
+            <div className="mt-4 flex flex-col items-center gap-2">
+              {!showPinyin && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); setShowPinyin(true); }}
+                  className="text-xs px-3 py-1 rounded-full transition-all"
+                  style={{
+                    color: "rgba(201,168,76,0.7)",
+                    border: "1px solid rgba(201,168,76,0.3)",
+                    fontFamily: "Cinzel, serif",
+                    background: "transparent",
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  show pinyin
+                </button>
+              )}
+              <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                tap to reveal meaning
+              </p>
+            </div>
           </div>
 
           {/* ── Back: parchment ── */}

@@ -21,6 +21,7 @@ export default function SentencesPage() {
   const [queue, setQueue] = useState<Sentence[]>([]);
   const [current, setCurrent] = useState<Sentence | null>(null);
   const [flipped, setFlipped] = useState(false);
+  const [showPinyin, setShowPinyin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [started, setStarted] = useState(false);
@@ -50,6 +51,7 @@ export default function SentencesPage() {
     setQueue(shuffled);
     setCurrent(shuffled[0] ?? null);
     setFlipped(false);
+    setShowPinyin(false);
     setSessionStats({ correct: 0, hard: 0, again: 0 });
     setDone(false);
     setStarted(true);
@@ -74,6 +76,7 @@ export default function SentencesPage() {
 
     // Flip card back first, then advance after animation completes
     setFlipped(false);
+    setShowPinyin(false);
     setTimeout(() => {
       if (remaining.length === 0) {
         setDone(true);
@@ -277,18 +280,34 @@ export default function SentencesPage() {
               >
                 {current.chinese}
               </div>
-              <div
-                className="text-center"
-                style={{
-                  fontFamily: "Cormorant Garamond, serif",
-                  fontSize: "clamp(0.95rem, 3vw, 1.15rem)",
-                  color: "rgba(201,168,76,0.75)",
-                  fontStyle: "italic",
-                  letterSpacing: "0.03em",
-                }}
-              >
-                {current.pinyin}
-              </div>
+              {showPinyin ? (
+                <div
+                  className="text-center"
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontSize: "clamp(0.95rem, 3vw, 1.15rem)",
+                    color: "rgba(201,168,76,0.75)",
+                    fontStyle: "italic",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {current.pinyin}
+                </div>
+              ) : (
+                <button
+                  onClick={(e) => { e.stopPropagation(); setShowPinyin(true); }}
+                  className="text-xs px-3 py-1 rounded-full transition-all"
+                  style={{
+                    color: "rgba(201,168,76,0.7)",
+                    border: "1px solid rgba(201,168,76,0.3)",
+                    fontFamily: "Cinzel, serif",
+                    background: "transparent",
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  show pinyin
+                </button>
+              )}
               <div
                 className="text-xs mt-2 text-center"
                 style={{ color: "var(--text-muted)", fontFamily: "Lora, serif", fontStyle: "italic" }}
