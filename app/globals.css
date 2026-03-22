@@ -33,7 +33,7 @@
   --bg-parchment: #E8DEC8;
   --bg-parchment-dark: #D4C9A8;
   --accent-gold: #C9A84C;
-  --accent-rose: #C4857A;
+  --accent-rose: #e9918167;
   --accent-crane-white: #F0EDE4;
   --floral-blue: #4A5A9A;
   --text-primary: #F0EDE4;
@@ -86,7 +86,6 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
   padding: 1.5rem;
   box-shadow: 0 0 60px rgba(196, 133, 122, 0.25), inset 0 0 40px rgba(0,0,0,0.15);
 }
