@@ -113,6 +113,10 @@ export default function FlashcardsPage() {
   if (!currentWord) return null;
 
   const cardProgress = progress[currentWord.id];
+  const chineseFontClass =
+    currentWord.chinese.length <= 2 ? "chinese-xl" :
+    currentWord.chinese.length <= 4 ? "chinese-lg" :
+    "chinese-md";
   const accuracy =
     sessionStats.correct + sessionStats.incorrect > 0
       ? Math.round((sessionStats.correct / (sessionStats.correct + sessionStats.incorrect)) * 100)
@@ -158,14 +162,14 @@ export default function FlashcardsPage() {
             {/* Moon circle */}
             <div className="moon-circle" style={{ width: "180px", height: "180px" }}>
               <div
-                className="chinese-xl text-center leading-none font-bold"
+                className={`${chineseFontClass} text-center leading-none font-bold`}
                 style={{ color: "var(--accent-crane-white)", zIndex: 1 }}
               >
                 {currentWord.chinese}
               </div>
               <div
-                className="mt-2 text-sm tracking-widest font-pinyin"
-                style={{ color: "rgba(240,237,228,0.8)", fontStyle: "italic", zIndex: 1 }}
+                className="mt-2 text-xs tracking-widest font-pinyin text-center"
+                style={{ color: "rgba(240,237,228,0.8)", fontStyle: "italic", zIndex: 1, lineHeight: 1.3 }}
               >
                 {currentWord.pinyin}
               </div>
