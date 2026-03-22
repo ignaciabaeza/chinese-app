@@ -28,6 +28,7 @@ export default function FlashcardsPage() {
   const [queue, setQueue] = useState<Word[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const [transitioning, setTransitioning] = useState(false);
   const [sessionStats, setSessionStats] = useState({ correct: 0, incorrect: 0 });
   const [progress, setProgress] = useState<Record<string, CardProgress>>({});
   const [finished, setFinished] = useState(false);
@@ -52,6 +53,7 @@ export default function FlashcardsPage() {
     setQueue(words);
     setCurrentIndex(0);
     setFlipped(false);
+    setTransitioning(false);
     setSessionStats({ correct: 0, incorrect: 0 });
     setFinished(false);
     setShowSetup(false);
@@ -60,7 +62,8 @@ export default function FlashcardsPage() {
   const currentWord = queue[currentIndex];
 
   function handleRate(quality: 0 | 3) {
-    if (!currentWord) return;
+    if (!currentWord || transitioning) return;
+
     const updated = { ...progress };
     updated[currentWord.id] = updateCardProgress(progress[currentWord.id], currentWord.id, quality);
     saveProgress(updated);
@@ -72,19 +75,26 @@ export default function FlashcardsPage() {
     };
     setSessionStats(newStats);
 
-    if (currentIndex + 1 >= queue.length) {
-      saveSession({
-        date: new Date().toDateString(),
-        cardsStudied: queue.length,
-        correct: newStats.correct,
-        incorrect: newStats.incorrect,
-        level,
-      });
-      setFinished(true);
-    } else {
-      setCurrentIndex((i) => i + 1);
-      setFlipped(false);
-    }
+    const isLast = currentIndex + 1 >= queue.length;
+
+    // Flip card back first, then advance after animation completes
+    setTransitioning(true);
+    setFlipped(false);
+    setTimeout(() => {
+      if (isLast) {
+        saveSession({
+          date: new Date().toDateString(),
+          cardsStudied: queue.length,
+          correct: newStats.correct,
+          incorrect: newStats.incorrect,
+          level,
+        });
+        setFinished(true);
+      } else {
+        setCurrentIndex((i) => i + 1);
+      }
+      setTransitioning(false);
+    }, 400);
   }
 
   if (showSetup) {
