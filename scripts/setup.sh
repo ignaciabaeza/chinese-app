@@ -198,6 +198,7 @@ CREATE TABLE IF NOT EXISTS study_sessions (
   correct INTEGER NOT NULL,
   incorrect INTEGER NOT NULL,
   level TEXT NOT NULL,
+  word_ids TEXT[] DEFAULT '{}',
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 SCHEMA

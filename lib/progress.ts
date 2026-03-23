@@ -17,6 +17,7 @@ export interface StudySession {
   correct: number;
   incorrect: number;
   level: 1 | 2 | 3 | 4 | 5 | 6 | "all";
+  wordIds?: string[];
 }
 
 const PROGRESS_KEY = "chinese_app_progress";
@@ -159,6 +160,20 @@ export async function saveSessionWithSync(session: StudySession): Promise<void> 
     });
   } catch {
     // offline — local save already done
+  }
+}
+
+/** Load sessions from the server and overwrite localStorage. Returns the sessions. */
+export async function loadSessionsFromServer(): Promise<StudySession[]> {
+  if (typeof window === "undefined") return [];
+  try {
+    const res = await fetch("/api/progress/sessions");
+    if (!res.ok) return loadSessions();
+    const { sessions } = await res.json() as { sessions: StudySession[] };
+    localStorage.setItem(SESSIONS_KEY, JSON.stringify(sessions));
+    return sessions;
+  } catch {
+    return loadSessions();
   }
 }
 

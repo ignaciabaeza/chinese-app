@@ -5,13 +5,20 @@ import { vocabulary, Word } from "@/data/vocabulary";
 import {
   loadProgress,
   saveProgress,
-  saveSession,
+  saveSessionWithSync,
   updateCardProgress,
   getDueCards,
   CardProgress,
 } from "@/lib/progress";
 
 type LevelFilter = "all" | 1 | 2 | 3 | 4 | 5 | 6;
+type CategoryFilter = "all" | string;
+
+const CATEGORIES: string[] = [
+  "verbs", "nouns", "adjectives", "adverbs", "pronouns",
+  "numbers", "time", "places", "directions", "conjunctions",
+  "particles", "prepositions", "measure words", "idioms", "proper nouns", "other",
+];
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -24,7 +31,9 @@ function shuffle<T>(arr: T[]): T[] {
 
 export default function FlashcardsPage() {
   const [level, setLevel] = useState<LevelFilter>("all");
-  const [mode, setMode] = useState<"due" | "all">("due");
+  const [category, setCategory] = useState<CategoryFilter>("all");
+  const [mode, setMode] = useState<"due" | "all" | "drill">("due");
+  const [size, setSize] = useState<10 | 20>(20);
   const [queue, setQueue] = useState<Word[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -34,11 +43,19 @@ export default function FlashcardsPage() {
   const [progress, setProgress] = useState<Record<string, CardProgress>>({});
   const [finished, setFinished] = useState(false);
   const [showSetup, setShowSetup] = useState(true);
+  const [masteredCount, setMasteredCount] = useState(0);
+  const [drillTotal, setDrillTotal] = useState(0);
+  const [learnedIds, setLearnedIds] = useState<Set<string>>(new Set());
+  const [sessionWordIds, setSessionWordIds] = useState<string[]>([]);
 
   const loadQueue = useCallback(() => {
     const p = loadProgress();
     setProgress(p);
-    const filtered = vocabulary.filter((w) => level === "all" ? true : w.level === level);
+    const filtered = vocabulary.filter(
+      (w) =>
+        (level === "all" || w.level === level) &&
+        (category === "all" || w.category === category)
+    );
     const ids = filtered.map((w) => w.id);
     let selectedIds: string[];
     if (mode === "due") {
@@ -48,7 +65,7 @@ export default function FlashcardsPage() {
       selectedIds = ids;
     }
     const words = shuffle(selectedIds)
-      .slice(0, 20)
+      .slice(0, size)
       .map((id) => filtered.find((w) => w.id === id)!)
       .filter(Boolean);
     setQueue(words);
@@ -57,9 +74,13 @@ export default function FlashcardsPage() {
     setShowPinyin(false);
     setTransitioning(false);
     setSessionStats({ correct: 0, incorrect: 0 });
+    setMasteredCount(0);
+    setDrillTotal(words.length);
+    setLearnedIds(new Set());
+    setSessionWordIds(words.map((w) => w.id));
     setFinished(false);
     setShowSetup(false);
-  }, [level, mode]);
+  }, [level, category, mode, size]);
 
   const currentWord = queue[currentIndex];
 
@@ -77,37 +98,61 @@ export default function FlashcardsPage() {
     };
     setSessionStats(newStats);
 
-    const isLast = currentIndex + 1 >= queue.length;
+    if (quality === 3) {
+      setLearnedIds((prev) => new Set(prev).add(currentWord.id));
+    }
 
-    // Flip card back first, then advance after animation completes
     setTransitioning(true);
     setFlipped(false);
     setShowPinyin(false);
-    setTimeout(() => {
-      if (isLast) {
-        saveSession({
-          date: new Date().toDateString(),
-          cardsStudied: queue.length,
-          correct: newStats.correct,
-          incorrect: newStats.incorrect,
-          level,
-        });
-        setFinished(true);
-      } else {
+
+    if (mode === "drill" && quality === 0) {
+      // Hard in drill mode: send card to back of queue
+      setTimeout(() => {
+        setQueue((q) => [...q, currentWord]);
         setCurrentIndex((i) => i + 1);
-      }
-      setTransitioning(false);
-    }, 400);
+        setTransitioning(false);
+      }, 400);
+    } else {
+      // Easy, or any non-drill mode: advance normally
+      const newMastered = mode === "drill" ? masteredCount + 1 : masteredCount;
+      if (mode === "drill") setMasteredCount(newMastered);
+
+      const isDone =
+        mode === "drill"
+          ? newMastered >= drillTotal
+          : currentIndex + 1 >= queue.length;
+
+      setTimeout(() => {
+        if (isDone) {
+          saveSessionWithSync({
+            date: new Date().toDateString(),
+            cardsStudied: mode === "drill" ? drillTotal : queue.length,
+            correct: newStats.correct,
+            incorrect: newStats.incorrect,
+            level,
+            wordIds: sessionWordIds,
+          });
+          setFinished(true);
+        } else {
+          setCurrentIndex((i) => i + 1);
+        }
+        setTransitioning(false);
+      }, 400);
+    }
   }
 
   if (showSetup) {
-    return <SetupScreen level={level} setLevel={setLevel} mode={mode} setMode={setMode} onStart={loadQueue} />;
+    return <SetupScreen level={level} setLevel={setLevel} category={category} setCategory={setCategory} mode={mode} setMode={setMode} size={size} setSize={setSize} onStart={loadQueue} />;
   }
   if (finished) {
+    const learnedWords = vocabulary.filter((w) => learnedIds.has(w.id));
     return (
       <FinishedScreen
         stats={sessionStats}
-        total={queue.length}
+        total={mode === "drill" ? drillTotal : queue.length}
+        isDrill={mode === "drill"}
+        learnedWords={learnedWords}
         onRestart={() => setShowSetup(true)}
         onReview={loadQueue}
       />
@@ -132,11 +177,17 @@ export default function FlashcardsPage() {
         <div className="flex-1 progress-ink">
           <div
             className="progress-ink-fill"
-            style={{ width: `${(currentIndex / queue.length) * 100}%` }}
+            style={{
+              width: mode === "drill"
+                ? `${(masteredCount / drillTotal) * 100}%`
+                : `${(currentIndex / queue.length) * 100}%`,
+            }}
           />
         </div>
         <span className="text-xs shrink-0" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
-          {currentIndex + 1} / {queue.length}
+          {mode === "drill"
+            ? `${masteredCount} / ${drillTotal} mastered`
+            : `${currentIndex + 1} / ${queue.length}`}
         </span>
       </div>
 
@@ -146,6 +197,11 @@ export default function FlashcardsPage() {
         <span style={{ color: "var(--accent-rose)" }}>✗ {sessionStats.incorrect}</span>
         {sessionStats.correct + sessionStats.incorrect > 0 && (
           <span style={{ color: "var(--text-muted)" }}>{accuracy}%</span>
+        )}
+        {mode === "drill" && queue.length - currentIndex - 1 > drillTotal - masteredCount && (
+          <span style={{ color: "var(--text-muted)" }}>
+            {queue.length - currentIndex - 1} left
+          </span>
         )}
       </div>
 
@@ -319,11 +375,15 @@ export default function FlashcardsPage() {
   );
 }
 
-function SetupScreen({ level, setLevel, mode, setMode, onStart }: {
+function SetupScreen({ level, setLevel, category, setCategory, mode, setMode, size, setSize, onStart }: {
   level: LevelFilter;
   setLevel: (l: LevelFilter) => void;
-  mode: "due" | "all";
-  setMode: (m: "due" | "all") => void;
+  category: CategoryFilter;
+  setCategory: (c: CategoryFilter) => void;
+  mode: "due" | "all" | "drill";
+  setMode: (m: "due" | "all" | "drill") => void;
+  size: 10 | 20;
+  setSize: (s: 10 | 20) => void;
   onStart: () => void;
 }) {
   const p = loadProgress();
@@ -339,7 +399,11 @@ function SetupScreen({ level, setLevel, mode, setMode, onStart }: {
 
   const dueCount = (() => {
     const ids = vocabulary
-      .filter((w) => level === "all" ? true : w.level === level)
+      .filter(
+        (w) =>
+          (level === "all" || w.level === level) &&
+          (category === "all" || w.category === category)
+      )
       .map((w) => w.id);
     return getDueCards(ids, p).length;
   })();
@@ -382,25 +446,86 @@ function SetupScreen({ level, setLevel, mode, setMode, onStart }: {
 
         <div>
           <label className="text-xs block mb-3 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+            Category
+          </label>
+          <div className="flex flex-wrap gap-2">
+            <button
+              key="all"
+              onClick={() => setCategory("all")}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+              style={{
+                fontFamily: "Cinzel, serif",
+                background: category === "all" ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
+                color: category === "all" ? "var(--bg-primary)" : "var(--text-muted)",
+                border: category === "all" ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
+              }}
+            >
+              All
+            </button>
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setCategory(cat)}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all capitalize"
+                style={{
+                  fontFamily: "Cinzel, serif",
+                  background: category === cat ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
+                  color: category === cat ? "var(--bg-primary)" : "var(--text-muted)",
+                  border: category === cat ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <label className="text-xs block mb-3 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
             Mode
           </label>
-          <div className="grid grid-cols-2 gap-2">
-            {(["due", "all"] as const).map((m) => (
+          <div className="grid grid-cols-3 gap-2">
+            {([
+              { val: "due", label: "Due Cards", sub: `${dueCount} ready` },
+              { val: "all", label: "All Cards", sub: "random" },
+              { val: "drill", label: "Drill", sub: "repeat hard" },
+            ] as const).map(({ val, label, sub }) => (
               <button
-                key={m}
-                onClick={() => setMode(m)}
+                key={val}
+                onClick={() => setMode(val)}
                 className="py-3 rounded-lg text-xs font-medium transition-all"
                 style={{
                   fontFamily: "Cinzel, serif",
-                  background: mode === m ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
-                  color: mode === m ? "var(--bg-primary)" : "var(--text-muted)",
-                  border: mode === m ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
+                  background: mode === val ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
+                  color: mode === val ? "var(--bg-primary)" : "var(--text-muted)",
+                  border: mode === val ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
                 }}
               >
-                {m === "due" ? "Due Cards" : "All Cards"}
-                <div className="text-xs opacity-70 mt-0.5">
-                  {m === "due" ? `${dueCount} ready` : "random 20"}
-                </div>
+                {label}
+                <div className="text-xs opacity-70 mt-0.5">{sub}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <label className="text-xs block mb-3 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+            Cards per session
+          </label>
+          <div className="grid grid-cols-2 gap-2">
+            {([10, 20] as const).map((s) => (
+              <button
+                key={s}
+                onClick={() => setSize(s)}
+                className="py-2 rounded-lg text-xs font-medium transition-all"
+                style={{
+                  fontFamily: "Cinzel, serif",
+                  background: size === s ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
+                  color: size === s ? "var(--bg-primary)" : "var(--text-muted)",
+                  border: size === s ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
+                }}
+              >
+                {s} cards
               </button>
             ))}
           </div>
@@ -434,23 +559,26 @@ function SetupScreen({ level, setLevel, mode, setMode, onStart }: {
   );
 }
 
-function FinishedScreen({ stats, total, onRestart, onReview }: {
+function FinishedScreen({ stats, total, isDrill, learnedWords, onRestart, onReview }: {
   stats: { correct: number; incorrect: number };
   total: number;
+  isDrill?: boolean;
+  learnedWords: Word[];
   onRestart: () => void;
   onReview: () => void;
 }) {
-  const accuracy = total > 0 ? Math.round((stats.correct / total) * 100) : 0;
+  const totalAttempts = stats.correct + stats.incorrect;
+  const accuracy = totalAttempts > 0 ? Math.round((stats.correct / totalAttempts) * 100) : 0;
   return (
-    <div className="max-w-sm mx-auto text-center space-y-6 animate-fade-up">
+    <div className="max-w-xl mx-auto text-center space-y-6 animate-fade-up">
       <div
         className="text-5xl py-4"
         style={{ color: accuracy >= 80 ? "var(--accent-gold)" : "var(--accent-rose)" }}
       >
-        {accuracy >= 80 ? "✦" : accuracy >= 50 ? "◈" : "◉"}
+        {isDrill ? "⬡" : accuracy >= 80 ? "✦" : accuracy >= 50 ? "◈" : "◉"}
       </div>
       <h2 style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", fontSize: "1.4rem", letterSpacing: "0.08em" }}>
-        Session Complete
+        {isDrill ? "All Cards Mastered" : "Session Complete"}
       </h2>
 
       <div
@@ -459,11 +587,11 @@ function FinishedScreen({ stats, total, onRestart, onReview }: {
       >
         <div>
           <div className="text-2xl font-bold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>{total}</div>
-          <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>Cards</div>
+          <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{isDrill ? "Mastered" : "Cards"}</div>
         </div>
         <div>
-          <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{stats.correct}</div>
-          <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>Correct</div>
+          <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{isDrill ? totalAttempts : stats.correct}</div>
+          <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{isDrill ? "Attempts" : "Correct"}</div>
         </div>
         <div>
           <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{accuracy}%</div>
@@ -507,6 +635,58 @@ function FinishedScreen({ stats, total, onRestart, onReview }: {
           New Session
         </button>
       </div>
+
+      {learnedWords.length > 0 && (
+        <div className="text-left space-y-3 pt-2">
+          <div className="flex items-center gap-3">
+            <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
+            <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+              {isDrill ? "Session Vocabulary" : "Words Learned"} · {learnedWords.length}
+            </span>
+            <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            {learnedWords.map((word) => (
+              <div
+                key={word.id}
+                className="rounded-xl p-3 flex flex-col"
+                style={{
+                  background: "var(--bg-secondary)",
+                  border: "1px solid var(--border-subtle)",
+                }}
+              >
+                <div className="flex items-start justify-between gap-1 mb-1">
+                  <span
+                    className="text-2xl font-bold leading-none"
+                    style={{ color: "var(--accent-crane-white)", fontFamily: "Noto Serif SC, serif" }}
+                  >
+                    {word.chinese}
+                  </span>
+                  <span
+                    className="text-xs shrink-0 mt-0.5"
+                    style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", opacity: 0.7 }}
+                  >
+                    {word.level}
+                  </span>
+                </div>
+                <span
+                  className="text-xs mb-1 font-pinyin"
+                  style={{ color: "var(--text-muted)", fontStyle: "italic" }}
+                >
+                  {word.pinyin}
+                </span>
+                <span
+                  className="text-xs leading-snug"
+                  style={{ color: "var(--text-primary)", opacity: 0.85, fontFamily: "Lora, serif" }}
+                >
+                  {word.english}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

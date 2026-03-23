@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   if (!auth) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { rows } = await pool.query(
-    "SELECT id, date, cards_studied, correct, incorrect, level, created_at FROM study_sessions WHERE user_id = $1 ORDER BY created_at DESC LIMIT 30",
+    "SELECT id, date, cards_studied, correct, incorrect, level, word_ids, created_at FROM study_sessions WHERE user_id = $1 ORDER BY created_at DESC LIMIT 30",
     [auth.userId]
   );
 
@@ -20,6 +20,7 @@ export async function GET(request: NextRequest) {
     correct: r.correct,
     incorrect: r.incorrect,
     level: r.level,
+    wordIds: r.word_ids ?? [],
     createdAt: r.created_at,
   }));
 
@@ -38,6 +39,7 @@ export async function POST(request: NextRequest) {
       correct: number;
       incorrect: number;
       level: string;
+      wordIds?: string[];
     };
   };
 
@@ -45,9 +47,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
   }
 
+  const wordIds = session.wordIds ?? [];
+
   const { rows } = await pool.query(
-    "INSERT INTO study_sessions (id, user_id, date, cards_studied, correct, incorrect, level, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW()) RETURNING *",
-    [randomUUID(), auth.userId, session.date, session.cardsStudied, session.correct, session.incorrect, String(session.level)]
+    "INSERT INTO study_sessions (id, user_id, date, cards_studied, correct, incorrect, level, word_ids, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW()) RETURNING *",
+    [randomUUID(), auth.userId, session.date, session.cardsStudied, session.correct, session.incorrect, String(session.level), wordIds]
   );
 
   return NextResponse.json({ ok: true, session: rows[0] });

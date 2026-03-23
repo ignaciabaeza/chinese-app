@@ -3,19 +3,26 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { vocabulary, Word } from "@/data/vocabulary";
-import { loadProgress, loadSessions, CardProgress, StudySession } from "@/lib/progress";
+import { loadProgress, loadProgressFromServer, loadSessions, loadSessionsFromServer, CardProgress, StudySession } from "@/lib/progress";
+import { useAuth } from "@/components/AuthProvider";
 
 const LEVELS = [1, 2, 3, 4, 5, 6] as const;
 
 export default function ProgressPage() {
+  const { user } = useAuth();
   const [progress, setProgress] = useState<Record<string, CardProgress>>({});
   const [sessions, setSessions] = useState<StudySession[]>([]);
   const [tab, setTab] = useState<"overview" | "learned" | "history">("overview");
 
   useEffect(() => {
-    setProgress(loadProgress());
-    setSessions(loadSessions().slice().reverse());
-  }, []);
+    if (user) {
+      loadProgressFromServer().then(setProgress);
+      loadSessionsFromServer().then((s) => setSessions([...s].reverse()));
+    } else {
+      setProgress(loadProgress());
+      setSessions(loadSessions().slice().reverse());
+    }
+  }, [user]);
 
   const learned = vocabulary.filter((w) => {
     const p = progress[w.id];
@@ -439,6 +446,8 @@ function LearnedTab({ words, progress }: { words: Word[]; progress: Record<strin
 }
 
 function HistoryTab({ sessions }: { sessions: StudySession[] }) {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
   if (sessions.length === 0) {
     return (
       <div className="text-center py-12">
@@ -473,38 +482,120 @@ function HistoryTab({ sessions }: { sessions: StudySession[] }) {
       <div className="space-y-2">
         {sessions.map((s, i) => {
           const acc = s.cardsStudied > 0 ? Math.round((s.correct / s.cardsStudied) * 100) : 0;
+          const isOpen = expandedIndex === i;
+          const sessionWords = s.wordIds
+            ? vocabulary.filter((w) => s.wordIds!.includes(w.id))
+            : [];
+
           return (
             <div
               key={i}
-              className="flex items-center gap-3 rounded-xl px-4 py-3"
-              style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+              className="rounded-xl overflow-hidden"
+              style={{ background: "var(--bg-secondary)", border: `1px solid ${isOpen ? "rgba(201,168,76,0.45)" : "var(--border-subtle)"}`, transition: "border-color 0.2s" }}
             >
-              <div
-                className="w-1.5 h-10 rounded-full shrink-0"
-                style={{
-                  background: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#E8C76A" : "var(--accent-rose)",
-                }}
-              />
-              <div className="flex-1 min-w-0">
-                <div className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{s.date}</div>
-                <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                  HSK {s.level} · {s.cardsStudied} cards
-                </div>
-              </div>
-              <div className="text-right shrink-0">
+              {/* Session row — clickable */}
+              <button
+                className="w-full flex items-center gap-3 px-4 py-3 text-left"
+                onClick={() => setExpandedIndex(isOpen ? null : i)}
+              >
                 <div
-                  className="text-sm font-bold"
+                  className="w-1.5 rounded-full shrink-0"
                   style={{
-                    color: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#E8C76A" : "var(--accent-rose)",
-                    fontFamily: "Cinzel, serif",
+                    height: "2.5rem",
+                    background: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#E8C76A" : "var(--accent-rose)",
                   }}
-                >
-                  {acc}%
+                />
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{s.date}</div>
+                  <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                    HSK {s.level} · {s.cardsStudied} cards
+                    {sessionWords.length > 0 && (
+                      <span style={{ color: "rgba(201,168,76,0.6)" }}> · tap to see vocabulary</span>
+                    )}
+                  </div>
                 </div>
-                <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                  {s.correct}✓ {s.incorrect}✗
+                <div className="text-right shrink-0">
+                  <div
+                    className="text-sm font-bold"
+                    style={{
+                      color: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#E8C76A" : "var(--accent-rose)",
+                      fontFamily: "Cinzel, serif",
+                    }}
+                  >
+                    {acc}%
+                  </div>
+                  <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                    {s.correct}✓ {s.incorrect}✗
+                  </div>
                 </div>
-              </div>
+                {sessionWords.length > 0 && (
+                  <span
+                    className="text-xs shrink-0 ml-1 transition-transform"
+                    style={{
+                      color: "var(--text-muted)",
+                      display: "inline-block",
+                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    }}
+                  >
+                    ▾
+                  </span>
+                )}
+              </button>
+
+              {/* Expanded vocabulary grid */}
+              {isOpen && sessionWords.length > 0 && (
+                <div className="px-4 pb-4 pt-1">
+                  <div
+                    className="h-px mb-4"
+                    style={{ background: "var(--border-subtle)" }}
+                  />
+                  <p
+                    className="text-xs mb-3 tracking-widest uppercase"
+                    style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+                  >
+                    Session Vocabulary · {sessionWords.length} cards
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {sessionWords.map((word) => (
+                      <div
+                        key={word.id}
+                        className="rounded-xl p-3 flex flex-col"
+                        style={{
+                          background: "var(--bg-primary)",
+                          border: "1px solid var(--border-subtle)",
+                        }}
+                      >
+                        <div className="flex items-start justify-between gap-1 mb-1">
+                          <span
+                            className="text-2xl font-bold leading-none"
+                            style={{ color: "var(--accent-crane-white)", fontFamily: "Noto Serif SC, serif" }}
+                          >
+                            {word.chinese}
+                          </span>
+                          <span
+                            className="text-xs shrink-0 mt-0.5"
+                            style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", opacity: 0.7 }}
+                          >
+                            {word.level}
+                          </span>
+                        </div>
+                        <span
+                          className="text-xs mb-1 font-pinyin"
+                          style={{ color: "var(--text-muted)", fontStyle: "italic" }}
+                        >
+                          {word.pinyin}
+                        </span>
+                        <span
+                          className="text-xs leading-snug"
+                          style={{ color: "var(--text-primary)", opacity: 0.85, fontFamily: "Lora, serif" }}
+                        >
+                          {word.english}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           );
         })}
