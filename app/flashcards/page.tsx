@@ -289,6 +289,31 @@ export default function FlashcardsPage() {
             >
               {currentWord.english}
             </div>
+            {currentWord.example && (
+              <div
+                className="mt-4 w-full rounded-xl px-4 py-3 space-y-1 text-center"
+                style={{ background: "rgba(90,63,32,0.08)", border: "1px solid rgba(90,63,32,0.15)" }}
+              >
+                <div
+                  className="text-base font-bold"
+                  style={{ color: "#3A2810", fontFamily: "Noto Serif SC, serif" }}
+                >
+                  {currentWord.example.chinese}
+                </div>
+                <div
+                  className="text-sm font-pinyin"
+                  style={{ color: "#5A3F20", fontStyle: "italic" }}
+                >
+                  {currentWord.example.pinyin}
+                </div>
+                <div
+                  className="text-xs"
+                  style={{ color: "#7A6040", fontFamily: "Lora, serif" }}
+                >
+                  {currentWord.example.english}
+                </div>
+              </div>
+            )}
             {cardProgress && (
               <div className="mt-4 text-xs" style={{ color: "#A09880" }}>
                 {cardProgress.repetitions} reviews · {cardProgress.correct}✓ {cardProgress.incorrect}✗
