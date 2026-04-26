@@ -184,23 +184,30 @@ body {
 /* ─── Card flip ─── */
 .card-flip {
   perspective: 1200px;
+  -webkit-perspective: 1200px;
 }
 .card-inner {
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
 }
 .card-inner.flipped {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 .card-front,
 .card-back {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  /* Force separate GPU compositing layer on iOS Safari */
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .card-back {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg) translateZ(0);
+  transform: rotateY(180deg) translateZ(0);
 }
 
 /* ─── HSK badge ─── */
