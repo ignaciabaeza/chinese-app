@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { vocabulary, hsk1Words, hsk2Words, hsk3Words, hsk4Words, hsk5Words, hsk6Words } from "@/data/vocabulary";
 import { loadProgress, loadSessions, getStats } from "@/lib/progress";
+import { BlossomBranch, InkMountains, SectionTitle } from "@/components/Decor";
 
 const LEVEL_WORDS = [hsk1Words, hsk2Words, hsk3Words, hsk4Words, hsk5Words, hsk6Words];
 const LEVEL_NAMES = ["HSK 1", "HSK 2", "HSK 3", "HSK 4", "HSK 5", "HSK 6"];
@@ -40,15 +41,18 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6 animate-fade-up">
-      {/* Header */}
-      <div className="text-center pt-2 pb-4">
+      {/* Hero greeting */}
+      <div className="relative pt-2 pb-4">
+        <div className="absolute top-0 right-0 opacity-60 pointer-events-none">
+          <BlossomBranch width={160} height={110} variant="tr" />
+        </div>
         <h1
-          className="text-3xl sm:text-4xl mb-2"
-          style={{ fontFamily: "Cinzel, serif", color: "var(--accent-gold)" }}
+          className="mb-2"
+          style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 300, fontSize: "3.5rem", color: "var(--ink-dark)", lineHeight: 1, letterSpacing: 2 }}
         >
           你好
         </h1>
-        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p style={{ fontFamily: "Lora, serif", fontSize: 13, color: "var(--ink-medium)", fontStyle: "italic" }}>
           Welcome to your Chinese learning dashboard
         </p>
       </div>
@@ -56,164 +60,174 @@ export default function Dashboard() {
       {/* Stat cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <Link href="/progress?tab=learned">
-          <StatCard value={totalLearned} label="Words Learned" color="var(--accent-gold)" clickable />
+          <StatCard value={totalLearned} label="Words Learned" valueColor="var(--blush-deep)" clickable />
         </Link>
         <Link href="/flashcards">
-          <StatCard value={totalDue} label="Due for Review" color="var(--accent-rose)" clickable highlight={totalDue > 0} />
+          <StatCard value={totalDue} label="Due for Review" valueColor="var(--blush-deep)" clickable highlight={totalDue > 0} />
         </Link>
         <Link href="/progress">
-          <StatCard value={totalSeen} label="Words Seen" color="var(--floral-blue-light, #6070B0)" clickable />
+          <StatCard value={totalSeen} label="Words Seen" clickable />
         </Link>
-        <StatCard value={streak} label="Day Streak" color="var(--accent-crane-white)" />
+        <StatCard value={streak} label="Day Streak" valueColor="var(--antique-gold)" />
       </div>
 
       {/* Due-now banner */}
       {totalDue > 0 && (
         <Link
           href="/flashcards"
-          className="flex items-center justify-between px-5 py-4 rounded-xl transition-all group"
+          className="flex items-center gap-3 px-4 py-3.5 transition-all"
           style={{
-            background: "rgba(196,133,122,0.08)",
-            border: "1px solid rgba(196,133,122,0.4)",
+            background: "var(--bg-secondary)",
+            border: "1px solid var(--blush-pink)",
+            borderRadius: 2,
+            textDecoration: "none",
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(196,133,122,0.7)")}
-          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(196,133,122,0.4)")}
+          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--blush-deep)")}
+          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--blush-pink)")}
         >
-          <div>
-            <div className="font-semibold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>
+          {/* 复 avatar */}
+          <div
+            className="shrink-0 flex items-center justify-center"
+            style={{
+              width: 36, height: 36, borderRadius: "50%",
+              background: "var(--blush-light)",
+              fontFamily: "'Noto Serif SC', serif",
+              fontSize: 18, color: "var(--blush-deep)",
+            }}
+          >
+            复
+          </div>
+          <div className="flex-1 min-w-0">
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, color: "var(--ink-dark)" }}>
               {totalDue} card{totalDue !== 1 ? "s" : ""} ready for review
             </div>
-            <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-              Keep your streak going — review now
+            <div style={{ fontFamily: "Lora, serif", fontSize: 11, color: "var(--ink-medium)", fontStyle: "italic" }}>
+              Keep your streak going
             </div>
           </div>
-          <span style={{ color: "var(--accent-rose)", fontSize: "1.25rem" }}>→</span>
+          <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 11, letterSpacing: "0.1em", color: "var(--blush-deep)", textTransform: "uppercase" }}>
+            Start →
+          </span>
         </Link>
       )}
 
       {/* HSK level grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        {levelStats.map((stats, i) => (
-          <LevelCard key={i} name={LEVEL_NAMES[i]} stats={stats} />
-        ))}
+      <div>
+        <SectionTitle cn="汉语水平" en="HSK Levels" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {levelStats.map((stats, i) => (
+            <LevelCard key={i} name={LEVEL_NAMES[i]} stats={stats} />
+          ))}
+        </div>
       </div>
 
       {/* Quick actions */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <QuickAction href="/flashcards" title="Flashcards" sub={totalDue > 0 ? `${totalDue} due` : "Study cards"} />
-        <QuickAction href="/vocabulary" title="Vocabulary" sub={`${totalWords} words`} />
-        <QuickAction href="/progress" title="Progress" sub={`${totalLearned} learned`} />
-        <QuickAction href="/chat" title="AI Tutor" sub="Ask anything" />
+      <div>
+        <SectionTitle cn="快捷" en="Quick Actions" />
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { href: "/flashcards", cn: "卡片", label: "Flashcards", sub: totalDue > 0 ? `${totalDue} due` : "Practice with SRS" },
+            { href: "/vocabulary", cn: "词库", label: "Vocabulary", sub: `${totalWords} words` },
+            { href: "/progress", cn: "进步", label: "Progress", sub: `${totalLearned} learned` },
+            { href: "/chat", cn: "老师", label: "AI Tutor", sub: "Ask anything" },
+          ].map((a) => (
+            <QuickAction key={a.href} href={a.href} cn={a.cn} title={a.label} sub={a.sub} />
+          ))}
+        </div>
       </div>
 
       {/* Overall progress */}
       <div
-        className="rounded-xl p-5"
-        style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+        className="p-5"
+        style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2 }}
       >
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif", letterSpacing: "0.06em" }}>
-            Overall Progress
+        <div className="flex justify-between items-baseline mb-2">
+          <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 10, letterSpacing: 2, color: "var(--ink-medium)", textTransform: "uppercase" }}>
+            Overall Mastery
           </span>
-          <span className="text-sm" style={{ color: "var(--text-muted)" }}>
-            {totalLearned} / {totalWords}
+          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "var(--antique-gold)", fontWeight: 500 }}>
+            {totalWords > 0 ? Math.round((totalLearned / totalWords) * 100) : 0}%
           </span>
         </div>
         <div className="progress-ink">
           <div
             className="progress-ink-fill"
-            style={{ width: `${totalWords > 0 ? (totalLearned / totalWords) * 100 : 0}%` }}
+            style={{ width: `${totalWords > 0 ? (totalLearned / totalWords) * 100 : 0}%`, background: "var(--antique-gold)" }}
           />
         </div>
-        <p className="text-xs mt-2" style={{ color: "var(--text-muted)" }}>
-          {totalWords > 0 ? Math.round((totalLearned / totalWords) * 100) : 0}% of HSK 1–6 vocabulary mastered
+        <p style={{ fontFamily: "Lora, serif", fontStyle: "italic", fontSize: 11, color: "var(--ink-medium)", marginTop: 6 }}>
+          {totalLearned} of {totalWords.toLocaleString()} HSK 1–6 words mastered
         </p>
+      </div>
+
+      {/* Ink mountains footer decoration */}
+      <div className="relative h-12 pointer-events-none overflow-hidden -mx-4">
+        <InkMountains width={800} height={48} opacity={0.35} style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "100%", minWidth: 400 }} />
       </div>
     </div>
   );
 }
 
-function StatCard({ value, label, color, clickable, highlight }: {
-  value: number; label: string; color: string; clickable?: boolean; highlight?: boolean;
+function StatCard({ value, label, valueColor, clickable, highlight }: {
+  value: number; label: string; valueColor?: string; clickable?: boolean; highlight?: boolean;
 }) {
   return (
     <div
-      className="rounded-xl p-4 transition-all"
+      className="p-4 transition-all"
       style={{
-        background: highlight ? "rgba(196,133,122,0.06)" : "var(--bg-secondary)",
-        border: highlight ? "1px solid rgba(196,133,122,0.4)" : "1px solid var(--border-subtle)",
+        background: highlight ? "rgba(212,136,138,0.08)" : "var(--bg-secondary)",
+        border: `1px solid ${highlight ? "var(--blush-pink)" : "var(--border-ink)"}`,
+        borderRadius: 2,
         cursor: clickable ? "pointer" : "default",
       }}
-      onMouseEnter={(e) => clickable && (e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)")}
-      onMouseLeave={(e) => clickable && (e.currentTarget.style.borderColor = highlight ? "rgba(196,133,122,0.4)" : "var(--border-subtle)")}
+      onMouseEnter={(e) => clickable && (e.currentTarget.style.borderColor = highlight ? "var(--blush-deep)" : "rgba(44,36,22,0.3)")}
+      onMouseLeave={(e) => clickable && (e.currentTarget.style.borderColor = highlight ? "var(--blush-pink)" : "var(--border-ink)")}
     >
-      <div className="text-2xl sm:text-3xl font-bold mb-1" style={{ color, fontFamily: "Cinzel, serif" }}>
+      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 500, color: valueColor || "var(--ink-dark)", lineHeight: 1 }}>
         {value}
       </div>
-      <div className="text-xs" style={{ color: "var(--text-muted)" }}>{label}</div>
+      <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: 2, color: "var(--ink-medium)", textTransform: "uppercase", marginTop: 6 }}>
+        {label}
+      </div>
     </div>
   );
 }
 
-function LevelCard({ name, stats }: {
-  name: string;
-  stats: { total: number; seen: number; learned: number; due: number };
-}) {
+function LevelCard({ name, stats }: { name: string; stats: { total: number; seen: number; learned: number; due: number } }) {
   const pct = stats.total > 0 ? Math.round((stats.learned / stats.total) * 100) : 0;
   return (
     <div
-      className="rounded-xl p-4"
-      style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+      className="p-4"
+      style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-ink)", borderRadius: 2 }}
     >
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-semibold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>
-          {name}
-        </span>
-        <span className="text-sm font-bold" style={{ color: "var(--accent-gold)" }}>{pct}%</span>
+        <span style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 13, color: "var(--ink-dark)", fontWeight: 500 }}>{name}</span>
+        <span style={{ fontFamily: "Lora, serif", fontSize: 11, color: "var(--ink-faint)" }}>{pct}%</span>
       </div>
-      <div className="progress-ink mb-3">
+      <div className="progress-ink mb-2">
         <div className="progress-ink-fill" style={{ width: `${pct}%` }} />
       </div>
-      <div className="grid grid-cols-3 gap-1 text-center">
-        <div>
-          <div className="text-sm font-medium" style={{ color: "var(--accent-gold)" }}>{stats.learned}</div>
-          <div className="text-xs" style={{ color: "var(--text-muted)" }}>learned</div>
-        </div>
-        <div>
-          <div className="text-sm font-medium" style={{ color: "var(--accent-rose)" }}>{stats.due}</div>
-          <div className="text-xs" style={{ color: "var(--text-muted)" }}>due</div>
-        </div>
-        <div>
-          <div className="text-sm font-medium" style={{ color: "var(--text-muted)" }}>{stats.total}</div>
-          <div className="text-xs" style={{ color: "var(--text-muted)" }}>total</div>
-        </div>
+      <div className="flex gap-2" style={{ fontFamily: "Lora, serif", fontSize: 10, color: "var(--ink-medium)" }}>
+        <span>{stats.learned} learned</span>
+        <span>·</span>
+        <span>{stats.due} due</span>
       </div>
     </div>
   );
 }
 
-function QuickAction({ href, title, sub }: { href: string; title: string; sub: string }) {
+function QuickAction({ href, cn, title, sub }: { href: string; cn: string; title: string; sub: string }) {
   return (
     <Link
       href={href}
-      className="block rounded-xl p-4 transition-all group"
-      style={{
-        background: "var(--bg-secondary)",
-        border: "1px solid var(--border-subtle)",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)";
-        e.currentTarget.style.boxShadow = "0 0 14px rgba(201,168,76,0.12)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "var(--border-subtle)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
+      className="block p-4 transition-all"
+      style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-ink)", borderRadius: 2, textDecoration: "none" }}
+      onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(44,36,22,0.3)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(44,36,22,0.06)"; }}
+      onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-ink)"; e.currentTarget.style.boxShadow = "none"; }}
     >
-      <div className="font-semibold text-sm mb-1" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>
-        {title}
-      </div>
-      <div className="text-xs" style={{ color: "var(--text-muted)" }}>{sub}</div>
+      <div style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 18, color: "var(--blush-deep)", marginBottom: 4, fontWeight: 500 }}>{cn}</div>
+      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, color: "var(--ink-dark)", fontWeight: 500 }}>{title}</div>
+      <div style={{ fontFamily: "Lora, serif", fontSize: 11, color: "var(--ink-medium)", marginTop: 2, fontStyle: "italic" }}>{sub}</div>
     </Link>
   );
 }

@@ -10,6 +10,7 @@ import {
   getDueCards,
   CardProgress,
 } from "@/lib/progress";
+import { BlossomBranch } from "@/components/Decor";
 
 type LevelFilter = "all" | 1 | 2 | 3 | 4 | 5 | 6;
 type CategoryFilter = "all" | string;
@@ -52,9 +53,7 @@ export default function FlashcardsPage() {
     const p = loadProgress();
     setProgress(p);
     const filtered = vocabulary.filter(
-      (w) =>
-        (level === "all" || w.level === level) &&
-        (category === "all" || w.category === category)
+      (w) => (level === "all" || w.level === level) && (category === "all" || w.category === category)
     );
     const ids = filtered.map((w) => w.id);
     let selectedIds: string[];
@@ -64,10 +63,7 @@ export default function FlashcardsPage() {
     } else {
       selectedIds = ids;
     }
-    const words = shuffle(selectedIds)
-      .slice(0, size)
-      .map((id) => filtered.find((w) => w.id === id)!)
-      .filter(Boolean);
+    const words = shuffle(selectedIds).slice(0, size).map((id) => filtered.find((w) => w.id === id)!).filter(Boolean);
     setQueue(words);
     setCurrentIndex(0);
     setFlipped(false);
@@ -86,53 +82,28 @@ export default function FlashcardsPage() {
 
   function handleRate(quality: 0 | 3) {
     if (!currentWord || transitioning) return;
-
     const updated = { ...progress };
     updated[currentWord.id] = updateCardProgress(progress[currentWord.id], currentWord.id, quality);
     saveProgress(updated);
     setProgress(updated);
-
     const newStats = {
       correct: sessionStats.correct + (quality === 3 ? 1 : 0),
       incorrect: sessionStats.incorrect + (quality === 0 ? 1 : 0),
     };
     setSessionStats(newStats);
-
-    if (quality === 3) {
-      setLearnedIds((prev) => new Set(prev).add(currentWord.id));
-    }
-
+    if (quality === 3) setLearnedIds((prev) => new Set(prev).add(currentWord.id));
     setTransitioning(true);
     setFlipped(false);
     setShowPinyin(false);
-
     if (mode === "drill" && quality === 0) {
-      // Hard in drill mode: send card to back of queue
-      setTimeout(() => {
-        setQueue((q) => [...q, currentWord]);
-        setCurrentIndex((i) => i + 1);
-        setTransitioning(false);
-      }, 400);
+      setTimeout(() => { setQueue((q) => [...q, currentWord]); setCurrentIndex((i) => i + 1); setTransitioning(false); }, 400);
     } else {
-      // Easy, or any non-drill mode: advance normally
       const newMastered = mode === "drill" ? masteredCount + 1 : masteredCount;
       if (mode === "drill") setMasteredCount(newMastered);
-
-      const isDone =
-        mode === "drill"
-          ? newMastered >= drillTotal
-          : currentIndex + 1 >= queue.length;
-
+      const isDone = mode === "drill" ? newMastered >= drillTotal : currentIndex + 1 >= queue.length;
       setTimeout(() => {
         if (isDone) {
-          saveSessionWithSync({
-            date: new Date().toDateString(),
-            cardsStudied: mode === "drill" ? drillTotal : queue.length,
-            correct: newStats.correct,
-            incorrect: newStats.incorrect,
-            level,
-            wordIds: sessionWordIds,
-          });
+          saveSessionWithSync({ date: new Date().toDateString(), cardsStudied: mode === "drill" ? drillTotal : queue.length, correct: newStats.correct, incorrect: newStats.incorrect, level, wordIds: sessionWordIds });
           setFinished(true);
         } else {
           setCurrentIndex((i) => i + 1);
@@ -147,28 +118,15 @@ export default function FlashcardsPage() {
   }
   if (finished) {
     const learnedWords = vocabulary.filter((w) => learnedIds.has(w.id));
-    return (
-      <FinishedScreen
-        stats={sessionStats}
-        total={mode === "drill" ? drillTotal : queue.length}
-        isDrill={mode === "drill"}
-        learnedWords={learnedWords}
-        onRestart={() => setShowSetup(true)}
-        onReview={loadQueue}
-      />
-    );
+    return <FinishedScreen stats={sessionStats} total={mode === "drill" ? drillTotal : queue.length} isDrill={mode === "drill"} learnedWords={learnedWords} onRestart={() => setShowSetup(true)} onReview={loadQueue} />;
   }
   if (!currentWord) return null;
 
   const cardProgress = progress[currentWord.id];
-  const chineseFontClass =
-    currentWord.chinese.length <= 2 ? "chinese-xl" :
-    currentWord.chinese.length <= 4 ? "chinese-lg" :
-    "chinese-md";
-  const accuracy =
-    sessionStats.correct + sessionStats.incorrect > 0
-      ? Math.round((sessionStats.correct / (sessionStats.correct + sessionStats.incorrect)) * 100)
-      : 0;
+  const chineseFontSize = currentWord.chinese.length <= 2 ? 70 : currentWord.chinese.length <= 4 ? 50 : 36;
+  const accuracy = sessionStats.correct + sessionStats.incorrect > 0
+    ? Math.round((sessionStats.correct / (sessionStats.correct + sessionStats.incorrect)) * 100)
+    : 0;
 
   return (
     <div className="max-w-xl mx-auto space-y-5 animate-fade-up">
@@ -184,138 +142,147 @@ export default function FlashcardsPage() {
             }}
           />
         </div>
-        <span className="text-xs shrink-0" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
-          {mode === "drill"
-            ? `${masteredCount} / ${drillTotal} mastered`
-            : `${currentIndex + 1} / ${queue.length}`}
+        <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 11, letterSpacing: "0.1em", color: "var(--ink-medium)" }}>
+          {mode === "drill" ? `${masteredCount} / ${drillTotal} mastered` : `${currentIndex + 1} / ${queue.length}`}
         </span>
       </div>
 
       {/* Session stats */}
-      <div className="flex justify-center gap-6 text-sm" style={{ fontFamily: "Cinzel, serif" }}>
-        <span style={{ color: "var(--accent-gold)" }}>✓ {sessionStats.correct}</span>
-        <span style={{ color: "var(--accent-rose)" }}>✗ {sessionStats.incorrect}</span>
+      <div className="flex justify-center gap-6 text-sm" style={{ fontFamily: "'Cormorant SC', serif", letterSpacing: "0.05em" }}>
+        <span style={{ color: "var(--blush-pink)" }}>✓ {sessionStats.correct}</span>
+        <span style={{ color: "var(--blush-deep)" }}>✗ {sessionStats.incorrect}</span>
         {sessionStats.correct + sessionStats.incorrect > 0 && (
-          <span style={{ color: "var(--text-muted)" }}>{accuracy}%</span>
-        )}
-        {mode === "drill" && queue.length - currentIndex - 1 > drillTotal - masteredCount && (
-          <span style={{ color: "var(--text-muted)" }}>
-            {queue.length - currentIndex - 1} left
-          </span>
+          <span style={{ color: "var(--ink-faint)" }}>{accuracy}%</span>
         )}
       </div>
 
       {/* Card */}
-      <div className="card-flip" style={{ height: "400px" }} onClick={() => setFlipped((f) => !f)}>
+      <div className="card-flip" style={{ height: 420 }} onClick={() => !transitioning && setFlipped((f) => !f)}>
         <div className={`card-inner relative h-full cursor-pointer ${flipped ? "flipped" : ""}`}>
-          {/* ── Front: navy + moon circle ── */}
+
+          {/* Front */}
           <div
-            className="card-front absolute inset-0 rounded-2xl flex flex-col items-center justify-center overflow-hidden"
-            style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+            className="card-front absolute inset-0 flex flex-col overflow-hidden"
+            style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-ink)", borderRadius: 2, padding: 24 }}
           >
-            {/* HSK badge */}
-            <div className="badge-gold mb-5" style={{ fontFamily: "Cinzel, serif" }}>
-              HSK {currentWord.level} · {currentWord.category}
-            </div>
-
-            {/* Moon circle */}
-            <div className="moon-circle">
-              <div
-                className={`${chineseFontClass} text-center leading-none font-bold`}
-                style={{ color: "var(--accent-crane-white)", zIndex: 1 }}
-              >
-                {currentWord.chinese}
+            {/* Header row */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.1em", color: "var(--antique-gold)", border: "1px solid rgba(176,144,80,0.5)", padding: "2px 6px", textTransform: "uppercase" }}>
+                  HSK {currentWord.level}
+                </span>
+                <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.1em", color: "var(--ink-faint)", textTransform: "uppercase" }}>
+                  · {currentWord.category}
+                </span>
               </div>
-              {showPinyin && (
-                <div
-                  className="mt-2 text-xl tracking-widest font-pinyin text-center"
-                  style={{ color: "rgba(240,237,228,0.8)", fontStyle: "italic", zIndex: 1, lineHeight: 1.3 }}
-                >
-                  {currentWord.pinyin}
-                </div>
-              )}
+              {/* Audio button */}
+              <button
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  width: 28, height: 28, borderRadius: "50%",
+                  background: "transparent",
+                  border: "1px solid rgba(44,36,22,0.3)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  cursor: "pointer", padding: 0,
+                }}
+              >
+                <svg width="12" height="12" viewBox="0 0 20 20">
+                  <path d="M8 4L4 7H2v6h2l4 3V4z" fill="var(--ink-dark)" />
+                  <path d="M12 7c1 1 1 5 0 6" stroke="var(--ink-dark)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.6" />
+                </svg>
+              </button>
             </div>
 
-            <div className="mt-4 flex flex-col items-center gap-2">
-              {!showPinyin && (
-                <button
-                  onClick={(e) => { e.stopPropagation(); setShowPinyin(true); }}
-                  className="text-xs px-3 py-1 rounded-full transition-all"
+            {/* Moon circle with blossom decor */}
+            <div className="flex-1 flex items-center justify-center relative">
+              <div className="absolute top-0 right-0 opacity-40 pointer-events-none">
+                <BlossomBranch width={120} height={80} variant="tr" />
+              </div>
+              <div
+                style={{
+                  width: 200, height: 200, borderRadius: "50%",
+                  background: "radial-gradient(circle at 35% 30%, var(--blush-light), var(--blush-pink))",
+                  display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column",
+                  boxShadow: "inset 0 0 30px rgba(184,104,112,0.25), 0 4px 16px rgba(212,136,138,0.15)",
+                  zIndex: 1, position: "relative",
+                }}
+              >
+                <div
                   style={{
-                    color: "rgba(201,168,76,0.7)",
-                    border: "1px solid rgba(201,168,76,0.3)",
-                    fontFamily: "Cinzel, serif",
-                    background: "transparent",
-                    letterSpacing: "0.06em",
+                    fontFamily: "'Noto Serif SC', serif",
+                    fontWeight: 500,
+                    fontSize: chineseFontSize,
+                    color: "#F2EDE4",
+                    lineHeight: 1,
+                    textAlign: "center",
+                    textShadow: "0 2px 8px rgba(44,36,22,0.15)",
                   }}
                 >
-                  show pinyin
-                </button>
-              )}
-              <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                tap to reveal meaning
-              </p>
+                  {currentWord.chinese}
+                </div>
+                {showPinyin && (
+                  <div
+                    style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 14, color: "#F2EDE4", marginTop: 8, opacity: 0.9 }}
+                  >
+                    {currentWord.pinyin}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Bottom row */}
+            <div className="flex items-center justify-between">
+              <button
+                onClick={(e) => { e.stopPropagation(); setShowPinyin((v) => !v); }}
+                style={{
+                  background: "none", border: "none", cursor: "pointer",
+                  fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.1em",
+                  color: "var(--ink-medium)", textTransform: "uppercase",
+                }}
+              >
+                {showPinyin ? "hide" : "show"} pinyin
+              </button>
+              <div style={{ fontFamily: "Lora, serif", fontStyle: "italic", fontSize: 11, color: "var(--ink-faint)" }}>
+                tap to reveal
+              </div>
             </div>
           </div>
 
-          {/* ── Back: parchment ── */}
+          {/* Back */}
           <div
-            className="card-back absolute inset-0 rounded-2xl flex flex-col items-center justify-center p-6"
-            style={{ background: "var(--bg-parchment)", border: "1px solid var(--accent-gold)" }}
+            className="card-back absolute inset-0 flex flex-col overflow-hidden"
+            style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2, padding: 22, gap: 10 }}
           >
-            <div className="badge-gold mb-3" style={{ background: "rgba(201,168,76,0.15)" }}>
+            <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.1em", color: "var(--antique-gold)", border: "1px solid rgba(176,144,80,0.5)", padding: "2px 6px", textTransform: "uppercase", alignSelf: "flex-start" }}>
               HSK {currentWord.level}
-            </div>
-            <div
-              className="chinese-md font-bold mb-1 text-center"
-              style={{ color: "var(--text-parchment)", fontFamily: "Noto Serif SC, serif" }}
-            >
+            </span>
+            <div style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 40, fontWeight: 500, color: "var(--ink-dark)", lineHeight: 1 }}>
               {currentWord.chinese}
             </div>
             {currentWord.traditional && currentWord.traditional !== currentWord.chinese && (
-              <div className="text-sm mb-1" style={{ color: "#7A6855" }}>
-                繁 {currentWord.traditional}
-              </div>
+              <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 12, color: "var(--ink-faint)" }}>繁 {currentWord.traditional}</div>
             )}
-            <div
-              className="text-xl mb-3 font-pinyin"
-              style={{ color: "#5A3F20", fontStyle: "italic" }}
-            >
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 18, color: "#5A3F20" }}>
               {currentWord.pinyin}
             </div>
-            <div
-              className="text-lg text-center leading-relaxed font-body"
-              style={{ color: "var(--text-parchment)", fontFamily: "Lora, serif" }}
-            >
+            <div style={{ fontFamily: "Lora, serif", fontSize: 16, color: "var(--ink-dark)" }}>
               {currentWord.english}
             </div>
-            {currentWord.example && (
-              <div
-                className="mt-4 w-full rounded-xl px-4 py-3 space-y-1 text-center"
-                style={{ background: "rgba(90,63,32,0.08)", border: "1px solid rgba(90,63,32,0.15)" }}
-              >
-                <div
-                  className="text-base font-bold"
-                  style={{ color: "#3A2810", fontFamily: "Noto Serif SC, serif" }}
-                >
-                  {currentWord.example.chinese}
-                </div>
-                <div
-                  className="text-sm font-pinyin"
-                  style={{ color: "#5A3F20", fontStyle: "italic" }}
-                >
-                  {currentWord.example.pinyin}
-                </div>
-                <div
-                  className="text-xs"
-                  style={{ color: "#7A6040", fontFamily: "Lora, serif" }}
-                >
-                  {currentWord.example.english}
-                </div>
+
+            <div style={{ height: 1, background: "var(--border-ink)", margin: "4px 0" }} />
+
+            {/* Example sentence with left border */}
+            {(currentWord as any).example ? (
+              <div style={{ background: "rgba(212,136,138,0.06)", padding: "10px 12px", borderLeft: "2px solid var(--blush-pink)", borderRadius: "0 2px 2px 0" }}>
+                <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.1em", color: "var(--ink-medium)", textTransform: "uppercase", marginBottom: 4 }}>Example · 例</div>
+                <div style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 15, color: "var(--ink-dark)", lineHeight: 1.4 }}>{(currentWord as any).example.chinese}</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 11, color: "var(--blush-deep)", marginTop: 3 }}>{(currentWord as any).example.pinyin}</div>
+                <div style={{ fontFamily: "Lora, serif", fontStyle: "italic", fontSize: 12, color: "var(--ink-medium)", marginTop: 3 }}>{(currentWord as any).example.english}</div>
               </div>
-            )}
+            ) : null}
+
             {cardProgress && (
-              <div className="mt-4 text-xs" style={{ color: "#A09880" }}>
+              <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.1em", color: "var(--ink-faint)", textTransform: "uppercase", marginTop: "auto" }}>
                 {cardProgress.repetitions} reviews · {cardProgress.correct}✓ {cardProgress.incorrect}✗
               </div>
             )}
@@ -328,37 +295,27 @@ export default function FlashcardsPage() {
         <div className="grid grid-cols-2 gap-3">
           <button
             onClick={() => handleRate(0)}
-            className="py-4 rounded-xl text-base font-semibold transition-all"
             style={{
-              background: "rgba(196,133,122,0.08)",
-              border: "1.5px solid rgba(196,133,122,0.5)",
-              color: "var(--accent-rose)",
-              fontFamily: "Cinzel, serif",
-              letterSpacing: "0.05em",
+              padding: "14px", border: "1px solid var(--blush-pink)",
+              background: "transparent", color: "var(--blush-deep)",
+              fontFamily: "'Cormorant SC', serif", fontSize: 12, letterSpacing: 2,
+              textTransform: "uppercase", cursor: "pointer", borderRadius: 2, fontWeight: 500,
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(196,133,122,0.18)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(196,133,122,0.08)")}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(212,136,138,0.1)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
             ✗ Hard
           </button>
           <button
             onClick={() => handleRate(3)}
-            className="py-4 rounded-xl text-base font-semibold transition-all"
             style={{
-              background: "rgba(201,168,76,0.08)",
-              border: "1.5px solid var(--accent-gold)",
-              color: "var(--accent-gold)",
-              fontFamily: "Cinzel, serif",
-              letterSpacing: "0.05em",
+              padding: "14px", border: "1px solid var(--blush-pink)",
+              background: "var(--blush-pink)", color: "var(--bg-primary)",
+              fontFamily: "'Cormorant SC', serif", fontSize: 12, letterSpacing: 2,
+              textTransform: "uppercase", cursor: "pointer", borderRadius: 2, fontWeight: 500,
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "var(--accent-gold)";
-              e.currentTarget.style.color = "var(--bg-primary)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(201,168,76,0.08)";
-              e.currentTarget.style.color = "var(--accent-gold)";
-            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--blush-deep)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--blush-pink)")}
           >
             ✓ Easy
           </button>
@@ -366,22 +323,8 @@ export default function FlashcardsPage() {
       ) : (
         <button
           onClick={() => setFlipped(true)}
-          className="w-full py-4 rounded-xl text-sm font-semibold transition-all"
-          style={{
-            background: "transparent",
-            border: "1.5px solid var(--accent-gold)",
-            color: "var(--accent-gold)",
-            fontFamily: "Cinzel, serif",
-            letterSpacing: "0.08em",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "var(--accent-gold)";
-            e.currentTarget.style.color = "var(--bg-primary)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.color = "var(--accent-gold)";
-          }}
+          className="w-full py-4 text-sm transition-all btn-primary"
+          style={{ letterSpacing: "0.15em", textAlign: "center" }}
         >
           Reveal Meaning
         </button>
@@ -389,169 +332,103 @@ export default function FlashcardsPage() {
 
       <button
         onClick={() => setShowSetup(true)}
-        className="w-full text-xs transition-colors py-1"
-        style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-crane-white)")}
-        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+        className="w-full text-xs py-1 transition-colors"
+        style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "Lora, serif", fontStyle: "italic", color: "var(--ink-faint)" }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink-medium)")}
+        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink-faint)")}
       >
-        ← Back to setup
+        ← back to setup
       </button>
     </div>
   );
 }
 
 function SetupScreen({ level, setLevel, category, setCategory, mode, setMode, size, setSize, onStart }: {
-  level: LevelFilter;
-  setLevel: (l: LevelFilter) => void;
-  category: CategoryFilter;
-  setCategory: (c: CategoryFilter) => void;
-  mode: "due" | "all" | "drill";
-  setMode: (m: "due" | "all" | "drill") => void;
-  size: 10 | 20;
-  setSize: (s: 10 | 20) => void;
+  level: LevelFilter; setLevel: (l: LevelFilter) => void;
+  category: CategoryFilter; setCategory: (c: CategoryFilter) => void;
+  mode: "due" | "all" | "drill"; setMode: (m: "due" | "all" | "drill") => void;
+  size: 10 | 20; setSize: (s: 10 | 20) => void;
   onStart: () => void;
 }) {
   const p = loadProgress();
-  const levelOptions: [LevelFilter, string][] = [
-    ["all", "All"],
-    [1, "HSK 1"],
-    [2, "HSK 2"],
-    [3, "HSK 3"],
-    [4, "HSK 4"],
-    [5, "HSK 5"],
-    [6, "HSK 6"],
-  ];
-
-  const dueCount = (() => {
-    const ids = vocabulary
-      .filter(
-        (w) =>
-          (level === "all" || w.level === level) &&
-          (category === "all" || w.category === category)
-      )
-      .map((w) => w.id);
-    return getDueCards(ids, p).length;
-  })();
+  const levelOptions: [LevelFilter, string][] = [["all", "All"], [1, "HSK 1"], [2, "HSK 2"], [3, "HSK 3"], [4, "HSK 4"], [5, "HSK 5"], [6, "HSK 6"]];
+  const dueCount = vocabulary.filter((w) => (level === "all" || w.level === level) && (category === "all" || w.category === category)).map((w) => w.id);
 
   return (
     <div className="max-w-sm mx-auto space-y-6 animate-fade-up">
-      <h1
-        className="text-2xl text-center"
-        style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", letterSpacing: "0.08em" }}
-      >
-        Flashcard Practice
-      </h1>
+      {/* Header */}
+      <div className="relative">
+        <div className="absolute top-0 right-0 opacity-50 pointer-events-none">
+          <BlossomBranch width={130} height={90} variant="tr" />
+        </div>
+        <div style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 18, color: "var(--ink-dark)", letterSpacing: 1, fontWeight: 500 }}>卡片</div>
+        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 22, color: "var(--ink-dark)", fontWeight: 500, marginTop: 4 }}>Begin Practice</div>
+        <div style={{ fontFamily: "Lora, serif", fontSize: 13, color: "var(--ink-medium)", fontStyle: "italic", marginTop: 2 }}>Configure your study session below.</div>
+      </div>
 
-      <div
-        className="rounded-2xl p-6 space-y-5"
-        style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
-      >
+      <div className="space-y-5" style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2, padding: 20 }}>
+        {/* Level */}
         <div>
-          <label className="text-xs block mb-3 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
-            Level
-          </label>
-          <div className="grid grid-cols-4 gap-2">
+          <label style={{ fontFamily: "'Cormorant SC', serif", fontSize: 10, letterSpacing: 2, color: "var(--ink-medium)", textTransform: "uppercase", display: "block", marginBottom: 8 }}>Level</label>
+          <div className="grid grid-cols-4 gap-1.5">
             {levelOptions.map(([val, label]) => (
-              <button
-                key={String(val)}
-                onClick={() => setLevel(val)}
-                className="py-2 rounded-lg text-xs font-medium transition-all"
-                style={{
-                  fontFamily: "Cinzel, serif",
-                  background: level === val ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
-                  color: level === val ? "var(--bg-primary)" : "var(--text-muted)",
-                  border: level === val ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
-                }}
-              >
-                {label}
-              </button>
+              <FilterBtn key={String(val)} active={level === val} onClick={() => setLevel(val)}>{label}</FilterBtn>
             ))}
           </div>
         </div>
 
+        {/* Category */}
         <div>
-          <label className="text-xs block mb-3 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
-            Category
-          </label>
-          <div className="flex flex-wrap gap-2">
-            <button
-              key="all"
-              onClick={() => setCategory("all")}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-              style={{
-                fontFamily: "Cinzel, serif",
-                background: category === "all" ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
-                color: category === "all" ? "var(--bg-primary)" : "var(--text-muted)",
-                border: category === "all" ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
-              }}
-            >
-              All
-            </button>
+          <label style={{ fontFamily: "'Cormorant SC', serif", fontSize: 10, letterSpacing: 2, color: "var(--ink-medium)", textTransform: "uppercase", display: "block", marginBottom: 8 }}>Category</label>
+          <div className="flex flex-wrap gap-1.5">
+            <FilterBtn active={category === "all"} onClick={() => setCategory("all")}>All</FilterBtn>
             {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setCategory(cat)}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all capitalize"
-                style={{
-                  fontFamily: "Cinzel, serif",
-                  background: category === cat ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
-                  color: category === cat ? "var(--bg-primary)" : "var(--text-muted)",
-                  border: category === cat ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
-                }}
-              >
-                {cat}
-              </button>
+              <FilterBtn key={cat} active={category === cat} onClick={() => setCategory(cat)} small>{cat}</FilterBtn>
             ))}
           </div>
         </div>
 
+        {/* Mode */}
         <div>
-          <label className="text-xs block mb-3 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
-            Mode
-          </label>
-          <div className="grid grid-cols-3 gap-2">
+          <label style={{ fontFamily: "'Cormorant SC', serif", fontSize: 10, letterSpacing: 2, color: "var(--ink-medium)", textTransform: "uppercase", display: "block", marginBottom: 8 }}>Mode</label>
+          <div className="grid grid-cols-3 gap-1.5">
             {([
-              { val: "due", label: "Due Cards", sub: `${dueCount} ready` },
-              { val: "all", label: "All Cards", sub: "random" },
-              { val: "drill", label: "Drill", sub: "repeat hard" },
-            ] as const).map(({ val, label, sub }) => (
+              { val: "due" as const, label: "Due Cards", badge: getDueCards(dueCount, p).length },
+              { val: "all" as const, label: "All Cards", badge: undefined },
+              { val: "drill" as const, label: "Drill", badge: undefined },
+            ]).map(({ val, label, badge }) => (
               <button
                 key={val}
                 onClick={() => setMode(val)}
-                className="py-3 rounded-lg text-xs font-medium transition-all"
+                className="py-2.5 text-xs transition-all relative"
                 style={{
-                  fontFamily: "Cinzel, serif",
-                  background: mode === val ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
-                  color: mode === val ? "var(--bg-primary)" : "var(--text-muted)",
-                  border: mode === val ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
+                  fontFamily: "'Cormorant SC', serif", letterSpacing: "0.1em",
+                  background: mode === val ? "var(--blush-pink)" : "transparent",
+                  color: mode === val ? "var(--bg-primary)" : "var(--ink-dark)",
+                  border: mode === val ? "1px solid var(--blush-pink)" : "1px solid var(--border-ink)",
+                  borderRadius: 2, fontWeight: 500, cursor: "pointer", textTransform: "uppercase",
                 }}
               >
                 {label}
-                <div className="text-xs opacity-70 mt-0.5">{sub}</div>
+                {badge !== undefined && badge > 0 && (
+                  <span style={{
+                    position: "absolute", top: -6, right: -6,
+                    width: 18, height: 18, borderRadius: "50%",
+                    background: "var(--blush-deep)", color: "var(--bg-primary)",
+                    fontSize: 10, display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>{badge}</span>
+                )}
               </button>
             ))}
           </div>
         </div>
 
+        {/* Size */}
         <div>
-          <label className="text-xs block mb-3 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
-            Cards per session
-          </label>
-          <div className="grid grid-cols-2 gap-2">
+          <label style={{ fontFamily: "'Cormorant SC', serif", fontSize: 10, letterSpacing: 2, color: "var(--ink-medium)", textTransform: "uppercase", display: "block", marginBottom: 8 }}>Session Size</label>
+          <div className="grid grid-cols-2 gap-1.5">
             {([10, 20] as const).map((s) => (
-              <button
-                key={s}
-                onClick={() => setSize(s)}
-                className="py-2 rounded-lg text-xs font-medium transition-all"
-                style={{
-                  fontFamily: "Cinzel, serif",
-                  background: size === s ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
-                  color: size === s ? "var(--bg-primary)" : "var(--text-muted)",
-                  border: size === s ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
-                }}
-              >
-                {s} cards
-              </button>
+              <FilterBtn key={s} active={size === s} onClick={() => setSize(s)}>{s} cards</FilterBtn>
             ))}
           </div>
         </div>
@@ -559,24 +436,10 @@ function SetupScreen({ level, setLevel, category, setCategory, mode, setMode, si
 
       <button
         onClick={onStart}
-        className="w-full py-4 rounded-xl text-sm font-semibold transition-all"
-        style={{
-          background: "transparent",
-          border: "1.5px solid var(--accent-gold)",
-          color: "var(--accent-gold)",
-          fontFamily: "Cinzel, serif",
-          letterSpacing: "0.1em",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = "var(--accent-gold)";
-          e.currentTarget.style.color = "var(--bg-primary)";
-          e.currentTarget.style.boxShadow = "0 0 20px rgba(201,168,76,0.3)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = "transparent";
-          e.currentTarget.style.color = "var(--accent-gold)";
-          e.currentTarget.style.boxShadow = "none";
-        }}
+        className="w-full py-3 transition-all btn-primary"
+        style={{ letterSpacing: "0.15em", textAlign: "center", color: "var(--blush-deep)", borderBottomColor: "var(--blush-deep)" }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink-dark)")}
+        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--blush-deep)")}
       >
         Begin Practice
       </button>
@@ -584,78 +447,80 @@ function SetupScreen({ level, setLevel, category, setCategory, mode, setMode, si
   );
 }
 
+function FilterBtn({ active, onClick, children, small = false }: { active: boolean; onClick: () => void; children: React.ReactNode; small?: boolean }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        padding: small ? "5px 10px" : "6px 10px",
+        border: `1px solid ${active ? "var(--blush-pink)" : "var(--border-ink)"}`,
+        background: active ? "var(--blush-pink)" : "transparent",
+        color: active ? "var(--bg-primary)" : "var(--ink-dark)",
+        fontFamily: "'Cormorant SC', serif",
+        fontSize: 10, letterSpacing: "0.1em",
+        textTransform: "uppercase", cursor: "pointer",
+        borderRadius: 2, fontWeight: 500,
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 function FinishedScreen({ stats, total, isDrill, learnedWords, onRestart, onReview }: {
   stats: { correct: number; incorrect: number };
-  total: number;
-  isDrill?: boolean;
-  learnedWords: Word[];
-  onRestart: () => void;
-  onReview: () => void;
+  total: number; isDrill?: boolean; learnedWords: Word[];
+  onRestart: () => void; onReview: () => void;
 }) {
   const totalAttempts = stats.correct + stats.incorrect;
   const accuracy = totalAttempts > 0 ? Math.round((stats.correct / totalAttempts) * 100) : 0;
+  const heroChar = isDrill ? "完" : accuracy >= 80 ? "好" : accuracy >= 50 ? "学" : "练";
+  const heroLabel = isDrill ? "All Cards Mastered" : accuracy >= 80 ? "Excellent work" : accuracy >= 50 ? "Keep going" : "Practice makes perfect";
+
   return (
     <div className="max-w-xl mx-auto text-center space-y-6 animate-fade-up">
-      <div
-        className="text-5xl py-4"
-        style={{ color: accuracy >= 80 ? "var(--accent-gold)" : "var(--accent-rose)" }}
-      >
-        {isDrill ? "⬡" : accuracy >= 80 ? "✦" : accuracy >= 50 ? "◈" : "◉"}
-      </div>
-      <h2 style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", fontSize: "1.4rem", letterSpacing: "0.08em" }}>
-        {isDrill ? "All Cards Mastered" : "Session Complete"}
-      </h2>
-
-      <div
-        className="rounded-2xl p-6 grid grid-cols-3 gap-4"
-        style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
-      >
-        <div>
-          <div className="text-2xl font-bold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>{total}</div>
-          <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{isDrill ? "Mastered" : "Cards"}</div>
+      {/* Blossom decor */}
+      <div className="relative pt-8">
+        <div className="absolute top-4 left-0 opacity-40 pointer-events-none">
+          <BlossomBranch width={120} height={80} variant="tl" />
         </div>
-        <div>
-          <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{isDrill ? totalAttempts : stats.correct}</div>
-          <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{isDrill ? "Attempts" : "Correct"}</div>
+        <div className="absolute top-4 right-0 opacity-40 pointer-events-none">
+          <BlossomBranch width={120} height={80} variant="tr" />
         </div>
-        <div>
-          <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{accuracy}%</div>
-          <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>Accuracy</div>
-        </div>
+        <div style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 300, fontSize: 80, color: "var(--blush-deep)", lineHeight: 1 }}>{heroChar}</div>
+        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 20, color: "var(--ink-dark)", marginTop: 10 }}>{heroLabel}</div>
+        <div style={{ fontFamily: "Lora, serif", fontSize: 12, color: "var(--ink-medium)", marginTop: 4, fontStyle: "italic" }}>Session complete · 完成</div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      {/* Stats panel */}
+      <div className="p-6" style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2 }}>
+        <div className="grid grid-cols-3 gap-4">
+          {[
+            { v: total, l: isDrill ? "Mastered" : "Cards" },
+            { v: isDrill ? totalAttempts : stats.correct, l: isDrill ? "Attempts" : "Correct", c: "var(--antique-gold)" },
+            { v: `${accuracy}%`, l: "Accuracy", c: "var(--blush-deep)" },
+          ].map((s, i) => (
+            <div key={i}>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 500, color: s.c || "var(--ink-dark)", lineHeight: 1 }}>{s.v}</div>
+              <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.1em", color: "var(--ink-medium)", textTransform: "uppercase", marginTop: 4 }}>{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex gap-3 justify-center">
         <button
           onClick={onReview}
-          className="py-3 rounded-xl text-sm transition-all"
-          style={{
-            fontFamily: "Cinzel, serif",
-            background: "rgba(201,168,76,0.06)",
-            border: "1px solid var(--border-subtle)",
-            color: "var(--text-muted)",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)")}
-          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
+          style={{ padding: "10px 20px", border: "1px solid var(--border-ink)", background: "transparent", color: "var(--ink-medium)", fontFamily: "'Cormorant SC', serif", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer", borderRadius: 2 }}
+          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--blush-pink)")}
+          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border-ink)")}
         >
           Practice Again
         </button>
         <button
           onClick={onRestart}
-          className="py-3 rounded-xl text-sm font-semibold transition-all"
-          style={{
-            fontFamily: "Cinzel, serif",
-            background: "transparent",
-            border: "1.5px solid var(--accent-gold)",
-            color: "var(--accent-gold)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "var(--accent-gold)";
-            e.currentTarget.style.color = "var(--bg-primary)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.color = "var(--accent-gold)";
-          }}
+          className="btn-primary"
+          style={{ padding: "10px 20px", letterSpacing: "0.1em" }}
         >
           New Session
         </button>
@@ -664,49 +529,18 @@ function FinishedScreen({ stats, total, isDrill, learnedWords, onRestart, onRevi
       {learnedWords.length > 0 && (
         <div className="text-left space-y-3 pt-2">
           <div className="flex items-center gap-3">
-            <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
-            <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+            <div className="flex-1 h-px" style={{ background: "var(--border-ink)" }} />
+            <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 10, letterSpacing: 2, color: "var(--ink-medium)", textTransform: "uppercase" }}>
               {isDrill ? "Session Vocabulary" : "Words Learned"} · {learnedWords.length}
             </span>
-            <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
+            <div className="flex-1 h-px" style={{ background: "var(--border-ink)" }} />
           </div>
-
           <div className="grid grid-cols-2 gap-2">
             {learnedWords.map((word) => (
-              <div
-                key={word.id}
-                className="rounded-xl p-3 flex flex-col"
-                style={{
-                  background: "var(--bg-secondary)",
-                  border: "1px solid var(--border-subtle)",
-                }}
-              >
-                <div className="flex items-start justify-between gap-1 mb-1">
-                  <span
-                    className="text-2xl font-bold leading-none"
-                    style={{ color: "var(--accent-crane-white)", fontFamily: "Noto Serif SC, serif" }}
-                  >
-                    {word.chinese}
-                  </span>
-                  <span
-                    className="text-xs shrink-0 mt-0.5"
-                    style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", opacity: 0.7 }}
-                  >
-                    {word.level}
-                  </span>
-                </div>
-                <span
-                  className="text-xs mb-1 font-pinyin"
-                  style={{ color: "var(--text-muted)", fontStyle: "italic" }}
-                >
-                  {word.pinyin}
-                </span>
-                <span
-                  className="text-xs leading-snug"
-                  style={{ color: "var(--text-primary)", opacity: 0.85, fontFamily: "Lora, serif" }}
-                >
-                  {word.english}
-                </span>
+              <div key={word.id} className="p-3 flex flex-col" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-ink)", borderRadius: 2 }}>
+                <span style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 20, color: "var(--ink-dark)", fontWeight: 500 }}>{word.chinese}</span>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 11, color: "var(--blush-deep)", marginTop: 2 }}>{word.pinyin}</span>
+                <span style={{ fontFamily: "Lora, serif", fontSize: 11, color: "var(--ink-medium)", marginTop: 2 }}>{word.english}</span>
               </div>
             ))}
           </div>

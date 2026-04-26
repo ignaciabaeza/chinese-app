@@ -104,17 +104,18 @@ export default function ChatPage() {
         <div
           className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
           style={{
-            background: "var(--bg-secondary)",
-            border: "1px solid var(--border-subtle)",
+            background: "var(--sage-circle)",
+            border: "2px solid var(--bg-primary)",
+            boxShadow: "0 0 0 1px var(--sage-circle)",
           }}
         >
-          <span style={{ color: "var(--accent-gold)", fontSize: "1.1rem" }}>先</span>
+          <span style={{ color: "var(--bg-primary)", fontSize: "1.1rem", fontFamily: "'Noto Serif SC', serif", fontWeight: 500 }}>先</span>
         </div>
         <div>
-          <h1 style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", fontSize: "1.1rem", letterSpacing: "0.06em" }}>
+          <h1 style={{ color: "var(--ink-dark)", fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 500 }}>
             AI Chinese Tutor
           </h1>
-          <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+          <p className="text-xs" style={{ color: "var(--ink-faint)", fontFamily: "Lora, serif" }}>
             Powered by Claude · Knows HSK 1–6 vocabulary
           </p>
         </div>
@@ -127,11 +128,11 @@ export default function ChatPage() {
             <div className="text-center py-8">
               <div
                 className="text-4xl mb-3"
-                style={{ color: "var(--accent-gold)", fontFamily: "Noto Serif SC, serif" }}
+                style={{ color: "var(--ink-dark)", fontFamily: "'Noto Serif SC', serif", fontWeight: 300 }}
               >
                 学
               </div>
-              <p style={{ color: "var(--text-muted)", fontFamily: "Lora, serif", fontSize: "0.95rem" }}>
+              <p style={{ color: "var(--ink-faint)", fontFamily: "Lora, serif", fontSize: "0.95rem", lineHeight: 1.85 }}>
                 Ask me anything about Chinese!
               </p>
             </div>
@@ -140,20 +141,21 @@ export default function ChatPage() {
                 <button
                   key={i}
                   onClick={() => sendMessage(s)}
-                  className="text-left text-sm rounded-xl px-4 py-3 transition-all"
+                  className="text-left text-sm px-4 py-3 transition-all"
                   style={{
                     background: "var(--bg-secondary)",
-                    border: "1px solid var(--border-subtle)",
-                    color: "var(--text-muted)",
+                    border: "1px solid var(--border-ink)",
+                    color: "var(--ink-faint)",
                     fontFamily: "Lora, serif",
+                    borderRadius: "2px",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(201,168,76,0.45)";
-                    e.currentTarget.style.color = "var(--text-primary)";
+                    e.currentTarget.style.borderColor = "rgba(184,104,112,0.4)";
+                    e.currentTarget.style.color = "var(--ink-dark)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "var(--border-subtle)";
-                    e.currentTarget.style.color = "var(--text-muted)";
+                    e.currentTarget.style.borderColor = "var(--border-ink)";
+                    e.currentTarget.style.color = "var(--ink-faint)";
                   }}
                 >
                   {s}
@@ -169,31 +171,34 @@ export default function ChatPage() {
               <div
                 className="w-7 h-7 rounded-full flex items-center justify-center text-xs mr-2 mt-1 shrink-0"
                 style={{
-                  background: "var(--bg-secondary)",
-                  border: "1px solid var(--border-subtle)",
-                  color: "var(--accent-gold)",
-                  fontFamily: "Noto Serif SC, serif",
+                  background: "var(--sage-circle)",
+                  border: "none",
+                  color: "var(--bg-primary)",
+                  fontFamily: "'Noto Serif SC', serif",
+                  fontWeight: 500,
                 }}
               >
                 先
               </div>
             )}
             <div
-              className="max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed"
+              className="max-w-[85%] px-4 py-3 text-sm leading-relaxed"
               style={
                 msg.role === "user"
                   ? {
-                      background: "rgba(201,168,76,0.1)",
-                      border: "1px solid rgba(201,168,76,0.25)",
-                      color: "var(--text-primary)",
+                      background: "rgba(184,104,112,0.07)",
+                      border: "1px solid rgba(184,104,112,0.2)",
+                      color: "var(--ink-dark)",
                       borderBottomRightRadius: "0.25rem",
+                      borderRadius: "2px",
                       fontFamily: "Lora, serif",
                     }
                   : {
                       background: "var(--bg-secondary)",
-                      border: "1px solid var(--border-subtle)",
-                      color: "var(--text-primary)",
+                      border: "1px solid var(--border-ink)",
+                      color: "var(--ink-dark)",
                       borderBottomLeftRadius: "0.25rem",
+                      borderRadius: "2px",
                       fontFamily: "Lora, serif",
                     }
               }
@@ -201,7 +206,7 @@ export default function ChatPage() {
               {msg.content ? (
                 formatMessage(msg.content)
               ) : (
-                <span style={{ color: "var(--text-muted)" }}>Thinking…</span>
+                <span style={{ color: "var(--ink-faint)", fontStyle: "italic" }}>Thinking…</span>
               )}
             </div>
           </div>
@@ -211,10 +216,11 @@ export default function ChatPage() {
 
       {/* Input area */}
       <div
-        className="rounded-2xl p-3 flex gap-3 items-end"
+        className="p-3 flex gap-3 items-end"
         style={{
           background: "var(--bg-secondary)",
-          border: "1px solid var(--border-subtle)",
+          border: "1px solid var(--border-ink)",
+          borderRadius: "2px",
         }}
       >
         <textarea
@@ -227,7 +233,7 @@ export default function ChatPage() {
           className="flex-1 resize-none focus:outline-none text-sm leading-6"
           style={{
             background: "transparent",
-            color: "var(--text-primary)",
+            color: "var(--ink-dark)",
             fontFamily: "Lora, serif",
             maxHeight: "8rem",
           }}
@@ -241,23 +247,23 @@ export default function ChatPage() {
         <button
           onClick={() => sendMessage(input)}
           disabled={loading || !input.trim()}
-          className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center transition-all"
+          className="shrink-0 flex items-center justify-center transition-all"
           style={{
-            background: input.trim() && !loading ? "var(--accent-gold)" : "rgba(201,168,76,0.15)",
-            color: input.trim() && !loading ? "var(--bg-primary)" : "var(--text-muted)",
+            width: 34, height: 34, borderRadius: "50%",
+            background: input.trim() && !loading ? "var(--blush-pink)" : "rgba(154,144,128,0.3)",
+            color: input.trim() && !loading ? "var(--bg-primary)" : "var(--ink-faint)",
+            border: "none",
             cursor: input.trim() && !loading ? "pointer" : "not-allowed",
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 18,
           }}
         >
           {loading ? (
             <span className="animate-spin inline-block" style={{ fontSize: "0.85rem" }}>◌</span>
-          ) : (
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-            </svg>
-          )}
+          ) : "↑"}
         </button>
       </div>
-      <p className="text-xs text-center mt-2" style={{ color: "rgba(160,152,128,0.5)", fontFamily: "Cinzel, serif" }}>
+      <p className="text-xs text-center mt-2" style={{ color: "rgba(44,36,22,0.3)", fontFamily: "'Cormorant SC', serif", letterSpacing: "0.08em" }}>
         Enter to send · Shift+Enter for new line
       </p>
     </div>
@@ -271,7 +277,7 @@ function formatMessage(text: string) {
       {parts.map((part, i) => {
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
-            <strong key={i} style={{ color: "var(--accent-gold)", fontWeight: 600 }}>
+            <strong key={i} style={{ color: "var(--blush-deep)", fontWeight: 600 }}>
               {part.slice(2, -2)}
             </strong>
           );
@@ -281,7 +287,7 @@ function formatMessage(text: string) {
             <code
               key={i}
               className="px-1 rounded text-xs"
-              style={{ background: "rgba(201,168,76,0.1)", color: "var(--accent-gold)" }}
+              style={{ background: "rgba(184,104,112,0.08)", color: "var(--blush-deep)" }}
             >
               {part.slice(1, -1)}
             </code>

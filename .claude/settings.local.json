@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tar -xf webfetch-1777244400491-pthutx.bin)",
+      "Bash(tar -xzf webfetch-1777244400491-pthutx.bin)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)"
+    ]
+  }
+}

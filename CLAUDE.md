@@ -46,17 +46,6 @@ A mobile-first HSK vocabulary flashcard app with spaced-repetition, an AI tutor,
 - `Lora` — body text
 - `Cormorant Garamond` — pinyin (italic)
 
-**CSS custom properties (defined in `app/globals.css`):**
-```
---bg-primary:    #2D3561   (dark navy background)
---bg-secondary:  #3A4275   (card/panel background)
---bg-parchment:  #E8DEC8   (modal / card-back background)
---accent-gold:   #C9A84C   (primary accent, buttons, active states)
---accent-rose:   #C4857A   (dusty rose, moon circle, error states)
---text-primary:  #F0EDE4   (main text on dark)
---text-muted:    #A09880   (secondary text)
---border-subtle: rgba(201,168,76,0.25)  (subtle gold borders)
-```
 
 **Tailwind `@theme` tokens** (same values, usable as Tailwind classes):
 - `--color-navy-dark`, `--color-navy`, `--color-gold`, `--color-rose-antique`, `--color-parchment`, `--color-crane`
@@ -296,3 +285,401 @@ The schema SQL is also embedded in `scripts/setup.sh` for the EC2 deployment pat
 - **Setting cookies:** only possible on `NextResponse`, not returned from `request`
 - **`"use client"` boundary:** `AuthProvider`, `Navigation`, all page components are client components; API routes and `lib/db.ts` / `lib/auth.ts` are server-only
 - **No server components that read cookies directly** — auth is handled entirely in API routes + client context
+
+---
+
+## App Screens, Sections & Workflows (for Design)
+
+This section describes every screen in the app — what it shows, what components it uses, and how the user flows through it. Use this as the source of truth when redesigning or extending any page.
+
+---
+
+### Current Design System (actual values in `globals.css`)
+
+The aesthetic is **ink-wash / rice paper** — light backgrounds, dark ink, blush-pink accents. Not dark navy (that was the old design).
+
+**Background & Paper:**
+```
+--bg-primary:    #F2EDE4   (aged rice paper — main page background)
+--bg-secondary:  #EDE5D8   (warm paper — cards, panels, nav)
+--bg-parchment:  #EAE8E0   (cool parchment — modals, card backs)
+```
+
+**Ink (text/borders):**
+```
+--ink-dark:      #2C2416   (main text, headings, borders)
+--ink-medium:    #5A4F3E   (secondary text, nav links)
+--ink-faint:     #9A9080   (labels, hints, muted info)
+--border-ink:    rgba(44,36,22,0.15)   (default border color)
+```
+
+**Accents:**
+```
+--blush-pink:    #D4888A   (primary accent — active states, dots, send button)
+--blush-deep:    #B86870   (hover accent — active nav, error, Hard button)
+--blush-light:   #E8B4B5   (light blush)
+--sage-circle:   #A8B8B0   (AI tutor avatar ring, "in progress" dot)
+--antique-gold:  #B09050   (accuracy badge, gold stars, streak)
+--seal-red:      #C44030   (seal stamp on logo — 學 character)
+--mountain-blue: #8A9BAA   (mountain/sky accent, "seen" status dot)
+```
+
+**Fonts:**
+```
+Noto Serif SC     — Chinese characters (display, headings)
+Cormorant Garamond — English headings, pinyin (italic)
+Cormorant SC      — Labels, nav links, uppercase tags
+Lora              — Body text, descriptions, messages
+```
+
+**Key reusable CSS classes:**
+```
+.moon-circle       — Dusty rose circle, used as flashcard front hero (180×180px)
+.parchment-panel   — Panel with bg-parchment + border-ink
+.gold-btn          — Gold gradient button with hover glow (legacy)
+.progress-ink      — Slim progress bar track
+.progress-ink-fill — Fill element inside .progress-ink
+.card-flip         — 3D flip container (perspective + transform-style: preserve-3d)
+.card-inner        — Rotates on .flipped class
+.card-front        — Front face (navy with moon circle)
+.card-back         — Back face (parchment with definition)
+.chinese-xl        — Noto Serif SC ~5rem (1–2 characters)
+.chinese-lg        — Noto Serif SC ~3.5rem (3–4 characters)
+.chinese-md        — Noto Serif SC ~2.5rem (5+ characters)
+.font-pinyin       — Cormorant Garamond italic
+.badge-gold        — Small inline HSK level / category tag
+.animate-fade-up   — Page entrance animation (slide up + fade)
+.animate-drift     — Slow floating drift (logo plum motif)
+```
+
+---
+
+### Navigation (`components/Navigation.tsx`)
+
+**Layout:** Sticky top bar, `background: rgba(242,237,228,0.95)` with `backdrop-blur-sm`. `border-bottom: 1px solid rgba(44,36,22,0.12)`. Height: `h-14`.
+
+**Logo (left):**
+- Animated plum blossom SVG (5 petals, blush-pink fill, antique-gold center)
+- `汉语学习` in Noto Serif SC weight 300
+- `HÀNYǓ XUÉXÍ` in Cormorant SC (hidden on mobile)
+- Red seal stamp: `學` character, slightly rotated, `border: 1px solid rgba(196,64,48,0.6)`
+
+**Desktop links (center-right):** Dashboard · Flashcards · Sentences · Vocabulary · Progress · AI Tutor
+- Cormorant SC, letter-spacing 0.06em
+- Active: `color: --blush-deep`, `border-bottom: 1.5px solid --blush-deep`
+- Inactive: `color: --ink-medium`, hover → `--ink-dark`
+
+**Auth section (far right, desktop):**
+- Not logged in: "Sign In" link (blush-deep, underline border)
+- Logged in: truncated email + "Sign Out" button
+
+**Mobile:** Hamburger (3 lines, ink-medium) → dropdown below header with vertical links + auth row
+- Active link: `border-left: 2px solid --blush-deep`
+
+---
+
+### Dashboard (`app/page.tsx`)
+
+**Purpose:** Overview of all learning progress, entry point to study.
+
+**Sections (top to bottom):**
+
+1. **Header**
+   - `你好` in Noto Serif SC weight 300, ~3–4rem, `--ink-dark`
+   - Subtitle: "Welcome to your Chinese learning dashboard" in Lora
+
+2. **Stat Cards** — 2×2 grid (sm: 4 columns)
+   - Words Learned (→ `/progress?tab=learned`)
+   - Due for Review (→ `/flashcards`, highlighted if `> 0`)
+   - Words Seen (→ `/progress`)
+   - Day Streak (non-clickable)
+   - Each card: `background: #b7c9c9` (teal — legacy), `border-radius: 2px`
+   - Number in Cormorant Garamond 500, label in Cormorant SC uppercase
+
+3. **Due-Now Banner** (only shown when `totalDue > 0`)
+   - Full-width clickable strip → `/flashcards`
+   - `background: #b7c9c9`, border on hover
+   - "{N} cards ready for review" + "Keep your streak going"
+
+4. **HSK Level Grid** — 2 columns (sm: 3 columns)
+   - One card per HSK level (1–6)
+   - Shows: level name, % progress bar (gold fill), learned / due / total counts
+
+5. **Quick Actions** — 2 columns (sm: 4 columns)
+   - Flashcards / Vocabulary / Progress / AI Tutor
+   - Each: title in Cormorant Garamond, subtitle in Lora, hover raises border color
+
+6. **Overall Progress Bar**
+   - Gold ink progress bar showing `totalLearned / totalWords`
+   - "X% of HSK 1–6 vocabulary mastered" label
+
+---
+
+### Flashcards (`app/flashcards/page.tsx`)
+
+Three distinct screens controlled by `showSetup` and `finished` state:
+
+#### Screen 1 — Setup Screen
+
+**Purpose:** Configure the study session before starting.
+
+**Layout:** `max-w-sm mx-auto`, centered, fade-up animation.
+
+**Controls (inside a single panel card):**
+- **Level selector:** "All" + "HSK 1–6" — 4-column button grid
+- **Category selector:** "All" + 16 category tags (verbs, nouns, adjectives, etc.) — wrapping flex row
+- **Mode selector:** 3-column grid
+  - "Due Cards" — only cards with `nextReview <= now`; shows count badge
+  - "All Cards" — random from filtered set
+  - "Drill" — repeat Hard cards until all mastered
+- **Session size:** 10 or 20 cards — 2-column grid
+- **Active state for all buttons:** `background: --blush-pink`, `color: --bg-primary`
+
+**Start button:** Full-width, underline-only style (no fill), `letterSpacing: 0.15em`, "Begin Practice"
+
+#### Screen 2 — Study Card
+
+**Layout:** `max-w-xl mx-auto`.
+
+**Progress bar:** Slim gold `.progress-ink-fill` bar + "X / Y" counter (Cormorant SC)
+
+**Session stats row:** ✓ correct count, ✗ incorrect count, accuracy %, cards remaining (drill only)
+
+**Card (400px tall, `.card-flip`):**
+- **Front face** (`--bg-secondary`, border `--border-ink`):
+  - HSK badge + category tag at top
+  - `.moon-circle` (blush-pink circle, 180×180px) containing the Chinese character(s)
+  - Optional pinyin inside the moon circle (hidden by default, revealed by "show pinyin" button)
+  - "tap to reveal meaning" hint text
+- **Back face** (`--bg-parchment`):
+  - HSK badge
+  - Chinese character in `chinese-md` (ink dark, Noto Serif SC)
+  - Traditional character (if different), in smaller size + `#7A6855`
+  - Pinyin in `.font-pinyin` italic, `#5A3F20`
+  - English definition in Lora
+  - Example sentence block (if word has `.example`): Chinese + pinyin + English, slight tinted background
+  - Card stats footer: "N reviews · N✓ N✗"
+
+**Rate buttons (shown only after flip):**
+- "✗ Hard" — blush-pink border, transparent fill; hover deepens fill
+- "✓ Easy" — blush-pink border; hover fills with `--blush-pink`
+
+**Pre-flip button:** "Reveal Meaning" — underline-only, no fill
+
+**Back to setup link:** Small text link at bottom
+
+#### Screen 3 — Finished Screen
+
+**Layout:** `max-w-xl mx-auto text-center`.
+
+**Chinese character hero:** `好` (≥80% accuracy) / `学` (50–79%) / `练` (<50%) / `完` (drill mode)
+- Large (3rem), weight 300, Noto Serif SC, blush-pink color
+
+**Summary panel:** 3-column grid — total cards / correct count / accuracy %
+
+**Action buttons:**
+- "Practice Again" — same session settings
+- "New Session" — back to setup screen
+
+**Words Learned list** (if any rated Easy):
+- Divider with "Words Learned · N" label
+- 2-column grid of word mini-cards: Chinese + pinyin + English + HSK level
+
+---
+
+### Vocabulary Browser (`app/vocabulary/page.tsx`)
+
+**Purpose:** Browse all ~5000 HSK words with filtering and detail lookup.
+
+**Sections:**
+
+1. **Header row**
+   - Title: "Vocabulary" in Noto Serif SC weight 300
+   - Legend: ● Unseen (rgba) · ● Seen (mountain-blue) · ● Learned (blush-pink)
+
+2. **Filter bar**
+   - Text search input: underline-only style, searches `chinese`, `pinyin`, `english`
+   - Level filter buttons: All, HSK 1–6 (pill style, blush-pink active)
+   - Category filter tags: All + 16 categories (smaller, blush-tinted active)
+
+3. **Results count:** "N words" in Cormorant SC
+
+4. **Word grid:** Responsive columns (2 → 3 → 4 → 5 at breakpoints)
+   - Each word card:
+     - Chinese character (Noto Serif SC, ink-dark, bold)
+     - Status dot (top-right corner, colored by learned/seen/unseen)
+     - Pinyin (blush-deep, italic, Cormorant Garamond)
+     - English definition (truncated, ink-faint, Lora)
+     - "HSK N" tag (light, Cormorant SC)
+   - Hover: blush border + subtle shadow
+
+5. **Detail modal** (on word click):
+   - Overlay: `background: rgba(0,0,0,0.75)`
+   - Panel: `bg-parchment`, `border-ink`, `border-radius: 2px`
+   - Bottom-sheet on mobile (`items-end`), centered on desktop
+   - Large character (~4.5rem), traditional form if different
+   - Pinyin (blush-deep italic), English definition (Lora)
+   - If studied: 3-column stats (Reviews · Correct · Missed)
+   - "Close" button: underline-only style
+
+---
+
+### Progress (`app/progress/page.tsx`)
+
+**Purpose:** Deep-dive into learning progress across 3 tabs.
+
+**Header:** "My Progress" + "Review N due →" button (if due cards exist)
+
+**Summary stat tiles** (2×2 grid, sm: 4 columns):
+- Learned · In Progress · Due Now · Accuracy %
+
+**Tabs:** Overview · Learned (N) · Sessions (N)
+- Active tab: `--accent-gold` color + border-bottom
+- Inactive: `--text-muted`
+
+#### Tab: Overview
+
+1. **Due-now panel** (if cards due): Shows up to 12 character chips + "Start →" link
+2. **All-caught-up state** (if no due but cards seen): Gold ✦ icon + message
+3. **Level Progress:** HSK 1–6 bars — `LevelBar` component with label, N/total, progress fill
+4. **Coming Up Next:** Next 5 cards with time-until-review (e.g. "2d", "3h")
+5. **Recent Sessions:** Last 5 sessions — date, level, cards, accuracy %, ✓✗ counts
+6. **Empty state:** If no progress yet — "Start Studying" button
+
+#### Tab: Learned
+
+- Search filter (same underline style)
+- Word count
+- List of learned words: Chinese + pinyin + English + review count + next review timing
+  - "due now" in `--accent-rose` if overdue
+
+#### Tab: Sessions (History)
+
+- Summary row: total sessions / total cards / overall accuracy
+- Expandable session list: each row shows date, level, accuracy %, ✓✗
+  - Vertical color bar: gold (≥80%) / mid-gold (50–79%) / rose (<50%)
+  - Click to expand: shows vocabulary grid for that session (2–3 columns)
+
+---
+
+### AI Chat (`app/chat/page.tsx`)
+
+**Purpose:** Streaming chat with Claude as a Chinese tutor.
+
+**Layout:** `max-w-2xl mx-auto`, full viewport height minus nav (`calc(100vh - 8rem)`), flex column.
+
+**Header:**
+- Sage-green circle avatar with `先` character (Noto Serif SC)
+- "AI Chinese Tutor" in Cormorant Garamond
+- "Powered by Claude · Knows HSK 1–6 vocabulary" subtitle
+
+**Message area (scrollable flex-1):**
+
+Empty state:
+- `学` character large, ink-dark, Noto Serif SC
+- "Ask me anything about Chinese!" subtitle
+- 6 suggestion chips in 1–2 column grid (click to send)
+  - e.g. "How do I say 'I am hungry'?", "What's the difference between 是 and 有?"
+
+Chat messages:
+- User messages: right-aligned, `rgba(184,104,112,0.07)` tinted background, blush border
+- Assistant messages: left-aligned, sage avatar, `--bg-secondary` background
+- Both: `border-radius: 2px`, Lora font, max-width 85%
+- "Thinking…" italic placeholder while streaming
+- Inline formatting: `**bold**` → blush-deep bold, `` `code` `` → tinted code span
+
+**Input area (bottom):**
+- Panel: `--bg-secondary` background, border-ink
+- Auto-resizing `<textarea>` (max 8rem tall), Enter to send, Shift+Enter for newline
+- Send button: circular, `--blush-pink` when active, gray when disabled
+- Loading spinner: spinning `◌` character
+
+---
+
+### Auth (`app/auth/page.tsx`)
+
+**Purpose:** Login and registration, single page with tab toggle.
+
+**Layout:** Centered vertically (`min-h-[80vh]`), `max-w-sm` card.
+
+**Card:** `--bg-secondary` background, border-ink, `border-radius: 2px`, subtle shadow.
+
+**Logo header:**
+- `汉语学习` large (4rem), Noto Serif SC weight 300
+- `HÀNYǓ XUÉXÍ` in Cormorant SC small-caps, ink-faint
+
+**Mode toggle:**
+- "Sign In" / "Register" tabs
+- Active: blush-deep color + border-bottom underline
+- Underline-tab style (border-bottom on the row, no background fill)
+
+**Form fields:** Email + Password
+- Underline-only inputs (no box border, just `border-bottom`)
+- Focus: `--blush-deep` underline
+- Labels: Cormorant SC uppercase tracking
+
+**Error message:** Blush tinted box (if auth fails)
+
+**Submit button:** Full-width underline-only, "Sign In" / "Create Account", shows `请稍候…` while loading
+
+**Register footer:** "Your progress will sync across all your devices."
+
+---
+
+### Sentences (`app/sentences/page.tsx`)
+
+A study page for HSK example sentences. Fetches from the `sentences` PostgreSQL table. Allows browsing by HSK level with card-flip reveal of English/grammar.
+
+---
+
+### User Flows
+
+#### New User Flow
+1. Lands on **Dashboard** → sees 0 progress, streak 0
+2. Clicks "Flashcards" quick action
+3. **Flashcard Setup** → picks level/mode → "Begin Practice"
+4. Studies cards → rates each Easy/Hard
+5. **Finished Screen** → sees accuracy + words learned
+6. Returns to Dashboard → stats updated
+
+#### Returning User Flow
+1. Dashboard shows "N cards ready for review" banner
+2. Clicks banner → Flashcard Setup pre-selects "Due Cards"
+3. Reviews due cards
+4. Checks **Progress** tab for streak/level bars
+
+#### Account Registration Flow
+1. Clicks "Sign In" in nav → **Auth page**
+2. Switches to "Register" tab → enters email + password
+3. On success → redirected to Dashboard
+4. Progress from localStorage is synced to server on login
+
+#### Vocabulary Lookup Flow
+1. **Vocabulary** page → search or filter by level/category
+2. Clicks a word → **Detail modal** slides up (bottom-sheet on mobile)
+3. Sees character, traditional form, pinyin, definition, study stats
+4. Dismisses modal → continues browsing
+
+#### AI Tutor Flow
+1. **Chat** page → sees suggestion chips
+2. Clicks a suggestion or types a question
+3. Response streams in token by token (SSE)
+4. Conversation history kept in component state (not persisted)
+
+---
+
+### Reusable UI Patterns
+
+These patterns appear across multiple pages and should remain consistent:
+
+| Pattern | Usage |
+|---|---|
+| Underline button | Primary actions (Begin Practice, Reveal Meaning, Sign In, Close) — no fill, just border-bottom 1.5px |
+| Pill/toggle button | Level filters, category filters, mode selectors — blush-pink fill when active |
+| Progress bar | `.progress-ink` + `.progress-ink-fill` — used on Dashboard, Flashcards, Progress |
+| Status dot | 2×2px circle: rgba (unseen), mountain-blue (seen), blush-pink (learned) |
+| Badge tag | `.badge-gold` — HSK level + category label on flashcard fronts |
+| Parchment modal | `--bg-parchment` panel, border-ink, border-radius 2px, bottom-sheet on mobile |
+| Expandable row | Sessions history — click to reveal vocabulary grid |
+| Stat tile | Number (large, colored) + label (small, Cormorant SC uppercase) |
+| Section divider | `h-px` with `--border-ink` + centered label in Cormorant SC |

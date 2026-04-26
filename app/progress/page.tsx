@@ -5,6 +5,7 @@ import Link from "next/link";
 import { vocabulary, Word } from "@/data/vocabulary";
 import { loadProgress, loadProgressFromServer, loadSessions, loadSessionsFromServer, CardProgress, StudySession } from "@/lib/progress";
 import { useAuth } from "@/components/AuthProvider";
+import { SectionTitle } from "@/components/Decor";
 
 const LEVELS = [1, 2, 3, 4, 5, 6] as const;
 
@@ -51,57 +52,49 @@ export default function ProgressPage() {
   return (
     <div className="space-y-6 max-w-3xl mx-auto animate-fade-up">
       {/* Header */}
-      <div className="flex items-center justify-between flex-wrap gap-3">
-        <h1 style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", fontSize: "1.5rem", letterSpacing: "0.08em" }}>
-          My Progress
-        </h1>
+      <div className="flex items-end justify-between flex-wrap gap-3">
+        <div>
+          <div style={{ fontFamily: "'Noto Serif SC', serif", fontWeight: 300, fontSize: 32, color: "var(--ink-dark)", letterSpacing: 1, lineHeight: 1 }}>进步</div>
+          <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 10, letterSpacing: 2, color: "var(--ink-faint)", textTransform: "uppercase", marginTop: 4 }}>My Progress</div>
+        </div>
         {due.length > 0 && (
-          <Link
-            href="/flashcards"
-            className="px-4 py-2 rounded-xl text-sm font-semibold transition-all"
+          <button
+            onClick={() => window.location.href = "/flashcards"}
             style={{
-              fontFamily: "Cinzel, serif",
-              background: "transparent",
-              border: "1.5px solid var(--accent-gold)",
-              color: "var(--accent-gold)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "var(--accent-gold)";
-              e.currentTarget.style.color = "var(--bg-primary)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "var(--accent-gold)";
+              background: "none", border: "none", cursor: "pointer",
+              fontFamily: "'Cormorant SC', serif", fontSize: 11, letterSpacing: "0.1em",
+              color: "var(--antique-gold)", textTransform: "uppercase",
+              borderBottom: "1px solid var(--antique-gold)", padding: "4px 0",
             }}
           >
             Review {due.length} due →
-          </Link>
+          </button>
         )}
       </div>
 
       {/* Summary stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <StatTile value={learned.length} label="Learned" accent="var(--accent-gold)" />
-        <StatTile value={seen.length} label="In Progress" accent="#6070B0" />
-        <StatTile value={due.length} label="Due Now" accent="var(--accent-rose)" />
-        <StatTile value={`${overallAccuracy}%`} label="Accuracy" accent="var(--accent-crane-white)" />
+        <StatTile value={learned.length} label="Learned" accent="var(--blush-deep)" />
+        <StatTile value={seen.length} label="In Progress" accent="var(--mountain-blue)" />
+        <StatTile value={due.length} label="Due Now" accent="var(--blush-deep)" />
+        <StatTile value={`${overallAccuracy}%`} label="Accuracy" accent="var(--antique-gold)" />
       </div>
 
       {/* Tabs */}
-      <div
-        className="flex gap-0 border-b"
-        style={{ borderColor: "var(--border-subtle)" }}
-      >
+      <div className="flex border-b" style={{ borderColor: "var(--border-ink)" }}>
         {tabs.map((t) => (
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className="px-4 py-2.5 text-xs transition-all -mb-px border-b-2"
+            className="flex-1 py-2.5 text-xs transition-all -mb-px border-b-2"
             style={{
-              fontFamily: "Cinzel, serif",
+              fontFamily: "'Cormorant SC', serif",
               letterSpacing: "0.06em",
-              color: tab === t.id ? "var(--accent-gold)" : "var(--text-muted)",
-              borderBottomColor: tab === t.id ? "var(--accent-gold)" : "transparent",
+              background: "none", border: "none", cursor: "pointer",
+              color: tab === t.id ? "var(--antique-gold)" : "var(--ink-faint)",
+              borderBottom: `2px solid ${tab === t.id ? "var(--antique-gold)" : "transparent"}`,
+              fontWeight: tab === t.id ? 600 : 500,
+              textTransform: "uppercase",
             }}
           >
             {t.label}
@@ -121,11 +114,11 @@ export default function ProgressPage() {
 function StatTile({ value, label, accent }: { value: number | string; label: string; accent: string }) {
   return (
     <div
-      className="rounded-xl p-4"
-      style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+      className="p-4"
+      style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-ink)", borderRadius: 2 }}
     >
-      <div className="text-2xl font-bold mb-1" style={{ color: accent, fontFamily: "Cinzel, serif" }}>{value}</div>
-      <div className="text-xs" style={{ color: "var(--text-muted)" }}>{label}</div>
+      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 500, color: accent, lineHeight: 1 }}>{value}</div>
+      <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: 2, color: "var(--ink-medium)", textTransform: "uppercase", marginTop: 6 }}>{label}</div>
     </div>
   );
 }
@@ -150,56 +143,45 @@ function OverviewTab({ learned, seen, due, progress, sessions }: {
       {/* Due now */}
       {due.length > 0 && (
         <div
-          className="rounded-2xl p-5"
-          style={{ background: "rgba(196,133,122,0.06)", border: "1px solid rgba(196,133,122,0.35)" }}
+          className="p-4"
+          style={{ background: "rgba(212,136,138,0.06)", border: "1px solid var(--blush-pink)", borderRadius: 2 }}
         >
           <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
             <div>
-              <div className="font-semibold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>
-                Ready for review
+              <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 11, letterSpacing: "0.1em", color: "var(--blush-deep)", textTransform: "uppercase" }}>
+                Due Now · {due.length}
               </div>
-              <div className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>
+              <div style={{ fontFamily: "Lora, serif", fontSize: 12, color: "var(--ink-medium)", marginTop: 2 }}>
                 {due.length} cards need your attention
               </div>
             </div>
             <Link
               href="/flashcards"
-              className="px-4 py-2 rounded-xl text-sm font-semibold transition-all shrink-0"
               style={{
-                fontFamily: "Cinzel, serif",
-                background: "transparent",
-                border: "1.5px solid var(--accent-gold)",
-                color: "var(--accent-gold)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "var(--accent-gold)";
-                e.currentTarget.style.color = "var(--bg-primary)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "var(--accent-gold)";
+                fontFamily: "'Cormorant SC', serif", fontSize: 11, letterSpacing: "0.1em",
+                background: "transparent", border: "none", cursor: "pointer",
+                color: "var(--antique-gold)", textTransform: "uppercase",
+                borderBottom: "1px solid var(--antique-gold)", padding: "4px 0",
+                textDecoration: "none",
               }}
             >
               Start →
             </Link>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {due.slice(0, 12).map((w) => (
               <span
                 key={w.id}
-                className="text-sm px-2 py-1 rounded-lg"
                 style={{
-                  background: "var(--bg-secondary)",
-                  border: "1px solid var(--border-subtle)",
-                  color: "var(--text-primary)",
-                  fontFamily: "Noto Serif SC, serif",
+                  fontFamily: "'Noto Serif SC', serif", fontSize: 18, color: "var(--ink-dark)", fontWeight: 500,
+                  padding: "4px 10px", background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2,
                 }}
               >
                 {w.chinese}
               </span>
             ))}
             {due.length > 12 && (
-              <span className="text-sm px-2 py-1" style={{ color: "var(--text-muted)" }}>
+              <span style={{ fontFamily: "Lora, serif", fontSize: 12, color: "var(--ink-faint)", padding: "4px 6px" }}>
                 +{due.length - 12} more
               </span>
             )}
@@ -208,63 +190,63 @@ function OverviewTab({ learned, seen, due, progress, sessions }: {
       )}
 
       {due.length === 0 && seen.length > 0 && (
-        <div
-          className="rounded-2xl p-5 text-center"
-          style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.3)" }}
-        >
-          <div className="text-2xl mb-2" style={{ color: "var(--accent-gold)" }}>✦</div>
-          <div className="font-semibold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>
-            All caught up!
-          </div>
-          <div className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
-            No cards due right now. Check back later.
-          </div>
+        <div className="p-5 text-center" style={{ background: "rgba(212,136,138,0.05)", border: "1px solid rgba(212,136,138,0.25)", borderRadius: 2 }}>
+          <div style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 24, color: "var(--antique-gold)", marginBottom: 6 }}>✦</div>
+          <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 12, letterSpacing: "0.05em", color: "var(--ink-dark)" }}>All caught up!</div>
+          <div style={{ fontFamily: "Lora, serif", fontSize: 12, color: "var(--ink-medium)", marginTop: 4, fontStyle: "italic" }}>No cards due right now. Check back later.</div>
         </div>
       )}
 
       {/* Level progress */}
-      <div className="space-y-3">
-        <h2
-          className="text-xs tracking-widest uppercase"
-          style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
-        >
-          Level Progress
-        </h2>
-        {LEVELS.map((lvl) => {
-          const lvlLearned = learned.filter((w) => w.level === lvl).length;
-          const lvlTotal = vocabulary.filter((w) => w.level === lvl).length;
-          return (
-            <LevelBar key={lvl} label={`HSK ${lvl}`} learned={lvlLearned} total={lvlTotal} />
-          );
-        })}
+      <div>
+        <SectionTitle cn="水平" en="Level Progress" />
+        <div style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2 }}>
+          {LEVELS.map((lvl, i) => {
+            const lvlLearned = learned.filter((w) => w.level === lvl).length;
+            const lvlTotal = vocabulary.filter((w) => w.level === lvl).length;
+            return (
+              <div
+                key={lvl}
+                style={{
+                  padding: "10px 16px",
+                  borderBottom: i < 5 ? "1px solid var(--border-ink)" : "none",
+                }}
+              >
+                <div className="flex items-center justify-between mb-1.5">
+                  <span style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 13, color: "var(--ink-dark)", fontWeight: 500 }}>HSK {lvl}</span>
+                  <span style={{ fontFamily: "Lora, serif", fontSize: 11, color: "var(--ink-faint)" }}>{lvlLearned} / {lvlTotal}</span>
+                </div>
+                <div className="progress-ink">
+                  <div className="progress-ink-fill" style={{ width: `${lvlTotal > 0 ? (lvlLearned / lvlTotal) * 100 : 0}%` }} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Upcoming reviews */}
       {upcoming.length > 0 && (
-        <div className="space-y-3">
-          <h2 className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
-            Coming Up Next
-          </h2>
-          <div className="space-y-2">
-            {upcoming.map((w) => {
+        <div>
+          <SectionTitle cn="下次复习" en="Coming Up Next" />
+          <div style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2 }}>
+            {upcoming.map((w, i) => {
               const p = progress[w.id];
               const msUntil = (p?.nextReview ?? 0) - Date.now();
               return (
                 <div
                   key={w.id}
-                  className="flex items-center justify-between rounded-xl px-4 py-2.5"
-                  style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+                  className="flex items-center gap-3 px-4 py-2.5"
+                  style={{ borderBottom: i < upcoming.length - 1 ? "1px solid var(--border-ink)" : "none" }}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <span className="text-base font-bold shrink-0" style={{ color: "var(--text-primary)", fontFamily: "Noto Serif SC, serif" }}>
-                      {w.chinese}
-                    </span>
-                    <span className="text-sm font-pinyin shrink-0" style={{ color: "var(--accent-gold)", fontStyle: "italic" }}>
-                      {w.pinyin}
-                    </span>
-                    <span className="text-sm truncate" style={{ color: "var(--text-muted)" }}>{w.english}</span>
+                  <span style={{ fontFamily: "'Noto Serif SC', serif", fontSize: 22, color: "var(--ink-dark)", fontWeight: 500, minWidth: 40 }}>
+                    {w.chinese}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 11, color: "var(--blush-deep)" }}>{w.pinyin}</div>
+                    <div className="truncate" style={{ fontFamily: "Lora, serif", fontSize: 11, color: "var(--ink-faint)" }}>{w.english}</div>
                   </div>
-                  <span className="text-xs shrink-0 ml-2" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+                  <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 10, color: "var(--ink-medium)", letterSpacing: "0.08em", textTransform: "uppercase", flexShrink: 0 }}>
                     {formatDuration(msUntil)}
                   </span>
                 </div>
@@ -276,38 +258,28 @@ function OverviewTab({ learned, seen, due, progress, sessions }: {
 
       {/* Recent sessions */}
       {sessions.length > 0 && (
-        <div className="space-y-3">
-          <h2 className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
-            Recent Sessions
-          </h2>
-          <div className="space-y-2">
+        <div>
+          <SectionTitle cn="最近" en="Recent Sessions" />
+          <div style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2 }}>
             {sessions.slice(0, 5).map((s, i) => {
               const acc = s.cardsStudied > 0 ? Math.round((s.correct / s.cardsStudied) * 100) : 0;
+              const barColor = acc >= 80 ? "var(--antique-gold)" : acc >= 50 ? "#c9a960" : "var(--blush-pink)";
               return (
                 <div
                   key={i}
-                  className="flex items-center justify-between rounded-xl px-4 py-3"
-                  style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+                  className="flex items-center gap-3 px-4 py-3"
+                  style={{ borderBottom: i < 4 ? "1px solid var(--border-ink)" : "none" }}
                 >
-                  <div>
-                    <div className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{s.date}</div>
-                    <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                  <div style={{ width: 3, height: 30, background: barColor, borderRadius: 2, flexShrink: 0 }} />
+                  <div className="flex-1 min-w-0">
+                    <div style={{ fontFamily: "Lora, serif", fontSize: 12, color: "var(--ink-dark)" }}>{s.date}</div>
+                    <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.08em", color: "var(--ink-faint)", textTransform: "uppercase" }}>
                       HSK {s.level} · {s.cardsStudied} cards
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div
-                      className="text-sm font-bold"
-                      style={{
-                        color: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#E8C76A" : "var(--accent-rose)",
-                        fontFamily: "Cinzel, serif",
-                      }}
-                    >
-                      {acc}%
-                    </div>
-                    <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                      {s.correct}✓ {s.incorrect}✗
-                    </div>
+                  <div className="text-right shrink-0">
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, color: barColor, fontWeight: 500 }}>{acc}%</div>
+                    <div style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, color: "var(--ink-faint)" }}>{s.correct}✓ {s.incorrect}✗</div>
                   </div>
                 </div>
               );
@@ -326,7 +298,7 @@ function OverviewTab({ learned, seen, due, progress, sessions }: {
             href="/flashcards"
             className="inline-block px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
             style={{
-              fontFamily: "Cinzel, serif",
+              fontFamily: "'Cormorant SC', serif",
               background: "transparent",
               border: "1.5px solid var(--accent-gold)",
               color: "var(--accent-gold)",
@@ -340,23 +312,6 @@ function OverviewTab({ learned, seen, due, progress, sessions }: {
   );
 }
 
-function LevelBar({ label, learned, total }: { label: string; learned: number; total: number }) {
-  const pct = total > 0 ? (learned / total) * 100 : 0;
-  return (
-    <div
-      className="rounded-xl px-4 py-3"
-      style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
-    >
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-sm" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>{label}</span>
-        <span className="text-xs" style={{ color: "var(--text-muted)" }}>{learned} / {total}</span>
-      </div>
-      <div className="progress-ink">
-        <div className="progress-ink-fill" style={{ width: `${pct}%` }} />
-      </div>
-    </div>
-  );
-}
 
 function LearnedTab({ words, progress }: { words: Word[]; progress: Record<string, CardProgress> }) {
   const [search, setSearch] = useState("");
@@ -385,17 +340,19 @@ function LearnedTab({ words, progress }: { words: Word[]; progress: Record<strin
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Filter learned words…"
-        className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+        className="w-full px-4 py-3 text-sm outline-none transition-all"
         style={{
-          background: "var(--bg-secondary)",
-          border: "1px solid var(--border-subtle)",
-          color: "var(--text-primary)",
+          background: "transparent",
+          border: "none",
+          borderBottom: "1.5px solid var(--border-ink)",
+          color: "var(--ink-dark)",
           fontFamily: "Lora, serif",
+          borderRadius: 0,
         }}
-        onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.6)")}
-        onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
+        onFocus={(e) => (e.currentTarget.style.borderBottomColor = "var(--blush-deep)")}
+        onBlur={(e) => (e.currentTarget.style.borderBottomColor = "var(--border-ink)")}
       />
-      <p className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>{filtered.length} words</p>
+      <p className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "'Cormorant SC', serif" }}>{filtered.length} words</p>
       <div className="space-y-2">
         {filtered.map((w) => {
           const p = progress[w.id];
@@ -406,8 +363,8 @@ function LearnedTab({ words, progress }: { words: Word[]; progress: Record<strin
               key={w.id}
               className="flex items-center justify-between rounded-xl px-4 py-3 transition-all"
               style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.35)")}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(184,104,112,0.35)")}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border-ink)")}
             >
               <div className="flex items-center gap-4 min-w-0">
                 <span
@@ -424,14 +381,14 @@ function LearnedTab({ words, progress }: { words: Word[]; progress: Record<strin
                 </div>
               </div>
               <div className="text-right shrink-0 ml-2">
-                <div className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+                <div className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "'Cormorant SC', serif" }}>
                   {p?.repetitions ?? 0} reviews
                 </div>
                 <div
                   className="text-xs mt-0.5"
                   style={{
                     color: isDue ? "var(--accent-rose)" : "rgba(160,152,128,0.6)",
-                    fontFamily: "Cinzel, serif",
+                    fontFamily: "'Cormorant SC', serif",
                   }}
                 >
                   {isDue ? "due now" : nextDue ? `in ${formatDuration(nextDue.getTime() - Date.now())}` : ""}
@@ -473,7 +430,7 @@ function HistoryTab({ sessions }: { sessions: StudySession[] }) {
             className="rounded-xl p-4"
             style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
           >
-            <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{v}</div>
+            <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "'Cormorant SC', serif" }}>{v}</div>
             <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{l}</div>
           </div>
         ))}
@@ -491,7 +448,7 @@ function HistoryTab({ sessions }: { sessions: StudySession[] }) {
             <div
               key={i}
               className="rounded-xl overflow-hidden"
-              style={{ background: "var(--bg-secondary)", border: `1px solid ${isOpen ? "rgba(201,168,76,0.45)" : "var(--border-subtle)"}`, transition: "border-color 0.2s" }}
+              style={{ background: "var(--bg-secondary)", border: `1px solid ${isOpen ? "rgba(184,104,112,0.4)" : "var(--border-subtle)"}`, transition: "border-color 0.2s" }}
             >
               {/* Session row — clickable */}
               <button
@@ -502,7 +459,7 @@ function HistoryTab({ sessions }: { sessions: StudySession[] }) {
                   className="w-1.5 rounded-full shrink-0"
                   style={{
                     height: "2.5rem",
-                    background: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#E8C76A" : "var(--accent-rose)",
+                    background: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#B09050" : "var(--accent-rose)",
                   }}
                 />
                 <div className="flex-1 min-w-0">
@@ -510,7 +467,7 @@ function HistoryTab({ sessions }: { sessions: StudySession[] }) {
                   <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
                     HSK {s.level} · {s.cardsStudied} cards
                     {sessionWords.length > 0 && (
-                      <span style={{ color: "rgba(201,168,76,0.6)" }}> · tap to see vocabulary</span>
+                      <span style={{ color: "rgba(184,104,112,0.5)" }}> · tap to see vocabulary</span>
                     )}
                   </div>
                 </div>
@@ -518,8 +475,8 @@ function HistoryTab({ sessions }: { sessions: StudySession[] }) {
                   <div
                     className="text-sm font-bold"
                     style={{
-                      color: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#E8C76A" : "var(--accent-rose)",
-                      fontFamily: "Cinzel, serif",
+                      color: acc >= 80 ? "var(--accent-gold)" : acc >= 50 ? "#B09050" : "var(--accent-rose)",
+                      fontFamily: "'Cormorant SC', serif",
                     }}
                   >
                     {acc}%
@@ -551,7 +508,7 @@ function HistoryTab({ sessions }: { sessions: StudySession[] }) {
                   />
                   <p
                     className="text-xs mb-3 tracking-widest uppercase"
-                    style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+                    style={{ color: "var(--text-muted)", fontFamily: "'Cormorant SC', serif" }}
                   >
                     Session Vocabulary · {sessionWords.length} cards
                   </p>
@@ -574,7 +531,7 @@ function HistoryTab({ sessions }: { sessions: StudySession[] }) {
                           </span>
                           <span
                             className="text-xs shrink-0 mt-0.5"
-                            style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", opacity: 0.7 }}
+                            style={{ color: "var(--accent-gold)", fontFamily: "'Cormorant SC', serif", opacity: 0.7 }}
                           >
                             {word.level}
                           </span>

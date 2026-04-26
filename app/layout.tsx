@@ -23,14 +23,14 @@ export default function RootLayout({
     <html lang="zh">
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Cinzel:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet"
         />
       </head>
       <body className="min-h-screen">
         <AuthProvider>
           <Navigation />
-          <main className="max-w-5xl mx-auto px-4 py-6 sm:py-8">{children}</main>
+          <main className="max-w-5xl mx-auto px-4 py-6 sm:py-8 pb-28 sm:pb-8">{children}</main>
         </AuthProvider>
       </body>
     </html>
