@@ -162,8 +162,8 @@ export default function FlashcardsPage() {
 
           {/* Front */}
           <div
-            className="card-front absolute inset-0 flex flex-col overflow-hidden"
-            style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-ink)", borderRadius: 2, padding: 24 }}
+            className="card-front absolute inset-0 flex flex-col"
+            style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-ink)", borderRadius: 2, padding: 24, WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
           >
             {/* Header row */}
             <div className="flex items-center justify-between">
@@ -194,7 +194,7 @@ export default function FlashcardsPage() {
             </div>
 
             {/* Moon circle with blossom decor */}
-            <div className="flex-1 flex items-center justify-center relative">
+            <div className="flex-1 flex items-center justify-center relative" style={{ overflow: "hidden" }}>
               <div className="absolute top-0 right-0 opacity-40 pointer-events-none">
                 <BlossomBranch width={120} height={80} variant="tr" />
               </div>
@@ -250,8 +250,8 @@ export default function FlashcardsPage() {
 
           {/* Back */}
           <div
-            className="card-back absolute inset-0 flex flex-col overflow-hidden"
-            style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2, padding: 22, gap: 10 }}
+            className="card-back absolute inset-0 flex flex-col overflow-y-auto"
+            style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-ink)", borderRadius: 2, padding: 22, gap: 10, WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
           >
             <span style={{ fontFamily: "'Cormorant SC', serif", fontSize: 9, letterSpacing: "0.1em", color: "var(--antique-gold)", border: "1px solid rgba(176,144,80,0.5)", padding: "2px 6px", textTransform: "uppercase", alignSelf: "flex-start" }}>
               HSK {currentWord.level}
