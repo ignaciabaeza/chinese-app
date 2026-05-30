@@ -1,31 +1,35 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { vocabulary } from "@/data/vocabulary";
+import { getAllWords } from "@/lib/content";
 
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-// Build a compact vocabulary reference for the system prompt
-const vocabSummary = vocabulary
-  .map(w => `${w.chinese} (${w.pinyin}) = ${w.english} [HSK${w.level}]`)
-  .join("\n");
+// Compact vocabulary reference built from authored lessons.
+function buildVocabSummary(): string {
+  const lines: string[] = [];
+  for (const level of [1, 2, 3, 4] as const) {
+    const words = getAllWords(level);
+    for (const w of words) {
+      lines.push(`${w.hanzi} (${w.pinyin}) = ${w.english} [HSK${level} L${w.lessonNumber}]`);
+    }
+  }
+  return lines.join("\n");
+}
 
-const SYSTEM_PROMPT = `You are a helpful Mandarin Chinese language tutor for a beginner student.
-The student is studying HSK 1 and HSK 2 vocabulary. You help them understand Chinese grammar,
-pronunciation, vocabulary, and culture.
+const SYSTEM_PROMPT = `You are a helpful Mandarin Chinese language tutor following the HSK Standard Course curriculum (Beijing Language and Culture University Press). The student is studying HSK 1 through HSK 4. You help with vocabulary, grammar, pronunciation, characters, and culture.
 
-Here is the complete HSK 1 and HSK 2 vocabulary list the student is working with:
+Here are the words the student has covered so far (in lesson order):
 
-${vocabSummary}
+${buildVocabSummary()}
 
 Guidelines:
-- Always use pinyin alongside Chinese characters for new words
-- Keep explanations clear and beginner-friendly
-- When showing example sentences, break them down character by character if helpful
-- Explain tones when relevant (1st tone ¯, 2nd tone ´, 3rd tone ˇ, 4th tone \`)
-- Encourage the student and be positive
-- If asked about a word not in HSK 1-2, you can still answer but note it's beyond their current level
-- Use practical, everyday examples that relate to HSK vocabulary`;
+- Always show pinyin with tone marks alongside Chinese characters for new words.
+- Keep explanations clear and beginner-friendly.
+- When showing example sentences, break them down character by character if helpful.
+- Reference HSK lessons by number when relevant (e.g., "this is from HSK 1 Lesson 3").
+- If asked about a word beyond the student's current coverage, you can still answer but note the level.
+- Use practical, everyday examples that connect to HSK content.`;
 
 export async function POST(req: Request) {
   try {

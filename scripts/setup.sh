@@ -166,10 +166,18 @@ CREATE TABLE IF NOT EXISTS users (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
-CREATE TABLE IF NOT EXISTS card_progress (
+
+-- Phase 0 rebuild: card_progress is keyed by card_id (e.g. "word:hsk1_3_jiao")
+-- so the same SRS table tracks vocab, characters, grammar points, and sentences.
+DROP TABLE IF EXISTS card_progress CASCADE;
+DROP TABLE IF EXISTS sentences CASCADE;
+DROP TABLE IF EXISTS study_sessions CASCADE;
+
+CREATE TABLE card_progress (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  word_id TEXT NOT NULL,
+  card_id TEXT NOT NULL,
+  card_type TEXT NOT NULL,
   ease_factor DOUBLE PRECISION NOT NULL DEFAULT 2.5,
   interval INTEGER NOT NULL DEFAULT 0,
   repetitions INTEGER NOT NULL DEFAULT 0,
@@ -178,29 +186,24 @@ CREATE TABLE IF NOT EXISTS card_progress (
   correct INTEGER NOT NULL DEFAULT 0,
   incorrect INTEGER NOT NULL DEFAULT 0,
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  UNIQUE (user_id, word_id)
+  UNIQUE (user_id, card_id)
 );
-CREATE TABLE IF NOT EXISTS sentences (
-  id TEXT PRIMARY KEY,
-  level INTEGER NOT NULL,
-  chinese TEXT NOT NULL,
-  pinyin TEXT NOT NULL,
-  english TEXT NOT NULL,
-  grammar TEXT NOT NULL,
-  pattern TEXT NOT NULL,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
-CREATE TABLE IF NOT EXISTS study_sessions (
+CREATE INDEX IF NOT EXISTS idx_card_progress_user_type ON card_progress(user_id, card_type);
+CREATE INDEX IF NOT EXISTS idx_card_progress_due ON card_progress(user_id, next_review);
+
+CREATE TABLE study_sessions (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   date TEXT NOT NULL,
   cards_studied INTEGER NOT NULL,
   correct INTEGER NOT NULL,
   incorrect INTEGER NOT NULL,
-  level TEXT NOT NULL,
-  word_ids TEXT[] DEFAULT '{}',
+  scope TEXT NOT NULL,
+  card_type TEXT NOT NULL DEFAULT 'word',
+  card_ids TEXT[] NOT NULL DEFAULT '{}',
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+CREATE INDEX IF NOT EXISTS idx_study_sessions_user_date ON study_sessions(user_id, date DESC);
 SCHEMA
 success "Database schema applied"
 

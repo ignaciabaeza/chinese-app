@@ -6,24 +6,17 @@ import { useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
 
 const links = [
-  { href: "/", label: "Dashboard", icon: "⬡" },
-  { href: "/flashcards", label: "Flashcards", icon: "◈" },
-  { href: "/sentences", label: "Sentences", icon: "文" },
-  { href: "/vocabulary", label: "Vocabulary", icon: "◉" },
-  { href: "/progress", label: "Progress", icon: "◎" },
-  { href: "/chat", label: "AI Tutor", icon: "⟐" },
+  { href: "/",                       label: "Dashboard" },
+  { href: "/course",                 label: "Course" },
+  { href: "/practice/flashcards",    label: "Flashcards" },
+  { href: "/practice/exam",          label: "Mock Exam" },
+  { href: "/library/vocabulary",     label: "Vocabulary" },
+  { href: "/chat",                   label: "Tutor" },
 ];
 
 function CloudMotif({ className = "" }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      width="28"
-      height="16"
-      viewBox="0 0 28 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={className} width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M4 12 Q4 8 7 8 Q7 4 11 4 Q13 2 16 4 Q19 2 22 4 Q26 4 26 8 Q28 8 28 12 Z"
         fill="rgba(201,168,76,0.2)"
@@ -32,6 +25,11 @@ function CloudMotif({ className = "" }: { className?: string }) {
       />
     </svg>
   );
+}
+
+function isActive(pathname: string, href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
 }
 
 export default function Navigation() {
@@ -55,9 +53,8 @@ export default function Navigation() {
         borderBottom: "1px solid rgba(201,168,76,0.35)",
       }}
     >
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-14">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <CloudMotif className="animate-drift opacity-70" />
             <span
@@ -67,7 +64,7 @@ export default function Navigation() {
               汉语学习
             </span>
             <span
-              className="hidden sm:block text-xs tracking-widest"
+              className="hidden md:block text-xs tracking-widest"
               style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
             >
               HÀNYǓ XUÉXÍ
@@ -76,26 +73,22 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden sm:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5">
             {links.map((link) => {
-              const active = pathname === link.href;
+              const active = isActive(pathname, link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-sm transition-all"
+                  className="px-3 py-1.5 text-sm transition-all"
                   style={{
                     fontFamily: "Cinzel, serif",
                     letterSpacing: "0.06em",
                     color: active ? "var(--accent-gold)" : "var(--text-muted)",
                     borderBottom: active ? "1.5px solid var(--accent-gold)" : "1.5px solid transparent",
                   }}
-                  onMouseEnter={(e) =>
-                    !active && ((e.currentTarget.style.color = "var(--accent-crane-white)"))
-                  }
-                  onMouseLeave={(e) =>
-                    !active && ((e.currentTarget.style.color = "var(--text-muted)"))
-                  }
+                  onMouseEnter={(e) => !active && (e.currentTarget.style.color = "var(--accent-crane-white)")}
+                  onMouseLeave={(e) => !active && (e.currentTarget.style.color = "var(--text-muted)")}
                 >
                   {link.label}
                 </Link>
@@ -104,7 +97,7 @@ export default function Navigation() {
           </div>
 
           {/* Desktop auth */}
-          <div className="hidden sm:flex items-center gap-2 ml-2 pl-2" style={{ borderLeft: "1px solid var(--border-subtle)" }}>
+          <div className="hidden md:flex items-center gap-2 ml-2 pl-3" style={{ borderLeft: "1px solid var(--border-subtle)" }}>
             {user ? (
               <>
                 <span
@@ -122,6 +115,7 @@ export default function Navigation() {
                     letterSpacing: "0.05em",
                     color: "var(--text-muted)",
                     border: "1px solid var(--border-subtle)",
+                    background: "transparent",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = "var(--accent-rose)";
@@ -153,28 +147,23 @@ export default function Navigation() {
 
           {/* Mobile hamburger */}
           <button
-            className="sm:hidden flex flex-col gap-1 p-2"
+            className="md:hidden flex flex-col gap-1 p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
             {[0, 1, 2].map((i) => (
-              <span
-                key={i}
-                className="block w-5 h-0.5 transition-all"
-                style={{ background: "var(--accent-gold)" }}
-              />
+              <span key={i} className="block w-5 h-0.5" style={{ background: "var(--accent-gold)" }} />
             ))}
           </button>
         </div>
 
-        {/* Mobile dropdown */}
         {mobileOpen && (
           <div
-            className="sm:hidden py-3 border-t flex flex-col gap-1"
+            className="md:hidden py-3 border-t flex flex-col gap-1"
             style={{ borderColor: "var(--border-subtle)" }}
           >
             {links.map((link) => {
-              const active = pathname === link.href;
+              const active = isActive(pathname, link.href);
               return (
                 <Link
                   key={link.href}
@@ -193,7 +182,6 @@ export default function Navigation() {
               );
             })}
 
-            {/* Mobile auth row */}
             <div className="pt-2 mt-1 border-t" style={{ borderColor: "var(--border-subtle)" }}>
               {user ? (
                 <div className="px-3 flex items-center justify-between">
@@ -210,6 +198,7 @@ export default function Navigation() {
                       fontFamily: "Cinzel, serif",
                       color: "var(--accent-rose)",
                       border: "1px solid rgba(196,133,122,0.4)",
+                      background: "transparent",
                     }}
                   >
                     Sign Out
@@ -219,14 +208,13 @@ export default function Navigation() {
                 <Link
                   href="/auth"
                   onClick={() => setMobileOpen(false)}
-                  className="px-3 py-2.5 text-sm rounded flex items-center justify-center"
+                  className="mx-2 px-3 py-2.5 text-sm rounded flex items-center justify-center"
                   style={{
                     fontFamily: "Cinzel, serif",
                     letterSpacing: "0.06em",
                     color: "var(--accent-gold)",
                     background: "rgba(201,168,76,0.08)",
                     border: "1px solid rgba(201,168,76,0.3)",
-                    margin: "0 8px",
                   }}
                 >
                   Sign In / Register

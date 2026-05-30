@@ -1,27 +1,11 @@
 "use client";
 
-export interface CardProgress {
-  wordId: string;
-  easeFactor: number;  // SRS ease factor (default 2.5)
-  interval: number;    // days until next review
-  repetitions: number; // number of successful reviews
-  nextReview: number;  // timestamp
-  lastReview: number;  // timestamp
-  correct: number;     // total correct
-  incorrect: number;   // total incorrect
-}
+import type { CardProgress, CardType, StudySession } from "@/lib/types";
 
-export interface StudySession {
-  date: string;
-  cardsStudied: number;
-  correct: number;
-  incorrect: number;
-  level: 1 | 2 | 3 | 4 | 5 | 6 | "all";
-  wordIds?: string[];
-}
+const PROGRESS_KEY = "hanyu_progress_v2";
+const SESSIONS_KEY = "hanyu_sessions_v2";
 
-const PROGRESS_KEY = "chinese_app_progress";
-const SESSIONS_KEY = "chinese_app_sessions";
+// ─── localStorage ────────────────────────────────────────────────────────────
 
 export function loadProgress(): Record<string, CardProgress> {
   if (typeof window === "undefined") return {};
@@ -51,20 +35,22 @@ export function loadSessions(): StudySession[] {
 export function saveSession(session: StudySession) {
   const sessions = loadSessions();
   sessions.push(session);
-  // Keep last 30 sessions
-  const trimmed = sessions.slice(-30);
+  const trimmed = sessions.slice(-60);
   localStorage.setItem(SESSIONS_KEY, JSON.stringify(trimmed));
 }
 
-// SM-2 spaced repetition algorithm
+// ─── SM-2 spaced repetition ──────────────────────────────────────────────────
+
 export function updateCardProgress(
-  progress: CardProgress | undefined,
-  wordId: string,
-  quality: 0 | 1 | 2 | 3  // 0=blackout, 1=wrong, 2=hard, 3=easy
+  prior: CardProgress | undefined,
+  cardId: string,
+  cardType: CardType,
+  quality: 0 | 1 | 2 | 3 // 0 blackout, 1 wrong, 2 hard, 3 easy
 ): CardProgress {
   const now = Date.now();
-  const card: CardProgress = progress ?? {
-    wordId,
+  const card: CardProgress = prior ?? {
+    cardId,
+    cardType,
     easeFactor: 2.5,
     interval: 0,
     repetitions: 0,
@@ -78,50 +64,44 @@ export function updateCardProgress(
 
   if (isCorrect) {
     let newInterval: number;
-    if (card.repetitions === 0) {
-      newInterval = 1;
-    } else if (card.repetitions === 1) {
-      newInterval = 6;
-    } else {
-      newInterval = Math.round(card.interval * card.easeFactor);
-    }
-
-    // Clamp interval to max 30 days
+    if (card.repetitions === 0) newInterval = 1;
+    else if (card.repetitions === 1) newInterval = 6;
+    else newInterval = Math.round(card.interval * card.easeFactor);
     newInterval = Math.min(newInterval, 30);
 
-    const newEaseFactor = Math.max(
+    const newEase = Math.max(
       1.3,
       card.easeFactor + 0.1 - (3 - quality) * (0.08 + (3 - quality) * 0.02)
     );
 
     return {
       ...card,
-      easeFactor: newEaseFactor,
+      cardId,
+      cardType,
+      easeFactor: newEase,
       interval: newInterval,
       repetitions: card.repetitions + 1,
       nextReview: now + newInterval * 24 * 60 * 60 * 1000,
       lastReview: now,
       correct: card.correct + 1,
     };
-  } else {
-    // Failed: reset repetitions, short interval
-    return {
-      ...card,
-      repetitions: 0,
-      interval: 1,
-      nextReview: now + 10 * 60 * 1000, // 10 minutes
-      lastReview: now,
-      incorrect: card.incorrect + 1,
-    };
   }
+
+  return {
+    ...card,
+    cardId,
+    cardType,
+    repetitions: 0,
+    interval: 1,
+    nextReview: now + 10 * 60 * 1000,
+    lastReview: now,
+    incorrect: card.incorrect + 1,
+  };
 }
 
-// ── Server sync ──────────────────────────────────────────────────────────────
+// ─── Server sync ─────────────────────────────────────────────────────────────
 
-/** Push all local progress to the server (fire-and-forget is fine). */
-export async function syncProgressToServer(
-  progress: Record<string, CardProgress>
-): Promise<void> {
+export async function syncProgressToServer(progress: Record<string, CardProgress>): Promise<void> {
   if (typeof window === "undefined") return;
   try {
     await fetch("/api/progress", {
@@ -130,17 +110,16 @@ export async function syncProgressToServer(
       body: JSON.stringify({ progress }),
     });
   } catch {
-    // offline — ignore silently
+    // offline — local save already happened
   }
 }
 
-/** Load progress from the server and merge into localStorage (server wins). */
 export async function loadProgressFromServer(): Promise<Record<string, CardProgress>> {
   if (typeof window === "undefined") return {};
   try {
     const res = await fetch("/api/progress");
     if (!res.ok) return loadProgress();
-    const { progress } = await res.json() as { progress: Record<string, CardProgress> };
+    const { progress } = (await res.json()) as { progress: Record<string, CardProgress> };
     saveProgress(progress);
     return progress;
   } catch {
@@ -148,7 +127,6 @@ export async function loadProgressFromServer(): Promise<Record<string, CardProgr
   }
 }
 
-/** Save a session locally and push it to the server. */
 export async function saveSessionWithSync(session: StudySession): Promise<void> {
   saveSession(session);
   if (typeof window === "undefined") return;
@@ -163,13 +141,12 @@ export async function saveSessionWithSync(session: StudySession): Promise<void> 
   }
 }
 
-/** Load sessions from the server and overwrite localStorage. Returns the sessions. */
 export async function loadSessionsFromServer(): Promise<StudySession[]> {
   if (typeof window === "undefined") return [];
   try {
     const res = await fetch("/api/progress/sessions");
     if (!res.ok) return loadSessions();
-    const { sessions } = await res.json() as { sessions: StudySession[] };
+    const { sessions } = (await res.json()) as { sessions: StudySession[] };
     localStorage.setItem(SESSIONS_KEY, JSON.stringify(sessions));
     return sessions;
   } catch {
@@ -177,37 +154,51 @@ export async function loadSessionsFromServer(): Promise<StudySession[]> {
   }
 }
 
-// ── Stats ─────────────────────────────────────────────────────────────────────
+// ─── Selection / stats ───────────────────────────────────────────────────────
 
-export function getDueCards(
-  wordIds: string[],
-  progress: Record<string, CardProgress>
-): string[] {
+export function getDueCards(cardIds: string[], progress: Record<string, CardProgress>): string[] {
   const now = Date.now();
-  return wordIds.filter(id => {
+  return cardIds.filter((id) => {
     const p = progress[id];
-    if (!p) return true; // Never seen = due
+    if (!p) return true;
     return p.nextReview <= now;
   });
 }
 
-export function getStats(
-  wordIds: string[],
-  progress: Record<string, CardProgress>
-) {
-  const total = wordIds.length;
-  const seen = wordIds.filter(id => progress[id]);
-  const learned = wordIds.filter(id => {
+export function getStats(cardIds: string[], progress: Record<string, CardProgress>) {
+  const total = cardIds.length;
+  const seen = cardIds.filter((id) => progress[id]).length;
+  const learned = cardIds.filter((id) => {
     const p = progress[id];
     return p && p.repetitions >= 3;
-  });
-  const due = getDueCards(wordIds, progress);
+  }).length;
+  const due = getDueCards(cardIds, progress).length;
+  return { total, seen, learned, due, unseen: total - seen };
+}
 
-  return {
-    total,
-    seen: seen.length,
-    learned: learned.length,
-    due: due.length,
-    unseen: total - seen.length,
-  };
+/** Today's date as ISO YYYY-MM-DD in the user's local time. */
+export function todayISO(): string {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+/** Day streak — consecutive days ending today with at least one session. */
+export function computeStreak(sessions: StudySession[]): number {
+  if (sessions.length === 0) return 0;
+  const dates = new Set(sessions.map((s) => s.date));
+  let streak = 0;
+  const cur = new Date();
+  for (let i = 0; i < 365; i++) {
+    const iso = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(2, "0")}-${String(cur.getDate()).padStart(2, "0")}`;
+    if (dates.has(iso)) {
+      streak++;
+      cur.setDate(cur.getDate() - 1);
+    } else {
+      break;
+    }
+  }
+  return streak;
 }
