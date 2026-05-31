@@ -31,9 +31,13 @@ PM2_BIN="/usr/bin/pm2"
 
 [[ ! -d "$APP_DIR" ]] && error "$APP_DIR not found — run setup.sh first"
 
-# ── 1. Pull latest code ──────────────────────────────────────────────────────
-info "Pulling latest code…"
-sudo -u $APP_USER git -C "$APP_DIR" pull
+# ── 1. Sync to origin/main exactly ───────────────────────────────────────────
+# `fetch + reset --hard` instead of `pull` so the box always mirrors origin —
+# immune to force-pushes, divergent local commits, or stray edits on the
+# server. The deploy box should never hold uncommitted work.
+info "Fetching latest code…"
+sudo -u $APP_USER git -C "$APP_DIR" fetch origin
+sudo -u $APP_USER git -C "$APP_DIR" reset --hard origin/main
 
 # ── 2. Install deps + build (old app keeps serving during this) ──────────────
 info "Installing dependencies…"
