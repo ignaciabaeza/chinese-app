@@ -1,0 +1,237 @@
+{
+  "id": "hsk1-4",
+  "level": 1,
+  "number": 4,
+  "title": { "hanzi": "她是我的汉语老师", "pinyin": "Tā shì wǒ de Hànyǔ lǎoshī", "english": "She is my Chinese teacher" },
+  "theme": "Introductions",
+  "warmUp": {
+    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "items": [
+      { "hanzi": "他",          "pinyin": "tā",              "english": "he, him" },
+      { "hanzi": "她",          "pinyin": "tā",              "english": "she, her" },
+      { "hanzi": "同学",        "pinyin": "tóngxué",         "english": "classmate" },
+      { "hanzi": "朋友",        "pinyin": "péngyou",         "english": "friend" },
+      { "hanzi": "汉语老师",    "pinyin": "Hànyǔ lǎoshī",    "english": "Chinese teacher" },
+      { "hanzi": "中国朋友",    "pinyin": "Zhōngguó péngyou","english": "Chinese friend" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "在教室", "english": "In the classroom" },
+      "audioRef": "04-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "她是谁?",                   "pinyin": "Tā shì shéi?",                              "english": "Who is she?" },
+        { "speaker": "B", "hanzi": "她是我的汉语老师,她叫李月。", "pinyin": "Tā shì wǒ de Hànyǔ lǎoshī, tā jiào Lǐ Yuè.","english": "She is my Chinese teacher. Her name is Li Yue." }
+      ],
+      "newWords": [
+        { "id": "hsk1_4_ta",    "hanzi": "她",   "pinyin": "tā",    "pos": "pron.", "english": "she, her" },
+        { "id": "hsk1_4_shei",  "hanzi": "谁",   "pinyin": "shéi",  "pos": "pron.", "english": "who, whom" },
+        { "id": "hsk1_4_de",    "hanzi": "的",   "pinyin": "de",    "pos": "part.", "english": "used after an attribute" },
+        { "id": "hsk1_4_hanyu", "hanzi": "汉语", "pinyin": "Hànyǔ", "pos": "n.",    "english": "Chinese (language)" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在图书馆", "english": "In the library" },
+      "audioRef": "04-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你是哪国人?",         "pinyin": "Nǐ shì nǎ guó rén?",       "english": "Which country are you from?" },
+        { "speaker": "B", "hanzi": "我是美国人。你呢?",   "pinyin": "Wǒ shì Měiguó rén. Nǐ ne?","english": "The United States. What about you?" },
+        { "speaker": "A", "hanzi": "我是中国人。",         "pinyin": "Wǒ shì Zhōngguó rén.",     "english": "I'm Chinese." }
+      ],
+      "newWords": [
+        { "id": "hsk1_4_na",  "hanzi": "哪", "pinyin": "nǎ",  "pos": "pron.", "english": "which" },
+        { "id": "hsk1_4_guo", "hanzi": "国", "pinyin": "guó", "pos": "n.",    "english": "country, nation" },
+        { "id": "hsk1_4_ne",  "hanzi": "呢", "pinyin": "ne",  "pos": "part.", "english": "used at the end of a question" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "看照片", "english": "Looking at the photo" },
+      "audioRef": "04-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "他是谁?",                   "pinyin": "Tā shì shéi?",                                  "english": "Who is he?" },
+        { "speaker": "B", "hanzi": "他是我同学。",               "pinyin": "Tā shì wǒ tóngxué.",                             "english": "He is my classmate." },
+        { "speaker": "A", "hanzi": "她呢?她是你同学吗?",         "pinyin": "Tā ne? Tā shì nǐ tóngxué ma?",                  "english": "What about her? Is she your classmate?" },
+        { "speaker": "B", "hanzi": "她不是我同学,她是我朋友。",  "pinyin": "Tā bú shì wǒ tóngxué, tā shì wǒ péngyou.",      "english": "No, she isn't. She is my friend." }
+      ],
+      "newWords": [
+        { "id": "hsk1_4_taM",     "hanzi": "他",   "pinyin": "tā",      "pos": "pron.", "english": "he, him" },
+        { "id": "hsk1_4_tongxue", "hanzi": "同学", "pinyin": "tóngxué", "pos": "n.",    "english": "classmate" },
+        { "id": "hsk1_4_pengyou", "hanzi": "朋友", "pinyin": "péngyou", "pos": "n.",    "english": "friend" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_4_g_shei_na",
+      "number": 1,
+      "title": { "hanzi": "疑问代词\"谁\"、\"哪\"", "english": "The Interrogative Pronouns \"谁\" and \"哪\"" },
+      "explanation": {
+        "hanzi": "疑问代词\"谁\"在疑问句中用来询问人。疑问代词\"哪\"用在疑问句中的结构形式为:哪+量词/名词+名词。",
+        "english": "The interrogative pronoun \"谁\" asks about the name or identity of a person. \"哪\" appears in the pattern \"哪 + measure word/noun + noun\"."
+      },
+      "patternTable": {
+        "columns": ["Subject", "Verb", "Object"],
+        "rows": [
+          ["谁", "是", "李月?"],
+          ["她", "是", "谁?"],
+          ["他", "是", "谁?"]
+        ]
+      },
+      "examples": [
+        { "hanzi": "哪本书?",   "pinyin": "Nǎ běn shū?",      "english": "Which book? (本 = measure word for books)" },
+        { "hanzi": "哪个人?",   "pinyin": "Nǎ ge rén?",       "english": "Which person? (个 = general measure word)" },
+        { "hanzi": "你是哪国人?","pinyin": "Nǐ shì nǎ guó rén?","english": "Which country are you from?" }
+      ]
+    },
+    {
+      "id": "hsk1_4_g_de",
+      "number": 2,
+      "title": { "hanzi": "结构助词\"的\"", "english": "The Structural Particle \"的\"" },
+      "explanation": {
+        "hanzi": "结构\"名词/代词+的+名词\"表达一种所属关系。当\"的\"后的名词是亲属称谓或者指人的名词时,\"的\"可以省略。",
+        "english": "The structure \"noun/pronoun + 的 + noun\" indicates possession. When the noun following 的 is a term of kinship or refers to a person, 的 can be omitted."
+      },
+      "examples": [
+        { "hanzi": "李月是我的老师。",          "pinyin": "Lǐ Yuè shì wǒ de lǎoshī.",            "english": "Li Yue is my teacher." },
+        { "hanzi": "这是我的书。",              "pinyin": "Zhè shì wǒ de shū.",                  "english": "This is my book." },
+        { "hanzi": "她不是我同学,她是我朋友。", "pinyin": "Tā bú shì wǒ tóngxué, tā shì wǒ péngyou.","english": "She isn't my classmate; she is my friend." }
+      ]
+    },
+    {
+      "id": "hsk1_4_g_ne",
+      "number": 3,
+      "title": { "hanzi": "疑问助词\"呢\" (1)", "english": "The Interrogative Particle \"呢\" (1)" },
+      "explanation": {
+        "hanzi": "疑问助词\"呢\"用在名词或代词后构成疑问句,用于询问上文提到的情况。常用句式:A……。B呢?",
+        "english": "The particle \"呢\" follows a noun or pronoun to ask about the situation previously mentioned. Common pattern: A…. B呢? (A…. What about B?)."
+      },
+      "examples": [
+        { "hanzi": "我不是老师,我是学生。你呢?", "pinyin": "Wǒ bú shì lǎoshī, wǒ shì xuésheng. Nǐ ne?", "english": "I'm not a teacher; I'm a student. What about you?" },
+        { "hanzi": "她叫李月。他呢?",            "pinyin": "Tā jiào Lǐ Yuè. Tā ne?",                      "english": "Her name is Li Yue. What about him?" },
+        { "hanzi": "我是美国人。你呢?",           "pinyin": "Wǒ shì Měiguó rén. Nǐ ne?",                  "english": "I'm American. What about you?" }
+      ]
+    }
+  ],
+  "exercises": [
+    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
+    {
+      "number": 2, "type": "answer_questions",
+      "prompt": { "hanzi": "根据实际情况回答问题", "english": "Answer the questions according to the actual situations." },
+      "items": [
+        { "hanzi": "你是哪国人?",              "pinyin": "Nǐ shì nǎ guó rén?" },
+        { "hanzi": "你叫什么名字?",            "pinyin": "Nǐ jiào shénme míngzi?" },
+        { "hanzi": "你的汉语老师是哪国人?",    "pinyin": "Nǐ de Hànyǔ lǎoshī shì nǎ guó rén?" },
+        { "hanzi": "你的汉语老师叫什么名字?",  "pinyin": "Nǐ de Hànyǔ lǎoshī jiào shénme míngzi?" },
+        { "hanzi": "你的中国朋友是谁?",        "pinyin": "Nǐ de Zhōngguó péngyou shì shéi?" }
+      ]
+    },
+    {
+      "number": 3, "type": "describe_pictures",
+      "prompt": { "hanzi": "用本课新学的语言点和词语描述图片", "english": "Describe the pictures using the newly-learned language points and words." },
+      "items": [
+        { "hanzi": "他是乔布斯(Steve Jobs),他是____人。", "english": "He is Steve Jobs, he is ____." },
+        { "hanzi": "她是李娜(Li Na),她是____人。",        "english": "She is Li Na, she is ____." },
+        { "hanzi": "她叫玛丽(Mary),她不是我____,她是我____。","english": "Her name is Mary. She isn't my ____, she is my ____." },
+        { "hanzi": "他叫大卫(David),他是我们的____。",   "english": "His name is David, he is our ____." }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": { "hanzi": "发音辨析:声母 zh、ch、sh、r", "english": "Differentiation: pronunciation of the initials zh, ch, sh, r" },
+        "explanation": {
+          "hanzi": "zh、ch、sh、r 是一组翘舌音,由翘起的舌尖和硬腭前部配合发音。",
+          "english": "zh, ch, sh, r are cacuminals — the tongue tip turns up and meets the front of the hard palate. ch is strongly aspirated; zh is not. sh keeps a slight gap; r adds vocal-cord vibration."
+        },
+        "syllables": [
+          "zhīshi", "chúshī", "shēngrì", "shàng chē",
+          "rènshi", "chángshí", "shìshí", "chāorén",
+          "ránshāo", "rènao", "chū chāi", "Chángchéng",
+          "shǒushù", "shāngchǎng", "chāoshì", "chōng zhí"
+        ]
+      },
+      {
+        "number": 2,
+        "title": { "hanzi": "发音辨析:前鼻音韵母 n 和后鼻音韵母 ng", "english": "Differentiation: pronunciation of the alveolar nasal n and the velar nasal ng" },
+        "explanation": {
+          "hanzi": "发前鼻音 n 时舌尖抵住上齿龈;发后鼻音 ng 时,舌头后部要拱起,舌根向后收缩抵住软腭。",
+          "english": "For the alveolar nasal n the tongue tip presses the upper alveolar ridge; for the velar nasal ng the back of the tongue arches and the root presses the soft palate (mouth more open)."
+        },
+        "syllables": [
+          "an — ang", "ian — iang", "uan — uang",
+          "en — eng", "in — ing", "uen — ueng"
+        ]
+      },
+      {
+        "number": 3,
+        "title": { "hanzi": "\"一\"的变调", "english": "Tone Sandhi of \"一\" (yī)" },
+        "subRules": [
+          {
+            "rule": { "hanzi": "\"一\"在第一、二、三声音节前变成第四声", "english": "Before a 1st, 2nd, or 3rd tone, \"一\" becomes 4th tone." },
+            "examples": [
+              { "pinyin": "yì zhāng", "english": "one sheet/piece" },
+              { "pinyin": "yì tiáo",  "english": "one (long) piece" },
+              { "pinyin": "yì zhǒng", "english": "one type" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "\"一\"在第四声音节前变成第二声", "english": "Before a 4th tone, \"一\" becomes 2nd tone." },
+            "examples": [
+              { "pinyin": "yídìng", "english": "sure, certainly" },
+              { "pinyin": "yí kuài","english": "one piece" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "\"一\"单用或表示数字时不变调", "english": "When \"一\" is used alone or in a number, its tone doesn't change." },
+            "examples": [
+              { "pinyin": "dì yī",        "english": "first" },
+              { "pinyin": "yī èr sān",    "english": "one, two, three" },
+              { "pinyin": "xīngqī yī",    "english": "Monday" },
+              { "pinyin": "shíyī",        "english": "eleven" },
+              { "pinyin": "bǎifēnzhī yī", "english": "one percent" }
+            ]
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "title": { "hanzi": "拼音规则(3):y、w 的用法", "english": "Rules of Pinyin (3): use of y and w" },
+        "explanation": {
+          "hanzi": "以 i、u、ü 开头的韵母如果前面没有声母,在拼写时需要使用 y 或 w。例如:i→yi, in→yin, ing→ying;ia→ya, ie→ye, iao→yao, ian→yan, iang→yang, iong→yong;iu→you;u→wu, ua→wa, uo→wo…;ui→wei, un→wen;ü→yu, üe→yue, üan→yuan, ün→yun。",
+          "english": "When a final beginning with i, u, or ü has no initial, y or w is added in spelling. e.g. i→yi, in→yin, ing→ying; ia→ya, ie→ye, iao→yao, ian→yan, iang→yang, iong→yong; iu→you; u→wu, ua→wa, uo→wo…; ui→wei, un→wen; ü→yu, üe→yue, üan→yuan, ün→yun."
+        },
+        "syllables": [
+          "yóu yǒng", "yǒuyì", "yīnyuè", "yuányīn",
+          "qīngwā", "yǐngxīng", "yīngxióng", "wēixiǎn",
+          "guó wài", "yīntiān", "yǔyán", "wǎngwǎng",
+          "wǎnyàn", "yéye", "yíngyǎng", "wǒmen"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      { "name": { "hanzi": "竖弯钩", "pinyin": "shùwāngōu",   "english": "vertical curved hook" },         "shape": "乚", "examples": [{ "hanzi": "七", "pinyin": "qī", "english": "seven" }, { "hanzi": "儿", "pinyin": "ér", "english": "son" }] },
+      { "name": { "hanzi": "横折弯钩","pinyin": "héngzhéwāngōu","english": "horizontal-turning curved hook" },"shape": "乙", "examples": [{ "hanzi": "九", "pinyin": "jiǔ", "english": "nine" }, { "hanzi": "几", "pinyin": "jǐ", "english": "how many" }] }
+    ],
+    "singleComponentChars": [
+      { "id": "hsk1_4_c_qi",  "hanzi": "七", "pinyin": "qī",  "meaning": "seven",      "etymology": "\"七\" means \"seven\".",                                                                "strokeCount": 2 },
+      { "id": "hsk1_4_c_er",  "hanzi": "儿", "pinyin": "ér",  "meaning": "son, child", "etymology": "\"儿\" originally meant \"kid\", but now it usually means \"son\".",                       "strokeCount": 2 },
+      { "id": "hsk1_4_c_ji",  "hanzi": "几", "pinyin": "jǐ",  "meaning": "how many",   "etymology": "\"几\" originally referred to a small low table.",                                         "strokeCount": 2 },
+      { "id": "hsk1_4_c_jiu", "hanzi": "九", "pinyin": "jiǔ", "meaning": "nine",       "etymology": "\"九\" means \"nine\".",                                                                  "strokeCount": 2 }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组,根据图片内容进行问答练习。", "english": "Work in pairs and ask and answer questions based on the pictures." },
+    "activities": [
+      "A: 他/她是谁? B: 他/她是……",
+      "A: 他/她是哪国人? B: 他/她是……",
+      "Group work: prepare a photo with classmates/friends and introduce them."
+    ]
+  }
+}

@@ -18,10 +18,10 @@ function ExamPicker({ exams, onPick }: { exams: MockExam[]; onPick: (id: string)
   return (
     <div className="space-y-6 animate-fade-up">
       <div>
-        <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontFamily: "Cinzel, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
+        <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
           Mock Exam
         </h1>
-        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           Practice with sample HSK-format papers.
         </p>
       </div>
@@ -30,10 +30,10 @@ function ExamPicker({ exams, onPick }: { exams: MockExam[]; onPick: (id: string)
         className="rounded-2xl p-5"
         style={{ background: "rgba(196,133,122,0.06)", border: "1px solid rgba(196,133,122,0.4)" }}
       >
-        <div className="text-xs tracking-widest uppercase mb-2" style={{ color: "var(--accent-rose)", fontFamily: "Cinzel, serif" }}>
+        <div className="text-xs tracking-widest uppercase mb-2" style={{ color: "var(--accent-rose)", fontFamily: "Cormorant Garamond, serif" }}>
           v1 limitations
         </div>
-        <ul className="text-xs space-y-1 list-disc list-inside" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <ul className="text-xs space-y-1 list-disc list-inside" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           <li>Listening section requires audio — deferred until lesson audio is wired up.</li>
           <li>Sample paper currently uses HSK 1 Lesson 3 vocabulary. More questions arrive as lessons are authored.</li>
         </ul>
@@ -49,7 +49,7 @@ function ExamPicker({ exams, onPick }: { exams: MockExam[]; onPick: (id: string)
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="font-bold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>
+                <div className="font-bold" style={{ color: "var(--text-primary)", fontFamily: "Cormorant Garamond, serif" }}>
                   {e.title}
                 </div>
                 <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
@@ -94,10 +94,10 @@ function ExamRunner({ exam, onExit }: { exam: MockExam; onExit: () => void }) {
   return (
     <div className="max-w-2xl mx-auto space-y-5 animate-fade-up">
       <div className="flex items-center justify-between">
-        <button onClick={onExit} className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+        <button onClick={onExit} className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
           ← Exit
         </button>
-        <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+        <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
           {answered} / {exam.questions.length} answered
         </span>
       </div>
@@ -106,7 +106,7 @@ function ExamRunner({ exam, onExit }: { exam: MockExam; onExit: () => void }) {
         <div className="flex-1 progress-ink">
           <div className="progress-ink-fill" style={{ width: `${((index + 1) / exam.questions.length) * 100}%` }} />
         </div>
-        <span className="text-xs shrink-0" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+        <span className="text-xs shrink-0" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
           Q{index + 1} / {exam.questions.length}
         </span>
       </div>
@@ -119,7 +119,7 @@ function ExamRunner({ exam, onExit }: { exam: MockExam; onExit: () => void }) {
           disabled={index === 0}
           className="py-3 rounded-xl text-sm"
           style={{
-            fontFamily: "Cinzel, serif",
+            fontFamily: "Cormorant Garamond, serif",
             letterSpacing: "0.05em",
             background: "rgba(201,168,76,0.06)",
             border: "1px solid var(--border-subtle)",
@@ -134,7 +134,7 @@ function ExamRunner({ exam, onExit }: { exam: MockExam; onExit: () => void }) {
             onClick={() => setIndex((i) => Math.min(exam.questions.length - 1, i + 1))}
             className="py-3 rounded-xl text-sm font-semibold"
             style={{
-              fontFamily: "Cinzel, serif",
+              fontFamily: "Cormorant Garamond, serif",
               letterSpacing: "0.05em",
               background: "transparent",
               border: "1.5px solid var(--accent-gold)",
@@ -149,7 +149,7 @@ function ExamRunner({ exam, onExit }: { exam: MockExam; onExit: () => void }) {
             disabled={answered === 0}
             className="py-3 rounded-xl text-sm font-semibold"
             style={{
-              fontFamily: "Cinzel, serif",
+              fontFamily: "Cormorant Garamond, serif",
               letterSpacing: "0.05em",
               background: answered === 0 ? "transparent" : "var(--accent-gold)",
               border: "1.5px solid var(--accent-gold)",
@@ -172,7 +172,7 @@ function ExamRunner({ exam, onExit }: { exam: MockExam; onExit: () => void }) {
               onClick={() => setIndex(i)}
               className="w-7 h-7 rounded-md text-xs font-bold"
               style={{
-                fontFamily: "Cinzel, serif",
+                fontFamily: "Cormorant Garamond, serif",
                 background: isCurrent ? "var(--accent-gold)" : isAnswered ? "rgba(201,168,76,0.18)" : "transparent",
                 color: isCurrent ? "var(--bg-primary)" : isAnswered ? "var(--accent-gold)" : "var(--text-muted)",
                 border: "1px solid var(--border-subtle)",
@@ -206,7 +206,7 @@ function QuestionCard({
           <div className="text-center">
             <div className="font-display text-5xl mb-2" style={{ color: "var(--text-primary)" }}>{q.prompt.hanzi}</div>
             <div className="font-pinyin text-base" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>{q.prompt.pinyin}</div>
-            <div className="text-xs mt-3" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>What does this mean?</div>
+            <div className="text-xs mt-3" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>What does this mean?</div>
           </div>
           <ChoiceList choices={q.choices.map((c) => ({ label: c }))} answer={answer} onAnswer={onAnswer} />
         </>
@@ -215,10 +215,10 @@ function QuestionCard({
       {q.type === "translate_to_chinese" && (
         <>
           <div className="text-center">
-            <div className="text-2xl mb-2" style={{ color: "var(--text-primary)", fontFamily: "Lora, serif" }}>
+            <div className="text-2xl mb-2" style={{ color: "var(--text-primary)", fontFamily: "Spectral, serif" }}>
               &ldquo;{q.prompt}&rdquo;
             </div>
-            <div className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>How do you say this in Chinese?</div>
+            <div className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>How do you say this in Chinese?</div>
           </div>
           <ChoiceList
             choices={q.choices.map((c) => ({ label: c.hanzi, sub: c.pinyin }))}
@@ -238,7 +238,7 @@ function QuestionCard({
               {q.sentence.after}
             </div>
             <div className="font-pinyin text-sm" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>{q.sentence.pinyin}</div>
-            <div className="text-xs mt-2" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>{q.translation}</div>
+            <div className="text-xs mt-2" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>{q.translation}</div>
           </div>
           <ChoiceList choices={q.choices.map((c) => ({ label: c }))} answer={answer} onAnswer={onAnswer} chineseChoices />
         </>
@@ -249,7 +249,7 @@ function QuestionCard({
           <div className="text-center">
             <div className="font-display text-3xl mb-2" style={{ color: "var(--text-primary)" }}>{q.prompt.hanzi}</div>
             <div className="font-pinyin text-base" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>{q.prompt.pinyin}</div>
-            <div className="text-sm mt-3" style={{ color: "var(--text-primary)", fontFamily: "Lora, serif" }}>
+            <div className="text-sm mt-3" style={{ color: "var(--text-primary)", fontFamily: "Spectral, serif" }}>
               Does this mean: <em>&ldquo;{q.claim}&rdquo;</em>?
             </div>
           </div>
@@ -258,7 +258,7 @@ function QuestionCard({
               onClick={() => onAnswer(true)}
               className="py-4 rounded-xl text-sm font-semibold"
               style={{
-                fontFamily: "Cinzel, serif",
+                fontFamily: "Cormorant Garamond, serif",
                 letterSpacing: "0.05em",
                 background: answer === true ? "var(--accent-gold)" : "transparent",
                 color: answer === true ? "var(--bg-primary)" : "var(--accent-gold)",
@@ -271,7 +271,7 @@ function QuestionCard({
               onClick={() => onAnswer(false)}
               className="py-4 rounded-xl text-sm font-semibold"
               style={{
-                fontFamily: "Cinzel, serif",
+                fontFamily: "Cormorant Garamond, serif",
                 letterSpacing: "0.05em",
                 background: answer === false ? "var(--accent-rose)" : "transparent",
                 color: answer === false ? "var(--bg-primary)" : "var(--accent-rose)",
@@ -314,7 +314,7 @@ function ChoiceList({
               style={{
                 background: selected ? "var(--accent-gold)" : "rgba(201,168,76,0.12)",
                 color: selected ? "var(--bg-primary)" : "var(--accent-gold)",
-                fontFamily: "Cinzel, serif",
+                fontFamily: "Cormorant Garamond, serif",
               }}
             >
               {String.fromCharCode(65 + i)}
@@ -322,7 +322,7 @@ function ChoiceList({
             <div className="flex-1">
               <div
                 className={chineseChoices ? "font-display text-lg" : "text-sm"}
-                style={{ color: "var(--text-primary)", fontFamily: chineseChoices ? undefined : "Lora, serif" }}
+                style={{ color: "var(--text-primary)", fontFamily: chineseChoices ? undefined : "Spectral, serif" }}
               >
                 {c.label}
               </div>
@@ -354,10 +354,10 @@ function Results({
         <div className="text-5xl py-3" style={{ color: pct >= 80 ? "var(--accent-gold)" : "var(--accent-rose)" }}>
           {pct >= 80 ? "✦" : pct >= 60 ? "◈" : "◉"}
         </div>
-        <h2 style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", fontSize: "1.4rem", letterSpacing: "0.08em" }}>
+        <h2 style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", fontSize: "1.4rem", letterSpacing: "0.08em" }}>
           {pct >= 60 ? "Passed" : "Below Passing"}
         </h2>
-        <p className="text-sm mt-1" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {score.correct} of {score.total} correct · {pct}%
         </p>
       </div>
@@ -366,7 +366,7 @@ function Results({
         className="rounded-2xl p-5"
         style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
       >
-        <div className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+        <div className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
           Question Review
         </div>
         <ol className="space-y-3">
@@ -380,13 +380,13 @@ function Results({
                   style={{
                     background: isRight ? "rgba(201,168,76,0.18)" : "rgba(196,133,122,0.18)",
                     color: isRight ? "var(--accent-gold)" : "var(--accent-rose)",
-                    fontFamily: "Cinzel, serif",
+                    fontFamily: "Cormorant Garamond, serif",
                   }}
                 >
                   {i + 1}
                 </span>
                 <div className="flex-1">
-                  <div style={{ color: "var(--text-primary)", fontFamily: "Lora, serif" }}>
+                  <div style={{ color: "var(--text-primary)", fontFamily: "Spectral, serif" }}>
                     {questionPrompt(q)}
                   </div>
                   {!isRight && (
@@ -411,13 +411,13 @@ function Results({
           background: "transparent",
           border: "1.5px solid var(--accent-gold)",
           color: "var(--accent-gold)",
-          fontFamily: "Cinzel, serif",
+          fontFamily: "Cormorant Garamond, serif",
           letterSpacing: "0.08em",
         }}
       >
         Back to Exams
       </button>
-      <Link href="/practice/flashcards" className="block text-center text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+      <Link href="/practice/flashcards" className="block text-center text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
         Drill missed words with flashcards →
       </Link>
     </div>

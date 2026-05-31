@@ -1,0 +1,141 @@
+{
+  "id": "hsk2-15",
+  "level": 2,
+  "number": 15,
+  "title": { "hanzi": "新年就要到了", "pinyin": "Xīnnián jiù yào dào le", "english": "The New Year is coming" },
+  "theme": "Holidays & Future",
+  "warmUp": {
+    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words." },
+    "items": [
+      { "hanzi": "新年",     "pinyin": "xīnnián",    "english": "New Year" },
+      { "hanzi": "票",       "pinyin": "piào",       "english": "ticket" },
+      { "hanzi": "旅游",     "pinyin": "lǚyóu",      "english": "to travel" },
+      { "hanzi": "帮助",     "pinyin": "bāngzhù",    "english": "to help, help" },
+      { "hanzi": "阴",       "pinyin": "yīn",        "english": "overcast" },
+      { "hanzi": "火车站",   "pinyin": "huǒchēzhàn", "english": "railway station" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "在朋友家", "english": "At a friend's home" },
+      "audioRef": "15-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "今天是12月20日,新年就要到了。",                  "pinyin": "Jīntiān shì shí'èr yuè èrshí rì, xīnnián jiù yào dào le.",          "english": "Today is December 20th. The New Year is coming." },
+        { "speaker": "B", "hanzi": "新年你准备做什么?",                                "pinyin": "Xīnnián nǐ zhǔnbèi zuò shénme?",                                   "english": "What plans do you have?" },
+        { "speaker": "A", "hanzi": "我想去北京旅游,北京很不错,我去过一次。",         "pinyin": "Wǒ xiǎng qù Běijīng lǚyóu, Běijīng hěn búcuò, wǒ qùguo yí cì.",   "english": "I want to take a trip to Beijing. Beijing is a nice place — I've been there once." },
+        { "speaker": "B", "hanzi": "你买票了吗?",                                       "pinyin": "Nǐ mǎi piào le ma?",                                                "english": "Have you bought the ticket?" },
+        { "speaker": "A", "hanzi": "还没有呢,明天就去火车站买票。",                    "pinyin": "Hái méiyǒu ne, míngtiān jiù qù huǒchēzhàn mǎi piào.",               "english": "Not yet. I'll go to the railway station to buy it tomorrow." }
+      ],
+      "newWords": [
+        { "id": "hsk2_15_ri",         "hanzi": "日",     "pinyin": "rì",         "pos": "n.", "english": "day, date" },
+        { "id": "hsk2_15_xinnian",    "hanzi": "新年",   "pinyin": "xīnnián",    "pos": "n.", "english": "New Year" },
+        { "id": "hsk2_15_piao",       "hanzi": "票",     "pinyin": "piào",       "pos": "n.", "english": "ticket" },
+        { "id": "hsk2_15_huochezhan", "hanzi": "火车站", "pinyin": "huǒchēzhàn", "pos": "n.", "english": "railway station" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在公司", "english": "In the company" },
+      "audioRef": "15-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "时间过得真快,新的一年快要到了!",     "pinyin": "Shíjiān guò de zhēn kuài, xīn de yì nián kuàiyào dào le!", "english": "How time flies! The New Year is approaching." },
+        { "speaker": "B", "hanzi": "是啊,谢谢大家这一年对我的帮助!",      "pinyin": "Shì a, xièxie dàjiā zhè yì nián duì wǒ de bāngzhù!",      "english": "Yes. Thank you all for your help during the past year." },
+        { "speaker": "C", "hanzi": "希望我们的公司明年更好!",              "pinyin": "Xīwàng wǒmen de gōngsī míngnián gèng hǎo!",                "english": "I hope our company will be even better next year." }
+      ],
+      "newWords": [
+        { "id": "hsk2_15_dajia", "hanzi": "大家", "pinyin": "dàjiā", "pos": "pron.","english": "all, everybody" },
+        { "id": "hsk2_15_geng",  "hanzi": "更",   "pinyin": "gèng",  "pos": "adv.", "english": "more, to a greater extent" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在车站", "english": "At the station" },
+      "audioRef": "15-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你妹妹怎么还没来?",            "pinyin": "Nǐ mèimei zěnme hái méi lái?",            "english": "Why hasn't your younger sister arrived yet?" },
+        { "speaker": "A", "hanzi": "都八点四十了!",                  "pinyin": "Dōu bā diǎn sìshí le!",                   "english": "It's already 8:40." },
+        { "speaker": "B", "hanzi": "我们再等她几分钟吧。",            "pinyin": "Wǒmen zài děng tā jǐ fēnzhōng ba.",      "english": "Let's wait a few more minutes." },
+        { "speaker": "A", "hanzi": "都等她半个小时了!",              "pinyin": "Dōu děng tā bàn ge xiǎoshí le!",          "english": "We've already waited half an hour." },
+        { "speaker": "B", "hanzi": "她来了,我听见她说话了。",        "pinyin": "Tā lái le, wǒ tīngjiàn tā shuō huà le.", "english": "She's here. I heard her voice." }
+      ],
+      "newWords": [
+        { "id": "hsk2_15_meimei", "hanzi": "妹妹", "pinyin": "mèimei", "pos": "n.", "english": "younger sister" }
+      ]
+    },
+    {
+      "situationNumber": 4,
+      "title": { "hanzi": "在咖啡馆门口", "english": "Outside a coffee house" },
+      "audioRef": "15-4",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "天阴了,我要回去了。",                       "pinyin": "Tiān yīn le, wǒ yào huíqu le.",                              "english": "It's overcast. I have to go home." },
+        { "speaker": "B", "hanzi": "好的。快要下雨了,你路上慢点儿。",         "pinyin": "Hǎo de. Kuàiyào xià yǔ le, nǐ lùshang màn diǎnr.",          "english": "OK. It's going to rain. Be careful on your way." },
+        { "speaker": "A", "hanzi": "没关系,我坐公共汽车。",                     "pinyin": "Méi guānxi, wǒ zuò gōnggòng qìchē.",                          "english": "Don't worry — I'll take a bus." },
+        { "speaker": "B", "hanzi": "好的。再见。",                              "pinyin": "Hǎo de. Zàijiàn.",                                            "english": "Good. Bye." }
+      ],
+      "newWords": [
+        { "id": "hsk2_15_yin", "hanzi": "阴", "pinyin": "yīn", "pos": "adj.", "english": "overcast, cloudy" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk2_15_g_yaole",
+      "number": 1,
+      "title": { "hanzi": "动作的状态:\"要……了\"", "english": "\"要……了\" Indicating the State of an Action" },
+      "explanation": {
+        "hanzi": "用\"快要/快/就要/要……了\"表示某事将要发生。如果句子中有时间状语,只能用\"就要……了\"。",
+        "english": "\"快要 / 快 / 就要 / 要 … 了\" means something is about to happen. If the sentence contains a time adverbial, only \"就要 … 了\" can be used."
+      },
+      "patternTable": {
+        "columns": ["Subject", "快要/快/就要/要", "V (+O)", "了"],
+        "rows": [
+          ["火车",         "快要", "来",   "了。"],
+          ["",             "要",   "下雨", "了。"],
+          ["新的一年",     "快要", "到",   "了。"],
+          ["(下个月)我们",  "就要", "回国", "了。"],
+          ["(明天)姐姐",    "就要", "走",   "了。"],
+          ["(下个星期)我们","就要", "考试", "了。"]
+        ]
+      }
+    },
+    {
+      "id": "hsk2_15_g_doule",
+      "number": 2,
+      "title": { "hanzi": "\"都……了\"", "english": "The Structure \"都……了\"" },
+      "explanation": {
+        "hanzi": "\"都……了\"可以表示\"已经\"的意思,通常含有强调或不满的语气。",
+        "english": "\"都……了\" expresses \"already\", usually with an emphatic or complaining tone."
+      },
+      "examples": [
+        { "hanzi": "都8点了,快点儿起床吧。",     "pinyin": "Dōu bā diǎn le, kuài diǎnr qǐ chuáng ba.",     "english": "It's already 8 — get up quickly." },
+        { "hanzi": "你都十岁了,可以自己洗衣服了。","pinyin": "Nǐ dōu shí suì le, kěyǐ zìjǐ xǐ yīfu le.",   "english": "You're already ten — you can wash your own clothes." },
+        { "hanzi": "都等她半个小时了。",          "pinyin": "Dōu děng tā bàn ge xiǎoshí le.",              "english": "We've already waited for her half an hour." }
+      ]
+    }
+  ],
+  "exercises": [
+    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
+    {
+      "number": 2, "type": "answer_questions",
+      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "items": [
+        { "hanzi": "新年的时候他准备做什么?", "pinyin": "Xīnnián de shíhou tā zhǔnbèi zuò shénme?" },
+        { "hanzi": "明天他有什么事要做?",     "pinyin": "Míngtiān tā yǒu shénme shì yào zuò?" },
+        { "hanzi": "他们两个人在等谁呢?",     "pinyin": "Tāmen liǎng ge rén zài děng shéi ne?" },
+        { "hanzi": "他们等的人来了没有?",     "pinyin": "Tāmen děng de rén láile méiyǒu?" },
+        { "hanzi": "外面的天气怎么样?",       "pinyin": "Wàimian de tiānqì zěnmeyàng?" }
+      ]
+    }
+  ],
+  "characters": {
+    "radicals": [
+      { "hanzi": "山", "pinyin": "shān zì páng", "english": "mountain (related to mountains/islands)", "examples": ["岭 lǐng (mountain ridge)", "岖 qū (rugged)"] },
+      { "hanzi": "大", "pinyin": "dà zì páng",   "english": "big (related to people)",                  "examples": ["天 tiān (sky)", "夫 fū (husband)"] }
+    ]
+  },
+  "culture": {
+    "title": { "hanzi": "中国的\"新年\"——春节", "english": "The Chinese New Year — Spring Festival" },
+    "body": "Spring Festival (春节, Chūn Jié), the Chinese New Year, is the most important traditional festival in China. It's a happy, merry day when family members reunite. Every year people away from home travel back to celebrate with their families.\n\nTogether they paste antithetical couplets (对联), set off firecrackers (放鞭炮), eat dumplings (吃饺子), and watch the Spring Festival Gala (春节联欢晚会). Kids especially love the festival because they get \"lucky money\" (压岁钱) from their elders.\n\nThe bustling, festive atmosphere fills every home, every street and every lane. In some places there are lion dances (舞狮子), dragon-lantern shows (耍龙灯), and temple fairs (逛庙会)."
+  }
+}

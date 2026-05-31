@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getLesson } from "@/lib/content";
 import type {
   HSKLevel, Lesson, Bilingual, WarmUp, Text, GrammarPoint,
-  Exercise, PinyinDrill, CharacterSection,
+  Exercise, PinyinDrill, CharacterSection, ClassroomExpression,
 } from "@/lib/types";
 
 export default async function LessonPage({ params }: { params: Promise<{ level: string; number: string }> }) {
@@ -29,6 +29,9 @@ export default async function LessonPage({ params }: { params: Promise<{ level: 
           {lesson.pinyinSection && lesson.pinyinSection.drills.length > 0 && (
             <PinyinSection drills={lesson.pinyinSection.drills} />
           )}
+          {lesson.classroomExpressions && lesson.classroomExpressions.length > 0 && (
+            <ClassroomExpressionsSection items={lesson.classroomExpressions} />
+          )}
           {lesson.characters && <CharactersSection chars={lesson.characters} />}
           {lesson.culture && <CultureSection title={lesson.culture.title} body={lesson.culture.body} />}
         </>
@@ -43,13 +46,13 @@ export default async function LessonPage({ params }: { params: Promise<{ level: 
 function LessonHeader({ level, lesson }: { level: HSKLevel; lesson: Lesson }) {
   return (
     <div>
-      <Link href={`/course/${level}`} className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+      <Link href={`/course/${level}`} className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
         ← HSK {level}
       </Link>
       <div className="flex items-baseline gap-3 mt-3">
         <span
           className="text-3xl font-bold"
-          style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}
+          style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}
         >
           {lesson.number}
         </span>
@@ -60,7 +63,7 @@ function LessonHeader({ level, lesson }: { level: HSKLevel; lesson: Lesson }) {
       <div className="mt-1 font-pinyin text-lg" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
         {lesson.title.pinyin}
       </div>
-      <div className="text-sm mt-1" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+      <div className="text-sm mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
         {lesson.title.english}{lesson.theme ? ` · ${lesson.theme}` : ""}
       </div>
     </div>
@@ -76,7 +79,7 @@ function StubNotice({ level, lesson }: { level: HSKLevel; lesson: Lesson }) {
     >
       <div>
         <span className="badge-gold">Outline</span>
-        <p className="text-sm mt-3" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm mt-3" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           The full content for HSK {level} Lesson {lesson.number} hasn&apos;t been authored yet. Below is the
           word list from the textbook&apos;s table of contents.
         </p>
@@ -111,7 +114,7 @@ function SectionHeader({ chinese, english }: { chinese: string; english: string 
       </span>
       <span
         className="text-sm tracking-widest uppercase"
-        style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+        style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}
       >
         {english}
       </span>
@@ -131,7 +134,7 @@ function Bil({ b, hanziSize = "text-base", muted = false }: { b: Bilingual; hanz
           {b.pinyin}
         </div>
       )}
-      <div className="text-sm mt-0.5" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+      <div className="text-sm mt-0.5" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
         {b.english}
       </div>
     </div>
@@ -144,7 +147,7 @@ function WarmUpSection({ warmUp }: { warmUp: WarmUp }) {
   return (
     <section>
       <SectionHeader chinese="热身" english="Warm-up" />
-      <p className="text-sm mb-3" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+      <p className="text-sm mb-3" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
         {warmUp.instruction.english}
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -201,7 +204,7 @@ function TextBlock({ text }: { text: Text }) {
         <div className="flex items-baseline gap-3">
           <span
             className="font-bold text-sm"
-            style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}
+            style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}
           >
             {text.situationNumber}
           </span>
@@ -211,7 +214,7 @@ function TextBlock({ text }: { text: Text }) {
           <span className="text-xs" style={{ color: "var(--text-muted)" }}>{text.title.english}</span>
         </div>
         {text.audioRef && (
-          <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+          <span className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
             ♪ {text.audioRef}
           </span>
         )}
@@ -226,7 +229,7 @@ function TextBlock({ text }: { text: Text }) {
               style={{
                 background: line.speaker === "A" ? "rgba(201,168,76,0.18)" : "rgba(196,133,122,0.18)",
                 color: line.speaker === "A" ? "var(--accent-gold)" : "var(--accent-rose)",
-                fontFamily: "Cinzel, serif",
+                fontFamily: "Cormorant Garamond, serif",
               }}
             >
               {line.speaker}
@@ -250,7 +253,7 @@ function TextBlock({ text }: { text: Text }) {
 
       {/* New words */}
       <div className="px-5 py-3 border-t" style={{ borderColor: "var(--border-subtle)", background: "rgba(0,0,0,0.12)" }}>
-        <div className="text-xs tracking-widest uppercase mb-2" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+        <div className="text-xs tracking-widest uppercase mb-2" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
           New Words
         </div>
         <div className="space-y-1.5">
@@ -260,16 +263,16 @@ function TextBlock({ text }: { text: Text }) {
               <span className="font-pinyin shrink-0" style={{ color: "var(--text-muted)", fontStyle: "italic", minWidth: "5rem" }}>
                 {w.pinyin}
               </span>
-              <span className="text-xs shrink-0" style={{ color: "var(--accent-gold)", opacity: 0.7, fontFamily: "Cinzel, serif" }}>
+              <span className="text-xs shrink-0" style={{ color: "var(--accent-gold)", opacity: 0.7, fontFamily: "Cormorant Garamond, serif" }}>
                 {w.pos}
               </span>
-              <span style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>{w.english}</span>
+              <span style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>{w.english}</span>
             </div>
           ))}
         </div>
         {text.properNouns && text.properNouns.length > 0 && (
           <>
-            <div className="text-xs tracking-widest uppercase mt-3 mb-2" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+            <div className="text-xs tracking-widest uppercase mt-3 mb-2" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
               Proper Nouns
             </div>
             <div className="space-y-1.5">
@@ -279,7 +282,7 @@ function TextBlock({ text }: { text: Text }) {
                   <span className="font-pinyin shrink-0" style={{ color: "var(--text-muted)", fontStyle: "italic", minWidth: "5rem" }}>
                     {p.pinyin}
                   </span>
-                  <span style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>{p.english}</span>
+                  <span style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>{p.english}</span>
                 </div>
               ))}
             </div>
@@ -316,7 +319,7 @@ function NoteBlock({ note }: { note: GrammarPoint }) {
             background: "rgba(201,168,76,0.12)",
             border: "1px solid rgba(201,168,76,0.5)",
             color: "var(--accent-gold)",
-            fontFamily: "Cinzel, serif",
+            fontFamily: "Cormorant Garamond, serif",
           }}
         >
           {note.number}
@@ -325,12 +328,12 @@ function NoteBlock({ note }: { note: GrammarPoint }) {
           <div className="font-display text-lg" style={{ color: "var(--text-primary)" }}>
             {note.title.hanzi}
           </div>
-          <div className="text-sm" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>
+          <div className="text-sm" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
             {note.title.english}
           </div>
         </div>
       </div>
-      <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-primary)", fontFamily: "Lora, serif" }}>
+      <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-primary)", fontFamily: "Spectral, serif" }}>
         {note.explanation.english}
       </p>
       {note.examples && note.examples.length > 0 && (
@@ -359,7 +362,7 @@ function PatternTableView({ table }: { table: { columns: string[]; rows: string[
               <th
                 key={i}
                 className="px-3 py-2 text-left text-xs tracking-widest uppercase"
-                style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", borderRight: i < table.columns.length - 1 ? "1px solid var(--border-subtle)" : "none" }}
+                style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", borderRight: i < table.columns.length - 1 ? "1px solid var(--border-subtle)" : "none" }}
               >
                 {c}
               </th>
@@ -409,7 +412,7 @@ function ExercisesSection({ exercises }: { exercises: Exercise[] }) {
                   background: "rgba(201,168,76,0.12)",
                   border: "1px solid rgba(201,168,76,0.5)",
                   color: "var(--accent-gold)",
-                  fontFamily: "Cinzel, serif",
+                  fontFamily: "Cormorant Garamond, serif",
                 }}
               >
                 {e.number}
@@ -418,7 +421,7 @@ function ExercisesSection({ exercises }: { exercises: Exercise[] }) {
                 <div className="font-display text-base" style={{ color: "var(--text-primary)" }}>
                   {e.prompt.hanzi}
                 </div>
-                <div className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+                <div className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
                   {e.prompt.english}
                 </div>
               </div>
@@ -427,7 +430,7 @@ function ExercisesSection({ exercises }: { exercises: Exercise[] }) {
               <ol className="space-y-2 pl-2">
                 {e.items.map((item, i) => (
                   <li key={i} className="flex gap-2 text-sm">
-                    <span style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{i + 1}.</span>
+                    <span style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>{i + 1}.</span>
                     <div>
                       {item.hanzi && (
                         <div className="font-display" style={{ color: "var(--text-primary)" }}>{item.hanzi}</div>
@@ -471,10 +474,10 @@ function PinyinDrillBlock({ drill }: { drill: PinyinDrill }) {
     >
       <div className="mb-3">
         <div className="font-display" style={{ color: "var(--text-primary)" }}>{drill.title.hanzi}</div>
-        <div className="text-sm" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{drill.title.english}</div>
+        <div className="text-sm" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>{drill.title.english}</div>
       </div>
       {drill.explanation && (
-        <p className="text-sm mb-3" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm mb-3" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {drill.explanation.english}
         </p>
       )}
@@ -495,7 +498,7 @@ function PinyinDrillBlock({ drill }: { drill: PinyinDrill }) {
         <div className="space-y-3 mt-2">
           {drill.subRules.map((sr, i) => (
             <div key={i}>
-              <div className="text-xs mb-2" style={{ color: "var(--accent-gold)", fontFamily: "Lora, serif" }}>
+              <div className="text-xs mb-2" style={{ color: "var(--accent-gold)", fontFamily: "Spectral, serif" }}>
                 {sr.rule.english}
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -529,7 +532,7 @@ function CharactersSection({ chars }: { chars: CharacterSection }) {
           className="rounded-2xl p-5 mb-4"
           style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
         >
-          <div className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+          <div className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
             Strokes
           </div>
           <div className="space-y-3">
@@ -561,7 +564,7 @@ function CharactersSection({ chars }: { chars: CharacterSection }) {
           className="rounded-2xl p-5"
           style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
         >
-          <div className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+          <div className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
             Single-Component Characters
           </div>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -575,7 +578,7 @@ function CharactersSection({ chars }: { chars: CharacterSection }) {
                   <div className="font-display text-4xl" style={{ color: "var(--accent-gold)" }}>{c.hanzi}</div>
                   <div className="text-xs font-pinyin" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>{c.pinyin}</div>
                 </div>
-                <div className="text-xs leading-snug" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+                <div className="text-xs leading-snug" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
                   <div style={{ color: "var(--text-primary)", marginBottom: "0.25rem" }}>{c.meaning}</div>
                   {c.etymology}
                 </div>
@@ -588,6 +591,34 @@ function CharactersSection({ chars }: { chars: CharacterSection }) {
   );
 }
 
+// ─── Classroom expressions ──────────────────────────────────────────────────
+
+function ClassroomExpressionsSection({ items }: { items: ClassroomExpression[] }) {
+  return (
+    <section>
+      <SectionHeader chinese="课堂用语" english="Classroom Expressions" />
+      <div
+        className="rounded-2xl p-5"
+        style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+      >
+        <div className="space-y-2.5">
+          {items.map((e, i) => (
+            <div key={i} className="flex items-baseline gap-3 text-sm flex-wrap">
+              <span className="font-display text-base shrink-0" style={{ color: "var(--text-primary)", minWidth: "6rem" }}>
+                {e.hanzi}
+              </span>
+              <span className="font-pinyin shrink-0" style={{ color: "var(--text-muted)", fontStyle: "italic", minWidth: "8rem" }}>
+                {e.pinyin}
+              </span>
+              <span style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>{e.english}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Culture ─────────────────────────────────────────────────────────────────
 
 function CultureSection({ title, body }: { title: Bilingual; body: string }) {
@@ -596,8 +627,8 @@ function CultureSection({ title, body }: { title: Bilingual; body: string }) {
       <SectionHeader chinese="文化" english="Culture" />
       <div className="parchment-panel p-5">
         <div className="font-display text-lg mb-2" style={{ color: "var(--text-parchment)" }}>{title.hanzi}</div>
-        <div className="text-sm mb-3" style={{ color: "#7A6855", fontFamily: "Cinzel, serif" }}>{title.english}</div>
-        <div className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "var(--text-parchment)", fontFamily: "Lora, serif" }}>
+        <div className="text-sm mb-3" style={{ color: "#7A6855", fontFamily: "Cormorant Garamond, serif" }}>{title.english}</div>
+        <div className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "var(--text-parchment)", fontFamily: "Spectral, serif" }}>
           {body}
         </div>
       </div>
@@ -615,10 +646,10 @@ function PracticeCTA({ level, number, stub }: { level: HSKLevel; number: number;
       style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.4)" }}
     >
       <div>
-        <div className="font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>
+        <div className="font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
           Ready to practice?
         </div>
-        <div className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <div className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           Study this lesson&apos;s vocabulary with spaced-repetition flashcards.
         </div>
       </div>
@@ -629,7 +660,7 @@ function PracticeCTA({ level, number, stub }: { level: HSKLevel; number: number;
           background: "transparent",
           border: "1.5px solid var(--accent-gold)",
           color: "var(--accent-gold)",
-          fontFamily: "Cinzel, serif",
+          fontFamily: "Cormorant Garamond, serif",
           letterSpacing: "0.08em",
         }}
       >

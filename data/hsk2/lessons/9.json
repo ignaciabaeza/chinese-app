@@ -1,0 +1,161 @@
+{
+  "id": "hsk2-9",
+  "level": 2,
+  "number": 9,
+  "title": { "hanzi": "题太多,我没做完", "pinyin": "Tí tài duō, wǒ méi zuò wán", "english": "There were too many questions; I didn't finish all of them" },
+  "theme": "Study & Tasks",
+  "warmUp": {
+    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "items": [
+      { "hanzi": "上班",   "pinyin": "shàng bān", "english": "to go to work" },
+      { "hanzi": "唱歌",   "pinyin": "chàng gē",  "english": "to sing" },
+      { "hanzi": "对错",   "pinyin": "duì cuò",   "english": "right and wrong" },
+      { "hanzi": "问题",   "pinyin": "wèntí",     "english": "question, problem" },
+      { "hanzi": "第一",   "pinyin": "dì yī",     "english": "first" },
+      { "hanzi": "跳舞",   "pinyin": "tiào wǔ",   "english": "to dance" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "打电话", "english": "On the phone" },
+      "audioRef": "09-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你好!请问张欢在吗?",                  "pinyin": "Nǐ hǎo! Qǐngwèn Zhāng Huān zài ma?",                  "english": "Hello! May I speak to Zhang Huan?" },
+        { "speaker": "B", "hanzi": "你打错了,我们这儿没有叫张欢的。",    "pinyin": "Nǐ dǎ cuò le, wǒmen zhèr méiyǒu jiào Zhāng Huān de.","english": "You've got the wrong number. There isn't anyone named Zhang Huan here." },
+        { "speaker": "A", "hanzi": "对不起。",                              "pinyin": "Duìbuqǐ.",                                            "english": "I'm sorry." }
+      ],
+      "newWords": [
+        { "id": "hsk2_9_cuo", "hanzi": "错", "pinyin": "cuò", "pos": "adj.", "english": "wrong, incorrect" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在学校", "english": "In the school" },
+      "audioRef": "09-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "您从几岁开始学习跳舞?",                                  "pinyin": "Nín cóng jǐ suì kāishǐ xuéxí tiào wǔ?",                                       "english": "At what age did you start to learn dancing?" },
+        { "speaker": "B", "hanzi": "我第一次跳舞是在七岁的时候。",                            "pinyin": "Wǒ dì yī cì tiào wǔ shì zài qī suì de shíhou.",                              "english": "I was seven when I danced for the first time." },
+        { "speaker": "A", "hanzi": "我女儿今年也七岁了。我希望她能跟您学跳舞,可以吗?",     "pinyin": "Wǒ nǚ'ér jīnnián yě qī suì le. Wǒ xīwàng tā néng gēn nín xué tiào wǔ, kěyǐ ma?","english": "My daughter is seven now. I hope she can learn to dance from you. May she?" },
+        { "speaker": "B", "hanzi": "没问题,非常欢迎。",                                       "pinyin": "Méi wèntí, fēicháng huānyíng.",                                              "english": "Sure. It's my pleasure." }
+      ],
+      "newWords": [
+        { "id": "hsk2_9_cong",     "hanzi": "从",   "pinyin": "cóng",     "pos": "prep.", "english": "from" },
+        { "id": "hsk2_9_tiaowu",   "hanzi": "跳舞", "pinyin": "tiào wǔ",  "pos": "v.",    "english": "to dance" },
+        { "id": "hsk2_9_diyi",     "hanzi": "第一", "pinyin": "dì yī",    "pos": "num.",  "english": "first" },
+        { "id": "hsk2_9_xiwang",   "hanzi": "希望", "pinyin": "xīwàng",   "pos": "v.",    "english": "to hope, to wish" },
+        { "id": "hsk2_9_wenti",    "hanzi": "问题", "pinyin": "wèntí",    "pos": "n.",    "english": "question, problem" },
+        { "id": "hsk2_9_huanying", "hanzi": "欢迎", "pinyin": "huānyíng", "pos": "v.",    "english": "to welcome" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在家里", "english": "At home" },
+      "audioRef": "09-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你知道吗?大卫找到工作了。",            "pinyin": "Nǐ zhīdào ma? Dàwèi zhǎodào gōngzuò le.",                "english": "You know what? David has got a job." },
+        { "speaker": "B", "hanzi": "太好了!他从什么时候开始上班?",         "pinyin": "Tài hǎo le! Tā cóng shénme shíhou kāishǐ shàng bān?",    "english": "That's great! When will he start to work?" },
+        { "speaker": "A", "hanzi": "从下个星期一开始。",                     "pinyin": "Cóng xià ge xīngqī yī kāishǐ.",                          "english": "Next Monday." },
+        { "speaker": "B", "hanzi": "这是他的第一个工作,希望他能喜欢。",    "pinyin": "Zhè shì tā de dì yī ge gōngzuò, xīwàng tā néng xǐhuan.", "english": "This is his first job. I hope he'll like it." }
+      ],
+      "newWords": [
+        { "id": "hsk2_9_shangban", "hanzi": "上班", "pinyin": "shàng bān", "pos": "v.", "english": "to work, to do a job" }
+      ]
+    },
+    {
+      "situationNumber": 4,
+      "title": { "hanzi": "在教室", "english": "In the classroom" },
+      "audioRef": "09-4",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "昨天的考试怎么样?你都听懂了吗?", "pinyin": "Zuótiān de kǎoshì zěnmeyàng? Nǐ dōu tīngdǒng le ma?",    "english": "How was the test yesterday? Did you understand everything you heard?" },
+        { "speaker": "B", "hanzi": "听懂了。",                          "pinyin": "Tīngdǒng le.",                                              "english": "Yes, I did." },
+        { "speaker": "A", "hanzi": "你都做完了没有?",                  "pinyin": "Nǐ dōu zuòwán le méiyǒu?",                                  "english": "Did you finish the test paper?" },
+        { "speaker": "B", "hanzi": "题太多,我没做完。",                "pinyin": "Tí tài duō, wǒ méi zuòwán.",                                "english": "There were too many questions — I didn't finish all of them." }
+      ],
+      "newWords": [
+        { "id": "hsk2_9_dong", "hanzi": "懂", "pinyin": "dǒng", "pos": "v.", "english": "to understand, to know" },
+        { "id": "hsk2_9_wan",  "hanzi": "完", "pinyin": "wán",  "pos": "v.", "english": "to finish, to end" },
+        { "id": "hsk2_9_ti",   "hanzi": "题", "pinyin": "tí",   "pos": "n.", "english": "question, problem" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk2_9_g_complement",
+      "number": 1,
+      "title": { "hanzi": "结果补语", "english": "Complements of Result" },
+      "explanation": {
+        "hanzi": "一些动词或形容词可以放在动词后边,补充、说明动作的结果,它们叫作结果补语。否定式在补语前加\"没(有)\",句尾不能用\"了\"。表示疑问时,常在句尾加上\"(了)没有\"。",
+        "english": "Certain verbs or adjectives can follow a verb to describe the result of an action — these are complements of result. The negative form puts 没(有) before the verb, and 了 cannot appear at the end. To form a question, add (了)没有 at the end."
+      },
+      "patternTable": {
+        "columns": ["Subject", "V + Complement", "Object"],
+        "rows": [
+          ["我",   "看  见",   "你的女朋友了。"],
+          ["我",   "听  懂",   "今天的汉语课了。"],
+          ["我",   "做  好",   "饭了。"],
+          ["大卫", "找  到",   "工作了。"]
+        ]
+      },
+      "examples": [
+        { "hanzi": "我没看见你的女朋友。", "pinyin": "Wǒ méi kànjiàn nǐ de nǚpéngyou.",     "english": "I didn't see your girlfriend." },
+        { "hanzi": "我没听懂他说的话。",   "pinyin": "Wǒ méi tīngdǒng tā shuō de huà.",      "english": "I didn't understand what he said." },
+        { "hanzi": "你做完(考试题)了没有?","pinyin": "Nǐ zuòwán (kǎoshì tí) le méiyǒu?",    "english": "Did you finish (the test questions)?" }
+      ]
+    },
+    {
+      "id": "hsk2_9_g_cong",
+      "number": 2,
+      "title": { "hanzi": "介词\"从\"", "english": "The Preposition \"从\"" },
+      "explanation": {
+        "hanzi": "介词\"从\"引出一段时间、一段路程、一件事情的经过或者一个序列的起点,后面常跟\"到\"一起搭配使用。",
+        "english": "\"从\" introduces the starting point of a period of time, a distance, a process, or a sequence. It's often paired with \"到\"."
+      },
+      "patternTable": {
+        "columns": ["从", "A", "到", "B", "(remainder)"],
+        "rows": [
+          ["从", "北京",     "到", "上海", "要坐几个小时的飞机?"],
+          ["从", "老人",     "到", "孩子", "都喜欢吃苹果。"],
+          ["从", "下个星期一","",   "",     "开始(上班)。"]
+        ]
+      }
+    },
+    {
+      "id": "hsk2_9_g_di",
+      "number": 3,
+      "title": { "hanzi": "\"第~\"表示顺序", "english": "\"第~\" Indicating Order" },
+      "explanation": {
+        "hanzi": "\"第\"常被放在数量短语前边,表示顺序。",
+        "english": "\"第\" goes before a numeral-measure-word phrase to indicate order."
+      },
+      "patternTable": {
+        "columns": ["第", "Num", "Measure", "Noun"],
+        "rows": [
+          ["第", "一", "本", "书"],
+          ["第", "二", "个", "工作"],
+          ["第", "一", "次", "跳舞"]
+        ]
+      }
+    }
+  ],
+  "exercises": [
+    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
+    {
+      "number": 2, "type": "answer_questions",
+      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "items": [
+        { "hanzi": "老师从几岁开始学跳舞?",   "pinyin": "Lǎoshī cóng jǐ suì kāishǐ xué tiào wǔ?" },
+        { "hanzi": "老师想教她的女儿跳舞吗?", "pinyin": "Lǎoshī xiǎng jiāo tā de nǚ'ér tiào wǔ ma?" },
+        { "hanzi": "大卫什么时候去工作?",     "pinyin": "Dàwèi shénme shíhou qù gōngzuò?" },
+        { "hanzi": "这次考试她都听懂了吗?",   "pinyin": "Zhè cì kǎoshì tā dōu tīngdǒng le ma?" },
+        { "hanzi": "她考试为什么没做完?",     "pinyin": "Tā kǎoshì wèi shénme méi zuòwán?" }
+      ]
+    }
+  ],
+  "characters": {
+    "radicals": [
+      { "hanzi": "土", "pinyin": "tí tǔ páng", "english": "earth (related to soil/land/buildings)", "examples": ["块 kuài (lump, piece)", "地 dì (earth, land, ground)"] },
+      { "hanzi": "灬", "pinyin": "sì diǎn dǐ", "english": "four-dot fire (related to fire)",        "examples": ["热 rè (hot)", "黑 hēi (black)"] }
+    ]
+  }
+}

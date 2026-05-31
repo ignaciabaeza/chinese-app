@@ -1,0 +1,177 @@
+{
+  "id": "hsk2-2",
+  "level": 2,
+  "number": 2,
+  "title": { "hanzi": "我每天六点起床", "pinyin": "Wǒ měi tiān liù diǎn qǐchuáng", "english": "I get up at six every day" },
+  "theme": "Daily Routine & Health",
+  "warmUp": {
+    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "items": [
+      { "hanzi": "起床", "pinyin": "qǐ chuáng", "english": "to get up" },
+      { "hanzi": "跑步", "pinyin": "pǎo bù",    "english": "to run, to jog" },
+      { "hanzi": "吃药", "pinyin": "chī yào",   "english": "to take medicine" },
+      { "hanzi": "生病", "pinyin": "shēng bìng","english": "to fall ill" },
+      { "hanzi": "休息", "pinyin": "xiūxi",     "english": "to rest" },
+      { "hanzi": "出院", "pinyin": "chū yuàn",  "english": "to leave hospital" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "在运动场", "english": "On the playground" },
+      "audioRef": "02-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你很少生病,是不是喜欢运动?",   "pinyin": "Nǐ hěn shǎo shēng bìng, shì bu shì xǐhuan yùndòng?",   "english": "You seldom get sick — I guess you like doing sports, don't you?" },
+        { "speaker": "B", "hanzi": "是啊,我每天早上都要出去跑步。", "pinyin": "Shì a, wǒ měi tiān zǎoshang dōu yào chūqu pǎo bù.",     "english": "Yes. I go out for a jog every morning." },
+        { "speaker": "A", "hanzi": "你每天几点起床?",                "pinyin": "Nǐ měi tiān jǐ diǎn qǐ chuáng?",                       "english": "What time do you get up?" },
+        { "speaker": "B", "hanzi": "我每天六点起床。",                "pinyin": "Wǒ měi tiān liù diǎn qǐ chuáng.",                      "english": "I get up at six every day." }
+      ],
+      "newWords": [
+        { "id": "hsk2_2_shengbing","hanzi": "生病", "pinyin": "shēng bìng","pos": "v.",    "english": "to fall ill, to be sick" },
+        { "id": "hsk2_2_mei",      "hanzi": "每",   "pinyin": "měi",       "pos": "pron.", "english": "every, each" },
+        { "id": "hsk2_2_zaoshang", "hanzi": "早上", "pinyin": "zǎoshang",  "pos": "n.",    "english": "morning" },
+        { "id": "hsk2_2_paobu",    "hanzi": "跑步", "pinyin": "pǎo bù",    "pos": "v.",    "english": "to run, to jog" },
+        { "id": "hsk2_2_qichuang", "hanzi": "起床", "pinyin": "qǐ chuáng", "pos": "v.",    "english": "to get up, to get out of bed" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在医院", "english": "In the hospital" },
+      "audioRef": "02-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "吃药了吗?现在身体怎么样?", "pinyin": "Chī yào le ma? Xiànzài shēntǐ zěnmeyàng?", "english": "Did you take your medicine? How do you feel now?" },
+        { "speaker": "B", "hanzi": "吃了。现在好多了。",         "pinyin": "Chī le. Xiànzài hǎo duō le.",              "english": "Yes, I did. I feel much better now." },
+        { "speaker": "A", "hanzi": "什么时候能出院?",             "pinyin": "Shénme shíhou néng chū yuàn?",             "english": "When can you leave the hospital?" },
+        { "speaker": "B", "hanzi": "医生说下个星期。",             "pinyin": "Yīshēng shuō xià ge xīngqī.",              "english": "Next week, according to the doctor." }
+      ],
+      "newWords": [
+        { "id": "hsk2_2_yao",    "hanzi": "药",   "pinyin": "yào",    "pos": "n.", "english": "medicine, drug" },
+        { "id": "hsk2_2_shenti", "hanzi": "身体", "pinyin": "shēntǐ", "pos": "n.", "english": "body" },
+        { "id": "hsk2_2_chuyuan","hanzi": "出院", "pinyin": "chū yuàn","pos": "v.","english": "to leave hospital, to be discharged" },
+        { "id": "hsk2_2_chu",    "hanzi": "出",   "pinyin": "chū",    "pos": "v.", "english": "to come/go out" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在操场", "english": "On the playground" },
+      "audioRef": "02-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "大卫今年多大?",       "pinyin": "Dàwèi jīnnián duō dà?",        "english": "How old is David?" },
+        { "speaker": "B", "hanzi": "二十多岁。",           "pinyin": "Èrshí duō suì.",               "english": "Above 20 years old." },
+        { "speaker": "A", "hanzi": "他多高?",              "pinyin": "Tā duō gāo?",                  "english": "How tall is he?" },
+        { "speaker": "B", "hanzi": "一米八几。",           "pinyin": "Yì mǐ bā jǐ.",                 "english": "More than 180 centimeters." },
+        { "speaker": "A", "hanzi": "你怎么知道这么多啊?", "pinyin": "Nǐ zěnme zhīdào zhème duō a?", "english": "How come you know so much about him?" },
+        { "speaker": "B", "hanzi": "他是我同学。",         "pinyin": "Tā shì wǒ tóngxué.",           "english": "He's my classmate." }
+      ],
+      "newWords": [
+        { "id": "hsk2_2_gao",    "hanzi": "高",   "pinyin": "gāo",    "pos": "adj.", "english": "tall, high" },
+        { "id": "hsk2_2_mi",     "hanzi": "米",   "pinyin": "mǐ",     "pos": "m.",   "english": "meter" },
+        { "id": "hsk2_2_zhidao", "hanzi": "知道", "pinyin": "zhīdào", "pos": "v.",   "english": "to know" }
+      ]
+    },
+    {
+      "situationNumber": 4,
+      "title": { "hanzi": "在房间", "english": "In the room" },
+      "audioRef": "02-4",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "张老师星期六也不休息啊?",       "pinyin": "Zhāng lǎoshī xīngqī liù yě bù xiūxi a?",        "english": "Doesn't Mr. Zhang take Saturday off?" },
+        { "speaker": "B", "hanzi": "是啊,他这几天很忙,没有时间休息。","pinyin": "Shì a, tā zhè jǐ tiān hěn máng, méiyǒu shíjiān xiūxi.","english": "No. He has been busy lately. He has no time to rest." },
+        { "speaker": "A", "hanzi": "那会很累吧?",                   "pinyin": "Nà huì hěn lèi ba?",                            "english": "That must be really tiring." },
+        { "speaker": "B", "hanzi": "他每天回来都很累。",             "pinyin": "Tā měi tiān huílai dōu hěn lèi.",               "english": "Every day he comes home exhausted." }
+      ],
+      "newWords": [
+        { "id": "hsk2_2_xiuxi",   "hanzi": "休息", "pinyin": "xiūxi",   "pos": "v.",   "english": "to have or take a rest" },
+        { "id": "hsk2_2_mang",    "hanzi": "忙",   "pinyin": "máng",    "pos": "adj.", "english": "busy" },
+        { "id": "hsk2_2_shijian", "hanzi": "时间", "pinyin": "shíjiān", "pos": "n.",   "english": "time" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk2_2_g_shibushi",
+      "number": 1,
+      "title": { "hanzi": "用\"是不是\"的问句", "english": "Questions Using \"是不是\"" },
+      "explanation": {
+        "hanzi": "如果提问的人对某个事实或者情况有比较肯定的估计,为了进一步得到证实,就可以用这种疑问句提问。\"是不是\"一般用在谓语前面,也可以用在句首或者句尾。",
+        "english": "When the speaker is fairly certain of a fact or situation but wants confirmation, this question form is used. \"是不是\" (literally \"yes or no\") goes before the predicate, or at the start or end of the sentence."
+      },
+      "examples": [
+        { "hanzi": "你很少生病,是不是喜欢运动?", "pinyin": "Nǐ hěn shǎo shēng bìng, shì bu shì xǐhuan yùndòng?", "english": "You rarely get sick — you like sports, don't you?" },
+        { "hanzi": "是不是明天爸爸休息?",         "pinyin": "Shì bu shì míngtiān bàba xiūxi?",                    "english": "Is dad off tomorrow?" },
+        { "hanzi": "我们星期一去北京,是不是?",   "pinyin": "Wǒmen xīngqī yī qù Běijīng, shì bu shì?",            "english": "We're going to Beijing on Monday, aren't we?" }
+      ]
+    },
+    {
+      "id": "hsk2_2_g_mei",
+      "number": 2,
+      "title": { "hanzi": "代词\"每\"", "english": "The Pronoun \"每\"" },
+      "explanation": {
+        "hanzi": "\"每\"的后边是量词,指全体中的任何一个或一组。比如:每天、每年、每个月、每个星期。",
+        "english": "\"每\" goes before a measure word, meaning each or every individual in a group — e.g. 每天 (every day), 每年 (every year), 每个月 (every month), 每个星期 (every week)."
+      },
+      "examples": [
+        { "hanzi": "山姆每年都去中国旅游。",     "pinyin": "Shānmǔ měi nián dōu qù Zhōngguó lǚyóu.",   "english": "Sam travels to China every year." },
+        { "hanzi": "你每个星期六都工作吗?",     "pinyin": "Nǐ měi ge xīngqī liù dōu gōngzuò ma?",     "english": "Do you work every Saturday?" },
+        { "hanzi": "我每天六点起床。",           "pinyin": "Wǒ měi tiān liù diǎn qǐ chuáng.",         "english": "I get up at six every day." }
+      ]
+    },
+    {
+      "id": "hsk2_2_g_duo",
+      "number": 3,
+      "title": { "hanzi": "疑问代词\"多\"", "english": "The Interrogative Pronoun \"多\"" },
+      "explanation": {
+        "hanzi": "疑问代词\"多\"用在形容词的前面,对程度进行提问,回答时要说出数量。",
+        "english": "\"多\" is used before an adjective to ask about degree. A specific quantity is given in the answer."
+      },
+      "patternTable": {
+        "columns": ["Subject", "多", "Adjective"],
+        "rows": [
+          ["你",   "多", "大?"],
+          ["大卫", "多", "高?"],
+          ["他",   "多", "高?"]
+        ]
+      },
+      "examples": [
+        { "hanzi": "A: 你多大? B: 我16岁。",                  "pinyin": "Nǐ duō dà? Wǒ shíliù suì.",            "english": "How old are you? — I'm 16." },
+        { "hanzi": "A: 王医生的儿子多高? B: 他儿子一米七。", "pinyin": "Wáng yīshēng de érzi duō gāo? Tā érzi yì mǐ qī.","english": "How tall is Dr. Wang's son? — 1.7 meters." },
+        { "hanzi": "A: 他多高? B: 一米八几。",                "pinyin": "Tā duō gāo? Yì mǐ bā jǐ.",             "english": "How tall is he? — A bit over 1.8 meters." }
+      ]
+    }
+  ],
+  "exercises": [
+    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
+    {
+      "number": 2, "type": "answer_questions",
+      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "items": [
+        { "hanzi": "他为什么很少生病?",       "pinyin": "Tā wèi shénme hěn shǎo shēng bìng?" },
+        { "hanzi": "他每天几点起床?",         "pinyin": "Tā měi tiān jǐ diǎn qǐ chuáng?" },
+        { "hanzi": "她现在身体怎么样?",       "pinyin": "Tā xiànzài shēntǐ zěnmeyàng?" },
+        { "hanzi": "大卫今年多高?多大?",     "pinyin": "Dàwèi jīnnián duō gāo? Duō dà?" },
+        { "hanzi": "张老师星期六休息吗?",     "pinyin": "Zhāng lǎoshī xīngqī liù xiūxi ma?" }
+      ]
+    }
+  ],
+  "characters": {
+    "strokes": [
+      { "name": { "hanzi": "横撇弯钩", "pinyin": "héngpiěwāngōu",  "english": "horizontal-left-falling-curved hook" }, "shape": "𠃌", "examples": [{ "hanzi": "队", "pinyin": "duì", "english": "team" }, { "hanzi": "阵", "pinyin": "zhèn", "english": "battle array" }] },
+      { "name": { "hanzi": "横折折撇", "pinyin": "héngzhézhépiě",  "english": "horizontal-double-turning-left-falling" }, "shape": "𠃋", "examples": [{ "hanzi": "及", "pinyin": "jí", "english": "to reach, and" }, { "hanzi": "级", "pinyin": "jí", "english": "level, grade" }] }
+    ],
+    "singleComponentChars": [
+      { "id": "hsk2_2_c_sheng", "hanzi": "生", "pinyin": "shēng", "meaning": "to be born; to grow", "etymology": "The original form looked like a young seedling sprouting from the earth. Originally meant \"to germinate and grow\". Now it has various meanings, such as \"to get (ill)\" and \"to live\".", "strokeCount": 5 },
+      { "id": "hsk2_2_c_gao",   "hanzi": "高", "pinyin": "gāo",   "meaning": "tall, high",         "etymology": "The original form looks like a tall pavilion. It means \"tall\".", "strokeCount": 10 }
+    ],
+    "radicals": [
+      { "hanzi": "⺮", "pinyin": "zhú zì tóu", "english": "bamboo top (related to bamboo)",     "examples": ["篮 lán (basket)", "笔 bǐ (pen)"] },
+      { "hanzi": "欠", "pinyin": "qiàn zì páng", "english": "yawn (related to mouth movements)", "examples": ["歌 gē (song)", "吹 chuī (to blow)"] }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组,询问对方一天的生活。", "english": "Work in pairs and ask about your partner's daily routines." },
+    "activities": [
+      "A: 你每天几点吃早饭? B: 我……",
+      "A: 你每天什么时候运动? B: ……",
+      "Group: ask about each other's basic info (age, height) and sports."
+    ]
+  }
+}

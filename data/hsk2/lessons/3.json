@@ -1,0 +1,170 @@
+{
+  "id": "hsk2-3",
+  "level": 2,
+  "number": 3,
+  "title": { "hanzi": "左边那个红色的是我的", "pinyin": "Zuǒbiān nàge hóngsè de shì wǒ de", "english": "The red one on the left is mine" },
+  "theme": "Things & Colors",
+  "warmUp": {
+    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words." },
+    "items": [
+      { "hanzi": "手表", "pinyin": "shǒubiǎo", "english": "watch" },
+      { "hanzi": "报纸", "pinyin": "bàozhǐ",   "english": "newspaper" },
+      { "hanzi": "牛奶", "pinyin": "niúnǎi",   "english": "milk" },
+      { "hanzi": "房间", "pinyin": "fángjiān", "english": "room" },
+      { "hanzi": "丈夫", "pinyin": "zhàngfu",  "english": "husband" },
+      { "hanzi": "红色", "pinyin": "hóngsè",   "english": "red" },
+      { "hanzi": "左边", "pinyin": "zuǒbian",  "english": "left side" },
+      { "hanzi": "右边", "pinyin": "yòubian",  "english": "right side" },
+      { "hanzi": "前边", "pinyin": "qiánbian", "english": "front" },
+      { "hanzi": "后边", "pinyin": "hòubian",  "english": "back" },
+      { "hanzi": "旁边", "pinyin": "pángbiān", "english": "beside" },
+      { "hanzi": "中间", "pinyin": "zhōngjiān","english": "middle" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "在房间", "english": "In the room" },
+      "audioRef": "03-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "这块手表是你的吗?",   "pinyin": "Zhè kuài shǒubiǎo shì nǐ de ma?", "english": "Is this watch yours?" },
+        { "speaker": "B", "hanzi": "不是我的。是我爸爸的。","pinyin": "Bú shì wǒ de. Shì wǒ bàba de.",    "english": "No, it isn't. It's my father's." },
+        { "speaker": "A", "hanzi": "多少钱买的?",           "pinyin": "Duōshao qián mǎi de?",             "english": "How much is it?" },
+        { "speaker": "B", "hanzi": "三千多块。",             "pinyin": "Sānqiān duō kuài.",                "english": "More than 3,000 yuan." }
+      ],
+      "newWords": [
+        { "id": "hsk2_3_shoubiao", "hanzi": "手表", "pinyin": "shǒubiǎo", "pos": "n.",   "english": "watch" },
+        { "id": "hsk2_3_qian",     "hanzi": "千",   "pinyin": "qiān",     "pos": "num.", "english": "thousand" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在家里", "english": "At home" },
+      "audioRef": "03-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "这是今天早上的报纸吗?",        "pinyin": "Zhè shì jīntiān zǎoshang de bàozhǐ ma?",      "english": "Is it this morning's newspaper?" },
+        { "speaker": "B", "hanzi": "不是,是昨天的。",              "pinyin": "Bú shì, shì zuótiān de.",                     "english": "No, it isn't. It's yesterday's." },
+        { "speaker": "A", "hanzi": "你听,是不是送报纸的来了?",   "pinyin": "Nǐ tīng, shì bu shì sòng bàozhǐ de lái le?",  "english": "Listen — is that the newspaper delivery man?" },
+        { "speaker": "B", "hanzi": "我看一下。不是,是送牛奶的。", "pinyin": "Wǒ kàn yíxià. Bú shì, shì sòng niúnǎi de.",   "english": "Let me see. No, it's the milkman." }
+      ],
+      "newWords": [
+        { "id": "hsk2_3_baozhi", "hanzi": "报纸", "pinyin": "bàozhǐ", "pos": "n.",      "english": "newspaper" },
+        { "id": "hsk2_3_song",   "hanzi": "送",   "pinyin": "sòng",   "pos": "v.",      "english": "to send, to deliver" },
+        { "id": "hsk2_3_yixia",  "hanzi": "一下", "pinyin": "yíxià",  "pos": "num.-m.", "english": "used after a verb, indicating an act or an attempt" },
+        { "id": "hsk2_3_niunai", "hanzi": "牛奶", "pinyin": "niúnǎi", "pos": "n.",      "english": "milk" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在家里", "english": "At home" },
+      "audioRef": "03-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "这是谁的房间?",                                       "pinyin": "Zhè shì shéi de fángjiān?",                                  "english": "Whose room is this?" },
+        { "speaker": "B", "hanzi": "这是我和我丈夫的,旁边那个小的房间是我女儿的。",     "pinyin": "Zhè shì wǒ hé wǒ zhàngfu de, pángbiān nàge xiǎo de fángjiān shì wǒ nǚ'ér de.", "english": "It's my husband's and mine. The small one beside it is my daughter's." },
+        { "speaker": "A", "hanzi": "你女儿的房间真漂亮!都是粉色的。",                    "pinyin": "Nǐ nǚ'ér de fángjiān zhēn piàoliang! Dōu shì fěnsè de.",      "english": "Your daughter's room is so pretty! It's all pink." },
+        { "speaker": "B", "hanzi": "是啊,粉色是我女儿最喜欢的颜色。",                    "pinyin": "Shì a, fěnsè shì wǒ nǚ'ér zuì xǐhuan de yánsè.",             "english": "Yes. Pink is her favorite color." }
+      ],
+      "newWords": [
+        { "id": "hsk2_3_fangjian", "hanzi": "房间", "pinyin": "fángjiān", "pos": "n.",    "english": "room" },
+        { "id": "hsk2_3_zhangfu",  "hanzi": "丈夫", "pinyin": "zhàngfu",  "pos": "n.",    "english": "husband" },
+        { "id": "hsk2_3_pangbian", "hanzi": "旁边", "pinyin": "pángbiān", "pos": "n.",    "english": "beside" },
+        { "id": "hsk2_3_zhen",     "hanzi": "真",   "pinyin": "zhēn",     "pos": "adv.",  "english": "really, indeed" },
+        { "id": "hsk2_3_fense",    "hanzi": "粉色", "pinyin": "fěnsè",    "pos": "n.",    "english": "pink" },
+        { "id": "hsk2_3_fen",      "hanzi": "粉",   "pinyin": "fěn",      "pos": "adj.",  "english": "pink" },
+        { "id": "hsk2_3_yanse",    "hanzi": "颜色", "pinyin": "yánsè",    "pos": "n.",    "english": "color" }
+      ]
+    },
+    {
+      "situationNumber": 4,
+      "title": { "hanzi": "在办公室", "english": "In the office" },
+      "audioRef": "03-4",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你看见我的杯子了吗?",          "pinyin": "Nǐ kànjiàn wǒ de bēizi le ma?",          "english": "Have you seen my cup?" },
+        { "speaker": "B", "hanzi": "这里有几个杯子,哪个是你的?",  "pinyin": "Zhèli yǒu jǐ ge bēizi, nǎge shì nǐ de?", "english": "Here are a few cups. Which one is yours?" },
+        { "speaker": "A", "hanzi": "左边那个红色的是我的。",         "pinyin": "Zuǒbian nàge hóngsè de shì wǒ de.",      "english": "The red one on the left is mine." },
+        { "speaker": "B", "hanzi": "给你。",                          "pinyin": "Gěi nǐ.",                                "english": "Here you are." }
+      ],
+      "newWords": [
+        { "id": "hsk2_3_zuobian", "hanzi": "左边", "pinyin": "zuǒbian", "pos": "n.",   "english": "left side" },
+        { "id": "hsk2_3_hongse",  "hanzi": "红色", "pinyin": "hóngsè",  "pos": "n.",   "english": "red" },
+        { "id": "hsk2_3_hong",    "hanzi": "红",   "pinyin": "hóng",    "pos": "adj.", "english": "red" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk2_3_g_de_phrase",
+      "number": 1,
+      "title": { "hanzi": "\"的\"字短语", "english": "The \"的\" Phrase" },
+      "explanation": {
+        "hanzi": "代词、形容词、动词等跟\"的\"组成一个短语,相当于省略了中心语的名词短语。",
+        "english": "\"的\" can follow a pronoun, adjective, or verb to form a phrase equivalent to a nominal phrase with its headword omitted."
+      },
+      "examples": [
+        { "hanzi": "这本书不是我的。(= 我的书)",     "pinyin": "Zhè běn shū bú shì wǒ de.",       "english": "This book isn't mine. (= my book)" },
+        { "hanzi": "这个杯子是昨天买的。(= 昨天买的杯子)", "pinyin": "Zhège bēizi shì zuótiān mǎi de.","english": "This cup was bought yesterday. (= the cup bought yesterday)" },
+        { "hanzi": "这块手表是你的吗?(= 你的手表)", "pinyin": "Zhè kuài shǒubiǎo shì nǐ de ma?","english": "Is this watch yours? (= your watch)" }
+      ]
+    },
+    {
+      "id": "hsk2_3_g_yixia",
+      "number": 2,
+      "title": { "hanzi": "一下", "english": "The Numeral Classifier \"一下\"" },
+      "explanation": {
+        "hanzi": "\"一下\"用在动词后面,表示一次短暂的动作,相当于动词的重叠式 AA(见第8课),宾语可以省略。",
+        "english": "\"一下\" follows a verb to indicate a short action — similar to the reduplicative form (AA) of the verb (see Lesson 8). The object can be omitted."
+      },
+      "patternTable": {
+        "columns": ["Subject", "Verb", "一下", "Object"],
+        "rows": [
+          ["我", "看",   "一下。", ""],
+          ["你", "休息", "一下吧。", ""],
+          ["我", "问",   "一下",   "老师。"]
+        ]
+      }
+    },
+    {
+      "id": "hsk2_3_g_zhen",
+      "number": 3,
+      "title": { "hanzi": "语气副词\"真\"", "english": "The Modal Adverb \"真\"" },
+      "explanation": {
+        "hanzi": "\"真+形容词\"表示感叹的语气,意思是的确、实在。",
+        "english": "\"真 + adjective\" expresses an exclamatory mood, meaning \"really, indeed\"."
+      },
+      "examples": [
+        { "hanzi": "你真好!",             "pinyin": "Nǐ zhēn hǎo!",                 "english": "You're really nice!" },
+        { "hanzi": "今天天气真好!",       "pinyin": "Jīntiān tiānqì zhēn hǎo!",     "english": "What lovely weather today!" },
+        { "hanzi": "你女儿的房间真漂亮!", "pinyin": "Nǐ nǚ'ér de fángjiān zhēn piàoliang!", "english": "Your daughter's room is really pretty!" }
+      ]
+    }
+  ],
+  "exercises": [
+    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
+    {
+      "number": 2, "type": "answer_questions",
+      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "items": [
+        { "hanzi": "爸爸的手表多少钱?",                 "pinyin": "Bàba de shǒubiǎo duōshao qián?" },
+        { "hanzi": "送报纸的来了吗?",                   "pinyin": "Sòng bàozhǐ de lái le ma?" },
+        { "hanzi": "旁边那个小的房间是谁的?",           "pinyin": "Pángbiān nàge xiǎo de fángjiān shì shéi de?" },
+        { "hanzi": "她女儿的房间怎么样?",                "pinyin": "Tā nǚ'ér de fángjiān zěnmeyàng?" },
+        { "hanzi": "哪个杯子是她的?",                    "pinyin": "Nǎge bēizi shì tā de?" }
+      ]
+    }
+  ],
+  "characters": {
+    "strokes": [
+      { "name": { "hanzi": "横折斜钩", "pinyin": "héngzhéxiégōu", "english": "horizontal-turning-slanting hook" }, "shape": "𠃎", "examples": [{ "hanzi": "飞", "pinyin": "fēi", "english": "to fly" }, { "hanzi": "风", "pinyin": "fēng", "english": "wind" }] },
+      { "name": { "hanzi": "弯钩",     "pinyin": "wāngōu",        "english": "crooked hook" },                    "shape": "亅", "examples": [{ "hanzi": "狗", "pinyin": "gǒu", "english": "dog" }, { "hanzi": "猫", "pinyin": "māo", "english": "cat" }] }
+    ],
+    "singleComponentChars": [
+      { "id": "hsk2_3_c_shou",  "hanzi": "手", "pinyin": "shǒu",  "meaning": "hand",       "etymology": "The original form is an image of a hand. It means \"hand\".",                                                  "strokeCount": 4 },
+      { "id": "hsk2_3_c_zhang", "hanzi": "丈", "pinyin": "zhàng", "meaning": "length unit","etymology": "\"丈\" originally referred to an old person holding a walking stick. Now it is a unit of length.",              "strokeCount": 3 },
+      { "id": "hsk2_3_c_fu",    "hanzi": "夫", "pinyin": "fū",    "meaning": "man, husband","etymology": "\"夫\" originally referred to an adult man. Now it usually means \"a man or husband in a family\".",            "strokeCount": 4 }
+    ],
+    "radicals": [
+      { "hanzi": "木", "pinyin": "mù zì páng",     "english": "tree (related to plants)",         "examples": ["杯 bēi (cup)", "椅 yǐ (chair)"] },
+      { "hanzi": "刂", "pinyin": "lì dāo páng",    "english": "knife (related to cutters/knives)","examples": ["别 bié (to leave, to part)", "到 dào (to arrive)"] }
+    ]
+  }
+}

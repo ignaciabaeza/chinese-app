@@ -51,7 +51,7 @@ export default function AuthPage() {
           </div>
           <p
             className="text-xs tracking-widest"
-            style={{ fontFamily: "Cinzel, serif", color: "var(--text-muted)" }}
+            style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--text-muted)" }}
           >
             HÀNYǓ XUÉXÍ
           </p>
@@ -68,7 +68,7 @@ export default function AuthPage() {
               onClick={() => { setMode(m); setError(""); }}
               className="flex-1 py-2 text-sm rounded-md transition-all"
               style={{
-                fontFamily: "Cinzel, serif",
+                fontFamily: "Cormorant Garamond, serif",
                 letterSpacing: "0.05em",
                 background: mode === m ? "var(--accent-gold)" : "transparent",
                 color: mode === m ? "var(--bg-primary)" : "var(--text-muted)",
@@ -85,7 +85,7 @@ export default function AuthPage() {
           <div className="flex flex-col gap-1.5">
             <label
               className="text-xs tracking-wider"
-              style={{ fontFamily: "Cinzel, serif", color: "var(--text-muted)" }}
+              style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--text-muted)" }}
             >
               EMAIL
             </label>
@@ -100,7 +100,7 @@ export default function AuthPage() {
                 background: "rgba(0,0,0,0.3)",
                 border: "1px solid var(--border-subtle)",
                 color: "var(--text-primary)",
-                fontFamily: "Lora, serif",
+                fontFamily: "Spectral, serif",
               }}
               onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent-gold)")}
               onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
@@ -110,7 +110,7 @@ export default function AuthPage() {
           <div className="flex flex-col gap-1.5">
             <label
               className="text-xs tracking-wider"
-              style={{ fontFamily: "Cinzel, serif", color: "var(--text-muted)" }}
+              style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--text-muted)" }}
             >
               PASSWORD
             </label>
@@ -125,7 +125,7 @@ export default function AuthPage() {
                 background: "rgba(0,0,0,0.3)",
                 border: "1px solid var(--border-subtle)",
                 color: "var(--text-primary)",
-                fontFamily: "Lora, serif",
+                fontFamily: "Spectral, serif",
               }}
               onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent-gold)")}
               onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
@@ -139,7 +139,7 @@ export default function AuthPage() {
                 color: "var(--accent-rose)",
                 background: "rgba(196,133,122,0.12)",
                 border: "1px solid rgba(196,133,122,0.3)",
-                fontFamily: "Lora, serif",
+                fontFamily: "Spectral, serif",
               }}
             >
               {error}
@@ -151,7 +151,7 @@ export default function AuthPage() {
             disabled={loading}
             className="w-full py-3 rounded-lg text-sm font-semibold tracking-wider transition-all mt-2"
             style={{
-              fontFamily: "Cinzel, serif",
+              fontFamily: "Cormorant Garamond, serif",
               background: loading
                 ? "rgba(201,168,76,0.5)"
                 : "linear-gradient(135deg, var(--accent-gold), #E8C76A)",
@@ -171,7 +171,7 @@ export default function AuthPage() {
         {mode === "register" && (
           <p
             className="text-center text-xs mt-6"
-            style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}
+            style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}
           >
             Your progress will sync across all your devices.
           </p>

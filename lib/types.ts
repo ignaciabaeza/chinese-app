@@ -138,6 +138,13 @@ export interface CultureNote {
   body: string; // markdown
 }
 
+/** Classroom expressions box — appears in early lessons (HSK 1 lessons 1, 2). */
+export interface ClassroomExpression {
+  hanzi: string;
+  pinyin: string;
+  english: string;
+}
+
 /** A full lesson — the top-level JSON object in /data/hsk{N}/lessons/{M}.json. */
 export interface Lesson {
   /** Stable ID, e.g. "hsk1-3". */
@@ -155,6 +162,7 @@ export interface Lesson {
   characters?: CharacterSection;
   application?: { prompt: Bilingual; activities?: string[] };
   culture?: CultureNote;
+  classroomExpressions?: ClassroomExpression[];
   /** Set when the lesson hasn't been authored yet — page shows a placeholder. */
   stub?: boolean;
 }

@@ -13,10 +13,10 @@ export default function CoursePage() {
   return (
     <div className="space-y-6 animate-fade-up">
       <div className="text-center pt-2 pb-2">
-        <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontFamily: "Cinzel, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
+        <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
           HSK Standard Course
         </h1>
-        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           标准教程 · Beijing Language and Culture University Press
         </p>
       </div>
@@ -33,7 +33,7 @@ export default function CoursePage() {
               style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
             >
               <div className="flex items-baseline justify-between mb-3">
-                <span className="text-3xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>
+                <span className="text-3xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
                   HSK {level}
                 </span>
                 <span className="badge-gold">{summaries.length} lessons</span>
@@ -50,7 +50,7 @@ export default function CoursePage() {
         })}
       </div>
 
-      <p className="text-xs text-center" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+      <p className="text-xs text-center" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
         Lesson content is extracted from your HSK Standard Course textbooks.
         Lessons marked as outline-only are coming soon.
       </p>

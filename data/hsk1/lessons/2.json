@@ -1,0 +1,125 @@
+{
+  "id": "hsk1-2",
+  "level": 1,
+  "number": 2,
+  "title": { "hanzi": "谢谢你", "pinyin": "Xièxie nǐ", "english": "Thank you" },
+  "theme": "Greetings",
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "致谢 (一)", "english": "Saying thanks (1)" },
+      "audioRef": "02-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "谢谢!", "pinyin": "Xièxie!", "english": "Thank you!" },
+        { "speaker": "B", "hanzi": "不谢!", "pinyin": "Bú xiè!", "english": "Sure!" }
+      ],
+      "newWords": [
+        { "id": "hsk1_2_xiexie", "hanzi": "谢谢", "pinyin": "xièxie", "pos": "v.",   "english": "to thank" },
+        { "id": "hsk1_2_bu",     "hanzi": "不",   "pinyin": "bù",     "pos": "adv.", "english": "no, not" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "致谢 (二)", "english": "Saying thanks (2)" },
+      "audioRef": "02-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "谢谢你!", "pinyin": "Xièxie nǐ!", "english": "Thank you!" },
+        { "speaker": "B", "hanzi": "不客气!", "pinyin": "Bú kèqi!",   "english": "You're welcome!" }
+      ],
+      "newWords": [
+        { "id": "hsk1_2_bukeqi", "hanzi": "不客气", "pinyin": "bú kèqi", "pos": "phrase", "english": "you're welcome, don't mention it" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "告别", "english": "Saying goodbye" },
+      "audioRef": "02-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "再见!", "pinyin": "Zàijiàn!", "english": "Goodbye!" },
+        { "speaker": "B", "hanzi": "再见!", "pinyin": "Zàijiàn!", "english": "Bye!" }
+      ],
+      "newWords": [
+        { "id": "hsk1_2_zaijian", "hanzi": "再见", "pinyin": "zàijiàn", "pos": "v.", "english": "to see you around, goodbye" }
+      ]
+    }
+  ],
+  "classroomExpressions": [
+    { "hanzi": "打开书。",    "pinyin": "Dǎkāi shū.",      "english": "Open your book." },
+    { "hanzi": "请大声读。",  "pinyin": "Qǐng dà shēng dú.","english": "Read aloud." },
+    { "hanzi": "再读一遍。",  "pinyin": "Zài dú yí biàn.", "english": "Read once again. / Repeat." },
+    { "hanzi": "一起读。",    "pinyin": "Yìqǐ dú.",        "english": "Read together." },
+    { "hanzi": "有问题吗?",   "pinyin": "Yǒu wèntí ma?",   "english": "Any questions?" }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": {
+          "hanzi": "汉语拼音的声母和韵母 (2)",
+          "english": "Initials and Finals of Chinese Pinyin (2)"
+        },
+        "explanation": {
+          "hanzi": "声母 (Initials): zh ch sh r / z c s。韵母 (Finals): ou iou (iu) / an ian uan üan / en in uen (un) ün / ang iang uang / eng ing ueng / ong iong。",
+          "english": "Initials introduced in this lesson: zh, ch, sh, r / z, c, s. Finals: ou, iou (iu) / an, ian, uan, üan / en, in, uen (un), ün / ang, iang, uang / eng, ing, ueng / ong, iong."
+        },
+        "syllables": [
+          "zh", "ch", "sh", "r", "z", "c", "s",
+          "ou", "iou (iu)", "an", "ian", "uan", "üan",
+          "en", "in", "uen (un)", "ün",
+          "ang", "iang", "uang", "eng", "ing", "ueng", "ong", "iong",
+          "sān", "shān", "zhōng", "yáng", "líng", "cài", "shǒu", "xióng",
+          "yún", "xīng", "yuán", "rén", "chuán", "chuáng", "chī", "rè"
+        ]
+      },
+      {
+        "number": 2,
+        "title": { "hanzi": "汉语的轻声", "english": "The Neutral Tone" },
+        "explanation": {
+          "hanzi": "汉语中除了四声以外,还有一个读得又短又轻的声调,叫作\"轻声\"。例如:妈妈 (māma)、爷爷 (yéye)、奶奶 (nǎinai)、爸爸 (bàba)。",
+          "english": "In addition to the four tones, Mandarin has a short, light tone called the \"neutral tone\". Examples: māma (mom), yéye (grandpa), nǎinai (grandma), bàba (dad)."
+        },
+        "syllables": [
+          "zhuōzi", "fángzi", "yǐzi", "guìzi",
+          "tāmen", "rénmen", "wǒmen", "dìdi",
+          "yīfu", "érzi", "xǐhuan", "rènshi",
+          "xiānsheng", "péngyou", "wǎnshang", "piàoliang"
+        ]
+      },
+      {
+        "number": 3,
+        "title": {
+          "hanzi": "拼音规则 (1):标调法和省写",
+          "english": "Rules of Pinyin (1): Tone Marking and Abbreviation"
+        },
+        "explanation": {
+          "hanzi": "(1) 标调法:声调必须标在元音字母上。当韵母含有两个或更多元音字母时,调号标在开口度较大的元音上(顺序:a、o、e、i、u、ü);但 iu 是 iou 的省略形式,声调标在 u 上。轻声不标调。(2) 省写:iou、uei、uen 前面加声母时,写成 iu、ui、un。",
+          "english": "(1) Tone marks go on the vowel. With multiple vowels, mark the one with the widest mouth (order: a, o, e, i, u, ü). Exception: iu is the abbreviation of iou and the mark goes on u. Neutral-tone syllables aren't marked. (2) When iou, uei, uen follow an initial, they're written iu, ui, un (e.g., niu, gui, lun)."
+        },
+        "syllables": [
+          "xuéxiào", "bāng máng", "lánqiú", "nǚ'ér",
+          "yóu yǒng", "shǒubiǎo", "zhōngyú", "gōngsī",
+          "shíjiān", "shēntǐ", "kǎoshì", "guójiā",
+          "bàozhǐ", "hǎochī", "xièxie", "kèqi",
+          "xiūxi", "shuì jiào", "lúnchuán", "niúnǎi",
+          "píjiǔ", "ánggui", "liúyán", "kāi huì",
+          "tǎolùn", "zúqiú", "Lúndūn", "shīrùn",
+          "cánkuì", "shuǐguǒ", "táozuì", "shùnlì"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      { "name": { "hanzi": "横折", "pinyin": "héngzhé", "english": "horizontal-turning" }, "shape": "乛", "examples": [{ "hanzi": "口", "pinyin": "kǒu", "english": "mouth" }, { "hanzi": "日", "pinyin": "rì", "english": "sun" }] },
+      { "name": { "hanzi": "竖折", "pinyin": "shùzhé",  "english": "vertical-turning" },   "shape": "𠃊", "examples": [{ "hanzi": "山", "pinyin": "shān", "english": "mountain" }, { "hanzi": "出", "pinyin": "chū", "english": "to come/go out" }] },
+      { "name": { "hanzi": "竖钩", "pinyin": "shùgōu",  "english": "vertical hook" },      "shape": "亅", "examples": [{ "hanzi": "丁", "pinyin": "dīng", "english": "man, member of a family" }, { "hanzi": "小", "pinyin": "xiǎo", "english": "small, little" }] }
+    ],
+    "singleComponentChars": [
+      { "id": "hsk1_2_c_kou",  "hanzi": "口", "pinyin": "kǒu",  "meaning": "mouth",       "etymology": "The basic meaning of \"口\" is \"mouth\", and the character is shaped like a mouth.", "strokeCount": 3 },
+      { "id": "hsk1_2_c_jian", "hanzi": "见", "pinyin": "jiàn", "meaning": "to see",      "etymology": "Its traditional form 見 has a 目 (eye) on top and a 人 (person) at the bottom — meaning \"watching with eyes open\".", "strokeCount": 4 },
+      { "id": "hsk1_2_c_shan", "hanzi": "山", "pinyin": "shān", "meaning": "mountain",    "etymology": "\"山\" means \"mountain\" and was originally shaped like rolling mountains.", "strokeCount": 3 },
+      { "id": "hsk1_2_c_xiao", "hanzi": "小", "pinyin": "xiǎo", "meaning": "small",       "etymology": "\"小\" was originally shaped like tiny grains of sand. Now it means \"small\", opposite to 大 (big).", "strokeCount": 3 },
+      { "id": "hsk1_2_c_bu",   "hanzi": "不", "pinyin": "bù",   "meaning": "no, not",     "etymology": "\"不\" originally referred to a tool. Now it's a negative adverb.", "strokeCount": 4 }
+    ]
+  }
+}

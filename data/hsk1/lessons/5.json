@@ -1,0 +1,214 @@
+{
+  "id": "hsk1-5",
+  "level": 1,
+  "number": 5,
+  "title": { "hanzi": "她女儿今年二十岁", "pinyin": "Tā nǚ'ér jīnnián èrshí suì", "english": "Her daughter is 20 years old this year" },
+  "theme": "Family & Age",
+  "warmUp": {
+    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "items": [
+      { "hanzi": "六口人", "pinyin": "liù kǒu rén", "english": "six (family) members" },
+      { "hanzi": "家",     "pinyin": "jiā",         "english": "family, home" },
+      { "hanzi": "女儿",   "pinyin": "nǚ'ér",       "english": "daughter" },
+      { "hanzi": "学生",   "pinyin": "xuésheng",    "english": "student" },
+      { "hanzi": "70岁",   "pinyin": "qīshí suì",   "english": "70 years old" },
+      { "hanzi": "20岁",   "pinyin": "èrshí suì",   "english": "20 years old" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "在学校", "english": "In the school" },
+      "audioRef": "05-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你家有几口人?", "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?", "english": "How many people are there in your family?" },
+        { "speaker": "B", "hanzi": "我家有三口人。", "pinyin": "Wǒ jiā yǒu sān kǒu rén.", "english": "There are three." }
+      ],
+      "newWords": [
+        { "id": "hsk1_5_jia",  "hanzi": "家", "pinyin": "jiā",  "pos": "n.", "english": "family, home" },
+        { "id": "hsk1_5_you",  "hanzi": "有", "pinyin": "yǒu",  "pos": "v.", "english": "to have, there be" },
+        { "id": "hsk1_5_kou",  "hanzi": "口", "pinyin": "kǒu",  "pos": "m.", "english": "a measure word for members of families, etc." }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在办公室", "english": "In the office" },
+      "audioRef": "05-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你女儿几岁了?", "pinyin": "Nǐ nǚ'ér jǐ suì le?", "english": "How old is your daughter?" },
+        { "speaker": "B", "hanzi": "她今年四岁了。", "pinyin": "Tā jīnnián sì suì le.", "english": "She is four years old." }
+      ],
+      "newWords": [
+        { "id": "hsk1_5_nuer",    "hanzi": "女儿", "pinyin": "nǚ'ér",   "pos": "n.",    "english": "daughter" },
+        { "id": "hsk1_5_ji",      "hanzi": "几",   "pinyin": "jǐ",      "pos": "pron.", "english": "how many" },
+        { "id": "hsk1_5_sui",     "hanzi": "岁",   "pinyin": "suì",     "pos": "m.",    "english": "year (of age)" },
+        { "id": "hsk1_5_le",      "hanzi": "了",   "pinyin": "le",      "pos": "part.", "english": "used to indicate a change or a new circumstance" },
+        { "id": "hsk1_5_jinnian", "hanzi": "今年", "pinyin": "jīnnián", "pos": "n.",    "english": "this year" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在办公室", "english": "In the office" },
+      "audioRef": "05-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "李老师多大了?",      "pinyin": "Lǐ lǎoshī duō dà le?",          "english": "How old is Professor Li?" },
+        { "speaker": "B", "hanzi": "她今年50岁了。",      "pinyin": "Tā jīnnián wǔshí suì le.",      "english": "She is 50 years old." },
+        { "speaker": "A", "hanzi": "她女儿呢?",          "pinyin": "Tā nǚ'ér ne?",                  "english": "What about her daughter?" },
+        { "speaker": "B", "hanzi": "她女儿今年20岁。",    "pinyin": "Tā nǚ'ér jīnnián èrshí suì.",   "english": "Her daughter is 20." }
+      ],
+      "newWords": [
+        { "id": "hsk1_5_duo", "hanzi": "多", "pinyin": "duō", "pos": "adv.", "english": "indicating degree or extent" },
+        { "id": "hsk1_5_da",  "hanzi": "大", "pinyin": "dà",  "pos": "adj.", "english": "(of age) old" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_5_g_ji",
+      "number": 1,
+      "title": { "hanzi": "疑问代词\"几\"", "english": "The Interrogative Pronoun \"几\"" },
+      "explanation": {
+        "hanzi": "疑问代词\"几\"用来询问数量的多少,一般用于询问 10 以下的数字。",
+        "english": "The interrogative pronoun \"几\" asks about a quantity, usually less than 10."
+      },
+      "examples": [
+        { "hanzi": "你有几个汉语老师?",  "pinyin": "Nǐ yǒu jǐ ge Hànyǔ lǎoshī?",  "english": "How many Chinese teachers do you have?" },
+        { "hanzi": "李老师家有几口人?",  "pinyin": "Lǐ lǎoshī jiā yǒu jǐ kǒu rén?","english": "How many people are in Professor Li's family?" },
+        { "hanzi": "你女儿几岁了?",      "pinyin": "Nǐ nǚ'ér jǐ suì le?",         "english": "How old is your daughter?" }
+      ]
+    },
+    {
+      "id": "hsk1_5_g_numbers",
+      "number": 2,
+      "title": { "hanzi": "百以内的数字", "english": "Numbers below 100" },
+      "explanation": {
+        "hanzi": "10 = 十 shí, 20 = 二十 èrshí, 30 = 三十 sānshí … 90 = 九十 jiǔshí。组合形式:23 = 二十三 èrshísān, 56 = 五十六 wǔshíliù, 88 = 八十八 bāshíbā, 99 = 九十九 jiǔshíjiǔ。",
+        "english": "Tens: 10 shí, 20 èrshí, 30 sānshí, 40 sìshí, 50 wǔshí, 60 liùshí, 70 qīshí, 80 bāshí, 90 jiǔshí. Compounds: 23 èrshísān, 56 wǔshíliù, 88 bāshíbā, 99 jiǔshíjiǔ."
+      }
+    },
+    {
+      "id": "hsk1_5_g_le",
+      "number": 3,
+      "title": { "hanzi": "\"了\"表变化", "english": "\"了\" Indicating a Change" },
+      "explanation": {
+        "hanzi": "\"了\"用于句末,表示变化或新情况的出现。",
+        "english": "\"了\" at the end of a sentence indicates a change or the occurrence of a new situation."
+      },
+      "examples": [
+        { "hanzi": "李老师今年50岁了。",        "pinyin": "Lǐ lǎoshī jīnnián wǔshí suì le.",          "english": "Professor Li is 50 this year." },
+        { "hanzi": "我朋友的女儿今年四岁了。",  "pinyin": "Wǒ péngyou de nǚ'ér jīnnián sì suì le.",  "english": "My friend's daughter is four this year." },
+        { "hanzi": "你女儿几岁了?",             "pinyin": "Nǐ nǚ'ér jǐ suì le?",                     "english": "How old is your daughter now?" }
+      ]
+    },
+    {
+      "id": "hsk1_5_g_duoda",
+      "number": 4,
+      "title": { "hanzi": "\"多+大\"表示疑问", "english": "The Interrogative Phrase \"多+大\"" },
+      "explanation": {
+        "hanzi": "\"多+大\"在句中表示疑问,用于询问年龄。",
+        "english": "\"多 + 大\" is used to ask about someone's age."
+      },
+      "examples": [
+        { "hanzi": "你多大了?",         "pinyin": "Nǐ duō dà le?",            "english": "How old are you?" },
+        { "hanzi": "你女儿今年多大了?", "pinyin": "Nǐ nǚ'ér jīnnián duō dà le?","english": "How old is your daughter this year?" },
+        { "hanzi": "李老师多大了?",     "pinyin": "Lǐ lǎoshī duō dà le?",      "english": "How old is Professor Li?" }
+      ]
+    }
+  ],
+  "exercises": [
+    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
+    {
+      "number": 2, "type": "answer_questions",
+      "prompt": { "hanzi": "根据实际情况回答问题", "english": "Answer the questions according to the actual situations." },
+      "items": [
+        { "hanzi": "你家有几口人?",              "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?" },
+        { "hanzi": "你今年多大了?",              "pinyin": "Nǐ jīnnián duō dà le?" },
+        { "hanzi": "你的汉语老师今年多大了?",    "pinyin": "Nǐ de Hànyǔ lǎoshī jīnnián duō dà le?" },
+        { "hanzi": "你的中国朋友家有几口人?",    "pinyin": "Nǐ de Zhōngguó péngyou jiā yǒu jǐ kǒu rén?" },
+        { "hanzi": "你的中国朋友今年多大?",      "pinyin": "Nǐ de Zhōngguó péngyou jīnnián duō dà?" }
+      ]
+    },
+    {
+      "number": 3, "type": "describe_pictures",
+      "prompt": { "hanzi": "用本课新学的语言点和词语描述图片", "english": "Describe the pictures using the newly-learned language points and words." },
+      "items": [
+        { "hanzi": "他是____,他今年____了。",      "english": "He is ____, he is ____ this year." },
+        { "hanzi": "她家有____人。",                "english": "There are ____ people in her family." },
+        { "hanzi": "他是我们的汉语____,他今年____了。","english": "He is our Chinese ____, he is ____ this year." },
+        { "hanzi": "这是张老师的____,她今年____了。","english": "This is Professor Zhang's ____, she is ____ this year." }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": { "hanzi": "儿化的发音", "english": "The Retroflex Final" },
+        "explanation": {
+          "hanzi": "汉语中的\"儿\"可以和前面的音节结合成为一个音节,变成\"儿化音\"。汉字书写时表示为\"汉字+儿\",拼音书写时在该汉字的拼音后加 r。",
+          "english": "\"儿 (ér)\" can fuse with a preceding syllable to form a retroflex syllable. It's written as \"character + 儿\" and spelt as \"syllable + r\" in pinyin."
+        },
+        "syllables": ["xiǎoháir", "xiǎo niǎor", "fànguǎnr", "xiāngshuǐr"]
+      },
+      {
+        "number": 2,
+        "title": { "hanzi": "发音辨析:以 i、u、ü 开头的韵母", "english": "Differentiation: pronunciation of finals beginning with i, u, ü" },
+        "syllables": [
+          "a — ia", "e — ie", "ao — iao", "ou — iou (iu)", "an — ian", "ang — iang", "ong — iong",
+          "a — ua", "ai — uai", "ei — uei (ui)", "an — uan", "en — uen (un)", "ang — uang", "eng — ueng",
+          "e — üe", "an — üan", "en — ün"
+        ]
+      },
+      {
+        "number": 3,
+        "title": { "hanzi": "声母送气音和不送气音发音的区别", "english": "Difference between Aspirated and Unaspirated Initials" },
+        "explanation": {
+          "hanzi": "汉语声母的发音有送气和不送气的区别:b–p、d–t、g–k、j–q、z–c、zh–ch。以上各组声母中前一个是不送气音,后一个是送气音。",
+          "english": "Chinese has aspirated/unaspirated pairs: b–p, d–t, g–k, j–q, z–c, zh–ch. The first in each pair is unaspirated; the second is aspirated."
+        },
+        "syllables": [
+          "b — p", "d — t", "g — k", "j — q", "z — c", "zh — ch",
+          "bàng — pàng", "dù — tù", "gǒu — kǒu",
+          "jī — qī", "zì — cì", "zhuō — chē"
+        ]
+      },
+      {
+        "number": 4,
+        "title": { "hanzi": "拼音规则(4):隔音符号", "english": "Rules of Pinyin (4): syllable-dividing mark" },
+        "explanation": {
+          "hanzi": "a、o、e 开头的音节连接在其他音节后面时,为了避免音节的界限发生混淆,用隔音符号(')隔开,例如 pí'ǎo(皮袄)。",
+          "english": "When a syllable beginning with a, o, or e follows another, an apostrophe (') divides them — e.g. pí'ǎo (皮袄, fur-lined jacket)."
+        },
+        "syllables": [
+          "piāo — pí'ǎo", "jiē — jī'è", "fānàn — fān'àn",
+          "xiān — Xī'ān", "jiāng — jī'áng", "fǎngǎn — fāng'àn"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      { "name": { "hanzi": "横撇", "pinyin": "héngpiě", "english": "horizontal to left-falling" }, "shape": "𠃌", "examples": [{ "hanzi": "水", "pinyin": "shuǐ", "english": "water" }, { "hanzi": "又", "pinyin": "yòu", "english": "again" }] },
+      { "name": { "hanzi": "撇点", "pinyin": "piědiǎn", "english": "left-falling to dot" },        "shape": "𡿨", "examples": [{ "hanzi": "女", "pinyin": "nǚ", "english": "female, woman" }, { "hanzi": "好", "pinyin": "hǎo", "english": "good, fine" }] }
+    ],
+    "singleComponentChars": [
+      { "id": "hsk1_5_c_shui", "hanzi": "水", "pinyin": "shuǐ", "meaning": "water",       "etymology": "\"水\" originally looked like a mountain stream, representing the shape of flowing water.", "strokeCount": 4 },
+      { "id": "hsk1_5_c_nv",   "hanzi": "女", "pinyin": "nǚ",   "meaning": "woman",       "etymology": "\"女\" originally looked like a woman kneeling on the ground, meaning \"woman\".",            "strokeCount": 3 },
+      { "id": "hsk1_5_c_le",   "hanzi": "了", "pinyin": "le",   "meaning": "particle",    "etymology": "\"了\" originally looked like a reversed unborn-foetus shape (head down). With head up it referred to a baby already born. Now it's a function word.", "strokeCount": 2 },
+      { "id": "hsk1_5_c_da",   "hanzi": "大", "pinyin": "dà",   "meaning": "big",         "etymology": "\"大\" originally depicted a person standing with arms and legs outstretched. Now it means \"big\", opposite of 小.", "strokeCount": 3 }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组,根据实际情况进行问答练习。", "english": "Work in pairs and ask and answer questions according to the actual situations." },
+    "activities": [
+      "Supplementary words: 爷爷 yéye, 奶奶 nǎinai, 爸爸 bàba, 妈妈 māma, 哥哥 gēge, 姐姐 jiějie, 弟弟 dìdi, 妹妹 mèimei",
+      "A: 你家有几口人? B: 我家有……",
+      "A: 你/你爸爸/你妈妈……今年多大了? B: 我/我爸爸/我妈妈……今年……",
+      "Group work: prepare a family photo and introduce each member."
+    ]
+  },
+  "culture": {
+    "title": { "hanzi": "中国人对年龄的询问方法", "english": "Ways of Asking a Chinese Person's Age" },
+    "body": "In traditional Chinese culture, age isn't considered private — it's a topic often brought up in social settings. Different ways are used depending on who you're asking.\n\n- For a child under 10: 你今年几岁了? (Nǐ jīnnián jǐ suì le? — \"How old are you?\")\n- For a young person or someone your own age: 你今年多大了? (Nǐ jīnnián duō dà le?)\n- For an older person (out of respect): 您今年多大年纪了? (Nín jīnnián duō dà niánjì le? — \"What's your age?\")"
+  }
+}

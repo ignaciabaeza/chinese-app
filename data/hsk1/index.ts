@@ -6,7 +6,11 @@
 // Jiang Liping, lead author, 2014). Table of contents pages 14–17.
 
 import type { Lesson, LessonSummary } from "@/lib/types";
+import lesson1 from "./lessons/1.json";
+import lesson2 from "./lessons/2.json";
 import lesson3 from "./lessons/3.json";
+import lesson4 from "./lessons/4.json";
+import lesson5 from "./lessons/5.json";
 
 type StubMeta = {
   number: number;
@@ -118,7 +122,13 @@ const STUBS: StubMeta[] = [
   },
 ];
 
-const REAL_LESSONS: Lesson[] = [lesson3 as Lesson];
+const REAL_LESSONS: Lesson[] = [
+  lesson1 as Lesson,
+  lesson2 as Lesson,
+  lesson3 as Lesson,
+  lesson4 as Lesson,
+  lesson5 as Lesson,
+];
 
 /** All 15 HSK 1 lessons, in order. Real lessons take precedence over stubs. */
 export const hsk1Lessons: Lesson[] = Array.from({ length: 15 }, (_, i) => {

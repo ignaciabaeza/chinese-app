@@ -49,8 +49,8 @@ export default function Navigation() {
     <nav
       className="sticky top-0 z-50 backdrop-blur-sm"
       style={{
-        background: "rgba(45, 53, 97, 0.96)",
-        borderBottom: "1px solid rgba(201,168,76,0.35)",
+        background: "rgba(247, 242, 230, 0.86)",
+        borderBottom: "1px solid var(--paper-edge)",
       }}
     >
       <div className="max-w-6xl mx-auto px-4">
@@ -59,13 +59,13 @@ export default function Navigation() {
             <CloudMotif className="animate-drift opacity-70" />
             <span
               className="text-xl font-bold tracking-wide"
-              style={{ fontFamily: "Cinzel, serif", color: "var(--accent-gold)" }}
+              style={{ fontFamily: "Ma Shan Zheng, serif", color: "var(--ink)" }}
             >
               汉语学习
             </span>
             <span
               className="hidden md:block text-xs tracking-widest"
-              style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+              style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}
             >
               HÀNYǓ XUÉXÍ
             </span>
@@ -82,12 +82,12 @@ export default function Navigation() {
                   href={link.href}
                   className="px-3 py-1.5 text-sm transition-all"
                   style={{
-                    fontFamily: "Cinzel, serif",
+                    fontFamily: "Cormorant Garamond, serif",
                     letterSpacing: "0.06em",
                     color: active ? "var(--accent-gold)" : "var(--text-muted)",
                     borderBottom: active ? "1.5px solid var(--accent-gold)" : "1.5px solid transparent",
                   }}
-                  onMouseEnter={(e) => !active && (e.currentTarget.style.color = "var(--accent-crane-white)")}
+                  onMouseEnter={(e) => !active && (e.currentTarget.style.color = "var(--ink)")}
                   onMouseLeave={(e) => !active && (e.currentTarget.style.color = "var(--text-muted)")}
                 >
                   {link.label}
@@ -102,7 +102,7 @@ export default function Navigation() {
               <>
                 <span
                   className="text-xs px-2"
-                  style={{ color: "var(--text-muted)", fontFamily: "Lora, serif", maxWidth: "140px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                  style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif", maxWidth: "140px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
                   title={user.email}
                 >
                   {user.email}
@@ -111,7 +111,7 @@ export default function Navigation() {
                   onClick={handleLogout}
                   className="text-xs px-3 py-1.5 rounded transition-all"
                   style={{
-                    fontFamily: "Cinzel, serif",
+                    fontFamily: "Cormorant Garamond, serif",
                     letterSpacing: "0.05em",
                     color: "var(--text-muted)",
                     border: "1px solid var(--border-subtle)",
@@ -134,7 +134,7 @@ export default function Navigation() {
                 href="/auth"
                 className="text-xs px-3 py-1.5 rounded transition-all"
                 style={{
-                  fontFamily: "Cinzel, serif",
+                  fontFamily: "Cormorant Garamond, serif",
                   letterSpacing: "0.05em",
                   color: "var(--accent-gold)",
                   border: "1px solid rgba(201,168,76,0.5)",
@@ -171,7 +171,7 @@ export default function Navigation() {
                   onClick={() => setMobileOpen(false)}
                   className="px-3 py-2.5 text-sm rounded"
                   style={{
-                    fontFamily: "Cinzel, serif",
+                    fontFamily: "Cormorant Garamond, serif",
                     letterSpacing: "0.06em",
                     color: active ? "var(--accent-gold)" : "var(--text-muted)",
                     background: active ? "rgba(201,168,76,0.08)" : "transparent",
@@ -187,7 +187,7 @@ export default function Navigation() {
                 <div className="px-3 flex items-center justify-between">
                   <span
                     className="text-xs truncate"
-                    style={{ color: "var(--text-muted)", fontFamily: "Lora, serif", maxWidth: "180px" }}
+                    style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif", maxWidth: "180px" }}
                   >
                     {user.email}
                   </span>
@@ -195,7 +195,7 @@ export default function Navigation() {
                     onClick={handleLogout}
                     className="text-xs px-3 py-1.5 rounded"
                     style={{
-                      fontFamily: "Cinzel, serif",
+                      fontFamily: "Cormorant Garamond, serif",
                       color: "var(--accent-rose)",
                       border: "1px solid rgba(196,133,122,0.4)",
                       background: "transparent",
@@ -210,7 +210,7 @@ export default function Navigation() {
                   onClick={() => setMobileOpen(false)}
                   className="mx-2 px-3 py-2.5 text-sm rounded flex items-center justify-center"
                   style={{
-                    fontFamily: "Cinzel, serif",
+                    fontFamily: "Cormorant Garamond, serif",
                     letterSpacing: "0.06em",
                     color: "var(--accent-gold)",
                     background: "rgba(201,168,76,0.08)",

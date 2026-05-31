@@ -2,10 +2,11 @@
 
 import type { HSKLevel, Lesson, LessonSummary, Word, CharacterTaught, GrammarPoint } from "@/lib/types";
 import { hsk1Lessons, hsk1Summaries } from "@/data/hsk1";
+import { hsk2Lessons, hsk2Summaries } from "@/data/hsk2";
 
 const LESSONS_BY_LEVEL: Record<HSKLevel, Lesson[]> = {
   1: hsk1Lessons,
-  2: [],
+  2: hsk2Lessons,
   3: [],
   4: [],
   5: [],
@@ -14,7 +15,7 @@ const LESSONS_BY_LEVEL: Record<HSKLevel, Lesson[]> = {
 
 const SUMMARIES_BY_LEVEL: Record<HSKLevel, () => LessonSummary[]> = {
   1: hsk1Summaries,
-  2: () => [],
+  2: hsk2Summaries,
   3: () => [],
   4: () => [],
   5: () => [],

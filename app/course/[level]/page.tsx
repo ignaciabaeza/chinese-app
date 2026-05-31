@@ -16,14 +16,14 @@ export default async function LevelPage({ params }: { params: Promise<{ level: s
         <Link
           href="/course"
           className="text-xs"
-          style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+          style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}
         >
           ← All levels
         </Link>
-        <h1 className="text-2xl sm:text-3xl mt-2 mb-1" style={{ fontFamily: "Cinzel, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
+        <h1 className="text-2xl sm:text-3xl mt-2 mb-1" style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
           HSK {level}
         </h1>
-        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {summaries.length} lessons
         </p>
       </div>
@@ -33,7 +33,7 @@ export default async function LevelPage({ params }: { params: Promise<{ level: s
           className="rounded-2xl p-8 text-center"
           style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
         >
-          <p style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+          <p style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
             HSK {level} content is coming soon.
           </p>
         </div>
@@ -58,7 +58,7 @@ export default async function LevelPage({ params }: { params: Promise<{ level: s
                       border: `1px solid ${s.stub ? "var(--border-subtle)" : "rgba(201,168,76,0.5)"}`,
                     }}
                   >
-                    <span className="text-lg font-bold" style={{ color: s.stub ? "var(--text-muted)" : "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>
+                    <span className="text-lg font-bold" style={{ color: s.stub ? "var(--text-muted)" : "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
                       {s.number}
                     </span>
                   </div>
@@ -71,7 +71,7 @@ export default async function LevelPage({ params }: { params: Promise<{ level: s
                         {s.title.pinyin}
                       </span>
                     </div>
-                    <div className="text-sm mt-0.5" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+                    <div className="text-sm mt-0.5" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
                       {s.title.english}
                     </div>
                     <div className="text-xs mt-1 flex gap-3" style={{ color: "var(--text-muted)" }}>
@@ -81,7 +81,7 @@ export default async function LevelPage({ params }: { params: Promise<{ level: s
                     </div>
                   </div>
                   {s.stub ? (
-                    <span className="text-xs shrink-0" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+                    <span className="text-xs shrink-0" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
                       outline
                     </span>
                   ) : (

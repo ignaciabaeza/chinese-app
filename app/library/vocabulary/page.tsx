@@ -37,10 +37,10 @@ export default function VocabularyPage() {
   return (
     <div className="space-y-5 animate-fade-up">
       <div>
-        <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontFamily: "Cinzel, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
+        <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
           Vocabulary
         </h1>
-        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {filtered.length} of {allWords.length} words
         </p>
       </div>
@@ -56,7 +56,7 @@ export default function VocabularyPage() {
             background: "var(--bg-secondary)",
             border: "1px solid var(--border-subtle)",
             color: "var(--text-primary)",
-            fontFamily: "Lora, serif",
+            fontFamily: "Spectral, serif",
             outline: "none",
           }}
         />
@@ -68,7 +68,7 @@ export default function VocabularyPage() {
               onClick={() => { setLevel(lvl as HSKLevel | "all"); setLessonNum("all"); }}
               className="px-3 py-1.5 rounded-lg text-xs"
               style={{
-                fontFamily: "Cinzel, serif",
+                fontFamily: "Cormorant Garamond, serif",
                 background: level === lvl ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
                 color: level === lvl ? "var(--bg-primary)" : "var(--text-muted)",
                 border: level === lvl ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
@@ -85,7 +85,7 @@ export default function VocabularyPage() {
               onClick={() => setLessonNum("all")}
               className="px-3 py-1 rounded-md text-xs"
               style={{
-                fontFamily: "Cinzel, serif",
+                fontFamily: "Cormorant Garamond, serif",
                 background: lessonNum === "all" ? "rgba(201,168,76,0.15)" : "transparent",
                 color: lessonNum === "all" ? "var(--accent-gold)" : "var(--text-muted)",
                 border: "1px solid var(--border-subtle)",
@@ -99,7 +99,7 @@ export default function VocabularyPage() {
                 onClick={() => setLessonNum(n)}
                 className="w-8 h-7 rounded-md text-xs font-bold"
                 style={{
-                  fontFamily: "Cinzel, serif",
+                  fontFamily: "Cormorant Garamond, serif",
                   background: lessonNum === n ? "rgba(201,168,76,0.15)" : "transparent",
                   color: lessonNum === n ? "var(--accent-gold)" : "var(--text-muted)",
                   border: "1px solid var(--border-subtle)",
@@ -117,7 +117,7 @@ export default function VocabularyPage() {
           className="rounded-2xl p-8 text-center"
           style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
         >
-          <p style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>No words match.</p>
+          <p style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>No words match.</p>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 gap-2">
@@ -135,18 +135,18 @@ export default function VocabularyPage() {
                   <span className="font-pinyin text-sm" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
                     {w.pinyin}
                   </span>
-                  <span className="text-xs" style={{ color: "var(--accent-gold)", opacity: 0.7, fontFamily: "Cinzel, serif" }}>
+                  <span className="text-xs" style={{ color: "var(--accent-gold)", opacity: 0.7, fontFamily: "Cormorant Garamond, serif" }}>
                     {w.pos}
                   </span>
                 </div>
-                <div className="text-sm mt-0.5" style={{ color: "var(--text-primary)", fontFamily: "Lora, serif" }}>
+                <div className="text-sm mt-0.5" style={{ color: "var(--text-primary)", fontFamily: "Spectral, serif" }}>
                   {w.english}
                 </div>
               </div>
               <Link
                 href={`/course/${w.level}/lesson/${w.lessonNumber}`}
                 className="text-xs shrink-0"
-                style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}
+                style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}
               >
                 L{w.lessonNumber}
               </Link>

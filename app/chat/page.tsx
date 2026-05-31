@@ -111,7 +111,7 @@ export default function ChatPage() {
           <span style={{ color: "var(--accent-gold)", fontSize: "1.1rem" }}>先</span>
         </div>
         <div>
-          <h1 style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", fontSize: "1.1rem", letterSpacing: "0.06em" }}>
+          <h1 style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", fontSize: "1.1rem", letterSpacing: "0.06em" }}>
             AI Chinese Tutor
           </h1>
           <p className="text-xs" style={{ color: "var(--text-muted)" }}>
@@ -131,7 +131,7 @@ export default function ChatPage() {
               >
                 学
               </div>
-              <p style={{ color: "var(--text-muted)", fontFamily: "Lora, serif", fontSize: "0.95rem" }}>
+              <p style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif", fontSize: "0.95rem" }}>
                 Ask me anything about Chinese!
               </p>
             </div>
@@ -145,7 +145,7 @@ export default function ChatPage() {
                     background: "var(--bg-secondary)",
                     border: "1px solid var(--border-subtle)",
                     color: "var(--text-muted)",
-                    fontFamily: "Lora, serif",
+                    fontFamily: "Spectral, serif",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = "rgba(201,168,76,0.45)";
@@ -187,14 +187,14 @@ export default function ChatPage() {
                       border: "1px solid rgba(201,168,76,0.25)",
                       color: "var(--text-primary)",
                       borderBottomRightRadius: "0.25rem",
-                      fontFamily: "Lora, serif",
+                      fontFamily: "Spectral, serif",
                     }
                   : {
                       background: "var(--bg-secondary)",
                       border: "1px solid var(--border-subtle)",
                       color: "var(--text-primary)",
                       borderBottomLeftRadius: "0.25rem",
-                      fontFamily: "Lora, serif",
+                      fontFamily: "Spectral, serif",
                     }
               }
             >
@@ -228,7 +228,7 @@ export default function ChatPage() {
           style={{
             background: "transparent",
             color: "var(--text-primary)",
-            fontFamily: "Lora, serif",
+            fontFamily: "Spectral, serif",
             maxHeight: "8rem",
           }}
           onInput={(e) => {
@@ -257,7 +257,7 @@ export default function ChatPage() {
           )}
         </button>
       </div>
-      <p className="text-xs text-center mt-2" style={{ color: "rgba(160,152,128,0.5)", fontFamily: "Cinzel, serif" }}>
+      <p className="text-xs text-center mt-2" style={{ color: "rgba(160,152,128,0.5)", fontFamily: "Cormorant Garamond, serif" }}>
         Enter to send · Shift+Enter for new line
       </p>
     </div>

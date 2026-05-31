@@ -149,10 +149,10 @@ function FlashcardsInner() {
   if (pool.length === 0) {
     return (
       <div className="max-w-md mx-auto text-center pt-8 space-y-4">
-        <h1 className="text-xl" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>
+        <h1 className="text-xl" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
           Nothing to study yet
         </h1>
-        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {scope.lessonNumber !== null
             ? "This lesson has no authored vocabulary yet."
             : "No vocabulary has been authored in this scope yet."}
@@ -160,7 +160,7 @@ function FlashcardsInner() {
         <Link
           href="/course"
           className="inline-block px-4 py-2 rounded-lg text-sm"
-          style={{ border: "1px solid var(--accent-gold)", color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}
+          style={{ border: "1px solid var(--accent-gold)", color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}
         >
           Back to Course
         </Link>
@@ -200,12 +200,12 @@ function FlashcardsInner() {
         <div className="flex-1 progress-ink">
           <div className="progress-ink-fill" style={{ width: `${(index / queue.length) * 100}%` }} />
         </div>
-        <span className="text-xs shrink-0" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+        <span className="text-xs shrink-0" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
           {index + 1} / {queue.length}
         </span>
       </div>
 
-      <div className="flex justify-center gap-6 text-sm" style={{ fontFamily: "Cinzel, serif" }}>
+      <div className="flex justify-center gap-6 text-sm" style={{ fontFamily: "Cormorant Garamond, serif" }}>
         <span style={{ color: "var(--accent-gold)" }}>✓ {stats.correct}</span>
         <span style={{ color: "var(--accent-rose)" }}>✗ {stats.incorrect}</span>
         {stats.correct + stats.incorrect > 0 && (
@@ -241,7 +241,7 @@ function FlashcardsInner() {
                 <button
                   onClick={(e) => { e.stopPropagation(); setShowPinyin(true); }}
                   className="text-xs px-3 py-1 rounded-full"
-                  style={{ color: "rgba(201,168,76,0.7)", border: "1px solid rgba(201,168,76,0.3)", fontFamily: "Cinzel, serif", letterSpacing: "0.06em" }}
+                  style={{ color: "rgba(201,168,76,0.7)", border: "1px solid rgba(201,168,76,0.3)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.06em" }}
                 >
                   show pinyin
                 </button>
@@ -283,7 +283,7 @@ function FlashcardsInner() {
               background: "rgba(196,133,122,0.08)",
               border: "1.5px solid rgba(196,133,122,0.5)",
               color: "var(--accent-rose)",
-              fontFamily: "Cinzel, serif",
+              fontFamily: "Cormorant Garamond, serif",
               letterSpacing: "0.05em",
             }}
           >
@@ -296,7 +296,7 @@ function FlashcardsInner() {
               background: "rgba(201,168,76,0.08)",
               border: "1.5px solid var(--accent-gold)",
               color: "var(--accent-gold)",
-              fontFamily: "Cinzel, serif",
+              fontFamily: "Cormorant Garamond, serif",
               letterSpacing: "0.05em",
             }}
           >
@@ -311,7 +311,7 @@ function FlashcardsInner() {
             background: "transparent",
             border: "1.5px solid var(--accent-gold)",
             color: "var(--accent-gold)",
-            fontFamily: "Cinzel, serif",
+            fontFamily: "Cormorant Garamond, serif",
             letterSpacing: "0.08em",
           }}
         >
@@ -322,7 +322,7 @@ function FlashcardsInner() {
       <button
         onClick={() => setShowSetup(true)}
         className="w-full text-xs py-1"
-        style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+        style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}
       >
         ← Back to setup
       </button>
@@ -351,7 +351,7 @@ function Setup({
   return (
     <div className="max-w-md mx-auto space-y-6 animate-fade-up">
       <div className="text-center">
-        <h1 className="text-2xl" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", letterSpacing: "0.08em" }}>
+        <h1 className="text-2xl" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.08em" }}>
           Flashcards
         </h1>
         <p className="text-sm mt-2" style={{ color: "var(--text-muted)" }}>
@@ -366,7 +366,7 @@ function Setup({
         {/* Quick scope nav (when at the all-HSK level) */}
         {scope.level === "all" && (
           <div>
-            <label className="text-xs block mb-2 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+            <label className="text-xs block mb-2 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
               Scope
             </label>
             <div className="flex gap-2 flex-wrap">
@@ -375,7 +375,7 @@ function Setup({
                   key={lvl}
                   href={`/practice/flashcards?scope=hsk${lvl}`}
                   className="px-3 py-1.5 rounded-lg text-xs"
-                  style={{ background: "rgba(201,168,76,0.06)", border: "1px solid var(--border-subtle)", color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}
+                  style={{ background: "rgba(201,168,76,0.06)", border: "1px solid var(--border-subtle)", color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}
                 >
                   HSK {lvl}
                 </Link>
@@ -387,7 +387,7 @@ function Setup({
         {/* Lesson picker (when scoped to a level) */}
         {scope.level !== "all" && summaries.length > 0 && (
           <div>
-            <label className="text-xs block mb-2 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+            <label className="text-xs block mb-2 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
               By Lesson
             </label>
             <div className="flex gap-1.5 flex-wrap">
@@ -402,7 +402,7 @@ function Setup({
                       background: active ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
                       color: active ? "var(--bg-primary)" : "var(--text-muted)",
                       border: active ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
-                      fontFamily: "Cinzel, serif",
+                      fontFamily: "Cormorant Garamond, serif",
                     }}
                   >
                     {s.number}
@@ -416,7 +416,7 @@ function Setup({
                   background: scope.lessonNumber === null ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
                   color: scope.lessonNumber === null ? "var(--bg-primary)" : "var(--text-muted)",
                   border: scope.lessonNumber === null ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
-                  fontFamily: "Cinzel, serif",
+                  fontFamily: "Cormorant Garamond, serif",
                 }}
               >
                 All
@@ -426,7 +426,7 @@ function Setup({
         )}
 
         <div>
-          <label className="text-xs block mb-2 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+          <label className="text-xs block mb-2 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
             Mode
           </label>
           <div className="grid grid-cols-2 gap-2">
@@ -439,7 +439,7 @@ function Setup({
                 onClick={() => setMode(v)}
                 className="py-3 rounded-lg text-xs"
                 style={{
-                  fontFamily: "Cinzel, serif",
+                  fontFamily: "Cormorant Garamond, serif",
                   background: mode === v ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
                   color: mode === v ? "var(--bg-primary)" : "var(--text-muted)",
                   border: mode === v ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
@@ -453,7 +453,7 @@ function Setup({
         </div>
 
         <div>
-          <label className="text-xs block mb-2 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+          <label className="text-xs block mb-2 tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
             Session Size
           </label>
           <div className="grid grid-cols-3 gap-2">
@@ -463,7 +463,7 @@ function Setup({
                 onClick={() => setSize(n)}
                 className="py-2 rounded-lg text-xs"
                 style={{
-                  fontFamily: "Cinzel, serif",
+                  fontFamily: "Cormorant Garamond, serif",
                   background: size === n ? "var(--accent-gold)" : "rgba(201,168,76,0.06)",
                   color: size === n ? "var(--bg-primary)" : "var(--text-muted)",
                   border: size === n ? "1.5px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
@@ -483,7 +483,7 @@ function Setup({
           background: "transparent",
           border: "1.5px solid var(--accent-gold)",
           color: "var(--accent-gold)",
-          fontFamily: "Cinzel, serif",
+          fontFamily: "Cormorant Garamond, serif",
           letterSpacing: "0.1em",
         }}
       >
@@ -510,7 +510,7 @@ function Finished({
       <div className="text-5xl py-4" style={{ color: acc >= 80 ? "var(--accent-gold)" : "var(--accent-rose)" }}>
         {acc >= 80 ? "✦" : acc >= 50 ? "◈" : "◉"}
       </div>
-      <h2 style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif", fontSize: "1.4rem", letterSpacing: "0.08em" }}>
+      <h2 style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", fontSize: "1.4rem", letterSpacing: "0.08em" }}>
         Session Complete
       </h2>
       <div
@@ -518,15 +518,15 @@ function Finished({
         style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
       >
         <div>
-          <div className="text-2xl font-bold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>{total}</div>
+          <div className="text-2xl font-bold" style={{ color: "var(--text-primary)", fontFamily: "Cormorant Garamond, serif" }}>{total}</div>
           <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>Cards</div>
         </div>
         <div>
-          <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{stats.correct}</div>
+          <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>{stats.correct}</div>
           <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>Correct</div>
         </div>
         <div>
-          <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>{acc}%</div>
+          <div className="text-2xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>{acc}%</div>
           <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>Accuracy</div>
         </div>
       </div>
@@ -538,7 +538,7 @@ function Finished({
           background: "transparent",
           border: "1.5px solid var(--accent-gold)",
           color: "var(--accent-gold)",
-          fontFamily: "Cinzel, serif",
+          fontFamily: "Cormorant Garamond, serif",
           letterSpacing: "0.08em",
         }}
       >
@@ -549,7 +549,7 @@ function Finished({
         <div className="text-left pt-2">
           <div className="flex items-center gap-3 mb-3">
             <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
-            <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+            <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
               Reviewed · {learnedWords.length}
             </span>
             <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
@@ -565,14 +565,14 @@ function Finished({
                   <span className="text-2xl font-bold leading-none" style={{ color: "var(--accent-crane-white)", fontFamily: "Noto Serif SC, serif" }}>
                     {w.hanzi}
                   </span>
-                  <span className="text-xs shrink-0" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>
+                  <span className="text-xs shrink-0" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
                     {w.level}
                   </span>
                 </div>
                 <span className="text-xs font-pinyin" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
                   {w.pinyin}
                 </span>
-                <div className="text-xs leading-snug mt-1" style={{ color: "var(--text-primary)", opacity: 0.85, fontFamily: "Lora, serif" }}>
+                <div className="text-xs leading-snug mt-1" style={{ color: "var(--text-primary)", opacity: 0.85, fontFamily: "Spectral, serif" }}>
                   {w.english}
                 </div>
               </div>

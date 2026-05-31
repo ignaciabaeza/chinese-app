@@ -35,10 +35,10 @@ export default function Dashboard() {
     <div className="space-y-7 animate-fade-up">
       {/* Header */}
       <div className="text-center pt-2 pb-2">
-        <h1 className="text-3xl sm:text-4xl mb-2" style={{ fontFamily: "Cinzel, serif", color: "var(--accent-gold)" }}>
+        <h1 className="text-3xl sm:text-4xl mb-2" style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--accent-gold)" }}>
           你好
         </h1>
-        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Lora, serif" }}>
+        <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           HSK Standard Course · {totalAuthored} lessons available
         </p>
       </div>
@@ -49,8 +49,8 @@ export default function Dashboard() {
           <StatCard value={totalDue} label="Due for Review" color="var(--accent-rose)" highlight={totalDue > 0} clickable />
         </Link>
         <StatCard value={totalLearned} label="Cards Learned" color="var(--accent-gold)" />
-        <StatCard value={totalReviewed} label="Cards Seen" color="#6070B0" />
-        <StatCard value={streak} label="Day Streak" color="var(--accent-crane-white)" />
+        <StatCard value={totalReviewed} label="Cards Seen" color="var(--wave)" />
+        <StatCard value={streak} label="Day Streak" color="var(--wave)" />
       </div>
 
       {/* Due-now banner */}
@@ -61,7 +61,7 @@ export default function Dashboard() {
           style={{ background: "rgba(196,133,122,0.08)", border: "1px solid rgba(196,133,122,0.4)" }}
         >
           <div>
-            <div className="font-semibold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>
+            <div className="font-semibold" style={{ color: "var(--text-primary)", fontFamily: "Cormorant Garamond, serif" }}>
               {totalDue} card{totalDue !== 1 ? "s" : ""} ready for review
             </div>
             <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
@@ -76,7 +76,7 @@ export default function Dashboard() {
       <div>
         <div className="flex items-center gap-3 mb-3">
           <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
-          <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+          <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
             Course
           </span>
           <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
@@ -94,7 +94,7 @@ export default function Dashboard() {
       <div>
         <div className="flex items-center gap-3 mb-3">
           <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
-          <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cinzel, serif" }}>
+          <span className="text-xs tracking-widest uppercase" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
             Practice
           </span>
           <div className="flex-1 h-px" style={{ background: "var(--border-subtle)" }} />
@@ -122,7 +122,7 @@ function StatCard({ value, label, color, clickable, highlight }: {
         cursor: clickable ? "pointer" : "default",
       }}
     >
-      <div className="text-2xl sm:text-3xl font-bold mb-1" style={{ color, fontFamily: "Cinzel, serif" }}>{value}</div>
+      <div className="text-2xl sm:text-3xl font-bold mb-1" style={{ color, fontFamily: "Cormorant Garamond, serif" }}>{value}</div>
       <div className="text-xs" style={{ color: "var(--text-muted)" }}>{label}</div>
     </div>
   );
@@ -136,7 +136,7 @@ function LevelCard({ level, authored, total }: { level: HSKLevel; authored: numb
       style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
     >
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-semibold" style={{ color: "var(--text-primary)", fontFamily: "Cinzel, serif" }}>
+        <span className="text-sm font-semibold" style={{ color: "var(--text-primary)", fontFamily: "Cormorant Garamond, serif" }}>
           HSK {level}
         </span>
         <span className="text-sm font-bold" style={{ color: "var(--accent-gold)" }}>{authored}/{total}</span>
@@ -158,7 +158,7 @@ function QuickAction({ href, title, sub }: { href: string; title: string; sub: s
       className="block rounded-xl p-4 transition-all"
       style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
     >
-      <div className="font-semibold text-sm mb-1" style={{ color: "var(--accent-gold)", fontFamily: "Cinzel, serif" }}>
+      <div className="font-semibold text-sm mb-1" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
         {title}
       </div>
       <div className="text-xs" style={{ color: "var(--text-muted)" }}>{sub}</div>

@@ -1,0 +1,156 @@
+{
+  "id": "hsk2-11",
+  "level": 2,
+  "number": 11,
+  "title": { "hanzi": "他比我大三岁", "pinyin": "Tā bǐ wǒ dà sān suì", "english": "He is three years older than me" },
+  "theme": "Comparison & People",
+  "warmUp": {
+    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "items": [
+      { "hanzi": "跳舞",   "pinyin": "tiào wǔ",   "english": "to dance" },
+      { "hanzi": "说话",   "pinyin": "shuō huà",  "english": "to speak" },
+      { "hanzi": "女",     "pinyin": "nǚ",        "english": "woman, female" },
+      { "hanzi": "孩子",   "pinyin": "háizi",     "english": "child, kid" },
+      { "hanzi": "唱歌",   "pinyin": "chàng gē",  "english": "to sing" },
+      { "hanzi": "男",     "pinyin": "nán",       "english": "man, male" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "在歌厅", "english": "In a karaoke bar" },
+      "audioRef": "11-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "王方,昨天和你一起唱歌的人是谁?",                  "pinyin": "Wáng Fāng, zuótiān hé nǐ yìqǐ chàng gē de rén shì shéi?",          "english": "Wang Fang, who was the guy with you in the karaoke yesterday?" },
+        { "speaker": "B", "hanzi": "一个朋友。",                                          "pinyin": "Yí ge péngyou.",                                                    "english": "A friend." },
+        { "speaker": "A", "hanzi": "什么朋友?是不是男朋友?",                            "pinyin": "Shénme péngyou? Shì bu shì nán péngyou?",                          "english": "What friend? Boyfriend?" },
+        { "speaker": "B", "hanzi": "不是不是,我同学介绍的,昨天第一次见。",            "pinyin": "Bú shì bú shì, wǒ tóngxué jièshào de, zuótiān dì yī cì jiàn.",     "english": "No, no. My classmate set me up with him. We met only yesterday." }
+      ],
+      "newWords": [
+        { "id": "hsk2_11_changge", "hanzi": "唱歌", "pinyin": "chàng gē", "pos": "v.",   "english": "to sing" },
+        { "id": "hsk2_11_nan",     "hanzi": "男",   "pinyin": "nán",      "pos": "adj.", "english": "man, male" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在宿舍", "english": "In the dorm" },
+      "audioRef": "11-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "左边这个看报纸的女孩子是你姐姐吗?",        "pinyin": "Zuǒbian zhège kàn bàozhǐ de nǚ háizi shì nǐ jiějie ma?",        "english": "Is the girl on the left reading a newspaper your elder sister?" },
+        { "speaker": "B", "hanzi": "是,右边写字的那个人是我哥哥。",            "pinyin": "Shì, yòubian xiě zì de nàge rén shì wǒ gēge.",                  "english": "Yes. And the guy on the right writing is my elder brother." },
+        { "speaker": "A", "hanzi": "你哥哥多大?",                                "pinyin": "Nǐ gēge duō dà?",                                               "english": "How old is he?" },
+        { "speaker": "B", "hanzi": "25岁,他比我大三岁。",                        "pinyin": "Èrshíwǔ suì, tā bǐ wǒ dà sān suì.",                             "english": "25. He's three years older than me." }
+      ],
+      "newWords": [
+        { "id": "hsk2_11_nv",      "hanzi": "女",   "pinyin": "nǚ",      "pos": "adj.", "english": "woman, female" },
+        { "id": "hsk2_11_haizi",   "hanzi": "孩子", "pinyin": "háizi",   "pos": "n.",   "english": "child, kid" },
+        { "id": "hsk2_11_youbian", "hanzi": "右边", "pinyin": "yòubian", "pos": "n.",   "english": "right, right side" },
+        { "id": "hsk2_11_bi",      "hanzi": "比",   "pinyin": "bǐ",      "pos": "prep.","english": "than; (superior or inferior) to" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在商店", "english": "At a store" },
+      "audioRef": "11-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "今天的西瓜怎么卖?",                            "pinyin": "Jīntiān de xīguā zěnme mài?",                                     "english": "What's the price of watermelons today?" },
+        { "speaker": "B", "hanzi": "三块五一斤。",                                  "pinyin": "Sān kuài wǔ yì jīn.",                                              "english": "Three yuan fifty per 500 grams." },
+        { "speaker": "A", "hanzi": "比昨天便宜。",                                   "pinyin": "Bǐ zuótiān piányi.",                                              "english": "Cheaper than yesterday." },
+        { "speaker": "B", "hanzi": "是,苹果也比昨天便宜一些。您来点儿吧。",      "pinyin": "Shì, píngguǒ yě bǐ zuótiān piányi yìxiē. Nín lái diǎnr ba.",      "english": "Yes. Apples are also cheaper. Why not take some?" }
+      ],
+      "newWords": [
+        { "id": "hsk2_11_pianyi", "hanzi": "便宜", "pinyin": "piányi", "pos": "adj.", "english": "cheap, inexpensive" }
+      ]
+    },
+    {
+      "situationNumber": 4,
+      "title": { "hanzi": "在学校", "english": "In the school" },
+      "audioRef": "11-4",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "前边说话的那个人就是我的汉语老师。你可能不认识她。", "pinyin": "Qiánbian shuō huà de nàge rén jiù shì wǒ de Hànyǔ lǎoshī. Nǐ kěnéng bú rènshi tā.","english": "The woman speaking up in front is my Chinese teacher. You may not know her." },
+        { "speaker": "B", "hanzi": "是新来的汉语老师吗?",                                "pinyin": "Shì xīn lái de Hànyǔ lǎoshī ma?",                                                "english": "Is she a new teacher?" },
+        { "speaker": "A", "hanzi": "是去年来的,她姓王,28岁。",                            "pinyin": "Shì qùnián lái de, tā xìng Wáng, èrshíbā suì.",                                  "english": "She came last year. Her family name is Wang, she's 28." },
+        { "speaker": "B", "hanzi": "她比我们老师小两岁。",                                "pinyin": "Tā bǐ wǒmen lǎoshī xiǎo liǎng suì.",                                             "english": "She's two years younger than my teacher." }
+      ],
+      "newWords": [
+        { "id": "hsk2_11_shuohua", "hanzi": "说话", "pinyin": "shuō huà", "pos": "v.",   "english": "to speak, to say, to talk" },
+        { "id": "hsk2_11_keneng",  "hanzi": "可能", "pinyin": "kěnéng",   "pos": "aux.", "english": "maybe, perhaps, probably" },
+        { "id": "hsk2_11_qunian",  "hanzi": "去年", "pinyin": "qùnián",   "pos": "n.",   "english": "last year" },
+        { "id": "hsk2_11_xing",    "hanzi": "姓",   "pinyin": "xìng",     "pos": "v.",   "english": "family name, surname; to be surnamed" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk2_11_g_verb_attr",
+      "number": 1,
+      "title": { "hanzi": "动词结构做定语", "english": "A Verb (Phrase) Used as an Attributive Modifier" },
+      "explanation": {
+        "hanzi": "动词或动词短语做定语时,定语和中心语之间要加\"的\"。",
+        "english": "When a verb or verb phrase modifies a noun, \"的\" goes between the modifier and the noun."
+      },
+      "patternTable": {
+        "columns": ["Attributive Modifier", "的", "Word Modified"],
+        "rows": [
+          ["新买",         "的", "自行车"],
+          ["我妈妈做",     "的", "饭"],
+          ["和你一起唱歌", "的", "人"]
+        ]
+      }
+    },
+    {
+      "id": "hsk2_11_g_bi1",
+      "number": 2,
+      "title": { "hanzi": "\"比\"字句(1)", "english": "The \"比\" Sentence (1)" },
+      "explanation": {
+        "hanzi": "用\"比\"表示比较的句子叫\"比\"字句。\"比\"字句的谓语可以是形容词。否定形式用\"A没有B……\"。要表达差别时,用具体数量表示具体差别,\"一点儿\"或\"一些\"表示差别不大,\"多\"或\"得多\"表示差别大。",
+        "english": "A \"比\" sentence uses \"比\" to compare. The predicate can be an adjective. The negative form is \"A 没有 B…\". A specific quantity gives the exact difference; \"一点儿/一些\" means \"a little\"; \"多/得多\" means \"much more\"."
+      },
+      "patternTable": {
+        "columns": ["A", "比", "B", "Adj", "(Num-M)"],
+        "rows": [
+          ["哥哥",           "比", "姐姐",       "高",   ""],
+          ["今天",           "比", "昨天",       "热",   ""],
+          ["(今天的西瓜)",   "比", "昨天",       "便宜", ""],
+          ["西瓜",           "比", "苹果",       "贵",   "两块钱。"],
+          ["我的学习",       "比", "他",         "好",   "一点儿。"],
+          ["今天",           "比", "昨天",       "热",   "得多。"],
+          ["她",             "比", "我们老师",   "小",   "两岁。"]
+        ]
+      },
+      "examples": [
+        { "hanzi": "哥哥没有姐姐高。", "pinyin": "Gēge méiyǒu jiějie gāo.",    "english": "Older brother isn't as tall as older sister." },
+        { "hanzi": "今天没有昨天热。", "pinyin": "Jīntiān méiyǒu zuótiān rè.", "english": "Today isn't as hot as yesterday." },
+        { "hanzi": "西瓜没有苹果便宜。","pinyin": "Xīguā méiyǒu píngguǒ piányi.","english": "Watermelon isn't as cheap as apples." }
+      ]
+    },
+    {
+      "id": "hsk2_11_g_keneng",
+      "number": 3,
+      "title": { "hanzi": "助动词\"可能\"", "english": "The Auxiliary Verb \"可能\"" },
+      "explanation": {
+        "hanzi": "\"可能\"表示估计、也许、或许。常用在动词前,也可用在主语前。",
+        "english": "\"可能\" expresses estimation — \"maybe, perhaps, probably\". Usually before the verb, but can precede the subject."
+      },
+      "examples": [
+        { "hanzi": "他可能早就知道这件事情了。", "pinyin": "Tā kěnéng zǎo jiù zhīdào zhè jiàn shìqing le.", "english": "He probably knew about this long ago." },
+        { "hanzi": "可能我明天不来上课了。",     "pinyin": "Kěnéng wǒ míngtiān bù lái shàng kè le.",       "english": "I might not come to class tomorrow." },
+        { "hanzi": "你可能不认识她。",            "pinyin": "Nǐ kěnéng bú rènshi tā.",                      "english": "You probably don't know her." }
+      ]
+    }
+  ],
+  "exercises": [
+    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
+    {
+      "number": 2, "type": "answer_questions",
+      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "items": [
+        { "hanzi": "昨天和王方一起唱歌的人是谁?", "pinyin": "Zuótiān hé Wáng Fāng yìqǐ chàng gē de rén shì shéi?" },
+        { "hanzi": "左边看报纸的女孩子是谁?",     "pinyin": "Zuǒbian kàn bàozhǐ de nǚ háizi shì shéi?" },
+        { "hanzi": "她的哥哥25岁了,她多大了?",   "pinyin": "Tā de gēge èrshíwǔ suì le, tā duō dà le?" },
+        { "hanzi": "昨天的西瓜可能卖多少钱?",     "pinyin": "Zuótiān de xīguā kěnéng mài duōshao qián?" },
+        { "hanzi": "王老师是新老师吗?",            "pinyin": "Wáng lǎoshī shì xīn lǎoshī ma?" }
+      ]
+    }
+  ]
+}
