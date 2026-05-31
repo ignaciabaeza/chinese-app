@@ -142,8 +142,9 @@ chinese_app/
 │   └── progress.ts                          # SM-2 algorithm + localStorage + server sync
 ├── scripts/
 │   ├── setup.sh                             # EC2 server setup (embeds the schema SQL)
-│   ├── migration_phase0.sql                 # Standalone migration: clean rebuild of card_progress
-│   │                                        # with card_id + card_type (drops old sentences / sessions)
+│   ├── migrations/                          # Versioned SQL migrations applied by deploy.sh
+│   │   └── 001_phase0_card_type.sql         # Clean rebuild of card_progress with card_id + card_type
+│   │                                        # (drops old sentences / sessions tables)
 │   └── deploy.sh                            # Re-deploy latest code on server
 ├── .env                                     # DATABASE_URL, JWT_SECRET, ANTHROPIC_API_KEY
 ├── AGENTS.md                                # Top-of-file reminder about Next.js 16 breaking changes
@@ -370,14 +371,16 @@ npm install
 
 # 2. Fill in .env with real values
 
-# 3. Apply DB schema. Either run setup.sh on EC2, or apply the migration directly:
-psql $DATABASE_URL -f scripts/migration_phase0.sql
+# 3. Apply DB schema. Either run setup.sh on EC2 (which creates the schema directly
+#    and pre-records all migrations as already applied), or apply migrations manually
+#    in order:
+for m in scripts/migrations/*.sql; do psql $DATABASE_URL -f "$m"; done
 
 # 4. Run dev server
 npm run dev
 ```
 
-**Existing deployments** running the pre-Phase-0 schema (`card_progress.word_id`) need to run `scripts/migration_phase0.sql` before deploying current code, or the new API routes will fail. The migration drops `sentences` and rebuilds `card_progress` + `study_sessions` from scratch — existing card progress is lost (intentional; the old vocab was bad).
+**Existing deployments** running the pre-Phase-0 schema (`card_progress.word_id`) will have the migration applied automatically by `scripts/deploy.sh` — it detects pending migrations under `scripts/migrations/`, takes a `pg_dump` backup to `/var/backups/chinese-app/`, briefly stops the app, applies them in order, records each in `schema_migrations`, and restarts. The Phase 0 migration drops `sentences` and rebuilds `card_progress` + `study_sessions` from scratch — existing card progress is lost (intentional; the old vocab was bad).
 
 ---
 

@@ -204,6 +204,16 @@ CREATE TABLE study_sessions (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE INDEX IF NOT EXISTS idx_study_sessions_user_date ON study_sessions(user_id, date DESC);
+
+-- Migration tracker — deploy.sh consults this to decide what to apply.
+-- Since setup.sh creates the schema in its final shape, pre-record all
+-- existing migrations so deploy.sh won't try to re-apply them.
+CREATE TABLE IF NOT EXISTS schema_migrations (
+  filename TEXT PRIMARY KEY,
+  applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+INSERT INTO schema_migrations (filename) VALUES ('001_phase0_card_type.sql')
+  ON CONFLICT DO NOTHING;
 SCHEMA
 success "Database schema applied"
 
