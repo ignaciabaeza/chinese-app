@@ -43,7 +43,8 @@ sudo -u $APP_USER git -C "$APP_DIR" reset --hard origin/main
 info "Installing dependencies…"
 sudo -u $APP_USER bash -c "cd $APP_DIR && npm ci --silent"
 
-info "Building…"
+info "Building (clean — wiping .next so Turbopack doesn't serve a stale chunk)…"
+sudo -u $APP_USER rm -rf "$APP_DIR/.next"
 sudo -u $APP_USER bash -c "cd $APP_DIR && npm run build"
 
 # ── 3. Detect pending migrations ─────────────────────────────────────────────
