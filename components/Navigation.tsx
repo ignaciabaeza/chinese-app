@@ -9,8 +9,8 @@ const links = [
   { href: "/",                       label: "Dashboard" },
   { href: "/course",                 label: "Course" },
   { href: "/practice/flashcards",    label: "Flashcards" },
-  { href: "/practice/exam",          label: "Mock Exam" },
-  { href: "/library/vocabulary",     label: "Vocabulary" },
+  { href: "/vocab",                  label: "Dictionary" },
+  { href: "/library/vocabulary",     label: "Lesson Words" },
   { href: "/chat",                   label: "Tutor" },
 ];
 
