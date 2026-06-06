@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getWordBySimplified, getSentencesForWord, getCharacters } from "@/lib/vocab";
+import HanziAnimation from "@/components/HanziAnimation";
 
 export const dynamic = "force-dynamic";
 
@@ -91,9 +92,7 @@ export default async function WordDetailPage({
                   className="rounded-xl p-4 flex gap-4"
                   style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
                 >
-                  <div className="font-display text-5xl shrink-0" style={{ color: "var(--accent-gold)", lineHeight: 1 }}>
-                    {c}
-                  </div>
+                  <HanziAnimation char={c} size={120} />
                   <div className="flex-1 min-w-0 text-sm space-y-1" style={{ fontFamily: "Spectral, serif", color: "var(--text-muted)" }}>
                     {info?.etymology?.pinyin && info.etymology.pinyin.length > 0 && (
                       <div className="font-pinyin" style={{ color: "var(--text-primary)", fontStyle: "italic" }}>
