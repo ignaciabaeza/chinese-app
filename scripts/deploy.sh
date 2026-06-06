@@ -44,8 +44,26 @@ info "Installing dependencies…"
 sudo -u $APP_USER bash -c "cd $APP_DIR && npm ci --silent"
 
 info "Building (clean — wiping .next so Turbopack doesn't serve a stale chunk)…"
-sudo -u $APP_USER rm -rf "$APP_DIR/.next"
-sudo -u $APP_USER bash -c "cd $APP_DIR && npm run build"
+# Turbopack writes chunks via *.tmp.<hash> + atomic rename. On small EC2
+# boxes with EBS, an occasional I/O stall makes the rename fail with
+# ENOENT mid-build. Retry up to 3 times, wiping .next between each
+# attempt, before giving up.
+BUILD_ATTEMPTS=0
+BUILD_MAX_ATTEMPTS=3
+until [[ $BUILD_ATTEMPTS -ge $BUILD_MAX_ATTEMPTS ]]; do
+  BUILD_ATTEMPTS=$((BUILD_ATTEMPTS + 1))
+  sudo -u $APP_USER rm -rf "$APP_DIR/.next"
+  if sudo -u $APP_USER bash -c "cd $APP_DIR && npm run build"; then
+    success "Build succeeded on attempt $BUILD_ATTEMPTS."
+    break
+  fi
+  if [[ $BUILD_ATTEMPTS -lt $BUILD_MAX_ATTEMPTS ]]; then
+    warn "Build attempt $BUILD_ATTEMPTS failed — retrying."
+    sleep 2
+  else
+    error "Build failed after $BUILD_MAX_ATTEMPTS attempts. Inspect the output above."
+  fi
+done
 
 # ── 3. Detect pending migrations ─────────────────────────────────────────────
 PENDING=()
