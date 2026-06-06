@@ -7,9 +7,9 @@ import { useAuth } from "@/components/AuthProvider";
 
 const links = [
   { href: "/",                       label: "Dashboard" },
-  { href: "/course",                 label: "Course" },
   { href: "/review",                 label: "Review" },
   { href: "/writing",                label: "Writing" },
+  { href: "/reader",                 label: "Reader" },
   { href: "/vocab",                  label: "Dictionary" },
   { href: "/chat",                   label: "Tutor" },
 ];
