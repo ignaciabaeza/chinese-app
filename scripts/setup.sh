@@ -205,6 +205,21 @@ CREATE TABLE study_sessions (
 );
 CREATE INDEX IF NOT EXISTS idx_study_sessions_user_date ON study_sessions(user_id, date DESC);
 
+-- Default privileges — tables/sequences the postgres role creates here from
+-- now on (e.g. via future migrations) auto-grant ${DB_USER} the access it
+-- needs. Without this, every migration that creates a table fails for the
+-- app user.
+ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public
+  GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO ${DB_USER};
+ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public
+  GRANT USAGE, SELECT, UPDATE ON SEQUENCES TO ${DB_USER};
+
+-- Phase 1 tables (added by 002) and any older tables — explicit grants for
+-- everything that already exists at setup time.
+GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE
+  ON ALL TABLES IN SCHEMA public TO ${DB_USER};
+GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO ${DB_USER};
+
 -- Migration tracker — deploy.sh consults this to decide what to apply.
 -- Since setup.sh creates the schema in its final shape, pre-record all
 -- existing migrations so deploy.sh won't try to re-apply them.
@@ -212,6 +227,10 @@ CREATE TABLE IF NOT EXISTS schema_migrations (
   filename TEXT PRIMARY KEY,
   applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+-- Pre-record only the migrations whose effect is already baked into the
+-- schema block above (currently just 001). Newer migrations will run on the
+-- first deploy.sh — the ALTER DEFAULT PRIVILEGES above ensures their
+-- CREATE TABLE statements grant the app user access automatically.
 INSERT INTO schema_migrations (filename) VALUES ('001_phase0_card_type.sql')
   ON CONFLICT DO NOTHING;
 SCHEMA
