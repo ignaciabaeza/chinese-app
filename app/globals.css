@@ -67,6 +67,11 @@
 }
 
 /* ─── Base ─── */
+/* Bump the root font-size +3pt (≈ 4px) over the browser default so every
+   `rem`-based size in the app scales up uniformly. text-base goes from
+   12pt (16px) to 15pt (20px); spacing tied to rem grows proportionally. */
+html { font-size: 20px; }
+
 body {
   position: relative;
   background-color: var(--paper);

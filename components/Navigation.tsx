@@ -56,7 +56,7 @@ export default function Navigation() {
         borderBottom: "1px solid var(--paper-edge)",
       }}
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="w-full px-4 sm:px-6">
         <div className="flex items-center justify-between h-14">
           <Link href="/" className="flex items-center gap-3">
             <CloudMotif className="animate-drift opacity-70" />
