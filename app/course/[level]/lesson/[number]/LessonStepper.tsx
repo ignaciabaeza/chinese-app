@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import AudioButton from "@/components/AudioButton";
-import type { LessonDetail, LessonWord, StepKey } from "@/lib/lessons";
+import type { LessonDetail, LessonWord, StepKey, Dialogue, DialogueLine } from "@/lib/lessons";
 
 const STEPS: { key: StepKey; label: string; description: string }[] = [
   { key: "listen",  label: "Listen",  description: "Hear the dialogue first, text hidden." },
@@ -129,38 +129,107 @@ export default function LessonStepper({ level, number, detail, initialProgress, 
 
 function ListenStep({ detail }: { detail: LessonDetail }) {
   const [revealed, setRevealed] = useState(false);
+  const [playingLineId, setPlayingLineId] = useState<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  // Flatten all lines across all dialogues in order; used by "Play full".
+  const allPlayable: DialogueLine[] = detail.dialogues.flatMap((d) => d.lines).filter((l) => l.audio_path);
+
+  // Stop playback if the user navigates away from the step.
+  useEffect(() => {
+    return () => {
+      audioRef.current?.pause();
+      setPlayingLineId(null);
+    };
+  }, []);
+
+  function stop() {
+    audioRef.current?.pause();
+    setPlayingLineId(null);
+  }
+
+  function playSequence(lines: DialogueLine[]) {
+    if (lines.length === 0) return;
+    const el = audioRef.current;
+    if (!el) return;
+    let i = 0;
+    const playOne = () => {
+      const line = lines[i];
+      setPlayingLineId(line.id);
+      el.src = line.audio_path!;
+      el.onended = () => {
+        i++;
+        if (i < lines.length) {
+          // 250ms pause between lines
+          setTimeout(playOne, 250);
+        } else {
+          setPlayingLineId(null);
+          el.onended = null;
+        }
+      };
+      el.play().catch(() => { setPlayingLineId(null); });
+    };
+    playOne();
+  }
+
   if (detail.dialogues.length === 0) {
     return <Empty message="This lesson has no dialogues to listen to." />;
   }
+
   return (
     <div className="space-y-4">
       <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
         Try to follow the dialogue by ear. The lines are masked until you reveal them.
       </p>
+
+      {/* Hidden shared player. */}
+      <audio ref={audioRef} className="hidden" />
+
+      {allPlayable.length > 0 && (
+        <div className="flex gap-2 flex-wrap">
+          <button
+            onClick={() => playSequence(allPlayable)}
+            disabled={playingLineId !== null}
+            className="px-3 py-2 rounded-lg text-xs"
+            style={{
+              background: "transparent",
+              border: "1.5px solid var(--accent-gold)",
+              color: "var(--accent-gold)",
+              fontFamily: "Cormorant Garamond, serif",
+              letterSpacing: "0.05em",
+            }}
+          >
+            ▶ Play full dialogue
+          </button>
+          {playingLineId !== null && (
+            <button
+              onClick={stop}
+              className="px-3 py-2 rounded-lg text-xs"
+              style={{
+                background: "transparent",
+                border: "1.5px solid var(--accent-rose)",
+                color: "var(--accent-rose)",
+                fontFamily: "Cormorant Garamond, serif",
+                letterSpacing: "0.05em",
+              }}
+            >
+              ■ Stop
+            </button>
+          )}
+        </div>
+      )}
+
       <div className="space-y-3">
         {detail.dialogues.map((d) => (
-          <div key={d.id} className="rounded-xl p-3 space-y-2" style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-subtle)" }}>
-            <div className="text-xs uppercase tracking-widest" style={{ color: "#7A6855", fontFamily: "Cormorant Garamond, serif" }}>
-              Situation {d.position}{d.title_hanzi ? ` · ${d.title_hanzi}` : ""}
-            </div>
-            {d.lines.map((l) => (
-              <div key={l.id} className="flex items-center gap-3">
-                <SpeakerBadge speaker={l.speaker ?? ""} />
-                {revealed ? (
-                  <span className="font-display text-lg" style={{ color: "var(--text-parchment)" }}>{l.simplified}</span>
-                ) : (
-                  <span className="flex gap-1">
-                    {Array.from(l.simplified).map((_, i) => (
-                      <span key={i} className="inline-block rounded-sm" style={{ width: 16, height: 16, background: "rgba(60,48,30,0.10)" }} />
-                    ))}
-                  </span>
-                )}
-                {l.audio_path && <AudioButton src={l.audio_path} size="sm" label="Play line" />}
-              </div>
-            ))}
-          </div>
+          <DialogueListenCard
+            key={d.id}
+            dialogue={d}
+            revealed={revealed}
+            playingLineId={playingLineId}
+            onPlaySituation={() => playSequence(d.lines.filter((l) => l.audio_path))}
+          />
         ))}
       </div>
+
       <button
         onClick={() => setRevealed((r) => !r)}
         className="w-full py-2 rounded-lg text-sm"
@@ -168,9 +237,63 @@ function ListenStep({ detail }: { detail: LessonDetail }) {
       >
         {revealed ? "Hide text" : "Reveal text"}
       </button>
-      <p className="text-xs text-center" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-        Per-line audio is generated once script 04 is extended with two-voice TTS. Until then, the Reader and word audio still play normally.
-      </p>
+
+      {allPlayable.length === 0 && (
+        <p className="text-xs text-center" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
+          No per-line audio yet — re-run <code style={{ color: "var(--accent-gold)" }}>npm run db:generate-audio</code> to populate it.
+        </p>
+      )}
+    </div>
+  );
+}
+
+function DialogueListenCard({
+  dialogue, revealed, playingLineId, onPlaySituation,
+}: {
+  dialogue: Dialogue;
+  revealed: boolean;
+  playingLineId: number | null;
+  onPlaySituation: () => void;
+}) {
+  const hasAudio = dialogue.lines.some((l) => l.audio_path);
+  return (
+    <div className="rounded-xl p-3 space-y-2" style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-subtle)" }}>
+      <div className="flex items-center justify-between gap-2">
+        <div className="text-xs uppercase tracking-widest" style={{ color: "#7A6855", fontFamily: "Cormorant Garamond, serif" }}>
+          Situation {dialogue.position}{dialogue.title_hanzi ? ` · ${dialogue.title_hanzi}` : ""}
+        </div>
+        {hasAudio && (
+          <button
+            onClick={onPlaySituation}
+            className="text-xs px-2 py-0.5 rounded"
+            style={{ color: "var(--accent-gold)", border: "1px solid var(--accent-gold)", background: "transparent", fontFamily: "Cormorant Garamond, serif" }}
+          >
+            ▶
+          </button>
+        )}
+      </div>
+      {dialogue.lines.map((l) => {
+        const isPlaying = playingLineId === l.id;
+        return (
+          <div
+            key={l.id}
+            className="flex items-center gap-3 rounded px-1 py-0.5"
+            style={isPlaying ? { background: "rgba(162,58,74,0.08)" } : undefined}
+          >
+            <SpeakerBadge speaker={l.speaker ?? ""} />
+            {revealed ? (
+              <span className="font-display text-lg" style={{ color: "var(--text-parchment)" }}>{l.simplified}</span>
+            ) : (
+              <span className="flex gap-1">
+                {Array.from(l.simplified).map((_, i) => (
+                  <span key={i} className="inline-block rounded-sm" style={{ width: 16, height: 16, background: "rgba(60,48,30,0.10)" }} />
+                ))}
+              </span>
+            )}
+            {l.audio_path && <AudioButton src={l.audio_path} size="sm" label="Play line" />}
+          </div>
+        );
+      })}
     </div>
   );
 }

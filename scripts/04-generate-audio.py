@@ -45,9 +45,18 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 WORDS_DIR = ROOT / "public" / "audio" / "words"
 SENTS_DIR = ROOT / "public" / "audio" / "sentences"
+DIALOGUE_DIR = ROOT / "public" / "audio" / "dialogue"
 
-# Single voice for simplicity; alternating Xiaoxiao/Yunxi can be added later.
+# Words and Tatoeba sentences use Xiaoxiao. Dialogue lines alternate by
+# speaker so HSK textbook dialogues sound like an actual conversation.
 VOICE = "zh-CN-XiaoxiaoNeural"
+SPEAKER_VOICE = {
+    "A": "zh-CN-XiaoxiaoNeural",  # female
+    "B": "zh-CN-YunxiNeural",     # male
+    "C": "zh-CN-YunyangNeural",   # male (news)
+    "D": "zh-CN-XiaoyiNeural",    # female
+}
+DEFAULT_DIALOGUE_VOICE = "zh-CN-XiaoxiaoNeural"
 
 # Small inter-call delay to be polite to the Edge endpoint.
 INTER_CALL_DELAY_S = 0.05
@@ -61,10 +70,44 @@ if not DB_URL:
     sys.exit(1)
 
 
-async def synthesize(text: str, out_path: Path) -> None:
+async def synthesize(text: str, out_path: Path, voice: str = VOICE) -> None:
     """Run edge-tts to produce out_path. Caller ensures parent dir exists."""
-    communicate = edge_tts.Communicate(text, VOICE)
+    communicate = edge_tts.Communicate(text, voice)
     await communicate.save(str(out_path))
+
+
+async def process_dialogue_lines(conn, cur) -> None:
+    """Per-line dialogue audio for the section 5.9 Listen step. Voice is
+    chosen by speaker letter so A/B dialogues sound like real conversations."""
+    cur.execute(
+        """SELECT id, simplified, speaker FROM dialogue_lines
+           WHERE audio_path IS NULL ORDER BY id"""
+    )
+    rows = cur.fetchall()
+    print(f"[dialogue] {len(rows)} pending")
+    if not rows:
+        return
+
+    for i, row in enumerate(rows, start=1):
+        rid = row["id"]
+        text = row["simplified"]
+        speaker = (row["speaker"] or "").strip().upper()
+        voice = SPEAKER_VOICE.get(speaker, DEFAULT_DIALOGUE_VOICE)
+        out = DIALOGUE_DIR / f"{rid}.mp3"
+        url = f"/audio/dialogue/{rid}.mp3"
+        if not out.exists():
+            try:
+                await synthesize(text, out, voice)
+            except Exception as e:  # noqa: BLE001
+                print(f"  ! dialogue {rid} {text!r} failed: {e}", file=sys.stderr)
+                continue
+            await asyncio.sleep(INTER_CALL_DELAY_S)
+        cur.execute("UPDATE dialogue_lines SET audio_path = %s WHERE id = %s", (url, rid))
+        if i % COMMIT_EVERY == 0:
+            conn.commit()
+            print(f"  · {i}/{len(rows)}")
+    conn.commit()
+    print(f"[dialogue] done — committed {len(rows)} audio_path rows.")
 
 
 async def process(
@@ -106,6 +149,7 @@ async def process(
 async def main() -> None:
     WORDS_DIR.mkdir(parents=True, exist_ok=True)
     SENTS_DIR.mkdir(parents=True, exist_ok=True)
+    DIALOGUE_DIR.mkdir(parents=True, exist_ok=True)
 
     conn = psycopg2.connect(DB_URL)
     conn.autocommit = False
@@ -135,6 +179,8 @@ async def main() -> None:
         out_dir=SENTS_DIR,
         url_prefix="/audio/sentences",
     )
+
+    await process_dialogue_lines(conn, cur)
 
     cur.close()
     conn.close()
