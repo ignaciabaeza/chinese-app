@@ -13,17 +13,17 @@ let segmenterPromise: Promise<{ cut: (s: string) => string[] }> | null = null;
 function getSegmenter(): Promise<{ cut: (s: string) => string[] }> {
   if (segmenterPromise) return segmenterPromise;
   segmenterPromise = (async () => {
-    // Use createRequire + dynamic node imports so Turbopack doesn't statically
-    // trace these paths. We also build the dict file path from the package
-    // entry's directory rather than referencing the .txt file by name in code
-    // (Turbopack can't process .txt files via require.resolve at build time).
+    // Resolve via dynamic createRequire so Turbopack doesn't statically trace
+    // the import paths. The package itself is in serverExternalPackages so the
+    // native binding is required at runtime — but req.resolve('@node-rs/jieba')
+    // returns Turbopack's opaque [externals] marker string, not a real path.
+    // So we look up the dict file relative to process.cwd() instead.
     const { createRequire } = await import("node:module");
     const { readFileSync } = await import("node:fs");
-    const { dirname, join } = await import("node:path");
+    const { join } = await import("node:path");
     const req = createRequire(import.meta.url);
-    const pkg = "@node-rs/jieba";
-    const { Jieba } = req(pkg);
-    const dictPath = join(dirname(req.resolve(pkg)), "dict.txt");
+    const { Jieba } = req("@node-rs/jieba");
+    const dictPath = join(process.cwd(), "node_modules", "@node-rs", "jieba", "dict.txt");
     const dictBuf = readFileSync(dictPath);
     return Jieba.withDict(dictBuf);
   })();
