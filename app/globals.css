@@ -72,6 +72,17 @@
    12pt (16px) to 15pt (20px); spacing tied to rem grows proportionally. */
 html { font-size: 20px; }
 
+/* Default any button to 80% opacity, lift to 100% on hover. Any button
+   that sets opacity inline (e.g. the disabled-state opacity:0.4 dimming
+   in /review and elsewhere) overrides this via specificity. */
+button {
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+button:hover:not(:disabled) {
+  opacity: 1;
+}
+
 body {
   position: relative;
   background-color: var(--paper);
