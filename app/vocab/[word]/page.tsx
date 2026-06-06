@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getWordBySimplified, getSentencesForWord, getCharacters } from "@/lib/vocab";
 import HanziAnimation from "@/components/HanziAnimation";
+import AudioButton from "@/components/AudioButton";
 
 export const dynamic = "force-dynamic";
 
@@ -38,10 +39,15 @@ export default async function WordDetailPage({
             繁體 <span className="font-display text-lg" style={{ color: "var(--text-primary)" }}>{word.traditional}</span>
           </div>
         )}
-        <div className="font-pinyin text-2xl" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
-          {word.pinyin}
-          {word.pinyin_numbered && (
-            <span className="text-sm ml-3" style={{ opacity: 0.6 }}>{word.pinyin_numbered}</span>
+        <div className="flex items-center gap-3 flex-wrap">
+          <div className="font-pinyin text-2xl" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
+            {word.pinyin}
+            {word.pinyin_numbered && (
+              <span className="text-sm ml-3" style={{ opacity: 0.6 }}>{word.pinyin_numbered}</span>
+            )}
+          </div>
+          {word.audio_path && (
+            <AudioButton src={word.audio_path} size="md" label={`Play ${word.simplified}`} />
           )}
         </div>
         <div className="flex flex-wrap gap-2 pt-1">
@@ -144,16 +150,23 @@ export default async function WordDetailPage({
                 className="rounded-xl p-4 space-y-1"
                 style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
               >
-                <div className="font-display text-lg" style={{ color: "var(--text-primary)" }}>
-                  {highlightTarget(s.simplified, word.simplified)}
-                </div>
-                {s.pinyin && (
-                  <div className="text-sm font-pinyin" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
-                    {s.pinyin}
+                <div className="flex items-start gap-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="font-display text-lg" style={{ color: "var(--text-primary)" }}>
+                      {highlightTarget(s.simplified, word.simplified)}
+                    </div>
+                    {s.pinyin && (
+                      <div className="text-sm font-pinyin mt-1" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
+                        {s.pinyin}
+                      </div>
+                    )}
+                    <div className="text-sm mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
+                      {s.english}
+                    </div>
                   </div>
-                )}
-                <div className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-                  {s.english}
+                  {s.audio_path && (
+                    <AudioButton src={s.audio_path} size="sm" label="Play sentence" />
+                  )}
                 </div>
                 {s.max_hsk_level != null && (
                   <div className="text-xs" style={{ color: "var(--accent-gold)", opacity: 0.6, fontFamily: "Cormorant Garamond, serif" }}>

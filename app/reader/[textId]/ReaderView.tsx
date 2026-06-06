@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import AudioButton from "@/components/AudioButton";
 
 type Segment = { t: string; w?: number; p?: true };
 
@@ -12,6 +13,7 @@ interface WordLookup {
   meanings: string[];
   hsk2_level: number | null;
   hsk3_level: number | null;
+  audio_path: string | null;
   in_deck: boolean;
   state: "new" | "learning" | "review" | "mature" | "unknown";
 }
@@ -260,9 +262,12 @@ function WordPopover({
       )}
       {word && (
         <div className="space-y-2">
-          <div className="flex items-baseline gap-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="font-display text-3xl" style={{ color: "var(--ink)" }}>{word.simplified}</span>
             <span className="font-pinyin text-lg" style={{ color: "#7A6855", fontStyle: "italic" }}>{word.pinyin}</span>
+            {word.audio_path && (
+              <AudioButton src={word.audio_path} size="sm" label={`Play ${word.simplified}`} />
+            )}
           </div>
           <div className="flex gap-1.5 flex-wrap text-xs" style={{ fontFamily: "Cormorant Garamond, serif" }}>
             {word.hsk2_level != null && (

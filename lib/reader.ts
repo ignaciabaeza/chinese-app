@@ -107,6 +107,7 @@ export interface WordLookup {
   meanings: string[];
   hsk2_level: number | null;
   hsk3_level: number | null;
+  audio_path: string | null;
   in_deck: boolean;
   state: KnowledgeState;
 }
@@ -122,10 +123,12 @@ export async function lookupWord(
     meanings: string[];
     hsk2_level: number | null;
     hsk3_level: number | null;
+    audio_path: string | null;
     card_state: number | null;
     card_stability: number | null;
   }>(
     `SELECT w.id, w.simplified, w.pinyin, w.meanings, w.hsk2_level, w.hsk3_level,
+            w.audio_path,
             c.state AS card_state, c.stability AS card_stability
      FROM words w
      LEFT JOIN cards c
@@ -151,6 +154,7 @@ export async function lookupWord(
     meanings: r.meanings,
     hsk2_level: r.hsk2_level,
     hsk3_level: r.hsk3_level,
+    audio_path: r.audio_path,
     in_deck: r.card_state !== null && r.card_state !== undefined,
     state,
   };

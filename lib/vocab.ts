@@ -24,6 +24,7 @@ export interface VocabSentence {
   pinyin: string | null;
   english: string;
   max_hsk_level: number | null;
+  audio_path: string | null;
 }
 
 export interface VocabCharacter {
@@ -89,7 +90,7 @@ export async function getWordBySimplified(simplified: string): Promise<VocabWord
 
 export async function getSentencesForWord(wordId: number, limit = 10): Promise<VocabSentence[]> {
   const { rows } = await pool.query<VocabSentence>(
-    `SELECT s.id, s.simplified, s.pinyin, s.english, s.max_hsk_level
+    `SELECT s.id, s.simplified, s.pinyin, s.english, s.max_hsk_level, s.audio_path
      FROM sentence_words sw
      JOIN sentences s ON s.id = sw.sentence_id
      WHERE sw.word_id = $1

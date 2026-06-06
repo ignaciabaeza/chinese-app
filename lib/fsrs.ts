@@ -69,27 +69,46 @@ function dbToCard(row: {
 // ─── Seeding ─────────────────────────────────────────────────────────────────
 
 /**
- * On a user's first /review visit, create one "recognition" card per HSK 1–2
- * word. New cards default to state=0 due=now. Idempotent — uses
- * ON CONFLICT DO NOTHING.
+ * Create one card per HSK 1–2 word for the requested type. Always runs the
+ * INSERT and leans on ON CONFLICT — that way listening cards get created
+ * retroactively for words whose audio_path was populated after the first
+ * seed. New cards default to state=0 due=now.
+ *
+ * Listening seeding is gated on audio_path IS NOT NULL so we don't queue
+ * cards that can't actually be reviewed.
  */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// Note: cardType parameter is used in seeding. Keeping signature flexible for future card types.
-export async function ensureSeeded(userId: string, cardType: CardType = "recognition"): Promise<number> {
-  const { rows } = await pool.query<{ n: number }>(
-    "SELECT COUNT(*)::int AS n FROM cards WHERE user_id = $1 AND card_type = $2",
-    [userId, cardType],
-  );
-  if (rows[0].n > 0) return 0;
+export async function ensureSeeded(
+  userId: string,
+  cardType: CardType = "recognition",
+): Promise<number> {
+  const where =
+    cardType === "listening"
+      ? "hsk2_level IN (1, 2) AND audio_path IS NOT NULL"
+      : "hsk2_level IN (1, 2)";
   const result = await pool.query(
     `INSERT INTO cards (user_id, word_id, card_type, due)
      SELECT $1, id, $2, NOW()
      FROM words
-     WHERE hsk2_level IN (1, 2)
+     WHERE ${where}
      ON CONFLICT DO NOTHING`,
     [userId, cardType],
   );
   return result.rowCount ?? 0;
+}
+
+/**
+ * Seed every modality the app currently supports — recognition + listening.
+ * Returns per-type insert counts. Called on every /review queue fetch so new
+ * audio drops in retroactively.
+ */
+export async function ensureSeededAll(
+  userId: string,
+): Promise<{ recognition: number; listening: number }> {
+  const [recognition, listening] = await Promise.all([
+    ensureSeeded(userId, "recognition"),
+    ensureSeeded(userId, "listening"),
+  ]);
+  return { recognition, listening };
 }
 
 // ─── Queue ───────────────────────────────────────────────────────────────────
@@ -130,8 +149,10 @@ export async function getDueQueue(
   const reviewedNewToday = todayRows[0]?.n ?? 0;
   const remainingNewSlots = Math.max(0, newPerDay - reviewedNewToday);
 
-  // Pull due learning + review cards (state != 0 and due <= now), no cap.
-  // For new cards (state = 0), cap at remainingNewSlots.
+  // Listening cards are only playable if the word has audio — exclude any
+  // card whose word.audio_path got cleared or was never populated.
+  const audioFilter = cardType === "listening" ? "AND w.audio_path IS NOT NULL" : "";
+
   const { rows } = await pool.query<ReviewCard>(
     `WITH due_ranked AS (
        SELECT c.*, w.simplified, w.traditional, w.pinyin, w.meanings,
@@ -146,6 +167,7 @@ export async function getDueQueue(
        WHERE c.user_id = $1
          AND c.card_type = $2
          AND (c.state != 0 AND c.due <= NOW())
+         ${audioFilter}
        ORDER BY bucket, c.due
      ),
      new_cards AS (
@@ -157,6 +179,7 @@ export async function getDueQueue(
        WHERE c.user_id = $1
          AND c.card_type = $2
          AND c.state = 0
+         ${audioFilter}
        ORDER BY COALESCE(w.hsk2_level, 99),
                 COALESCE(w.frequency_rank, 999999),
                 w.simplified
@@ -273,19 +296,25 @@ export interface ReviewStats {
 }
 
 export async function getReviewStats(userId: string, cardType: CardType = "recognition"): Promise<ReviewStats> {
+  // For listening, only count cards backed by a word with audio_path.
+  const join = cardType === "listening" ? "JOIN words w ON w.id = c.word_id" : "";
+  const audioFilter = cardType === "listening" ? "AND w.audio_path IS NOT NULL" : "";
+
   const { rows } = await pool.query<ReviewStats>(
     `SELECT
-       COUNT(*) FILTER (WHERE state != 0 AND due <= NOW())::int            AS due_now,
-       COUNT(*) FILTER (WHERE state = 0)::int                              AS new_total,
-       COUNT(*) FILTER (WHERE state IN (1, 3))::int                        AS learning,
-       COUNT(*) FILTER (WHERE state = 2 AND stability >= 21)::int          AS mature,
+       COUNT(*) FILTER (WHERE c.state != 0 AND c.due <= NOW())::int        AS due_now,
+       COUNT(*) FILTER (WHERE c.state = 0)::int                            AS new_total,
+       COUNT(*) FILTER (WHERE c.state IN (1, 3))::int                      AS learning,
+       COUNT(*) FILTER (WHERE c.state = 2 AND c.stability >= 21)::int      AS mature,
        COUNT(*)::int                                                       AS total_cards,
        (SELECT COUNT(*)::int FROM review_log rl
           JOIN cards c2 ON c2.id = rl.card_id
           WHERE c2.user_id = $1 AND c2.card_type = $2
             AND rl.reviewed_at >= date_trunc('day', NOW()))                AS reviewed_today
-     FROM cards
-     WHERE user_id = $1 AND card_type = $2`,
+     FROM cards c
+     ${join}
+     WHERE c.user_id = $1 AND c.card_type = $2
+       ${audioFilter}`,
     [userId, cardType],
   );
   return rows[0] ?? { due_now: 0, new_total: 0, learning: 0, mature: 0, total_cards: 0, reviewed_today: 0 };

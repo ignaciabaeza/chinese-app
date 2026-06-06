@@ -3,11 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
+import AudioButton from "@/components/AudioButton";
+
+type Mode = "recognition" | "listening";
 
 interface ReviewCard {
   id: number;
   word_id: number;
-  card_type: string;
+  card_type: Mode;
   due: string;
   state: 0 | 1 | 2 | 3;
   simplified: string;
@@ -16,6 +19,7 @@ interface ReviewCard {
   meanings: string[];
   hsk2_level: number | null;
   hsk3_level: number | null;
+  audio_path: string | null;
 }
 
 interface ReviewStats {
@@ -38,6 +42,7 @@ export default function ReviewPage() {
   const { user, loading } = useAuth();
 
   const [phase, setPhase] = useState<"setup" | "review" | "finished" | "loading">("loading");
+  const [mode, setMode] = useState<Mode>("recognition");
   const [queue, setQueue] = useState<ReviewCard[]>([]);
   const [stats, setStats] = useState<ReviewStats | null>(null);
   const [index, setIndex] = useState(0);
@@ -48,11 +53,11 @@ export default function ReviewPage() {
   const [error, setError] = useState<string | null>(null);
   const startedAt = useRef<number>(Date.now());
 
-  // ── fetch initial queue ──
-  const loadQueue = useCallback(async () => {
+  // ── fetch initial queue for the current mode ──
+  const loadQueue = useCallback(async (m: Mode = mode) => {
     setError(null);
     try {
-      const res = await fetch("/api/review/queue?type=recognition&limit=30");
+      const res = await fetch(`/api/review/queue?type=${m}&limit=30`);
       if (!res.ok) {
         if (res.status === 401) {
           setError("Sign in to track your reviews.");
@@ -71,7 +76,7 @@ export default function ReviewPage() {
       setError(`Network error: ${(e as Error).message}`);
       setPhase("setup");
     }
-  }, []);
+  }, [mode]);
 
   useEffect(() => {
     if (loading) return;
@@ -79,8 +84,8 @@ export default function ReviewPage() {
       setPhase("setup");
       return;
     }
-    loadQueue();
-  }, [user, loading, loadQueue]);
+    loadQueue(mode);
+  }, [user, loading, mode, loadQueue]);
 
   // ── grading ──
   const grade = useCallback(
@@ -134,6 +139,11 @@ export default function ReviewPage() {
         setFlipped(true);
         return;
       }
+      // R = replay audio (listening cards). Handled via custom event so the
+      // card child can own the <audio> element ref.
+      if (e.key === "r" || e.key === "R") {
+        window.dispatchEvent(new CustomEvent("review-replay"));
+      }
       if (flipped && !transitioning) {
         if (e.key === "1") void grade(1);
         if (e.key === "2") void grade(2);
@@ -171,19 +181,27 @@ export default function ReviewPage() {
     );
   }
 
-  if (phase === "setup") return <Setup queue={queue} stats={stats} seeded={seededCount} error={error} onStart={() => {
-    if (queue.length === 0) return;
-    setPhase("review");
-    setIndex(0);
-    setFlipped(false);
-    setSessionStats({ again: 0, hard: 0, good: 0, easy: 0 });
-    startedAt.current = Date.now();
-  }} />;
+  if (phase === "setup") return <Setup
+    mode={mode}
+    onModeChange={(m) => { setMode(m); setPhase("loading"); }}
+    queue={queue}
+    stats={stats}
+    seeded={seededCount}
+    error={error}
+    onStart={() => {
+      if (queue.length === 0) return;
+      setPhase("review");
+      setIndex(0);
+      setFlipped(false);
+      setSessionStats({ again: 0, hard: 0, good: 0, easy: 0 });
+      startedAt.current = Date.now();
+    }}
+  />;
 
   if (phase === "finished") return (
     <Finished
       stats={sessionStats}
-      onAgain={() => { void loadQueue(); }}
+      onAgain={() => { void loadQueue(mode); }}
     />
   );
 
@@ -206,14 +224,19 @@ export default function ReviewPage() {
 // ─── Setup screen ────────────────────────────────────────────────────────────
 
 function Setup({
-  queue, stats, seeded, error, onStart,
+  mode, onModeChange, queue, stats, seeded, error, onStart,
 }: {
+  mode: Mode;
+  onModeChange: (m: Mode) => void;
   queue: ReviewCard[];
   stats: ReviewStats | null;
   seeded: number;
   error: string | null;
   onStart: () => void;
 }) {
+  const subtitle = mode === "listening"
+    ? "Audio-first cards — hear, then identify"
+    : "FSRS-scheduled recognition cards";
   return (
     <div className="max-w-md mx-auto space-y-6 animate-fade-up">
       <div className="text-center">
@@ -221,8 +244,32 @@ function Setup({
           Review
         </h1>
         <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          FSRS-scheduled recognition cards
+          {subtitle}
         </p>
+      </div>
+
+      {/* Mode tabs */}
+      <div className="grid grid-cols-2 gap-1 p-1 rounded-xl" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
+        {(["recognition", "listening"] as const).map((m) => {
+          const active = m === mode;
+          return (
+            <button
+              key={m}
+              onClick={() => onModeChange(m)}
+              className="py-2 rounded-lg text-xs"
+              style={{
+                background: active ? "rgba(201,168,76,0.15)" : "transparent",
+                color: active ? "var(--accent-gold)" : "var(--text-muted)",
+                fontFamily: "Cormorant Garamond, serif",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+              }}
+            >
+              {m === "recognition" ? "Recognition" : "Listening"}
+            </button>
+          );
+        })}
       </div>
 
       {error && (
@@ -233,7 +280,7 @@ function Setup({
 
       {seeded > 0 && (
         <div className="rounded-xl p-4 text-sm" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.4)", color: "var(--text-primary)", fontFamily: "Spectral, serif" }}>
-          ✦ First session: created {seeded.toLocaleString()} recognition cards for HSK 1–2 words.
+          ✦ Seeded {seeded.toLocaleString()} new card{seeded === 1 ? "" : "s"} for HSK 1–2 words.
         </div>
       )}
 
@@ -260,7 +307,9 @@ function Setup({
           cursor: queue.length === 0 ? "default" : "pointer",
         }}
       >
-        {queue.length === 0 ? "Nothing due right now" : `Begin · ${queue.length} card${queue.length === 1 ? "" : "s"}`}
+        {queue.length === 0
+          ? (mode === "listening" ? "No listening cards due — run audio script?" : "Nothing due right now")
+          : `Begin · ${queue.length} card${queue.length === 1 ? "" : "s"}`}
       </button>
 
       {stats && stats.reviewed_today > 0 && (
@@ -305,6 +354,15 @@ function ReviewCard({
   const acc = totalCorrect + sessionStats.again > 0
     ? Math.round((totalCorrect / (totalCorrect + sessionStats.again)) * 100)
     : 0;
+  const isListening = card.card_type === "listening";
+
+  // Replay shortcut (keyboard 'R'): re-fire the underlying <audio> by toggling key.
+  const [replayKey, setReplayKey] = useState(0);
+  useEffect(() => {
+    function onReplay() { setReplayKey((k) => k + 1); }
+    window.addEventListener("review-replay", onReplay as EventListener);
+    return () => window.removeEventListener("review-replay", onReplay as EventListener);
+  }, []);
 
   return (
     <div className="max-w-xl mx-auto space-y-5 animate-fade-up">
@@ -337,14 +395,31 @@ function ReviewCard({
               {card.hsk2_level != null ? `HSK ${card.hsk2_level}` : card.hsk3_level != null ? `HSK 3.0 · ${card.hsk3_level}` : "Vocab"}
               {" · "}
               {stateLabel(card.state)}
+              {isListening && <span> · 听</span>}
             </div>
-            <div className="moon-circle">
-              <div className={`${sizeClass} text-center leading-none font-bold`} style={{ color: "var(--accent-crane-white)", zIndex: 1 }}>
-                {card.simplified}
+            {isListening ? (
+              <div className="moon-circle flex items-center justify-center">
+                {card.audio_path ? (
+                  <AudioButton
+                    key={`${card.id}-${replayKey}`}
+                    src={card.audio_path}
+                    autoPlay
+                    size="lg"
+                    label="Replay (R)"
+                  />
+                ) : (
+                  <span style={{ color: "var(--accent-crane-white)" }}>—</span>
+                )}
               </div>
-            </div>
+            ) : (
+              <div className="moon-circle">
+                <div className={`${sizeClass} text-center leading-none font-bold`} style={{ color: "var(--accent-crane-white)", zIndex: 1 }}>
+                  {card.simplified}
+                </div>
+              </div>
+            )}
             <p className="text-xs mt-5" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-              tap or press space to reveal
+              {isListening ? "press R to replay · space to reveal" : "tap or press space to reveal"}
             </p>
           </div>
 
@@ -362,8 +437,19 @@ function ReviewCard({
             {card.traditional && card.traditional !== card.simplified && (
               <div className="text-sm mb-1" style={{ color: "#7A6855" }}>繁 {card.traditional}</div>
             )}
-            <div className="text-xl mb-3 font-pinyin" style={{ color: "#5A3F20", fontStyle: "italic" }}>
-              {card.pinyin}
+            <div className="flex items-center gap-2 mb-3">
+              <div className="text-xl font-pinyin" style={{ color: "#5A3F20", fontStyle: "italic" }}>
+                {card.pinyin}
+              </div>
+              {card.audio_path && flipped && (
+                <AudioButton
+                  key={`back-${card.id}`}
+                  src={card.audio_path}
+                  autoPlay={!isListening}  /* recognition: autoplay on flip; listening already played on front */
+                  size="sm"
+                  label="Play word"
+                />
+              )}
             </div>
             <ol className="space-y-1 text-base text-center max-w-md" style={{ fontFamily: "Spectral, serif", color: "var(--text-parchment)" }}>
               {card.meanings.slice(0, 4).map((m, i) => (
