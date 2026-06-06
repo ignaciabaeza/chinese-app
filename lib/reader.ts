@@ -1,12 +1,9 @@
-// Server-only helpers for the reader: text fetching, segmentation, and
-// per-user knowledge-state overlays.
+// Server-only helpers for the reader: text fetching and per-user knowledge-
+// state overlays. Jieba segmentation lives in lib/segment.ts so the pages
+// importing this file don't drag the native binding into the bundle graph.
 
 import "server-only";
-import { Jieba } from "@node-rs/jieba";
-import { readFileSync } from "node:fs";
 import { pool } from "@/lib/db";
-
-const PUNCT = /^[\s　-〿＀-￯ -⁯.,!?;:'"()/\\…—–\-、。!?？！：；""''《》（）]+$/u;
 
 export type Segment = { t: string; w?: number; p?: true };
 
@@ -29,39 +26,6 @@ export interface FullText {
   user_id: string | null;
   segments: Segment[];
   created_at: string;
-}
-
-// ─── Segmenter ───────────────────────────────────────────────────────────────
-
-let cachedSegmenter: Jieba | null = null;
-
-function getSegmenter(): Jieba {
-  if (cachedSegmenter) return cachedSegmenter;
-  const dictPath = require.resolve("@node-rs/jieba/dict.txt");
-  const dictBuf = readFileSync(dictPath);
-  cachedSegmenter = Jieba.withDict(dictBuf);
-  return cachedSegmenter;
-}
-
-/** Segment a body with jieba and resolve known words to their DB ids. */
-export async function segmentText(body: string): Promise<Segment[]> {
-  const seg = getSegmenter();
-  const tokens = seg.cut(body);
-  const nonPunct = tokens.filter((t) => !PUNCT.test(t));
-  const unique = Array.from(new Set(nonPunct));
-  const wordIds = new Map<string, number>();
-  if (unique.length > 0) {
-    const { rows } = await pool.query<{ id: number; simplified: string }>(
-      "SELECT id, simplified FROM words WHERE simplified = ANY($1::text[])",
-      [unique],
-    );
-    for (const r of rows) wordIds.set(r.simplified, r.id);
-  }
-  return tokens.map((t) => {
-    if (PUNCT.test(t)) return { t, p: true } as Segment;
-    const id = wordIds.get(t);
-    return id ? ({ t, w: id } as Segment) : ({ t } as Segment);
-  });
 }
 
 // ─── Text queries ────────────────────────────────────────────────────────────
@@ -192,22 +156,7 @@ export async function lookupWord(
   };
 }
 
-// ─── Insert / update ─────────────────────────────────────────────────────────
-
-export async function createPastedText(
-  userId: string,
-  title: string,
-  body: string,
-): Promise<number> {
-  const segments = await segmentText(body);
-  const { rows } = await pool.query<{ id: number }>(
-    `INSERT INTO texts (title, body, source, user_id, segments)
-     VALUES ($1, $2, 'paste', $3, $4::jsonb)
-     RETURNING id`,
-    [title.trim() || "Untitled", body, userId, JSON.stringify(segments)],
-  );
-  return rows[0].id;
-}
+// ─── Add to deck ─────────────────────────────────────────────────────────────
 
 /** Lazy-create a recognition card if one doesn't already exist. */
 export async function addWordToDeck(userId: string, wordId: number): Promise<{ created: boolean }> {

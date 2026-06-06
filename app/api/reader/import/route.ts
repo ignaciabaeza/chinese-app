@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAuthFromRequest } from "@/lib/auth";
-import { createPastedText } from "@/lib/reader";
+import { createPastedText } from "@/lib/segment";
 
 /**
  * POST /api/reader/import

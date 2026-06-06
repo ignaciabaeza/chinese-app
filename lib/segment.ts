@@ -1,0 +1,68 @@
+// Server-only segmentation helpers. Pulled out of lib/reader.ts so the bundled
+// reader pages don't drag the jieba native binding through their import graph.
+
+import "server-only";
+import { pool } from "@/lib/db";
+
+const PUNCT = /^[\s　-〿＀-￯ -⁯.,!?;:'"()/\\…—–\-、。!?？！：；""''《》（）]+$/u;
+
+export type Segment = { t: string; w?: number; p?: true };
+
+// Lazy holder so the native binding is loaded on first use, not at module-load.
+let segmenterPromise: Promise<{ cut: (s: string) => string[] }> | null = null;
+function getSegmenter(): Promise<{ cut: (s: string) => string[] }> {
+  if (segmenterPromise) return segmenterPromise;
+  segmenterPromise = (async () => {
+    // Use createRequire + dynamic node imports so Turbopack doesn't statically
+    // trace these paths. We also build the dict file path from the package
+    // entry's directory rather than referencing the .txt file by name in code
+    // (Turbopack can't process .txt files via require.resolve at build time).
+    const { createRequire } = await import("node:module");
+    const { readFileSync } = await import("node:fs");
+    const { dirname, join } = await import("node:path");
+    const req = createRequire(import.meta.url);
+    const pkg = "@node-rs/jieba";
+    const { Jieba } = req(pkg);
+    const dictPath = join(dirname(req.resolve(pkg)), "dict.txt");
+    const dictBuf = readFileSync(dictPath);
+    return Jieba.withDict(dictBuf);
+  })();
+  return segmenterPromise;
+}
+
+/** Segment a body with jieba and resolve known words to their DB ids. */
+export async function segmentText(body: string): Promise<Segment[]> {
+  const seg = await getSegmenter();
+  const tokens = seg.cut(body);
+  const nonPunct = tokens.filter((t) => !PUNCT.test(t));
+  const unique = Array.from(new Set(nonPunct));
+  const wordIds = new Map<string, number>();
+  if (unique.length > 0) {
+    const { rows } = await pool.query<{ id: number; simplified: string }>(
+      "SELECT id, simplified FROM words WHERE simplified = ANY($1::text[])",
+      [unique],
+    );
+    for (const r of rows) wordIds.set(r.simplified, r.id);
+  }
+  return tokens.map((t) => {
+    if (PUNCT.test(t)) return { t, p: true } as Segment;
+    const id = wordIds.get(t);
+    return id ? ({ t, w: id } as Segment) : ({ t } as Segment);
+  });
+}
+
+/** Segment + persist a user paste-in. Returns the new text id. */
+export async function createPastedText(
+  userId: string,
+  title: string,
+  body: string,
+): Promise<number> {
+  const segments = await segmentText(body);
+  const { rows } = await pool.query<{ id: number }>(
+    `INSERT INTO texts (title, body, source, user_id, segments)
+     VALUES ($1, $2, 'paste', $3, $4::jsonb)
+     RETURNING id`,
+    [title.trim() || "Untitled", body, userId, JSON.stringify(segments)],
+  );
+  return rows[0].id;
+}
