@@ -51,6 +51,12 @@ export async function segmentText(body: string): Promise<Segment[]> {
   });
 }
 
+/** Pure jieba segmentation. Returns hanzi tokens only — punctuation filtered. */
+export async function segmentTokens(body: string): Promise<string[]> {
+  const seg = await getSegmenter();
+  return seg.cut(body).filter((t: string) => !PUNCT.test(t) && t.trim().length > 0);
+}
+
 /** Segment + persist a user paste-in. Returns the new text id. */
 export async function createPastedText(
   userId: string,
