@@ -42,3 +42,6 @@ yarn-error.log*
 next-env.d.ts
 
 /generated
+
+# raw downloaded data sources (re-fetched via npm run db:download)
+/data/sources/

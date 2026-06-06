@@ -6,28 +6,35 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:download": "tsx scripts/01-download-sources.ts",
+    "db:build-vocab": "tsx scripts/02-build-vocab-db.ts",
+    "db:match-sentences": "tsx scripts/03-match-sentences.ts",
+    "db:rebuild": "npm run db:download && npm run db:build-vocab && npm run db:match-sentences"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.80.0",
+    "@node-rs/jieba": "^2.0.1",
     "bcryptjs": "^3.0.3",
     "jsonwebtoken": "^9.0.3",
     "next": "16.2.1",
     "pg": "^8.20.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^20",
+    "@types/node": "^20.19.42",
     "@types/pg": "^8.20.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
+    "tsx": "^4.22.4",
     "typescript": "^5"
   }
 }
