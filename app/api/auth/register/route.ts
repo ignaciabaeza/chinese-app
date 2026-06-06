@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { pool } from "@/lib/db";
-import { hashPassword, signToken, COOKIE_NAME, COOKIE_MAX_AGE } from "@/lib/auth";
+import { hashPassword, signToken, COOKIE_NAME, authCookieOptions } from "@/lib/auth";
 import { randomUUID } from "crypto";
 
 export async function POST(request: NextRequest) {
@@ -28,13 +28,7 @@ export async function POST(request: NextRequest) {
 
     const token = signToken({ userId: user.id, email: user.email });
     const response = NextResponse.json({ user }, { status: 201 });
-    response.cookies.set(COOKIE_NAME, token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: COOKIE_MAX_AGE,
-      path: "/",
-    });
+    response.cookies.set(COOKIE_NAME, token, authCookieOptions(request));
     return response;
   } catch (err) {
     console.error("Register error:", err);

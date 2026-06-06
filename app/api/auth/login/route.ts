@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { pool } from "@/lib/db";
-import { comparePassword, signToken, COOKIE_NAME, COOKIE_MAX_AGE } from "@/lib/auth";
+import { comparePassword, signToken, COOKIE_NAME, authCookieOptions } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,13 +26,7 @@ export async function POST(request: NextRequest) {
 
     const token = signToken({ userId: user.id, email: user.email });
     const response = NextResponse.json({ user: { id: user.id, email: user.email } });
-    response.cookies.set(COOKIE_NAME, token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: COOKIE_MAX_AGE,
-      path: "/",
-    });
+    response.cookies.set(COOKIE_NAME, token, authCookieOptions(request));
     return response;
   } catch (err) {
     console.error("Login error:", err);

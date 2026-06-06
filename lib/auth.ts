@@ -29,6 +29,31 @@ export function getAuthFromRequest(request: NextRequest): AuthPayload | null {
   return verifyToken(token);
 }
 
+/**
+ * Whether the incoming request actually came in over HTTPS. Trusts
+ * X-Forwarded-Proto (nginx in front of us sets it from $scheme). Falls
+ * back to the request URL's protocol. Used so we don't mark the auth
+ * cookie Secure on HTTP-only deployments — browsers refuse to send
+ * Secure cookies over HTTP, which would log the user out on every
+ * reload.
+ */
+export function isRequestHttps(request: NextRequest): boolean {
+  const proto = request.headers.get("x-forwarded-proto");
+  if (proto) return proto.split(",")[0].trim() === "https";
+  return request.nextUrl.protocol === "https:";
+}
+
+/** Standard cookie options for the auth token. Lets the route force https. */
+export function authCookieOptions(request: NextRequest) {
+  return {
+    httpOnly: true,
+    secure: isRequestHttps(request),
+    sameSite: "lax" as const,
+    maxAge: COOKIE_MAX_AGE,
+    path: "/",
+  };
+}
+
 export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, 12);
 }
