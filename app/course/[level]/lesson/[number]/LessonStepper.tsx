@@ -63,21 +63,41 @@ export default function LessonStepper({ level, number, detail, initialProgress, 
         {STEPS.map((s, i) => {
           const isActive = i === activeIdx;
           const isDone = completed.has(s.key);
-          const fg = isActive ? "var(--accent-gold)" : isDone ? "var(--accent-rose)" : "var(--text-muted)";
+          // Three visual states mirroring the nav language:
+          //   active  → solid accent-gold background + cream text
+          //   done    → cream background + gold border + gold text (a "stamped" look)
+          //   pending → cream 80% background + muted text + subtle border
+          const bg = isActive
+            ? "var(--accent-gold)"
+            : isDone
+              ? "rgba(247, 242, 230, 1)"
+              : "rgba(247, 242, 230, 0.80)";
+          const fg = isActive
+            ? "var(--accent-crane-white)"
+            : isDone
+              ? "var(--accent-gold)"
+              : "var(--text-muted)";
+          const border = isActive || isDone
+            ? "1px solid var(--accent-gold)"
+            : "1px solid var(--border-subtle)";
           return (
             <li key={s.key}>
               <button
                 type="button"
                 onClick={() => goTo(i)}
-                className="w-full rounded-lg px-2 py-2 transition-all text-left"
+                className="w-full rounded-md px-2 py-2 transition-all text-left"
                 style={{
-                  background: isActive ? "rgba(162,58,74,0.08)" : "transparent",
-                  border: `1px solid ${isActive ? "var(--accent-gold)" : "var(--border-subtle)"}`,
+                  background: bg,
+                  border,
                   cursor: "pointer",
                 }}
               >
-                <div className="text-[10px] uppercase tracking-widest" style={{ color: fg, fontFamily: "Cormorant Garamond, serif" }}>
-                  {String(i + 1).padStart(2, "0")} · {s.label}
+                <div
+                  className="text-[10px] uppercase tracking-widest flex items-center gap-1"
+                  style={{ color: fg, fontFamily: "Cormorant Garamond, serif" }}
+                >
+                  <span>{String(i + 1).padStart(2, "0")} · {s.label}</span>
+                  {isDone && !isActive && <span aria-hidden>✓</span>}
                 </div>
               </button>
             </li>
