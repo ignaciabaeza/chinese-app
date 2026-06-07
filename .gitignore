@@ -18,6 +18,10 @@
 /.next/
 /out/
 
+# generated audio (TTS output) — lives on the EC2 box, regenerable via
+# `npm run db:generate-audio`. Keeping it out of git keeps the repo small.
+/public/audio/
+
 # production
 /build
 
