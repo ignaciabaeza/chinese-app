@@ -91,11 +91,13 @@ export default function Navigation() {
   }
 
   return (
+    <>
     <nav
-      className="sticky top-0 z-50 backdrop-blur-sm"
+      className="sticky top-0 backdrop-blur-sm"
       style={{
         background: "rgba(247, 242, 230, 0.86)",
         borderBottom: "1px solid var(--paper-edge)",
+        zIndex: 50,
       }}
     >
       <div className="mx-auto px-3 sm:px-6" style={{ maxWidth: "1280px" }}>
@@ -203,106 +205,114 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile / tablet drawer (< lg). Absolutely positioned dropdown
-            so it doesn't push the sticky bar around, with a backdrop
-            below to dim the page. */}
-        {mobileOpen && (
-          <>
-            <div
-              className="lg:hidden fixed inset-0 z-40"
-              style={{ background: "rgba(42, 38, 32, 0.30)", top: 48 }}
-              aria-hidden="true"
-            />
-            <div
-              ref={mobileDrawerRef}
-              className="lg:hidden absolute left-2 right-2 mt-1 rounded-xl z-50 overflow-hidden"
-              style={{
-                background: "var(--bg-parchment)",
-                border: "1px solid var(--accent-gold)",
-                boxShadow: "0 16px 40px var(--shadow-ink)",
-                maxHeight: "calc(100vh - 64px)",
-                overflowY: "auto",
-              }}
-            >
-              <div className="flex flex-col py-2">
-                {links.map((link) => {
-                  const active = isActive(pathname, link.href);
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="px-4 py-2.5 transition-colors flex items-center"
-                      style={{
-                        fontFamily: "Cormorant Garamond, serif",
-                        letterSpacing: "0.08em",
-                        fontSize: "0.75rem",
-                        textTransform: "uppercase",
-                        color: active ? "var(--accent-gold)" : "var(--ink-soft)",
-                        background: active ? "rgba(201,168,76,0.10)" : "transparent",
-                        borderLeft: active ? "2px solid var(--accent-gold)" : "2px solid transparent",
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </div>
-
-              {/* Account section */}
-              <div className="px-3 py-3" style={{ borderTop: "1px solid var(--border-subtle)" }}>
-                {user ? (
-                  <div>
-                    <div
-                      style={{ fontSize: "0.55rem", color: "var(--text-muted)", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "Spectral, serif" }}
-                    >
-                      Signed in as
-                    </div>
-                    <div
-                      className="mb-2"
-                      style={{ fontSize: "0.7rem", color: "var(--ink)", fontFamily: "Spectral, serif", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-                      title={user.email}
-                    >
-                      {user.email}
-                    </div>
-                    <button
-                      onClick={handleLogout}
-                      className="w-full py-2 rounded"
-                      style={{
-                        fontFamily: "Cormorant Garamond, serif",
-                        letterSpacing: "0.06em",
-                        fontSize: "0.7rem",
-                        color: "var(--accent-rose)",
-                        border: "1px solid rgba(196,133,122,0.4)",
-                        background: "transparent",
-                      }}
-                    >
-                      Sign Out
-                    </button>
-                  </div>
-                ) : (
-                  <Link
-                    href="/auth"
-                    onClick={() => setMobileOpen(false)}
-                    className="block w-full py-2 rounded text-center"
-                    style={{
-                      fontFamily: "Cormorant Garamond, serif",
-                      letterSpacing: "0.08em",
-                      fontSize: "0.75rem",
-                      color: "var(--accent-gold)",
-                      background: "rgba(201,168,76,0.08)",
-                      border: "1px solid rgba(201,168,76,0.4)",
-                    }}
-                  >
-                    Sign In / Register
-                  </Link>
-                )}
-              </div>
-            </div>
-          </>
-        )}
       </div>
     </nav>
+
+    {/* Mobile / tablet drawer (< lg). Rendered OUTSIDE the <nav> so the
+        nav's stacking context (created by backdrop-blur) can't trap it
+        underneath the page content. Both backdrop and drawer use
+        position: fixed with z-index > 50 so they sit above everything. */}
+    {mobileOpen && (
+      <>
+        <div
+          className="lg:hidden fixed inset-0"
+          style={{ background: "rgba(42, 38, 32, 0.35)", top: 48, zIndex: 90 }}
+          aria-hidden="true"
+          onClick={() => setMobileOpen(false)}
+        />
+        <div
+          ref={mobileDrawerRef}
+          className="lg:hidden fixed rounded-xl overflow-hidden"
+          style={{
+            top: 56,
+            left: 8,
+            right: 8,
+            zIndex: 100,
+            background: "var(--bg-parchment)",
+            border: "1px solid var(--accent-gold)",
+            boxShadow: "0 16px 40px var(--shadow-ink)",
+            maxHeight: "calc(100vh - 72px)",
+            overflowY: "auto",
+          }}
+        >
+          <div className="flex flex-col py-2">
+            {links.map((link) => {
+              const active = isActive(pathname, link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-4 py-2.5 transition-colors flex items-center"
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    letterSpacing: "0.08em",
+                    fontSize: "0.75rem",
+                    textTransform: "uppercase",
+                    color: active ? "var(--accent-gold)" : "var(--ink-soft)",
+                    background: active ? "rgba(201,168,76,0.10)" : "transparent",
+                    borderLeft: active ? "2px solid var(--accent-gold)" : "2px solid transparent",
+                  }}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Account section */}
+          <div className="px-3 py-3" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+            {user ? (
+              <div>
+                <div
+                  style={{ fontSize: "0.55rem", color: "var(--text-muted)", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "Spectral, serif" }}
+                >
+                  Signed in as
+                </div>
+                <div
+                  className="mb-2"
+                  style={{ fontSize: "0.7rem", color: "var(--ink)", fontFamily: "Spectral, serif", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                  title={user.email}
+                >
+                  {user.email}
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="w-full py-2 rounded"
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    letterSpacing: "0.06em",
+                    fontSize: "0.7rem",
+                    color: "var(--accent-rose)",
+                    border: "1px solid rgba(196,133,122,0.4)",
+                    background: "transparent",
+                  }}
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/auth"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full py-2 rounded text-center"
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  letterSpacing: "0.08em",
+                  fontSize: "0.75rem",
+                  color: "var(--accent-gold)",
+                  background: "rgba(201,168,76,0.08)",
+                  border: "1px solid rgba(201,168,76,0.4)",
+                }}
+              >
+                Sign In / Register
+              </Link>
+            )}
+          </div>
+        </div>
+      </>
+    )}
+    </>
   );
 }
 
