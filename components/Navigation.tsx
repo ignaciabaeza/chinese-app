@@ -124,22 +124,31 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop nav (≥ lg) */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          <div className="hidden lg:flex items-center gap-1">
             {links.map((link) => {
               const active = isActive(pathname, link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-2.5 py-1 text-xs transition-all"
+                  className="px-2.5 py-1 text-xs rounded-md transition-all"
                   style={{
                     fontFamily: "Cormorant Garamond, serif",
                     letterSpacing: "0.06em",
-                    color: active ? "var(--accent-gold)" : "var(--text-muted)",
-                    borderBottom: active ? "1.5px solid var(--accent-gold)" : "1.5px solid transparent",
+                    background: active ? "var(--accent-gold)" : "rgba(247, 242, 230, 0.80)",
+                    color: active ? "var(--accent-crane-white)" : "var(--text-muted)",
+                    border: active ? "1px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
                   }}
-                  onMouseEnter={(e) => !active && (e.currentTarget.style.color = "var(--ink)")}
-                  onMouseLeave={(e) => !active && (e.currentTarget.style.color = "var(--text-muted)")}
+                  onMouseEnter={(e) => {
+                    if (active) return;
+                    e.currentTarget.style.color = "var(--ink)";
+                    e.currentTarget.style.background = "rgba(247, 242, 230, 1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (active) return;
+                    e.currentTarget.style.color = "var(--text-muted)";
+                    e.currentTarget.style.background = "rgba(247, 242, 230, 0.80)";
+                  }}
                 >
                   {link.label}
                 </Link>
@@ -235,7 +244,7 @@ export default function Navigation() {
             overflowY: "auto",
           }}
         >
-          <div className="flex flex-col py-2">
+          <div className="flex flex-col py-2 px-2 gap-1">
             {links.map((link) => {
               const active = isActive(pathname, link.href);
               return (
@@ -243,15 +252,15 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-2.5 transition-colors flex items-center"
+                  className="px-3 py-2 rounded-md transition-colors flex items-center"
                   style={{
                     fontFamily: "Cormorant Garamond, serif",
                     letterSpacing: "0.08em",
                     fontSize: "0.75rem",
                     textTransform: "uppercase",
-                    color: active ? "var(--accent-gold)" : "var(--ink-soft)",
-                    background: active ? "rgba(201,168,76,0.10)" : "transparent",
-                    borderLeft: active ? "2px solid var(--accent-gold)" : "2px solid transparent",
+                    background: active ? "var(--accent-gold)" : "rgba(247, 242, 230, 0.80)",
+                    color: active ? "var(--accent-crane-white)" : "var(--ink-soft)",
+                    border: active ? "1px solid var(--accent-gold)" : "1px solid var(--border-subtle)",
                   }}
                 >
                   {link.label}
