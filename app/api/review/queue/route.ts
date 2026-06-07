@@ -7,15 +7,16 @@ import {
   type CardType,
 } from "@/lib/fsrs";
 
-const ALLOWED_TYPES: CardType[] = ["recognition", "listening"];
+const ALLOWED_TYPES: CardType[] = ["recognition", "listening", "writing"];
 
 /**
- * GET /api/review/queue?type=recognition&limit=30
+ * GET /api/review/queue?type=recognition&limit=30&level=1
  *
  * Returns up to `limit` cards ready to study now for the requested card type,
- * plus an aggregate stats block. Every call re-seeds both recognition and
- * listening cards (idempotent via ON CONFLICT) so audio added later wires up
- * listening cards retroactively.
+ * optionally filtered to a single HSK 2.0 level. Every call re-seeds all
+ * supported card types (recognition + listening + writing) idempotently so
+ * audio added later wires up listening cards retroactively and any added
+ * words get all three modalities.
  */
 export async function GET(request: NextRequest) {
   const auth = getAuthFromRequest(request);
@@ -26,15 +27,16 @@ export async function GET(request: NextRequest) {
   const cardType: CardType = ALLOWED_TYPES.includes(requested) ? requested : "recognition";
   const limit = Math.max(1, Math.min(100, parseInt(url.searchParams.get("limit") ?? "30", 10) || 30));
   const newPerDay = Math.max(0, Math.min(100, parseInt(url.searchParams.get("newPerDay") ?? "15", 10) || 15));
+  const levelParam = url.searchParams.get("level");
+  const hskLevel: 1 | 2 | null = levelParam === "1" ? 1 : levelParam === "2" ? 2 : null;
 
   const seededByType = await ensureSeededAll(auth.userId);
   const [queue, stats] = await Promise.all([
-    getDueQueue(auth.userId, { cardType, limit, newPerDay }),
-    getReviewStats(auth.userId, cardType),
+    getDueQueue(auth.userId, { cardType, limit, newPerDay, hskLevel }),
+    getReviewStats(auth.userId, cardType, hskLevel),
   ]);
 
-  // Back-compat: legacy callers read `seeded` as a total count.
-  const seeded = seededByType.recognition + seededByType.listening;
+  const seeded = seededByType.recognition + seededByType.listening + seededByType.writing;
 
-  return NextResponse.json({ queue, stats, seeded, seededByType, cardType });
+  return NextResponse.json({ queue, stats, seeded, seededByType, cardType, hskLevel });
 }

@@ -97,18 +97,19 @@ export async function ensureSeeded(
 }
 
 /**
- * Seed every modality the app currently supports — recognition + listening.
- * Returns per-type insert counts. Called on every /review queue fetch so new
- * audio drops in retroactively.
+ * Seed every modality the app currently supports — recognition, listening
+ * and writing. Returns per-type insert counts. Called on every /review
+ * queue fetch so new audio + new words drop in retroactively.
  */
 export async function ensureSeededAll(
   userId: string,
-): Promise<{ recognition: number; listening: number }> {
-  const [recognition, listening] = await Promise.all([
+): Promise<{ recognition: number; listening: number; writing: number }> {
+  const [recognition, listening, writing] = await Promise.all([
     ensureSeeded(userId, "recognition"),
     ensureSeeded(userId, "listening"),
+    ensureSeeded(userId, "writing"),
   ]);
-  return { recognition, listening };
+  return { recognition, listening, writing };
 }
 
 // ─── Queue ───────────────────────────────────────────────────────────────────
@@ -117,6 +118,8 @@ export interface QueueOptions {
   cardType?: CardType;
   newPerDay?: number;
   limit?: number;
+  /** Restrict to a specific HSK 2.0 level (1 or 2). Null = all levels. */
+  hskLevel?: 1 | 2 | null;
 }
 
 /**
@@ -130,7 +133,7 @@ export interface QueueOptions {
  */
 export async function getDueQueue(
   userId: string,
-  { cardType = "recognition", newPerDay = 15, limit = 30 }: QueueOptions = {},
+  { cardType = "recognition", newPerDay = 15, limit = 30, hskLevel = null }: QueueOptions = {},
 ): Promise<ReviewCard[]> {
   // Count new cards already reviewed today, in local time. We count cards
   // whose state has been moved out of "new" today.
@@ -152,6 +155,10 @@ export async function getDueQueue(
   // Listening cards are only playable if the word has audio — exclude any
   // card whose word.audio_path got cleared or was never populated.
   const audioFilter = cardType === "listening" ? "AND w.audio_path IS NOT NULL" : "";
+  // HSK level filter: pull only words at the requested level. null = all.
+  const levelFilter = hskLevel === 1 || hskLevel === 2 ? "AND w.hsk2_level = $5" : "";
+  const params: unknown[] = [userId, cardType, remainingNewSlots, limit];
+  if (levelFilter) params.push(hskLevel);
 
   const { rows } = await pool.query<ReviewCard>(
     `WITH due_ranked AS (
@@ -168,6 +175,7 @@ export async function getDueQueue(
          AND c.card_type = $2
          AND (c.state != 0 AND c.due <= NOW())
          ${audioFilter}
+         ${levelFilter}
        ORDER BY bucket, c.due
      ),
      new_cards AS (
@@ -180,6 +188,7 @@ export async function getDueQueue(
          AND c.card_type = $2
          AND c.state = 0
          ${audioFilter}
+         ${levelFilter}
        ORDER BY COALESCE(w.hsk2_level, 99),
                 COALESCE(w.frequency_rank, 999999),
                 w.simplified
@@ -190,7 +199,7 @@ export async function getDueQueue(
      SELECT * FROM new_cards
      ORDER BY bucket
      LIMIT $4`,
-    [userId, cardType, remainingNewSlots, limit],
+    params,
   );
   return rows;
 }
@@ -295,10 +304,18 @@ export interface ReviewStats {
   reviewed_today: number;
 }
 
-export async function getReviewStats(userId: string, cardType: CardType = "recognition"): Promise<ReviewStats> {
-  // For listening, only count cards backed by a word with audio_path.
-  const join = cardType === "listening" ? "JOIN words w ON w.id = c.word_id" : "";
+export async function getReviewStats(
+  userId: string,
+  cardType: CardType = "recognition",
+  hskLevel: 1 | 2 | null = null,
+): Promise<ReviewStats> {
+  // Need the join when filtering on word-side columns (audio or level).
+  const needsWordJoin = cardType === "listening" || hskLevel === 1 || hskLevel === 2;
+  const join = needsWordJoin ? "JOIN words w ON w.id = c.word_id" : "";
   const audioFilter = cardType === "listening" ? "AND w.audio_path IS NOT NULL" : "";
+  const levelFilter = hskLevel === 1 || hskLevel === 2 ? "AND w.hsk2_level = $3" : "";
+  const params: unknown[] = [userId, cardType];
+  if (levelFilter) params.push(hskLevel);
 
   const { rows } = await pool.query<ReviewStats>(
     `SELECT
@@ -314,8 +331,9 @@ export async function getReviewStats(userId: string, cardType: CardType = "recog
      FROM cards c
      ${join}
      WHERE c.user_id = $1 AND c.card_type = $2
-       ${audioFilter}`,
-    [userId, cardType],
+       ${audioFilter}
+       ${levelFilter}`,
+    params,
   );
   return rows[0] ?? { due_now: 0, new_total: 0, learning: 0, mature: 0, total_cards: 0, reviewed_today: 0 };
 }

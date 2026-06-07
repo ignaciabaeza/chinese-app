@@ -44,6 +44,7 @@ export default function WritingPage() {
   const { user, loading } = useAuth();
 
   const [phase, setPhase] = useState<"setup" | "review" | "finished" | "loading">("loading");
+  const [level, setLevel] = useState<"all" | 1 | 2>("all");
   const [queue, setQueue] = useState<WritingCard[]>([]);
   const [stats, setStats] = useState<ReviewStats | null>(null);
   const [seeded, setSeeded] = useState(0);
@@ -55,10 +56,11 @@ export default function WritingPage() {
   const [sessionStats, setSessionStats] = useState({ again: 0, hard: 0, good: 0, easy: 0 });
   const startedAt = useRef<number>(Date.now());
 
-  const loadQueue = useCallback(async () => {
+  const loadQueue = useCallback(async (lvl: "all" | 1 | 2 = level) => {
     setError(null);
     try {
-      const res = await fetch("/api/review/queue?type=writing&limit=20");
+      const qs = `type=writing&limit=20${lvl !== "all" ? `&level=${lvl}` : ""}`;
+      const res = await fetch(`/api/review/queue?${qs}`);
       if (!res.ok) {
         if (res.status === 401) setError("Sign in to track your writing reviews.");
         else setError(`Queue failed: ${res.status}`);
@@ -74,7 +76,7 @@ export default function WritingPage() {
       setError(`Network error: ${(e as Error).message}`);
       setPhase("setup");
     }
-  }, []);
+  }, [level]);
 
   useEffect(() => {
     if (loading) return;
@@ -82,8 +84,8 @@ export default function WritingPage() {
       setPhase("setup");
       return;
     }
-    loadQueue();
-  }, [user, loading, loadQueue]);
+    loadQueue(level);
+  }, [user, loading, level, loadQueue]);
 
   const current = queue[index];
   const chars = current ? Array.from(current.simplified).filter((c) => /\p{Script=Han}/u.test(c)) : [];
@@ -159,6 +161,8 @@ export default function WritingPage() {
 
   if (phase === "setup") return (
     <Setup
+      level={level}
+      onLevelChange={(l) => { setLevel(l); setPhase("loading"); }}
       queue={queue}
       stats={stats}
       seeded={seeded}
@@ -175,7 +179,7 @@ export default function WritingPage() {
     />
   );
 
-  if (phase === "finished") return <Finished stats={sessionStats} onAgain={() => { void loadQueue(); }} />;
+  if (phase === "finished") return <Finished stats={sessionStats} onAgain={() => { void loadQueue(level); }} />;
 
   // phase === "review"
   if (!current) return null;
@@ -229,14 +233,21 @@ export default function WritingPage() {
 // ─── Setup screen ────────────────────────────────────────────────────────────
 
 function Setup({
-  queue, stats, seeded, error, onStart,
+  level, onLevelChange, queue, stats, seeded, error, onStart,
 }: {
+  level: "all" | 1 | 2;
+  onLevelChange: (l: "all" | 1 | 2) => void;
   queue: WritingCard[];
   stats: ReviewStats | null;
   seeded: number;
   error: string | null;
   onStart: () => void;
 }) {
+  const items: { key: "all" | 1 | 2; label: string }[] = [
+    { key: "all", label: "All" },
+    { key: 1,     label: "HSK 1" },
+    { key: 2,     label: "HSK 2" },
+  ];
   return (
     <div className="max-w-md mx-auto space-y-6 animate-fade-up">
       <div className="text-center">
@@ -248,6 +259,30 @@ function Setup({
         </p>
       </div>
 
+      {/* HSK level tabs */}
+      <div className="grid grid-cols-3 gap-1 p-1 rounded-xl" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
+        {items.map(({ key, label }) => {
+          const active = key === level;
+          return (
+            <button
+              key={String(key)}
+              onClick={() => onLevelChange(key)}
+              className="py-2 rounded-lg text-xs"
+              style={{
+                background: active ? "rgba(201,168,76,0.15)" : "transparent",
+                color: active ? "var(--accent-gold)" : "var(--text-muted)",
+                fontFamily: "Cormorant Garamond, serif",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+              }}
+            >
+              {label}
+            </button>
+          );
+        })}
+      </div>
+
       {error && (
         <div className="rounded-xl p-4" style={{ background: "rgba(196,133,122,0.08)", border: "1px solid rgba(196,133,122,0.4)" }}>
           <p className="text-sm" style={{ color: "var(--accent-rose)", fontFamily: "Spectral, serif" }}>{error}</p>
@@ -256,7 +291,7 @@ function Setup({
 
       {seeded > 0 && (
         <div className="rounded-xl p-4 text-sm" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.4)", color: "var(--text-primary)", fontFamily: "Spectral, serif" }}>
-          ✦ First session: created {seeded.toLocaleString()} writing cards for HSK 1–2 words.
+          ✦ Seeded {seeded.toLocaleString()} new card{seeded === 1 ? "" : "s"} for HSK 1–2 words.
         </div>
       )}
 

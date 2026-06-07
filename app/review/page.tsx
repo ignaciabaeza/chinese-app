@@ -6,6 +6,7 @@ import { useAuth } from "@/components/AuthProvider";
 import AudioButton from "@/components/AudioButton";
 
 type Mode = "recognition" | "listening";
+type Level = "all" | 1 | 2;
 
 interface ReviewCard {
   id: number;
@@ -43,6 +44,7 @@ export default function ReviewPage() {
 
   const [phase, setPhase] = useState<"setup" | "review" | "finished" | "loading">("loading");
   const [mode, setMode] = useState<Mode>("recognition");
+  const [level, setLevel] = useState<Level>("all");
   const [queue, setQueue] = useState<ReviewCard[]>([]);
   const [stats, setStats] = useState<ReviewStats | null>(null);
   const [index, setIndex] = useState(0);
@@ -53,11 +55,12 @@ export default function ReviewPage() {
   const [error, setError] = useState<string | null>(null);
   const startedAt = useRef<number>(Date.now());
 
-  // ── fetch initial queue for the current mode ──
-  const loadQueue = useCallback(async (m: Mode = mode) => {
+  // ── fetch initial queue for the current mode + level ──
+  const loadQueue = useCallback(async (m: Mode = mode, lvl: Level = level) => {
     setError(null);
     try {
-      const res = await fetch(`/api/review/queue?type=${m}&limit=30`);
+      const qs = `type=${m}&limit=30${lvl !== "all" ? `&level=${lvl}` : ""}`;
+      const res = await fetch(`/api/review/queue?${qs}`);
       if (!res.ok) {
         if (res.status === 401) {
           setError("Sign in to track your reviews.");
@@ -76,7 +79,7 @@ export default function ReviewPage() {
       setError(`Network error: ${(e as Error).message}`);
       setPhase("setup");
     }
-  }, [mode]);
+  }, [mode, level]);
 
   useEffect(() => {
     if (loading) return;
@@ -84,8 +87,8 @@ export default function ReviewPage() {
       setPhase("setup");
       return;
     }
-    loadQueue(mode);
-  }, [user, loading, mode, loadQueue]);
+    loadQueue(mode, level);
+  }, [user, loading, mode, level, loadQueue]);
 
   // ── grading ──
   const grade = useCallback(
@@ -184,6 +187,8 @@ export default function ReviewPage() {
   if (phase === "setup") return <Setup
     mode={mode}
     onModeChange={(m) => { setMode(m); setPhase("loading"); }}
+    level={level}
+    onLevelChange={(l) => { setLevel(l); setPhase("loading"); }}
     queue={queue}
     stats={stats}
     seeded={seededCount}
@@ -201,7 +206,7 @@ export default function ReviewPage() {
   if (phase === "finished") return (
     <Finished
       stats={sessionStats}
-      onAgain={() => { void loadQueue(mode); }}
+      onAgain={() => { void loadQueue(mode, level); }}
     />
   );
 
@@ -224,10 +229,12 @@ export default function ReviewPage() {
 // ─── Setup screen ────────────────────────────────────────────────────────────
 
 function Setup({
-  mode, onModeChange, queue, stats, seeded, error, onStart,
+  mode, onModeChange, level, onLevelChange, queue, stats, seeded, error, onStart,
 }: {
   mode: Mode;
   onModeChange: (m: Mode) => void;
+  level: Level;
+  onLevelChange: (l: Level) => void;
   queue: ReviewCard[];
   stats: ReviewStats | null;
   seeded: number;
@@ -271,6 +278,9 @@ function Setup({
           );
         })}
       </div>
+
+      {/* HSK level tabs */}
+      <LevelTabs level={level} onChange={onLevelChange} />
 
       {error && (
         <div className="rounded-xl p-4" style={{ background: "rgba(196,133,122,0.08)", border: "1px solid rgba(196,133,122,0.4)" }}>
@@ -317,6 +327,38 @@ function Setup({
           {stats.reviewed_today} reviewed today
         </p>
       )}
+    </div>
+  );
+}
+
+function LevelTabs({ level, onChange }: { level: Level; onChange: (l: Level) => void }) {
+  const items: { key: Level; label: string }[] = [
+    { key: "all", label: "All" },
+    { key: 1,     label: "HSK 1" },
+    { key: 2,     label: "HSK 2" },
+  ];
+  return (
+    <div className="grid grid-cols-3 gap-1 p-1 rounded-xl" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
+      {items.map(({ key, label }) => {
+        const active = key === level;
+        return (
+          <button
+            key={String(key)}
+            onClick={() => onChange(key)}
+            className="py-2 rounded-lg text-xs"
+            style={{
+              background: active ? "rgba(201,168,76,0.15)" : "transparent",
+              color: active ? "var(--accent-gold)" : "var(--text-muted)",
+              fontFamily: "Cormorant Garamond, serif",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+            }}
+          >
+            {label}
+          </button>
+        );
+      })}
     </div>
   );
 }
