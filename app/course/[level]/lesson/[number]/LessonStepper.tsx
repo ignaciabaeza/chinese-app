@@ -400,10 +400,9 @@ function VocabStep({
         <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {words.length} word{words.length === 1 ? "" : "s"}{unseen > 0 ? ` · ${unseen} not yet in your deck` : ""}
         </p>
-        {signedIn && (
-          <button
-            onClick={addAll}
-            disabled={adding || unseen === 0}
+        <div className="flex items-center gap-2 flex-wrap">
+          <Link
+            href={`/flashcards?lesson=hsk${level}-${number}`}
             className="px-3 py-1.5 rounded-lg text-xs"
             style={{
               background: "transparent",
@@ -411,12 +410,28 @@ function VocabStep({
               color: "var(--accent-gold)",
               fontFamily: "Cormorant Garamond, serif",
               letterSpacing: "0.05em",
-              opacity: unseen === 0 ? 0.4 : 1,
             }}
           >
-            {adding ? "Adding…" : unseen === 0 ? "All in deck" : `+ Add ${unseen} to deck`}
-          </button>
-        )}
+            ▷ Practice as flashcards
+          </Link>
+          {signedIn && (
+            <button
+              onClick={addAll}
+              disabled={adding || unseen === 0}
+              className="px-3 py-1.5 rounded-lg text-xs"
+              style={{
+                background: "transparent",
+                border: "1.5px solid var(--accent-gold)",
+                color: "var(--accent-gold)",
+                fontFamily: "Cormorant Garamond, serif",
+                letterSpacing: "0.05em",
+                opacity: unseen === 0 ? 0.4 : 1,
+              }}
+            >
+              {adding ? "Adding…" : unseen === 0 ? "All in deck" : `+ Add ${unseen} to deck`}
+            </button>
+          )}
+        </div>
       </div>
 
       {added !== null && (

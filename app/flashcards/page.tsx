@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import AudioButton from "@/components/AudioButton";
 
 type Level = "all" | 1 | 2;
@@ -27,6 +28,23 @@ interface Flashcard {
 }
 
 export default function FlashcardsPage() {
+  return (
+    <Suspense fallback={null}>
+      <FlashcardsInner />
+    </Suspense>
+  );
+}
+
+interface LessonScope {
+  param: string;        // raw param e.g. "hsk1-3"
+  title: string | null; // resolved after first fetch
+}
+
+function FlashcardsInner() {
+  const searchParams = useSearchParams();
+  const lessonParam = searchParams.get("lesson");
+  const lessonScope: LessonScope | null = lessonParam ? { param: lessonParam, title: null } : null;
+
   const [phase, setPhase] = useState<"setup" | "card" | "finished">("setup");
   const [level, setLevel] = useState<Level>("all");
   const [size, setSize] = useState<Size>(10);
@@ -40,22 +58,29 @@ export default function FlashcardsPage() {
   const [stats, setStats] = useState({ passed: 0, skipped: 0 });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [lessonTitle, setLessonTitle] = useState<string | null>(null);
 
   const loadDeck = useCallback(async () => {
     setLoading(true); setError(null);
     try {
-      const qs = `level=${level}&size=${size}`;
+      const qs = lessonScope ? `lesson=${encodeURIComponent(lessonScope.param)}` : `level=${level}&size=${size}`;
       const res = await fetch(`/api/flashcards/deck?${qs}`);
       if (!res.ok) {
-        setError(`Deck fetch failed: ${res.status}`);
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || `Deck fetch failed: ${res.status}`);
         return;
       }
       const data = await res.json();
       if (!data.deck || data.deck.length === 0) {
-        setError("No cards matched. Try a different level or larger size.");
+        setError(lessonScope
+          ? "This lesson has no vocab linked yet — try a different lesson."
+          : "No cards matched. Try a different level or larger size.");
         return;
       }
       setDeck(data.deck);
+      if (data.scope === "lesson" && data.lesson) {
+        setLessonTitle(`HSK ${data.lesson.book.replace("hsk","")} · 第${data.lesson.number}课 ${data.lesson.title_hanzi}`);
+      }
       setIndex(0);
       setFlipped(false);
       setStats({ passed: 0, skipped: 0 });
@@ -63,7 +88,7 @@ export default function FlashcardsPage() {
     } catch (e) {
       setError((e as Error).message);
     } finally { setLoading(false); }
-  }, [level, size]);
+  }, [level, size, lessonScope]);
 
   function next(record: "passed" | "skipped" | null = null) {
     if (record === "passed") setStats((s) => ({ ...s, passed: s.passed + 1 }));
@@ -103,6 +128,7 @@ export default function FlashcardsPage() {
         level={level} onLevelChange={setLevel}
         size={size} onSizeChange={setSize}
         mode={mode} onModeChange={setMode}
+        lessonScope={lessonScope}
         loading={loading}
         error={error}
         onStart={loadDeck}
@@ -142,6 +168,7 @@ export default function FlashcardsPage() {
       onNext={(record) => next(record)}
       onQuit={() => setPhase("setup")}
       stats={stats}
+      lessonTitle={lessonTitle}
     />
   );
 }
@@ -149,11 +176,12 @@ export default function FlashcardsPage() {
 // ─── Setup screen ────────────────────────────────────────────────────────────
 
 function Setup({
-  level, onLevelChange, size, onSizeChange, mode, onModeChange, loading, error, onStart,
+  level, onLevelChange, size, onSizeChange, mode, onModeChange, lessonScope, loading, error, onStart,
 }: {
   level: Level; onLevelChange: (l: Level) => void;
   size: Size; onSizeChange: (s: Size) => void;
   mode: Mode; onModeChange: (m: Mode) => void;
+  lessonScope: LessonScope | null;
   loading: boolean; error: string | null;
   onStart: () => void;
 }) {
@@ -164,17 +192,39 @@ function Setup({
           Flashcards
         </h1>
         <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          One-shot deck — shuffled, no SRS. Pick a level, a size, and a mode.
+          {lessonScope
+            ? "Practising the vocab from this lesson — shuffled, no SRS."
+            : "One-shot deck — shuffled, no SRS. Pick a level, a size, and a mode."}
         </p>
       </div>
 
-      <Picker label="HSK level"
-        items={[{ k: "all", l: "All" }, { k: 1, l: "HSK 1" }, { k: 2, l: "HSK 2" }]}
-        value={level} onChange={(v) => onLevelChange(v as Level)} />
+      {lessonScope ? (
+        <div className="rounded-xl p-3 flex items-center justify-between"
+             style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.4)" }}>
+          <div>
+            <div className="text-xs uppercase tracking-widest" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
+              Lesson scope
+            </div>
+            <div className="text-sm" style={{ color: "var(--ink)", fontFamily: "Spectral, serif" }}>
+              {lessonScope.param.toUpperCase()}
+            </div>
+          </div>
+          <Link href="/flashcards" className="text-xs"
+                style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
+            Use general deck instead →
+          </Link>
+        </div>
+      ) : (
+        <>
+          <Picker label="HSK level"
+            items={[{ k: "all", l: "All" }, { k: 1, l: "HSK 1" }, { k: 2, l: "HSK 2" }]}
+            value={level} onChange={(v) => onLevelChange(v as Level)} />
 
-      <Picker label="Deck size"
-        items={[{ k: 10, l: "10" }, { k: 20, l: "20" }, { k: "all", l: "All" }]}
-        value={size} onChange={(v) => onSizeChange(v as Size)} />
+          <Picker label="Deck size"
+            items={[{ k: 10, l: "10" }, { k: 20, l: "20" }, { k: "all", l: "All" }]}
+            value={size} onChange={(v) => onSizeChange(v as Size)} />
+        </>
+      )}
 
       <Picker label="Mode"
         items={[
@@ -257,7 +307,7 @@ function Picker<T extends string | number>({
 function CardView({
   card, index, total, mode, flipped, onFlip,
   showPinyinFront, onTogglePinyinFront, showEnglishBack, onToggleEnglishBack,
-  onPrev, onNext, onQuit, stats,
+  onPrev, onNext, onQuit, stats, lessonTitle,
 }: {
   card: Flashcard;
   index: number;
@@ -273,11 +323,18 @@ function CardView({
   onNext: (record?: "passed" | "skipped" | null) => void;
   onQuit: () => void;
   stats: { passed: number; skipped: number };
+  lessonTitle: string | null;
 }) {
   const sizeClass = card.simplified.length <= 2 ? "chinese-xl" : card.simplified.length <= 4 ? "chinese-lg" : "chinese-md";
 
   return (
     <div className="max-w-xl mx-auto space-y-5 animate-fade-up">
+      {lessonTitle && (
+        <p className="text-xs text-center" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.05em" }}>
+          {lessonTitle}
+        </p>
+      )}
+
       {/* Progress + quit */}
       <div className="flex items-center gap-3">
         <button
