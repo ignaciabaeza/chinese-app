@@ -55,6 +55,7 @@ function FlashcardsInner() {
   const [deck, setDeck] = useState<Flashcard[]>([]);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const [transitioning, setTransitioning] = useState(false);
   const [stats, setStats] = useState({ passed: 0, skipped: 0 });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -90,18 +91,38 @@ function FlashcardsInner() {
     } finally { setLoading(false); }
   }, [level, size, lessonScope]);
 
+  // Card-flip animation duration in globals.css is 600ms. To avoid flashing
+  // the NEXT card's back content while the CURRENT card is mid-flip-back,
+  // we flip first, wait ~half the animation (so we're at 90° where neither
+  // face is visible due to backface-visibility:hidden), then swap content.
   function next(record: "passed" | "skipped" | null = null) {
+    if (transitioning) return;
     if (record === "passed") setStats((s) => ({ ...s, passed: s.passed + 1 }));
     else if (record === "skipped") setStats((s) => ({ ...s, skipped: s.skipped + 1 }));
-    if (index + 1 >= deck.length) { setPhase("finished"); return; }
-    setIndex((i) => i + 1);
-    setFlipped(false);
+
+    const advance = () => {
+      if (index + 1 >= deck.length) setPhase("finished");
+      else setIndex((i) => i + 1);
+    };
+    if (flipped) {
+      setTransitioning(true);
+      setFlipped(false);
+      window.setTimeout(() => { advance(); setTransitioning(false); }, 320);
+    } else {
+      advance();
+    }
   }
 
   function prev() {
-    if (index === 0) return;
-    setIndex((i) => i - 1);
-    setFlipped(false);
+    if (transitioning || index === 0) return;
+    const back = () => setIndex((i) => i - 1);
+    if (flipped) {
+      setTransitioning(true);
+      setFlipped(false);
+      window.setTimeout(() => { back(); setTransitioning(false); }, 320);
+    } else {
+      back();
+    }
   }
 
   // Keyboard shortcuts.
@@ -159,7 +180,7 @@ function FlashcardsInner() {
       total={deck.length}
       mode={mode}
       flipped={flipped}
-      onFlip={() => setFlipped((f) => !f)}
+      onFlip={() => { if (!transitioning) setFlipped((f) => !f); }}
       showPinyinFront={showPinyinFront}
       onTogglePinyinFront={() => setShowPinyinFront((v) => !v)}
       showEnglishBack={showEnglishBack}
@@ -325,7 +346,19 @@ function CardView({
   stats: { passed: number; skipped: number };
   lessonTitle: string | null;
 }) {
-  const sizeClass = card.simplified.length <= 2 ? "chinese-xl" : card.simplified.length <= 4 ? "chinese-lg" : "chinese-md";
+  // Inline font size scaled to character count so multi-char words stay
+  // on one row inside the moon circle instead of wrapping vertically.
+  // clamp() keeps it responsive — vw for fluid mid-range, px for caps.
+  const charCount = Math.max(1, Array.from(card.simplified).length);
+  const heroStyle: React.CSSProperties = {
+    fontSize: `clamp(${Math.max(28, Math.round(160 / charCount))}px, ${Math.round(46 / charCount)}vw, ${Math.round(220 / charCount)}px)`,
+    whiteSpace: "nowrap",
+    lineHeight: 1,
+    color: "var(--accent-crane-white)",
+    fontFamily: "var(--font-display)",
+    fontWeight: 700,
+    zIndex: 1,
+  };
 
   return (
     <div className="max-w-xl mx-auto space-y-5 animate-fade-up">
@@ -371,7 +404,7 @@ function CardView({
               <div className="badge-gold mb-4">HSK {card.hsk2_level}</div>
             )}
             <div className="moon-circle">
-              <div className={`${sizeClass} text-center leading-none font-bold`} style={{ color: "var(--accent-crane-white)", zIndex: 1 }}>
+              <div className="text-center" style={heroStyle}>
                 {card.simplified}
               </div>
             </div>
