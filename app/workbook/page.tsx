@@ -69,7 +69,7 @@ export default function WorkbookLanding() {
       )}
 
       {filtered !== null && filtered.length === 0 && (
-        <div className="parchment-panel p-6 my-6 text-[var(--bg-primary)]">
+        <div className="parchment-panel p-6 my-6 text-[var(--ink)]">
           <p className="font-semibold mb-2">No exercises yet for this level.</p>
           <p className="text-sm">Run <code className="font-mono">npm run db:generate-exercises</code> to create them from your lesson vocabulary.</p>
         </div>
@@ -98,8 +98,8 @@ function LevelTabs({ level, setLevel }: { level: Level; setLevel: (l: Level) => 
           onClick={() => setLevel(o.value)}
           className={`px-4 py-2 rounded font-heading text-sm transition ${
             level === o.value
-              ? "bg-[var(--accent-gold)] text-[var(--bg-primary)]"
-              : "bg-[var(--bg-secondary)]/80 text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]"
+              ? "bg-[var(--accent-gold)] text-[var(--accent-crane-white)]"
+              : "bg-[var(--paper-3)] text-[var(--ink)] border border-[var(--paper-edge)] hover:bg-[var(--paper-2)]"
           }`}
         >
           {o.label}
@@ -121,18 +121,18 @@ function SetCard({ s }: { s: SetSummary }) {
       <div className="flex justify-between items-baseline mb-1">
         <span className="badge-gold text-xs">{s.book.toUpperCase()} L{s.number}</span>
         {accuracy !== null && (
-          <span className="text-xs text-[var(--bg-primary)]/70">
+          <span className="text-xs text-[var(--ink)]/70">
             {accuracy}% · {s.recent_attempts} attempts
           </span>
         )}
       </div>
-      <div className="chinese-md text-[var(--bg-primary)] mb-1">{s.title_hanzi}</div>
+      <div className="chinese-md text-[var(--ink)] mb-1">{s.title_hanzi}</div>
       {s.title_english && (
-        <div className="text-sm text-[var(--bg-primary)]/70 mb-3">{s.title_english}</div>
+        <div className="text-sm text-[var(--ink)]/70 mb-3">{s.title_english}</div>
       )}
       <div className="flex flex-wrap gap-1 text-xs">
         {typeBadges.map(([t, n]) => (
-          <span key={t} className="px-2 py-0.5 rounded bg-[var(--bg-primary)]/10 text-[var(--bg-primary)]/80">
+          <span key={t} className="px-2 py-0.5 rounded bg-[var(--ink)]/10 text-[var(--ink)]/80">
             {TYPE_LABELS[t] ?? t} · {n}
           </span>
         ))}

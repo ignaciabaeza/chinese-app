@@ -90,7 +90,7 @@ export default function WorkbookSetPage({ params }: { params: Promise<{ book: st
     return (
       <div className="px-4 py-8 max-w-3xl mx-auto">
         <Link href="/workbook" className="text-[var(--accent-gold)] text-sm">← All workbooks</Link>
-        <div className="parchment-panel p-6 mt-4 text-[var(--bg-primary)]">
+        <div className="parchment-panel p-6 mt-4 text-[var(--ink)]">
           <p className="font-semibold mb-2">Could not load this set.</p>
           <p className="text-sm">{error}</p>
         </div>
@@ -175,7 +175,7 @@ function ExerciseRunner({
   })();
 
   return (
-    <div className="parchment-panel p-5 text-[var(--bg-primary)]">
+    <div className="parchment-panel p-5 text-[var(--ink)]">
       <p className="font-heading text-sm mb-4">{exercise.prompt}</p>
       {inner}
       {graded && (
@@ -208,18 +208,18 @@ function ClozeBody({
   return (
     <div>
       <div className="chinese-md mb-2">{payload.sentence_blanked}</div>
-      {payload.pinyin && <div className="font-pinyin italic text-sm mb-1 text-[var(--bg-primary)]/70">{payload.pinyin}</div>}
-      <div className="text-sm mb-5 text-[var(--bg-primary)]/70">{payload.english}</div>
+      {payload.pinyin && <div className="font-pinyin italic text-sm mb-1 text-[var(--ink)]/70">{payload.pinyin}</div>}
+      <div className="text-sm mb-5 text-[var(--ink)]/70">{payload.english}</div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {payload.options.map((o, i) => {
           const selected = (graded?.userAnswer as { index?: number } | null)?.index === i;
           const isAnswer = i === answer.index;
-          let cls = "border-2 border-[var(--bg-primary)]/15 hover:border-[var(--accent-gold)]";
+          let cls = "border-2 border-[var(--ink)]/15 hover:border-[var(--accent-gold)]";
           if (graded) {
             if (isAnswer) cls = "border-2 border-emerald-600 bg-emerald-50";
             else if (selected) cls = "border-2 border-[var(--accent-rose)] bg-[var(--accent-rose)]/10";
-            else cls = "border-2 border-[var(--bg-primary)]/10 opacity-60";
+            else cls = "border-2 border-[var(--ink)]/10 opacity-60";
           }
           return (
             <button
@@ -229,8 +229,8 @@ function ClozeBody({
               className={`px-3 py-2 rounded text-left transition ${cls}`}
             >
               <div className="chinese-md text-base">{o.simplified}</div>
-              <div className="font-pinyin italic text-xs text-[var(--bg-primary)]/60">{o.pinyin}</div>
-              {graded && <div className="text-xs mt-1 text-[var(--bg-primary)]/70">{o.english}</div>}
+              <div className="font-pinyin italic text-xs text-[var(--ink)]/60">{o.pinyin}</div>
+              {graded && <div className="text-xs mt-1 text-[var(--ink)]/70">{o.english}</div>}
             </button>
           );
         })}
@@ -303,22 +303,22 @@ function ChipAssembler({
   return (
     <div>
       {promptOverEnglish && (
-        <div className="mb-3 text-base text-[var(--bg-primary)] font-heading">{english}</div>
+        <div className="mb-3 text-base text-[var(--ink)] font-heading">{english}</div>
       )}
       {!promptOverEnglish && (
-        <div className="text-sm mb-3 text-[var(--bg-primary)]/70">{english}</div>
+        <div className="text-sm mb-3 text-[var(--ink)]/70">{english}</div>
       )}
 
-      <div className="min-h-[3.5rem] mb-3 p-3 rounded bg-[var(--bg-primary)]/5 border border-dashed border-[var(--bg-primary)]/20 flex flex-wrap gap-2">
+      <div className="min-h-[3.5rem] mb-3 p-3 rounded bg-[var(--ink)]/5 border border-dashed border-[var(--ink)]/20 flex flex-wrap gap-2">
         {assembled.length === 0 && (
-          <span className="text-sm text-[var(--bg-primary)]/40">Tap chips below to build…</span>
+          <span className="text-sm text-[var(--ink)]/40">Tap chips below to build…</span>
         )}
         {assembled.map((t, i) => (
           <button
             key={`a-${i}-${used[i]}`}
             disabled={!!graded}
             onClick={() => setUsed(used.slice(0, i).concat(used.slice(i + 1)))}
-            className="px-3 py-1.5 rounded bg-[var(--accent-gold)] text-[var(--bg-primary)] font-heading text-sm"
+            className="px-3 py-1.5 rounded bg-[var(--accent-gold)] text-[var(--ink)] font-heading text-sm"
           >
             {t}
           </button>
@@ -331,7 +331,7 @@ function ChipAssembler({
             key={`b-${i}`}
             disabled={!!graded}
             onClick={() => setUsed([...used, i])}
-            className="px-3 py-1.5 rounded border border-[var(--bg-primary)]/30 text-[var(--bg-primary)] font-heading text-sm hover:border-[var(--accent-gold)]"
+            className="px-3 py-1.5 rounded border border-[var(--ink)]/30 text-[var(--ink)] font-heading text-sm hover:border-[var(--accent-gold)]"
           >
             {bank[i]}
           </button>
@@ -350,7 +350,7 @@ function ChipAssembler({
 
       {graded && (
         <div className="text-sm space-y-1 mt-2">
-          <div className="text-[var(--bg-primary)]/70">Your answer: <span className="chinese-md">{assembled.join("")}</span></div>
+          <div className="text-[var(--ink)]/70">Your answer: <span className="chinese-md">{assembled.join("")}</span></div>
           <div className="text-emerald-700">Correct: <span className="chinese-md">{answer.join("")}</span></div>
         </div>
       )}
@@ -438,11 +438,11 @@ function MatchingBody({
                       ? "border-[var(--accent-gold)] bg-[var(--accent-gold)]/10"
                       : paired
                         ? "border-[var(--accent-gold)]/60"
-                        : "border-[var(--bg-primary)]/20"
+                        : "border-[var(--ink)]/20"
                 }`}
               >
                 <div className="chinese-md">{w.simplified}</div>
-                <div className="font-pinyin italic text-xs text-[var(--bg-primary)]/60">{w.pinyin}</div>
+                <div className="font-pinyin italic text-xs text-[var(--ink)]/60">{w.pinyin}</div>
               </button>
             );
           })}
@@ -461,7 +461,7 @@ function MatchingBody({
                     ? "border-[var(--accent-gold)] bg-[var(--accent-gold)]/10"
                     : paired
                       ? "border-[var(--accent-gold)]/60"
-                      : "border-[var(--bg-primary)]/20"
+                      : "border-[var(--ink)]/20"
                 }`}
               >
                 {e.english}
@@ -503,18 +503,18 @@ function ListeningChoiceBody({
     <div>
       <div className="flex items-center gap-3 mb-5">
         {payload.audio_path && <AudioButton src={payload.audio_path} autoPlay size="lg" />}
-        <span className="text-[var(--bg-primary)]/60 text-sm">Tap to replay</span>
+        <span className="text-[var(--ink)]/60 text-sm">Tap to replay</span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {payload.options.map((o) => {
           const selected = (graded?.userAnswer as { letter?: string } | null)?.letter === o.letter;
           const isAnswer = o.letter === answer.letter;
-          let cls = "border-[var(--bg-primary)]/15 hover:border-[var(--accent-gold)]";
+          let cls = "border-[var(--ink)]/15 hover:border-[var(--accent-gold)]";
           if (graded) {
             if (isAnswer) cls = "border-emerald-600 bg-emerald-50";
             else if (selected) cls = "border-[var(--accent-rose)] bg-[var(--accent-rose)]/10";
-            else cls = "border-[var(--bg-primary)]/10 opacity-60";
+            else cls = "border-[var(--ink)]/10 opacity-60";
           }
           return (
             <button
@@ -524,14 +524,14 @@ function ListeningChoiceBody({
               className={`px-3 py-3 rounded border-2 text-left transition ${cls}`}
             >
               <span className="font-heading text-[var(--accent-gold)] mr-2">{o.letter}</span>
-              <span className="text-[var(--bg-primary)]">{o.english}</span>
+              <span className="text-[var(--ink)]">{o.english}</span>
             </button>
           );
         })}
       </div>
 
       {graded && (
-        <div className="text-sm mt-4 text-[var(--bg-primary)]/70">
+        <div className="text-sm mt-4 text-[var(--ink)]/70">
           <span className="chinese-md">{payload.simplified}</span>
           <span className="font-pinyin italic ml-2">{payload.pinyin}</span>
         </div>
@@ -563,17 +563,17 @@ function PinyinToneBody({
         <span className="chinese-xl">{payload.simplified}</span>
         {payload.audio_path && <AudioButton src={payload.audio_path} size="md" />}
       </div>
-      <div className="text-sm text-[var(--bg-primary)]/70 mb-5">{payload.english}</div>
+      <div className="text-sm text-[var(--ink)]/70 mb-5">{payload.english}</div>
 
       <div className="grid grid-cols-2 gap-2">
         {payload.options.map((opt, i) => {
           const selected = (graded?.userAnswer as { index?: number } | null)?.index === i;
           const isAnswer = i === answer.index;
-          let cls = "border-[var(--bg-primary)]/15 hover:border-[var(--accent-gold)]";
+          let cls = "border-[var(--ink)]/15 hover:border-[var(--accent-gold)]";
           if (graded) {
             if (isAnswer) cls = "border-emerald-600 bg-emerald-50";
             else if (selected) cls = "border-[var(--accent-rose)] bg-[var(--accent-rose)]/10";
-            else cls = "border-[var(--bg-primary)]/10 opacity-60";
+            else cls = "border-[var(--ink)]/10 opacity-60";
           }
           return (
             <button
@@ -589,7 +589,7 @@ function PinyinToneBody({
       </div>
 
       {graded && (
-        <div className="text-sm mt-4 font-pinyin italic text-[var(--bg-primary)]/70">{payload.pinyin}</div>
+        <div className="text-sm mt-4 font-pinyin italic text-[var(--ink)]/70">{payload.pinyin}</div>
       )}
     </div>
   );
@@ -624,19 +624,19 @@ function SummaryView({
       <p className="text-[var(--text-muted)] mb-6">Set complete.</p>
 
       {total === 0 ? (
-        <div className="parchment-panel p-6 text-[var(--bg-primary)]">
+        <div className="parchment-panel p-6 text-[var(--ink)]">
           <p>This set has no exercises yet — run <code className="font-mono">npm run db:generate-exercises</code>.</p>
         </div>
       ) : (
         <>
-          <div className="parchment-panel p-6 text-[var(--bg-primary)] text-center mb-4">
+          <div className="parchment-panel p-6 text-[var(--ink)] text-center mb-4">
             <div className="font-heading text-5xl text-[var(--accent-gold)]">{score}%</div>
             <div className="text-sm mt-2">{correct} / {total} correct</div>
           </div>
 
           <div className="space-y-2 mb-6">
             {Object.entries(byType).map(([t, s]) => (
-              <div key={t} className="flex justify-between text-sm parchment-panel p-3 text-[var(--bg-primary)]">
+              <div key={t} className="flex justify-between text-sm parchment-panel p-3 text-[var(--ink)]">
                 <span>{TYPE_LABELS[t] ?? t}</span>
                 <span>{s.correct} / {s.total}</span>
               </div>
