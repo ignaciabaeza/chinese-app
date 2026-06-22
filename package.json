@@ -12,7 +12,8 @@
     "db:match-sentences": "tsx scripts/03-match-sentences.ts",
     "db:generate-audio": "python3 scripts/04-generate-audio.py",
     "db:import-lessons": "tsx scripts/05-import-book-content.ts",
-    "db:rebuild": "npm run db:download && npm run db:build-vocab && npm run db:match-sentences && npm run db:import-lessons"
+    "db:generate-exercises": "tsx scripts/06-generate-exercises.ts",
+    "db:rebuild": "npm run db:download && npm run db:build-vocab && npm run db:match-sentences && npm run db:import-lessons && npm run db:generate-exercises"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.80.0",
