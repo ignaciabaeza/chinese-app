@@ -1,0 +1,303 @@
+{
+  "id": "hsk1-13",
+  "level": 1,
+  "number": 13,
+  "title": { "hanzi": "他在睡觉呢", "pinyin": "Tā zài shuì jiào ne", "english": "He's sleeping right now" },
+  "theme": "Daily Activities",
+  "warmUp": {
+    "instruction": { "hanzi": "读一读，说说这些词语是什么意思。", "english": "Read the words and phrases aloud and say what they mean." },
+    "items": [
+      { "hanzi": "打电话", "pinyin": "dǎ diànhuà", "english": "to make a phone call" },
+      { "hanzi": "睡觉", "pinyin": "shuì jiào", "english": "to sleep" },
+      { "hanzi": "看电视", "pinyin": "kàn diànshì", "english": "to watch TV" },
+      { "hanzi": "学习汉语", "pinyin": "xuéxí Hànyǔ", "english": "to study Chinese" },
+      { "hanzi": "上午", "pinyin": "shàngwǔ", "english": "morning" },
+      { "hanzi": "做菜", "pinyin": "zuò cài", "english": "to cook" },
+      { "hanzi": "喜欢", "pinyin": "xǐhuan", "english": "to like" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "打电话", "english": "On the phone" },
+      "audioRef": "13-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "喂，你好！王明在家吗？", "pinyin": "Wèi, nǐ hǎo! Wáng Míng zài jiā ma?", "english": "Hello! Is Wang Ming home?" },
+        { "speaker": "B", "hanzi": "在，他在睡觉呢。你是谁？", "pinyin": "Zài, tā zài shuì jiào ne. Nǐ shì shéi?", "english": "Yes, but he's sleeping. Who's this?" },
+        { "speaker": "A", "hanzi": "我是他的同学马克。", "pinyin": "Wǒ shì tā de tóngxué Mǎkè.", "english": "I'm his classmate, Mark." },
+        { "speaker": "B", "hanzi": "你下午再给他打电话吧。", "pinyin": "Nǐ xiàwǔ zài gěi tā dǎ diànhuà ba.", "english": "Why don't you call him again this afternoon?" },
+        { "speaker": "A", "hanzi": "好的，谢谢你。再见！", "pinyin": "Hǎo de, xièxie nǐ. Zàijiàn!", "english": "OK, thank you. Bye!" }
+      ],
+      "newWords": [
+        { "id": "hsk1_13_wei", "hanzi": "喂", "pinyin": "wèi", "pos": "int.", "english": "hello (on the phone)" },
+        { "id": "hsk1_13_shuijiao", "hanzi": "睡觉", "pinyin": "shuì jiào", "pos": "v.", "english": "to sleep" },
+        { "id": "hsk1_13_gei", "hanzi": "给", "pinyin": "gěi", "pos": "prep.", "english": "to, for" },
+        { "id": "hsk1_13_dadianhua", "hanzi": "打电话", "pinyin": "dǎ diànhuà", "pos": "v.", "english": "to make a phone call" },
+        { "id": "hsk1_13_ba", "hanzi": "吧", "pinyin": "ba", "pos": "part.", "english": "particle for a suggestion or mild request" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_13_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming" },
+        { "id": "hsk1_13_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在教室", "english": "In the classroom" },
+      "audioRef": "13-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "安娜，你喜欢看电视吗？", "pinyin": "Ānnà, nǐ xǐhuan kàn diànshì ma?", "english": "Anna, do you like watching TV?" },
+        { "speaker": "B", "hanzi": "很喜欢。你呢？", "pinyin": "Hěn xǐhuan. Nǐ ne?", "english": "I love it. How about you?" },
+        { "speaker": "A", "hanzi": "我也喜欢。你喜欢看什么？", "pinyin": "Wǒ yě xǐhuan. Nǐ xǐhuan kàn shénme?", "english": "Me too. What do you like to watch?" },
+        { "speaker": "B", "hanzi": "我喜欢看中国电影。", "pinyin": "Wǒ xǐhuan kàn Zhōngguó diànyǐng.", "english": "I like watching Chinese movies." },
+        { "speaker": "A", "hanzi": "明天上午我们去看电影吧。", "pinyin": "Míngtiān shàngwǔ wǒmen qù kàn diànyǐng ba.", "english": "Let's go and see a movie tomorrow morning." },
+        { "speaker": "B", "hanzi": "好！", "pinyin": "Hǎo!", "english": "Great!" }
+      ],
+      "newWords": [
+        { "id": "hsk1_13_xihuan", "hanzi": "喜欢", "pinyin": "xǐhuan", "pos": "v.", "english": "to like" },
+        { "id": "hsk1_13_dianshi", "hanzi": "电视", "pinyin": "diànshì", "pos": "n.", "english": "television" },
+        { "id": "hsk1_13_ye", "hanzi": "也", "pinyin": "yě", "pos": "adv.", "english": "also, too" },
+        { "id": "hsk1_13_shangwu", "hanzi": "上午", "pinyin": "shàngwǔ", "pos": "n.", "english": "morning" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_13_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在学校", "english": "At school" },
+      "audioRef": "13-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "马克，你在做什么呢？", "pinyin": "Mǎkè, nǐ zài zuò shénme ne?", "english": "Mark, what are you up to?" },
+        { "speaker": "B", "hanzi": "刘老师好！我在学习汉语呢。", "pinyin": "Liú lǎoshī hǎo! Wǒ zài xuéxí Hànyǔ ne.", "english": "Hello, Professor Liu! I'm studying Chinese." },
+        { "speaker": "A", "hanzi": "你在学写汉字吗？", "pinyin": "Nǐ zài xué xiě Hànzì ma?", "english": "Are you learning to write characters?" },
+        { "speaker": "B", "hanzi": "是的。汉字太多了！", "pinyin": "Shì de. Hànzì tài duō le!", "english": "Yes. There are so many characters!" },
+        { "speaker": "A", "hanzi": "王明会写很多汉字，你给他打电话吧。", "pinyin": "Wáng Míng huì xiě hěn duō Hànzì, nǐ gěi tā dǎ diànhuà ba.", "english": "Wang Ming can write lots of characters. Why don't you give him a call?" },
+        { "speaker": "B", "hanzi": "他的电话是多少？", "pinyin": "Tā de diànhuà shì duōshao?", "english": "What's his phone number?" },
+        { "speaker": "A", "hanzi": "13801264579。", "pinyin": "Yāo sān bā líng yāo èr liù sì wǔ qī jiǔ.", "english": "1-3-8-0-1-2-6-4-5-7-9." },
+        { "speaker": "B", "hanzi": "谢谢老师！", "pinyin": "Xièxie lǎoshī!", "english": "Thank you, Professor!" }
+      ],
+      "newWords": [
+        { "id": "hsk1_13_xuexi", "hanzi": "学习", "pinyin": "xuéxí", "pos": "v.", "english": "to study" },
+        { "id": "hsk1_13_xue", "hanzi": "学", "pinyin": "xué", "pos": "v.", "english": "to learn" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_13_pn_liulaoshi", "hanzi": "刘老师", "pinyin": "Liú lǎoshī", "english": "Professor Liu" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_13_g_wei",
+      "number": 1,
+      "title": { "hanzi": "叹词\"喂\"", "english": "The Interjection \"喂\"" },
+      "explanation": {
+        "hanzi": "打电话和接电话的时候，第一句话常常是\"喂\"，意思是\"你好，我在听\"。在电话里，很多人把\"喂\"读成第二声 wéi，听起来更客气。",
+        "english": "\"喂\" is the first word when you make or answer a phone call, like \"Hello?\". Its dictionary tone is wèi, but on the phone most people say it with a rising tone, wéi, which sounds softer and more polite. Outside phone calls, a sharp wèi! is a rather rude way to get a stranger's attention, so keep it for the phone."
+      },
+      "examples": [
+        { "hanzi": "喂，你好！", "pinyin": "Wèi, nǐ hǎo!", "english": "Hello! (on the phone)" },
+        { "hanzi": "喂，是安娜吗？", "pinyin": "Wèi, shì Ānnà ma?", "english": "Hello, is that Anna?" },
+        { "hanzi": "喂，刘老师，您好！我是马克。", "pinyin": "Wèi, Liú lǎoshī, nín hǎo! Wǒ shì Mǎkè.", "english": "Hello, Professor Liu! It's Mark." }
+      ]
+    },
+    {
+      "id": "hsk1_13_g_zai_ne",
+      "number": 2,
+      "title": { "hanzi": "\"在……呢\"表示动作正在进行", "english": "\"在……呢\" for an Action in Progress" },
+      "explanation": {
+        "hanzi": "\"在＋动词＋呢\"表示动作正在进行，像英语的\"be doing\"。\"在\"和\"呢\"可以一起用，也可以只用一个。问别人正在做什么，可以说\"你在做什么呢？\"",
+        "english": "\"在 + verb (+ object) + 呢\" says that an action is happening right now, like English \"be doing\". You can use 在 and 呢 together, or just one of them: 他在睡觉 and 他睡觉呢 also work. To ask what someone is doing, say 你在做什么呢?"
+      },
+      "examples": [
+        { "hanzi": "我在看电视呢。", "pinyin": "Wǒ zài kàn diànshì ne.", "english": "I'm watching TV." },
+        { "hanzi": "妈妈在做菜呢。", "pinyin": "Māma zài zuò cài ne.", "english": "Mom is cooking." },
+        { "hanzi": "小美在睡觉呢。", "pinyin": "Xiǎoměi zài shuì jiào ne.", "english": "Xiaomei is sleeping." },
+        { "hanzi": "你在做什么呢？", "pinyin": "Nǐ zài zuò shénme ne?", "english": "What are you doing?" }
+      ],
+      "patternTable": {
+        "columns": ["主语 Subject", "在", "动词＋宾语 Verb + Object", "呢"],
+        "rows": [
+          ["我", "在", "看电视", "呢"],
+          ["王明", "在", "学习汉语", "呢"],
+          ["他们", "在", "吃饭", "呢"]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_13_g_phone",
+      "number": 3,
+      "title": { "hanzi": "电话号码的读法", "english": "Saying Telephone Numbers" },
+      "explanation": {
+        "hanzi": "电话号码要一个数字一个数字地读，不读成\"十\"、\"百\"。数字\"1\"在电话号码里一般读 yāo，不读 yī，这样不会和\"7 qī\"听混。\"0\"读 líng。问号码可以说\"你的电话是多少？\"",
+        "english": "Read a phone number digit by digit, never as tens or hundreds. In phone numbers, room numbers and bus numbers, the digit 1 is usually read yāo instead of yī, so it isn't confused with 7 (qī) on a bad line. 0 is líng. To ask for someone's number, say 你的电话是多少? (literally \"Your phone is how much?\")."
+      },
+      "examples": [
+        { "hanzi": "你的电话是多少？", "pinyin": "Nǐ de diànhuà shì duōshao?", "english": "What's your phone number?" },
+        { "hanzi": "我的电话是13512678904。", "pinyin": "Wǒ de diànhuà shì yāo sān wǔ yāo èr liù qī bā jiǔ líng sì.", "english": "My phone number is 135-1267-8904." },
+        { "hanzi": "刘老师的电话是18611025937。", "pinyin": "Liú lǎoshī de diànhuà shì yāo bā liù yāo yāo líng èr wǔ jiǔ sān qī.", "english": "Professor Liu's number is 186-1102-5937." }
+      ],
+      "patternTable": {
+        "columns": ["数字 Number", "读法 Reading"],
+        "rows": [
+          ["110", "yāo yāo líng"],
+          ["120", "yāo èr líng"],
+          ["119", "yāo yāo jiǔ"],
+          ["17", "yāo qī"]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_13_g_ba",
+      "number": 4,
+      "title": { "hanzi": "语气助词\"吧\"", "english": "The Modal Particle \"吧\"" },
+      "explanation": {
+        "hanzi": "\"吧\"放在句子最后，让建议或请求听起来更客气、更软。\"我们……吧\"的意思是\"我们一起……，好不好\"；\"你……吧\"是比较客气的请求。",
+        "english": "\"吧\" (ba, neutral tone) at the end of a sentence softens a suggestion or request. \"我们 + verb + 吧\" means \"Let's...\", and \"你 + verb + 吧\" is a friendly \"Why don't you...\" rather than a blunt order. Compare 你坐 (\"Sit.\") with the much warmer 你坐吧 (\"Have a seat.\")."
+      },
+      "examples": [
+        { "hanzi": "我们去吃饭吧。", "pinyin": "Wǒmen qù chī fàn ba.", "english": "Let's go and eat." },
+        { "hanzi": "你明天给我打电话吧。", "pinyin": "Nǐ míngtiān gěi wǒ dǎ diànhuà ba.", "english": "Why don't you call me tomorrow?" },
+        { "hanzi": "你们坐吧。", "pinyin": "Nǐmen zuò ba.", "english": "Have a seat, everyone." },
+        { "hanzi": "太热了，你喝些水吧。", "pinyin": "Tài rè le, nǐ hē xiē shuǐ ba.", "english": "It's so hot. Have some water." }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking one role each." }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据你的情况回答问题。", "english": "Answer the questions about yourself." },
+      "items": [
+        { "hanzi": "你现在在做什么呢？", "pinyin": "Nǐ xiànzài zài zuò shénme ne?", "english": "What are you doing right now?" },
+        { "hanzi": "你喜欢看电视吗？", "pinyin": "Nǐ xǐhuan kàn diànshì ma?", "english": "Do you like watching TV?" },
+        { "hanzi": "你几点睡觉？", "pinyin": "Nǐ jǐ diǎn shuì jiào?", "english": "What time do you go to bed?" },
+        { "hanzi": "你上午学习汉语吗？", "pinyin": "Nǐ shàngwǔ xuéxí Hànyǔ ma?", "english": "Do you study Chinese in the morning?" },
+        { "hanzi": "你的电话是多少？", "pinyin": "Nǐ de diànhuà shì duōshao?", "english": "What's your phone number?" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": { "hanzi": "用\"喂、呢、吧、也、给\"填空。", "english": "Fill in the blanks with 喂, 呢, 吧, 也 or 给." },
+      "items": [
+        { "hanzi": "____，是王明吗？", "english": "Hello, is that Wang Ming?", "blank": "喂" },
+        { "hanzi": "妈妈在做菜____。", "english": "Mom is cooking.", "blank": "呢" },
+        { "hanzi": "我们去看电影____。", "english": "Let's go and see a movie.", "blank": "吧" },
+        { "hanzi": "安娜喜欢喝茶，我____喜欢喝茶。", "english": "Anna likes tea, and I like tea too.", "blank": "也" },
+        { "hanzi": "我明天上午____你打电话。", "english": "I'll call you tomorrow morning.", "blank": "给" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": { "hanzi": "给问题找到合适的回答。", "english": "Match each question with a suitable answer." },
+      "items": [
+        { "hanzi": "你在做什么呢？ — 我在看电视呢。", "pinyin": "Nǐ zài zuò shénme ne? — Wǒ zài kàn diànshì ne.", "english": "What are you doing? — I'm watching TV." },
+        { "hanzi": "喂，王明在家吗？ — 他在睡觉呢。", "pinyin": "Wèi, Wáng Míng zài jiā ma? — Tā zài shuì jiào ne.", "english": "Hello, is Wang Ming home? — He's sleeping." },
+        { "hanzi": "你的电话是多少？ — 13912345678。", "pinyin": "Nǐ de diànhuà shì duōshao? — Yāo sān jiǔ yāo èr sān sì wǔ liù qī bā.", "english": "What's your number? — 139-1234-5678." },
+        { "hanzi": "我们去吃饭吧。 — 好！", "pinyin": "Wǒmen qù chī fàn ba. — Hǎo!", "english": "Let's go and eat. — OK!" }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": { "hanzi": "问句的语调", "english": "Question Intonation" },
+        "explanation": {
+          "hanzi": "汉语每个字都有声调，所以问句的语调不能改变声调，只能改变整句的高低和轻重。不同的问句，语调不一样。",
+          "english": "Because every syllable already carries a tone, Chinese questions don't simply rise at the end the way English ones do. The tones stay the same; what changes is the overall pitch range and which word gets the stress. Listen to and imitate three kinds of questions."
+        },
+        "subRules": [
+          {
+            "rule": { "hanzi": "\"吗\"问句：句末稍稍上扬，\"吗\"读得轻而短。", "english": "吗 questions: the sentence ends a little higher, and 吗 itself is light and short (neutral tone)." },
+            "examples": [
+              { "pinyin": "Nǐ xǐhuan kàn diànshì ma?", "english": "Do you like watching TV?" },
+              { "pinyin": "Wáng Míng zài jiā ma?", "english": "Is Wang Ming home?" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "特指问句（谁、什么、几、多少、哪儿……）：疑问词重读，句末下降，不用\"吗\"。", "english": "Question-word questions (谁, 什么, 几, 多少, 哪儿...): stress the question word and let the end fall. Never add 吗." },
+            "examples": [
+              { "pinyin": "Nǐ zài zuò SHÉNME ne?", "english": "What are you doing?" },
+              { "pinyin": "Tā de diànhuà shì DUŌSHAO?", "english": "What's his number?" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "\"吧\"：建议或请求，句末平稳下降，语气柔和。", "english": "吧 sentences: a suggestion or request, ending with a gentle fall and a soft, light ba." },
+            "examples": [
+              { "pinyin": "Wǒmen qù kàn diànyǐng ba.", "english": "Let's go and see a movie." },
+              { "pinyin": "Nǐ xiàwǔ gěi tā dǎ diànhuà ba.", "english": "Why don't you call him this afternoon?" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      {
+        "name": { "hanzi": "横折", "pinyin": "héngzhé", "english": "horizontal-turning" },
+        "shape": "㇕",
+        "examples": [
+          { "hanzi": "日", "pinyin": "rì", "english": "sun, day" },
+          { "hanzi": "目", "pinyin": "mù", "english": "eye" },
+          { "hanzi": "口", "pinyin": "kǒu", "english": "mouth" }
+        ]
+      },
+      {
+        "name": { "hanzi": "提", "pinyin": "tí", "english": "rising" },
+        "shape": "㇀",
+        "examples": [
+          { "hanzi": "习", "pinyin": "xí", "english": "to practise" },
+          { "hanzi": "打", "pinyin": "dǎ", "english": "to hit, to make (a call)" },
+          { "hanzi": "我", "pinyin": "wǒ", "english": "I, me" }
+        ]
+      }
+    ],
+    "singleComponentChars": [
+      {
+        "id": "hsk1_13_c_ri",
+        "hanzi": "日",
+        "pinyin": "rì",
+        "meaning": "sun, day",
+        "etymology": "Originally a round sun with a mark in the middle; writing with a brush squared the circle off. It also means \"day\", and appears in many time words.",
+        "strokeCount": 4
+      },
+      {
+        "id": "hsk1_13_c_mu",
+        "hanzi": "目",
+        "pinyin": "mù",
+        "meaning": "eye",
+        "etymology": "A drawing of an eye, with the pupil inside, that was later stood up on its end to fit the tall, narrow shape of a character.",
+        "strokeCount": 5
+      },
+      {
+        "id": "hsk1_13_c_xi",
+        "hanzi": "习",
+        "pinyin": "xí",
+        "meaning": "to practise",
+        "etymology": "The old form 習 showed a pair of wings (羽): a young bird beating its wings again and again as it learns to fly. The simplified form keeps just one wing.",
+        "strokeCount": 3
+      }
+    ],
+    "radicals": [
+      { "hanzi": "日", "pinyin": "rì zì páng", "english": "sun (related to the sun, light and time)", "examples": ["明 míng (bright; 明天 tomorrow)", "昨 zuó (昨天 yesterday)", "时 shí (time)", "晚 wǎn (evening, late)", "星 xīng (star; 星期 week)"] },
+      { "hanzi": "目", "pinyin": "mù zì páng", "english": "eye (related to the eyes and looking)", "examples": ["睡 shuì (to sleep)", "看 kàn (to look, to watch)", "眼 yǎn (eye)", "睛 jīng (eyeball)"] }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组，打电话。", "english": "In pairs, act out phone calls." },
+    "activities": [
+      "Exchange phone numbers: A: 你的电话是多少？ B: …… Read every digit, using yāo for 1. A writes the number down and reads it back to check.",
+      "Phone call: A calls and asks for a friend (喂，……在家吗？). B says what the friend is doing right now (他在……呢) and suggests calling later (你……给他打电话吧).",
+      "Guessing game: one student mimes an action (sleeping, watching TV, cooking, writing characters); the others ask 你在……吗？ until someone guesses, then say 你在……呢！",
+      "Make a weekend plan with 吧: suggest three activities (我们……吧) and agree with 好 or say what you like instead (我喜欢……)."
+    ]
+  }
+}

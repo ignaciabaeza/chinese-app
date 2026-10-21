@@ -1,0 +1,285 @@
+{
+  "id": "hsk1-12",
+  "level": 1,
+  "number": 12,
+  "title": { "hanzi": "明天会下雨吗", "pinyin": "Míngtiān huì xià yǔ ma", "english": "Will it rain tomorrow?" },
+  "theme": "Weather",
+  "warmUp": {
+    "instruction": { "hanzi": "读一读，说说这些词语是什么意思。", "english": "Read the words and phrases aloud and say what they mean." },
+    "items": [
+      { "hanzi": "天气", "pinyin": "tiānqì", "english": "weather" },
+      { "hanzi": "太热了", "pinyin": "tài rè le", "english": "it's too hot" },
+      { "hanzi": "很冷", "pinyin": "hěn lěng", "english": "very cold" },
+      { "hanzi": "下雨", "pinyin": "xià yǔ", "english": "to rain" },
+      { "hanzi": "水果", "pinyin": "shuǐguǒ", "english": "fruit" },
+      { "hanzi": "喝水", "pinyin": "hē shuǐ", "english": "to drink water" },
+      { "hanzi": "身体很好", "pinyin": "shēntǐ hěn hǎo", "english": "in good health" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "在宿舍", "english": "In the dorm" },
+      "audioRef": "12-1",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "安娜，今天天气怎么样？", "pinyin": "Ānnà, jīntiān tiānqì zěnmeyàng?", "english": "Anna, what's the weather like today?" },
+        { "speaker": "B", "hanzi": "太热了！", "pinyin": "Tài rè le!", "english": "It's way too hot!" },
+        { "speaker": "A", "hanzi": "明天呢？明天热吗？", "pinyin": "Míngtiān ne? Míngtiān rè ma?", "english": "What about tomorrow? Will it be hot?" },
+        { "speaker": "B", "hanzi": "明天不热，很冷。", "pinyin": "Míngtiān bú rè, hěn lěng.", "english": "Not tomorrow. It'll be cold." },
+        { "speaker": "A", "hanzi": "那我们明天去看电影，怎么样？", "pinyin": "Nà wǒmen míngtiān qù kàn diànyǐng, zěnmeyàng?", "english": "Then how about we go see a movie tomorrow?" },
+        { "speaker": "B", "hanzi": "好！", "pinyin": "Hǎo!", "english": "Sounds good!" }
+      ],
+      "newWords": [
+        { "id": "hsk1_12_tianqi", "hanzi": "天气", "pinyin": "tiānqì", "pos": "n.", "english": "weather" },
+        { "id": "hsk1_12_zenmeyang", "hanzi": "怎么样", "pinyin": "zěnmeyàng", "pos": "pron.", "english": "how (is it), what is it like" },
+        { "id": "hsk1_12_tai", "hanzi": "太", "pinyin": "tài", "pos": "adv.", "english": "too, excessively" },
+        { "id": "hsk1_12_re", "hanzi": "热", "pinyin": "rè", "pos": "adj.", "english": "hot" },
+        { "id": "hsk1_12_leng", "hanzi": "冷", "pinyin": "lěng", "pos": "adj.", "english": "cold" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_12_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在饭店前台", "english": "At the hotel front desk" },
+      "audioRef": "12-2",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "小姐，明天会下雨吗？", "pinyin": "Xiǎojiě, míngtiān huì xià yǔ ma?", "english": "Excuse me, miss, is it going to rain tomorrow?" },
+        { "speaker": "B", "hanzi": "会下雨。下午雨很大。", "pinyin": "Huì xià yǔ. Xiàwǔ yǔ hěn dà.", "english": "Yes, it will. The rain will be heavy in the afternoon." },
+        { "speaker": "A", "hanzi": "我朋友明天来北京。", "pinyin": "Wǒ péngyou míngtiān lái Běijīng.", "english": "My friend is coming to Beijing tomorrow." },
+        { "speaker": "B", "hanzi": "他几点来？", "pinyin": "Tā jǐ diǎn lái?", "english": "What time is he arriving?" },
+        { "speaker": "A", "hanzi": "中午12点。", "pinyin": "Zhōngwǔ shí'èr diǎn.", "english": "At twelve noon." },
+        { "speaker": "B", "hanzi": "中午不会下雨。", "pinyin": "Zhōngwǔ bú huì xià yǔ.", "english": "It won't be raining at noon." }
+      ],
+      "newWords": [
+        { "id": "hsk1_12_xiaojie", "hanzi": "小姐", "pinyin": "xiǎojiě", "pos": "n.", "english": "miss, young lady" },
+        { "id": "hsk1_12_xiayu", "hanzi": "下雨", "pinyin": "xià yǔ", "pos": "v.", "english": "to rain" },
+        { "id": "hsk1_12_xia", "hanzi": "下", "pinyin": "xià", "pos": "v.", "english": "(of rain) to fall" },
+        { "id": "hsk1_12_yu", "hanzi": "雨", "pinyin": "yǔ", "pos": "n.", "english": "rain" },
+        { "id": "hsk1_12_lai", "hanzi": "来", "pinyin": "lái", "pos": "v.", "english": "to come" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_12_pn_beijing", "hanzi": "北京", "pinyin": "Běijīng", "english": "Beijing" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在刘老师家", "english": "At Professor Liu's home" },
+      "audioRef": "12-3",
+      "dialogue": [
+        { "speaker": "A", "hanzi": "刘老师，您身体怎么样？", "pinyin": "Liú lǎoshī, nín shēntǐ zěnmeyàng?", "english": "Professor Liu, how are you feeling?" },
+        { "speaker": "B", "hanzi": "很好，谢谢。今天太热了，你想喝水吗？", "pinyin": "Hěn hǎo, xièxie. Jīntiān tài rè le, nǐ xiǎng hē shuǐ ma?", "english": "Very well, thank you. It's so hot today. Would you like some water?" },
+        { "speaker": "A", "hanzi": "好，谢谢老师。我买了一些水果。", "pinyin": "Hǎo, xièxie lǎoshī. Wǒ mǎile yìxiē shuǐguǒ.", "english": "Yes, thank you. I bought you some fruit." },
+        { "speaker": "B", "hanzi": "谢谢你！我很爱吃水果。", "pinyin": "Xièxie nǐ! Wǒ hěn ài chī shuǐguǒ.", "english": "Thank you! I love fruit." },
+        { "speaker": "A", "hanzi": "您女儿身体好吗？", "pinyin": "Nín nǚ'ér shēntǐ hǎo ma?", "english": "Is your daughter well?" },
+        { "speaker": "B", "hanzi": "她身体很好。", "pinyin": "Tā shēntǐ hěn hǎo.", "english": "She's in good health." }
+      ],
+      "newWords": [
+        { "id": "hsk1_12_shenti", "hanzi": "身体", "pinyin": "shēntǐ", "pos": "n.", "english": "body, health" },
+        { "id": "hsk1_12_shui", "hanzi": "水", "pinyin": "shuǐ", "pos": "n.", "english": "water" },
+        { "id": "hsk1_12_xie", "hanzi": "些", "pinyin": "xiē", "pos": "m.", "english": "some, a few" },
+        { "id": "hsk1_12_shuiguo", "hanzi": "水果", "pinyin": "shuǐguǒ", "pos": "n.", "english": "fruit" },
+        { "id": "hsk1_12_ai", "hanzi": "爱", "pinyin": "ài", "pos": "v.", "english": "to love, to like" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_12_pn_liulaoshi", "hanzi": "刘老师", "pinyin": "Liú lǎoshī", "english": "Professor Liu" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_12_g_zenmeyang",
+      "number": 1,
+      "title": { "hanzi": "疑问代词\"怎么样\"", "english": "The Question Word \"怎么样\"" },
+      "explanation": {
+        "hanzi": "\"怎么样\"放在句子后面，用来问情况怎么样，或者问别人的看法。在一个建议后面加\"，怎么样？\"，就是问对方同意不同意。",
+        "english": "\"怎么样\" (zěnmeyàng) goes at the end of a sentence to ask how something is or what someone thinks of it: the weather, a person's health, a dish. Added after a suggestion (\"..., 怎么样?\"), it means \"How about it?\" and asks whether the other person agrees."
+      },
+      "examples": [
+        { "hanzi": "明天天气怎么样？", "pinyin": "Míngtiān tiānqì zěnmeyàng?", "english": "What will the weather be like tomorrow?" },
+        { "hanzi": "你妈妈身体怎么样？", "pinyin": "Nǐ māma shēntǐ zěnmeyàng?", "english": "How is your mother's health?" },
+        { "hanzi": "这个杯子怎么样？", "pinyin": "Zhège bēizi zěnmeyàng?", "english": "What do you think of this cup?" },
+        { "hanzi": "我们去吃米饭，怎么样？", "pinyin": "Wǒmen qù chī mǐfàn, zěnmeyàng?", "english": "Let's go and eat rice. How about it?" }
+      ]
+    },
+    {
+      "id": "hsk1_12_g_subj_pred",
+      "number": 2,
+      "title": { "hanzi": "主谓短语作谓语", "english": "A Subject-Predicate Phrase as the Predicate" },
+      "explanation": {
+        "hanzi": "有的句子的谓语本身就是一个\"主语＋谓语\"的短语。句子先说一个话题（人、地方或时间），再说这个话题的哪一方面怎么样。",
+        "english": "In some sentences the predicate is itself a small \"subject + predicate\" phrase. The sentence first names a topic (a person, place or time), then says how one aspect of that topic is. In 刘老师身体很好, the topic is 刘老师, and the comment 身体很好 tells us about her health."
+      },
+      "examples": [
+        { "hanzi": "今天天气很冷。", "pinyin": "Jīntiān tiānqì hěn lěng.", "english": "The weather is cold today." },
+        { "hanzi": "我爸爸身体很好。", "pinyin": "Wǒ bàba shēntǐ hěn hǎo.", "english": "My dad is in good health." },
+        { "hanzi": "安娜汉语很好。", "pinyin": "Ānnà Hànyǔ hěn hǎo.", "english": "Anna's Chinese is very good." }
+      ],
+      "patternTable": {
+        "columns": ["话题 Topic", "主语 Subject", "谓语 Predicate"],
+        "rows": [
+          ["今天", "天气", "很热"],
+          ["刘老师", "身体", "很好"],
+          ["安娜", "汉语", "很好"]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_12_g_tai",
+      "number": 3,
+      "title": { "hanzi": "\"太……了\"", "english": "The Pattern \"太……了\"" },
+      "explanation": {
+        "hanzi": "\"太＋形容词＋了\"表示程度很高，可以表示称赞（太好吃了），也可以表示\"过了头\"（太热了）。否定形式是\"不太＋形容词\"，意思是\"不怎么\"，这时句末一般不用\"了\"。",
+        "english": "\"太 + adjective + 了\" expresses a very high degree. It can be praise (太好吃了 \"so delicious!\") or a complaint that something is too much (太热了 \"too hot!\"). The negative 不太 + adjective (no 了) means \"not very\": 不太冷 \"not very cold\". Note the tone: 不 becomes bú before 太."
+      },
+      "examples": [
+        { "hanzi": "这个菜太好吃了！", "pinyin": "Zhège cài tài hǎochī le!", "english": "This dish is so delicious!" },
+        { "hanzi": "那个杯子太小了。", "pinyin": "Nàge bēizi tài xiǎo le.", "english": "That cup is too small." },
+        { "hanzi": "今天不太冷。", "pinyin": "Jīntiān bú tài lěng.", "english": "It's not very cold today." }
+      ],
+      "patternTable": {
+        "columns": ["太", "形容词 Adj.", "了"],
+        "rows": [
+          ["太", "热", "了"],
+          ["太", "好吃", "了"],
+          ["不太", "冷", ""]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_12_g_hui",
+      "number": 4,
+      "title": { "hanzi": "能愿动词\"会\"（可能）", "english": "The Modal Verb \"会\" (Likelihood)" },
+      "explanation": {
+        "hanzi": "第6课的\"会\"表示有能力（我会说汉语）。\"会\"还可以表示对将来的估计，意思是\"可能会这样\"。否定形式是\"不会\"。",
+        "english": "In Lesson 6, 会 meant \"can, know how to\" (我会说汉语). 会 can also predict what is likely to happen: \"will, be going to\". Put it before the verb or adjective. The negative is 不会 (bú huì), and a yes/no question just adds 吗."
+      },
+      "examples": [
+        { "hanzi": "下午会下雨吗？", "pinyin": "Xiàwǔ huì xià yǔ ma?", "english": "Is it going to rain this afternoon?" },
+        { "hanzi": "明天会很热。", "pinyin": "Míngtiān huì hěn rè.", "english": "It's going to be hot tomorrow." },
+        { "hanzi": "王明今天不会来。", "pinyin": "Wáng Míng jīntiān bú huì lái.", "english": "Wang Ming won't come today." }
+      ],
+      "patternTable": {
+        "columns": ["主语 Subject", "会 / 不会", "动词/形容词 Verb/Adj."],
+        "rows": [
+          ["明天", "会", "下雨"],
+          ["今天", "不会", "冷"],
+          ["他", "会", "来"]
+        ]
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking one role each." }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据你的情况回答问题。", "english": "Answer the questions about yourself." },
+      "items": [
+        { "hanzi": "今天天气怎么样？", "pinyin": "Jīntiān tiānqì zěnmeyàng?", "english": "What's the weather like today?" },
+        { "hanzi": "明天会下雨吗？", "pinyin": "Míngtiān huì xià yǔ ma?", "english": "Will it rain tomorrow?" },
+        { "hanzi": "你爱吃水果吗？", "pinyin": "Nǐ ài chī shuǐguǒ ma?", "english": "Do you love fruit?" },
+        { "hanzi": "你妈妈身体怎么样？", "pinyin": "Nǐ māma shēntǐ zěnmeyàng?", "english": "How is your mother's health?" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": { "hanzi": "用\"太、会、些、怎么样、下\"填空。", "english": "Fill in the blanks with 太, 会, 些, 怎么样 or 下." },
+      "items": [
+        { "hanzi": "今天____热了！", "english": "It's way too hot today!", "blank": "太" },
+        { "hanzi": "小姐，明天____下雨吗？", "english": "Miss, will it rain tomorrow?", "blank": "会" },
+        { "hanzi": "我想买一____水果。", "english": "I'd like to buy some fruit.", "blank": "些" },
+        { "hanzi": "您身体____？", "english": "How is your health?", "blank": "怎么样" },
+        { "hanzi": "中午不会____雨。", "english": "It won't rain at noon.", "blank": "下" }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": { "hanzi": "j、q、x 和 ü", "english": "j, q, x and the hidden ü" },
+        "explanation": {
+          "hanzi": "j、q、x 后面只能跟 i 和 ü，不能跟 u。所以 ü 在 j、q、x 后面写成 u，去掉两点：ju、qu、xu 里的 u 都读 ü。在 n、l 后面要保留两点，因为 nu/nü、lu/lü 是不同的音。",
+        "english": "The initials j, q and x are never followed by u, only by i or ü. So when ü follows j, q or x, the two dots are dropped: the u in ju, qu, xu, jue, quan and xun is really ü. Keep your lips rounded and tongue forward, as in yu. After n and l the dots stay, because nu/nü and lu/lü are different syllables."
+        },
+        "syllables": ["jū — qū — xū", "jué — qué — xué", "juān — quān — xuān", "jūn — qūn — xūn", "qù (去)", "xià yǔ (下雨)"]
+      },
+      {
+        "number": 2,
+        "title": { "hanzi": "u 还是 ü？", "english": "u or ü?" },
+        "explanation": {
+          "hanzi": "比较下面的音节，注意哪个是 u，哪个是 ü。",
+          "english": "Compare these pairs. Decide whether each vowel is u or ü, then read them aloud."
+        },
+        "syllables": ["lù — lǜ", "nù — nǚ", "zhū — jū", "chū — qū", "shū — xū", "nǚ'ér (女儿)", "shuǐ — xué"]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      {
+        "name": { "hanzi": "横折钩", "pinyin": "héngzhégōu", "english": "horizontal-turning-hook" },
+        "shape": "㇆",
+        "examples": [
+          { "hanzi": "雨", "pinyin": "yǔ", "english": "rain" },
+          { "hanzi": "月", "pinyin": "yuè", "english": "month, moon" },
+          { "hanzi": "们", "pinyin": "men", "english": "plural suffix" }
+        ]
+      },
+      {
+        "name": { "hanzi": "横斜钩", "pinyin": "héngxiégōu", "english": "horizontal-slanting-hook" },
+        "shape": "⺄",
+        "examples": [
+          { "hanzi": "气", "pinyin": "qì", "english": "air, gas" },
+          { "hanzi": "风", "pinyin": "fēng", "english": "wind" }
+        ]
+      }
+    ],
+    "singleComponentChars": [
+      {
+        "id": "hsk1_12_c_tian",
+        "hanzi": "天",
+        "pinyin": "tiān",
+        "meaning": "sky, day",
+        "etymology": "Picture a standing person (大) with a big head marked above: what is over everyone's head is the sky. From \"sky\" it came to mean \"day\", as in 今天.",
+        "strokeCount": 4
+      },
+      {
+        "id": "hsk1_12_c_qi",
+        "hanzi": "气",
+        "pinyin": "qì",
+        "meaning": "air, vapor",
+        "etymology": "Early forms were three wavy lines, like layers of mist or steam drifting across the sky. It now means air, breath and weather (天气).",
+        "strokeCount": 4
+      },
+      {
+        "id": "hsk1_12_c_yu",
+        "hanzi": "雨",
+        "pinyin": "yǔ",
+        "meaning": "rain",
+        "etymology": "The top stroke is the sky, the frame below is the clouds, and the four dots are raindrops falling from them.",
+        "strokeCount": 8
+      }
+    ],
+    "radicals": [
+      { "hanzi": "女", "pinyin": "nǚ zì páng", "english": "woman (related to women, family and relationships)", "examples": ["她 tā (she)", "好 hǎo (good)", "妈 mā (mom)", "姐 jiě (older sister)", "娜 nà (in names)"] },
+      { "hanzi": "饣", "pinyin": "shí zì páng", "english": "food (related to eating)", "examples": ["饭 fàn (meal, cooked rice)", "馆 guǎn (restaurant, as in 饭馆)", "饿 è (hungry)", "饺 jiǎo (dumpling)"] }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组，谈谈天气和身体。", "english": "In pairs, talk about the weather and how people are doing." },
+    "activities": [
+      "Weather report: one partner is a TV weather presenter. Use 今天/明天 + 天气 + 很热/很冷/会下雨/不会下雨 to give the forecast for Beijing and your hometown.",
+      "A: 明天天气怎么样？ B: 明天会……  Then suggest a plan: A: 我们明天去……，怎么样？",
+      "Visiting a friend: bring some fruit (一些水果), ask 你身体怎么样？ and offer a drink (你想喝水/喝茶吗？).",
+      "React with 太……了 to five things your partner names (a dish, a city's weather, a cup, a movie...)."
+    ]
+  }
+}

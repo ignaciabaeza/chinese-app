@@ -1,0 +1,793 @@
+{
+  "id": "hsk1-7",
+  "level": 1,
+  "number": 7,
+  "title": {
+    "hanzi": "我去学校看书",
+    "pinyin": "Wǒ qù xuéxiào kàn shū",
+    "english": "I'm going to school to read"
+  },
+  "theme": "Dates & Days",
+  "warmUp": {
+    "instruction": {
+      "hanzi": "读一读下面的词语，说说今天是几月几号、星期几。",
+      "english": "Read the words and phrases below, then say today's date and day of the week."
+    },
+    "items": [
+      {
+        "hanzi": "今天",
+        "pinyin": "jīntiān",
+        "english": "today"
+      },
+      {
+        "hanzi": "明天",
+        "pinyin": "míngtiān",
+        "english": "tomorrow"
+      },
+      {
+        "hanzi": "昨天",
+        "pinyin": "zuótiān",
+        "english": "yesterday"
+      },
+      {
+        "hanzi": "9月1号",
+        "pinyin": "jiǔ yuè yī hào",
+        "english": "September 1st"
+      },
+      {
+        "hanzi": "星期六",
+        "pinyin": "xīngqīliù",
+        "english": "Saturday"
+      },
+      {
+        "hanzi": "请问",
+        "pinyin": "qǐngwèn",
+        "english": "excuse me, may I ask"
+      },
+      {
+        "hanzi": "学校",
+        "pinyin": "xuéxiào",
+        "english": "school"
+      },
+      {
+        "hanzi": "看书",
+        "pinyin": "kàn shū",
+        "english": "to read (books)"
+      }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": {
+        "hanzi": "在教室",
+        "english": "In the classroom"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "刘老师，请问今天几号？",
+          "pinyin": "Liú lǎoshī, qǐngwèn jīntiān jǐ hào?",
+          "english": "Ms. Liu, excuse me, what's the date today?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "今天9月1号。",
+          "pinyin": "Jīntiān jiǔ yuè yī hào.",
+          "english": "Today is September 1st."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "今天星期几？",
+          "pinyin": "Jīntiān xīngqī jǐ?",
+          "english": "What day of the week is it?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "今天星期二。",
+          "pinyin": "Jīntiān xīngqī'èr.",
+          "english": "It's Tuesday."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢老师！",
+          "pinyin": "Xièxie lǎoshī!",
+          "english": "Thank you!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不客气。",
+          "pinyin": "Bú kèqi.",
+          "english": "You're welcome."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_7_qing",
+          "hanzi": "请",
+          "pinyin": "qǐng",
+          "pos": "v.",
+          "english": "please"
+        },
+        {
+          "id": "hsk1_7_wen",
+          "hanzi": "问",
+          "pinyin": "wèn",
+          "pos": "v.",
+          "english": "to ask"
+        },
+        {
+          "id": "hsk1_7_jintian",
+          "hanzi": "今天",
+          "pinyin": "jīntiān",
+          "pos": "n.",
+          "english": "today"
+        },
+        {
+          "id": "hsk1_7_hao",
+          "hanzi": "号",
+          "pinyin": "hào",
+          "pos": "n.",
+          "english": "date (day of the month)"
+        },
+        {
+          "id": "hsk1_7_yue",
+          "hanzi": "月",
+          "pinyin": "yuè",
+          "pos": "n.",
+          "english": "month"
+        },
+        {
+          "id": "hsk1_7_xingqi",
+          "hanzi": "星期",
+          "pinyin": "xīngqī",
+          "pos": "n.",
+          "english": "week"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_7_pn_liu",
+          "hanzi": "刘老师",
+          "pinyin": "Liú lǎoshī",
+          "english": "Ms. Liu (the teacher)"
+        }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": {
+        "hanzi": "在宿舍",
+        "english": "In the dorm"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "王明，今天星期五，明天星期六！",
+          "pinyin": "Wáng Míng, jīntiān xīngqīwǔ, míngtiān xīngqīliù!",
+          "english": "Wang Ming, today's Friday, tomorrow's Saturday!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不对，今天星期四。",
+          "pinyin": "Bú duì, jīntiān xīngqīsì.",
+          "english": "No, today's Thursday."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "星期四？",
+          "pinyin": "Xīngqīsì?",
+          "english": "Thursday?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对，昨天星期三，今天星期四。",
+          "pinyin": "Duì, zuótiān xīngqīsān, jīntiān xīngqīsì.",
+          "english": "Yes. Yesterday was Wednesday, today is Thursday."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "明天你去学校吗？",
+          "pinyin": "Míngtiān nǐ qù xuéxiào ma?",
+          "english": "Are you going to school tomorrow?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "去。你呢？",
+          "pinyin": "Qù. Nǐ ne?",
+          "english": "Yes. What about you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我不去，明天我去朋友家。",
+          "pinyin": "Wǒ bú qù, míngtiān wǒ qù péngyou jiā.",
+          "english": "No, tomorrow I'm going to a friend's place."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_7_mingtian",
+          "hanzi": "明天",
+          "pinyin": "míngtiān",
+          "pos": "n.",
+          "english": "tomorrow"
+        },
+        {
+          "id": "hsk1_7_zuotian",
+          "hanzi": "昨天",
+          "pinyin": "zuótiān",
+          "pos": "n.",
+          "english": "yesterday"
+        },
+        {
+          "id": "hsk1_7_qu",
+          "hanzi": "去",
+          "pinyin": "qù",
+          "pos": "v.",
+          "english": "to go"
+        },
+        {
+          "id": "hsk1_7_xuexiao",
+          "hanzi": "学校",
+          "pinyin": "xuéxiào",
+          "pos": "n.",
+          "english": "school"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_7_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming"
+        }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": {
+        "hanzi": "在食堂",
+        "english": "In the cafeteria"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "王明，明天你做什么？",
+          "pinyin": "Wáng Míng, míngtiān nǐ zuò shénme?",
+          "english": "Wang Ming, what are you doing tomorrow?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我去学校看书。",
+          "pinyin": "Wǒ qù xuéxiào kàn shū.",
+          "english": "I'm going to school to read."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "明天星期六，你去学校看书？",
+          "pinyin": "Míngtiān xīngqīliù, nǐ qù xuéxiào kàn shū?",
+          "english": "Tomorrow's Saturday and you're going to school to read?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对。安娜，你去吗？",
+          "pinyin": "Duì. Ānnà, nǐ qù ma?",
+          "english": "Yes. Anna, do you want to come?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好！我们去学校看汉语书。",
+          "pinyin": "Hǎo! Wǒmen qù xuéxiào kàn Hànyǔ shū.",
+          "english": "Sure! Let's go to school and read Chinese books."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，明天见。",
+          "pinyin": "Hǎo, míngtiān jiàn.",
+          "english": "OK, see you tomorrow."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_7_kan",
+          "hanzi": "看",
+          "pinyin": "kàn",
+          "pos": "v.",
+          "english": "to look at, to watch, to read"
+        },
+        {
+          "id": "hsk1_7_shu",
+          "hanzi": "书",
+          "pinyin": "shū",
+          "pos": "n.",
+          "english": "book"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_7_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_7_g_dates",
+      "number": 1,
+      "title": {
+        "hanzi": "日期的表达",
+        "english": "Expressing Dates"
+      },
+      "explanation": {
+        "hanzi": "汉语说日期的顺序是从大到小：年 → 月 → 号（日）→ 星期。年份一个数字一个数字地读，比如2026年读作 èr líng èr liù nián。口语里常说“号”，书面上常写“日”。星期一到星期六用数字，星期天也可以说星期日。问日期用“几月几号”，问星期用“星期几”。",
+        "english": "Chinese gives dates from the biggest unit to the smallest: year → month → day → day of the week. Years are read digit by digit: 2026年 is \"èr líng èr liù nián\". In speech the day is usually 号 (hào); in writing you'll also see 日 (rì). Monday to Saturday are 星期一 to 星期六; Sunday is 星期天 (or 星期日). Ask the date with 几月几号 and the weekday with 星期几."
+      },
+      "examples": [
+        {
+          "hanzi": "今天10月21号。",
+          "pinyin": "Jīntiān shí yuè èrshíyī hào.",
+          "english": "Today is October 21st."
+        },
+        {
+          "hanzi": "2026年9月1号，星期二。",
+          "pinyin": "Èr líng èr liù nián jiǔ yuè yī hào, xīngqī'èr.",
+          "english": "Tuesday, September 1st, 2026."
+        },
+        {
+          "hanzi": "明天几月几号？",
+          "pinyin": "Míngtiān jǐ yuè jǐ hào?",
+          "english": "What's the date tomorrow?"
+        },
+        {
+          "hanzi": "昨天星期几？",
+          "pinyin": "Zuótiān xīngqī jǐ?",
+          "english": "What day was it yesterday?"
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Year 年",
+          "Month 月",
+          "Day 号",
+          "Weekday 星期"
+        ],
+        "rows": [
+          [
+            "2026年",
+            "10月",
+            "21号",
+            "星期三"
+          ],
+          [
+            "2026年",
+            "9月",
+            "1号",
+            "星期二"
+          ],
+          [
+            "",
+            "几月",
+            "几号",
+            "星期几？"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_7_g_nominal_predicate",
+      "number": 2,
+      "title": {
+        "hanzi": "名词谓语句",
+        "english": "Sentences with a Nominal Predicate"
+      },
+      "explanation": {
+        "hanzi": "说日期、星期、年龄的时候，名词或者名词短语可以直接做谓语，一般不用“是”，例如“今天3月5号”。但是否定的时候要用“不是”。",
+        "english": "When you give a date, a weekday or an age, a noun phrase can be the predicate by itself — you usually leave out \"是\": 今天3月5号. In the negative, though, you must say \"不是\": 今天不是星期天."
+      },
+      "examples": [
+        {
+          "hanzi": "今天3月5号。",
+          "pinyin": "Jīntiān sān yuè wǔ hào.",
+          "english": "Today is March 5th."
+        },
+        {
+          "hanzi": "明天星期六。",
+          "pinyin": "Míngtiān xīngqīliù.",
+          "english": "Tomorrow is Saturday."
+        },
+        {
+          "hanzi": "王明今年20岁。",
+          "pinyin": "Wáng Míng jīnnián èrshí suì.",
+          "english": "Wang Ming is 20 this year."
+        },
+        {
+          "hanzi": "今天不是星期天。",
+          "pinyin": "Jīntiān bú shì xīngqītiān.",
+          "english": "Today isn't Sunday."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Subject",
+          "Noun phrase (predicate)"
+        ],
+        "rows": [
+          [
+            "今天",
+            "3月5号。"
+          ],
+          [
+            "明天",
+            "星期六。"
+          ],
+          [
+            "昨天",
+            "不是星期一。"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_7_g_qu_place_verb",
+      "number": 3,
+      "title": {
+        "hanzi": "连动句：去 + 地方 + 做什么",
+        "english": "Serial Verb Construction: 去 + Place + Activity"
+      },
+      "explanation": {
+        "hanzi": "一个句子里可以有两个动词短语连在一起。“去 + 地方 + 动词短语”表示去某个地方做什么，第二个动词短语说明去的目的。否定的时候，“不”放在“去”的前面。",
+        "english": "A Chinese sentence can string two verb phrases together. In 去 + place + verb phrase, the second part tells you why you go there: 去学校看书 \"go to school to read\". To negate it, put 不 before 去."
+      },
+      "examples": [
+        {
+          "hanzi": "我去学校看书。",
+          "pinyin": "Wǒ qù xuéxiào kàn shū.",
+          "english": "I'm going to school to read."
+        },
+        {
+          "hanzi": "明天我们去王明家做菜。",
+          "pinyin": "Míngtiān wǒmen qù Wáng Míng jiā zuò cài.",
+          "english": "Tomorrow we're going to Wang Ming's place to cook."
+        },
+        {
+          "hanzi": "你去学校做什么？",
+          "pinyin": "Nǐ qù xuéxiào zuò shénme?",
+          "english": "What are you going to school for?"
+        },
+        {
+          "hanzi": "马克不去学校看书。",
+          "pinyin": "Mǎkè bú qù xuéxiào kàn shū.",
+          "english": "Mark isn't going to school to read."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Subject",
+          "去",
+          "Place",
+          "Activity"
+        ],
+        "rows": [
+          [
+            "我",
+            "去",
+            "学校",
+            "看书。"
+          ],
+          [
+            "我们",
+            "去",
+            "王明家",
+            "做菜。"
+          ],
+          [
+            "你",
+            "去",
+            "学校",
+            "做什么？"
+          ]
+        ]
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色朗读课文。",
+        "english": "In pairs, read the dialogues aloud, taking a role each."
+      }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据实际情况回答问题。",
+        "english": "Answer the questions based on today's real date."
+      },
+      "items": [
+        {
+          "hanzi": "今天几月几号？",
+          "pinyin": "Jīntiān jǐ yuè jǐ hào?",
+          "english": "What's the date today?"
+        },
+        {
+          "hanzi": "今天星期几？",
+          "pinyin": "Jīntiān xīngqī jǐ?",
+          "english": "What day of the week is it today?"
+        },
+        {
+          "hanzi": "昨天几号？",
+          "pinyin": "Zuótiān jǐ hào?",
+          "english": "What was the date yesterday?"
+        },
+        {
+          "hanzi": "明天你去学校吗？",
+          "pinyin": "Míngtiān nǐ qù xuéxiào ma?",
+          "english": "Are you going to school tomorrow?"
+        },
+        {
+          "hanzi": "星期六你做什么？",
+          "pinyin": "Xīngqīliù nǐ zuò shénme?",
+          "english": "What are you doing on Saturday?"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "选词填空：问、看、去、昨天",
+        "english": "Fill in the blanks with 问, 看, 去 or 昨天."
+      },
+      "items": [
+        {
+          "hanzi": "请____，今天几号？",
+          "english": "Excuse me, what's the date today?",
+          "blank": "问"
+        },
+        {
+          "hanzi": "我去学校____书。",
+          "english": "I'm going to school to read.",
+          "blank": "看"
+        },
+        {
+          "hanzi": "____星期二，今天星期三。",
+          "english": "Yesterday was Tuesday; today is Wednesday.",
+          "blank": "昨天"
+        },
+        {
+          "hanzi": "明天我____朋友家。",
+          "english": "Tomorrow I'm going to a friend's place.",
+          "blank": "去"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": {
+        "hanzi": "找出合适的回答。",
+        "english": "Match each question with a suitable answer."
+      },
+      "items": [
+        {
+          "hanzi": "今天几号？ — 今天5月8号。",
+          "pinyin": "Jīntiān jǐ hào? — Jīntiān wǔ yuè bā hào.",
+          "english": "What's the date today? — It's May 8th."
+        },
+        {
+          "hanzi": "明天星期几？ — 明天星期天。",
+          "pinyin": "Míngtiān xīngqī jǐ? — Míngtiān xīngqītiān.",
+          "english": "What day is it tomorrow? — It's Sunday."
+        },
+        {
+          "hanzi": "明天你去学校吗？ — 不去。",
+          "pinyin": "Míngtiān nǐ qù xuéxiào ma? — Bú qù.",
+          "english": "Are you going to school tomorrow? — No."
+        },
+        {
+          "hanzi": "你去学校做什么？ — 看书。",
+          "pinyin": "Nǐ qù xuéxiào zuò shénme? — Kàn shū.",
+          "english": "What are you going to school for? — To read."
+        }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": {
+          "hanzi": "“一”的变调",
+          "english": "Tone changes of 一"
+        },
+        "explanation": {
+          "hanzi": "“一”本来是一声 yī。单独读、数数、在词的最后或者表示序数（如日期、星期）时读 yī；在四声前面读二声 yí；在一声、二声、三声前面读四声 yì。",
+          "english": "\"一\" is first tone (yī) by itself. It keeps yī when counted, at the end of a word, or in ordinals such as dates and weekdays. Before a fourth tone it becomes yí; before a first, second or third tone it becomes yì. Pinyin in this course prints the changed tone."
+        },
+        "subRules": [
+          {
+            "rule": {
+              "hanzi": "读一声 yī",
+              "english": "Stays yī: alone, counting, word-final, dates and ordinals"
+            },
+            "examples": [
+              {
+                "pinyin": "yī",
+                "english": "one"
+              },
+              {
+                "pinyin": "shíyī",
+                "english": "eleven"
+              },
+              {
+                "pinyin": "yī yuè yī hào",
+                "english": "January 1st"
+              },
+              {
+                "pinyin": "xīngqīyī",
+                "english": "Monday"
+              }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "四声前读二声 yí",
+              "english": "Becomes yí before a fourth tone"
+            },
+            "examples": [
+              {
+                "pinyin": "yí ge",
+                "english": "one (of something)"
+              },
+              {
+                "pinyin": "yí kuài",
+                "english": "one yuan"
+              },
+              {
+                "pinyin": "yíyàng",
+                "english": "the same"
+              }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "一声、二声、三声前读四声 yì",
+              "english": "Becomes yì before a first, second or third tone"
+            },
+            "examples": [
+              {
+                "pinyin": "yì tiān",
+                "english": "one day"
+              },
+              {
+                "pinyin": "yì nián",
+                "english": "one year"
+              },
+              {
+                "pinyin": "yìqǐ",
+                "english": "together"
+              },
+              {
+                "pinyin": "yìbǎi",
+                "english": "one hundred"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      {
+        "name": {
+          "hanzi": "竖弯",
+          "pinyin": "shùwān",
+          "english": "vertical bend"
+        },
+        "shape": "㇄",
+        "examples": [
+          {
+            "hanzi": "四",
+            "pinyin": "sì",
+            "english": "four"
+          },
+          {
+            "hanzi": "西",
+            "pinyin": "xī",
+            "english": "west"
+          }
+        ]
+      },
+      {
+        "name": {
+          "hanzi": "横折钩",
+          "pinyin": "héngzhégōu",
+          "english": "horizontal turning with hook"
+        },
+        "shape": "㇆",
+        "examples": [
+          {
+            "hanzi": "书",
+            "pinyin": "shū",
+            "english": "book"
+          },
+          {
+            "hanzi": "月",
+            "pinyin": "yuè",
+            "english": "month, moon"
+          }
+        ]
+      }
+    ],
+    "singleComponentChars": [
+      {
+        "id": "hsk1_7_c_si",
+        "hanzi": "四",
+        "pinyin": "sì",
+        "meaning": "four",
+        "etymology": "In the oldest inscriptions \"four\" was simply four stacked lines, like 一, 二 and 三. That form was easy to miscount, so scribes switched to the enclosed shape used today.",
+        "strokeCount": 5
+      },
+      {
+        "id": "hsk1_7_c_wu",
+        "hanzi": "五",
+        "pinyin": "wǔ",
+        "meaning": "five",
+        "etymology": "Early forms show two crossing lines between a top and a bottom line, a mark used for the number five.",
+        "strokeCount": 4
+      },
+      {
+        "id": "hsk1_7_c_shu",
+        "hanzi": "书",
+        "pinyin": "shū",
+        "meaning": "book",
+        "etymology": "It is simplified from 書, which shows a hand holding a writing brush. The meaning grew from \"to write\" to \"something written\", and so \"book\".",
+        "strokeCount": 4
+      }
+    ],
+    "radicals": [
+      {
+        "hanzi": "氵",
+        "pinyin": "sāndiǎnshuǐ",
+        "english": "three-drops water radical; related to water or liquids",
+        "examples": [
+          "汉",
+          "没",
+          "漂",
+          "洗"
+        ]
+      },
+      {
+        "hanzi": "讠",
+        "pinyin": "yánzìpáng",
+        "english": "speech radical; related to speaking and language",
+        "examples": [
+          "说",
+          "语",
+          "请",
+          "谢",
+          "读"
+        ]
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "两人一组，用日期和星期互相问答，再说说你的计划。",
+      "english": "In pairs, ask each other about dates and days of the week, then talk about your plans."
+    },
+    "activities": [
+      "Point at dates on a calendar and ask: A: ……几月几号？星期几？ B: ……月……号，星期……。",
+      "Plan your week: A: 星期六你做什么？ B: 我去学校看书。/ 我去朋友家……。",
+      "Group work: each person names a date that matters to them (e.g. 10月21号) and the group says what day of the week it falls on this year.",
+      "Pronunciation check: read 一月一号, 星期一, 一天, 一本书 aloud and decide which tone 一 takes in each."
+    ]
+  }
+}

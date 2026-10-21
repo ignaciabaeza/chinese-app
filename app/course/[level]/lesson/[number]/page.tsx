@@ -5,6 +5,8 @@ import { verifyToken } from "@/lib/auth";
 import { getLessonDetail, getLessonProgress, type StepKey } from "@/lib/lessons";
 import { pool } from "@/lib/db";
 import LessonStepper from "./LessonStepper";
+import { getLesson } from "@/lib/content";
+import type { HSKLevel } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +26,14 @@ async function findReaderTextId(level: number, lessonNumber: number, lessonTitle
     [`hsk${level}-book`, title],
   );
   return rows[0]?.id ?? null;
+}
+
+/** Exercises, drills, characters, etc. from the authored lesson JSON. */
+function extrasFor(level: HSKLevel, number: number) {
+  const lesson = getLesson(level, number);
+  if (!lesson || lesson.stub) return null;
+  const { exercises, pinyinSection, characters, application, culture } = lesson;
+  return { exercises, pinyinSection, characters, application, culture };
 }
 
 export default async function LessonPage({
@@ -69,6 +79,7 @@ export default async function LessonPage({
         initialProgress={progress.steps_completed}
         signedIn={Boolean(userId)}
         readerTextId={readerTextId}
+        extras={extrasFor(lvl as HSKLevel, num)}
       />
     </div>
   );

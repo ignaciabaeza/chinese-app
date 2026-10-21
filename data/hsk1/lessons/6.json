@@ -1,0 +1,719 @@
+{
+  "id": "hsk1-6",
+  "level": 1,
+  "number": 6,
+  "title": {
+    "hanzi": "我会说汉语",
+    "pinyin": "Wǒ huì shuō Hànyǔ",
+    "english": "I can speak Chinese"
+  },
+  "theme": "Abilities",
+  "warmUp": {
+    "instruction": {
+      "hanzi": "读一读下面的词语，说说你会做什么。",
+      "english": "Read the words and phrases below, then say which of these things you can do."
+    },
+    "items": [
+      {
+        "hanzi": "说汉语",
+        "pinyin": "shuō Hànyǔ",
+        "english": "to speak Chinese"
+      },
+      {
+        "hanzi": "写汉字",
+        "pinyin": "xiě Hànzì",
+        "english": "to write Chinese characters"
+      },
+      {
+        "hanzi": "读汉字",
+        "pinyin": "dú Hànzì",
+        "english": "to read Chinese characters"
+      },
+      {
+        "hanzi": "做菜",
+        "pinyin": "zuò cài",
+        "english": "to cook"
+      },
+      {
+        "hanzi": "中国菜",
+        "pinyin": "Zhōngguó cài",
+        "english": "Chinese food"
+      },
+      {
+        "hanzi": "很好吃",
+        "pinyin": "hěn hǎochī",
+        "english": "very tasty"
+      },
+      {
+        "hanzi": "妈妈",
+        "pinyin": "māma",
+        "english": "mother"
+      },
+      {
+        "hanzi": "怎么读",
+        "pinyin": "zěnme dú",
+        "english": "how to read (it)"
+      }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": {
+        "hanzi": "在教室",
+        "english": "In the classroom"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "马克，你会说汉语吗？",
+          "pinyin": "Mǎkè, nǐ huì shuō Hànyǔ ma?",
+          "english": "Mark, can you speak Chinese?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "会，我会说汉语。",
+          "pinyin": "Huì, wǒ huì shuō Hànyǔ.",
+          "english": "Yes, I can speak Chinese."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你会写汉字吗？",
+          "pinyin": "Nǐ huì xiě Hànzì ma?",
+          "english": "Can you write Chinese characters?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我不会写。你呢？",
+          "pinyin": "Wǒ bú huì xiě. Nǐ ne?",
+          "english": "No, I can't. What about you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我会写我的名字。",
+          "pinyin": "Wǒ huì xiě wǒ de míngzi.",
+          "english": "I can write my name."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_6_hui",
+          "hanzi": "会",
+          "pinyin": "huì",
+          "pos": "mod.",
+          "english": "can, to be able to"
+        },
+        {
+          "id": "hsk1_6_shuo",
+          "hanzi": "说",
+          "pinyin": "shuō",
+          "pos": "v.",
+          "english": "to speak, to say"
+        },
+        {
+          "id": "hsk1_6_xie",
+          "hanzi": "写",
+          "pinyin": "xiě",
+          "pos": "v.",
+          "english": "to write"
+        },
+        {
+          "id": "hsk1_6_hanzi",
+          "hanzi": "汉字",
+          "pinyin": "Hànzì",
+          "pos": "n.",
+          "english": "Chinese character"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_6_pn_make",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark"
+        }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": {
+        "hanzi": "在王明家",
+        "english": "At Wang Ming's home"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "王明，你妈妈会做中国菜吗？",
+          "pinyin": "Wáng Míng, nǐ māma huì zuò Zhōngguó cài ma?",
+          "english": "Wang Ming, can your mom cook Chinese food?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "会，我妈妈做的菜很好吃。",
+          "pinyin": "Huì, wǒ māma zuò de cài hěn hǎochī.",
+          "english": "Yes. The food my mom makes is really tasty."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你会做吗？",
+          "pinyin": "Nǐ huì zuò ma?",
+          "english": "Can you cook it?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我不会。你呢？",
+          "pinyin": "Wǒ bú huì. Nǐ ne?",
+          "english": "No, I can't. How about you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我会做美国菜。",
+          "pinyin": "Wǒ huì zuò Měiguó cài.",
+          "english": "I can cook American food."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "美国菜好吃吗？",
+          "pinyin": "Měiguó cài hǎochī ma?",
+          "english": "Is American food good?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "很好吃！",
+          "pinyin": "Hěn hǎochī!",
+          "english": "It's delicious!"
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_6_mama",
+          "hanzi": "妈妈",
+          "pinyin": "māma",
+          "pos": "n.",
+          "english": "mother"
+        },
+        {
+          "id": "hsk1_6_zuo",
+          "hanzi": "做",
+          "pinyin": "zuò",
+          "pos": "v.",
+          "english": "to make, to cook"
+        },
+        {
+          "id": "hsk1_6_cai",
+          "hanzi": "菜",
+          "pinyin": "cài",
+          "pos": "n.",
+          "english": "dish, cuisine"
+        },
+        {
+          "id": "hsk1_6_hen",
+          "hanzi": "很",
+          "pinyin": "hěn",
+          "pos": "adv.",
+          "english": "very, quite"
+        },
+        {
+          "id": "hsk1_6_haochi",
+          "hanzi": "好吃",
+          "pinyin": "hǎochī",
+          "pos": "adj.",
+          "english": "delicious, tasty"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_6_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming"
+        }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": {
+        "hanzi": "在宿舍",
+        "english": "In the dorm"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "安娜，你会读汉字吗？",
+          "pinyin": "Ānnà, nǐ huì dú Hànzì ma?",
+          "english": "Anna, can you read Chinese characters?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "会，我会读，不会写。",
+          "pinyin": "Huì, wǒ huì dú, bú huì xiě.",
+          "english": "Yes. I can read them, but I can't write them."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "“谢”字怎么读？",
+          "pinyin": "\"Xiè\" zì zěnme dú?",
+          "english": "How do you read the character \"谢\"?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "“谢谢”的“谢”。",
+          "pinyin": "\"Xièxie\" de \"xiè\".",
+          "english": "It's the \"xie\" in \"xiexie\" (thank you)."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢！",
+          "pinyin": "Xièxie!",
+          "english": "Thanks!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不客气。",
+          "pinyin": "Bú kèqi.",
+          "english": "You're welcome."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_6_zi",
+          "hanzi": "字",
+          "pinyin": "zì",
+          "pos": "n.",
+          "english": "character, word"
+        },
+        {
+          "id": "hsk1_6_zenme",
+          "hanzi": "怎么",
+          "pinyin": "zěnme",
+          "pos": "pron.",
+          "english": "how"
+        },
+        {
+          "id": "hsk1_6_du",
+          "hanzi": "读",
+          "pinyin": "dú",
+          "pos": "v.",
+          "english": "to read (aloud)"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_6_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_6_g_hui",
+      "number": 1,
+      "title": {
+        "hanzi": "能愿动词“会”",
+        "english": "The Modal Verb \"会\""
+      },
+      "explanation": {
+        "hanzi": "“会”放在动词前面，表示通过学习掌握了某种技能，比如说一种语言、写汉字、做菜。否定形式是“不会”。问别人可以用“会……吗？”，回答可以只说“会”或“不会”。",
+        "english": "Put \"会\" in front of a verb to say that someone has learned how to do something: speak a language, write characters, cook a dish. The negative is \"不会\" (bú huì). To ask, use \"会……吗？\"; a short answer can simply be \"会\" (yes) or \"不会\" (no)."
+      },
+      "examples": [
+        {
+          "hanzi": "我会说汉语。",
+          "pinyin": "Wǒ huì shuō Hànyǔ.",
+          "english": "I can speak Chinese."
+        },
+        {
+          "hanzi": "她妈妈会做中国菜。",
+          "pinyin": "Tā māma huì zuò Zhōngguó cài.",
+          "english": "Her mother can cook Chinese food."
+        },
+        {
+          "hanzi": "你会写汉字吗？",
+          "pinyin": "Nǐ huì xiě Hànzì ma?",
+          "english": "Can you write Chinese characters?"
+        },
+        {
+          "hanzi": "马克不会读汉字。",
+          "pinyin": "Mǎkè bú huì dú Hànzì.",
+          "english": "Mark can't read Chinese characters."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Subject",
+          "会 / 不会",
+          "Verb",
+          "Object"
+        ],
+        "rows": [
+          [
+            "我",
+            "会",
+            "说",
+            "汉语。"
+          ],
+          [
+            "王明",
+            "不会",
+            "做",
+            "美国菜。"
+          ],
+          [
+            "你",
+            "会",
+            "写",
+            "汉字吗？"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_6_g_adj_predicate",
+      "number": 2,
+      "title": {
+        "hanzi": "形容词谓语句",
+        "english": "Sentences with an Adjectival Predicate"
+      },
+      "explanation": {
+        "hanzi": "汉语的形容词可以直接做谓语，不用“是”。肯定句里常常在形容词前加“很”，这时“很”的意思不一定是“非常”。否定的时候用“不”。",
+        "english": "In Chinese an adjective can be the predicate on its own — do not put \"是\" in front of it. In a positive statement we usually add \"很\" before the adjective; here \"很\" is often just a link and doesn't always mean \"very\". To make it negative, use \"不\" instead: 不好吃."
+      },
+      "examples": [
+        {
+          "hanzi": "中国菜很好吃。",
+          "pinyin": "Zhōngguó cài hěn hǎochī.",
+          "english": "Chinese food is delicious."
+        },
+        {
+          "hanzi": "我妈妈很好。",
+          "pinyin": "Wǒ māma hěn hǎo.",
+          "english": "My mom is well."
+        },
+        {
+          "hanzi": "刘老师的字很好。",
+          "pinyin": "Liú lǎoshī de zì hěn hǎo.",
+          "english": "Ms. Liu's handwriting is very good."
+        },
+        {
+          "hanzi": "马克做的菜不好吃。",
+          "pinyin": "Mǎkè zuò de cài bù hǎochī.",
+          "english": "The food Mark cooks isn't tasty."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Subject",
+          "很 / 不",
+          "Adjective"
+        ],
+        "rows": [
+          [
+            "中国菜",
+            "很",
+            "好吃。"
+          ],
+          [
+            "你妈妈",
+            "很",
+            "好。"
+          ],
+          [
+            "马克做的菜",
+            "不",
+            "好吃。"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_6_g_zenme",
+      "number": 3,
+      "title": {
+        "hanzi": "疑问代词“怎么”",
+        "english": "The Interrogative Pronoun \"怎么\""
+      },
+      "explanation": {
+        "hanzi": "“怎么”放在动词前面，用来询问做某事的方式，结构是“怎么 + 动词”。例如问一个字怎么读、怎么写，或者一个菜怎么做。",
+        "english": "\"怎么\" goes right before a verb to ask about the way something is done: 怎么 + verb, \"how do you…?\". It's handy for asking how a character is read or written, or how a dish is made."
+      },
+      "examples": [
+        {
+          "hanzi": "“读”字怎么写？",
+          "pinyin": "\"Dú\" zì zěnme xiě?",
+          "english": "How do you write the character \"读\"?"
+        },
+        {
+          "hanzi": "你的名字怎么写？",
+          "pinyin": "Nǐ de míngzi zěnme xiě?",
+          "english": "How do you write your name?"
+        },
+        {
+          "hanzi": "中国菜怎么做？",
+          "pinyin": "Zhōngguó cài zěnme zuò?",
+          "english": "How do you cook Chinese food?"
+        },
+        {
+          "hanzi": "“对不起”怎么写？",
+          "pinyin": "\"Duìbuqǐ\" zěnme xiě?",
+          "english": "How do you write \"duibuqi\" (sorry)?"
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Topic",
+          "怎么",
+          "Verb"
+        ],
+        "rows": [
+          [
+            "“菜”字",
+            "怎么",
+            "读？"
+          ],
+          [
+            "你的名字",
+            "怎么",
+            "写？"
+          ],
+          [
+            "中国菜",
+            "怎么",
+            "做？"
+          ]
+        ]
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色朗读课文。",
+        "english": "In pairs, read the dialogues aloud, taking a role each."
+      }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据你自己的情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
+      "items": [
+        {
+          "hanzi": "你会说汉语吗？",
+          "pinyin": "Nǐ huì shuō Hànyǔ ma?",
+          "english": "Can you speak Chinese?"
+        },
+        {
+          "hanzi": "你会写汉字吗？",
+          "pinyin": "Nǐ huì xiě Hànzì ma?",
+          "english": "Can you write Chinese characters?"
+        },
+        {
+          "hanzi": "你妈妈会做什么菜？",
+          "pinyin": "Nǐ māma huì zuò shénme cài?",
+          "english": "What dishes can your mother cook?"
+        },
+        {
+          "hanzi": "中国菜好吃吗？",
+          "pinyin": "Zhōngguó cài hǎochī ma?",
+          "english": "Is Chinese food tasty?"
+        },
+        {
+          "hanzi": "你的名字汉语怎么说？",
+          "pinyin": "Nǐ de míngzi Hànyǔ zěnme shuō?",
+          "english": "How do you say your name in Chinese?"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "选词填空：会、很、怎么、做",
+        "english": "Fill in the blanks with 会, 很, 怎么 or 做."
+      },
+      "items": [
+        {
+          "hanzi": "安娜____说汉语。",
+          "english": "Anna can speak Chinese.",
+          "blank": "会"
+        },
+        {
+          "hanzi": "王明的妈妈会____中国菜。",
+          "english": "Wang Ming's mother can cook Chinese food.",
+          "blank": "做"
+        },
+        {
+          "hanzi": "“菜”字____写？",
+          "english": "How do you write the character \"菜\"?",
+          "blank": "怎么"
+        },
+        {
+          "hanzi": "美国菜____好吃。",
+          "english": "American food is very tasty.",
+          "blank": "很"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": {
+        "hanzi": "找出合适的回答。",
+        "english": "Match each question with a suitable answer."
+      },
+      "items": [
+        {
+          "hanzi": "你会说汉语吗？ — 会，我会说。",
+          "pinyin": "Nǐ huì shuō Hànyǔ ma? — Huì, wǒ huì shuō.",
+          "english": "Can you speak Chinese? — Yes, I can."
+        },
+        {
+          "hanzi": "中国菜好吃吗？ — 很好吃。",
+          "pinyin": "Zhōngguó cài hǎochī ma? — Hěn hǎochī.",
+          "english": "Is Chinese food good? — It's delicious."
+        },
+        {
+          "hanzi": "“好”字怎么读？ — “你好”的“好”。",
+          "pinyin": "\"Hǎo\" zì zěnme dú? — \"Nǐ hǎo\" de \"hǎo\".",
+          "english": "How is \"好\" read? — It's the \"hao\" in \"ni hao\"."
+        },
+        {
+          "hanzi": "你会做菜吗？ — 不会。",
+          "pinyin": "Nǐ huì zuò cài ma? — Bú huì.",
+          "english": "Can you cook? — No, I can't."
+        }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": {
+          "hanzi": "三声变调：三声 + 三声",
+          "english": "Third-tone sandhi: two third tones in a row"
+        },
+        "explanation": {
+          "hanzi": "两个三声音节连在一起时，前一个三声读成二声，后一个不变。拼音上仍然写三声符号。",
+          "english": "When two third-tone syllables come together, the first one is said with a rising second tone; the second keeps its third tone. Pinyin still prints both with the third-tone mark — you change it only when speaking. So 你好 nǐ hǎo is said \"ní hǎo\"."
+        },
+        "syllables": [
+          "nǐ hǎo → ní hǎo",
+          "hěn hǎo → hén hǎo",
+          "wǒ xiě → wó xiě",
+          "kěyǐ → kéyǐ",
+          "shuǐguǒ → shuíguǒ",
+          "yǔfǎ → yúfǎ"
+        ]
+      },
+      {
+        "number": 2,
+        "title": {
+          "hanzi": "半三声",
+          "english": "The half third tone"
+        },
+        "explanation": {
+          "hanzi": "三声在一声、二声、四声前面时，一般只读前半部分（低降），不再升上去，叫“半三声”。",
+          "english": "Before a first, second or fourth tone, a third tone is usually cut short: it only dips low and doesn't rise again. This \"half third tone\" is what you hear most of the time in real speech."
+        },
+        "syllables": [
+          "hǎochī",
+          "lǎoshī",
+          "Měiguó",
+          "nǚ'ér",
+          "hěn dà",
+          "xiě zì"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      {
+        "name": {
+          "hanzi": "斜钩",
+          "pinyin": "xiégōu",
+          "english": "slanting hook"
+        },
+        "shape": "㇂",
+        "examples": [
+          {
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "english": "I, me"
+          },
+          {
+            "hanzi": "钱",
+            "pinyin": "qián",
+            "english": "money"
+          }
+        ]
+      },
+      {
+        "name": {
+          "hanzi": "提",
+          "pinyin": "tí",
+          "english": "rising stroke"
+        },
+        "shape": "㇀",
+        "examples": [
+          {
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "english": "I, me"
+          },
+          {
+            "hanzi": "汉",
+            "pinyin": "hàn",
+            "english": "Han (Chinese)"
+          }
+        ]
+      }
+    ],
+    "singleComponentChars": [
+      {
+        "id": "hsk1_6_c_dong",
+        "hanzi": "东",
+        "pinyin": "dōng",
+        "meaning": "east",
+        "etymology": "The ancient form looks like a sack tied at both ends; its sound was borrowed to write \"east\". A popular memory aid reads the traditional form 東 as the sun (日) rising behind a tree (木).",
+        "strokeCount": 5
+      },
+      {
+        "id": "hsk1_6_c_wo",
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "meaning": "I, me",
+        "etymology": "The oldest form pictures a long-handled weapon with a jagged blade. Because it sounded like the word for \"I\", it was borrowed to write \"I, me\".",
+        "strokeCount": 7
+      },
+      {
+        "id": "hsk1_6_c_xi",
+        "hanzi": "西",
+        "pinyin": "xī",
+        "meaning": "west",
+        "etymology": "Early forms show a bird's nest. Birds return to their nests as the sun sets in the west, so the character came to mean \"west\".",
+        "strokeCount": 6
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "两人一组，问问对方会做什么、不会做什么。",
+      "english": "In pairs, find out what your partner can and can't do."
+    },
+    "activities": [
+      "A: 你会……吗？ B: 我会……。/ 我不会……。 (说汉语 / 写汉字 / 做中国菜 / 读汉字)",
+      "Pick three characters from Lessons 1–6 and quiz your partner: \"……\"字怎么读？ — \"……\"的\"……\"。",
+      "Group survey: who in your group can cook? Report back: 马克会做美国菜，很好吃。",
+      "Describe a dish you like using an adjectival predicate: ……菜很好吃。"
+    ]
+  }
+}

@@ -1,0 +1,820 @@
+{
+  "id": "hsk1-8",
+  "level": 1,
+  "number": 8,
+  "title": {
+    "hanzi": "这个杯子多少钱？",
+    "pinyin": "Zhège bēizi duōshao qián?",
+    "english": "How much is this cup?"
+  },
+  "theme": "Shopping & Food",
+  "warmUp": {
+    "instruction": {
+      "hanzi": "读一读下面的词语，说说它们是什么意思。",
+      "english": "Read the words and phrases below and say what they mean."
+    },
+    "items": [
+      {
+        "hanzi": "喝茶",
+        "pinyin": "hē chá",
+        "english": "to drink tea"
+      },
+      {
+        "hanzi": "吃米饭",
+        "pinyin": "chī mǐfàn",
+        "english": "to eat rice"
+      },
+      {
+        "hanzi": "下午",
+        "pinyin": "xiàwǔ",
+        "english": "afternoon"
+      },
+      {
+        "hanzi": "商店",
+        "pinyin": "shāngdiàn",
+        "english": "shop"
+      },
+      {
+        "hanzi": "买杯子",
+        "pinyin": "mǎi bēizi",
+        "english": "to buy a cup"
+      },
+      {
+        "hanzi": "这个",
+        "pinyin": "zhège",
+        "english": "this one"
+      },
+      {
+        "hanzi": "多少钱",
+        "pinyin": "duōshao qián",
+        "english": "how much (money)"
+      },
+      {
+        "hanzi": "25块",
+        "pinyin": "èrshíwǔ kuài",
+        "english": "25 yuan"
+      }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": {
+        "hanzi": "在饭馆",
+        "english": "At a restaurant"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "马克，你想吃什么？",
+          "pinyin": "Mǎkè, nǐ xiǎng chī shénme?",
+          "english": "Mark, what would you like to eat?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我想吃米饭。你呢？",
+          "pinyin": "Wǒ xiǎng chī mǐfàn. Nǐ ne?",
+          "english": "I'd like some rice. And you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我不想吃，我想喝茶。",
+          "pinyin": "Wǒ bù xiǎng chī, wǒ xiǎng hē chá.",
+          "english": "I don't want to eat. I'd like some tea."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "下午你想做什么？",
+          "pinyin": "Xiàwǔ nǐ xiǎng zuò shénme?",
+          "english": "What do you want to do this afternoon?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想去学校看书。",
+          "pinyin": "Wǒ xiǎng qù xuéxiào kàn shū.",
+          "english": "I want to go to school and read."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_8_xiang",
+          "hanzi": "想",
+          "pinyin": "xiǎng",
+          "pos": "mod.",
+          "english": "to want, would like"
+        },
+        {
+          "id": "hsk1_8_chi",
+          "hanzi": "吃",
+          "pinyin": "chī",
+          "pos": "v.",
+          "english": "to eat"
+        },
+        {
+          "id": "hsk1_8_mifan",
+          "hanzi": "米饭",
+          "pinyin": "mǐfàn",
+          "pos": "n.",
+          "english": "cooked rice"
+        },
+        {
+          "id": "hsk1_8_he",
+          "hanzi": "喝",
+          "pinyin": "hē",
+          "pos": "v.",
+          "english": "to drink"
+        },
+        {
+          "id": "hsk1_8_cha",
+          "hanzi": "茶",
+          "pinyin": "chá",
+          "pos": "n.",
+          "english": "tea"
+        },
+        {
+          "id": "hsk1_8_xiawu",
+          "hanzi": "下午",
+          "pinyin": "xiàwǔ",
+          "pos": "n.",
+          "english": "afternoon"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_8_pn_make",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark, Anna's classmate"
+        }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": {
+        "hanzi": "在商店",
+        "english": "In a shop"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "王明，这个商店有杯子吗？",
+          "pinyin": "Wáng Míng, zhège shāngdiàn yǒu bēizi ma?",
+          "english": "Wang Ming, does this shop have cups?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "有。你想买几个？",
+          "pinyin": "Yǒu. Nǐ xiǎng mǎi jǐ ge?",
+          "english": "Yes. How many do you want to buy?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想买一个。",
+          "pinyin": "Wǒ xiǎng mǎi yí ge.",
+          "english": "I want to buy one."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你看这个，这个很好。",
+          "pinyin": "Nǐ kàn zhège, zhège hěn hǎo.",
+          "english": "Look at this one. This one is nice."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那个呢？",
+          "pinyin": "Nàge ne?",
+          "english": "What about that one?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "那个是中国杯子，很大。",
+          "pinyin": "Nàge shì Zhōngguó bēizi, hěn dà.",
+          "english": "That's a Chinese cup. It's big."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想买那个。",
+          "pinyin": "Wǒ xiǎng mǎi nàge.",
+          "english": "I'd like to buy that one."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_8_zhe",
+          "hanzi": "这",
+          "pinyin": "zhè",
+          "pos": "pron.",
+          "english": "this"
+        },
+        {
+          "id": "hsk1_8_ge",
+          "hanzi": "个",
+          "pinyin": "gè",
+          "pos": "m.",
+          "english": "general measure word"
+        },
+        {
+          "id": "hsk1_8_shangdian",
+          "hanzi": "商店",
+          "pinyin": "shāngdiàn",
+          "pos": "n.",
+          "english": "shop, store"
+        },
+        {
+          "id": "hsk1_8_beizi",
+          "hanzi": "杯子",
+          "pinyin": "bēizi",
+          "pos": "n.",
+          "english": "cup, glass"
+        },
+        {
+          "id": "hsk1_8_mai",
+          "hanzi": "买",
+          "pinyin": "mǎi",
+          "pos": "v.",
+          "english": "to buy"
+        },
+        {
+          "id": "hsk1_8_na",
+          "hanzi": "那",
+          "pinyin": "nà",
+          "pos": "pron.",
+          "english": "that"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_8_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming, a Chinese university student"
+        }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": {
+        "hanzi": "在收银台",
+        "english": "At the checkout"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "您好，这个杯子多少钱？",
+          "pinyin": "Nín hǎo, zhège bēizi duōshao qián?",
+          "english": "Hello, how much is this cup?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "28块。",
+          "pinyin": "Èrshíbā kuài.",
+          "english": "28 yuan."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那个大的呢？",
+          "pinyin": "Nàge dà de ne?",
+          "english": "And that big one?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "那个35块。",
+          "pinyin": "Nàge sānshíwǔ kuài.",
+          "english": "That one is 35 yuan."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我买这个，谢谢！",
+          "pinyin": "Wǒ mǎi zhège, xièxie!",
+          "english": "I'll take this one, thanks!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，28块钱。",
+          "pinyin": "Hǎo, èrshíbā kuài qián.",
+          "english": "OK, that's 28 yuan."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_8_duoshao",
+          "hanzi": "多少",
+          "pinyin": "duōshao",
+          "pos": "pron.",
+          "english": "how many, how much"
+        },
+        {
+          "id": "hsk1_8_qian",
+          "hanzi": "钱",
+          "pinyin": "qián",
+          "pos": "n.",
+          "english": "money"
+        },
+        {
+          "id": "hsk1_8_kuai",
+          "hanzi": "块",
+          "pinyin": "kuài",
+          "pos": "m.",
+          "english": "yuan (unit of money)"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_8_g_xiang",
+      "number": 1,
+      "title": {
+        "hanzi": "能愿动词“想”",
+        "english": "The modal verb 想 (want to, would like to)"
+      },
+      "explanation": {
+        "hanzi": "“想”放在动词前面，表示希望或打算做某事。否定形式是“不想”。",
+        "english": "Put 想 in front of another verb to say what you want or would like to do. To say you don't want to do something, use 不想. In a yes/no question, simply add 吗 at the end."
+      },
+      "examples": [
+        {
+          "hanzi": "我想喝茶。",
+          "pinyin": "Wǒ xiǎng hē chá.",
+          "english": "I'd like some tea."
+        },
+        {
+          "hanzi": "你想买什么？",
+          "pinyin": "Nǐ xiǎng mǎi shénme?",
+          "english": "What do you want to buy?"
+        },
+        {
+          "hanzi": "马克不想吃米饭。",
+          "pinyin": "Mǎkè bù xiǎng chī mǐfàn.",
+          "english": "Mark doesn't want to eat rice."
+        },
+        {
+          "hanzi": "下午你想去商店吗？",
+          "pinyin": "Xiàwǔ nǐ xiǎng qù shāngdiàn ma?",
+          "english": "Do you want to go to the shop this afternoon?"
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "主语",
+          "想 / 不想",
+          "动词",
+          "宾语"
+        ],
+        "rows": [
+          [
+            "我",
+            "想",
+            "喝",
+            "茶"
+          ],
+          [
+            "安娜",
+            "不想",
+            "吃",
+            "米饭"
+          ],
+          [
+            "你",
+            "想",
+            "买",
+            "什么？"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_8_g_duoshao",
+      "number": 2,
+      "title": {
+        "hanzi": "疑问代词“多少”和“几”",
+        "english": "Asking numbers: 多少 vs 几"
+      },
+      "explanation": {
+        "hanzi": "“几”一般用来问比较小的数字（常常是十以下），后面要有量词。“多少”可以问任何数字，后面的量词可以不用。问价钱用“多少钱”。",
+        "english": "Both 几 and 多少 ask \"how many\". Use 几 when you expect a small number (usually under ten); it must be followed by a measure word (几个, 几口). Use 多少 for any number, especially large or unknown ones; the measure word after it is optional. To ask a price, always say 多少钱."
+      },
+      "examples": [
+        {
+          "hanzi": "你想买几个杯子？",
+          "pinyin": "Nǐ xiǎng mǎi jǐ ge bēizi?",
+          "english": "How many cups do you want to buy?"
+        },
+        {
+          "hanzi": "王明家有几口人？",
+          "pinyin": "Wáng Míng jiā yǒu jǐ kǒu rén?",
+          "english": "How many people are in Wang Ming's family?"
+        },
+        {
+          "hanzi": "你们学校有多少老师？",
+          "pinyin": "Nǐmen xuéxiào yǒu duōshao lǎoshī?",
+          "english": "How many teachers does your school have?"
+        },
+        {
+          "hanzi": "那个杯子多少钱？",
+          "pinyin": "Nàge bēizi duōshao qián?",
+          "english": "How much is that cup?"
+        }
+      ]
+    },
+    {
+      "id": "hsk1_8_g_measure",
+      "number": 3,
+      "title": {
+        "hanzi": "量词“个”和“口”",
+        "english": "Measure words 个 and 口"
+      },
+      "explanation": {
+        "hanzi": "汉语里，数字和名词中间要用量词：数词 + 量词 + 名词。“个”是最常用的量词；“口”用来说家里有几个人。“这”“那”后面也常常用量词：这个杯子、那个老师。",
+        "english": "In Chinese, a number cannot go straight before a noun: you need a measure word in between (number + measure word + noun). 个 is the most common, all-purpose measure word. 口 is used when counting the members of a family (三口人). 这 and 那 also usually take a measure word before the noun: 这个杯子 (this cup), 那个老师 (that teacher). Note that 个 is usually read in the neutral tone (ge), and 一 changes to yí before it."
+      },
+      "examples": [
+        {
+          "hanzi": "我想买一个杯子。",
+          "pinyin": "Wǒ xiǎng mǎi yí ge bēizi.",
+          "english": "I want to buy a cup."
+        },
+        {
+          "hanzi": "这个商店很大。",
+          "pinyin": "Zhège shāngdiàn hěn dà.",
+          "english": "This shop is big."
+        },
+        {
+          "hanzi": "那个老师是谁？",
+          "pinyin": "Nàge lǎoshī shì shéi?",
+          "english": "Who is that teacher?"
+        },
+        {
+          "hanzi": "安娜的中国朋友家有五口人。",
+          "pinyin": "Ānnà de Zhōngguó péngyou jiā yǒu wǔ kǒu rén.",
+          "english": "Anna's Chinese friend has five people in the family."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "数词 / 这 / 那",
+          "量词",
+          "名词"
+        ],
+        "rows": [
+          [
+            "一",
+            "个",
+            "杯子"
+          ],
+          [
+            "三",
+            "个",
+            "学生"
+          ],
+          [
+            "这",
+            "个",
+            "商店"
+          ],
+          [
+            "那",
+            "个",
+            "老师"
+          ],
+          [
+            "六",
+            "口",
+            "人"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_8_g_money",
+      "number": 4,
+      "title": {
+        "hanzi": "钱数的表达",
+        "english": "Saying amounts of money with 块"
+      },
+      "explanation": {
+        "hanzi": "人民币的单位是元、角、分，口语里常说“块、毛、分”。一块 = 十毛，一毛 = 十分。说钱数：数字 + 块（+ 钱）。",
+        "english": "China's currency is the yuan (元). In everyday speech people say 块 instead of 元: number + 块, optionally followed by 钱 (25块 or 25块钱). Smaller units also exist — 1块 = 10毛 (written 角), 1毛 = 10分 — but in daily shopping you will mostly hear 块."
+      },
+      "examples": [
+        {
+          "hanzi": "这个杯子15块。",
+          "pinyin": "Zhège bēizi shíwǔ kuài.",
+          "english": "This cup is 15 yuan."
+        },
+        {
+          "hanzi": "米饭3块钱。",
+          "pinyin": "Mǐfàn sān kuài qián.",
+          "english": "Rice is 3 yuan."
+        },
+        {
+          "hanzi": "一个杯子九块钱。",
+          "pinyin": "Yí ge bēizi jiǔ kuài qián.",
+          "english": "One cup costs nine yuan."
+        },
+        {
+          "hanzi": "茶多少钱？——20块。",
+          "pinyin": "Chá duōshao qián? —— Èrshí kuài.",
+          "english": "How much is the tea? — 20 yuan."
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。",
+        "english": "In pairs, read the dialogues aloud, taking turns as A and B."
+      }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据你自己的情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
+      "items": [
+        {
+          "hanzi": "你想喝茶吗？",
+          "pinyin": "Nǐ xiǎng hē chá ma?",
+          "english": "Would you like some tea?"
+        },
+        {
+          "hanzi": "下午你想做什么？",
+          "pinyin": "Xiàwǔ nǐ xiǎng zuò shénme?",
+          "english": "What do you want to do this afternoon?"
+        },
+        {
+          "hanzi": "你想去商店买什么？",
+          "pinyin": "Nǐ xiǎng qù shāngdiàn mǎi shénme?",
+          "english": "What do you want to buy at the shop?"
+        },
+        {
+          "hanzi": "你们学校有多少学生？",
+          "pinyin": "Nǐmen xuéxiào yǒu duōshao xuésheng?",
+          "english": "How many students are there at your school?"
+        },
+        {
+          "hanzi": "你有几个中国朋友？",
+          "pinyin": "Nǐ yǒu jǐ ge Zhōngguó péngyou?",
+          "english": "How many Chinese friends do you have?"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用“想、几、多少、个、块”填空。",
+        "english": "Fill in the blanks with 想, 几, 多少, 个 or 块."
+      },
+      "items": [
+        {
+          "hanzi": "我____喝茶，不想吃米饭。",
+          "pinyin": "Wǒ ____ hē chá, bù xiǎng chī mǐfàn.",
+          "english": "I want to drink tea; I don't want to eat rice.",
+          "blank": "想"
+        },
+        {
+          "hanzi": "你家有____口人？",
+          "pinyin": "Nǐ jiā yǒu ____ kǒu rén?",
+          "english": "How many people are in your family?",
+          "blank": "几"
+        },
+        {
+          "hanzi": "你们学校有____老师？",
+          "pinyin": "Nǐmen xuéxiào yǒu ____ lǎoshī?",
+          "english": "How many teachers does your school have?",
+          "blank": "多少"
+        },
+        {
+          "hanzi": "这____杯子是中国的。",
+          "pinyin": "Zhè ____ bēizi shì Zhōngguó de.",
+          "english": "This cup is from China.",
+          "blank": "个"
+        },
+        {
+          "hanzi": "那个杯子20____钱。",
+          "pinyin": "Nàge bēizi èrshí ____ qián.",
+          "english": "That cup is 20 yuan.",
+          "blank": "块"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": {
+        "hanzi": "把问题和回答连起来。",
+        "english": "Match each question with its answer."
+      },
+      "items": [
+        {
+          "hanzi": "你想喝什么？——我想喝茶。",
+          "pinyin": "Nǐ xiǎng hē shénme? —— Wǒ xiǎng hē chá.",
+          "english": "What would you like to drink? — I'd like tea."
+        },
+        {
+          "hanzi": "你想买几个杯子？——三个。",
+          "pinyin": "Nǐ xiǎng mǎi jǐ ge bēizi? —— Sān ge.",
+          "english": "How many cups do you want? — Three."
+        },
+        {
+          "hanzi": "这个多少钱？——九块。",
+          "pinyin": "Zhège duōshao qián? —— Jiǔ kuài.",
+          "english": "How much is this? — Nine yuan."
+        },
+        {
+          "hanzi": "那个人是谁？——是我的汉语老师。",
+          "pinyin": "Nàge rén shì shéi? —— Shì wǒ de Hànyǔ lǎoshī.",
+          "english": "Who is that person? — My Chinese teacher."
+        }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": {
+          "hanzi": "“不”的变调",
+          "english": "Tone changes of 不"
+        },
+        "explanation": {
+          "hanzi": "“不”本来读第四声 bù。在第四声前面，“不”读第二声 bú；在第一、二、三声前面，还是读 bù。",
+          "english": "On its own, 不 is fourth tone: bù. When it comes before another fourth-tone syllable, it changes to second tone: bú. Before first, second and third tones it stays bù. Pinyin is usually printed with the changed tone."
+        },
+        "subRules": [
+          {
+            "rule": {
+              "hanzi": "不 + 第一、二、三声 → bù",
+              "english": "不 before 1st, 2nd or 3rd tone → bù"
+            },
+            "examples": [
+              {
+                "pinyin": "bù hē",
+                "english": "not drink"
+              },
+              {
+                "pinyin": "bù chī",
+                "english": "not eat"
+              },
+              {
+                "pinyin": "bù lái",
+                "english": "not come"
+              },
+              {
+                "pinyin": "bù xiǎng",
+                "english": "not want to"
+              },
+              {
+                "pinyin": "bù mǎi",
+                "english": "not buy"
+              }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "不 + 第四声 → bú",
+              "english": "不 before 4th tone → bú"
+            },
+            "examples": [
+              {
+                "pinyin": "bú qù",
+                "english": "not go"
+              },
+              {
+                "pinyin": "bú shì",
+                "english": "not be"
+              },
+              {
+                "pinyin": "bú kàn",
+                "english": "not look"
+              },
+              {
+                "pinyin": "bú huì",
+                "english": "cannot"
+              },
+              {
+                "pinyin": "bú kèqi",
+                "english": "you're welcome"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      {
+        "name": {
+          "hanzi": "撇",
+          "pinyin": "piě",
+          "english": "left-falling stroke"
+        },
+        "shape": "丿",
+        "examples": [
+          {
+            "hanzi": "个",
+            "pinyin": "gè",
+            "english": "general measure word"
+          },
+          {
+            "hanzi": "少",
+            "pinyin": "shǎo",
+            "english": "few, little"
+          },
+          {
+            "hanzi": "八",
+            "pinyin": "bā",
+            "english": "eight"
+          }
+        ]
+      },
+      {
+        "name": {
+          "hanzi": "竖",
+          "pinyin": "shù",
+          "english": "vertical stroke"
+        },
+        "shape": "丨",
+        "examples": [
+          {
+            "hanzi": "个",
+            "pinyin": "gè",
+            "english": "general measure word"
+          },
+          {
+            "hanzi": "中",
+            "pinyin": "zhōng",
+            "english": "middle"
+          },
+          {
+            "hanzi": "十",
+            "pinyin": "shí",
+            "english": "ten"
+          }
+        ]
+      }
+    ],
+    "singleComponentChars": [
+      {
+        "id": "hsk1_8_c_shao",
+        "hanzi": "少",
+        "pinyin": "shǎo",
+        "meaning": "few, little",
+        "etymology": "The oldest forms show a few tiny dots, like grains of sand, to suggest \"a small amount\". It is a close cousin of 小 (small): 少 is 小 with one extra sweeping stroke at the bottom.",
+        "strokeCount": 4
+      },
+      {
+        "id": "hsk1_8_c_ge",
+        "hanzi": "个",
+        "pinyin": "gè",
+        "meaning": "general measure word",
+        "etymology": "The old full form 箇 has the bamboo element on top, because it was first used to count bamboo stalks. The simple form 个 is often seen as a single stalk with two leaves, one item standing on its own.",
+        "strokeCount": 3
+      }
+    ],
+    "radicals": [
+      {
+        "hanzi": "钅",
+        "pinyin": "jīnzìpáng",
+        "english": "metal radical (side form of 金 \"gold, metal\"); characters with it often relate to metal or money",
+        "examples": [
+          "钱",
+          "钟",
+          "错",
+          "银"
+        ]
+      },
+      {
+        "hanzi": "口",
+        "pinyin": "kǒuzìpáng",
+        "english": "mouth radical; characters with it often relate to the mouth, eating, speaking, or sounds",
+        "examples": [
+          "吃",
+          "喝",
+          "叫",
+          "吗",
+          "呢"
+        ]
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "两人一组，一个人是商店的人，一个人想买东西。",
+      "english": "Work in pairs: one of you runs a small shop, the other is a customer."
+    },
+    "activities": [
+      "The shopkeeper writes a price list for 4–5 items (cups, tea, rice, books) using numbers + 块.",
+      "Customer: 你好，这个/那个……多少钱？ Shopkeeper: ……块。 Then switch roles.",
+      "Ask each other: 你想吃什么？你想喝什么？ and order from an imaginary menu.",
+      "Group work: each person says how many of something they want to buy (我想买三个杯子), and the group adds up the total price."
+    ]
+  }
+}

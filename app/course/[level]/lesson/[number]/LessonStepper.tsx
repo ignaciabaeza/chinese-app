@@ -4,12 +4,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import AudioButton from "@/components/AudioButton";
 import type { LessonDetail, LessonWord, StepKey, Dialogue, DialogueLine } from "@/lib/lessons";
+import PracticeStep, { type LessonExtras } from "./PracticeStep";
 
 const STEPS: { key: StepKey; label: string; description: string }[] = [
   { key: "listen",  label: "Listen",  description: "Hear the dialogue first, text hidden." },
   { key: "read",    label: "Read",    description: "Walk through every line with pinyin + English." },
   { key: "vocab",   label: "Vocab",   description: "Lesson words. Add the whole set to your deck." },
   { key: "grammar", label: "Grammar", description: "New patterns introduced this lesson." },
+  { key: "practice", label: "Practice", description: "Exercises, pronunciation, characters and culture." },
   { key: "done",    label: "Done",    description: "Wrap up and queue the next lesson." },
 ];
 
@@ -20,9 +22,10 @@ interface Props {
   initialProgress: StepKey[];
   signedIn: boolean;
   readerTextId: number | null;
+  extras: LessonExtras | null;
 }
 
-export default function LessonStepper({ level, number, detail, initialProgress, signedIn, readerTextId }: Props) {
+export default function LessonStepper({ level, number, detail, initialProgress, signedIn, readerTextId, extras }: Props) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [completed, setCompleted] = useState<Set<StepKey>>(new Set(initialProgress));
   const [words, setWords] = useState<LessonWord[]>(detail.words);
@@ -75,7 +78,7 @@ export default function LessonStepper({ level, number, detail, initialProgress, 
       )}
 
       {/* Stepper rail */}
-      <ol className="grid grid-cols-5 gap-1.5">
+      <ol className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
         {STEPS.map((s, i) => {
           const isActive = i === activeIdx;
           const isDone = completed.has(s.key);
@@ -134,6 +137,7 @@ export default function LessonStepper({ level, number, detail, initialProgress, 
         {step.key === "read"    && <ReadStep detail={detail} readerTextId={readerTextId} />}
         {step.key === "vocab"   && <VocabStep level={level} number={number} words={words} setWords={setWords} signedIn={signedIn} />}
         {step.key === "grammar" && <GrammarStep detail={detail} />}
+        {step.key === "practice" && <PracticeStep extras={extras} />}
         {step.key === "done"    && <DoneStep detail={detail} completed={completed} words={words} />}
       </div>
 
@@ -530,8 +534,8 @@ function GrammarStep({ detail }: { detail: LessonDetail }) {
 }
 
 function DoneStep({ detail, completed, words }: { detail: LessonDetail; completed: Set<StepKey>; words: LessonWord[] }) {
-  const total = 5;
-  const done = ["listen", "read", "vocab", "grammar", "done"].filter((k) => completed.has(k as StepKey)).length;
+  const total = STEPS.length;
+  const done = STEPS.filter((s) => completed.has(s.key)).length;
   const inDeck = words.filter((w) => w.state !== "unseen").length;
   return (
     <div className="space-y-5 text-center">

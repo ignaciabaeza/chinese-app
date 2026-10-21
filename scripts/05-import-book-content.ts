@@ -134,6 +134,18 @@ async function upsertCourseLesson(
   );
   const lessonId = lessonRows[0].id;
 
+  // Remember generated audio before wiping, so lines whose text and speaker
+  // didn't change keep their MP3 instead of needing TTS again.
+  const { rows: oldAudio } = await client.query<{ speaker: string | null; simplified: string; audio_path: string }>(
+    `SELECT dl.speaker, dl.simplified, dl.audio_path
+     FROM dialogue_lines dl
+     JOIN lesson_dialogues d ON d.id = dl.dialogue_id
+     WHERE d.lesson_id = $1 AND dl.audio_path IS NOT NULL`,
+    [lessonId],
+  );
+  const audioKey = (speaker: string | null | undefined, hanzi: string) => `${speaker ?? ""}|${hanzi}`;
+  const keptAudio = new Map(oldAudio.map((r) => [audioKey(r.speaker, r.simplified), r.audio_path]));
+
   // Wipe content children. CASCADE clears dialogue_lines via lesson_dialogues.
   await client.query("DELETE FROM lesson_dialogues WHERE lesson_id = $1", [lessonId]);
   await client.query("DELETE FROM lesson_words WHERE lesson_id = $1", [lessonId]);
@@ -151,9 +163,12 @@ async function upsertCourseLesson(
     for (let i = 0; i < text.dialogue.length; i++) {
       const line = text.dialogue[i];
       await client.query(
-        `INSERT INTO dialogue_lines (dialogue_id, position, speaker, simplified, pinyin, english)
-         VALUES ($1, $2, $3, $4, $5, $6)`,
-        [dialogueId, i + 1, line.speaker ?? null, line.hanzi, line.pinyin ?? null, line.english ?? null],
+        `INSERT INTO dialogue_lines (dialogue_id, position, speaker, simplified, pinyin, english, audio_path)
+         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        [
+          dialogueId, i + 1, line.speaker ?? null, line.hanzi, line.pinyin ?? null, line.english ?? null,
+          keptAudio.get(audioKey(line.speaker ?? null, line.hanzi)) ?? null,
+        ],
       );
       lineCount++;
     }

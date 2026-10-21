@@ -1,0 +1,867 @@
+{
+  "id": "hsk1-14",
+  "level": 1,
+  "number": 14,
+  "title": {
+    "hanzi": "这些衣服都很漂亮啊",
+    "pinyin": "Zhèxiē yīfu dōu hěn piàoliang a",
+    "english": "These clothes are all so pretty"
+  },
+  "theme": "Shopping",
+  "warmUp": {
+    "instruction": {
+      "hanzi": "读一读，说说这些词语是什么意思。",
+      "english": "Read the words and phrases aloud and say what they mean."
+    },
+    "items": [
+      {
+        "hanzi": "买东西",
+        "pinyin": "mǎi dōngxi",
+        "english": "to go shopping, to buy things"
+      },
+      {
+        "hanzi": "衣服",
+        "pinyin": "yīfu",
+        "english": "clothes"
+      },
+      {
+        "hanzi": "很漂亮",
+        "pinyin": "hěn piàoliang",
+        "english": "very pretty"
+      },
+      {
+        "hanzi": "苹果",
+        "pinyin": "píngguǒ",
+        "english": "apple"
+      },
+      {
+        "hanzi": "一点儿",
+        "pinyin": "yìdiǎnr",
+        "english": "a little"
+      },
+      {
+        "hanzi": "开车",
+        "pinyin": "kāi chē",
+        "english": "to drive (a car)"
+      },
+      {
+        "hanzi": "10分钟后",
+        "pinyin": "shí fēnzhōng hòu",
+        "english": "in 10 minutes, 10 minutes later"
+      }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": {
+        "hanzi": "在宿舍",
+        "english": "In the dorm"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "安娜，你去哪儿了？",
+          "pinyin": "Ānnà, nǐ qù nǎr le?",
+          "english": "Anna, where did you go?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我去商店了，买了不少东西。",
+          "pinyin": "Wǒ qù shāngdiàn le, mǎile bùshǎo dōngxi.",
+          "english": "I went to the shops and bought quite a lot of stuff."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你买了什么？",
+          "pinyin": "Nǐ mǎile shénme?",
+          "english": "What did you buy?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我买了一些衣服。",
+          "pinyin": "Wǒ mǎile yìxiē yīfu.",
+          "english": "I bought some clothes."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "这些衣服都很漂亮啊！",
+          "pinyin": "Zhèxiē yīfu dōu hěn piàoliang a!",
+          "english": "These clothes are all so pretty!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "谢谢！我都很喜欢。",
+          "pinyin": "Xièxie! Wǒ dōu hěn xǐhuan.",
+          "english": "Thanks! I like all of them."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_14_bushao",
+          "hanzi": "不少",
+          "pinyin": "bùshǎo",
+          "pos": "adj.",
+          "english": "quite a few, quite a lot"
+        },
+        {
+          "id": "hsk1_14_dongxi",
+          "hanzi": "东西",
+          "pinyin": "dōngxi",
+          "pos": "n.",
+          "english": "thing, stuff"
+        },
+        {
+          "id": "hsk1_14_yifu",
+          "hanzi": "衣服",
+          "pinyin": "yīfu",
+          "pos": "n.",
+          "english": "clothes"
+        },
+        {
+          "id": "hsk1_14_zhexie",
+          "hanzi": "这些",
+          "pinyin": "zhèxiē",
+          "pos": "pron.",
+          "english": "these"
+        },
+        {
+          "id": "hsk1_14_dou",
+          "hanzi": "都",
+          "pinyin": "dōu",
+          "pos": "adv.",
+          "english": "all, both"
+        },
+        {
+          "id": "hsk1_14_piaoliang",
+          "hanzi": "漂亮",
+          "pinyin": "piàoliang",
+          "pos": "adj.",
+          "english": "beautiful, pretty"
+        },
+        {
+          "id": "hsk1_14_a",
+          "hanzi": "啊",
+          "pinyin": "a",
+          "pos": "part.",
+          "english": "particle expressing warmth or affirmation"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_14_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": {
+        "hanzi": "在水果店",
+        "english": "At the fruit shop"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "先生，您想买什么？",
+          "pinyin": "Xiānsheng, nín xiǎng mǎi shénme?",
+          "english": "What would you like to buy, sir?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我想买一点儿水果。这些苹果多少钱？",
+          "pinyin": "Wǒ xiǎng mǎi yìdiǎnr shuǐguǒ. Zhèxiē píngguǒ duōshao qián?",
+          "english": "I'd like to buy a little fruit. How much are these apples?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "三个10块钱。",
+          "pinyin": "Sān ge shí kuài qián.",
+          "english": "Three for 10 yuan."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "三个太少了，我买六个。",
+          "pinyin": "Sān ge tài shǎo le, wǒ mǎi liù ge.",
+          "english": "Three is too few. I'll take six."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好，20块钱。",
+          "pinyin": "Hǎo, èrshí kuài qián.",
+          "english": "OK, that's 20 yuan."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "给您。",
+          "pinyin": "Gěi nín.",
+          "english": "Here you are."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_14_xiansheng",
+          "hanzi": "先生",
+          "pinyin": "xiānsheng",
+          "pos": "n.",
+          "english": "Mr., sir"
+        },
+        {
+          "id": "hsk1_14_yidianr",
+          "hanzi": "一点儿",
+          "pinyin": "yìdiǎnr",
+          "pos": "num.-m.",
+          "english": "a little, a bit"
+        },
+        {
+          "id": "hsk1_14_pingguo",
+          "hanzi": "苹果",
+          "pinyin": "píngguǒ",
+          "pos": "n.",
+          "english": "apple"
+        },
+        {
+          "id": "hsk1_14_shao",
+          "hanzi": "少",
+          "pinyin": "shǎo",
+          "pos": "adj.",
+          "english": "few, little"
+        }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": {
+        "hanzi": "打电话",
+        "english": "On the phone"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "喂，安娜，你什么时候回来？",
+          "pinyin": "Wéi, Ānnà, nǐ shénme shíhou huílai?",
+          "english": "Hello, Anna, when are you coming back?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我在商店，40分钟后回来。",
+          "pinyin": "Wǒ zài shāngdiàn, sìshí fēnzhōng hòu huílai.",
+          "english": "I'm at the shops. I'll be back in 40 minutes."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你的东西多吗？我开车去商店吧。",
+          "pinyin": "Nǐ de dōngxi duō ma? Wǒ kāi chē qù shāngdiàn ba.",
+          "english": "Do you have a lot of bags? Let me drive over to the shops."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好啊，谢谢你！",
+          "pinyin": "Hǎo a, xièxie nǐ!",
+          "english": "Great, thank you!"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我在商店前面。你在哪儿？",
+          "pinyin": "Wǒ zài shāngdiàn qiánmiàn. Nǐ zài nǎr?",
+          "english": "I'm in front of the shop. Where are you?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我看见你的车了！",
+          "pinyin": "Wǒ kànjiàn nǐ de chē le!",
+          "english": "I can see your car!"
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_14_huilai",
+          "hanzi": "回来",
+          "pinyin": "huílai",
+          "pos": "v.",
+          "english": "to come back, to return"
+        },
+        {
+          "id": "hsk1_14_fenzhong",
+          "hanzi": "分钟",
+          "pinyin": "fēnzhōng",
+          "pos": "n.",
+          "english": "minute"
+        },
+        {
+          "id": "hsk1_14_hou",
+          "hanzi": "后",
+          "pinyin": "hòu",
+          "pos": "n.",
+          "english": "after, later"
+        },
+        {
+          "id": "hsk1_14_kai",
+          "hanzi": "开",
+          "pinyin": "kāi",
+          "pos": "v.",
+          "english": "to drive, to operate"
+        },
+        {
+          "id": "hsk1_14_che",
+          "hanzi": "车",
+          "pinyin": "chē",
+          "pos": "n.",
+          "english": "car, vehicle"
+        },
+        {
+          "id": "hsk1_14_kanjian",
+          "hanzi": "看见",
+          "pinyin": "kànjiàn",
+          "pos": "v.",
+          "english": "to see, to catch sight of"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_14_g_le",
+      "number": 1,
+      "title": {
+        "hanzi": "\"了\"表示动作完成",
+        "english": "\"了\" Marking a Completed Action"
+      },
+      "explanation": {
+        "hanzi": "动词后面加\"了\"，表示这个动作已经发生、完成了。动词后的宾语前面常常有数量词，比如\"买了三个苹果\"。否定的时候用\"没（有）+ 动词\"，不再用\"了\"。问句可以说\"……了吗？\"。",
+        "english": "Put \"了\" right after a verb to show that the action has happened or been completed. The object after \"verb + 了\" usually carries a number or quantity, e.g. 买了三个苹果 (bought three apples). To say an action did NOT happen, use \"没 + verb\" and drop 了 completely: 我没买 (I didn't buy it), never *我没买了. To ask, add 吗: ……了吗？"
+      },
+      "examples": [
+        {
+          "hanzi": "我昨天买了三个苹果。",
+          "pinyin": "Wǒ zuótiān mǎile sān ge píngguǒ.",
+          "english": "I bought three apples yesterday."
+        },
+        {
+          "hanzi": "王明上午看了一个电影。",
+          "pinyin": "Wáng Míng shàngwǔ kànle yí ge diànyǐng.",
+          "english": "Wang Ming watched a film this morning."
+        },
+        {
+          "hanzi": "你吃饭了吗？",
+          "pinyin": "Nǐ chī fàn le ma?",
+          "english": "Have you eaten?"
+        },
+        {
+          "hanzi": "我今天没买衣服。",
+          "pinyin": "Wǒ jīntiān méi mǎi yīfu.",
+          "english": "I didn't buy any clothes today."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Subject",
+          "Verb + 了 / 没 + Verb",
+          "Object"
+        ],
+        "rows": [
+          [
+            "我",
+            "买了",
+            "不少东西"
+          ],
+          [
+            "安娜",
+            "喝了",
+            "一杯茶"
+          ],
+          [
+            "马克",
+            "没买",
+            "苹果"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_14_g_hou",
+      "number": 2,
+      "title": {
+        "hanzi": "名词\"后\"",
+        "english": "The Noun \"后\" (after, later)"
+      },
+      "explanation": {
+        "hanzi": "\"后\"放在表示时间或事情的词语后面，意思是\"在这个时间或这件事以后\"。\"时间/事情 + 后\"一般放在主语前面或主语后面、动词前面。",
+        "english": "\"后\" goes AFTER a time word or an event and means \"after that / later\": 10分钟后 (in ten minutes), 吃饭后 (after eating). Note the word order is the opposite of English: the time comes first, 后 comes last. The whole phrase sits before the verb, either before or after the subject."
+      },
+      "examples": [
+        {
+          "hanzi": "20分钟后我开车去商店。",
+          "pinyin": "Èrshí fēnzhōng hòu wǒ kāi chē qù shāngdiàn.",
+          "english": "In 20 minutes I'll drive to the shops."
+        },
+        {
+          "hanzi": "吃饭后，我们去看电影吧。",
+          "pinyin": "Chī fàn hòu, wǒmen qù kàn diànyǐng ba.",
+          "english": "Let's go and see a film after we eat."
+        },
+        {
+          "hanzi": "他三天后回来。",
+          "pinyin": "Tā sān tiān hòu huílai.",
+          "english": "He'll come back in three days."
+        },
+        {
+          "hanzi": "下午五点后我在家。",
+          "pinyin": "Xiàwǔ wǔ diǎn hòu wǒ zài jiā.",
+          "english": "I'm at home after five in the afternoon."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Time / Event",
+          "后",
+          "Subject + Verb"
+        ],
+        "rows": [
+          [
+            "10分钟",
+            "后",
+            "我回来"
+          ],
+          [
+            "吃饭",
+            "后",
+            "我们去商店"
+          ],
+          [
+            "三天",
+            "后",
+            "他开车去北京"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_14_g_a",
+      "number": 3,
+      "title": {
+        "hanzi": "语气助词\"啊\"",
+        "english": "The Modal Particle \"啊\""
+      },
+      "explanation": {
+        "hanzi": "\"啊\"用在句子末尾，读轻声，让语气更热情、更自然，常常表示同意、肯定或者感叹。比如\"好啊！\"\"是啊。\"\"很漂亮啊！\"",
+        "english": "\"啊\" (neutral tone) at the end of a sentence adds warmth and feeling. It often shows agreement (好啊！Sure!), confirmation (是啊。Yes, indeed.) or admiration/surprise (很漂亮啊！So pretty!). Without 啊 the same sentence can sound flat or even a little cold."
+      },
+      "examples": [
+        {
+          "hanzi": "我们一起去吧？——好啊！",
+          "pinyin": "Wǒmen yìqǐ qù ba? — Hǎo a!",
+          "english": "Shall we go together? — Sure!"
+        },
+        {
+          "hanzi": "你的衣服很漂亮啊！",
+          "pinyin": "Nǐ de yīfu hěn piàoliang a!",
+          "english": "Your clothes are really pretty!"
+        },
+        {
+          "hanzi": "今天很热啊！",
+          "pinyin": "Jīntiān hěn rè a!",
+          "english": "It's so hot today!"
+        },
+        {
+          "hanzi": "你喜欢喝茶吗？——是啊，我很喜欢。",
+          "pinyin": "Nǐ xǐhuan hē chá ma? — Shì a, wǒ hěn xǐhuan.",
+          "english": "Do you like tea? — Yes, I really do."
+        }
+      ]
+    },
+    {
+      "id": "hsk1_14_g_dou",
+      "number": 4,
+      "title": {
+        "hanzi": "副词\"都\"",
+        "english": "The Adverb \"都\" (all, both)"
+      },
+      "explanation": {
+        "hanzi": "\"都\"表示前面说到的人或东西全部一样，意思是\"全部\"。\"都\"一定放在动词或形容词前面，不能放在主语前面。否定时\"都不/都没\"表示全部否定。",
+        "english": "\"都\" means \"all\" or \"both\" and refers back to the people or things mentioned BEFORE it. It always goes right before the verb or adjective, never before the subject: 我们都是学生 (We are all students), not *都我们是学生. 都不 / 都没 means \"none of them\"."
+      },
+      "examples": [
+        {
+          "hanzi": "安娜和马克都是学生。",
+          "pinyin": "Ānnà hé Mǎkè dōu shì xuésheng.",
+          "english": "Anna and Mark are both students."
+        },
+        {
+          "hanzi": "这些苹果都很好吃。",
+          "pinyin": "Zhèxiē píngguǒ dōu hěn hǎochī.",
+          "english": "All of these apples are delicious."
+        },
+        {
+          "hanzi": "我们都喜欢中国菜。",
+          "pinyin": "Wǒmen dōu xǐhuan Zhōngguó cài.",
+          "english": "We all like Chinese food."
+        },
+        {
+          "hanzi": "他们都没去商店。",
+          "pinyin": "Tāmen dōu méi qù shāngdiàn.",
+          "english": "None of them went to the shops."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Subject (plural)",
+          "都",
+          "Verb / Adjective"
+        ],
+        "rows": [
+          [
+            "我们",
+            "都",
+            "是学生"
+          ],
+          [
+            "这些衣服",
+            "都",
+            "很漂亮"
+          ],
+          [
+            "他们",
+            "都",
+            "没开车"
+          ]
+        ]
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。",
+        "english": "In pairs, read the dialogues aloud, taking turns with each role."
+      }
+    },
+    {
+      "number": 2,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用\"了、后、啊、都\"填空。",
+        "english": "Fill in the blanks with 了, 后, 啊 or 都."
+      },
+      "items": [
+        {
+          "hanzi": "我昨天买____三个苹果。",
+          "english": "I bought three apples yesterday.",
+          "blank": "了"
+        },
+        {
+          "hanzi": "吃饭____，我们去商店吧。",
+          "english": "Let's go to the shops after we eat.",
+          "blank": "后"
+        },
+        {
+          "hanzi": "安娜和王明____会开车。",
+          "english": "Anna and Wang Ming can both drive.",
+          "blank": "都"
+        },
+        {
+          "hanzi": "你的衣服很漂亮____！",
+          "english": "Your clothes are so pretty!",
+          "blank": "啊"
+        },
+        {
+          "hanzi": "马克，你在哪儿？我10分钟____回来。",
+          "english": "Mark, where are you? I'll be back in 10 minutes.",
+          "blank": "后"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据课文回答问题。",
+        "english": "Answer the questions based on the dialogues."
+      },
+      "items": [
+        {
+          "hanzi": "安娜去哪儿了？她买了什么？",
+          "pinyin": "Ānnà qù nǎr le? Tā mǎile shénme?",
+          "english": "Where did Anna go? What did she buy?"
+        },
+        {
+          "hanzi": "那个先生买了几个苹果？",
+          "pinyin": "Nàge xiānsheng mǎile jǐ ge píngguǒ?",
+          "english": "How many apples did the man buy?"
+        },
+        {
+          "hanzi": "安娜什么时候回来？",
+          "pinyin": "Ānnà shénme shíhou huílai?",
+          "english": "When is Anna coming back?"
+        },
+        {
+          "hanzi": "谁开车去商店了？",
+          "pinyin": "Shéi kāi chē qù shāngdiàn le?",
+          "english": "Who drove to the shops?"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据实际情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
+      "items": [
+        {
+          "hanzi": "你昨天买东西了吗？买了什么？",
+          "pinyin": "Nǐ zuótiān mǎi dōngxi le ma? Mǎile shénme?",
+          "english": "Did you go shopping yesterday? What did you buy?"
+        },
+        {
+          "hanzi": "你会开车吗？",
+          "pinyin": "Nǐ huì kāi chē ma?",
+          "english": "Can you drive?"
+        },
+        {
+          "hanzi": "你家的人都喜欢吃苹果吗？",
+          "pinyin": "Nǐ jiā de rén dōu xǐhuan chī píngguǒ ma?",
+          "english": "Does everyone in your family like apples?"
+        },
+        {
+          "hanzi": "吃饭后你想做什么？",
+          "pinyin": "Chī fàn hòu nǐ xiǎng zuò shénme?",
+          "english": "What do you want to do after you eat?"
+        }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": {
+          "hanzi": "双音节词的声调组合",
+          "english": "Tone Pairs in Two-Syllable Words"
+        },
+        "explanation": {
+          "hanzi": "汉语里很多词有两个音节。两个声调放在一起一共有16种组合。按第一个音节的声调分成四组练习，注意每个音节的声调都要读完整。两个三声在一起时，第一个读成二声。",
+          "english": "Most Chinese words have two syllables, and the four tones combine into 16 tone pairs. Practise them in four groups, sorted by the tone of the first syllable, and give each syllable its full tone. Remember: when two third tones meet, the first one is said as a second tone (shuǐguǒ → shuíguǒ)."
+        },
+        "subRules": [
+          {
+            "rule": {
+              "hanzi": "第一声 + 一、二、三、四声",
+              "english": "First tone + 1st / 2nd / 3rd / 4th tone"
+            },
+            "examples": [
+              {
+                "pinyin": "jīntiān",
+                "english": "今天 today (1+1)"
+              },
+              {
+                "pinyin": "Zhōngguó",
+                "english": "中国 China (1+2)"
+              },
+              {
+                "pinyin": "shēntǐ",
+                "english": "身体 body, health (1+3)"
+              },
+              {
+                "pinyin": "shāngdiàn",
+                "english": "商店 shop (1+4)"
+              }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "第二声 + 一、二、三、四声",
+              "english": "Second tone + 1st / 2nd / 3rd / 4th tone"
+            },
+            "examples": [
+              {
+                "pinyin": "míngtiān",
+                "english": "明天 tomorrow (2+1)"
+              },
+              {
+                "pinyin": "xuéxí",
+                "english": "学习 to study (2+2)"
+              },
+              {
+                "pinyin": "píngguǒ",
+                "english": "苹果 apple (2+3)"
+              },
+              {
+                "pinyin": "xuéxiào",
+                "english": "学校 school (2+4)"
+              }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "第三声 + 一、二、三、四声",
+              "english": "Third tone + 1st / 2nd / 3rd / 4th tone"
+            },
+            "examples": [
+              {
+                "pinyin": "lǎoshī",
+                "english": "老师 teacher (3+1)"
+              },
+              {
+                "pinyin": "nǚ'ér",
+                "english": "女儿 daughter (3+2)"
+              },
+              {
+                "pinyin": "shuǐguǒ",
+                "english": "水果 fruit (3+3, said shuíguǒ)"
+              },
+              {
+                "pinyin": "mǐfàn",
+                "english": "米饭 cooked rice (3+4)"
+              }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "第四声 + 一、二、三、四声",
+              "english": "Fourth tone + 1st / 2nd / 3rd / 4th tone"
+            },
+            "examples": [
+              {
+                "pinyin": "kàn shū",
+                "english": "看书 to read (4+1)"
+              },
+              {
+                "pinyin": "dàxué",
+                "english": "大学 university (4+2)"
+              },
+              {
+                "pinyin": "diànnǎo",
+                "english": "电脑 computer (4+3)"
+              },
+              {
+                "pinyin": "zàijiàn",
+                "english": "再见 goodbye (4+4)"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      {
+        "name": {
+          "hanzi": "横折",
+          "pinyin": "héngzhé",
+          "english": "horizontal turning down"
+        },
+        "shape": "㇕",
+        "examples": [
+          {
+            "hanzi": "回",
+            "pinyin": "huí",
+            "english": "to return"
+          },
+          {
+            "hanzi": "口",
+            "pinyin": "kǒu",
+            "english": "mouth"
+          },
+          {
+            "hanzi": "中",
+            "pinyin": "zhōng",
+            "english": "middle"
+          }
+        ]
+      },
+      {
+        "name": {
+          "hanzi": "撇折",
+          "pinyin": "piězhé",
+          "english": "left-falling turning right"
+        },
+        "shape": "㇜",
+        "examples": [
+          {
+            "hanzi": "车",
+            "pinyin": "chē",
+            "english": "car, vehicle"
+          },
+          {
+            "hanzi": "东",
+            "pinyin": "dōng",
+            "english": "east"
+          },
+          {
+            "hanzi": "么",
+            "pinyin": "me",
+            "english": "(suffix in 什么, 怎么)"
+          }
+        ]
+      }
+    ],
+    "singleComponentChars": [
+      {
+        "id": "hsk1_14_c_kai",
+        "hanzi": "开",
+        "pinyin": "kāi",
+        "meaning": "to open; to drive",
+        "etymology": "The old form 開 showed two hands lifting the wooden bar that locked a double gate, i.e. opening it. The simplified form dropped the gate and kept only the bar and the hands.",
+        "strokeCount": 4
+      },
+      {
+        "id": "hsk1_14_c_che",
+        "hanzi": "车",
+        "pinyin": "chē",
+        "meaning": "vehicle, car",
+        "etymology": "The earliest form was a picture of a chariot seen from above: a box-shaped body sitting on an axle between two wheels. Turned upright and simplified from 車, it now stands for any vehicle.",
+        "strokeCount": 4
+      },
+      {
+        "id": "hsk1_14_c_hui",
+        "hanzi": "回",
+        "pinyin": "huí",
+        "meaning": "to return, to go back",
+        "etymology": "It began as a drawing of water swirling round and round in an eddy. Something that turns around comes back to where it started, so the character came to mean \"to return\".",
+        "strokeCount": 6
+      }
+    ],
+    "radicals": [
+      {
+        "hanzi": "月",
+        "pinyin": "yuèzìpáng",
+        "english": "moon / flesh radical (often linked to the body or time)",
+        "examples": [
+          "朋",
+          "服",
+          "脑",
+          "期"
+        ]
+      },
+      {
+        "hanzi": "扌",
+        "pinyin": "tíshǒupáng",
+        "english": "hand radical (actions done with the hands)",
+        "examples": [
+          "打",
+          "找",
+          "拿",
+          "接"
+        ]
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "两人一组，一个人是商店的服务员，一个人买东西。",
+      "english": "Work in pairs: one person runs a shop, the other is a customer."
+    },
+    "activities": [
+      "Shop role-play: the shopkeeper greets the customer with 先生/小姐，您想买什么？ The customer asks prices (……多少钱？) for apples, cups or clothes and decides how many to buy (太少了，我买……).",
+      "Show and tell: say three things you bought recently using verb + 了 (我买了……), and one thing you didn't buy (我没买……). Your partner reacts with 啊: 很漂亮啊！/ 很好啊！",
+      "Plan the afternoon: take turns saying what you'll do using 后 (吃饭后……, 20分钟后……) and find something you both want to do (我们都想……)."
+    ]
+  }
+}

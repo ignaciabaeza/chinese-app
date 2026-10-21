@@ -1,0 +1,308 @@
+{
+  "id": "hsk1-15",
+  "level": 1,
+  "number": 15,
+  "title": { "hanzi": "我是坐出租车来的", "pinyin": "Wǒ shì zuò chūzūchē lái de", "english": "I came by taxi" },
+  "theme": "Travel",
+  "warmUp": {
+    "instruction": { "hanzi": "读一读，说说这些词语是什么意思。", "english": "Read the words and phrases aloud and say what they mean." },
+    "items": [
+      { "hanzi": "认识你很高兴", "pinyin": "rènshi nǐ hěn gāoxìng", "english": "nice to meet you" },
+      { "hanzi": "大学", "pinyin": "dàxué", "english": "university" },
+      { "hanzi": "坐飞机", "pinyin": "zuò fēijī", "english": "to take a plane" },
+      { "hanzi": "坐出租车", "pinyin": "zuò chūzūchē", "english": "to take a taxi" },
+      { "hanzi": "饭店", "pinyin": "fàndiàn", "english": "restaurant, hotel" },
+      { "hanzi": "一起", "pinyin": "yìqǐ", "english": "together" },
+      { "hanzi": "2025年", "pinyin": "èr líng èr wǔ nián", "english": "the year 2025" }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": { "hanzi": "在大学里", "english": "On campus" },
+      "dialogue": [
+        { "speaker": "A", "hanzi": "你好！你也是这个大学的学生吗？", "pinyin": "Nǐ hǎo! Nǐ yě shì zhège dàxué de xuésheng ma?", "english": "Hi! Are you a student at this university too?" },
+        { "speaker": "B", "hanzi": "是啊，我叫安娜，在这儿学习汉语。", "pinyin": "Shì a, wǒ jiào Ānnà, zài zhèr xuéxí Hànyǔ.", "english": "Yes, I'm Anna. I study Chinese here." },
+        { "speaker": "A", "hanzi": "认识你很高兴！你是什么时候来中国的？", "pinyin": "Rènshi nǐ hěn gāoxìng! Nǐ shì shénme shíhou lái Zhōngguó de?", "english": "Nice to meet you! When did you come to China?" },
+        { "speaker": "B", "hanzi": "我是2025年8月来的。", "pinyin": "Wǒ shì èr líng èr wǔ nián bā yuè lái de.", "english": "I came in August 2025." },
+        { "speaker": "A", "hanzi": "你是一个人来的吗？", "pinyin": "Nǐ shì yí ge rén lái de ma?", "english": "Did you come on your own?" },
+        { "speaker": "B", "hanzi": "不是，我是和我妈妈一起来的。", "pinyin": "Bú shì, wǒ shì hé wǒ māma yìqǐ lái de.", "english": "No, I came with my mum." }
+      ],
+      "newWords": [
+        { "id": "hsk1_15_daxue", "hanzi": "大学", "pinyin": "dàxué", "pos": "n.", "english": "university" },
+        { "id": "hsk1_15_renshi", "hanzi": "认识", "pinyin": "rènshi", "pos": "v.", "english": "to know, to meet (someone)" },
+        { "id": "hsk1_15_gaoxing", "hanzi": "高兴", "pinyin": "gāoxìng", "pos": "adj.", "english": "glad, happy" },
+        { "id": "hsk1_15_nian", "hanzi": "年", "pinyin": "nián", "pos": "n.", "english": "year" },
+        { "id": "hsk1_15_yiqi", "hanzi": "一起", "pinyin": "yìqǐ", "pos": "adv.", "english": "together" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_15_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": { "hanzi": "在机场", "english": "At the airport" },
+      "dialogue": [
+        { "speaker": "A", "hanzi": "马克，你回来了！", "pinyin": "Mǎkè, nǐ huílai le!", "english": "Mark, you're back!" },
+        { "speaker": "B", "hanzi": "王明！你怎么在这儿？", "pinyin": "Wáng Míng! Nǐ zěnme zài zhèr?", "english": "Wang Ming! What are you doing here?" },
+        { "speaker": "A", "hanzi": "安娜说你今天坐飞机回北京。", "pinyin": "Ānnà shuō nǐ jīntiān zuò fēijī huí Běijīng.", "english": "Anna said you were flying back to Beijing today." },
+        { "speaker": "B", "hanzi": "太谢谢你了！你是怎么来的？", "pinyin": "Tài xièxie nǐ le! Nǐ shì zěnme lái de?", "english": "Thank you so much! How did you get here?" },
+        { "speaker": "A", "hanzi": "我是坐出租车来的。我们也坐出租车回去吧。", "pinyin": "Wǒ shì zuò chūzūchē lái de. Wǒmen yě zuò chūzūchē huíqu ba.", "english": "I came by taxi. Let's take a taxi back too." },
+        { "speaker": "B", "hanzi": "好啊！", "pinyin": "Hǎo a!", "english": "Sounds good!" }
+      ],
+      "newWords": [
+        { "id": "hsk1_15_feiji", "hanzi": "飞机", "pinyin": "fēijī", "pos": "n.", "english": "airplane" },
+        { "id": "hsk1_15_chuzuche", "hanzi": "出租车", "pinyin": "chūzūchē", "pos": "n.", "english": "taxi" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_15_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" },
+        { "id": "hsk1_15_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming" }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": { "hanzi": "在饭店", "english": "At a restaurant" },
+      "dialogue": [
+        { "speaker": "A", "hanzi": "这个饭店的菜太好吃了！", "pinyin": "Zhège fàndiàn de cài tài hǎochī le!", "english": "The food at this restaurant is so good!" },
+        { "speaker": "B", "hanzi": "是啊，我也很喜欢这儿。", "pinyin": "Shì a, wǒ yě hěn xǐhuan zhèr.", "english": "It is! I really like this place too." },
+        { "speaker": "A", "hanzi": "你是听谁说的？", "pinyin": "Nǐ shì tīng shéi shuō de?", "english": "Who told you about it?" },
+        { "speaker": "B", "hanzi": "我是听刘老师说的。", "pinyin": "Wǒ shì tīng Liú lǎoshī shuō de.", "english": "I heard about it from Professor Liu." },
+        { "speaker": "A", "hanzi": "下个星期我们和刘老师一起来吧！", "pinyin": "Xià ge xīngqī wǒmen hé Liú lǎoshī yìqǐ lái ba!", "english": "Let's come here with Professor Liu next week!" },
+        { "speaker": "B", "hanzi": "好啊，她会很高兴。", "pinyin": "Hǎo a, tā huì hěn gāoxìng.", "english": "Great idea, she'll be really pleased." }
+      ],
+      "newWords": [
+        { "id": "hsk1_15_fandian", "hanzi": "饭店", "pinyin": "fàndiàn", "pos": "n.", "english": "restaurant, hotel" },
+        { "id": "hsk1_15_ting", "hanzi": "听", "pinyin": "tīng", "pos": "v.", "english": "to listen, to hear" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_15_pn_liulaoshi", "hanzi": "刘老师", "pinyin": "Liú lǎoshī", "english": "Professor Liu" }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_15_g_shi_de",
+      "number": 1,
+      "title": { "hanzi": "\"是……的\"句：强调时间、地点、方式", "english": "The \"是……的\" Construction: Focusing on When, Where or How" },
+      "explanation": {
+        "hanzi": "说话的人已经知道一件事发生了，想说明或者问这件事是什么时候、在哪儿、怎么（坐什么）、和谁一起做的，就用\"是……的\"。要强调的部分放在\"是\"和动词中间，\"的\"一般放在句子最后。肯定句里\"是\"可以不说，否定句用\"不是……的\"。",
+        "english": "Use 是……的 when both speakers already know that something happened in the past, and the point of the sentence is a detail about it: WHEN (什么时候), WHERE (在哪儿), HOW (坐飞机, 坐出租车) or WITH WHOM (和谁一起). Put the detail you are stressing between 是 and the verb, and 的 at the end. In positive sentences 是 can be dropped in speech (我坐飞机来的), but 的 cannot. The negative is 不是……的."
+      },
+      "examples": [
+        { "hanzi": "我是坐飞机来的。", "pinyin": "Wǒ shì zuò fēijī lái de.", "english": "I came by plane." },
+        { "hanzi": "你是什么时候来中国的？", "pinyin": "Nǐ shì shénme shíhou lái Zhōngguó de?", "english": "When did you come to China?" },
+        { "hanzi": "安娜是在大学认识王明的。", "pinyin": "Ānnà shì zài dàxué rènshi Wáng Míng de.", "english": "Anna met Wang Ming at university." },
+        { "hanzi": "我不是一个人来的，我是和朋友一起来的。", "pinyin": "Wǒ bú shì yí ge rén lái de, wǒ shì hé péngyou yìqǐ lái de.", "english": "I didn't come alone; I came with a friend." }
+      ],
+      "patternTable": {
+        "columns": ["Subject", "是", "Focus: time / place / manner", "Verb (+ Object)", "的"],
+        "rows": [
+          ["我", "是", "昨天", "来", "的"],
+          ["他们", "是", "在饭店", "认识", "的"],
+          ["我们", "是", "坐出租车", "回来", "的"],
+          ["她", "不是", "一个人", "来", "的"]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_15_g_date",
+      "number": 2,
+      "title": { "hanzi": "年月日的表达", "english": "Saying a Full Date with the Year" },
+      "explanation": {
+        "hanzi": "汉语说日期的顺序是从大到小：年 → 月 → 号 → 星期。说年份的时候，一个数字一个数字地读，\"0\"读\"líng\"，比如2024年读\"èr líng èr sì nián\"。问年份可以说\"哪年\"。",
+        "english": "Chinese dates go from the largest unit to the smallest: year → month → day (号) → day of the week. Read the year digit by digit, with 0 said as líng: 2024年 = èr líng èr sì nián, 1998年 = yī jiǔ jiǔ bā nián. Months and days are read as normal numbers: 9月1号 = jiǔ yuè yī hào. To ask which year, use 哪年."
+      },
+      "examples": [
+        { "hanzi": "今天是2026年10月21号，星期三。", "pinyin": "Jīntiān shì èr líng èr liù nián shí yuè èrshíyī hào, xīngqīsān.", "english": "Today is Wednesday, 21 October 2026." },
+        { "hanzi": "2024年9月1号是星期天。", "pinyin": "Èr líng èr sì nián jiǔ yuè yī hào shì xīngqītiān.", "english": "1 September 2024 was a Sunday." },
+        { "hanzi": "我是2020年来北京的。", "pinyin": "Wǒ shì èr líng èr líng nián lái Běijīng de.", "english": "I came to Beijing in 2020." },
+        { "hanzi": "你是哪年认识王明的？", "pinyin": "Nǐ shì nǎ nián rènshi Wáng Míng de?", "english": "Which year did you meet Wang Ming?" }
+      ],
+      "patternTable": {
+        "columns": ["年 (year)", "月 (month)", "号 (day)", "星期 (weekday)"],
+        "rows": [
+          ["2026年", "10月", "21号", "星期三"],
+          ["èr líng èr liù nián", "shí yuè", "èrshíyī hào", "xīngqīsān"],
+          ["2024年", "9月", "1号", "星期天"],
+          ["èr líng èr sì nián", "jiǔ yuè", "yī hào", "xīngqītiān"]
+        ]
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking turns with each role." }
+    },
+    {
+      "number": 2,
+      "type": "fill_blanks",
+      "prompt": { "hanzi": "用\"是、的、年、一起\"填空。", "english": "Fill in the blanks with 是, 的, 年 or 一起." },
+      "items": [
+        { "hanzi": "我____坐出租车来的。", "english": "I came by taxi.", "blank": "是" },
+        { "hanzi": "他们是在大学认识____。", "english": "They met at university.", "blank": "的" },
+        { "hanzi": "今天是2026____10月21号。", "english": "Today is 21 October 2026.", "blank": "年" },
+        { "hanzi": "我不是一个人来的，我是和马克____来的。", "english": "I didn't come alone; I came with Mark.", "blank": "一起" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据课文回答问题。", "english": "Answer the questions based on the dialogues." },
+      "items": [
+        { "hanzi": "安娜是什么时候来中国的？", "pinyin": "Ānnà shì shénme shíhou lái Zhōngguó de?", "english": "When did Anna come to China?" },
+        { "hanzi": "安娜是和谁一起来的？", "pinyin": "Ānnà shì hé shéi yìqǐ lái de?", "english": "Who did Anna come with?" },
+        { "hanzi": "王明是怎么来的？", "pinyin": "Wáng Míng shì zěnme lái de?", "english": "How did Wang Ming get to the airport?" },
+        { "hanzi": "他们下个星期想和谁一起来这个饭店？", "pinyin": "Tāmen xià ge xīngqī xiǎng hé shéi yìqǐ lái zhège fàndiàn?", "english": "Who do they want to come to this restaurant with next week?" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据实际情况回答问题。", "english": "Answer the questions about yourself." },
+      "items": [
+        { "hanzi": "你是哪年来这个学校的？", "pinyin": "Nǐ shì nǎ nián lái zhège xuéxiào de?", "english": "Which year did you come to this school?" },
+        { "hanzi": "你是怎么来学校的？", "pinyin": "Nǐ shì zěnme lái xuéxiào de?", "english": "How did you get to school?" },
+        { "hanzi": "你是在哪儿认识你的好朋友的？", "pinyin": "Nǐ shì zài nǎr rènshi nǐ de hǎo péngyou de?", "english": "Where did you meet your good friend?" },
+        { "hanzi": "今天是几月几号？星期几？", "pinyin": "Jīntiān shì jǐ yuè jǐ hào? Xīngqī jǐ?", "english": "What's the date today? What day of the week is it?" }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": { "hanzi": "复习：四个声调和轻声", "english": "Review: The Four Tones and the Neutral Tone" },
+        "explanation": {
+          "hanzi": "汉语有四个声调和一个轻声。读下面的字和词，注意每个声调的高低变化。轻声读得又短又轻，不标声调符号。",
+          "english": "Mandarin has four tones plus the neutral tone. Read each group aloud and listen for the pitch: 1st high and level, 2nd rising, 3rd low (dipping), 4th sharply falling. Neutral-tone syllables are short and light and carry no tone mark."
+        },
+        "subRules": [
+          {
+            "rule": { "hanzi": "第一声", "english": "First tone (high, level)" },
+            "examples": [
+              { "pinyin": "chē", "english": "车 car" },
+              { "pinyin": "tīng", "english": "听 to listen" },
+              { "pinyin": "fēijī", "english": "飞机 airplane" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "第二声", "english": "Second tone (rising)" },
+            "examples": [
+              { "pinyin": "nián", "english": "年 year" },
+              { "pinyin": "lái", "english": "来 to come" },
+              { "pinyin": "xuéxí", "english": "学习 to study" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "第三声", "english": "Third tone (low, dipping)" },
+            "examples": [
+              { "pinyin": "wǒ", "english": "我 I, me" },
+              { "pinyin": "mǎi", "english": "买 to buy" },
+              { "pinyin": "Hànyǔ", "english": "汉语 Chinese (3rd tone at the end of a word)" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "第四声", "english": "Fourth tone (falling)" },
+            "examples": [
+              { "pinyin": "qù", "english": "去 to go" },
+              { "pinyin": "zuò", "english": "坐 to sit, to take (transport)" },
+              { "pinyin": "fàndiàn", "english": "饭店 restaurant" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "轻声", "english": "Neutral tone (short and light)" },
+            "examples": [
+              { "pinyin": "rènshi", "english": "认识 to know" },
+              { "pinyin": "péngyou", "english": "朋友 friend" },
+              { "pinyin": "xièxie", "english": "谢谢 thank you" },
+              { "pinyin": "lái de", "english": "来的 (as in 是……来的)" }
+            ]
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": { "hanzi": "复习：句子里的声调", "english": "Review: Tones in Short Sentences" },
+        "explanation": {
+          "hanzi": "读下面的句子，注意变调：两个三声在一起时第一个读二声；\"一\"和\"不\"在第四声前面读二声，在其他声调前面\"一\"读四声。",
+          "english": "Read these sentences aloud and apply the tone changes you have learned: a 3rd tone before another 3rd tone becomes 2nd; 不 and 一 become 2nd tone before a 4th tone; 一 becomes 4th tone before tones 1, 2 and 3."
+        },
+        "syllables": [
+          "Nǐ hǎo! (said Ní hǎo!)",
+          "Rènshi nǐ hěn gāoxìng.",
+          "Wǒ shì zuò fēijī lái de.",
+          "Bú shì, wǒ shì yí ge rén lái de.",
+          "Wǒmen yìqǐ qù fàndiàn ba.",
+          "Wǒ xiǎng mǎi shuǐguǒ. (said Wǒ xiáng mǎi shuǐguǒ.)"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      {
+        "name": { "hanzi": "竖折", "pinyin": "shùzhé", "english": "vertical turning right" },
+        "shape": "㇗",
+        "examples": [
+          { "hanzi": "出", "pinyin": "chū", "english": "to go out" },
+          { "hanzi": "医", "pinyin": "yī", "english": "medicine (as in 医生)" },
+          { "hanzi": "山", "pinyin": "shān", "english": "mountain" }
+        ]
+      },
+      {
+        "name": { "hanzi": "横折斜钩", "pinyin": "héngzhé xiégōu", "english": "horizontal turning to a slanted hook" },
+        "shape": "⺄",
+        "examples": [
+          { "hanzi": "飞", "pinyin": "fēi", "english": "to fly" },
+          { "hanzi": "气", "pinyin": "qì", "english": "air (as in 天气)" },
+          { "hanzi": "风", "pinyin": "fēng", "english": "wind" }
+        ]
+      }
+    ],
+    "singleComponentChars": [
+      {
+        "id": "hsk1_15_c_nian",
+        "hanzi": "年",
+        "pinyin": "nián",
+        "meaning": "year",
+        "etymology": "The oldest form showed a person carrying a bundle of ripe grain on their back. The grain harvest came round once every cycle of seasons, so the picture came to mean \"year\".",
+        "strokeCount": 6
+      },
+      {
+        "id": "hsk1_15_c_chu",
+        "hanzi": "出",
+        "pinyin": "chū",
+        "meaning": "to go out, to come out",
+        "etymology": "Early writers drew a foot stepping up and out of a pit or doorway. Over time the foot and the opening merged into two stacked 山-like shapes, but the meaning \"to go out\" stayed.",
+        "strokeCount": 5
+      },
+      {
+        "id": "hsk1_15_c_fei",
+        "hanzi": "飞",
+        "pinyin": "fēi",
+        "meaning": "to fly",
+        "etymology": "The traditional form 飛 pictured a bird with its wings spread in flight. The simplified 飞 keeps just one sweeping wing stroke and two little feathers.",
+        "strokeCount": 3
+      }
+    ],
+    "radicals": [
+      { "hanzi": "艹", "pinyin": "cǎozìtóu", "english": "grass radical (plants, herbs, vegetables)", "examples": ["苹", "茶", "菜", "草"] },
+      { "hanzi": "宀", "pinyin": "bǎogàitóu", "english": "roof radical (houses, shelter)", "examples": ["家", "字", "客", "安"] }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组，用\"是……的\"互相问问题，然后向大家介绍你的同学。", "english": "Work in pairs: interview each other with 是……的, then introduce your partner to the group." },
+    "activities": [
+      "Interview: ask your partner 你是哪年来这儿的？ 你是怎么来的？（坐飞机/坐出租车……） 你是和谁一起来的？ 你是在哪儿认识你的好朋友的？",
+      "Report back: tell the group what you learned, e.g. 他是2025年来北京的，他是坐飞机来的。",
+      "Date practice: one person writes a date with a year (e.g. 2008年8月8号), the other reads it aloud digit by digit and says which day of the week they think it is.",
+      "Group task: plan a weekend outing together — say when you'll meet, which restaurant (饭店) you'll eat at and how you'll get there (坐出租车 / 开车 / 坐车)."
+    ]
+  },
+  "culture": {
+    "title": { "hanzi": "朋友来了：接站和请客", "english": "When a Friend Comes to Town: Pick-ups and Hosting" },
+    "body": "In China, a friend arriving from out of town is rarely left to find their own way. Hosts often go to the airport or railway station in person to meet them — this is called 接 (jiē, to pick someone up), as in 接机 (jiējī, meeting someone off a plane). Turning up at the arrivals gate with a smile, like Wang Ming does for Mark, is a small but meaningful sign that the friendship matters.\n\nThe next step is almost always a meal. The host will usually 请客 (qǐngkè, treat the guests) at a good restaurant and order more dishes than anyone can finish, because a full table shows generosity. Guests are urged to eat and drink more — 多吃一点儿！ (Duō chī yìdiǎnr!) — and when the bill comes, friends may playfully compete to pay. Accepting graciously and offering to treat next time is a polite way to respond.\n\nGetting around is easier than ever. Big cities have extensive metro (地铁 dìtiě) networks, taxis (出租车 chūzūchē) and ride-hailing apps are everywhere, and high-speed trains (高铁 gāotiě) link major cities in a few hours, often making them a convenient alternative to flying. A thoughtful host will often send the visitor a message with the best route, or simply say 我开车来接你 (Wǒ kāi chē lái jiē nǐ, I'll drive over and pick you up)."
+  }
+}

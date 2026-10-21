@@ -1,0 +1,815 @@
+{
+  "id": "hsk1-9",
+  "level": 1,
+  "number": 9,
+  "title": {
+    "hanzi": "我的猫呢？",
+    "pinyin": "Wǒ de māo ne?",
+    "english": "Where's my cat?"
+  },
+  "theme": "Location",
+  "warmUp": {
+    "instruction": {
+      "hanzi": "读一读下面的词语，说说它们是什么意思。",
+      "english": "Read the words and phrases below and say what they mean."
+    },
+    "items": [
+      {
+        "hanzi": "小猫",
+        "pinyin": "xiǎo māo",
+        "english": "kitten, little cat"
+      },
+      {
+        "hanzi": "小狗",
+        "pinyin": "xiǎo gǒu",
+        "english": "puppy, little dog"
+      },
+      {
+        "hanzi": "椅子下面",
+        "pinyin": "yǐzi xiàmiàn",
+        "english": "under the chair"
+      },
+      {
+        "hanzi": "在那儿",
+        "pinyin": "zài nàr",
+        "english": "over there"
+      },
+      {
+        "hanzi": "医院",
+        "pinyin": "yīyuàn",
+        "english": "hospital"
+      },
+      {
+        "hanzi": "医生",
+        "pinyin": "yīshēng",
+        "english": "doctor"
+      },
+      {
+        "hanzi": "爸爸",
+        "pinyin": "bàba",
+        "english": "dad, father"
+      },
+      {
+        "hanzi": "在哪儿工作",
+        "pinyin": "zài nǎr gōngzuò",
+        "english": "to work where"
+      }
+    ]
+  },
+  "texts": [
+    {
+      "situationNumber": 1,
+      "title": {
+        "hanzi": "在家",
+        "english": "At home"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "小美，我的猫呢？",
+          "pinyin": "Xiǎoměi, wǒ de māo ne?",
+          "english": "Xiaomei, where's my cat?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你的猫在椅子下面。",
+          "pinyin": "Nǐ de māo zài yǐzi xiàmiàn.",
+          "english": "Your cat is under the chair."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你的小狗呢？",
+          "pinyin": "Nǐ de xiǎo gǒu ne?",
+          "english": "And where's your puppy?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我的小狗在那儿。",
+          "pinyin": "Wǒ de xiǎo gǒu zài nàr.",
+          "english": "My puppy is over there."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那个椅子下面？",
+          "pinyin": "Nàge yǐzi xiàmiàn?",
+          "english": "Under that chair?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "对，你看！",
+          "pinyin": "Duì, nǐ kàn!",
+          "english": "Yes, look!"
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_9_mao",
+          "hanzi": "猫",
+          "pinyin": "māo",
+          "pos": "n.",
+          "english": "cat"
+        },
+        {
+          "id": "hsk1_9_zai",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "pos": "v./prep.",
+          "english": "to be at; at, in"
+        },
+        {
+          "id": "hsk1_9_yizi",
+          "hanzi": "椅子",
+          "pinyin": "yǐzi",
+          "pos": "n.",
+          "english": "chair"
+        },
+        {
+          "id": "hsk1_9_xiamian",
+          "hanzi": "下面",
+          "pinyin": "xiàmiàn",
+          "pos": "n.",
+          "english": "under, below"
+        },
+        {
+          "id": "hsk1_9_xiao",
+          "hanzi": "小",
+          "pinyin": "xiǎo",
+          "pos": "adj.",
+          "english": "small, little"
+        },
+        {
+          "id": "hsk1_9_gou",
+          "hanzi": "狗",
+          "pinyin": "gǒu",
+          "pos": "n.",
+          "english": "dog"
+        },
+        {
+          "id": "hsk1_9_nar",
+          "hanzi": "那儿",
+          "pinyin": "nàr",
+          "pos": "pron.",
+          "english": "there"
+        },
+        {
+          "id": "hsk1_9_xia",
+          "hanzi": "下",
+          "pinyin": "xià",
+          "pos": "n.",
+          "english": "under, below"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_9_pn_xiaomei",
+          "hanzi": "小美",
+          "pinyin": "Xiǎoměi",
+          "english": "Xiaomei, Wang Ming's little cousin"
+        }
+      ]
+    },
+    {
+      "situationNumber": 2,
+      "title": {
+        "hanzi": "在学校",
+        "english": "At school"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "刘老师，您的儿子在哪儿工作？",
+          "pinyin": "Liú lǎoshī, nín de érzi zài nǎr gōngzuò?",
+          "english": "Ms. Liu, where does your son work?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "他在医院工作。",
+          "pinyin": "Tā zài yīyuàn gōngzuò.",
+          "english": "He works at a hospital."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "他是医生吗？",
+          "pinyin": "Tā shì yīshēng ma?",
+          "english": "Is he a doctor?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "是，他是医生。",
+          "pinyin": "Shì, tā shì yīshēng.",
+          "english": "Yes, he's a doctor."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那个医院大吗？",
+          "pinyin": "Nàge yīyuàn dà ma?",
+          "english": "Is that hospital big?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "很大。",
+          "pinyin": "Hěn dà.",
+          "english": "Very big."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_9_erzi",
+          "hanzi": "儿子",
+          "pinyin": "érzi",
+          "pos": "n.",
+          "english": "son"
+        },
+        {
+          "id": "hsk1_9_naer",
+          "hanzi": "哪儿",
+          "pinyin": "nǎr",
+          "pos": "pron.",
+          "english": "where"
+        },
+        {
+          "id": "hsk1_9_gongzuo",
+          "hanzi": "工作",
+          "pinyin": "gōngzuò",
+          "pos": "v./n.",
+          "english": "to work; job"
+        },
+        {
+          "id": "hsk1_9_yiyuan",
+          "hanzi": "医院",
+          "pinyin": "yīyuàn",
+          "pos": "n.",
+          "english": "hospital"
+        },
+        {
+          "id": "hsk1_9_yisheng",
+          "hanzi": "医生",
+          "pinyin": "yīshēng",
+          "pos": "n.",
+          "english": "doctor"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_9_pn_liulaoshi",
+          "hanzi": "刘老师",
+          "pinyin": "Liú lǎoshī",
+          "english": "Ms. Liu, the Chinese teacher"
+        }
+      ]
+    },
+    {
+      "situationNumber": 3,
+      "title": {
+        "hanzi": "打电话",
+        "english": "On the phone"
+      },
+      "dialogue": [
+        {
+          "speaker": "A",
+          "hanzi": "王明，你爸爸在家吗？",
+          "pinyin": "Wáng Míng, nǐ bàba zài jiā ma?",
+          "english": "Wang Ming, is your dad at home?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不在，他在商店。",
+          "pinyin": "Bú zài, tā zài shāngdiàn.",
+          "english": "No, he's at the shop."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你妈妈呢？",
+          "pinyin": "Nǐ māma ne?",
+          "english": "And your mom?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "她在学校，她是老师。",
+          "pinyin": "Tā zài xuéxiào, tā shì lǎoshī.",
+          "english": "She's at school. She's a teacher."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你呢？你在哪儿？",
+          "pinyin": "Nǐ ne? Nǐ zài nǎr?",
+          "english": "What about you? Where are you?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我在家看书。",
+          "pinyin": "Wǒ zài jiā kàn shū.",
+          "english": "I'm at home reading."
+        }
+      ],
+      "newWords": [
+        {
+          "id": "hsk1_9_baba",
+          "hanzi": "爸爸",
+          "pinyin": "bàba",
+          "pos": "n.",
+          "english": "father, dad"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk1_9_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming, a Chinese university student"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hsk1_9_g_zai_verb",
+      "number": 1,
+      "title": {
+        "hanzi": "动词“在”",
+        "english": "The verb 在 (to be at / in)"
+      },
+      "explanation": {
+        "hanzi": "“在”可以做动词，说人或东西在什么地方：人/东西 + 在 + 地方。否定形式是“不在”（bú zài）。",
+        "english": "As a verb, 在 tells you where somebody or something is: person/thing + 在 + place. No other verb is needed — 在 already means \"is at\". The negative is 不在 (pronounced bú zài)."
+      },
+      "examples": [
+        {
+          "hanzi": "我的猫在椅子下面。",
+          "pinyin": "Wǒ de māo zài yǐzi xiàmiàn.",
+          "english": "My cat is under the chair."
+        },
+        {
+          "hanzi": "刘老师不在学校。",
+          "pinyin": "Liú lǎoshī bú zài xuéxiào.",
+          "english": "Ms. Liu isn't at school."
+        },
+        {
+          "hanzi": "马克在家吗？",
+          "pinyin": "Mǎkè zài jiā ma?",
+          "english": "Is Mark at home?"
+        },
+        {
+          "hanzi": "你的书在那儿。",
+          "pinyin": "Nǐ de shū zài nàr.",
+          "english": "Your book is over there."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "人 / 东西",
+          "在 / 不在",
+          "地方"
+        ],
+        "rows": [
+          [
+            "我的猫",
+            "在",
+            "椅子下面"
+          ],
+          [
+            "王明的爸爸",
+            "不在",
+            "家"
+          ],
+          [
+            "你的杯子",
+            "在",
+            "那儿"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_9_g_naer",
+      "number": 2,
+      "title": {
+        "hanzi": "疑问代词“哪儿”",
+        "english": "The question word 哪儿 (where)"
+      },
+      "explanation": {
+        "hanzi": "“哪儿”用来问地方。问句的词序和回答一样，只要把地方换成“哪儿”。",
+        "english": "哪儿 asks \"where\". Chinese questions keep the same word order as the answer: just put 哪儿 where the place would go. 你在哪儿？ → 我在家。 Don't confuse it with 那儿 (nàr, \"there\") — only the tone is different."
+      },
+      "examples": [
+        {
+          "hanzi": "你的狗在哪儿？",
+          "pinyin": "Nǐ de gǒu zài nǎr?",
+          "english": "Where is your dog?"
+        },
+        {
+          "hanzi": "下午你想去哪儿？",
+          "pinyin": "Xiàwǔ nǐ xiǎng qù nǎr?",
+          "english": "Where do you want to go this afternoon?"
+        },
+        {
+          "hanzi": "你家在哪儿？",
+          "pinyin": "Nǐ jiā zài nǎr?",
+          "english": "Where is your home?"
+        },
+        {
+          "hanzi": "安娜在哪儿？——她在那儿。",
+          "pinyin": "Ānnà zài nǎr? —— Tā zài nàr.",
+          "english": "Where is Anna? — She's over there."
+        }
+      ]
+    },
+    {
+      "id": "hsk1_9_g_zai_prep",
+      "number": 3,
+      "title": {
+        "hanzi": "介词“在”",
+        "english": "The preposition 在 (at / in + action)"
+      },
+      "explanation": {
+        "hanzi": "“在 + 地方”放在动词前面，说在哪儿做某事：主语 + 在 + 地方 + 动词（+ 宾语）。注意：地方要放在动词前面，不能放在后面。",
+        "english": "在 + place can also come before a verb to say where an action happens: subject + 在 + place + verb (+ object). Unlike English, the place goes before the verb, never at the end: 他在医院工作 (literally \"he at hospital works\")."
+      },
+      "examples": [
+        {
+          "hanzi": "他儿子在医院工作。",
+          "pinyin": "Tā érzi zài yīyuàn gōngzuò.",
+          "english": "His son works at a hospital."
+        },
+        {
+          "hanzi": "我在学校看书。",
+          "pinyin": "Wǒ zài xuéxiào kàn shū.",
+          "english": "I read at school."
+        },
+        {
+          "hanzi": "马克在家做中国菜。",
+          "pinyin": "Mǎkè zài jiā zuò Zhōngguó cài.",
+          "english": "Mark cooks Chinese food at home."
+        },
+        {
+          "hanzi": "你爸爸在哪儿工作？",
+          "pinyin": "Nǐ bàba zài nǎr gōngzuò?",
+          "english": "Where does your father work?"
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "主语",
+          "在",
+          "地方",
+          "动词 (+ 宾语)"
+        ],
+        "rows": [
+          [
+            "他儿子",
+            "在",
+            "医院",
+            "工作"
+          ],
+          [
+            "我",
+            "在",
+            "学校",
+            "看书"
+          ],
+          [
+            "王明",
+            "在",
+            "家",
+            "喝茶"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "hsk1_9_g_ne",
+      "number": 4,
+      "title": {
+        "hanzi": "用“呢”问在哪儿",
+        "english": "Using 呢 to ask where something is"
+      },
+      "explanation": {
+        "hanzi": "名词 + 呢？ 如果前面没有别的话，常常是问这个人或东西在哪儿。",
+        "english": "When noun + 呢？ is said on its own, without an earlier sentence to compare with, it usually means \"Where is ...?\" — for example when you are looking for something. 我的猫呢？ = Where's my cat? (After a statement, as in Lesson 4, noun + 呢 means \"What about ...?\")"
+      },
+      "examples": [
+        {
+          "hanzi": "我的猫呢？",
+          "pinyin": "Wǒ de māo ne?",
+          "english": "Where's my cat?"
+        },
+        {
+          "hanzi": "安娜呢？",
+          "pinyin": "Ānnà ne?",
+          "english": "Where's Anna?"
+        },
+        {
+          "hanzi": "我的杯子呢？",
+          "pinyin": "Wǒ de bēizi ne?",
+          "english": "Where's my cup?"
+        },
+        {
+          "hanzi": "爸爸呢？——他在医院。",
+          "pinyin": "Bàba ne? —— Tā zài yīyuàn.",
+          "english": "Where's Dad? — He's at the hospital."
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。",
+        "english": "In pairs, read the dialogues aloud, taking turns as A and B."
+      }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据你自己的情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
+      "items": [
+        {
+          "hanzi": "你家在哪儿？",
+          "pinyin": "Nǐ jiā zài nǎr?",
+          "english": "Where is your home?"
+        },
+        {
+          "hanzi": "你爸爸在哪儿工作？",
+          "pinyin": "Nǐ bàba zài nǎr gōngzuò?",
+          "english": "Where does your father work?"
+        },
+        {
+          "hanzi": "你有猫吗？你有狗吗？",
+          "pinyin": "Nǐ yǒu māo ma? Nǐ yǒu gǒu ma?",
+          "english": "Do you have a cat? Do you have a dog?"
+        },
+        {
+          "hanzi": "你想在哪儿工作？",
+          "pinyin": "Nǐ xiǎng zài nǎr gōngzuò?",
+          "english": "Where would you like to work?"
+        },
+        {
+          "hanzi": "你的汉语书在哪儿？",
+          "pinyin": "Nǐ de Hànyǔ shū zài nǎr?",
+          "english": "Where is your Chinese book?"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用“在、哪儿、下面、医院、呢”填空。",
+        "english": "Fill in the blanks with 在, 哪儿, 下面, 医院 or 呢."
+      },
+      "items": [
+        {
+          "hanzi": "我的猫在椅子____。",
+          "pinyin": "Wǒ de māo zài yǐzi ____.",
+          "english": "My cat is under the chair.",
+          "blank": "下面"
+        },
+        {
+          "hanzi": "你儿子在____工作？",
+          "pinyin": "Nǐ érzi zài ____ gōngzuò?",
+          "english": "Where does your son work?",
+          "blank": "哪儿"
+        },
+        {
+          "hanzi": "他是医生，他在____工作。",
+          "pinyin": "Tā shì yīshēng, tā zài ____ gōngzuò.",
+          "english": "He is a doctor; he works at a hospital.",
+          "blank": "医院"
+        },
+        {
+          "hanzi": "我的书____？",
+          "pinyin": "Wǒ de shū ____?",
+          "english": "Where's my book?",
+          "blank": "呢"
+        },
+        {
+          "hanzi": "刘老师不____学校。",
+          "pinyin": "Liú lǎoshī bú ____ xuéxiào.",
+          "english": "Ms. Liu isn't at school.",
+          "blank": "在"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": {
+        "hanzi": "把问题和回答连起来。",
+        "english": "Match each question with its answer."
+      },
+      "items": [
+        {
+          "hanzi": "你的小狗呢？——在椅子下面。",
+          "pinyin": "Nǐ de xiǎo gǒu ne? —— Zài yǐzi xiàmiàn.",
+          "english": "Where's your puppy? — Under the chair."
+        },
+        {
+          "hanzi": "你爸爸是医生吗？——是，他在医院工作。",
+          "pinyin": "Nǐ bàba shì yīshēng ma? —— Shì, tā zài yīyuàn gōngzuò.",
+          "english": "Is your father a doctor? — Yes, he works at a hospital."
+        },
+        {
+          "hanzi": "王明在家吗？——不在，他在学校。",
+          "pinyin": "Wáng Míng zài jiā ma? —— Bú zài, tā zài xuéxiào.",
+          "english": "Is Wang Ming at home? — No, he's at school."
+        },
+        {
+          "hanzi": "你想去哪儿？——我想去商店。",
+          "pinyin": "Nǐ xiǎng qù nǎr? —— Wǒ xiǎng qù shāngdiàn.",
+          "english": "Where do you want to go? — I want to go to the shop."
+        }
+      ]
+    }
+  ],
+  "pinyinSection": {
+    "drills": [
+      {
+        "number": 1,
+        "title": {
+          "hanzi": "儿化",
+          "english": "The retroflex -r (erhua)"
+        },
+        "explanation": {
+          "hanzi": "“儿”可以和前面的字读成一个音节，叫“儿化”。写汉字时加“儿”，写拼音时只加 r。北方人说话常常用儿化。",
+          "english": "儿 can merge with the syllable before it into a single syllable: the tongue curls back at the end of the sound. This is called erhua. In characters you add 儿; in pinyin you add only -r (哪儿 = nǎr, not nǎ ér). Erhua is very common in Beijing and northern speech."
+        },
+        "syllables": [
+          "nǎr",
+          "nàr",
+          "zhèr",
+          "yìdiǎnr",
+          "huār",
+          "xiǎoháir"
+        ],
+        "subRules": [
+          {
+            "rule": {
+              "hanzi": "大多数音节直接加 r",
+              "english": "Most syllables: just add the curl at the end"
+            },
+            "examples": [
+              {
+                "pinyin": "nǎ → nǎr",
+                "english": "where"
+              },
+              {
+                "pinyin": "nà → nàr",
+                "english": "there"
+              },
+              {
+                "pinyin": "zhè → zhèr",
+                "english": "here"
+              },
+              {
+                "pinyin": "huā → huār",
+                "english": "flower"
+              }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "以 -n 或 -i 结尾的音节：-n、-i 不发音",
+              "english": "Syllables ending in -n or -i: the -n / -i is dropped in speech, then the curl is added"
+            },
+            "examples": [
+              {
+                "pinyin": "yìdiǎn → yìdiǎnr",
+                "english": "a little (preview)"
+              },
+              {
+                "pinyin": "xiǎohái → xiǎoháir",
+                "english": "child"
+              },
+              {
+                "pinyin": "wán → wánr",
+                "english": "to play"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "strokes": [
+      {
+        "name": {
+          "hanzi": "竖钩",
+          "pinyin": "shùgōu",
+          "english": "vertical stroke with a hook"
+        },
+        "shape": "亅",
+        "examples": [
+          {
+            "hanzi": "子",
+            "pinyin": "zǐ",
+            "english": "child"
+          },
+          {
+            "hanzi": "小",
+            "pinyin": "xiǎo",
+            "english": "small"
+          },
+          {
+            "hanzi": "了",
+            "pinyin": "le",
+            "english": "particle of change"
+          }
+        ]
+      },
+      {
+        "name": {
+          "hanzi": "横",
+          "pinyin": "héng",
+          "english": "horizontal stroke"
+        },
+        "shape": "一",
+        "examples": [
+          {
+            "hanzi": "工",
+            "pinyin": "gōng",
+            "english": "work"
+          },
+          {
+            "hanzi": "在",
+            "pinyin": "zài",
+            "english": "to be at"
+          },
+          {
+            "hanzi": "三",
+            "pinyin": "sān",
+            "english": "three"
+          }
+        ]
+      }
+    ],
+    "singleComponentChars": [
+      {
+        "id": "hsk1_9_c_zai",
+        "hanzi": "在",
+        "pinyin": "zài",
+        "meaning": "to be at; at, in",
+        "etymology": "Early forms combine a sprouting plant with 土 (earth): a shoot that has taken root in the ground. From \"being rooted somewhere\" came the meaning \"to be located at\".",
+        "strokeCount": 6
+      },
+      {
+        "id": "hsk1_9_c_zi",
+        "hanzi": "子",
+        "pinyin": "zǐ",
+        "meaning": "child; noun suffix",
+        "etymology": "A picture of a swaddled baby: a big head, two arms stretched out, and the legs wrapped into a single stroke. Today it also works as a noun ending, as in 椅子, 杯子 and 儿子.",
+        "strokeCount": 3
+      },
+      {
+        "id": "hsk1_9_c_gong",
+        "hanzi": "工",
+        "pinyin": "gōng",
+        "meaning": "work; worker",
+        "etymology": "It depicts a simple tool, such as a carpenter's square or a rammer used in building. From the tool came the ideas of skill and labour, as in 工作 (work).",
+        "strokeCount": 3
+      }
+    ],
+    "radicals": [
+      {
+        "hanzi": "辶",
+        "pinyin": "zǒuzhīr",
+        "english": "walking radical; characters with it often relate to moving, roads or distance",
+        "examples": [
+          "这",
+          "还",
+          "道",
+          "远",
+          "近"
+        ]
+      },
+      {
+        "hanzi": "门",
+        "pinyin": "ménzìkuàng",
+        "english": "door-frame radical (from 门 \"door\"); it wraps around the rest of the character",
+        "examples": [
+          "问",
+          "们",
+          "间",
+          "闻"
+        ]
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "两人一组，问问对方的家人在哪儿工作，东西在哪儿。",
+      "english": "Work in pairs: ask where each other's family members work and where things are."
+    },
+    "activities": [
+      "A: 你爸爸/妈妈/朋友在哪儿工作？ B: 他/她在……工作。 Then switch roles.",
+      "Hide-and-seek: one student \"hides\" a cup or book in the classroom; the partner asks 我的杯子呢？ and the other answers with 在……下面 / 在那儿.",
+      "Draw a simple room with a chair, a cat and a dog; describe it to your partner (猫在椅子下面), who draws it from your description.",
+      "Group work: each person names a place (医院, 学校, 商店) and the others say who works there (医生在医院工作)."
+    ]
+  }
+}

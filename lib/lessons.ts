@@ -9,9 +9,9 @@ import { pool } from "@/lib/db";
 import { getAllGrammar } from "@/lib/content";
 import type { HSKLevel, GrammarPoint } from "@/lib/types";
 
-export type StepKey = "listen" | "read" | "vocab" | "grammar" | "done";
+export type StepKey = "listen" | "read" | "vocab" | "grammar" | "practice" | "done";
 
-export const STEP_ORDER: StepKey[] = ["listen", "read", "vocab", "grammar", "done"];
+export const STEP_ORDER: StepKey[] = ["listen", "read", "vocab", "grammar", "practice", "done"];
 
 export interface LessonRow {
   id: number;
