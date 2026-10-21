@@ -1,0 +1,1124 @@
+{
+ "1": [
+  {
+   "hanzi": "你",
+   "pinyin": "nǐ",
+   "pos": "pron.",
+   "english": "(singular) you"
+  },
+  {
+   "hanzi": "好",
+   "pinyin": "hǎo",
+   "pos": "adj.",
+   "english": "good, fine"
+  },
+  {
+   "hanzi": "您",
+   "pinyin": "nín",
+   "pos": "pron.",
+   "english": "(polite) you"
+  },
+  {
+   "hanzi": "你们",
+   "pinyin": "nǐmen",
+   "pos": "pron.",
+   "english": "(plural) you"
+  },
+  {
+   "hanzi": "对不起",
+   "pinyin": "duìbuqǐ",
+   "pos": "v.",
+   "english": "to be sorry"
+  },
+  {
+   "hanzi": "没关系",
+   "pinyin": "méi guānxi",
+   "pos": "phrase",
+   "english": "that's OK, it doesn't matter"
+  }
+ ],
+ "2": [
+  {
+   "hanzi": "谢谢",
+   "pinyin": "xièxie",
+   "pos": "v.",
+   "english": "to thank"
+  },
+  {
+   "hanzi": "不",
+   "pinyin": "bù",
+   "pos": "adv.",
+   "english": "no, not"
+  },
+  {
+   "hanzi": "不客气",
+   "pinyin": "bú kèqi",
+   "pos": "phrase",
+   "english": "you're welcome, don't mention it"
+  },
+  {
+   "hanzi": "再见",
+   "pinyin": "zàijiàn",
+   "pos": "v.",
+   "english": "to see you around, goodbye"
+  }
+ ],
+ "3": [
+  {
+   "hanzi": "叫",
+   "pinyin": "jiào",
+   "pos": "v.",
+   "english": "to call, to be called"
+  },
+  {
+   "hanzi": "什么",
+   "pinyin": "shénme",
+   "pos": "pron.",
+   "english": "what"
+  },
+  {
+   "hanzi": "名字",
+   "pinyin": "míngzi",
+   "pos": "n.",
+   "english": "name"
+  },
+  {
+   "hanzi": "我",
+   "pinyin": "wǒ",
+   "pos": "pron.",
+   "english": "I, me"
+  },
+  {
+   "hanzi": "李月",
+   "pinyin": "Lǐ Yuè",
+   "pos": "proper",
+   "english": "Li Yue, name of a person"
+  },
+  {
+   "hanzi": "是",
+   "pinyin": "shì",
+   "pos": "v.",
+   "english": "to be"
+  },
+  {
+   "hanzi": "老师",
+   "pinyin": "lǎoshī",
+   "pos": "n.",
+   "english": "teacher"
+  },
+  {
+   "hanzi": "吗",
+   "pinyin": "ma",
+   "pos": "part.",
+   "english": "used at the end of a question"
+  },
+  {
+   "hanzi": "学生",
+   "pinyin": "xuésheng",
+   "pos": "n.",
+   "english": "student"
+  },
+  {
+   "hanzi": "人",
+   "pinyin": "rén",
+   "pos": "n.",
+   "english": "human, person"
+  },
+  {
+   "hanzi": "中国",
+   "pinyin": "Zhōngguó",
+   "pos": "proper",
+   "english": "China"
+  },
+  {
+   "hanzi": "美国",
+   "pinyin": "Měiguó",
+   "pos": "proper",
+   "english": "the United States of America"
+  }
+ ],
+ "4": [
+  {
+   "hanzi": "她",
+   "pinyin": "tā",
+   "pos": "pron.",
+   "english": "she, her"
+  },
+  {
+   "hanzi": "谁",
+   "pinyin": "shéi",
+   "pos": "pron.",
+   "english": "who, whom"
+  },
+  {
+   "hanzi": "的",
+   "pinyin": "de",
+   "pos": "part.",
+   "english": "used after an attribute"
+  },
+  {
+   "hanzi": "汉语",
+   "pinyin": "Hànyǔ",
+   "pos": "n.",
+   "english": "Chinese (language)"
+  },
+  {
+   "hanzi": "哪",
+   "pinyin": "nǎ",
+   "pos": "pron.",
+   "english": "which"
+  },
+  {
+   "hanzi": "国",
+   "pinyin": "guó",
+   "pos": "n.",
+   "english": "country, nation"
+  },
+  {
+   "hanzi": "呢",
+   "pinyin": "ne",
+   "pos": "part.",
+   "english": "used at the end of a question"
+  },
+  {
+   "hanzi": "他",
+   "pinyin": "tā",
+   "pos": "pron.",
+   "english": "he, him"
+  },
+  {
+   "hanzi": "同学",
+   "pinyin": "tóngxué",
+   "pos": "n.",
+   "english": "classmate"
+  },
+  {
+   "hanzi": "朋友",
+   "pinyin": "péngyou",
+   "pos": "n.",
+   "english": "friend"
+  }
+ ],
+ "5": [
+  {
+   "hanzi": "家",
+   "pinyin": "jiā",
+   "pos": "n.",
+   "english": "family, home"
+  },
+  {
+   "hanzi": "有",
+   "pinyin": "yǒu",
+   "pos": "v.",
+   "english": "to have, there be"
+  },
+  {
+   "hanzi": "口",
+   "pinyin": "kǒu",
+   "pos": "m.",
+   "english": "a measure word for members of families, etc."
+  },
+  {
+   "hanzi": "女儿",
+   "pinyin": "nǚ'ér",
+   "pos": "n.",
+   "english": "daughter"
+  },
+  {
+   "hanzi": "几",
+   "pinyin": "jǐ",
+   "pos": "pron.",
+   "english": "how many"
+  },
+  {
+   "hanzi": "岁",
+   "pinyin": "suì",
+   "pos": "m.",
+   "english": "year (of age)"
+  },
+  {
+   "hanzi": "了",
+   "pinyin": "le",
+   "pos": "part.",
+   "english": "used to indicate a change or a new circumstance"
+  },
+  {
+   "hanzi": "今年",
+   "pinyin": "jīnnián",
+   "pos": "n.",
+   "english": "this year"
+  },
+  {
+   "hanzi": "多",
+   "pinyin": "duō",
+   "pos": "adv.",
+   "english": "indicating degree or extent"
+  },
+  {
+   "hanzi": "大",
+   "pinyin": "dà",
+   "pos": "adj.",
+   "english": "(of age) old"
+  },
+  {
+   "hanzi": "一",
+   "pinyin": "yī",
+   "pos": "num.",
+   "english": "one"
+  },
+  {
+   "hanzi": "二",
+   "pinyin": "èr",
+   "pos": "num.",
+   "english": "two"
+  },
+  {
+   "hanzi": "三",
+   "pinyin": "sān",
+   "pos": "num.",
+   "english": "three"
+  },
+  {
+   "hanzi": "四",
+   "pinyin": "sì",
+   "pos": "num.",
+   "english": "four"
+  },
+  {
+   "hanzi": "五",
+   "pinyin": "wǔ",
+   "pos": "num.",
+   "english": "five"
+  },
+  {
+   "hanzi": "六",
+   "pinyin": "liù",
+   "pos": "num.",
+   "english": "six"
+  },
+  {
+   "hanzi": "七",
+   "pinyin": "qī",
+   "pos": "num.",
+   "english": "seven"
+  },
+  {
+   "hanzi": "八",
+   "pinyin": "bā",
+   "pos": "num.",
+   "english": "eight"
+  },
+  {
+   "hanzi": "九",
+   "pinyin": "jiǔ",
+   "pos": "num.",
+   "english": "nine"
+  },
+  {
+   "hanzi": "十",
+   "pinyin": "shí",
+   "pos": "num.",
+   "english": "ten"
+  }
+ ],
+ "6": [
+  {
+   "hanzi": "会",
+   "pinyin": "huì",
+   "pos": "mod.",
+   "english": "can, to be able to"
+  },
+  {
+   "hanzi": "说",
+   "pinyin": "shuō",
+   "pos": "v.",
+   "english": "to speak, to say"
+  },
+  {
+   "hanzi": "妈妈",
+   "pinyin": "māma",
+   "pos": "n.",
+   "english": "mother"
+  },
+  {
+   "hanzi": "菜",
+   "pinyin": "cài",
+   "pos": "n.",
+   "english": "dish, cuisine"
+  },
+  {
+   "hanzi": "很",
+   "pinyin": "hěn",
+   "pos": "adv.",
+   "english": "very, quite"
+  },
+  {
+   "hanzi": "好吃",
+   "pinyin": "hǎochī",
+   "pos": "adj.",
+   "english": "delicious, tasty"
+  },
+  {
+   "hanzi": "做",
+   "pinyin": "zuò",
+   "pos": "v.",
+   "english": "to make, to cook"
+  },
+  {
+   "hanzi": "写",
+   "pinyin": "xiě",
+   "pos": "v.",
+   "english": "to write"
+  },
+  {
+   "hanzi": "汉字",
+   "pinyin": "Hànzì",
+   "pos": "n.",
+   "english": "Chinese character"
+  },
+  {
+   "hanzi": "字",
+   "pinyin": "zì",
+   "pos": "n.",
+   "english": "character, word"
+  },
+  {
+   "hanzi": "怎么",
+   "pinyin": "zěnme",
+   "pos": "pron.",
+   "english": "how"
+  },
+  {
+   "hanzi": "读",
+   "pinyin": "dú",
+   "pos": "v.",
+   "english": "to read (aloud)"
+  }
+ ],
+ "7": [
+  {
+   "hanzi": "请",
+   "pinyin": "qǐng",
+   "pos": "v.",
+   "english": "please"
+  },
+  {
+   "hanzi": "问",
+   "pinyin": "wèn",
+   "pos": "v.",
+   "english": "to ask"
+  },
+  {
+   "hanzi": "今天",
+   "pinyin": "jīntiān",
+   "pos": "n.",
+   "english": "today"
+  },
+  {
+   "hanzi": "号",
+   "pinyin": "hào",
+   "pos": "n.",
+   "english": "date (day of the month)"
+  },
+  {
+   "hanzi": "月",
+   "pinyin": "yuè",
+   "pos": "n.",
+   "english": "month"
+  },
+  {
+   "hanzi": "星期",
+   "pinyin": "xīngqī",
+   "pos": "n.",
+   "english": "week"
+  },
+  {
+   "hanzi": "昨天",
+   "pinyin": "zuótiān",
+   "pos": "n.",
+   "english": "yesterday"
+  },
+  {
+   "hanzi": "明天",
+   "pinyin": "míngtiān",
+   "pos": "n.",
+   "english": "tomorrow"
+  },
+  {
+   "hanzi": "去",
+   "pinyin": "qù",
+   "pos": "v.",
+   "english": "to go"
+  },
+  {
+   "hanzi": "学校",
+   "pinyin": "xuéxiào",
+   "pos": "n.",
+   "english": "school"
+  },
+  {
+   "hanzi": "看",
+   "pinyin": "kàn",
+   "pos": "v.",
+   "english": "to look at, to watch, to read"
+  },
+  {
+   "hanzi": "书",
+   "pinyin": "shū",
+   "pos": "n.",
+   "english": "book"
+  }
+ ],
+ "8": [
+  {
+   "hanzi": "想",
+   "pinyin": "xiǎng",
+   "pos": "mod.",
+   "english": "to want, would like"
+  },
+  {
+   "hanzi": "喝",
+   "pinyin": "hē",
+   "pos": "v.",
+   "english": "to drink"
+  },
+  {
+   "hanzi": "茶",
+   "pinyin": "chá",
+   "pos": "n.",
+   "english": "tea"
+  },
+  {
+   "hanzi": "吃",
+   "pinyin": "chī",
+   "pos": "v.",
+   "english": "to eat"
+  },
+  {
+   "hanzi": "米饭",
+   "pinyin": "mǐfàn",
+   "pos": "n.",
+   "english": "cooked rice"
+  },
+  {
+   "hanzi": "下午",
+   "pinyin": "xiàwǔ",
+   "pos": "n.",
+   "english": "afternoon"
+  },
+  {
+   "hanzi": "商店",
+   "pinyin": "shāngdiàn",
+   "pos": "n.",
+   "english": "shop, store"
+  },
+  {
+   "hanzi": "买",
+   "pinyin": "mǎi",
+   "pos": "v.",
+   "english": "to buy"
+  },
+  {
+   "hanzi": "个",
+   "pinyin": "gè",
+   "pos": "m.",
+   "english": "general measure word"
+  },
+  {
+   "hanzi": "杯子",
+   "pinyin": "bēizi",
+   "pos": "n.",
+   "english": "cup, glass"
+  },
+  {
+   "hanzi": "这",
+   "pinyin": "zhè",
+   "pos": "pron.",
+   "english": "this"
+  },
+  {
+   "hanzi": "多少",
+   "pinyin": "duōshao",
+   "pos": "pron.",
+   "english": "how many, how much"
+  },
+  {
+   "hanzi": "钱",
+   "pinyin": "qián",
+   "pos": "n.",
+   "english": "money"
+  },
+  {
+   "hanzi": "块",
+   "pinyin": "kuài",
+   "pos": "m.",
+   "english": "yuan (unit of money)"
+  },
+  {
+   "hanzi": "那",
+   "pinyin": "nà",
+   "pos": "pron.",
+   "english": "that"
+  }
+ ],
+ "9": [
+  {
+   "hanzi": "小",
+   "pinyin": "xiǎo",
+   "pos": "adj.",
+   "english": "small, little"
+  },
+  {
+   "hanzi": "猫",
+   "pinyin": "māo",
+   "pos": "n.",
+   "english": "cat"
+  },
+  {
+   "hanzi": "在",
+   "pinyin": "zài",
+   "pos": "v./prep.",
+   "english": "to be at; at, in"
+  },
+  {
+   "hanzi": "那儿",
+   "pinyin": "nàr",
+   "pos": "pron.",
+   "english": "there"
+  },
+  {
+   "hanzi": "狗",
+   "pinyin": "gǒu",
+   "pos": "n.",
+   "english": "dog"
+  },
+  {
+   "hanzi": "椅子",
+   "pinyin": "yǐzi",
+   "pos": "n.",
+   "english": "chair"
+  },
+  {
+   "hanzi": "下",
+   "pinyin": "xià",
+   "pos": "n.",
+   "english": "under, below"
+  },
+  {
+   "hanzi": "下面",
+   "pinyin": "xiàmiàn",
+   "pos": "n.",
+   "english": "under, below"
+  },
+  {
+   "hanzi": "哪儿",
+   "pinyin": "nǎr",
+   "pos": "pron.",
+   "english": "where"
+  },
+  {
+   "hanzi": "工作",
+   "pinyin": "gōngzuò",
+   "pos": "v./n.",
+   "english": "to work; job"
+  },
+  {
+   "hanzi": "儿子",
+   "pinyin": "érzi",
+   "pos": "n.",
+   "english": "son"
+  },
+  {
+   "hanzi": "医院",
+   "pinyin": "yīyuàn",
+   "pos": "n.",
+   "english": "hospital"
+  },
+  {
+   "hanzi": "医生",
+   "pinyin": "yīshēng",
+   "pos": "n.",
+   "english": "doctor"
+  },
+  {
+   "hanzi": "爸爸",
+   "pinyin": "bàba",
+   "pos": "n.",
+   "english": "father"
+  }
+ ],
+ "10": [
+  {
+   "hanzi": "桌子",
+   "pinyin": "zhuōzi",
+   "pos": "n.",
+   "english": "desk, table"
+  },
+  {
+   "hanzi": "上",
+   "pinyin": "shang",
+   "pos": "n.",
+   "english": "on, above"
+  },
+  {
+   "hanzi": "电脑",
+   "pinyin": "diànnǎo",
+   "pos": "n.",
+   "english": "computer"
+  },
+  {
+   "hanzi": "和",
+   "pinyin": "hé",
+   "pos": "conj.",
+   "english": "and"
+  },
+  {
+   "hanzi": "本",
+   "pinyin": "běn",
+   "pos": "m.",
+   "english": "measure word for books"
+  },
+  {
+   "hanzi": "里",
+   "pinyin": "li",
+   "pos": "n.",
+   "english": "inside"
+  },
+  {
+   "hanzi": "前面",
+   "pinyin": "qiánmiàn",
+   "pos": "n.",
+   "english": "front"
+  },
+  {
+   "hanzi": "后面",
+   "pinyin": "hòumiàn",
+   "pos": "n.",
+   "english": "back, behind"
+  },
+  {
+   "hanzi": "这儿",
+   "pinyin": "zhèr",
+   "pos": "pron.",
+   "english": "here"
+  },
+  {
+   "hanzi": "没有",
+   "pinyin": "méiyǒu",
+   "pos": "v.",
+   "english": "there is not; not have"
+  },
+  {
+   "hanzi": "没",
+   "pinyin": "méi",
+   "pos": "adv.",
+   "english": "not (have)"
+  },
+  {
+   "hanzi": "能",
+   "pinyin": "néng",
+   "pos": "mod.",
+   "english": "can, may"
+  },
+  {
+   "hanzi": "坐",
+   "pinyin": "zuò",
+   "pos": "v.",
+   "english": "to sit"
+  }
+ ],
+ "11": [
+  {
+   "hanzi": "现在",
+   "pinyin": "xiànzài",
+   "pos": "n.",
+   "english": "now"
+  },
+  {
+   "hanzi": "点",
+   "pinyin": "diǎn",
+   "pos": "m.",
+   "english": "o'clock"
+  },
+  {
+   "hanzi": "分",
+   "pinyin": "fēn",
+   "pos": "m.",
+   "english": "minute"
+  },
+  {
+   "hanzi": "中午",
+   "pinyin": "zhōngwǔ",
+   "pos": "n.",
+   "english": "noon"
+  },
+  {
+   "hanzi": "吃饭",
+   "pinyin": "chī fàn",
+   "pos": "v.",
+   "english": "to eat a meal"
+  },
+  {
+   "hanzi": "时候",
+   "pinyin": "shíhou",
+   "pos": "n.",
+   "english": "time, moment"
+  },
+  {
+   "hanzi": "回",
+   "pinyin": "huí",
+   "pos": "v.",
+   "english": "to return, to go back"
+  },
+  {
+   "hanzi": "我们",
+   "pinyin": "wǒmen",
+   "pos": "pron.",
+   "english": "we, us"
+  },
+  {
+   "hanzi": "电影",
+   "pinyin": "diànyǐng",
+   "pos": "n.",
+   "english": "film, movie"
+  },
+  {
+   "hanzi": "住",
+   "pinyin": "zhù",
+   "pos": "v.",
+   "english": "to live, to stay"
+  },
+  {
+   "hanzi": "前",
+   "pinyin": "qián",
+   "pos": "n.",
+   "english": "before, ago"
+  },
+  {
+   "hanzi": "北京",
+   "pinyin": "Běijīng",
+   "pos": "proper",
+   "english": "Beijing"
+  }
+ ],
+ "12": [
+  {
+   "hanzi": "天气",
+   "pinyin": "tiānqì",
+   "pos": "n.",
+   "english": "weather"
+  },
+  {
+   "hanzi": "怎么样",
+   "pinyin": "zěnmeyàng",
+   "pos": "pron.",
+   "english": "how (is it)"
+  },
+  {
+   "hanzi": "太",
+   "pinyin": "tài",
+   "pos": "adv.",
+   "english": "too, excessively"
+  },
+  {
+   "hanzi": "热",
+   "pinyin": "rè",
+   "pos": "adj.",
+   "english": "hot"
+  },
+  {
+   "hanzi": "冷",
+   "pinyin": "lěng",
+   "pos": "adj.",
+   "english": "cold"
+  },
+  {
+   "hanzi": "下雨",
+   "pinyin": "xià yǔ",
+   "pos": "v.",
+   "english": "to rain"
+  },
+  {
+   "hanzi": "下",
+   "pinyin": "xià",
+   "pos": "v.",
+   "english": "(of rain) to fall"
+  },
+  {
+   "hanzi": "雨",
+   "pinyin": "yǔ",
+   "pos": "n.",
+   "english": "rain"
+  },
+  {
+   "hanzi": "小姐",
+   "pinyin": "xiǎojiě",
+   "pos": "n.",
+   "english": "miss, young lady"
+  },
+  {
+   "hanzi": "来",
+   "pinyin": "lái",
+   "pos": "v.",
+   "english": "to come"
+  },
+  {
+   "hanzi": "身体",
+   "pinyin": "shēntǐ",
+   "pos": "n.",
+   "english": "body, health"
+  },
+  {
+   "hanzi": "爱",
+   "pinyin": "ài",
+   "pos": "v.",
+   "english": "to love, to like"
+  },
+  {
+   "hanzi": "些",
+   "pinyin": "xiē",
+   "pos": "m.",
+   "english": "some, a few"
+  },
+  {
+   "hanzi": "水果",
+   "pinyin": "shuǐguǒ",
+   "pos": "n.",
+   "english": "fruit"
+  },
+  {
+   "hanzi": "水",
+   "pinyin": "shuǐ",
+   "pos": "n.",
+   "english": "water"
+  }
+ ],
+ "13": [
+  {
+   "hanzi": "喂",
+   "pinyin": "wèi",
+   "pos": "int.",
+   "english": "hello (on the phone)"
+  },
+  {
+   "hanzi": "也",
+   "pinyin": "yě",
+   "pos": "adv.",
+   "english": "also, too"
+  },
+  {
+   "hanzi": "学习",
+   "pinyin": "xuéxí",
+   "pos": "v.",
+   "english": "to study"
+  },
+  {
+   "hanzi": "学",
+   "pinyin": "xué",
+   "pos": "v.",
+   "english": "to learn"
+  },
+  {
+   "hanzi": "上午",
+   "pinyin": "shàngwǔ",
+   "pos": "n.",
+   "english": "morning"
+  },
+  {
+   "hanzi": "睡觉",
+   "pinyin": "shuì jiào",
+   "pos": "v.",
+   "english": "to sleep"
+  },
+  {
+   "hanzi": "电视",
+   "pinyin": "diànshì",
+   "pos": "n.",
+   "english": "television"
+  },
+  {
+   "hanzi": "喜欢",
+   "pinyin": "xǐhuan",
+   "pos": "v.",
+   "english": "to like"
+  },
+  {
+   "hanzi": "给",
+   "pinyin": "gěi",
+   "pos": "prep.",
+   "english": "to, for"
+  },
+  {
+   "hanzi": "打电话",
+   "pinyin": "dǎ diànhuà",
+   "pos": "v.",
+   "english": "to make a phone call"
+  },
+  {
+   "hanzi": "吧",
+   "pinyin": "ba",
+   "pos": "part.",
+   "english": "particle for suggestion or request"
+  }
+ ],
+ "14": [
+  {
+   "hanzi": "东西",
+   "pinyin": "dōngxi",
+   "pos": "n.",
+   "english": "thing, stuff"
+  },
+  {
+   "hanzi": "一点儿",
+   "pinyin": "yìdiǎnr",
+   "pos": "num.-m.",
+   "english": "a little"
+  },
+  {
+   "hanzi": "苹果",
+   "pinyin": "píngguǒ",
+   "pos": "n.",
+   "english": "apple"
+  },
+  {
+   "hanzi": "看见",
+   "pinyin": "kànjiàn",
+   "pos": "v.",
+   "english": "to see"
+  },
+  {
+   "hanzi": "先生",
+   "pinyin": "xiānsheng",
+   "pos": "n.",
+   "english": "Mr., sir"
+  },
+  {
+   "hanzi": "开",
+   "pinyin": "kāi",
+   "pos": "v.",
+   "english": "to drive"
+  },
+  {
+   "hanzi": "车",
+   "pinyin": "chē",
+   "pos": "n.",
+   "english": "car"
+  },
+  {
+   "hanzi": "回来",
+   "pinyin": "huílai",
+   "pos": "v.",
+   "english": "to come back"
+  },
+  {
+   "hanzi": "分钟",
+   "pinyin": "fēnzhōng",
+   "pos": "n.",
+   "english": "minute"
+  },
+  {
+   "hanzi": "后",
+   "pinyin": "hòu",
+   "pos": "n.",
+   "english": "after, later"
+  },
+  {
+   "hanzi": "衣服",
+   "pinyin": "yīfu",
+   "pos": "n.",
+   "english": "clothes"
+  },
+  {
+   "hanzi": "漂亮",
+   "pinyin": "piàoliang",
+   "pos": "adj.",
+   "english": "beautiful, pretty"
+  },
+  {
+   "hanzi": "啊",
+   "pinyin": "a",
+   "pos": "part.",
+   "english": "particle of affirmation"
+  },
+  {
+   "hanzi": "少",
+   "pinyin": "shǎo",
+   "pos": "adj.",
+   "english": "few, little"
+  },
+  {
+   "hanzi": "不少",
+   "pinyin": "bùshǎo",
+   "pos": "adj.",
+   "english": "quite a few"
+  },
+  {
+   "hanzi": "这些",
+   "pinyin": "zhèxiē",
+   "pos": "pron.",
+   "english": "these"
+  },
+  {
+   "hanzi": "都",
+   "pinyin": "dōu",
+   "pos": "adv.",
+   "english": "all, both"
+  }
+ ],
+ "15": [
+  {
+   "hanzi": "认识",
+   "pinyin": "rènshi",
+   "pos": "v.",
+   "english": "to know, to meet"
+  },
+  {
+   "hanzi": "年",
+   "pinyin": "nián",
+   "pos": "n.",
+   "english": "year"
+  },
+  {
+   "hanzi": "大学",
+   "pinyin": "dàxué",
+   "pos": "n.",
+   "english": "university"
+  },
+  {
+   "hanzi": "饭店",
+   "pinyin": "fàndiàn",
+   "pos": "n.",
+   "english": "restaurant, hotel"
+  },
+  {
+   "hanzi": "出租车",
+   "pinyin": "chūzūchē",
+   "pos": "n.",
+   "english": "taxi"
+  },
+  {
+   "hanzi": "一起",
+   "pinyin": "yìqǐ",
+   "pos": "adv.",
+   "english": "together"
+  },
+  {
+   "hanzi": "高兴",
+   "pinyin": "gāoxìng",
+   "pos": "adj.",
+   "english": "glad, happy"
+  },
+  {
+   "hanzi": "听",
+   "pinyin": "tīng",
+   "pos": "v.",
+   "english": "to listen"
+  },
+  {
+   "hanzi": "飞机",
+   "pinyin": "fēijī",
+   "pos": "n.",
+   "english": "airplane"
+  }
+ ]
+}

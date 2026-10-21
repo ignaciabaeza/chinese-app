@@ -170,7 +170,7 @@ interface Lesson {
 ```
 
 **Content state (current):**
-- HSK 1: lessons 1, 2, 3, 4, 5 fully authored. Lessons 6–15 are stubs (title + theme + word-hint list from the TOC, rendered with an "Outline" notice).
+- HSK 1: all 15 lessons authored. **Lessons 1–5 are transcribed from the textbook** (copyrighted — to be replaced). **Lessons 6–15 are original** (2026-10-21): same official words + grammar topics per lesson as the book, new dialogues with a recurring cast (安娜, 马克, 王明, 刘老师, 小美), culture notes in L10 and L15.
 - HSK 2: all 15 lessons fully authored (including the three culture notes — Table Manners L5, Tea Culture L10, Spring Festival L15).
 - HSK 3, HSK 4, HSK 5, HSK 6: not started.
 
@@ -272,6 +272,10 @@ npm run dev
 ---
 
 ## Adding a New Lesson
+
+**Content must be original** (the app will be sold): keep the official HSK word list and grammar topics, but write new dialogues, explanations, examples and exercises — never copy the textbook. Validate HSK 1 lessons with `python3 scripts/content/validate_lesson.py data/hsk1/lessons/N.json` (official words all present and used in their situation, characters limited to vocabulary learned up to that lesson, pinyin matches the hanzi; "tones differ" warnings are usually legit sandhi/neutral tones). After deploying, on the server run `npm run db:import-lessons`, then `npm run db:generate-audio`, then restart the app so the new MP3s are served.
+
+The lesson page is a stepper: Listen → Read → Vocab → Grammar → **Practice** (exercises, pronunciation, characters, application, culture from the JSON; `PracticeStep.tsx`) → Done. Exercise conventions: `fill_blanks` items put the answer in `blank`; `match` items are "question — answer" in hanzi/pinyin/english.
 
 1. Read the source pages from the corresponding HSK textbook PDF.
 2. Create `data/hsk{N}/lessons/{M}.json` matching the `Lesson` type. Use an existing lesson (HSK 2 Lesson 3 is a good reference — it has every section) as a template.
