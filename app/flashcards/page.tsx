@@ -4,6 +4,7 @@ import { Suspense, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import AudioButton from "@/components/AudioButton";
+import MoonHanzi from "@/components/MoonHanzi";
 
 type Level = "all" | 1 | 2;
 type Size = 10 | 20 | "all";
@@ -346,19 +347,6 @@ function CardView({
   stats: { passed: number; skipped: number };
   lessonTitle: string | null;
 }) {
-  // Inline font size scaled to character count so multi-char words stay
-  // on one row inside the moon circle instead of wrapping vertically.
-  // clamp() keeps it responsive — vw for fluid mid-range, px for caps.
-  const charCount = Math.max(1, Array.from(card.simplified).length);
-  const heroStyle: React.CSSProperties = {
-    fontSize: `clamp(${Math.max(28, Math.round(160 / charCount))}px, ${Math.round(46 / charCount)}vw, ${Math.round(220 / charCount)}px)`,
-    whiteSpace: "nowrap",
-    lineHeight: 1,
-    color: "var(--accent-crane-white)",
-    fontFamily: "var(--font-display)",
-    fontWeight: 700,
-    zIndex: 1,
-  };
 
   return (
     <div className="max-w-xl mx-auto space-y-5 animate-fade-up">
@@ -404,9 +392,7 @@ function CardView({
               <div className="badge-gold mb-4">HSK {card.hsk2_level}</div>
             )}
             <div className="moon-circle">
-              <div className="text-center" style={heroStyle}>
-                {card.simplified}
-              </div>
+              <MoonHanzi text={card.simplified} />
             </div>
             {showPinyinFront && (
               <div className="text-xl mt-4 font-pinyin" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>

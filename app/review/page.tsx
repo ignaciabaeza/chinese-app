@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 import AudioButton from "@/components/AudioButton";
+import MoonHanzi from "@/components/MoonHanzi";
 import { submitGrade } from "@/lib/review-client";
 
 type Mode = "recognition" | "listening";
@@ -411,7 +412,6 @@ function ReviewCard({
   onGrade: (r: 1 | 2 | 3 | 4) => void;
   sessionStats: { again: number; hard: number; good: number; easy: number };
 }) {
-  const sizeClass = card.simplified.length <= 2 ? "chinese-xl" : card.simplified.length <= 4 ? "chinese-lg" : "chinese-md";
   const totalCorrect = sessionStats.good + sessionStats.easy + sessionStats.hard;
   const acc = totalCorrect + sessionStats.again > 0
     ? Math.round((totalCorrect / (totalCorrect + sessionStats.again)) * 100)
@@ -475,9 +475,7 @@ function ReviewCard({
               </div>
             ) : (
               <div className="moon-circle">
-                <div className={`${sizeClass} text-center leading-none font-bold`} style={{ color: "var(--accent-crane-white)", zIndex: 1 }}>
-                  {card.simplified}
-                </div>
+                <MoonHanzi text={card.simplified} />
               </div>
             )}
             <p className="text-xs mt-5" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
