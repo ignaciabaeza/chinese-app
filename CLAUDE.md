@@ -170,8 +170,8 @@ interface Lesson {
 ```
 
 **Content state (current):**
-- HSK 1: all 15 lessons authored. **Lessons 1–5 are transcribed from the textbook** (copyrighted — to be replaced). **Lessons 6–15 are original** (2026-10-21): same official words + grammar topics per lesson as the book, new dialogues with a recurring cast (安娜, 马克, 王明, 刘老师, 小美), culture notes in L10 and L15.
-- HSK 2: all 15 lessons fully authored (including the three culture notes — Table Manners L5, Tea Culture L10, Spring Festival L15).
+- HSK 1 and HSK 2: all 15 + 15 lessons authored and **all original** (2026-10-21) — same official word lists and grammar topics per lesson as the HSK Standard Course books (grammar ids unchanged), new dialogues with a recurring cast (安娜, 马克, 王明, 刘老师, 小美), culture notes in HSK 1 L5/L10/L15 and HSK 2 L5/L10/L15. Official per-lesson word lists: `scripts/content/hsk{1,2}-vocab.json`.
+- **Still textbook-derived:** the `/workbook` page (`data/quizData.js` questions + `public/hsk2/images/` illustrations from the HSK 2 workbook).
 - HSK 3, HSK 4, HSK 5, HSK 6: not started.
 
 **Content lookups** via `lib/content.ts`:
