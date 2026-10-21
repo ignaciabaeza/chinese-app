@@ -304,6 +304,9 @@ CRON
 chmod 644 /etc/cron.d/chinese-app-backup
 success "Backup cron installed (06:00 daily)"
 
+# ── 18. Server hardening (fail2ban, sshd, nginx) ──────────────────────────────
+bash "$APP_DIR/scripts/harden.sh"
+
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""
 echo "================================================="

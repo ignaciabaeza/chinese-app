@@ -1,4 +1,8 @@
-name: Deploy to EC2
+name: CI
+
+# Deploys are pull-based: the server's chinese-app-autodeploy timer
+# (scripts/auto-deploy.sh) deploys a new main commit once this job passes.
+# Keep the job named `check` — auto-deploy.sh looks it up by name.
 
 on:
   push:
@@ -21,18 +25,3 @@ jobs:
 
       - name: Type check
         run: npx tsc --noEmit
-
-  deploy:
-    needs: check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          command_timeout: 20m
-          script: |
-            sudo /opt/chinese-app/scripts/deploy.sh

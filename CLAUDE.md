@@ -12,7 +12,7 @@ A mobile-first HSK learning app built around the official **HSK Standard Course*
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 16.2.1 (App Router) |
+| Framework | Next.js 16.4.2 (App Router) |
 | Language | TypeScript 5 |
 | Styling | Tailwind CSS v4 + CSS custom properties |
 | Database | PostgreSQL via `pg` (node-postgres) |
@@ -367,7 +367,7 @@ for m in scripts/migrations/*.sql; do psql $DATABASE_URL -f "$m"; done
 npm run dev
 ```
 
-**Existing deployments** running the pre-Phase-0 schema (`card_progress.word_id`) will have the migration applied automatically by `scripts/deploy.sh` — it detects pending migrations under `scripts/migrations/`, takes a `pg_dump` backup to `/var/backups/chinese-app/`, briefly stops the app, applies them all in **one transaction** (`psql -1`), records each in `schema_migrations`, and restarts. deploy.sh builds into `.next-build` (via `NEXT_DIST_DIR`, read in `next.config.ts`) while the live app keeps serving `.next`, then swaps and health-checks; build/migration/health failures roll back to the previous commit. It also installs `/etc/cron.d/chinese-app-backup` (nightly `scripts/backup.sh`, optional S3 copy via `/etc/chinese-app-backup.env`). CI (`.github/workflows/deploy.yml`) runs `tsc --noEmit` before deploying. The Phase 0 migration drops `sentences` and rebuilds `card_progress` + `study_sessions` from scratch — existing card progress is lost (intentional; the old vocab was bad).
+**Existing deployments** running the pre-Phase-0 schema (`card_progress.word_id`) will have the migration applied automatically by `scripts/deploy.sh` — it detects pending migrations under `scripts/migrations/`, takes a `pg_dump` backup to `/var/backups/chinese-app/`, briefly stops the app, applies them all in **one transaction** (`psql -1`), records each in `schema_migrations`, and restarts. deploy.sh builds into `.next-build` (via `NEXT_DIST_DIR`, read in `next.config.ts`) while the live app keeps serving `.next`, then swaps and health-checks; build/migration/health failures roll back to the previous commit. It also installs `/etc/cron.d/chinese-app-backup` (nightly `scripts/backup.sh`, optional S3 copy via `/etc/chinese-app-backup.env`). **Deploys are pull-based:** CI (`.github/workflows/deploy.yml`, job `check`) only runs `tsc --noEmit`; the server's `chinese-app-autodeploy.timer` runs `scripts/auto-deploy.sh` every 2 min, which deploys a new `origin/main` commit once its `check` run succeeded (a failed deploy is skipped until the next push). Logs: `journalctl -u chinese-app-autodeploy`. Server hardening (fail2ban, sshd, nginx) lives in idempotent `scripts/harden.sh`. The Phase 0 migration drops `sentences` and rebuilds `card_progress` + `study_sessions` from scratch — existing card progress is lost (intentional; the old vocab was bad).
 
 ---
 

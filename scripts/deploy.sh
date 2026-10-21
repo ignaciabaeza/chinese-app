@@ -6,7 +6,8 @@
 # keeps serving, applies any pending DB migrations (with a pg_dump backup
 # first, all in one transaction), then swaps the new build in and restarts.
 #
-# Run on the server whenever you push new changes:
+# Normally run automatically by auto-deploy.sh (systemd timer, every 2 min)
+# after a push to main passes CI. To run by hand:
 #   sudo ./scripts/deploy.sh
 #
 # Migrations live in scripts/migrations/*.sql and are applied in filename
@@ -43,6 +44,12 @@ BUILD_DIR_NAME=".next-build"
 HEALTH_URL="http://127.0.0.1:3000/auth"
 
 [[ ! -d "$APP_DIR" ]] && error "$APP_DIR not found — run setup.sh first"
+
+# One deploy at a time. auto-deploy.sh already holds the lock when it calls us.
+if [[ -z "${DEPLOY_LOCK_HELD:-}" ]]; then
+  exec 9>/run/chinese-app-deploy.lock
+  flock -n 9 || error "Another deploy is already running."
+fi
 
 as_app() { sudo -u $APP_USER bash -c "cd $APP_DIR && $1"; }
 
@@ -208,5 +215,31 @@ cat > /etc/cron.d/chinese-app-backup <<CRON
 0 6 * * * root /bin/bash $APP_DIR/scripts/backup.sh >> /var/log/chinese-app-backup.log 2>&1
 CRON
 chmod 644 /etc/cron.d/chinese-app-backup
+
+# ── 9. Make sure the pull-based auto-deploy timer is installed ───────────────
+cat > /etc/systemd/system/chinese-app-autodeploy.service <<UNIT
+[Unit]
+Description=Deploy chinese-app when origin/main has a new commit that passed CI
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash $APP_DIR/scripts/auto-deploy.sh
+TimeoutStartSec=30min
+UNIT
+cat > /etc/systemd/system/chinese-app-autodeploy.timer <<UNIT
+[Unit]
+Description=Check for chinese-app updates every 2 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+
+[Install]
+WantedBy=timers.target
+UNIT
+systemctl daemon-reload
+systemctl enable --now chinese-app-autodeploy.timer >/dev/null 2>&1
 
 success "Deploy complete — ${PREV_SHA:0:7} → ${NEW_SHA:0:7} — $(date)"
