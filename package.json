@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "db:tunnel": "ssh -i ~/Downloads/chinese-app-keys.pem -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -N -L 5433:localhost:5432 ubuntu@3.208.116.233",
     "build": "next build",
     "start": "next start -H 127.0.0.1",
     "lint": "eslint",

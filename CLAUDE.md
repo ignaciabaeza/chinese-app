@@ -263,7 +263,9 @@ npm install
 #    in order:
 for m in scripts/migrations/*.sql; do psql $DATABASE_URL -f "$m"; done
 
-# 4. Run dev server
+# 4. Run dev server. Locally, DATABASE_URL points at localhost:5433, an SSH
+#    tunnel to the PRODUCTION database — open it first in another terminal:
+npm run db:tunnel
 npm run dev
 ```
 
