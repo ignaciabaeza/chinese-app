@@ -95,11 +95,10 @@ export default function Dashboard() {
 
       {/* Quick actions */}
       <Section title="Practice">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           <QuickAction href="/review" title="Review" sub={totalDue > 0 ? `${totalDue} due` : "FSRS-scheduled"} highlight={totalDue > 0} />
           <QuickAction href="/reader" title="Reader" sub="Tap-to-read texts" />
           <QuickAction href="/vocab" title="Dictionary" sub="Browse all words" />
-          <QuickAction href="/chat" title="Tutor" sub="Ask anything" />
         </div>
       </Section>
     </div>

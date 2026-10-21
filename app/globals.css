@@ -267,8 +267,3 @@ body > * { position: relative; z-index: 1; }
 ::-webkit-scrollbar-track { background: var(--paper-2); }
 ::-webkit-scrollbar-thumb { background: var(--paper-edge); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--seal); }
-
-/* ─── Chat message styles ─── */
-.chat-message p { margin-bottom: 0.5rem; }
-.chat-message strong { color: var(--seal); }
-.chat-message em { color: var(--ink-faint); }

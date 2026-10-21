@@ -5,7 +5,7 @@ import AuthProvider from "@/components/AuthProvider";
 
 export const metadata: Metadata = {
   title: "汉语学习 · Chinese Learning",
-  description: "HSK Standard Course — structured lessons, vocabulary, grammar, characters, mock exams, and an AI tutor.",
+  description: "HSK Standard Course — structured lessons, vocabulary, grammar, characters, and spaced-repetition review.",
 };
 
 export const viewport: Viewport = {

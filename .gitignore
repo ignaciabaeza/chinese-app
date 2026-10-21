@@ -9,6 +9,7 @@
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
+*.zip
 !.yarn/versions
 
 # testing
@@ -16,6 +17,8 @@
 
 # next.js
 /.next/
+/.next-build/
+/.next-old/
 /out/
 
 # generated audio (TTS output) — lives on the EC2 box, regenerable via

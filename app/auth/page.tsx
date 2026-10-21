@@ -119,7 +119,7 @@ export default function AuthPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              placeholder={mode === "register" ? "Min. 6 characters" : "••••••••"}
+              placeholder={mode === "register" ? "Min. 8 characters" : "••••••••"}
               className="w-full rounded-lg px-4 py-3 text-sm outline-none transition-all"
               style={{
                 background: "rgba(0,0,0,0.3)",

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -H 127.0.0.1",
     "lint": "eslint",
     "db:download": "tsx scripts/01-download-sources.ts",
     "db:build-vocab": "tsx scripts/02-build-vocab-db.ts",
@@ -15,7 +15,6 @@
     "db:rebuild": "npm run db:download && npm run db:build-vocab && npm run db:match-sentences && npm run db:import-lessons"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.80.0",
     "@node-rs/jieba": "^2.0.1",
     "bcryptjs": "^3.0.3",
     "hanzi-writer": "^3.7.3",

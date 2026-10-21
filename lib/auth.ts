@@ -54,6 +54,11 @@ export function authCookieOptions(request: NextRequest) {
   };
 }
 
+/** Emails are stored and compared lowercased so A@x.com and a@x.com are one account. */
+export function normalizeEmail(email: string): string {
+  return email.trim().toLowerCase();
+}
+
 export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, 12);
 }

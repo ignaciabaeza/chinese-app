@@ -16,7 +16,6 @@ const links = [
   { href: "/reader",                 label: "Reader" },
   { href: "/grammar",                label: "Grammar" },
   { href: "/vocab",                  label: "Dictionary" },
-  { href: "/chat",                   label: "Tutor" },
 ];
 
 function CloudMotif({ className = "" }: { className?: string }) {

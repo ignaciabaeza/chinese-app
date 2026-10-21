@@ -4,7 +4,7 @@
 
 # 汉语学习 — Chinese Learning App
 
-A mobile-first HSK learning app built around the official **HSK Standard Course** curriculum (Beijing Language and Culture University Press). Lessons are the primary unit; vocabulary, grammar points, characters, dialogues, and exercises hang off each lesson. Includes spaced-repetition flashcards, mock exams, and an AI tutor, with progress sync via PostgreSQL.
+A mobile-first HSK learning app built around the official **HSK Standard Course** curriculum (Beijing Language and Culture University Press). Lessons are the primary unit; vocabulary, grammar points, characters, dialogues, and exercises hang off each lesson. Includes spaced-repetition flashcards and mock exams, with progress sync via PostgreSQL.
 
 ---
 
@@ -18,7 +18,6 @@ A mobile-first HSK learning app built around the official **HSK Standard Course*
 | Database | PostgreSQL via `pg` (node-postgres) |
 | Auth | JWT (jsonwebtoken) in httpOnly cookies |
 | Passwords | bcryptjs (12 rounds) |
-| AI | Anthropic SDK (`@anthropic-ai/sdk`) — claude-opus-4-6 |
 | React | 19.2.4 |
 
 ### Critical Next.js 16 differences from earlier versions
@@ -97,7 +96,6 @@ chinese_app/
 │   ├── layout.tsx                           # Root layout (fonts, AuthProvider, Navigation)
 │   ├── page.tsx                             # Dashboard (stats, due cards, level grid, quick actions)
 │   ├── auth/page.tsx                        # Login / register
-│   ├── chat/page.tsx                        # AI tutor chat (Claude)
 │   ├── course/
 │   │   ├── page.tsx                         # Level picker (HSK 1–4)
 │   │   └── [level]/
@@ -114,15 +112,13 @@ chinese_app/
 │       │   ├── login/route.ts               # POST — verify password, set JWT cookie
 │       │   ├── logout/route.ts              # POST — clear JWT cookie
 │       │   └── me/route.ts                  # GET  — return current user from cookie
-│       ├── chat/route.ts                    # POST — streams Claude responses; system prompt
-│       │                                    #        is built from authored lesson content
 │       └── progress/
 │           ├── route.ts                     # GET fetch all / POST bulk upsert card progress
 │           └── sessions/route.ts            # GET fetch sessions / POST save session
 ├── components/
 │   ├── AuthProvider.tsx                     # React context: user, login, register, logout
 │   └── Navigation.tsx                       # Sticky nav: Dashboard / Course / Flashcards /
-│                                            # Mock Exam / Vocabulary / Tutor
+│                                            # Mock Exam / Vocabulary
 ├── data/
 │   ├── hsk1/
 │   │   ├── index.ts                         # 15-lesson registry (real + stubs)
@@ -146,7 +142,7 @@ chinese_app/
 │   │   └── 001_phase0_card_type.sql         # Clean rebuild of card_progress with card_id + card_type
 │   │                                        # (drops old sentences / sessions tables)
 │   └── deploy.sh                            # Re-deploy latest code on server
-├── .env                                     # DATABASE_URL, JWT_SECRET, ANTHROPIC_API_KEY
+├── .env                                     # DATABASE_URL, JWT_SECRET
 ├── AGENTS.md                                # Top-of-file reminder about Next.js 16 breaking changes
 └── CLAUDE.md                                # This file
 ```
@@ -269,6 +265,9 @@ Generalized SRS — the same row schema tracks vocab, characters, grammar points
 
 ## Auth System
 
+- **Rate limiting:** `lib/rate-limit.ts` is an in-memory fixed-window limiter (valid because PM2 runs a single fork-mode process). Login: 20/15 min per IP + 10/15 min per email; register: 5/hour per IP. Client IP comes from nginx's `X-Real-IP`; `npm start` binds to `127.0.0.1` so the header can't be spoofed by hitting :3000 directly.
+- **Emails** are normalized with `normalizeEmail()` (trim + lowercase); lookups use `lower(email)` so legacy mixed-case rows still match. Passwords: min 8 chars.
+
 - JWT stored in an `httpOnly`, `SameSite: lax` cookie named `hanyu_token` (30-day expiry)
 - Cookie is set/deleted on `NextResponse` objects: `response.cookies.set(...)` / `response.cookies.delete(...)`
 - Cookie is read synchronously from `NextRequest`: `request.cookies.get(COOKIE_NAME)?.value`
@@ -322,7 +321,6 @@ Works identically for any `card_type` — the same function handles vocab, chara
 |---|---|
 | `/` | Dashboard: due-now banner, level grid (HSK 1–4 progress), quick actions |
 | `/auth` | Login / register |
-| `/chat` | AI tutor (Claude streamed responses, lesson-aware system prompt) |
 | `/course` | Level picker — HSK 1–4 cards with authored / total counts |
 | `/course/[level]` | Lesson list for a level (stubs shown with "outline" badge) |
 | `/course/[level]/lesson/[number]` | Full lesson view — renders all 8 sections that the JSON provides |
@@ -331,16 +329,6 @@ Works identically for any `card_type` — the same function handles vocab, chara
 | `/practice/exam` | Mock exam runner (currently one HSK 1 Lesson 3 sample paper) |
 
 The lesson detail page (`app/course/[level]/lesson/[number]/page.tsx`) renders sections conditionally — any absent field is skipped, so partial-lesson JSON still renders cleanly.
-
----
-
-## AI Tutor
-
-`app/api/chat/route.ts` — streams responses from `claude-opus-4-6` via `@anthropic-ai/sdk`.
-
-**Lesson-aware system prompt:** built at request time by walking all authored levels via `getAllWords()` from `lib/content.ts`. Each line is `hanzi (pinyin) = english [HSK{N} L{lessonNumber}]`, so the tutor can cite specific lessons. As more lessons are authored the prompt grows automatically.
-
-Conversation history is kept client-side in `app/chat/page.tsx` state.
 
 ---
 
@@ -358,7 +346,6 @@ Conversation history is kept client-side in `app/chat/page.tsx` state.
 ```env
 DATABASE_URL="postgresql://user:password@host:5432/dbname?schema=public"
 JWT_SECRET="generate with: openssl rand -base64 32"
-ANTHROPIC_API_KEY="sk-ant-..."
 ```
 
 ---
@@ -380,7 +367,7 @@ for m in scripts/migrations/*.sql; do psql $DATABASE_URL -f "$m"; done
 npm run dev
 ```
 
-**Existing deployments** running the pre-Phase-0 schema (`card_progress.word_id`) will have the migration applied automatically by `scripts/deploy.sh` — it detects pending migrations under `scripts/migrations/`, takes a `pg_dump` backup to `/var/backups/chinese-app/`, briefly stops the app, applies them in order, records each in `schema_migrations`, and restarts. The Phase 0 migration drops `sentences` and rebuilds `card_progress` + `study_sessions` from scratch — existing card progress is lost (intentional; the old vocab was bad).
+**Existing deployments** running the pre-Phase-0 schema (`card_progress.word_id`) will have the migration applied automatically by `scripts/deploy.sh` — it detects pending migrations under `scripts/migrations/`, takes a `pg_dump` backup to `/var/backups/chinese-app/`, briefly stops the app, applies them all in **one transaction** (`psql -1`), records each in `schema_migrations`, and restarts. deploy.sh builds into `.next-build` (via `NEXT_DIST_DIR`, read in `next.config.ts`) while the live app keeps serving `.next`, then swaps and health-checks; build/migration/health failures roll back to the previous commit. It also installs `/etc/cron.d/chinese-app-backup` (nightly `scripts/backup.sh`, optional S3 copy via `/etc/chinese-app-backup.env`). CI (`.github/workflows/deploy.yml`) runs `tsc --noEmit` before deploying. The Phase 0 migration drops `sentences` and rebuilds `card_progress` + `study_sessions` from scratch — existing card progress is lost (intentional; the old vocab was bad).
 
 ---
 

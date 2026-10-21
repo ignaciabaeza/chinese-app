@@ -27,7 +27,6 @@ echo ""
 read -rp "GitHub repo URL (e.g. https://github.com/you/chinese-app.git): " REPO_URL
 read -rp "App domain or EC2 public IP (e.g. 54.123.45.67 or myapp.com): "   APP_DOMAIN
 read -rp "PostgreSQL app user password (letters and numbers only): "         DB_PASSWORD
-read -rp "Anthropic API key (sk-ant-...): "                                  ANTHROPIC_API_KEY
 read -rp "JWT secret (press Enter to auto-generate): "                       JWT_SECRET_INPUT
 
 JWT_SECRET="${JWT_SECRET_INPUT:-$(openssl rand -base64 32)}"
@@ -143,7 +142,6 @@ info "Writing .env file…"
 cat > "$APP_DIR/.env" <<ENV
 DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD_ENCODED}@localhost:5432/${DB_NAME}"
 JWT_SECRET="${JWT_SECRET}"
-ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}"
 NODE_ENV="production"
 ENV
 chown $APP_USER:$APP_USER "$APP_DIR/.env"
@@ -296,6 +294,15 @@ NGINX
 ln -sf /etc/nginx/sites-available/chinese-app /etc/nginx/sites-enabled/chinese-app
 nginx -t && systemctl restart nginx
 success "Nginx configured and running"
+
+# ── 17. Nightly database backup ───────────────────────────────────────────────
+info "Installing nightly backup cron…"
+cat > /etc/cron.d/chinese-app-backup <<CRON
+# Nightly PostgreSQL backup — installed by scripts/setup.sh
+0 6 * * * root /bin/bash ${APP_DIR}/scripts/backup.sh >> /var/log/chinese-app-backup.log 2>&1
+CRON
+chmod 644 /etc/cron.d/chinese-app-backup
+success "Backup cron installed (06:00 daily)"
 
 # ── Done ──────────────────────────────────────────────────────────────────────
 echo ""

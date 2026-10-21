@@ -2,15 +2,26 @@
 # =============================================================================
 # deploy.sh — Re-deploy latest code on the EC2 server.
 #
-# Pulls the latest code, installs deps, builds, applies any pending DB
-# migrations (with a pg_dump backup first), and restarts the app.
+# Pulls the latest code, builds it into a side directory while the live app
+# keeps serving, applies any pending DB migrations (with a pg_dump backup
+# first, all in one transaction), then swaps the new build in and restarts.
 #
 # Run on the server whenever you push new changes:
 #   sudo ./scripts/deploy.sh
 #
 # Migrations live in scripts/migrations/*.sql and are applied in filename
 # order. Applied migrations are recorded in the `schema_migrations` table so
-# each one runs at most once.
+# each one runs at most once. They run inside a single transaction, so a
+# migration must not contain its own BEGIN/COMMIT or CREATE INDEX CONCURRENTLY.
+#
+# Failure behaviour:
+#   - Build fails      → code is reset to the previous commit; the live app
+#                        was never touched.
+#   - Migration fails  → the transaction rolls back (DB unchanged), code is
+#                        reset to the previous commit and the old build is
+#                        restarted.
+#   - Health check fails after the swap (no migrations ran) → the previous
+#                        build is restored and restarted.
 # =============================================================================
 set -euo pipefail
 
@@ -28,32 +39,63 @@ DB_NAME="chinese_app"
 MIGRATIONS_DIR="$APP_DIR/scripts/migrations"
 BACKUP_DIR="/var/backups/chinese-app"
 PM2_BIN="/usr/bin/pm2"
+BUILD_DIR_NAME=".next-build"
+HEALTH_URL="http://127.0.0.1:3000/auth"
 
 [[ ! -d "$APP_DIR" ]] && error "$APP_DIR not found — run setup.sh first"
+
+as_app() { sudo -u $APP_USER bash -c "cd $APP_DIR && $1"; }
 
 # ── 1. Sync to origin/main exactly ───────────────────────────────────────────
 # `fetch + reset --hard` instead of `pull` so the box always mirrors origin —
 # immune to force-pushes, divergent local commits, or stray edits on the
 # server. The deploy box should never hold uncommitted work.
-info "Fetching latest code…"
+PREV_SHA=$(sudo -u $APP_USER git -C "$APP_DIR" rev-parse HEAD)
+info "Fetching latest code (currently at ${PREV_SHA:0:7})…"
 sudo -u $APP_USER git -C "$APP_DIR" fetch origin
 sudo -u $APP_USER git -C "$APP_DIR" reset --hard origin/main
+NEW_SHA=$(sudo -u $APP_USER git -C "$APP_DIR" rev-parse HEAD)
 
-# ── 2. Install deps + build (old app keeps serving during this) ──────────────
-info "Installing dependencies…"
-sudo -u $APP_USER bash -c "cd $APP_DIR && npm ci --silent"
+LOCK_CHANGED=0
+if ! sudo -u $APP_USER git -C "$APP_DIR" diff --quiet "$PREV_SHA" "$NEW_SHA" -- package-lock.json; then
+  LOCK_CHANGED=1
+fi
 
-info "Building (clean — wiping .next so Turbopack doesn't serve a stale chunk)…"
+# Put the checkout (and node_modules, if they changed) back to what the live
+# app is running, so the box never sits on code that isn't serving.
+revert_code() {
+  warn "Resetting code to previous commit ${PREV_SHA:0:7}…"
+  sudo -u $APP_USER git -C "$APP_DIR" reset --hard "$PREV_SHA"
+  if [[ $LOCK_CHANGED -eq 1 ]]; then as_app "npm ci --silent"; fi
+  sudo -u $APP_USER rm -rf "$APP_DIR/$BUILD_DIR_NAME"
+}
+
+# ── 2. Install deps (only when the lockfile changed) ─────────────────────────
+# Rewriting node_modules under a running process can break lazy requires, so
+# skip it when nothing changed.
+if [[ $LOCK_CHANGED -eq 1 || ! -d "$APP_DIR/node_modules" ]]; then
+  info "package-lock.json changed — installing dependencies…"
+  as_app "npm ci --silent"
+else
+  info "Dependencies unchanged — skipping npm ci."
+fi
+
+# ── 3. Build into a side directory (live app keeps serving .next) ────────────
+# Stale route typings in the live .next would fail the type check if a route
+# was removed; they aren't used at runtime, so drop them.
+sudo -u $APP_USER rm -rf "$APP_DIR/.next/types" "$APP_DIR/.next/dev"
+
 # Turbopack writes chunks via *.tmp.<hash> + atomic rename. On small EC2
 # boxes with EBS, an occasional I/O stall makes the rename fail with
-# ENOENT mid-build. Retry up to 3 times, wiping .next between each
+# ENOENT mid-build. Retry up to 3 times, wiping the build dir between each
 # attempt, before giving up.
+info "Building into $BUILD_DIR_NAME…"
 BUILD_ATTEMPTS=0
 BUILD_MAX_ATTEMPTS=3
 until [[ $BUILD_ATTEMPTS -ge $BUILD_MAX_ATTEMPTS ]]; do
   BUILD_ATTEMPTS=$((BUILD_ATTEMPTS + 1))
-  sudo -u $APP_USER rm -rf "$APP_DIR/.next"
-  if sudo -u $APP_USER bash -c "cd $APP_DIR && npm run build"; then
+  sudo -u $APP_USER rm -rf "$APP_DIR/$BUILD_DIR_NAME"
+  if as_app "NEXT_DIST_DIR=$BUILD_DIR_NAME npm run build"; then
     success "Build succeeded on attempt $BUILD_ATTEMPTS."
     break
   fi
@@ -61,11 +103,12 @@ until [[ $BUILD_ATTEMPTS -ge $BUILD_MAX_ATTEMPTS ]]; do
     warn "Build attempt $BUILD_ATTEMPTS failed — retrying."
     sleep 2
   else
-    error "Build failed after $BUILD_MAX_ATTEMPTS attempts. Inspect the output above."
+    revert_code
+    error "Build failed after $BUILD_MAX_ATTEMPTS attempts. Live app untouched. Inspect the output above."
   fi
 done
 
-# ── 3. Detect pending migrations ─────────────────────────────────────────────
+# ── 4. Detect pending migrations ─────────────────────────────────────────────
 PENDING=()
 if [[ -d "$MIGRATIONS_DIR" ]]; then
   # Ensure the tracker table exists (no-op if setup.sh already created it).
@@ -82,41 +125,88 @@ if [[ -d "$MIGRATIONS_DIR" ]]; then
   done < <(ls "$MIGRATIONS_DIR"/*.sql 2>/dev/null | sort)
 fi
 
-# ── 4. Apply migrations (if any) with a backup + brief downtime ──────────────
+# ── 5. Apply migrations (if any) with a backup + brief downtime ──────────────
+APP_STOPPED=0
 if [[ ${#PENDING[@]} -gt 0 ]]; then
   info "${#PENDING[@]} pending migration(s) to apply:"
   for m in "${PENDING[@]}"; do echo "         $(basename "$m")"; done
 
   mkdir -p "$BACKUP_DIR"
-  BACKUP_FILE="$BACKUP_DIR/$(date +%Y%m%d-%H%M%S)-pre-migration.sql"
+  BACKUP_FILE="$BACKUP_DIR/$(date +%Y%m%d-%H%M%S)-pre-migration.sql.gz"
   info "Backing up database to $BACKUP_FILE…"
-  sudo -u postgres pg_dump "$DB_NAME" > "$BACKUP_FILE"
+  if ! sudo -u postgres pg_dump "$DB_NAME" | gzip > "$BACKUP_FILE.tmp"; then
+    rm -f "$BACKUP_FILE.tmp"
+    revert_code
+    error "pg_dump failed — not applying migrations. Live app untouched."
+  fi
+  mv "$BACKUP_FILE.tmp" "$BACKUP_FILE"
   success "Backup written ($(du -h "$BACKUP_FILE" | cut -f1))"
 
   info "Stopping app to apply migrations safely…"
   sudo -u $APP_USER $PM2_BIN stop chinese-app || true
+  APP_STOPPED=1
 
+  # All pending migrations and their schema_migrations rows run in ONE
+  # transaction (-1): either everything applies or nothing does.
+  PSQL_ARGS=()
   for migration in "${PENDING[@]}"; do
     name=$(basename "$migration")
-    info "Applying $name…"
-    if sudo -u postgres psql -d "$DB_NAME" -v ON_ERROR_STOP=1 -f "$migration"; then
-      sudo -u postgres psql -d "$DB_NAME" -v ON_ERROR_STOP=1 -c \
-        "INSERT INTO schema_migrations (filename) VALUES ('$name');" >/dev/null
-      success "Applied $name"
-    else
-      warn "Migration $name failed — restore from $BACKUP_FILE with:"
-      warn "  sudo -u postgres psql -d $DB_NAME < $BACKUP_FILE"
-      sudo -u $APP_USER $PM2_BIN start chinese-app || true
-      error "Aborting deploy. App restarted on previous code."
-    fi
+    PSQL_ARGS+=(-f "$migration" -c "INSERT INTO schema_migrations (filename) VALUES ('$name');")
   done
-
-  info "Starting app on new code…"
-  sudo -u $APP_USER $PM2_BIN restart chinese-app
+  info "Applying migrations in a single transaction…"
+  if sudo -u postgres psql -d "$DB_NAME" -v ON_ERROR_STOP=1 -1 "${PSQL_ARGS[@]}"; then
+    success "Applied ${#PENDING[@]} migration(s)."
+  else
+    warn "Migration failed — transaction rolled back, database is unchanged."
+    revert_code
+    sudo -u $APP_USER $PM2_BIN start chinese-app || true
+    error "Aborting deploy. App restarted on previous build (${PREV_SHA:0:7})."
+  fi
 else
   info "No pending migrations."
-  info "Restarting app…"
+fi
+
+# ── 6. Swap the new build in and restart ─────────────────────────────────────
+info "Swapping in the new build…"
+sudo -u $APP_USER rm -rf "$APP_DIR/.next-old"
+if [[ -d "$APP_DIR/.next" ]]; then
+  sudo -u $APP_USER mv "$APP_DIR/.next" "$APP_DIR/.next-old"
+fi
+sudo -u $APP_USER mv "$APP_DIR/$BUILD_DIR_NAME" "$APP_DIR/.next"
+
+if [[ $APP_STOPPED -eq 1 ]]; then
+  sudo -u $APP_USER $PM2_BIN start chinese-app
+else
   sudo -u $APP_USER $PM2_BIN restart chinese-app
 fi
 
-success "Deploy complete — $(date)"
+# ── 7. Health check ──────────────────────────────────────────────────────────
+healthy=0
+for _ in $(seq 1 30); do
+  if curl -fsS -o /dev/null --max-time 5 "$HEALTH_URL"; then healthy=1; break; fi
+  sleep 1
+done
+
+if [[ $healthy -eq 1 ]]; then
+  success "Health check passed."
+elif [[ ${#PENDING[@]} -eq 0 && -d "$APP_DIR/.next-old" ]]; then
+  warn "Health check failed — rolling back to the previous build."
+  sudo -u $APP_USER rm -rf "$APP_DIR/.next-failed"
+  sudo -u $APP_USER mv "$APP_DIR/.next" "$APP_DIR/.next-failed"
+  sudo -u $APP_USER mv "$APP_DIR/.next-old" "$APP_DIR/.next"
+  revert_code
+  sudo -u $APP_USER $PM2_BIN restart chinese-app
+  error "Deploy rolled back to ${PREV_SHA:0:7}. Failed build kept in .next-failed for inspection."
+else
+  # Migrations already changed the schema, so the old code may not match it.
+  error "Health check failed after migrations — NOT rolling back automatically. Check: sudo -u $APP_USER $PM2_BIN logs chinese-app"
+fi
+
+# ── 8. Make sure the nightly backup cron is installed ────────────────────────
+cat > /etc/cron.d/chinese-app-backup <<CRON
+# Nightly PostgreSQL backup — installed by scripts/deploy.sh
+0 6 * * * root /bin/bash $APP_DIR/scripts/backup.sh >> /var/log/chinese-app-backup.log 2>&1
+CRON
+chmod 644 /etc/cron.d/chinese-app-backup
+
+success "Deploy complete — ${PREV_SHA:0:7} → ${NEW_SHA:0:7} — $(date)"
