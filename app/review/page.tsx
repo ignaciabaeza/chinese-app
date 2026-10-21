@@ -123,18 +123,21 @@ export default function ReviewPage() {
         easy:  rating === 4 ? s.easy + 1  : s.easy,
       }));
 
-      // advance
+      // Flip back first, and only swap in the next card once the flip is past
+      // its 90° midpoint (card-inner transition is 600ms; backface-visibility
+      // hides both faces there). Swapping in the same render as the unflip
+      // briefly showed the NEXT card's answer on the back face.
+      setFlipped(false);
       setTimeout(() => {
         if (index + 1 >= queue.length) {
           setPhase("finished");
         } else {
           setIndex((i) => i + 1);
-          setFlipped(false);
           startedAt.current = Date.now();
         }
         gradingRef.current = false;
         setTransitioning(false);
-      }, 220);
+      }, 320);
     },
     [phase, flipped, queue, index],
   );
@@ -145,7 +148,7 @@ export default function ReviewPage() {
     function onKey(e: KeyboardEvent) {
       if (e.code === "Space") {
         e.preventDefault();
-        setFlipped(true);
+        if (!gradingRef.current) setFlipped(true);
         return;
       }
       // R = replay audio (listening cards). Handled via custom event so the
@@ -227,7 +230,7 @@ export default function ReviewPage() {
         index={index}
         total={queue.length}
         flipped={flipped}
-        onReveal={() => setFlipped(true)}
+        onReveal={() => { if (!gradingRef.current) setFlipped(true); }}
         onGrade={(r) => void grade(r)}
         sessionStats={sessionStats}
       />
