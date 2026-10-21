@@ -71,9 +71,25 @@ if not DB_URL:
 
 
 async def synthesize(text: str, out_path: Path, voice: str = VOICE) -> None:
-    """Run edge-tts to produce out_path. Caller ensures parent dir exists."""
-    communicate = edge_tts.Communicate(text, voice)
-    await communicate.save(str(out_path))
+    """Run edge-tts to produce out_path. Caller ensures parent dir exists.
+
+    Writes to a temp file and renames on success, so a failed call (e.g. a 403
+    from the TTS service) never leaves an empty MP3 behind that a later run
+    would mistake for finished audio.
+    """
+    tmp = out_path.with_suffix(".mp3.tmp")
+    try:
+        communicate = edge_tts.Communicate(text, voice)
+        await communicate.save(str(tmp))
+        if tmp.stat().st_size == 0:
+            raise RuntimeError("TTS returned no audio")
+        tmp.replace(out_path)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
+def has_audio(path: Path) -> bool:
+    return path.exists() and path.stat().st_size > 0
 
 
 async def process_dialogue_lines(conn, cur) -> None:
@@ -87,6 +103,7 @@ async def process_dialogue_lines(conn, cur) -> None:
     print(f"[dialogue] {len(rows)} pending")
     if not rows:
         return
+    done = 0
 
     for i, row in enumerate(rows, start=1):
         rid = row["id"]
@@ -95,7 +112,7 @@ async def process_dialogue_lines(conn, cur) -> None:
         voice = SPEAKER_VOICE.get(speaker, DEFAULT_DIALOGUE_VOICE)
         out = DIALOGUE_DIR / f"{rid}.mp3"
         url = f"/audio/dialogue/{rid}.mp3"
-        if not out.exists():
+        if not has_audio(out):
             try:
                 await synthesize(text, out, voice)
             except Exception as e:  # noqa: BLE001
@@ -103,11 +120,12 @@ async def process_dialogue_lines(conn, cur) -> None:
                 continue
             await asyncio.sleep(INTER_CALL_DELAY_S)
         cur.execute("UPDATE dialogue_lines SET audio_path = %s WHERE id = %s", (url, rid))
+        done += 1
         if i % COMMIT_EVERY == 0:
             conn.commit()
             print(f"  · {i}/{len(rows)}")
     conn.commit()
-    print(f"[dialogue] done — committed {len(rows)} audio_path rows.")
+    print(f"[dialogue] done — {done}/{len(rows)} lines have audio.")
 
 
 async def process(
@@ -130,7 +148,7 @@ async def process(
         rid, text = row["id"], row["simplified"]
         out = out_dir / f"{rid}.mp3"
         url = f"{url_prefix}/{rid}.mp3"
-        if not out.exists():
+        if not has_audio(out):
             try:
                 await synthesize(text, out)
             except Exception as e:  # noqa: BLE001
