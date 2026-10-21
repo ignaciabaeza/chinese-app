@@ -190,7 +190,7 @@ fi
 # ── 7. Health check ──────────────────────────────────────────────────────────
 healthy=0
 for _ in $(seq 1 30); do
-  if curl -fsS -o /dev/null --max-time 5 "$HEALTH_URL"; then healthy=1; break; fi
+  if curl -fsS -o /dev/null --max-time 5 "$HEALTH_URL" 2>/dev/null; then healthy=1; break; fi
   sleep 1
 done
 
