@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { searchWords, getLevelCounts, type LevelFilter } from "@/lib/vocab";
+import { searchWords, getLevelCounts, parseLevelFilter, type LevelFilter } from "@/lib/vocab";
 
 export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 50;
+const MAX_PAGE = 1000;
 
 export default async function VocabPage({
   searchParams,
@@ -12,8 +13,10 @@ export default async function VocabPage({
 }) {
   const sp = await searchParams;
   const query = sp.q?.trim() ?? "";
-  const level = (sp.level as LevelFilter) ?? "all";
-  const page = Math.max(1, parseInt(sp.page ?? "1", 10) || 1);
+  // Unknown values (stale links, scanners) fall back to defaults instead of
+  // reaching SQL as NaN / astronomically large offsets.
+  const level = parseLevelFilter(sp.level);
+  const page = Math.min(MAX_PAGE, Math.max(1, parseInt(sp.page ?? "1", 10) || 1));
   const offset = (page - 1) * PAGE_SIZE;
 
   const [{ rows, total }, levelCounts] = await Promise.all([

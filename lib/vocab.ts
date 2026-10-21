@@ -36,6 +36,11 @@ export interface VocabCharacter {
 
 export type LevelFilter = "all" | `hsk2-${1 | 2 | 3 | 4 | 5 | 6}` | `hsk3-${1 | 2 | 3 | 4 | 5 | 6 | 7}`;
 
+/** Validate a ?level= value; anything unrecognised means "all". */
+export function parseLevelFilter(raw: string | undefined): LevelFilter {
+  return raw && /^(hsk2-[1-6]|hsk3-[1-7])$/.test(raw) ? (raw as LevelFilter) : "all";
+}
+
 export interface SearchOptions {
   query?: string;
   level?: LevelFilter;
