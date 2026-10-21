@@ -238,8 +238,13 @@ async function main() {
       // ── Reader text (Phase 5 behavior, unchanged) ────────────────────────
       const segments = segmentBody(seg, body, wordMap);
       const source = `hsk${level}-book`;
-      // Delete-then-insert so re-runs don't accumulate duplicates.
-      await pool.query("DELETE FROM texts WHERE source = $1 AND title = $2 AND user_id IS NULL", [source, title]);
+      // Delete-then-insert so re-runs don't accumulate duplicates. Match on the
+      // lesson prefix, not the full title, so a retitled lesson replaces its
+      // old reader text instead of leaving it behind.
+      await pool.query(
+        "DELETE FROM texts WHERE source = $1 AND title LIKE $2 AND user_id IS NULL",
+        [source, `HSK ${level} · 第${lesson.number}课 %`],
+      );
       await pool.query(
         `INSERT INTO texts (title, body, hsk_level, source, segments)
          VALUES ($1, $2, $3, $4, $5::jsonb)`,

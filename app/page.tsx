@@ -67,7 +67,7 @@ export default function Dashboard() {
           你好
         </h1>
         <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          HSK Standard Course · {totalAuthored} lessons available
+          HSK course · {totalAuthored} lessons available
         </p>
       </div>
 

@@ -2,81 +2,99 @@
   "id": "hsk2-10",
   "level": 2,
   "number": 10,
-  "title": { "hanzi": "别找了,手机在桌子上呢", "pinyin": "Bié zhǎo le, shǒujī zài zhuōzi shàng ne", "english": "Stop looking for your cell phone; it's on the desk" },
+  "title": { "hanzi": "别看手机了", "pinyin": "Bié kàn shǒujī le", "english": "Put your phone away" },
   "theme": "Daily Life",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "instruction": { "hanzi": "读一读，说说这些词语是什么意思。", "english": "Read the words and phrases aloud and say what they mean." },
     "items": [
-      { "hanzi": "西瓜",       "pinyin": "xīguā",        "english": "watermelon" },
-      { "hanzi": "鸡蛋",       "pinyin": "jīdàn",        "english": "(hen's) egg" },
-      { "hanzi": "休息",       "pinyin": "xiūxi",        "english": "to rest" },
-      { "hanzi": "吃药",       "pinyin": "chī yào",      "english": "to take medicine" },
-      { "hanzi": "手机",       "pinyin": "shǒujī",       "english": "cell phone" },
-      { "hanzi": "准备午饭",   "pinyin": "zhǔnbèi wǔfàn","english": "to prepare lunch" }
+      { "hanzi": "看手机", "pinyin": "kàn shǒujī", "english": "to look at one's phone" },
+      { "hanzi": "上课", "pinyin": "shàng kè", "english": "to go to class" },
+      { "hanzi": "帮助朋友", "pinyin": "bāngzhù péngyou", "english": "to help a friend" },
+      { "hanzi": "两个鸡蛋", "pinyin": "liǎng ge jīdàn", "english": "two eggs" },
+      { "hanzi": "一个西瓜", "pinyin": "yí ge xīguā", "english": "a watermelon" },
+      { "hanzi": "洗手", "pinyin": "xǐ shǒu", "english": "to wash one's hands" },
+      { "hanzi": "对身体好", "pinyin": "duì shēntǐ hǎo", "english": "good for your health" },
+      { "hanzi": "别说了", "pinyin": "bié shuō le", "english": "stop talking (about it)" }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在家里", "english": "At home" },
+      "title": { "hanzi": "在宿舍", "english": "In the dorm" },
       "audioRef": "10-1",
       "dialogue": [
-        { "speaker": "A", "hanzi": "不要看电视了,明天上午还有汉语课呢。", "pinyin": "Búyào kàn diànshì le, míngtiān shàngwǔ hái yǒu Hànyǔ kè ne.","english": "Stop watching TV. You'll have a Chinese class tomorrow morning." },
-        { "speaker": "B", "hanzi": "看电视对学汉语有帮助。",                "pinyin": "Kàn diànshì duì xué Hànyǔ yǒu bāngzhù.",                     "english": "Watching TV is good for Chinese learning." },
-        { "speaker": "A", "hanzi": "明天的课你都准备好了吗?",              "pinyin": "Míngtiān de kè nǐ dōu zhǔnbèi hǎo le ma?",                   "english": "Are you well prepared for tomorrow's lessons?" },
-        { "speaker": "B", "hanzi": "都准备好了。",                          "pinyin": "Dōu zhǔnbèi hǎo le.",                                        "english": "Yes, I am." }
+        { "speaker": "A", "hanzi": "王明，你正在做什么呢？", "pinyin": "Wáng Míng, nǐ zhèngzài zuò shénme ne?", "english": "Wang Ming, what are you doing right now?" },
+        { "speaker": "B", "hanzi": "我正在看手机呢。", "pinyin": "Wǒ zhèngzài kàn shǒujī ne.", "english": "I'm looking at my phone." },
+        { "speaker": "A", "hanzi": "别看手机了，现在已经八点四十了。", "pinyin": "Bié kàn shǒujī le, xiànzài yǐjīng bā diǎn sìshí le.", "english": "Put your phone down, it's already eight forty." },
+        { "speaker": "B", "hanzi": "九点有课吗？", "pinyin": "Jiǔ diǎn yǒu kè ma?", "english": "Do we have class at nine?" },
+        { "speaker": "A", "hanzi": "有，刘老师的汉语课。", "pinyin": "Yǒu, Liú lǎoshī de Hànyǔ kè.", "english": "Yes, Professor Liu's Chinese class." },
+        { "speaker": "B", "hanzi": "好，我不看了，我们走吧！", "pinyin": "Hǎo, wǒ bú kàn le, wǒmen zǒu ba!", "english": "OK, I'll stop. Let's go!" }
       ],
       "newWords": [
-        { "id": "hsk2_10_ke",      "hanzi": "课",   "pinyin": "kè",      "pos": "n.", "english": "class, lesson" },
-        { "id": "hsk2_10_bangzhu", "hanzi": "帮助", "pinyin": "bāngzhù", "pos": "v.", "english": "to help, to assist, to aid" }
+        { "id": "hsk2_10_zhengzai", "hanzi": "正在", "pinyin": "zhèngzài", "pos": "adv.", "english": "in the middle of (doing something)" },
+        { "id": "hsk2_10_shouji", "hanzi": "手机", "pinyin": "shǒujī", "pos": "n.", "english": "cell phone" },
+        { "id": "hsk2_10_bie", "hanzi": "别", "pinyin": "bié", "pos": "adv.", "english": "don't" },
+        { "id": "hsk2_10_ke", "hanzi": "课", "pinyin": "kè", "pos": "n.", "english": "class, lesson" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_10_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming" },
+        { "id": "hsk2_10_pn_liulaoshi", "hanzi": "刘老师", "pinyin": "Liú lǎoshī", "english": "Professor Liu" }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在医院", "english": "In the hospital" },
+      "title": { "hanzi": "在王明家的厨房", "english": "In the kitchen at Wang Ming's home" },
       "audioRef": "10-2",
       "dialogue": [
-        { "speaker": "A", "hanzi": "别看报纸了,医生说你要多休息。",       "pinyin": "Bié kàn bàozhǐ le, yīshēng shuō nǐ yào duō xiūxi.",     "english": "Stop reading the newspaper. The doctor said you need more rest." },
-        { "speaker": "B", "hanzi": "好,不看了。给我一杯茶吧。",            "pinyin": "Hǎo, bú kàn le. Gěi wǒ yì bēi chá ba.",                 "english": "OK. Give me a cup of tea." },
-        { "speaker": "A", "hanzi": "医生说吃药后两个小时不要喝茶。",       "pinyin": "Yīshēng shuō chī yào hòu liǎng ge xiǎoshí búyào hē chá.","english": "The doctor said you shouldn't drink tea for two hours after taking the medicine." },
-        { "speaker": "B", "hanzi": "医生还说什么了?",                        "pinyin": "Yīshēng hái shuō shénme le?",                            "english": "What else did the doctor say?" },
-        { "speaker": "A", "hanzi": "医生让你听我的。",                       "pinyin": "Yīshēng ràng nǐ tīng wǒ de.",                            "english": "The doctor said you should listen to me." }
+        { "speaker": "A", "hanzi": "哥哥，你在做什么呢？我来帮助你吧。", "pinyin": "Gēge, nǐ zài zuò shénme ne? Wǒ lái bāngzhù nǐ ba.", "english": "What are you making? Let me help you." },
+        { "speaker": "B", "hanzi": "谢谢你，安娜！我在做鸡蛋面条。", "pinyin": "Xièxie nǐ, Ānnà! Wǒ zài zuò jīdàn miàntiáo.", "english": "Thanks, Anna! I'm making egg noodles." },
+        { "speaker": "A", "hanzi": "要几个鸡蛋？", "pinyin": "Yào jǐ ge jīdàn?", "english": "How many eggs do you need?" },
+        { "speaker": "B", "hanzi": "四个。你能洗一下这些菜吗？", "pinyin": "Sì ge. Nǐ néng xǐ yíxià zhèxiē cài ma?", "english": "Four. Could you wash these vegetables?" },
+        { "speaker": "A", "hanzi": "没问题。", "pinyin": "Méi wèntí.", "english": "No problem." },
+        { "speaker": "B", "hanzi": "洗完菜你就别忙了，去休息一下吧。", "pinyin": "Xǐwán cài nǐ jiù bié máng le, qù xiūxi yíxià ba.", "english": "Once the vegetables are washed, stop working and go have a rest." },
+        { "speaker": "A", "hanzi": "没关系，我很喜欢做饭。", "pinyin": "Méi guānxi, wǒ hěn xǐhuan zuò fàn.", "english": "It's fine, I really like cooking." }
       ],
       "newWords": [
-        { "id": "hsk2_10_bie", "hanzi": "别", "pinyin": "bié", "pos": "adv.", "english": "don't" }
+        { "id": "hsk2_10_gege", "hanzi": "哥哥", "pinyin": "gēge", "pos": "n.", "english": "elder brother" },
+        { "id": "hsk2_10_bangzhu", "hanzi": "帮助", "pinyin": "bāngzhù", "pos": "v.", "english": "to help, to assist" },
+        { "id": "hsk2_10_jidan", "hanzi": "鸡蛋", "pinyin": "jīdàn", "pos": "n.", "english": "(hen's) egg" },
+        { "id": "hsk2_10_xi", "hanzi": "洗", "pinyin": "xǐ", "pos": "v.", "english": "to wash" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_10_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在家里", "english": "At home" },
+      "title": { "hanzi": "在水果店", "english": "At the fruit shop" },
       "audioRef": "10-3",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你怎么买了这么多东西啊?",                          "pinyin": "Nǐ zěnme mǎile zhème duō dōngxi a?",                                      "english": "Why did you buy so many things?" },
-        { "speaker": "B", "hanzi": "哥哥今天中午回来吃饭。",                            "pinyin": "Gēge jīntiān zhōngwǔ huílai chī fàn.",                                    "english": "Our elder brother is coming back for lunch." },
-        { "speaker": "A", "hanzi": "我看看买什么了。羊肉、鸡蛋、面条、西瓜……真不少!妈妈呢?", "pinyin": "Wǒ kànkan mǎi shénme le. Yángròu, jīdàn, miàntiáo, xīguā… zhēn bù shǎo! Māma ne?","english": "Let me see — mutton, eggs, noodles, watermelon… That's a lot! Where's Mom?" },
-        { "speaker": "B", "hanzi": "正在准备午饭呢!",                                   "pinyin": "Zhèngzài zhǔnbèi wǔfàn ne!",                                              "english": "She's preparing lunch!" }
+        { "speaker": "A", "hanzi": "你好，西瓜多少钱一斤？", "pinyin": "Nǐ hǎo, xīguā duōshao qián yì jīn?", "english": "Hi, how much is the watermelon per jin?" },
+        { "speaker": "B", "hanzi": "3块一斤。今天的西瓜很好吃。", "pinyin": "Sān kuài yì jīn. Jīntiān de xīguā hěn hǎochī.", "english": "Three kuai a jin. Today's watermelons are really good." },
+        { "speaker": "A", "hanzi": "天气这么热，我每天都想吃西瓜。", "pinyin": "Tiānqì zhème rè, wǒ měi tiān dōu xiǎng chī xīguā.", "english": "It's so hot, I want watermelon every day." },
+        { "speaker": "B", "hanzi": "多吃水果对身体好。", "pinyin": "Duō chī shuǐguǒ duì shēntǐ hǎo.", "english": "Eating lots of fruit is good for you." },
+        { "speaker": "A", "hanzi": "那我要这个大的，再买一些苹果。", "pinyin": "Nà wǒ yào zhège dà de, zài mǎi yìxiē píngguǒ.", "english": "Then I'll take this big one, and some apples too." },
+        { "speaker": "B", "hanzi": "好的，一共四十块。", "pinyin": "Hǎo de, yígòng sìshí kuài.", "english": "Sure, that's forty kuai altogether." }
       ],
       "newWords": [
-        { "id": "hsk2_10_gege",     "hanzi": "哥哥", "pinyin": "gēge",     "pos": "n.",   "english": "elder brother" },
-        { "id": "hsk2_10_jidan",    "hanzi": "鸡蛋", "pinyin": "jīdàn",    "pos": "n.",   "english": "(hen's) egg" },
-        { "id": "hsk2_10_xigua",    "hanzi": "西瓜", "pinyin": "xīguā",    "pos": "n.",   "english": "watermelon" },
-        { "id": "hsk2_10_zhengzai", "hanzi": "正在", "pinyin": "zhèngzài", "pos": "adv.", "english": "in the process of" }
-      ]
+        { "id": "hsk2_10_xigua", "hanzi": "西瓜", "pinyin": "xīguā", "pos": "n.", "english": "watermelon" }
+      ],
+      "properNouns": []
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在家里", "english": "At home" },
+      "title": { "hanzi": "马克的一天", "english": "A day in Mark's life" },
       "audioRef": "10-4",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你在找什么?",                                "pinyin": "Nǐ zài zhǎo shénme?",                                "english": "What are you looking for?" },
-        { "speaker": "B", "hanzi": "你看见我的手机了吗?白色的。",                "pinyin": "Nǐ kànjiàn wǒ de shǒujī le ma? Báisè de.",          "english": "Have you seen my cell phone? The white one." },
-        { "speaker": "A", "hanzi": "别找了,手机在桌子上呢,电脑旁边。",        "pinyin": "Bié zhǎo le, shǒujī zài zhuōzi shàng ne, diànnǎo pángbiān.","english": "Stop looking. It's on the desk, beside the computer." },
-        { "speaker": "B", "hanzi": "你看见我的衣服了吗?红色的那件。",          "pinyin": "Nǐ kànjiàn wǒ de yīfu le ma? Hóngsè de nà jiàn.",    "english": "Have you seen my garment? The red one." },
-        { "speaker": "A", "hanzi": "那件衣服我帮你洗了,在外边呢。",            "pinyin": "Nà jiàn yīfu wǒ bāng nǐ xǐ le, zài wàibian ne.",    "english": "I washed it for you. It's hung outside." }
+        { "speaker": "A", "hanzi": "我是马克。我每天早上六点起床，去学校旁边跑步。", "pinyin": "Wǒ shì Mǎkè. Wǒ měi tiān zǎoshang liù diǎn qǐ chuáng, qù xuéxiào pángbiān pǎo bù.", "english": "I am Mark. Every morning I get up at six and go running next to the school." },
+        { "speaker": "A", "hanzi": "跑步对身体很好。", "pinyin": "Pǎo bù duì shēntǐ hěn hǎo.", "english": "Running is very good for your health." },
+        { "speaker": "A", "hanzi": "回家以后，我先洗手，再吃两个鸡蛋，喝一杯牛奶。", "pinyin": "Huí jiā yǐhòu, wǒ xiān xǐ shǒu, zài chī liǎng ge jīdàn, hē yì bēi niúnǎi.", "english": "When I get home, I wash my hands first, then eat two eggs and drink a glass of milk." },
+        { "speaker": "A", "hanzi": "晚上我很喜欢看手机。", "pinyin": "Wǎnshang wǒ hěn xǐhuan kàn shǒujī.", "english": "In the evening I love looking at my phone." },
+        { "speaker": "A", "hanzi": "我妈妈常常在电话里说：\"别看手机了，早点儿睡觉！\"", "pinyin": "Wǒ māma chángcháng zài diànhuà li shuō: \"Bié kàn shǒujī le, zǎo diǎnr shuì jiào!\"", "english": "My mom often says on the phone: \"Stop looking at your phone and go to bed early!\"" }
       ],
-      "newWords": [
-        { "id": "hsk2_10_shouji", "hanzi": "手机", "pinyin": "shǒujī", "pos": "n.", "english": "cell phone" },
-        { "id": "hsk2_10_xi",     "hanzi": "洗",   "pinyin": "xǐ",     "pos": "v.", "english": "to wash, to bathe" }
+      "newWords": [],
+      "properNouns": [
+        { "id": "hsk2_10_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" }
       ]
     }
   ],
@@ -84,20 +102,23 @@
     {
       "id": "hsk2_10_g_bie",
       "number": 1,
-      "title": { "hanzi": "祈使句:不要……了;别……了", "english": "The Imperative Sentence \"不要……了 / 别……了\"" },
+      "title": { "hanzi": "\"不要……了\"和\"别……了\"", "english": "\"不要……了\" and \"别……了\": Telling Someone to Stop" },
       "explanation": {
-        "hanzi": "表示劝阻或禁止做某件事情。",
-        "english": "Used to dissuade or forbid someone from doing something."
+        "hanzi": "\"别\"和\"不要\"放在动词前面，用来叫别人不做某件事。如果这件事正在进行，句末加\"了\"，意思是\"现在停下来\"。\"别\"比\"不要\"更口语化，语气也比较轻。",
+        "english": "别 (bié) and 不要 (búyào) go before a verb to tell someone not to do something. When the action is already happening, add 了 at the end of the sentence: the meaning becomes \"stop doing it now\". 别看手机了 is \"Stop looking at your phone\", not \"Never look at your phone\". 别 is more colloquial and a little softer than 不要."
       },
+      "examples": [
+        { "hanzi": "别看电视了，我们去跑步吧。", "pinyin": "Bié kàn diànshì le, wǒmen qù pǎo bù ba.", "english": "Stop watching TV, let's go for a run." },
+        { "hanzi": "不要喝咖啡了，喝一杯水吧。", "pinyin": "Búyào hē kāfēi le, hē yì bēi shuǐ ba.", "english": "Stop drinking coffee and have a glass of water." },
+        { "hanzi": "你别忙了，坐下休息一下。", "pinyin": "Nǐ bié máng le, zuòxià xiūxi yíxià.", "english": "Stop rushing around, sit down and rest a bit." },
+        { "hanzi": "别说了，我已经知道了。", "pinyin": "Bié shuō le, wǒ yǐjīng zhīdào le.", "english": "Say no more, I already know." }
+      ],
       "patternTable": {
-        "columns": ["不要 / 别", "V (+O)", "了"],
+        "columns": ["(主语 Subject)", "别 / 不要", "动词短语 Verb phrase", "了"],
         "rows": [
-          ["不要", "玩手机", "了。"],
-          ["不要", "做饭",   "了。"],
-          ["不要", "看电视", "了。"],
-          ["别",   "睡觉",   "了。"],
-          ["别",   "看书",   "了。"],
-          ["别",   "看报纸", "了。"]
+          ["", "别", "看手机", "了"],
+          ["你", "不要", "喝咖啡", "了"],
+          ["你们", "别", "看电视", "了"]
         ]
       }
     },
@@ -106,41 +127,93 @@
       "number": 2,
       "title": { "hanzi": "介词\"对\"", "english": "The Preposition \"对\"" },
       "explanation": {
-        "hanzi": "介词\"对\"可以表示人和人、人和事物、事物和事物之间的对待关系。",
-        "english": "\"对\" indicates a relation between people, between people and things, or between things — \"toward, to, for\"."
+        "hanzi": "介词\"对\"放在名词或代词前面，说明一个动作或者一种态度是向着谁或什么的。常用格式：\"A 对 B + 形容词\"，比如\"跑步对身体好\"、\"老师对我们很好\"。注意：形容词在\"对……\"的后面。",
+        "english": "The preposition 对 (duì) introduces the person or thing that something is directed at, like \"to\" or \"for\". A common pattern is \"A 对 B + adjective\": 跑步对身体好 \"Running is good for your health\", 老师对我们很好 \"The teacher is good to us\". Note the word order: the 对 phrase comes before the adjective, never after it."
       },
+      "examples": [
+        { "hanzi": "多吃水果对身体好。", "pinyin": "Duō chī shuǐguǒ duì shēntǐ hǎo.", "english": "Eating lots of fruit is good for your health." },
+        { "hanzi": "刘老师对我们很好。", "pinyin": "Liú lǎoshī duì wǒmen hěn hǎo.", "english": "Professor Liu is very good to us." },
+        { "hanzi": "晚上喝咖啡对身体不好。", "pinyin": "Wǎnshang hē kāfēi duì shēntǐ bù hǎo.", "english": "Drinking coffee in the evening is bad for you." },
+        { "hanzi": "他哥哥对我很好。", "pinyin": "Tā gēge duì wǒ hěn hǎo.", "english": "His older brother is very kind to me." }
+      ],
       "patternTable": {
-        "columns": ["Subject", "对", "Object", "V / Adj"],
+        "columns": ["A", "对", "B", "形容词 Adj."],
         "rows": [
-          ["跑步",     "对", "身体", "很好。"],
-          ["老师",     "对", "学生", "非常好。"],
-          ["看电视",   "对", "学汉语","有帮助。"]
+          ["跑步", "对", "身体", "很好"],
+          ["刘老师", "对", "我们", "很好"],
+          ["看手机", "对", "眼睛", "不好"]
         ]
       }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking one role each." }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据课文回答问题。", "english": "Answer the questions based on the texts." },
       "items": [
-        { "hanzi": "孩子们正在做什么?",                  "pinyin": "Háizimen zhèngzài zuò shénme?" },
-        { "hanzi": "妈妈为什么不让他们看电视了?",         "pinyin": "Māma wèi shénme bú ràng tāmen kàn diànshì le?" },
-        { "hanzi": "吃药以后可以喝茶吗?",                 "pinyin": "Chī yào yǐhòu kěyǐ hē chá ma?" },
-        { "hanzi": "他今天都买了什么东西?为什么要买这么多?", "pinyin": "Tā jīntiān dōu mǎile shénme dōngxi? Wèi shénme yào mǎi zhème duō?" },
-        { "hanzi": "你知道男的正在找什么吗?",             "pinyin": "Nǐ zhīdào nán de zhèngzài zhǎo shénme ma?" }
+        { "hanzi": "王明正在做什么？", "pinyin": "Wáng Míng zhèngzài zuò shénme?", "english": "What is Wang Ming doing?" },
+        { "hanzi": "安娜帮助哥哥做什么？", "pinyin": "Ānnà bāngzhù gēge zuò shénme?", "english": "What does Anna help the older brother do?" },
+        { "hanzi": "西瓜多少钱一斤？", "pinyin": "Xīguā duōshao qián yì jīn?", "english": "How much is watermelon per jin?" },
+        { "hanzi": "马克早上吃什么？", "pinyin": "Mǎkè zǎoshang chī shénme?", "english": "What does Mark eat in the morning?" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": { "hanzi": "用\"别、对、正在、洗、帮助\"填空。", "english": "Fill in the blanks with 别, 对, 正在, 洗 or 帮助." },
+      "items": [
+        { "hanzi": "____看电视了，我们去吃饭吧。", "english": "Stop watching TV, let's go eat.", "blank": "别" },
+        { "hanzi": "每天跑步____身体很好。", "english": "Running every day is very good for you.", "blank": "对" },
+        { "hanzi": "哥哥____做饭呢。", "english": "My older brother is cooking right now.", "blank": "正在" },
+        { "hanzi": "吃饭以前要____手。", "english": "You should wash your hands before eating.", "blank": "洗" },
+        { "hanzi": "谢谢你____我学习汉语。", "english": "Thank you for helping me learn Chinese.", "blank": "帮助" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": { "hanzi": "给每句话找到合适的回答。", "english": "Match each line with a suitable reply." },
+      "items": [
+        { "hanzi": "别看手机了！ — 好，我不看了。", "pinyin": "Bié kàn shǒujī le! — Hǎo, wǒ bú kàn le.", "english": "Stop looking at your phone! — OK, I'll stop." },
+        { "hanzi": "你在做什么呢？ — 我在洗苹果呢。", "pinyin": "Nǐ zài zuò shénme ne? — Wǒ zài xǐ píngguǒ ne.", "english": "What are you doing? — I'm washing apples." },
+        { "hanzi": "我来帮助你吧。 — 谢谢你！", "pinyin": "Wǒ lái bāngzhù nǐ ba. — Xièxie nǐ!", "english": "Let me help you. — Thank you!" },
+        { "hanzi": "明天有课吗？ — 有，上午十点。", "pinyin": "Míngtiān yǒu kè ma? — Yǒu, shàngwǔ shí diǎn.", "english": "Is there class tomorrow? — Yes, at ten in the morning." }
       ]
     }
   ],
   "characters": {
+    "singleComponentChars": [
+      {
+        "id": "hsk2_10_c_gua",
+        "hanzi": "瓜",
+        "pinyin": "guā",
+        "meaning": "melon, gourd",
+        "etymology": "The outer strokes are a climbing vine, and the shape hanging in the middle is a round fruit on it. It appears in 西瓜, literally \"western melon\", because the fruit reached China from the west.",
+        "strokeCount": 5
+      }
+    ],
     "radicals": [
-      { "hanzi": "走", "pinyin": "zǒu zì páng", "english": "walk (related to running or walking)", "examples": ["超 chāo (to exceed, to surpass)", "起 qǐ (to get up, to rise)"] },
-      { "hanzi": "穴", "pinyin": "xué zì tóu",  "english": "cave (related to holes, caves, houses)","examples": ["空 kōng (empty)", "穿 chuān (to pierce through, to penetrate)"] }
+      { "hanzi": "走", "pinyin": "zǒu zì páng", "english": "walk (related to moving on foot)", "examples": ["走 zǒu (to walk)", "起 qǐ (to get up)", "赶 gǎn (to hurry)", "超 chāo (to overtake)", "趣 qù (interest)"] },
+      { "hanzi": "穴", "pinyin": "xué bǎo gài", "english": "cave, hole (related to openings and hollow spaces)", "examples": ["穿 chuān (to wear; to pass through)", "空 kōng (empty)", "窗 chuāng (window)", "究 jiū (to study closely)"] }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组，谈谈你们的一天。", "english": "In pairs, talk about your daily routines." },
+    "activities": [
+      "Describe your morning like Mark: what time you get up, what you eat, and one thing you do that is good for your health (……对身体很好).",
+      "\"Annoying roommate\": one partner keeps doing something (looking at the phone, watching TV, drinking coffee late at night); the other tells them to stop with 别……了 or 不要……了, and gives a reason using 对……不好.",
+      "Phone call: A calls B and asks 你正在做什么呢？ B answers with 我正在……呢, then A offers 我来帮助你吧.",
+      "Fruit shop role play: buy watermelon and apples, ask the price per jin, and say why fruit is good for you."
     ]
   },
   "culture": {
-    "title": { "hanzi": "中国的茶文化", "english": "Chinese Tea Culture" },
-    "body": "Chinese people love drinking tea. Tea is both delicious and beneficial to health. It can refresh you, help defer aging, prevent disease, and even support weight loss.\n\nThere are many kinds of Chinese tea — black tea (红茶), non-fermented green tea (绿茶), half-fermented green tea (青茶/oolong), and scented tea (花茶). People drink different kinds in different seasons: scented tea in spring, green tea in summer, oolong in autumn, and black tea in winter.\n\nIf you ever get the chance to visit China, be sure to experience Chinese tea culture firsthand."
+    "title": { "hanzi": "公园里的早上", "english": "Mornings in a Chinese park" },
+    "body": "If you walk into a Chinese park at 6:30 in the morning, you will find it already full. Retired people are the early risers: some practise tai chi (太极拳 tàijíquán) in slow, quiet rows, others swing their arms, walk backwards, or stretch against a tree. For many older people, this daily exercise is simply 对身体好 (duì shēntǐ hǎo), good for the body, and the park is free.\n\nAs evening falls the music gets louder. Groups of mostly middle-aged women gather in squares and car parks for 广场舞 (guǎngchǎngwǔ), \"square dancing\": a portable speaker, a leader at the front, and dozens of dancers following the same steps. It is exercise, a social club and a neighbourhood news network all at once, although neighbours who want quiet sometimes complain about the volume.\n\nParks are also where people sing together, play cards or Chinese chess, write characters on the ground with a big brush dipped in water, or walk a bird in its cage. If you want to practise your Chinese, a park bench in the morning is a great place: older people are often happy to chat with a curious foreigner, and the first question will probably be 你是哪国人？"
   }
 }

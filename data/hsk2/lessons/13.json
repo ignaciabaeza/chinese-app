@@ -2,84 +2,104 @@
   "id": "hsk2-13",
   "level": 2,
   "number": 13,
-  "title": { "hanzi": "门开着呢", "pinyin": "Mén kāi zhe ne", "english": "The door is open" },
+  "title": { "hanzi": "一直往前走", "pinyin": "Yìzhí wǎng qián zǒu", "english": "Go straight ahead" },
   "theme": "States & Directions",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words." },
+    "instruction": { "hanzi": "读一读，说说这些词语是什么意思。", "english": "Read the words and phrases aloud and say what they mean." },
     "items": [
-      { "hanzi": "铅笔",   "pinyin": "qiānbǐ",  "english": "pencil" },
-      { "hanzi": "手",     "pinyin": "shǒu",    "english": "hand" },
-      { "hanzi": "宾馆",   "pinyin": "bīnguǎn", "english": "hotel" },
-      { "hanzi": "拿",     "pinyin": "ná",      "english": "to hold, to take" },
-      { "hanzi": "眼睛",   "pinyin": "yǎnjing", "english": "eye" },
-      { "hanzi": "路口",   "pinyin": "lùkǒu",   "english": "crossing, crossroads" }
+      { "hanzi": "手里拿着", "pinyin": "shǒu li názhe", "english": "holding (something) in one's hand" },
+      { "hanzi": "铅笔", "pinyin": "qiānbǐ", "english": "pencil" },
+      { "hanzi": "门开着", "pinyin": "mén kāizhe", "english": "the door is open" },
+      { "hanzi": "笑着说", "pinyin": "xiàozhe shuō", "english": "to say with a smile" },
+      { "hanzi": "长高了", "pinyin": "zhǎng gāo le", "english": "has grown taller" },
+      { "hanzi": "宾馆", "pinyin": "bīnguǎn", "english": "hotel" },
+      { "hanzi": "一直往前走", "pinyin": "yìzhí wǎng qián zǒu", "english": "go straight ahead" },
+      { "hanzi": "第二个路口", "pinyin": "dì-èr ge lùkǒu", "english": "the second crossroads" }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在办公室", "english": "In the office" },
+      "title": { "hanzi": "在教室", "english": "In the classroom" },
       "audioRef": "13-1",
       "dialogue": [
-        { "speaker": "A", "hanzi": "门开着呢,请进。",                  "pinyin": "Mén kāi zhe ne, qǐng jìn.",                  "english": "The door is open. Come on in." },
-        { "speaker": "B", "hanzi": "请问,张先生在吗?",                "pinyin": "Qǐngwèn, Zhāng xiānsheng zài ma?",          "english": "Excuse me, is Mr. Zhang in?" },
-        { "speaker": "A", "hanzi": "他出去了。你下午再来吧。",          "pinyin": "Tā chūqu le. Nǐ xiàwǔ zài lái ba.",          "english": "He's gone out. Please come in the afternoon." },
-        { "speaker": "B", "hanzi": "好的,谢谢!",                       "pinyin": "Hǎo de, xièxie!",                            "english": "OK. Thank you!" }
+        { "speaker": "A", "hanzi": "马克，你手里拿着什么？", "pinyin": "Mǎkè, nǐ shǒu li názhe shénme?", "english": "Mark, what's that in your hand?" },
+        { "speaker": "B", "hanzi": "铅笔。这是你的铅笔吗？", "pinyin": "Qiānbǐ. Zhè shì nǐ de qiānbǐ ma?", "english": "A pencil. Is this your pencil?" },
+        { "speaker": "A", "hanzi": "是我的！我找了一个上午。", "pinyin": "Shì wǒ de! Wǒ zhǎole yí ge shàngwǔ.", "english": "It's mine! I've been looking for it all morning." },
+        { "speaker": "B", "hanzi": "在你的椅子下面找到的。", "pinyin": "Zài nǐ de yǐzi xiàmiàn zhǎodào de.", "english": "I found it under your chair." },
+        { "speaker": "A", "hanzi": "太谢谢你了！", "pinyin": "Tài xièxie nǐ le!", "english": "Thanks so much!" },
+        { "speaker": "B", "hanzi": "不客气。你看，教室的门开着，刘老师来了吗？", "pinyin": "Bú kèqi. Nǐ kàn, jiàoshì de mén kāizhe, Liú lǎoshī láile ma?", "english": "You're welcome. Look, the classroom door is open. Is Professor Liu here?" },
+        { "speaker": "A", "hanzi": "来了，她在里面等着我们呢。", "pinyin": "Lái le, tā zài lǐmiàn děngzhe wǒmen ne.", "english": "Yes, she's inside waiting for us." }
       ],
       "newWords": [
-        { "id": "hsk2_13_zhe", "hanzi": "着", "pinyin": "zhe", "pos": "part.", "english": "used to indicate a state" }
+        { "id": "hsk2_13_shou", "hanzi": "手", "pinyin": "shǒu", "pos": "n.", "english": "hand" },
+        { "id": "hsk2_13_na", "hanzi": "拿", "pinyin": "ná", "pos": "v.", "english": "to hold, to take, to bring" },
+        { "id": "hsk2_13_zhe", "hanzi": "着", "pinyin": "zhe", "pos": "part.", "english": "used to indicate a continuing state" },
+        { "id": "hsk2_13_qianbi", "hanzi": "铅笔", "pinyin": "qiānbǐ", "pos": "n.", "english": "pencil" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_13_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" },
+        { "id": "hsk2_13_pn_liulaoshi", "hanzi": "刘老师", "pinyin": "Liú lǎoshī", "english": "Professor Liu" }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在办公室", "english": "In the office" },
+      "title": { "hanzi": "在王明家", "english": "At Wang Ming's home" },
       "audioRef": "13-2",
       "dialogue": [
-        { "speaker": "A", "hanzi": "那个正在说话的女孩儿是谁?",                            "pinyin": "Nàge zhèngzài shuō huà de nǚháir shì shéi?",                                       "english": "Who is the girl speaking?" },
-        { "speaker": "B", "hanzi": "我知道她的名字,她姓杨,叫杨笑笑,她姐姐是我同学。",   "pinyin": "Wǒ zhīdào tā de míngzi, tā xìng Yáng, jiào Yáng Xiàoxiao, tā jiějie shì wǒ tóngxué.","english": "I know her name. She's Yang Xiaoxiao — Yang is her family name. Her older sister is my classmate." },
-        { "speaker": "A", "hanzi": "那个手里拿着铅笔的呢?",                               "pinyin": "Nàge shǒu li názhe qiānbǐ de ne?",                                                 "english": "What about the girl with a pencil in her hand?" },
-        { "speaker": "B", "hanzi": "我不认识。",                                            "pinyin": "Wǒ bú rènshi.",                                                                    "english": "I don't know her." }
+        { "speaker": "A", "hanzi": "王明，电脑上这个孩子是谁？", "pinyin": "Wáng Míng, diànnǎo shang zhège háizi shì shéi?", "english": "Wang Ming, who's this child on the computer?" },
+        { "speaker": "B", "hanzi": "是小美。那时候她五岁。", "pinyin": "Shì Xiǎoměi. Nà shíhou tā wǔ suì.", "english": "That's Xiaomei. She was five then." },
+        { "speaker": "A", "hanzi": "她笑着看我们，真漂亮！", "pinyin": "Tā xiàozhe kàn wǒmen, zhēn piàoliang!", "english": "She's smiling at us. She's so pretty!" },
+        { "speaker": "B", "hanzi": "现在她十岁了，长高了很多。", "pinyin": "Xiànzài tā shí suì le, zhǎng gāo le hěn duō.", "english": "She's ten now and she's grown a lot taller." },
+        { "speaker": "A", "hanzi": "她还是那么爱笑吗？", "pinyin": "Tā háishi nàme ài xiào ma?", "english": "Does she still smile that much?" },
+        { "speaker": "B", "hanzi": "是啊，她每天都笑着去上学。", "pinyin": "Shì a, tā měi tiān dōu xiàozhe qù shàngxué.", "english": "Yes, she goes to school with a smile every day." },
+        { "speaker": "A", "hanzi": "我想见见她！", "pinyin": "Wǒ xiǎng jiànjian tā!", "english": "I'd love to meet her!" },
+        { "speaker": "B", "hanzi": "好啊，星期六她会来我家。", "pinyin": "Hǎo a, xīngqīliù tā huì lái wǒ jiā.", "english": "Sure, she's coming to my place on Saturday." }
       ],
       "newWords": [
-        { "id": "hsk2_13_shou",   "hanzi": "手",   "pinyin": "shǒu",   "pos": "n.", "english": "hand" },
-        { "id": "hsk2_13_na",     "hanzi": "拿",   "pinyin": "ná",     "pos": "v.", "english": "to hold, to take, to bring" },
-        { "id": "hsk2_13_qianbi", "hanzi": "铅笔", "pinyin": "qiānbǐ", "pos": "n.", "english": "pencil" }
+        { "id": "hsk2_13_xiao", "hanzi": "笑", "pinyin": "xiào", "pos": "v.", "english": "to smile, to laugh" },
+        { "id": "hsk2_13_zhang", "hanzi": "长", "pinyin": "zhǎng", "pos": "v.", "english": "to grow, to develop" }
       ],
       "properNouns": [
-        { "id": "hsk2_13_yangxiaoxiao", "hanzi": "杨笑笑", "pinyin": "Yáng Xiàoxiao", "english": "Yang Xiaoxiao, name of a person" }
+        { "id": "hsk2_13_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming" },
+        { "id": "hsk2_13_pn_xiaomei", "hanzi": "小美", "pinyin": "Xiǎoměi", "english": "Xiaomei" }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在运动场", "english": "On the playground" },
+      "title": { "hanzi": "在路上", "english": "On the street" },
       "audioRef": "13-3",
       "dialogue": [
-        { "speaker": "A", "hanzi": "听说你有女朋友了?我认识她吗?",                                "pinyin": "Tīngshuō nǐ yǒu nǚpéngyou le? Wǒ rènshi tā ma?",                                          "english": "I heard you have a girlfriend now. Do I know her?" },
-        { "speaker": "B", "hanzi": "就是我们班那个长着两个大眼睛,非常爱笑的女孩儿。",            "pinyin": "Jiùshì wǒmen bān nàge zhǎngzhe liǎng ge dà yǎnjing, fēicháng ài xiào de nǚháir.",         "english": "She's the girl in our class with big eyes and a smiling face." },
-        { "speaker": "A", "hanzi": "她不是有男朋友吗?",                                              "pinyin": "Tā bú shì yǒu nánpéngyou ma?",                                                              "english": "Doesn't she already have a boyfriend?" },
-        { "speaker": "B", "hanzi": "那个已经是她的前男友了。",                                       "pinyin": "Nàge yǐjīng shì tā de qián nányǒu le.",                                                    "english": "That guy is already her ex." }
+        { "speaker": "A", "hanzi": "请问，学校的宾馆怎么走？", "pinyin": "Qǐngwèn, xuéxiào de bīnguǎn zěnme zǒu?", "english": "Excuse me, how do I get to the university hotel?" },
+        { "speaker": "B", "hanzi": "你一直往前走，到第二个路口往右边走。", "pinyin": "Nǐ yìzhí wǎng qián zǒu, dào dì-èr ge lùkǒu wǎng yòubian zǒu.", "english": "Go straight ahead, and at the second crossroads turn right." },
+        { "speaker": "A", "hanzi": "第二个路口？离这儿远吗？", "pinyin": "Dì-èr ge lùkǒu? Lí zhèr yuǎn ma?", "english": "The second crossroads? Is it far from here?" },
+        { "speaker": "B", "hanzi": "不远，走十分钟就到了。", "pinyin": "Bù yuǎn, zǒu shí fēnzhōng jiù dào le.", "english": "Not far. It's just a ten-minute walk." },
+        { "speaker": "A", "hanzi": "宾馆在路的左边还是右边？", "pinyin": "Bīnguǎn zài lù de zuǒbian háishi yòubian?", "english": "Is the hotel on the left or the right side of the street?" },
+        { "speaker": "B", "hanzi": "在左边，宾馆旁边有一个小商店。", "pinyin": "Zài zuǒbian, bīnguǎn pángbiān yǒu yí ge xiǎo shāngdiàn.", "english": "On the left. There's a little shop next to it." },
+        { "speaker": "A", "hanzi": "我知道了，谢谢您！", "pinyin": "Wǒ zhīdào le, xièxie nín!", "english": "Got it. Thank you!" }
       ],
       "newWords": [
-        { "id": "hsk2_13_ban",   "hanzi": "班",   "pinyin": "bān",   "pos": "n.", "english": "class, grade, team" },
-        { "id": "hsk2_13_zhang", "hanzi": "长",   "pinyin": "zhǎng", "pos": "v.", "english": "to grow, to develop" },
-        { "id": "hsk2_13_xiao",  "hanzi": "笑",   "pinyin": "xiào",  "pos": "v.", "english": "to smile, to laugh" }
+        { "id": "hsk2_13_binguan", "hanzi": "宾馆", "pinyin": "bīnguǎn", "pos": "n.", "english": "hotel" },
+        { "id": "hsk2_13_yizhi", "hanzi": "一直", "pinyin": "yìzhí", "pos": "adv.", "english": "straight, all along" },
+        { "id": "hsk2_13_wang", "hanzi": "往", "pinyin": "wǎng", "pos": "prep.", "english": "to, towards" },
+        { "id": "hsk2_13_lukou", "hanzi": "路口", "pinyin": "lùkǒu", "pos": "n.", "english": "crossing, crossroads" }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在路上", "english": "On the road" },
+      "title": { "hanzi": "在教学楼门口", "english": "At the entrance of the classroom building" },
       "audioRef": "13-4",
       "dialogue": [
-        { "speaker": "A", "hanzi": "请问,这儿离新京宾馆远吗?",                                "pinyin": "Qǐngwèn, zhèr lí Xīnjīng Bīnguǎn yuǎn ma?",                                       "english": "Excuse me, is the Xinjing Hotel far from here?" },
-        { "speaker": "B", "hanzi": "不远,走路二十分钟就到。",                                  "pinyin": "Bù yuǎn, zǒu lù èrshí fēnzhōng jiù dào.",                                         "english": "No, it's only a 20-minute walk." },
-        { "speaker": "A", "hanzi": "你能告诉我怎么走吗?",                                     "pinyin": "Nǐ néng gàosu wǒ zěnme zǒu ma?",                                                  "english": "Could you tell me how to get there?" },
-        { "speaker": "B", "hanzi": "从这儿一直往前走,到了前面的路口再往右走。",               "pinyin": "Cóng zhèr yìzhí wǎng qián zǒu, dàole qiánmiàn de lùkǒu zài wǎng yòu zǒu.",        "english": "Walk straight ahead from here and turn right at the next crossing." }
+        { "speaker": "A", "hanzi": "刘老师，您手里拿着这么多书！", "pinyin": "Liú lǎoshī, nín shǒu li názhe zhème duō shū!", "english": "Professor Liu, you're carrying so many books!" },
+        { "speaker": "B", "hanzi": "是啊，这些书都是给我们班的。", "pinyin": "Shì a, zhèxiē shū dōu shì gěi wǒmen bān de.", "english": "Yes, these books are all for our class." },
+        { "speaker": "A", "hanzi": "我帮您拿吧。", "pinyin": "Wǒ bāng nín ná ba.", "english": "Let me carry them for you." },
+        { "speaker": "B", "hanzi": "谢谢你，马克。你今天不是有考试吗？", "pinyin": "Xièxie nǐ, Mǎkè. Nǐ jīntiān bú shì yǒu kǎoshì ma?", "english": "Thank you, Mark. Don't you have an exam today?" },
+        { "speaker": "A", "hanzi": "是，下午三点开始，现在还早呢。", "pinyin": "Shì, xiàwǔ sān diǎn kāishǐ, xiànzài hái zǎo ne.", "english": "I do, but it starts at three this afternoon. It's still early." },
+        { "speaker": "B", "hanzi": "那好，我们一起往教室走吧。", "pinyin": "Nà hǎo, wǒmen yìqǐ wǎng jiàoshì zǒu ba.", "english": "All right, let's walk to the classroom together." },
+        { "speaker": "A", "hanzi": "您看，班里的同学都在门口等着您呢。", "pinyin": "Nín kàn, bān li de tóngxué dōu zài ménkǒu děngzhe nín ne.", "english": "Look, everyone in the class is waiting for you at the door." }
       ],
       "newWords": [
-        { "id": "hsk2_13_binguan", "hanzi": "宾馆", "pinyin": "bīnguǎn", "pos": "n.",    "english": "hotel" },
-        { "id": "hsk2_13_yizhi",   "hanzi": "一直", "pinyin": "yìzhí",   "pos": "adv.",  "english": "straight, all along" },
-        { "id": "hsk2_13_wang",    "hanzi": "往",   "pinyin": "wǎng",    "pos": "prep.", "english": "to, towards" },
-        { "id": "hsk2_13_lukou",   "hanzi": "路口", "pinyin": "lùkǒu",   "pos": "n.",    "english": "crossing, crossroads" }
+        { "id": "hsk2_13_ban", "hanzi": "班", "pinyin": "bān", "pos": "n.", "english": "class, grade, team" }
       ]
     }
   ],
@@ -87,37 +107,40 @@
     {
       "id": "hsk2_13_g_zhe",
       "number": 1,
-      "title": { "hanzi": "结构助词\"着\"", "english": "The Structural Particle \"着\"" },
+      "title": { "hanzi": "动态助词\"着\"", "english": "The Particle \"着\" (a Continuing State)" },
       "explanation": {
-        "hanzi": "动词加上结构助词\"着\"可以表示某种状态的持续。否定形式在动词前加\"没\"。疑问形式在句末加\"没有\"。",
-        "english": "Verb + 着 indicates the continuation of a state. The negative form adds 没 before the verb. The yes/no question form adds 没有 at the end."
-      },
-      "patternTable": {
-        "columns": ["Subject", "V", "着", "Object"],
-        "rows": [
-          ["门",   "开", "着。", ""],
-          ["他们", "穿", "着",  "红色的衣服。"],
-          ["(她)", "拿", "着",  "铅笔。"]
-        ]
+        "hanzi": "\"动词＋着\"表示一个动作完成以后留下的状态还在继续，比如\"门开着\"\"他穿着红衣服\"。\"V1着＋V2\"表示做第二个动作的方式，比如\"笑着说\"\"拿着书走\"。否定形式是\"没（有）＋动词＋着\"。",
+        "english": "Verb + 着 (zhe) describes a state that continues after an action: 门开着 \"the door is (standing) open\", 他手里拿着铅笔 \"he's holding a pencil\". It paints a picture of how things are right now, so it often goes with 呢 at the end. In the pattern V1着 + V2, the first verb tells you the manner of the second: 笑着说 \"to say with a smile\", 拿着书去教室 \"to go to class carrying books\". The negative is 没(有) + verb + 着: 门没开着 \"the door isn't open\"."
       },
       "examples": [
-        { "hanzi": "门没开着。",         "pinyin": "Mén méi kāi zhe.",          "english": "The door isn't open." },
-        { "hanzi": "他们没穿着红色的衣服。", "pinyin": "Tāmen méi chuān zhe hóngsè de yīfu.", "english": "They aren't wearing red clothes." },
-        { "hanzi": "门开着没有?",         "pinyin": "Mén kāi zhe méiyǒu?",       "english": "Is the door open?" }
-      ]
+        { "hanzi": "教室的门开着呢。", "pinyin": "Jiàoshì de mén kāizhe ne.", "english": "The classroom door is open." },
+        { "hanzi": "安娜手里拿着一本书。", "pinyin": "Ānnà shǒu li názhe yì běn shū.", "english": "Anna is holding a book." },
+        { "hanzi": "刘老师笑着说：\"很好！\"", "pinyin": "Liú lǎoshī xiàozhe shuō: \"Hěn hǎo!\"", "english": "Professor Liu said with a smile, \"Very good!\"" },
+        { "hanzi": "王明穿着一件黑色的衣服。", "pinyin": "Wáng Míng chuānzhe yí jiàn hēisè de yīfu.", "english": "Wang Ming is wearing black clothes." }
+      ],
+      "patternTable": {
+        "columns": ["主语 Subject", "动词＋着 Verb + 着", "宾语 Object"],
+        "rows": [
+          ["门", "开着", ""],
+          ["马克", "拿着", "铅笔"],
+          ["她", "穿着", "红衣服"],
+          ["小美", "笑着", "说"]
+        ]
+      }
     },
     {
       "id": "hsk2_13_g_bushima",
       "number": 2,
-      "title": { "hanzi": "反问句\"不是……吗\"", "english": "The Rhetorical Question \"不是……吗\"" },
+      "title": { "hanzi": "反问句\"不是……吗？\"", "english": "The Rhetorical Question \"不是……吗？\"" },
       "explanation": {
-        "hanzi": "\"不是……吗\"常用来表示提醒或者表达说话人的不理解、不满等。",
-        "english": "\"不是……吗\" is often used to remind someone of something, or to express confusion or dissatisfaction (\"isn't it…?\", \"didn't you…?\")."
+        "hanzi": "\"不是……吗？\"是反问句，说话人心里已经有答案，用这个句子来强调，或者表示有点儿奇怪、想让对方想起一件事。意思是\"……是这样的\"。",
+        "english": "不是……吗? looks like a question, but the speaker already believes the answer is \"yes\". It means \"Isn't it true that...?\" and is used to remind someone of something, to stress a point, or to show surprise when things don't match what you expected: 你不是有考试吗? \"Don't you have an exam (so why are you here)?\" Put 不是 before the part you want to stress and 吗 at the end."
       },
       "examples": [
-        { "hanzi": "不是说今天有雨吗?怎么没下?",         "pinyin": "Bú shì shuō jīntiān yǒu yǔ ma? Zěnme méi xià?",         "english": "Didn't they say it would rain today? How come it didn't?" },
-        { "hanzi": "你不是北京人吗?怎么不会说北京话?",   "pinyin": "Nǐ bú shì Běijīng rén ma? Zěnme bú huì shuō Běijīng huà?","english": "Aren't you from Beijing? How come you can't speak the Beijing dialect?" },
-        { "hanzi": "(她是你的女朋友?)她不是有男朋友了吗?","pinyin": "(Tā shì nǐ de nǚpéngyou?) Tā bú shì yǒu nánpéngyou le ma?","english": "(She's your girlfriend?) Doesn't she already have a boyfriend?" }
+        { "hanzi": "你不是喜欢吃鱼吗？", "pinyin": "Nǐ bú shì xǐhuan chī yú ma?", "english": "Don't you like fish?" },
+        { "hanzi": "今天不是星期六吗？你怎么去学校了？", "pinyin": "Jīntiān bú shì xīngqīliù ma? Nǐ zěnme qù xuéxiào le?", "english": "Isn't today Saturday? Why did you go to school?" },
+        { "hanzi": "这不是你的铅笔吗？", "pinyin": "Zhè bú shì nǐ de qiānbǐ ma?", "english": "Isn't this your pencil?" },
+        { "hanzi": "他不是我们班的同学吗？", "pinyin": "Tā bú shì wǒmen bān de tóngxué ma?", "english": "Isn't he a classmate from our class?" }
       ]
     },
     {
@@ -125,34 +148,90 @@
       "number": 3,
       "title": { "hanzi": "介词\"往\"", "english": "The Preposition \"往\"" },
       "explanation": {
-        "hanzi": "介词\"往\"常常用来指示方向。",
-        "english": "\"往\" is used to indicate direction (\"to/toward\")."
+        "hanzi": "\"往＋方向/地方＋动词\"表示动作的方向。常用的有\"往前走\"\"往左边走\"\"往右边看\"\"往教室走\"。问路、指路的时候很常用。",
+        "english": "往 (wǎng) means \"towards\". Put it before a direction or a place, then add the verb: 往前走 \"walk forward\", 往右边走 \"go to the right\", 往外面看 \"look outside\", 往教室走 \"head towards the classroom\". It's the key word for asking and giving directions, often together with 一直 \"straight on\" and 到……路口 \"at the ... crossroads\"."
       },
       "examples": [
-        { "hanzi": "从这儿往前走,就是我们学校。",         "pinyin": "Cóng zhèr wǎng qián zǒu, jiù shì wǒmen xuéxiào.",         "english": "Walk straight ahead from here and you'll reach our school." },
-        { "hanzi": "你看,往左走是医院,往右走是银行。",   "pinyin": "Nǐ kàn, wǎng zuǒ zǒu shì yīyuàn, wǎng yòu zǒu shì yínháng.","english": "Look — to the left is the hospital, to the right is the bank." },
-        { "hanzi": "从这儿一直往前走,到了前面的路口再往右走。", "pinyin": "Cóng zhèr yìzhí wǎng qián zǒu, dàole qiánmiàn de lùkǒu zài wǎng yòu zǒu.","english": "Walk straight ahead from here, and at the next crossing turn right." }
-      ]
+        { "hanzi": "你一直往前走。", "pinyin": "Nǐ yìzhí wǎng qián zǒu.", "english": "Keep going straight ahead." },
+        { "hanzi": "到路口往左边走。", "pinyin": "Dào lùkǒu wǎng zuǒbian zǒu.", "english": "Turn left at the crossroads." },
+        { "hanzi": "你们往这儿看！", "pinyin": "Nǐmen wǎng zhèr kàn!", "english": "Look over here, everyone!" },
+        { "hanzi": "我们往宾馆走吧。", "pinyin": "Wǒmen wǎng bīnguǎn zǒu ba.", "english": "Let's head towards the hotel." }
+      ],
+      "patternTable": {
+        "columns": ["往", "方向/地方 Direction/Place", "动词 Verb"],
+        "rows": [
+          ["往", "前", "走"],
+          ["往", "右边", "走"],
+          ["往", "外面", "看"],
+          ["往", "教室", "走"]
+        ]
+      }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking one role each." }
+    },
+    {
+      "number": 2,
+      "type": "fill_blanks",
+      "prompt": { "hanzi": "用\"着、往、一直、拿、笑\"填空。", "english": "Fill in the blanks with 着, 往, 一直, 拿 or 笑." },
       "items": [
-        { "hanzi": "张先生去哪儿了?",         "pinyin": "Zhāng xiānsheng qù nǎr le?" },
-        { "hanzi": "杨笑笑是谁?",             "pinyin": "Yáng Xiàoxiao shì shéi?" },
-        { "hanzi": "他的女朋友是谁?",         "pinyin": "Tā de nǚpéngyou shì shéi?" },
-        { "hanzi": "\"前男友\"是什么意思?",   "pinyin": "\"Qián nányǒu\" shì shénme yìsi?" },
-        { "hanzi": "去新京宾馆怎么走?",       "pinyin": "Qù Xīnjīng Bīnguǎn zěnme zǒu?" }
+        { "hanzi": "教室的门开____呢。", "english": "The classroom door is open.", "blank": "着" },
+        { "hanzi": "你____往前走，就到宾馆了。", "english": "Keep going straight and you'll reach the hotel.", "blank": "一直" },
+        { "hanzi": "到第二个路口____右边走。", "english": "Turn right at the second crossroads.", "blank": "往" },
+        { "hanzi": "他手里____着一个杯子。", "english": "He's holding a cup.", "blank": "拿" },
+        { "hanzi": "小美____着说：\"我十岁了！\"", "english": "Xiaomei said with a smile, \"I'm ten!\"", "blank": "笑" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据你的情况回答问题。", "english": "Answer the questions about yourself." },
+      "items": [
+        { "hanzi": "你手里拿着什么？", "pinyin": "Nǐ shǒu li názhe shénme?", "english": "What are you holding?" },
+        { "hanzi": "你们班有多少个学生？", "pinyin": "Nǐmen bān yǒu duōshao ge xuésheng?", "english": "How many students are in your class?" },
+        { "hanzi": "你今天穿着什么颜色的衣服？", "pinyin": "Nǐ jīntiān chuānzhe shénme yánsè de yīfu?", "english": "What color are you wearing today?" },
+        { "hanzi": "从你家去学校，怎么走？", "pinyin": "Cóng nǐ jiā qù xuéxiào, zěnme zǒu?", "english": "How do you get from your home to school?" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": { "hanzi": "找出合适的回答。", "english": "Match each question with a suitable answer." },
+      "items": [
+        { "hanzi": "你不是喜欢喝咖啡吗？ — 是，今天我想喝茶。", "pinyin": "Nǐ bú shì xǐhuan hē kāfēi ma? — Shì, jīntiān wǒ xiǎng hē chá.", "english": "Don't you like coffee? — I do, but today I feel like tea." },
+        { "hanzi": "请问，宾馆怎么走？ — 一直往前走，就在路口旁边。", "pinyin": "Qǐngwèn, bīnguǎn zěnme zǒu? — Yìzhí wǎng qián zǒu, jiù zài lùkǒu pángbiān.", "english": "Excuse me, how do I get to the hotel? — Go straight on. It's right by the crossroads." },
+        { "hanzi": "你怎么笑了？ — 小美说的话太好笑了。", "pinyin": "Nǐ zěnme xiào le? — Xiǎoměi shuō de huà tài hǎoxiào le.", "english": "What are you laughing at? — What Xiaomei said was so funny." },
+        { "hanzi": "刘老师在吗？ — 在，她在教室里等着你呢。", "pinyin": "Liú lǎoshī zài ma? — Zài, tā zài jiàoshì li děngzhe nǐ ne.", "english": "Is Professor Liu here? — Yes, she's waiting for you in the classroom." }
       ]
     }
   ],
   "characters": {
+    "singleComponentChars": [
+      {
+        "id": "hsk2_13_c_shou",
+        "hanzi": "手",
+        "pinyin": "shǒu",
+        "meaning": "hand",
+        "etymology": "Originally a drawing of an open hand: the long hooked stroke is the arm and the short strokes across it are the spread fingers. On the left side of a character it shrinks to 扌, as in 打 and 找.",
+        "strokeCount": 4
+      }
+    ],
     "radicals": [
-      { "hanzi": "斤", "pinyin": "jīn zì páng", "english": "axe (related to chopping or cutting)", "examples": ["新 xīn (new)", "所 suǒ (place)"] },
-      { "hanzi": "页", "pinyin": "yè zì páng",  "english": "page (related to the human head/face)","examples": ["颜 yán (face, look)", "须 xū (beard, mustache)"] }
+      { "hanzi": "斤", "pinyin": "jīn zì páng", "english": "axe (originally a hand axe; now also a unit of weight)", "examples": ["斤 jīn (half a kilo)", "近 jìn (near)", "新 xīn (new)", "所 suǒ (place; as in 所以)", "听 tīng (to listen)"] },
+      { "hanzi": "页", "pinyin": "yè zì biān", "english": "head (originally a drawing of a head; related to the head and face)", "examples": ["题 tí (topic, question)", "颜 yán (face, color)", "顾 gù (to look after)", "须 xū (must; beard)"] }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组，问路、指路，说说别人在做什么。", "english": "In pairs, ask for and give directions, and describe what people are doing." },
+    "activities": [
+      "Draw a simple map of the streets around your school with a hotel, a shop, a restaurant and a hospital. A asks 请问，……怎么走？ and B answers with 一直往前走 / 到第……个路口往左边（右边）走.",
+      "Look around the room and describe five things with 着: 门开着, 他手里拿着……, 她穿着…… Your partner guesses who or what you mean.",
+      "Remind your partner of things with 不是……吗？: 你不是喜欢……吗？ / 今天不是……吗？ Your partner explains why plans have changed.",
+      "Show a photo of yourself or a family member as a child and say how they've changed: 那时候……岁，现在长高了很多。"
     ]
   }
 }

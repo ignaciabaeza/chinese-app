@@ -2,80 +2,349 @@
   "id": "hsk2-8",
   "level": 2,
   "number": 8,
-  "title": { "hanzi": "让我想想再告诉你", "pinyin": "Ràng wǒ xiǎngxiang zài gàosu nǐ", "english": "Let me think about it and I'll tell you later" },
+  "title": {
+    "hanzi": "刘老师让我告诉你",
+    "pinyin": "Liú lǎoshī ràng wǒ gàosu nǐ",
+    "english": "Professor Liu asked me to tell you"
+  },
   "theme": "Decisions & Choices",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words." },
+    "instruction": {
+      "hanzi": "读一读，说说这些词语是什么意思。",
+      "english": "Read the words and phrases aloud and say what they mean."
+    },
     "items": [
-      { "hanzi": "黑",       "pinyin": "hēi",      "english": "black" },
-      { "hanzi": "天气",     "pinyin": "tiānqì",   "english": "weather" },
-      { "hanzi": "运动",     "pinyin": "yùndòng",  "english": "sport, exercise" },
-      { "hanzi": "服务员",   "pinyin": "fúwùyuán", "english": "attendant, waiter" },
-      { "hanzi": "等",       "pinyin": "děng",     "english": "to wait" },
-      { "hanzi": "白",       "pinyin": "bái",      "english": "white" }
+      {
+        "hanzi": "白的",
+        "pinyin": "bái de",
+        "english": "the white one"
+      },
+      {
+        "hanzi": "黑的",
+        "pinyin": "hēi de",
+        "english": "the black one"
+      },
+      {
+        "hanzi": "太贵了",
+        "pinyin": "tài guì le",
+        "english": "too expensive"
+      },
+      {
+        "hanzi": "服务员",
+        "pinyin": "fúwùyuán",
+        "english": "waiter, waitress"
+      },
+      {
+        "hanzi": "找朋友",
+        "pinyin": "zhǎo péngyou",
+        "english": "to look for a friend"
+      },
+      {
+        "hanzi": "告诉我",
+        "pinyin": "gàosu wǒ",
+        "english": "tell me"
+      },
+      {
+        "hanzi": "等一下",
+        "pinyin": "děng yíxià",
+        "english": "wait a moment"
+      },
+      {
+        "hanzi": "明天再来",
+        "pinyin": "míngtiān zài lái",
+        "english": "to come again tomorrow"
+      }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在教室", "english": "In the classroom" },
-      "audioRef": "08-1",
+      "title": {
+        "hanzi": "在商店",
+        "english": "In a clothes shop"
+      },
+      "audioRef": "8-1",
       "dialogue": [
-        { "speaker": "A", "hanzi": "我们下午去看电影,好吗?",                "pinyin": "Wǒmen xiàwǔ qù kàn diànyǐng, hǎo ma?",               "english": "Let's go see a movie this afternoon, shall we?" },
-        { "speaker": "B", "hanzi": "今天下午我没有时间,明天下午再去吧。",  "pinyin": "Jīntiān xiàwǔ wǒ méiyǒu shíjiān, míngtiān xiàwǔ zài qù ba.","english": "I'm not free this afternoon. Let's go tomorrow afternoon." },
-        { "speaker": "A", "hanzi": "你想看什么电影?",                       "pinyin": "Nǐ xiǎng kàn shénme diànyǐng?",                       "english": "Which movie would you like to see?" },
-        { "speaker": "B", "hanzi": "让我想想再告诉你。",                     "pinyin": "Ràng wǒ xiǎngxiang zài gàosu nǐ.",                    "english": "Let me think about it and I'll tell you later." }
+        {
+          "speaker": "A",
+          "hanzi": "马克，你看，这件白的衣服怎么样？",
+          "pinyin": "Mǎkè, nǐ kàn, zhè jiàn bái de yīfu zěnmeyàng?",
+          "english": "Mark, look. What do you think of this white top?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "很漂亮！多少钱？",
+          "pinyin": "Hěn piàoliang! Duōshao qián?",
+          "english": "It's lovely! How much is it?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "1200块。",
+          "pinyin": "Yìqiān èrbǎi kuài.",
+          "english": "1,200 yuan."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "太贵了！那件黑的呢？",
+          "pinyin": "Tài guì le! Nà jiàn hēi de ne?",
+          "english": "That's way too expensive! What about the black one?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "黑的不贵，300块。",
+          "pinyin": "Hēi de bú guì, sānbǎi kuài.",
+          "english": "The black one isn't expensive. It's 300."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我觉得黑的也很好看。",
+          "pinyin": "Wǒ juéde hēi de yě hěn hǎokàn.",
+          "english": "I think the black one looks good too."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想想……好，我买黑的！",
+          "pinyin": "Wǒ xiǎngxiang... Hǎo, wǒ mǎi hēi de!",
+          "english": "Let me think... OK, I'll take the black one!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_8_zai",   "hanzi": "再",   "pinyin": "zài",   "pos": "adv.", "english": "again, once more" },
-        { "id": "hsk2_8_rang",  "hanzi": "让",   "pinyin": "ràng",  "pos": "v.",   "english": "to let, to allow" },
-        { "id": "hsk2_8_gaosu", "hanzi": "告诉", "pinyin": "gàosu", "pos": "v.",   "english": "to tell" }
+        {
+          "id": "hsk2_8_bai",
+          "hanzi": "白",
+          "pinyin": "bái",
+          "pos": "adj.",
+          "english": "white"
+        },
+        {
+          "id": "hsk2_8_gui",
+          "hanzi": "贵",
+          "pinyin": "guì",
+          "pos": "adj.",
+          "english": "expensive"
+        },
+        {
+          "id": "hsk2_8_hei",
+          "hanzi": "黑",
+          "pinyin": "hēi",
+          "pos": "adj.",
+          "english": "black"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_8_pn_make",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark"
+        }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在宿舍", "english": "In the dorm" },
-      "audioRef": "08-2",
+      "title": {
+        "hanzi": "在饭馆",
+        "english": "At a restaurant"
+      },
+      "audioRef": "8-2",
       "dialogue": [
-        { "speaker": "A", "hanzi": "外边天气很好,我们出去运动运动吧!",                "pinyin": "Wàibian tiānqì hěn hǎo, wǒmen chūqu yùndòng yùndòng ba!",                "english": "It's a nice day outside. Let's go out to exercise." },
-        { "speaker": "B", "hanzi": "你等等我,好吗?王老师让我给大卫打个电话。",      "pinyin": "Nǐ děngdeng wǒ, hǎo ma? Wáng lǎoshī ràng wǒ gěi Dàwèi dǎ ge diànhuà.",  "english": "Please wait for me a minute, will you? Professor Wang asked me to call David." },
-        { "speaker": "A", "hanzi": "回来再打吧。找大卫有什么事情吗?",                  "pinyin": "Huílai zài dǎ ba. Zhǎo Dàwèi yǒu shénme shìqing ma?",                    "english": "Call him after we come back. What's the matter?" },
-        { "speaker": "B", "hanzi": "听说大卫病了,我想找时间去看看他。",                "pinyin": "Tīngshuō Dàwèi bìng le, wǒ xiǎng zhǎo shíjiān qù kànkan tā.",            "english": "I heard David is sick. I want to find time to go visit him." }
+        {
+          "speaker": "A",
+          "hanzi": "服务员，我们三个人。",
+          "pinyin": "Fúwùyuán, wǒmen sān ge rén.",
+          "english": "Excuse me, a table for three, please."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，这边请。现在点菜吗？",
+          "pinyin": "Hǎo, zhèbian qǐng. Xiànzài diǎn cài ma?",
+          "english": "Sure, this way please. Would you like to order now?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我们还有一个朋友没到，十分钟以后再点菜，好吗？",
+          "pinyin": "Wǒmen hái yǒu yí ge péngyou méi dào, shí fēnzhōng yǐhòu zài diǎn cài, hǎo ma?",
+          "english": "One of our friends isn't here yet. We'll order in ten minutes, if that's OK?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好的。你们先喝点儿茶吧。",
+          "pinyin": "Hǎo de. Nǐmen xiān hē diǎnr chá ba.",
+          "english": "Of course. Have some tea first."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢！我去门口找找他。",
+          "pinyin": "Xièxie! Wǒ qù ménkǒu zhǎozhao tā.",
+          "english": "Thanks! I'll go and look for him at the door."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_8_deng",   "hanzi": "等",   "pinyin": "děng",   "pos": "v.", "english": "to wait, to await" },
-        { "id": "hsk2_8_zhao",   "hanzi": "找",   "pinyin": "zhǎo",   "pos": "v.", "english": "to look for" },
-        { "id": "hsk2_8_shiqing","hanzi": "事情", "pinyin": "shìqing","pos": "n.", "english": "thing, matter, affair" }
+        {
+          "id": "hsk2_8_fuwuyuan",
+          "hanzi": "服务员",
+          "pinyin": "fúwùyuán",
+          "pos": "n.",
+          "english": "attendant, waiter/waitress"
+        },
+        {
+          "id": "hsk2_8_zai",
+          "hanzi": "再",
+          "pinyin": "zài",
+          "pos": "adv.",
+          "english": "again, once more"
+        },
+        {
+          "id": "hsk2_8_zhao",
+          "hanzi": "找",
+          "pinyin": "zhǎo",
+          "pos": "v.",
+          "english": "to look for"
+        }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在宾馆的前台", "english": "At the front desk of a hotel" },
-      "audioRef": "08-3",
+      "title": {
+        "hanzi": "打电话",
+        "english": "On the phone"
+      },
+      "audioRef": "8-3",
       "dialogue": [
-        { "speaker": "A", "hanzi": "服务员,我房间的门打不开了。", "pinyin": "Fúwùyuán, wǒ fángjiān de mén dǎ bu kāi le.", "english": "Excuse me, I can't open my door." },
-        { "speaker": "B", "hanzi": "您住哪个房间?",                "pinyin": "Nín zhù nǎge fángjiān?",                       "english": "Which room are you in?" },
-        { "speaker": "A", "hanzi": "317。",                          "pinyin": "Sān yāo qī.",                                   "english": "Room 317." },
-        { "speaker": "B", "hanzi": "好的,我叫人去看看。",          "pinyin": "Hǎo de, wǒ jiào rén qù kànkan.",               "english": "OK. I'll send someone to have a look." }
+        {
+          "speaker": "A",
+          "hanzi": "喂，安娜，你在做什么呢？",
+          "pinyin": "Wèi, Ānnà, nǐ zài zuò shénme ne?",
+          "english": "Hello, Anna, what are you up to?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我在家看书呢。有什么事情吗？",
+          "pinyin": "Wǒ zài jiā kàn shū ne. Yǒu shénme shìqing ma?",
+          "english": "I'm at home reading. What's up?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "刘老师让我告诉你，明天的考试是下午两点。",
+          "pinyin": "Liú lǎoshī ràng wǒ gàosu nǐ, míngtiān de kǎoshì shì xiàwǔ liǎng diǎn.",
+          "english": "Ms. Liu asked me to tell you that tomorrow's exam is at two in the afternoon."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "下午两点？好，我知道了。",
+          "pinyin": "Xiàwǔ liǎng diǎn? Hǎo, wǒ zhīdào le.",
+          "english": "Two p.m.? OK, got it."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "老师还让我们早一点儿到教室。",
+          "pinyin": "Lǎoshī hái ràng wǒmen zǎo yìdiǎnr dào jiàoshì.",
+          "english": "She also wants us to get to the classroom a bit early."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "谢谢你告诉我！考试以后我们一起去吃饭，好吗？",
+          "pinyin": "Xièxie nǐ gàosu wǒ! Kǎoshì yǐhòu wǒmen yìqǐ qù chī fàn, hǎo ma?",
+          "english": "Thanks for letting me know! Shall we go and eat together after the exam?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好啊！",
+          "pinyin": "Hǎo a!",
+          "english": "Sure!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_8_fuwuyuan", "hanzi": "服务员", "pinyin": "fúwùyuán", "pos": "n.", "english": "attendant, waiter/waitress" }
+        {
+          "id": "hsk2_8_shiqing",
+          "hanzi": "事情",
+          "pinyin": "shìqing",
+          "pos": "n.",
+          "english": "thing, matter, affair"
+        },
+        {
+          "id": "hsk2_8_rang",
+          "hanzi": "让",
+          "pinyin": "ràng",
+          "pos": "v.",
+          "english": "to let, to allow"
+        },
+        {
+          "id": "hsk2_8_gaosu",
+          "hanzi": "告诉",
+          "pinyin": "gàosu",
+          "pos": "v.",
+          "english": "to tell"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_8_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        },
+        {
+          "id": "hsk2_8_pn_liulaoshi",
+          "hanzi": "刘老师",
+          "pinyin": "Liú lǎoshī",
+          "english": "Ms. Liu (teacher)"
+        }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在商店", "english": "In a store" },
-      "audioRef": "08-4",
+      "title": {
+        "hanzi": "小美的星期六",
+        "english": "Xiaomei's Saturday"
+      },
+      "audioRef": "8-4",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你看看这几件衣服怎么样。",                       "pinyin": "Nǐ kànkan zhè jǐ jiàn yīfu zěnmeyàng.",                          "english": "What do you think of these dresses?" },
-        { "speaker": "B", "hanzi": "这件白的有点儿长,那件黑的有点儿贵。",          "pinyin": "Zhè jiàn bái de yǒudiǎnr cháng, nà jiàn hēi de yǒudiǎnr guì.",  "english": "This white one is a bit too long. That black one is a bit expensive." },
-        { "speaker": "A", "hanzi": "这件红的呢?这是今天新来的。",                   "pinyin": "Zhè jiàn hóng de ne? Zhè shì jīntiān xīn lái de.",               "english": "What about this red one? This one has just got here today." },
-        { "speaker": "B", "hanzi": "让我再看看。",                                    "pinyin": "Ràng wǒ zài kànkan.",                                            "english": "Let me look again." }
+        {
+          "speaker": "A",
+          "hanzi": "星期六早上，我想去打篮球。",
+          "pinyin": "Xīngqīliù zǎoshang, wǒ xiǎng qù dǎ lánqiú.",
+          "english": "On Saturday morning I wanted to go and play basketball."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "妈妈说：“你先看一个小时书，再去打篮球，好吗？”",
+          "pinyin": "Māma shuō: \"Nǐ xiān kàn yí ge xiǎoshí shū, zài qù dǎ lánqiú, hǎo ma?\"",
+          "english": "Mom said, \"Read for an hour first, and then go and play basketball. OK?\""
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想了想，说：“好吧。”",
+          "pinyin": "Wǒ xiǎngle xiǎng, shuō: \"Hǎo ba.\"",
+          "english": "I thought it over and said, \"All right.\""
+        },
+        {
+          "speaker": "A",
+          "hanzi": "看了一个小时书以后，我去找朋友。",
+          "pinyin": "Kànle yí ge xiǎoshí shū yǐhòu, wǒ qù zhǎo péngyou.",
+          "english": "After an hour of reading, I went to find my friends."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "他们都在等我呢！",
+          "pinyin": "Tāmen dōu zài děng wǒ ne!",
+          "english": "They were all waiting for me!"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我们一起打了两个小时篮球，真高兴！",
+          "pinyin": "Wǒmen yìqǐ dǎle liǎng ge xiǎoshí lánqiú, zhēn gāoxìng!",
+          "english": "We played basketball together for two hours. It was great!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_8_bai", "hanzi": "白", "pinyin": "bái", "pos": "adj.", "english": "white" },
-        { "id": "hsk2_8_hei", "hanzi": "黑", "pinyin": "hēi", "pos": "adj.", "english": "black" },
-        { "id": "hsk2_8_gui", "hanzi": "贵", "pinyin": "guì", "pos": "adj.", "english": "expensive" }
+        {
+          "id": "hsk2_8_deng",
+          "hanzi": "等",
+          "pinyin": "děng",
+          "pos": "v.",
+          "english": "to wait, to await"
+        }
       ]
     }
   ],
@@ -83,92 +352,382 @@
     {
       "id": "hsk2_8_g_haoma",
       "number": 1,
-      "title": { "hanzi": "疑问句\"……,好吗\"", "english": "The Interrogative Sentence \"……,好吗\"" },
+      "title": {
+        "hanzi": "“……，好吗？”",
+        "english": "The Tag Question \"……，好吗?\""
+      },
       "explanation": {
-        "hanzi": "常用来表示询问别人的意见和看法。",
-        "english": "Used to ask another person's opinion or view."
+        "hanzi": "先说一个建议或者请求，再在后面加上“，好吗？”，问对方同意不同意。这样说比较客气。同意可以回答“好”“好的”“好啊”；不同意的时候，常常说明原因。",
+        "english": "First make a suggestion or request, then add \"，好吗?\" at the end to ask whether the other person agrees: \"..., OK?\" / \"..., all right?\". It sounds polite and friendly, not like an order. To agree, answer 好, 好的 or 好啊. To disagree, people usually give a reason rather than a flat 不好.\n可以吗? works the same way when asking for permission."
       },
       "examples": [
-        { "hanzi": "我们一起去吃饭,好吗?",          "pinyin": "Wǒmen yìqǐ qù chī fàn, hǎo ma?",          "english": "Let's go eat together, shall we?" },
-        { "hanzi": "你明天下午给我打电话,好吗?",   "pinyin": "Nǐ míngtiān xiàwǔ gěi wǒ dǎ diànhuà, hǎo ma?", "english": "Call me tomorrow afternoon, OK?" },
-        { "hanzi": "我们下午去看电影,好吗?",        "pinyin": "Wǒmen xiàwǔ qù kàn diànyǐng, hǎo ma?",    "english": "Let's go see a movie this afternoon, OK?" }
-      ]
+        {
+          "hanzi": "我们明天一起去买衣服，好吗？",
+          "pinyin": "Wǒmen míngtiān yìqǐ qù mǎi yīfu, hǎo ma?",
+          "english": "Let's go clothes shopping together tomorrow, OK?"
+        },
+        {
+          "hanzi": "你晚上给我打电话，好吗？",
+          "pinyin": "Nǐ wǎnshang gěi wǒ dǎ diànhuà, hǎo ma?",
+          "english": "Give me a call tonight, will you?"
+        },
+        {
+          "hanzi": "十分钟以后再点菜，好吗？",
+          "pinyin": "Shí fēnzhōng yǐhòu zài diǎn cài, hǎo ma?",
+          "english": "We'll order in ten minutes, if that's all right?"
+        },
+        {
+          "hanzi": "请你告诉他，好吗？——好的。",
+          "pinyin": "Qǐng nǐ gàosu tā, hǎo ma? — Hǎo de.",
+          "english": "Could you tell him, please? — Sure."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "建议/请求 Suggestion / Request",
+          "好吗？"
+        ],
+        "rows": [
+          [
+            "我们一起去吃饭",
+            "好吗？"
+          ],
+          [
+            "你等等我",
+            "好吗？"
+          ],
+          [
+            "明天再来",
+            "好吗？"
+          ]
+        ]
+      }
     },
     {
       "id": "hsk2_8_g_zai",
       "number": 2,
-      "title": { "hanzi": "副词\"再\"", "english": "The Adverb \"再\"" },
-      "explanation": {
-        "hanzi": "表示一个动作或一种状态重复或继续,也可用来表示一个动作将要在某一情况下出现。",
-        "english": "Indicates the repetition or continuation of an action or state. It can also indicate that an action will happen under a certain condition."
+      "title": {
+        "hanzi": "副词“再”",
+        "english": "The Adverb \"再\": Again, Then"
       },
+      "explanation": {
+        "hanzi": "“再”放在动词前面，表示一个动作以后还会重复或者继续，多用于还没发生的事情：明天再来。“先……，再……”表示两个动作的先后，意思是“然后”。“再见”的“再”也是这个意思。注意：已经重复了的动作一般不用“再”，以后会学“又”。",
+        "english": "再 goes before the verb and means \"again, once more\" or \"some more\", about something that has NOT happened yet: 明天再来 \"come again tomorrow\". 再见 literally means \"see (you) again\".\nIn \"先 ..., 再 ...\" it means \"then, after that\" and puts two actions in order: 先吃饭，再看电影 \"eat first, then watch the film\". It can also mean \"put it off until later\": 十分钟以后再点菜.\nFor a repetition that has already happened, Chinese uses a different word (又), which you will learn later."
+      },
+      "examples": [
+        {
+          "hanzi": "这个菜很好吃，我想再吃一点儿。",
+          "pinyin": "Zhège cài hěn hǎochī, wǒ xiǎng zài chī yìdiǎnr.",
+          "english": "This dish is delicious. I'd like to have a bit more."
+        },
+        {
+          "hanzi": "他今天不在，你明天再来吧。",
+          "pinyin": "Tā jīntiān bú zài, nǐ míngtiān zài lái ba.",
+          "english": "He's not in today. Come back tomorrow."
+        },
+        {
+          "hanzi": "我们先吃饭，再去看电影。",
+          "pinyin": "Wǒmen xiān chī fàn, zài qù kàn diànyǐng.",
+          "english": "Let's eat first and then go and see the film."
+        },
+        {
+          "hanzi": "请你再说一下，好吗？",
+          "pinyin": "Qǐng nǐ zài shuō yíxià, hǎo ma?",
+          "english": "Could you say that once more, please?"
+        }
+      ],
       "patternTable": {
-        "columns": ["Subject", "再 (+adv.)", "V (+O)"],
+        "columns": [
+          "时间 / 先……",
+          "再",
+          "动词 Verb"
+        ],
         "rows": [
-          ["你",   "再",          "看看这本书吧。"],
-          ["你",   "(明天)再",    "给我打电话吧。"],
-          ["(你)", "(让我想想)再","告诉你。"]
+          [
+            "明天",
+            "再",
+            "来"
+          ],
+          [
+            "十分钟以后",
+            "再",
+            "点菜"
+          ],
+          [
+            "先吃饭",
+            "再",
+            "看电影"
+          ]
         ]
       }
     },
     {
       "id": "hsk2_8_g_jianyu",
       "number": 3,
-      "title": { "hanzi": "兼语句", "english": "Pivotal Sentences" },
-      "explanation": {
-        "hanzi": "兼语句的谓语是由两个动词短语组成,前一个动词的宾语是第二个动词的主语。前一个动词常常是\"请、让、叫\"等词语。",
-        "english": "A pivotal sentence's predicate has two verbal phrases — the object of the first verb is the subject of the second. The first verb is often a causative like 请 (invite), 让 (let), or 叫 (ask/tell)."
+      "title": {
+        "hanzi": "兼语句（让）",
+        "english": "Pivotal Sentences with \"让\""
       },
+      "explanation": {
+        "hanzi": "“A＋让＋B＋动词短语”表示A要求B做一件事情，或者A允许B做一件事情。B是“让”的宾语，也是后面动词的主语，所以叫“兼语”。否定形式是“A不让B……”，表示不允许。",
+        "english": "\"A + 让 + B + verb phrase\" means A asks / tells B to do something, or A lets B do it. B plays two roles at once: it is the object of 让 and the subject of the next verb. That is why it is called a \"pivotal\" sentence: B is the pivot.\n妈妈让我看书: Mom tells me (me) to read.\nThe negative 不让 means \"not allow\": 爸爸不让我看电视 \"Dad doesn't let me watch TV\"."
+      },
+      "examples": [
+        {
+          "hanzi": "妈妈让我早一点儿回家。",
+          "pinyin": "Māma ràng wǒ zǎo yìdiǎnr huí jiā.",
+          "english": "Mom wants me to come home a little early."
+        },
+        {
+          "hanzi": "医生让他多休息。",
+          "pinyin": "Yīshēng ràng tā duō xiūxi.",
+          "english": "The doctor told him to rest more."
+        },
+        {
+          "hanzi": "刘老师让我们写汉字。",
+          "pinyin": "Liú lǎoshī ràng wǒmen xiě Hànzì.",
+          "english": "Ms. Liu had us write Chinese characters."
+        },
+        {
+          "hanzi": "爸爸不让我晚上看电视。",
+          "pinyin": "Bàba bú ràng wǒ wǎnshang kàn diànshì.",
+          "english": "Dad doesn't let me watch TV in the evening."
+        }
+      ],
       "patternTable": {
-        "columns": ["Subject", "V1", "O/S (pivot)", "Predicate (V2)"],
+        "columns": [
+          "A",
+          "让 / 不让",
+          "B",
+          "动词短语 Verb phrase"
+        ],
         "rows": [
-          ["我", "请", "你", "吃饭。"],
-          ["你", "让", "我", "再想想。"],
-          ["我", "叫", "人", "去看看。"]
+          [
+            "妈妈",
+            "让",
+            "我",
+            "早一点儿回家"
+          ],
+          [
+            "医生",
+            "让",
+            "他",
+            "多休息"
+          ],
+          [
+            "爸爸",
+            "不让",
+            "我",
+            "看电视"
+          ]
         ]
       }
     },
     {
       "id": "hsk2_8_g_verb_redup",
       "number": 4,
-      "title": { "hanzi": "动词的重叠", "english": "Reduplication of Verbs" },
-      "explanation": {
-        "hanzi": "动词的重叠形式用来表达短时间、少量、轻微、尝试的意思,语气比较轻松、随便,多用于口语中。",
-        "english": "A reduplicated verb indicates a short time, small amount, slight degree, or attempt — a relaxed, casual tone. Common in spoken Chinese. Monosyllabic verbs use AA or A一A; disyllabic verbs use ABAB."
+      "title": {
+        "hanzi": "动词重叠",
+        "english": "Reduplicated Verbs"
       },
-      "patternTable": {
-        "columns": ["A", "AA", "A一A"],
-        "rows": [
-          ["说", "说说", "说一说"],
-          ["听", "听听", "听一听"],
-          ["看", "看看", "看一看"]
-        ]
+      "explanation": {
+        "hanzi": "有的动词可以重叠，表示动作时间短、次数少，或者表示“试一试”，语气比较轻松、客气。单音节动词：AA（想想、看看）或者A一A（看一看）；双音节动词：ABAB（休息休息、介绍介绍）。说已经发生的事情用“A了A”：想了想。第二个音节常常读轻声。",
+        "english": "Many action verbs can be doubled to mean \"do it a little, briefly, or just to try\". It makes requests and suggestions sound relaxed and polite.\n- One-syllable verbs: AA (想想, 看看) or A一A (看一看).\n- Two-syllable verbs: ABAB (休息休息, 介绍介绍), never AABB.\n- For something already done, use A了A: 我想了想 \"I thought it over for a moment\".\nThe repeated syllable is usually said lightly (neutral tone)."
       },
       "examples": [
-        { "hanzi": "学习 → 学习学习", "pinyin": "xuéxí → xuéxí xuéxí",     "english": "to study → to study a bit" },
-        { "hanzi": "准备 → 准备准备", "pinyin": "zhǔnbèi → zhǔnbèi zhǔnbèi","english": "to prepare → to prepare a bit" },
-        { "hanzi": "运动 → 运动运动", "pinyin": "yùndòng → yùndòng yùndòng","english": "to exercise → to exercise a bit" }
-      ]
+        {
+          "hanzi": "让我想想。",
+          "pinyin": "Ràng wǒ xiǎngxiang.",
+          "english": "Let me think about it."
+        },
+        {
+          "hanzi": "你看一看这件衣服，怎么样？",
+          "pinyin": "Nǐ kàn yi kàn zhè jiàn yīfu, zěnmeyàng?",
+          "english": "Take a look at this top. What do you think?"
+        },
+        {
+          "hanzi": "你太忙了，休息休息吧。",
+          "pinyin": "Nǐ tài máng le, xiūxi xiūxi ba.",
+          "english": "You're too busy. Take a little break."
+        },
+        {
+          "hanzi": "我给你们介绍介绍。",
+          "pinyin": "Wǒ gěi nǐmen jièshào jièshào.",
+          "english": "Let me introduce you to each other."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "形式 Form",
+          "例子 Examples"
+        ],
+        "rows": [
+          [
+            "AA",
+            "想想、看看、等等、找找"
+          ],
+          [
+            "A一A",
+            "想一想、看一看"
+          ],
+          [
+            "ABAB",
+            "休息休息、介绍介绍"
+          ],
+          [
+            "A了A",
+            "想了想、看了看"
+          ]
+        ]
+      }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。",
+        "english": "In pairs, read the dialogues aloud, taking one role each."
+      }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据你的情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
       "items": [
-        { "hanzi": "他们为什么今天下午不去看电影?",   "pinyin": "Tāmen wèi shénme jīntiān xiàwǔ bú qù kàn diànyǐng?" },
-        { "hanzi": "王老师为什么让他给大卫打电话?",   "pinyin": "Wáng lǎoshī wèi shénme ràng tā gěi Dàwèi dǎ diànhuà?" },
-        { "hanzi": "大卫怎么了?",                       "pinyin": "Dàwèi zěnme le?" },
-        { "hanzi": "她为什么去找服务员?",               "pinyin": "Tā wèi shénme qù zhǎo fúwùyuán?" },
-        { "hanzi": "她为什么不喜欢那件黑的?",           "pinyin": "Tā wèi shénme bù xǐhuan nà jiàn hēi de?" }
+        {
+          "hanzi": "你喜欢白的衣服吗？黑的呢？",
+          "pinyin": "Nǐ xǐhuan bái de yīfu ma? Hēi de ne?",
+          "english": "Do you like white clothes? What about black ones?"
+        },
+        {
+          "hanzi": "你的老师让你们每天做什么？",
+          "pinyin": "Nǐ de lǎoshī ràng nǐmen měi tiān zuò shénme?",
+          "english": "What does your teacher have you do every day?"
+        },
+        {
+          "hanzi": "你觉得北京什么东西很贵？",
+          "pinyin": "Nǐ juéde Běijīng shénme dōngxi hěn guì?",
+          "english": "What do you think is expensive in Beijing?"
+        },
+        {
+          "hanzi": "你今天有什么事情？",
+          "pinyin": "Nǐ jīntiān yǒu shénme shìqing?",
+          "english": "What do you have to do today?"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用“再、让、告诉、等、找、好吗”填空。",
+        "english": "Fill in the blanks with 再, 让, 告诉, 等, 找 or 好吗."
+      },
+      "items": [
+        {
+          "hanzi": "他现在不在，你明天____来吧。",
+          "english": "He's not here now. Come again tomorrow.",
+          "blank": "再"
+        },
+        {
+          "hanzi": "医生____我多喝水。",
+          "english": "The doctor told me to drink more water.",
+          "blank": "让"
+        },
+        {
+          "hanzi": "请你____我，你家在哪儿？",
+          "english": "Please tell me where your home is.",
+          "blank": "告诉"
+        },
+        {
+          "hanzi": "你____一下，我就来。",
+          "english": "Wait a moment. I'll be right there.",
+          "blank": "等"
+        },
+        {
+          "hanzi": "我的手表呢？我____一下。",
+          "english": "Where's my watch? Let me look for it.",
+          "blank": "找"
+        },
+        {
+          "hanzi": "我们晚上去看电影，____？",
+          "english": "Let's go to the cinema tonight, shall we?",
+          "blank": "好吗"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": {
+        "hanzi": "给问题选择合适的回答。",
+        "english": "Match each question with a suitable answer."
+      },
+      "items": [
+        {
+          "hanzi": "这件衣服多少钱？ — 500块，不太贵。",
+          "pinyin": "Zhè jiàn yīfu duōshao qián? — Wǔbǎi kuài, bú tài guì.",
+          "english": "How much is this top? — 500 yuan, not too expensive."
+        },
+        {
+          "hanzi": "你要白的吗？ — 让我想想。",
+          "pinyin": "Nǐ yào bái de ma? — Ràng wǒ xiǎngxiang.",
+          "english": "Do you want the white one? — Let me think."
+        },
+        {
+          "hanzi": "有什么事情吗？ — 老师让我给你打电话。",
+          "pinyin": "Yǒu shénme shìqing ma? — Lǎoshī ràng wǒ gěi nǐ dǎ diànhuà.",
+          "english": "What's up? — The teacher asked me to call you."
+        },
+        {
+          "hanzi": "我们一起去吃饭，好吗？ — 好啊！",
+          "pinyin": "Wǒmen yìqǐ qù chī fàn, hǎo ma? — Hǎo a!",
+          "english": "Let's go and eat together, OK? — Sure!"
+        }
       ]
     }
   ],
   "characters": {
     "radicals": [
-      { "hanzi": "又", "pinyin": "yòu zì páng", "english": "(varied meanings)",                  "examples": ["欢 huān (merry, happy)", "对 duì (right, correct)"] },
-      { "hanzi": "巾", "pinyin": "jīn zì dǐ",   "english": "cloth (related to cotton/textiles)", "examples": ["帮 bāng (to help)", "帽 mào (hat, cap)"] }
+      {
+        "hanzi": "又",
+        "pinyin": "yòuzì páng",
+        "english": "right hand (related to hands and actions)",
+        "examples": [
+          "对 duì (correct)",
+          "友 yǒu (friend, as in 朋友)",
+          "欢 huān (happy, as in 欢迎)",
+          "难 nán (difficult)"
+        ]
+      },
+      {
+        "hanzi": "巾",
+        "pinyin": "jīnzì páng",
+        "english": "cloth, towel (related to fabric)",
+        "examples": [
+          "师 shī (teacher, as in 老师)",
+          "帮 bāng (to help)",
+          "常 cháng (often, as in 经常)",
+          "帽 mào (hat)"
+        ]
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "两人一组，一起做决定。",
+      "english": "In pairs, make decisions together."
+    },
+    "activities": [
+      "Shopping: one partner is a shop assistant, the other a customer choosing between a white and a black item. Ask the price, react with 太贵了 / 不贵, and use 让我想想 or 我再看看 before deciding.",
+      "Make three suggestions to your partner for this weekend, each ending in ……，好吗？ Your partner accepts (好啊！) or proposes another time with 再: 明天再去，好吗？",
+      "Tell your partner three things your parents or teacher make you do, and one thing they don't let you do: 妈妈让我……，爸爸不让我……",
+      "Restaurant: call the 服务员, ask them to wait (等一下) because a friend is late, then order."
     ]
   }
 }

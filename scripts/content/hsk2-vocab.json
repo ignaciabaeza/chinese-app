@@ -1,0 +1,1064 @@
+{
+ "1": [
+  {
+   "hanzi": "旅游",
+   "pinyin": "lǚyóu",
+   "pos": "v.",
+   "english": "to travel, to take a trip"
+  },
+  {
+   "hanzi": "觉得",
+   "pinyin": "juéde",
+   "pos": "v.",
+   "english": "to think, to feel"
+  },
+  {
+   "hanzi": "最",
+   "pinyin": "zuì",
+   "pos": "adv.",
+   "english": "most, to the greatest extent"
+  },
+  {
+   "hanzi": "为什么",
+   "pinyin": "wèi shénme",
+   "pos": "phrase",
+   "english": "why"
+  },
+  {
+   "hanzi": "也",
+   "pinyin": "yě",
+   "pos": "adv.",
+   "english": "also, too"
+  },
+  {
+   "hanzi": "运动",
+   "pinyin": "yùndòng",
+   "pos": "n./v.",
+   "english": "sport; to exercise, to work out"
+  },
+  {
+   "hanzi": "踢足球",
+   "pinyin": "tī zúqiú",
+   "pos": "phrase",
+   "english": "to play football"
+  },
+  {
+   "hanzi": "一起",
+   "pinyin": "yìqǐ",
+   "pos": "adv.",
+   "english": "together"
+  },
+  {
+   "hanzi": "要",
+   "pinyin": "yào",
+   "pos": "aux.",
+   "english": "to want to, would like to"
+  },
+  {
+   "hanzi": "新",
+   "pinyin": "xīn",
+   "pos": "adj.",
+   "english": "new"
+  },
+  {
+   "hanzi": "它",
+   "pinyin": "tā",
+   "pos": "pron.",
+   "english": "it"
+  },
+  {
+   "hanzi": "眼睛",
+   "pinyin": "yǎnjing",
+   "pos": "n.",
+   "english": "eye"
+  }
+ ],
+ "2": [
+  {
+   "hanzi": "生病",
+   "pinyin": "shēng bìng",
+   "pos": "v.",
+   "english": "to fall ill, to be sick"
+  },
+  {
+   "hanzi": "每",
+   "pinyin": "měi",
+   "pos": "pron.",
+   "english": "every, each"
+  },
+  {
+   "hanzi": "早上",
+   "pinyin": "zǎoshang",
+   "pos": "n.",
+   "english": "morning"
+  },
+  {
+   "hanzi": "跑步",
+   "pinyin": "pǎo bù",
+   "pos": "v.",
+   "english": "to run, to jog"
+  },
+  {
+   "hanzi": "起床",
+   "pinyin": "qǐ chuáng",
+   "pos": "v.",
+   "english": "to get up, to get out of bed"
+  },
+  {
+   "hanzi": "药",
+   "pinyin": "yào",
+   "pos": "n.",
+   "english": "medicine, drug"
+  },
+  {
+   "hanzi": "身体",
+   "pinyin": "shēntǐ",
+   "pos": "n.",
+   "english": "body"
+  },
+  {
+   "hanzi": "出院",
+   "pinyin": "chū yuàn",
+   "pos": "v.",
+   "english": "to leave hospital, to be discharged"
+  },
+  {
+   "hanzi": "出",
+   "pinyin": "chū",
+   "pos": "v.",
+   "english": "to come/go out"
+  },
+  {
+   "hanzi": "高",
+   "pinyin": "gāo",
+   "pos": "adj.",
+   "english": "tall, high"
+  },
+  {
+   "hanzi": "米",
+   "pinyin": "mǐ",
+   "pos": "m.",
+   "english": "meter"
+  },
+  {
+   "hanzi": "知道",
+   "pinyin": "zhīdào",
+   "pos": "v.",
+   "english": "to know"
+  },
+  {
+   "hanzi": "休息",
+   "pinyin": "xiūxi",
+   "pos": "v.",
+   "english": "to have or take a rest"
+  },
+  {
+   "hanzi": "忙",
+   "pinyin": "máng",
+   "pos": "adj.",
+   "english": "busy"
+  },
+  {
+   "hanzi": "时间",
+   "pinyin": "shíjiān",
+   "pos": "n.",
+   "english": "time"
+  }
+ ],
+ "3": [
+  {
+   "hanzi": "手表",
+   "pinyin": "shǒubiǎo",
+   "pos": "n.",
+   "english": "watch"
+  },
+  {
+   "hanzi": "千",
+   "pinyin": "qiān",
+   "pos": "num.",
+   "english": "thousand"
+  },
+  {
+   "hanzi": "报纸",
+   "pinyin": "bàozhǐ",
+   "pos": "n.",
+   "english": "newspaper"
+  },
+  {
+   "hanzi": "送",
+   "pinyin": "sòng",
+   "pos": "v.",
+   "english": "to send, to deliver"
+  },
+  {
+   "hanzi": "一下",
+   "pinyin": "yíxià",
+   "pos": "num.-m.",
+   "english": "used after a verb, indicating an act or an attempt"
+  },
+  {
+   "hanzi": "牛奶",
+   "pinyin": "niúnǎi",
+   "pos": "n.",
+   "english": "milk"
+  },
+  {
+   "hanzi": "房间",
+   "pinyin": "fángjiān",
+   "pos": "n.",
+   "english": "room"
+  },
+  {
+   "hanzi": "丈夫",
+   "pinyin": "zhàngfu",
+   "pos": "n.",
+   "english": "husband"
+  },
+  {
+   "hanzi": "旁边",
+   "pinyin": "pángbiān",
+   "pos": "n.",
+   "english": "beside"
+  },
+  {
+   "hanzi": "真",
+   "pinyin": "zhēn",
+   "pos": "adv.",
+   "english": "really, indeed"
+  },
+  {
+   "hanzi": "粉色",
+   "pinyin": "fěnsè",
+   "pos": "n.",
+   "english": "pink"
+  },
+  {
+   "hanzi": "粉",
+   "pinyin": "fěn",
+   "pos": "adj.",
+   "english": "pink"
+  },
+  {
+   "hanzi": "颜色",
+   "pinyin": "yánsè",
+   "pos": "n.",
+   "english": "color"
+  },
+  {
+   "hanzi": "左边",
+   "pinyin": "zuǒbian",
+   "pos": "n.",
+   "english": "left side"
+  },
+  {
+   "hanzi": "红色",
+   "pinyin": "hóngsè",
+   "pos": "n.",
+   "english": "red"
+  },
+  {
+   "hanzi": "红",
+   "pinyin": "hóng",
+   "pos": "adj.",
+   "english": "red"
+  }
+ ],
+ "4": [
+  {
+   "hanzi": "生日",
+   "pinyin": "shēngrì",
+   "pos": "n.",
+   "english": "birthday"
+  },
+  {
+   "hanzi": "快乐",
+   "pinyin": "kuàilè",
+   "pos": "adj.",
+   "english": "happy, glad"
+  },
+  {
+   "hanzi": "给",
+   "pinyin": "gěi",
+   "pos": "prep.",
+   "english": "(used after a verb) to, for"
+  },
+  {
+   "hanzi": "接",
+   "pinyin": "jiē",
+   "pos": "v.",
+   "english": "to receive, to take, to accept"
+  },
+  {
+   "hanzi": "晚上",
+   "pinyin": "wǎnshang",
+   "pos": "n.",
+   "english": "evening, night"
+  },
+  {
+   "hanzi": "问",
+   "pinyin": "wèn",
+   "pos": "v.",
+   "english": "to ask"
+  },
+  {
+   "hanzi": "非常",
+   "pinyin": "fēicháng",
+   "pos": "adv.",
+   "english": "very, extremely"
+  },
+  {
+   "hanzi": "开始",
+   "pinyin": "kāishǐ",
+   "pos": "v.",
+   "english": "to begin, to start"
+  },
+  {
+   "hanzi": "已经",
+   "pinyin": "yǐjīng",
+   "pos": "adv.",
+   "english": "already"
+  },
+  {
+   "hanzi": "长",
+   "pinyin": "cháng",
+   "pos": "adj.",
+   "english": "long"
+  },
+  {
+   "hanzi": "两",
+   "pinyin": "liǎng",
+   "pos": "num.",
+   "english": "two"
+  },
+  {
+   "hanzi": "帮",
+   "pinyin": "bāng",
+   "pos": "v.",
+   "english": "to help, to assist"
+  },
+  {
+   "hanzi": "介绍",
+   "pinyin": "jièshào",
+   "pos": "v.",
+   "english": "to introduce, to recommend"
+  }
+ ],
+ "5": [
+  {
+   "hanzi": "外面",
+   "pinyin": "wàimiàn",
+   "pos": "n.",
+   "english": "outside"
+  },
+  {
+   "hanzi": "准备",
+   "pinyin": "zhǔnbèi",
+   "pos": "v.",
+   "english": "to intend, to plan"
+  },
+  {
+   "hanzi": "就",
+   "pinyin": "jiù",
+   "pos": "adv.",
+   "english": "used to indicate a conclusion or resolution"
+  },
+  {
+   "hanzi": "鱼",
+   "pinyin": "yú",
+   "pos": "n.",
+   "english": "fish"
+  },
+  {
+   "hanzi": "吧",
+   "pinyin": "ba",
+   "pos": "part.",
+   "english": "sentence-final particle for consultation, suggestion, request or command"
+  },
+  {
+   "hanzi": "件",
+   "pinyin": "jiàn",
+   "pos": "m.",
+   "english": "(used for clothes among other items) piece"
+  },
+  {
+   "hanzi": "还",
+   "pinyin": "hái",
+   "pos": "adv.",
+   "english": "passably, fairly, rather"
+  },
+  {
+   "hanzi": "可以",
+   "pinyin": "kěyǐ",
+   "pos": "adj.",
+   "english": "not bad, OK"
+  },
+  {
+   "hanzi": "不错",
+   "pinyin": "búcuò",
+   "pos": "adj.",
+   "english": "pretty good, not bad"
+  },
+  {
+   "hanzi": "考试",
+   "pinyin": "kǎoshì",
+   "pos": "n.",
+   "english": "test, exam"
+  },
+  {
+   "hanzi": "意思",
+   "pinyin": "yìsi",
+   "pos": "n.",
+   "english": "meaning"
+  },
+  {
+   "hanzi": "咖啡",
+   "pinyin": "kāfēi",
+   "pos": "n.",
+   "english": "coffee"
+  },
+  {
+   "hanzi": "对",
+   "pinyin": "duì",
+   "pos": "prep.",
+   "english": "(used before a noun or pronoun) to, for"
+  },
+  {
+   "hanzi": "以后",
+   "pinyin": "yǐhòu",
+   "pos": "n.",
+   "english": "after, afterwards, later"
+  }
+ ],
+ "6": [
+  {
+   "hanzi": "门",
+   "pinyin": "mén",
+   "pos": "n.",
+   "english": "door, gate"
+  },
+  {
+   "hanzi": "外",
+   "pinyin": "wài",
+   "pos": "n.",
+   "english": "outer, outside"
+  },
+  {
+   "hanzi": "自行车",
+   "pinyin": "zìxíngchē",
+   "pos": "n.",
+   "english": "bike"
+  },
+  {
+   "hanzi": "羊肉",
+   "pinyin": "yángròu",
+   "pos": "n.",
+   "english": "mutton"
+  },
+  {
+   "hanzi": "好吃",
+   "pinyin": "hǎochī",
+   "pos": "adj.",
+   "english": "delicious, yummy"
+  },
+  {
+   "hanzi": "面条",
+   "pinyin": "miàntiáo",
+   "pos": "n.",
+   "english": "noodles"
+  },
+  {
+   "hanzi": "打篮球",
+   "pinyin": "dǎ lánqiú",
+   "pos": "phrase",
+   "english": "to play basketball"
+  },
+  {
+   "hanzi": "因为",
+   "pinyin": "yīnwèi",
+   "pos": "conj.",
+   "english": "because, since"
+  },
+  {
+   "hanzi": "所以",
+   "pinyin": "suǒyǐ",
+   "pos": "conj.",
+   "english": "so, therefore"
+  },
+  {
+   "hanzi": "游泳",
+   "pinyin": "yóu yǒng",
+   "pos": "v.",
+   "english": "to swim"
+  },
+  {
+   "hanzi": "经常",
+   "pinyin": "jīngcháng",
+   "pos": "adv.",
+   "english": "often, frequently"
+  },
+  {
+   "hanzi": "公斤",
+   "pinyin": "gōngjīn",
+   "pos": "m.",
+   "english": "kilogram"
+  },
+  {
+   "hanzi": "姐姐",
+   "pinyin": "jiějie",
+   "pos": "n.",
+   "english": "elder sister"
+  }
+ ],
+ "7": [
+  {
+   "hanzi": "教室",
+   "pinyin": "jiàoshì",
+   "pos": "n.",
+   "english": "classroom"
+  },
+  {
+   "hanzi": "机场",
+   "pinyin": "jīchǎng",
+   "pos": "n.",
+   "english": "airport"
+  },
+  {
+   "hanzi": "路",
+   "pinyin": "lù",
+   "pos": "n.",
+   "english": "road, path, way"
+  },
+  {
+   "hanzi": "离",
+   "pinyin": "lí",
+   "pos": "v.",
+   "english": "to be away from"
+  },
+  {
+   "hanzi": "公司",
+   "pinyin": "gōngsī",
+   "pos": "n.",
+   "english": "company, firm"
+  },
+  {
+   "hanzi": "远",
+   "pinyin": "yuǎn",
+   "pos": "adj.",
+   "english": "far, distant"
+  },
+  {
+   "hanzi": "公共汽车",
+   "pinyin": "gōnggòng qìchē",
+   "pos": "n.",
+   "english": "bus"
+  },
+  {
+   "hanzi": "小时",
+   "pinyin": "xiǎoshí",
+   "pos": "n.",
+   "english": "hour"
+  },
+  {
+   "hanzi": "慢",
+   "pinyin": "màn",
+   "pos": "adj.",
+   "english": "slow"
+  },
+  {
+   "hanzi": "快",
+   "pinyin": "kuài",
+   "pos": "adj.",
+   "english": "quick, fast"
+  },
+  {
+   "hanzi": "过",
+   "pinyin": "guò",
+   "pos": "v.",
+   "english": "to pass (time), to spend (time)"
+  },
+  {
+   "hanzi": "走",
+   "pinyin": "zǒu",
+   "pos": "v.",
+   "english": "to walk"
+  },
+  {
+   "hanzi": "到",
+   "pinyin": "dào",
+   "pos": "v.",
+   "english": "to arrive, to reach"
+  }
+ ],
+ "8": [
+  {
+   "hanzi": "再",
+   "pinyin": "zài",
+   "pos": "adv.",
+   "english": "again, once more"
+  },
+  {
+   "hanzi": "让",
+   "pinyin": "ràng",
+   "pos": "v.",
+   "english": "to let, to allow"
+  },
+  {
+   "hanzi": "告诉",
+   "pinyin": "gàosu",
+   "pos": "v.",
+   "english": "to tell"
+  },
+  {
+   "hanzi": "等",
+   "pinyin": "děng",
+   "pos": "v.",
+   "english": "to wait, to await"
+  },
+  {
+   "hanzi": "找",
+   "pinyin": "zhǎo",
+   "pos": "v.",
+   "english": "to look for"
+  },
+  {
+   "hanzi": "事情",
+   "pinyin": "shìqing",
+   "pos": "n.",
+   "english": "thing, matter, affair"
+  },
+  {
+   "hanzi": "服务员",
+   "pinyin": "fúwùyuán",
+   "pos": "n.",
+   "english": "attendant, waiter/waitress"
+  },
+  {
+   "hanzi": "白",
+   "pinyin": "bái",
+   "pos": "adj.",
+   "english": "white"
+  },
+  {
+   "hanzi": "黑",
+   "pinyin": "hēi",
+   "pos": "adj.",
+   "english": "black"
+  },
+  {
+   "hanzi": "贵",
+   "pinyin": "guì",
+   "pos": "adj.",
+   "english": "expensive"
+  }
+ ],
+ "9": [
+  {
+   "hanzi": "错",
+   "pinyin": "cuò",
+   "pos": "adj.",
+   "english": "wrong, incorrect"
+  },
+  {
+   "hanzi": "从",
+   "pinyin": "cóng",
+   "pos": "prep.",
+   "english": "from"
+  },
+  {
+   "hanzi": "跳舞",
+   "pinyin": "tiào wǔ",
+   "pos": "v.",
+   "english": "to dance"
+  },
+  {
+   "hanzi": "第一",
+   "pinyin": "dì yī",
+   "pos": "num.",
+   "english": "first"
+  },
+  {
+   "hanzi": "希望",
+   "pinyin": "xīwàng",
+   "pos": "v.",
+   "english": "to hope, to wish"
+  },
+  {
+   "hanzi": "问题",
+   "pinyin": "wèntí",
+   "pos": "n.",
+   "english": "question, problem"
+  },
+  {
+   "hanzi": "欢迎",
+   "pinyin": "huānyíng",
+   "pos": "v.",
+   "english": "to welcome"
+  },
+  {
+   "hanzi": "上班",
+   "pinyin": "shàng bān",
+   "pos": "v.",
+   "english": "to work, to do a job"
+  },
+  {
+   "hanzi": "懂",
+   "pinyin": "dǒng",
+   "pos": "v.",
+   "english": "to understand, to know"
+  },
+  {
+   "hanzi": "完",
+   "pinyin": "wán",
+   "pos": "v.",
+   "english": "to finish, to end"
+  },
+  {
+   "hanzi": "题",
+   "pinyin": "tí",
+   "pos": "n.",
+   "english": "question, problem"
+  }
+ ],
+ "10": [
+  {
+   "hanzi": "课",
+   "pinyin": "kè",
+   "pos": "n.",
+   "english": "class, lesson"
+  },
+  {
+   "hanzi": "帮助",
+   "pinyin": "bāngzhù",
+   "pos": "v.",
+   "english": "to help, to assist, to aid"
+  },
+  {
+   "hanzi": "别",
+   "pinyin": "bié",
+   "pos": "adv.",
+   "english": "don't"
+  },
+  {
+   "hanzi": "哥哥",
+   "pinyin": "gēge",
+   "pos": "n.",
+   "english": "elder brother"
+  },
+  {
+   "hanzi": "鸡蛋",
+   "pinyin": "jīdàn",
+   "pos": "n.",
+   "english": "(hen's) egg"
+  },
+  {
+   "hanzi": "西瓜",
+   "pinyin": "xīguā",
+   "pos": "n.",
+   "english": "watermelon"
+  },
+  {
+   "hanzi": "正在",
+   "pinyin": "zhèngzài",
+   "pos": "adv.",
+   "english": "in the process of"
+  },
+  {
+   "hanzi": "手机",
+   "pinyin": "shǒujī",
+   "pos": "n.",
+   "english": "cell phone"
+  },
+  {
+   "hanzi": "洗",
+   "pinyin": "xǐ",
+   "pos": "v.",
+   "english": "to wash, to bathe"
+  }
+ ],
+ "11": [
+  {
+   "hanzi": "唱歌",
+   "pinyin": "chàng gē",
+   "pos": "v.",
+   "english": "to sing"
+  },
+  {
+   "hanzi": "男",
+   "pinyin": "nán",
+   "pos": "adj.",
+   "english": "man, male"
+  },
+  {
+   "hanzi": "女",
+   "pinyin": "nǚ",
+   "pos": "adj.",
+   "english": "woman, female"
+  },
+  {
+   "hanzi": "孩子",
+   "pinyin": "háizi",
+   "pos": "n.",
+   "english": "child, kid"
+  },
+  {
+   "hanzi": "右边",
+   "pinyin": "yòubian",
+   "pos": "n.",
+   "english": "right, right side"
+  },
+  {
+   "hanzi": "比",
+   "pinyin": "bǐ",
+   "pos": "prep.",
+   "english": "than; (superior or inferior) to"
+  },
+  {
+   "hanzi": "便宜",
+   "pinyin": "piányi",
+   "pos": "adj.",
+   "english": "cheap, inexpensive"
+  },
+  {
+   "hanzi": "说话",
+   "pinyin": "shuō huà",
+   "pos": "v.",
+   "english": "to speak, to say, to talk"
+  },
+  {
+   "hanzi": "可能",
+   "pinyin": "kěnéng",
+   "pos": "aux.",
+   "english": "maybe, perhaps, probably"
+  },
+  {
+   "hanzi": "去年",
+   "pinyin": "qùnián",
+   "pos": "n.",
+   "english": "last year"
+  },
+  {
+   "hanzi": "姓",
+   "pinyin": "xìng",
+   "pos": "v.",
+   "english": "family name, surname; to be surnamed"
+  }
+ ],
+ "12": [
+  {
+   "hanzi": "得",
+   "pinyin": "de",
+   "pos": "part.",
+   "english": "used after a verb or adjective to introduce a complement of result or degree"
+  },
+  {
+   "hanzi": "妻子",
+   "pinyin": "qīzi",
+   "pos": "n.",
+   "english": "wife"
+  },
+  {
+   "hanzi": "雪",
+   "pinyin": "xuě",
+   "pos": "n.",
+   "english": "snow"
+  },
+  {
+   "hanzi": "零",
+   "pinyin": "líng",
+   "pos": "num.",
+   "english": "zero"
+  },
+  {
+   "hanzi": "度",
+   "pinyin": "dù",
+   "pos": "n.",
+   "english": "degree"
+  },
+  {
+   "hanzi": "穿",
+   "pinyin": "chuān",
+   "pos": "v.",
+   "english": "to wear, to put on"
+  },
+  {
+   "hanzi": "进",
+   "pinyin": "jìn",
+   "pos": "v.",
+   "english": "to enter, to come/go in"
+  },
+  {
+   "hanzi": "弟弟",
+   "pinyin": "dìdi",
+   "pos": "n.",
+   "english": "younger brother"
+  },
+  {
+   "hanzi": "近",
+   "pinyin": "jìn",
+   "pos": "adj.",
+   "english": "near, close"
+  }
+ ],
+ "13": [
+  {
+   "hanzi": "着",
+   "pinyin": "zhe",
+   "pos": "part.",
+   "english": "used to indicate a state"
+  },
+  {
+   "hanzi": "手",
+   "pinyin": "shǒu",
+   "pos": "n.",
+   "english": "hand"
+  },
+  {
+   "hanzi": "拿",
+   "pinyin": "ná",
+   "pos": "v.",
+   "english": "to hold, to take, to bring"
+  },
+  {
+   "hanzi": "铅笔",
+   "pinyin": "qiānbǐ",
+   "pos": "n.",
+   "english": "pencil"
+  },
+  {
+   "hanzi": "班",
+   "pinyin": "bān",
+   "pos": "n.",
+   "english": "class, grade, team"
+  },
+  {
+   "hanzi": "长",
+   "pinyin": "zhǎng",
+   "pos": "v.",
+   "english": "to grow, to develop"
+  },
+  {
+   "hanzi": "笑",
+   "pinyin": "xiào",
+   "pos": "v.",
+   "english": "to smile, to laugh"
+  },
+  {
+   "hanzi": "宾馆",
+   "pinyin": "bīnguǎn",
+   "pos": "n.",
+   "english": "hotel"
+  },
+  {
+   "hanzi": "一直",
+   "pinyin": "yìzhí",
+   "pos": "adv.",
+   "english": "straight, all along"
+  },
+  {
+   "hanzi": "往",
+   "pinyin": "wǎng",
+   "pos": "prep.",
+   "english": "to, towards"
+  },
+  {
+   "hanzi": "路口",
+   "pinyin": "lùkǒu",
+   "pos": "n.",
+   "english": "crossing, crossroads"
+  }
+ ],
+ "14": [
+  {
+   "hanzi": "有意思",
+   "pinyin": "yǒu yìsi",
+   "pos": "adj.",
+   "english": "interesting, fun"
+  },
+  {
+   "hanzi": "但是",
+   "pinyin": "dànshì",
+   "pos": "conj.",
+   "english": "but, still, yet"
+  },
+  {
+   "hanzi": "虽然",
+   "pinyin": "suīrán",
+   "pos": "conj.",
+   "english": "although, though"
+  },
+  {
+   "hanzi": "次",
+   "pinyin": "cì",
+   "pos": "m.",
+   "english": "time (occurrence)"
+  },
+  {
+   "hanzi": "玩儿",
+   "pinyin": "wánr",
+   "pos": "v.",
+   "english": "to play, to have fun"
+  },
+  {
+   "hanzi": "晴",
+   "pinyin": "qíng",
+   "pos": "adj.",
+   "english": "sunny, fine, clear"
+  },
+  {
+   "hanzi": "百",
+   "pinyin": "bǎi",
+   "pos": "num.",
+   "english": "hundred"
+  }
+ ],
+ "15": [
+  {
+   "hanzi": "日",
+   "pinyin": "rì",
+   "pos": "n.",
+   "english": "day, date"
+  },
+  {
+   "hanzi": "新年",
+   "pinyin": "xīnnián",
+   "pos": "n.",
+   "english": "New Year"
+  },
+  {
+   "hanzi": "票",
+   "pinyin": "piào",
+   "pos": "n.",
+   "english": "ticket"
+  },
+  {
+   "hanzi": "火车站",
+   "pinyin": "huǒchēzhàn",
+   "pos": "n.",
+   "english": "railway station"
+  },
+  {
+   "hanzi": "大家",
+   "pinyin": "dàjiā",
+   "pos": "pron.",
+   "english": "all, everybody"
+  },
+  {
+   "hanzi": "更",
+   "pinyin": "gèng",
+   "pos": "adv.",
+   "english": "more, to a greater extent"
+  },
+  {
+   "hanzi": "妹妹",
+   "pinyin": "mèimei",
+   "pos": "n.",
+   "english": "younger sister"
+  },
+  {
+   "hanzi": "阴",
+   "pinyin": "yīn",
+   "pos": "adj.",
+   "english": "overcast, cloudy"
+  }
+ ]
+}

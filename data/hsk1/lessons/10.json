@@ -2,79 +2,295 @@
   "id": "hsk1-10",
   "level": 1,
   "number": 10,
-  "title": { "hanzi": "我能坐这儿吗？", "pinyin": "Wǒ néng zuò zhèr ma?", "english": "May I sit here?" },
+  "title": {
+    "hanzi": "杯子里有什么？",
+    "pinyin": "Bēizi li yǒu shénme?",
+    "english": "What's in the cup?"
+  },
   "theme": "Location",
   "warmUp": {
-    "instruction": { "hanzi": "读一读下面的词语和短语", "english": "Read the following words and phrases aloud." },
+    "instruction": {
+      "hanzi": "读一读下面的词语和短语",
+      "english": "Read the following words and phrases aloud."
+    },
     "items": [
-      { "hanzi": "桌子上", "pinyin": "zhuōzi shang", "english": "on the table" },
-      { "hanzi": "杯子里", "pinyin": "bēizi li", "english": "in the cup" },
-      { "hanzi": "电脑", "pinyin": "diànnǎo", "english": "computer" },
-      { "hanzi": "一本书", "pinyin": "yì běn shū", "english": "a book" },
-      { "hanzi": "医院前面", "pinyin": "yīyuàn qiánmiàn", "english": "in front of the hospital" },
-      { "hanzi": "商店后面", "pinyin": "shāngdiàn hòumiàn", "english": "behind the shop" },
-      { "hanzi": "这儿", "pinyin": "zhèr", "english": "here" },
-      { "hanzi": "请坐", "pinyin": "qǐng zuò", "english": "please sit down" }
+      {
+        "hanzi": "桌子上",
+        "pinyin": "zhuōzi shang",
+        "english": "on the table"
+      },
+      {
+        "hanzi": "杯子里",
+        "pinyin": "bēizi li",
+        "english": "in the cup"
+      },
+      {
+        "hanzi": "电脑",
+        "pinyin": "diànnǎo",
+        "english": "computer"
+      },
+      {
+        "hanzi": "一本书",
+        "pinyin": "yì běn shū",
+        "english": "a book"
+      },
+      {
+        "hanzi": "医院前面",
+        "pinyin": "yīyuàn qiánmiàn",
+        "english": "in front of the hospital"
+      },
+      {
+        "hanzi": "商店后面",
+        "pinyin": "shāngdiàn hòumiàn",
+        "english": "behind the shop"
+      },
+      {
+        "hanzi": "这儿",
+        "pinyin": "zhèr",
+        "english": "here"
+      },
+      {
+        "hanzi": "请坐",
+        "pinyin": "qǐng zuò",
+        "english": "please sit down"
+      }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在宿舍", "english": "In the dorm room" },
+      "title": {
+        "hanzi": "在宿舍",
+        "english": "In the dorm room"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "安娜，我的电脑在哪儿？", "pinyin": "Ānnà, wǒ de diànnǎo zài nǎr?", "english": "Anna, where's my computer?" },
-        { "speaker": "B", "hanzi": "在桌子上。", "pinyin": "Zài zhuōzi shang.", "english": "On the desk." },
-        { "speaker": "A", "hanzi": "我的汉语书呢？", "pinyin": "Wǒ de Hànyǔ shū ne?", "english": "And my Chinese book?" },
-        { "speaker": "B", "hanzi": "桌子上有一本汉语书和一个杯子。", "pinyin": "Zhuōzi shang yǒu yì běn Hànyǔ shū hé yí ge bēizi.", "english": "There's a Chinese book and a cup on the desk." },
-        { "speaker": "A", "hanzi": "那是我的书。杯子里有什么？", "pinyin": "Nà shì wǒ de shū. Bēizi li yǒu shénme?", "english": "That's my book. What's in the cup?" },
-        { "speaker": "B", "hanzi": "杯子里有茶。", "pinyin": "Bēizi li yǒu chá.", "english": "There's tea in the cup." }
+        {
+          "speaker": "A",
+          "hanzi": "安娜，我的电脑在哪儿？",
+          "pinyin": "Ānnà, wǒ de diànnǎo zài nǎr?",
+          "english": "Anna, where's my computer?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "在桌子上。",
+          "pinyin": "Zài zhuōzi shang.",
+          "english": "On the desk."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我的汉语书呢？",
+          "pinyin": "Wǒ de Hànyǔ shū ne?",
+          "english": "And my Chinese book?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "桌子上有一本汉语书和一个杯子。",
+          "pinyin": "Zhuōzi shang yǒu yì běn Hànyǔ shū hé yí ge bēizi.",
+          "english": "There's a Chinese book and a cup on the desk."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那是我的书。杯子里有什么？",
+          "pinyin": "Nà shì wǒ de shū. Bēizi li yǒu shénme?",
+          "english": "That's my book. What's in the cup?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "杯子里有茶。",
+          "pinyin": "Bēizi li yǒu chá.",
+          "english": "There's tea in the cup."
+        }
       ],
       "newWords": [
-        { "id": "hsk1_10_diannao", "hanzi": "电脑", "pinyin": "diànnǎo", "pos": "n.", "english": "computer" },
-        { "id": "hsk1_10_zhuozi", "hanzi": "桌子", "pinyin": "zhuōzi", "pos": "n.", "english": "desk, table" },
-        { "id": "hsk1_10_shang", "hanzi": "上", "pinyin": "shang", "pos": "n.", "english": "on, above" },
-        { "id": "hsk1_10_ben", "hanzi": "本", "pinyin": "běn", "pos": "m.", "english": "measure word for books" },
-        { "id": "hsk1_10_he", "hanzi": "和", "pinyin": "hé", "pos": "conj.", "english": "and" },
-        { "id": "hsk1_10_li", "hanzi": "里", "pinyin": "li", "pos": "n.", "english": "inside" }
+        {
+          "id": "hsk1_10_diannao",
+          "hanzi": "电脑",
+          "pinyin": "diànnǎo",
+          "pos": "n.",
+          "english": "computer"
+        },
+        {
+          "id": "hsk1_10_zhuozi",
+          "hanzi": "桌子",
+          "pinyin": "zhuōzi",
+          "pos": "n.",
+          "english": "desk, table"
+        },
+        {
+          "id": "hsk1_10_shang",
+          "hanzi": "上",
+          "pinyin": "shang",
+          "pos": "n.",
+          "english": "on, above"
+        },
+        {
+          "id": "hsk1_10_ben",
+          "hanzi": "本",
+          "pinyin": "běn",
+          "pos": "m.",
+          "english": "measure word for books"
+        },
+        {
+          "id": "hsk1_10_he",
+          "hanzi": "和",
+          "pinyin": "hé",
+          "pos": "conj.",
+          "english": "and"
+        },
+        {
+          "id": "hsk1_10_li",
+          "hanzi": "里",
+          "pinyin": "li",
+          "pos": "n.",
+          "english": "inside"
+        }
       ],
       "properNouns": [
-        { "id": "hsk1_10_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna (a student of Chinese)" }
+        {
+          "id": "hsk1_10_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna (a student of Chinese)"
+        }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在医院里", "english": "Inside the hospital" },
+      "title": {
+        "hanzi": "在医院里",
+        "english": "Inside the hospital"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "请问，这儿有商店吗？", "pinyin": "Qǐngwèn, zhèr yǒu shāngdiàn ma?", "english": "Excuse me, is there a shop here?" },
-        { "speaker": "B", "hanzi": "这儿没有商店。", "pinyin": "Zhèr méiyǒu shāngdiàn.", "english": "There's no shop in here." },
-        { "speaker": "A", "hanzi": "医院前面有吗？", "pinyin": "Yīyuàn qiánmiàn yǒu ma?", "english": "Is there one in front of the hospital?" },
-        { "speaker": "B", "hanzi": "前面没商店，后面有一个。", "pinyin": "Qiánmiàn méi shāngdiàn, hòumiàn yǒu yí ge.", "english": "Not in front, but there's one behind it." },
-        { "speaker": "A", "hanzi": "谢谢您！", "pinyin": "Xièxie nín!", "english": "Thank you!" },
-        { "speaker": "B", "hanzi": "不客气。", "pinyin": "Bú kèqi.", "english": "You're welcome." }
+        {
+          "speaker": "A",
+          "hanzi": "请问，这儿有商店吗？",
+          "pinyin": "Qǐngwèn, zhèr yǒu shāngdiàn ma?",
+          "english": "Excuse me, is there a shop here?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "这儿没有商店。",
+          "pinyin": "Zhèr méiyǒu shāngdiàn.",
+          "english": "There's no shop in here."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "医院前面有吗？",
+          "pinyin": "Yīyuàn qiánmiàn yǒu ma?",
+          "english": "Is there one in front of the hospital?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "前面没商店，后面有一个。",
+          "pinyin": "Qiánmiàn méi shāngdiàn, hòumiàn yǒu yí ge.",
+          "english": "Not in front, but there's one behind it."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢您！",
+          "pinyin": "Xièxie nín!",
+          "english": "Thank you!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不客气。",
+          "pinyin": "Bú kèqi.",
+          "english": "You're welcome."
+        }
       ],
       "newWords": [
-        { "id": "hsk1_10_zher", "hanzi": "这儿", "pinyin": "zhèr", "pos": "pron.", "english": "here" },
-        { "id": "hsk1_10_meiyou", "hanzi": "没有", "pinyin": "méiyǒu", "pos": "v.", "english": "there is not; not have" },
-        { "id": "hsk1_10_qianmian", "hanzi": "前面", "pinyin": "qiánmiàn", "pos": "n.", "english": "front" },
-        { "id": "hsk1_10_mei", "hanzi": "没", "pinyin": "méi", "pos": "adv.", "english": "not (have)" },
-        { "id": "hsk1_10_houmian", "hanzi": "后面", "pinyin": "hòumiàn", "pos": "n.", "english": "back, behind" }
+        {
+          "id": "hsk1_10_zher",
+          "hanzi": "这儿",
+          "pinyin": "zhèr",
+          "pos": "pron.",
+          "english": "here"
+        },
+        {
+          "id": "hsk1_10_meiyou",
+          "hanzi": "没有",
+          "pinyin": "méiyǒu",
+          "pos": "v.",
+          "english": "there is not; not have"
+        },
+        {
+          "id": "hsk1_10_qianmian",
+          "hanzi": "前面",
+          "pinyin": "qiánmiàn",
+          "pos": "n.",
+          "english": "front"
+        },
+        {
+          "id": "hsk1_10_mei",
+          "hanzi": "没",
+          "pinyin": "méi",
+          "pos": "adv.",
+          "english": "not (have)"
+        },
+        {
+          "id": "hsk1_10_houmian",
+          "hanzi": "后面",
+          "pinyin": "hòumiàn",
+          "pos": "n.",
+          "english": "back, behind"
+        }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在老师的办公室", "english": "In the teacher's office" },
+      "title": {
+        "hanzi": "在老师的办公室",
+        "english": "In the teacher's office"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "刘老师，我能坐这儿吗？", "pinyin": "Liú lǎoshī, wǒ néng zuò zhèr ma?", "english": "Ms. Liu, may I sit here?" },
-        { "speaker": "B", "hanzi": "能，请坐！请喝茶。", "pinyin": "Néng, qǐng zuò! Qǐng hē chá.", "english": "Of course, please sit down! Have some tea." },
-        { "speaker": "A", "hanzi": "谢谢老师。我能看一下这本书吗？", "pinyin": "Xièxie lǎoshī. Wǒ néng kàn yíxià zhè běn shū ma?", "english": "Thank you. Could I have a look at this book?" },
-        { "speaker": "B", "hanzi": "能。这本书很好。", "pinyin": "Néng. Zhè běn shū hěn hǎo.", "english": "Sure. It's a very good book." }
+        {
+          "speaker": "A",
+          "hanzi": "刘老师，我能坐这儿吗？",
+          "pinyin": "Liú lǎoshī, wǒ néng zuò zhèr ma?",
+          "english": "Ms. Liu, may I sit here?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "能，请坐！请喝茶。",
+          "pinyin": "Néng, qǐng zuò! Qǐng hē chá.",
+          "english": "Of course, please sit down! Have some tea."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "谢谢老师。我能看一下这本书吗？",
+          "pinyin": "Xièxie lǎoshī. Wǒ néng kàn yíxià zhè běn shū ma?",
+          "english": "Thank you. Could I have a look at this book?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "能。这本书很好。",
+          "pinyin": "Néng. Zhè běn shū hěn hǎo.",
+          "english": "Sure. It's a very good book."
+        }
       ],
       "newWords": [
-        { "id": "hsk1_10_neng", "hanzi": "能", "pinyin": "néng", "pos": "mod.", "english": "can, may" },
-        { "id": "hsk1_10_zuo", "hanzi": "坐", "pinyin": "zuò", "pos": "v.", "english": "to sit" }
+        {
+          "id": "hsk1_10_neng",
+          "hanzi": "能",
+          "pinyin": "néng",
+          "pos": "mod.",
+          "english": "can, may"
+        },
+        {
+          "id": "hsk1_10_zuo",
+          "hanzi": "坐",
+          "pinyin": "zuò",
+          "pos": "v.",
+          "english": "to sit"
+        }
       ],
       "properNouns": [
-        { "id": "hsk1_10_pn_liulaoshi", "hanzi": "刘老师", "pinyin": "Liú lǎoshī", "english": "Teacher Liu" }
+        {
+          "id": "hsk1_10_pn_liulaoshi",
+          "hanzi": "刘老师",
+          "pinyin": "Liú lǎoshī",
+          "english": "Teacher Liu"
+        }
       ]
     }
   ],
@@ -82,75 +298,175 @@
     {
       "id": "hsk1_10_g_you_existence",
       "number": 1,
-      "title": { "hanzi": "\"有\"表示存在", "english": "\"有\" Expressing Existence" },
+      "title": {
+        "hanzi": "\"有\"表示存在",
+        "english": "\"有\" Expressing Existence"
+      },
       "explanation": {
         "hanzi": "\"有\"可以说明某个地方存在什么东西：地方 + 有 + （数量）+ 东西。地方常常是\"名词 + 上/里/前面/后面\"。否定形式是\"没有\"，不能说\"不有\"。",
         "english": "\"有\" can tell you what is found somewhere. The pattern is: place + 有 + (number + measure word) + thing. The place often ends in a location word such as 上, 里, 前面 or 后面 (桌子上 \"on the desk\", 杯子里 \"in the cup\"). To say something is not there, use 没有 — never 不有."
       },
       "examples": [
-        { "hanzi": "桌子上有一个电脑。", "pinyin": "Zhuōzi shang yǒu yí ge diànnǎo.", "english": "There's a computer on the desk." },
-        { "hanzi": "学校前面有一个商店。", "pinyin": "Xuéxiào qiánmiàn yǒu yí ge shāngdiàn.", "english": "There's a shop in front of the school." },
-        { "hanzi": "杯子里没有茶。", "pinyin": "Bēizi li méiyǒu chá.", "english": "There's no tea in the cup." },
-        { "hanzi": "你家里有猫吗？", "pinyin": "Nǐ jiā li yǒu māo ma?", "english": "Do you have a cat at home?" }
+        {
+          "hanzi": "桌子上有一个电脑。",
+          "pinyin": "Zhuōzi shang yǒu yí ge diànnǎo.",
+          "english": "There's a computer on the desk."
+        },
+        {
+          "hanzi": "学校前面有一个商店。",
+          "pinyin": "Xuéxiào qiánmiàn yǒu yí ge shāngdiàn.",
+          "english": "There's a shop in front of the school."
+        },
+        {
+          "hanzi": "杯子里没有茶。",
+          "pinyin": "Bēizi li méiyǒu chá.",
+          "english": "There's no tea in the cup."
+        },
+        {
+          "hanzi": "你家里有猫吗？",
+          "pinyin": "Nǐ jiā li yǒu māo ma?",
+          "english": "Do you have a cat at home?"
+        }
       ],
       "patternTable": {
-        "columns": ["地方 (place)", "有 / 没有", "东西 (thing)"],
+        "columns": [
+          "地方 (place)",
+          "有 / 没有",
+          "东西 (thing)"
+        ],
         "rows": [
-          ["桌子上", "有", "一本书"],
-          ["医院后面", "有", "一个商店"],
-          ["杯子里", "没有", "茶"]
+          [
+            "桌子上",
+            "有",
+            "一本书"
+          ],
+          [
+            "医院后面",
+            "有",
+            "一个商店"
+          ],
+          [
+            "杯子里",
+            "没有",
+            "茶"
+          ]
         ]
       }
     },
     {
       "id": "hsk1_10_g_he",
       "number": 2,
-      "title": { "hanzi": "连词\"和\"", "english": "The Conjunction \"和\"" },
+      "title": {
+        "hanzi": "连词\"和\"",
+        "english": "The Conjunction \"和\""
+      },
       "explanation": {
         "hanzi": "\"和\"用来连接名词或代词，意思是\"and\"。\"和\"一般不连接两个句子或两个动作。",
         "english": "\"和\" means \"and\", but only for joining nouns or pronouns (a book and a cup; you and I). Unlike English \"and\", it normally does not join two sentences or two actions — for those, simply say the two parts one after the other."
       },
       "examples": [
-        { "hanzi": "我和王明是同学。", "pinyin": "Wǒ hé Wáng Míng shì tóngxué.", "english": "Wang Ming and I are classmates." },
-        { "hanzi": "桌子上有电脑和书。", "pinyin": "Zhuōzi shang yǒu diànnǎo hé shū.", "english": "There's a computer and some books on the desk." },
-        { "hanzi": "我想买一个杯子和一本书。", "pinyin": "Wǒ xiǎng mǎi yí ge bēizi hé yì běn shū.", "english": "I'd like to buy a cup and a book." }
+        {
+          "hanzi": "我和王明是同学。",
+          "pinyin": "Wǒ hé Wáng Míng shì tóngxué.",
+          "english": "Wang Ming and I are classmates."
+        },
+        {
+          "hanzi": "桌子上有电脑和书。",
+          "pinyin": "Zhuōzi shang yǒu diànnǎo hé shū.",
+          "english": "There's a computer and some books on the desk."
+        },
+        {
+          "hanzi": "我想买一个杯子和一本书。",
+          "pinyin": "Wǒ xiǎng mǎi yí ge bēizi hé yì běn shū.",
+          "english": "I'd like to buy a cup and a book."
+        }
       ]
     },
     {
       "id": "hsk1_10_g_neng",
       "number": 3,
-      "title": { "hanzi": "能愿动词\"能\"", "english": "The Modal Verb \"能\"" },
+      "title": {
+        "hanzi": "能愿动词\"能\"",
+        "english": "The Modal Verb \"能\""
+      },
       "explanation": {
         "hanzi": "\"能\"放在动词前面，表示条件允许做某事，也可以用来请求允许：\"我能……吗？\"否定形式是\"不能\"。",
         "english": "\"能\" goes before a verb and says that circumstances allow something: \"can\" or \"may\". It is the polite way to ask permission: 我能……吗? (May I…?). Answer 能 for yes and 不能 for no."
       },
       "examples": [
-        { "hanzi": "我能坐这儿吗？", "pinyin": "Wǒ néng zuò zhèr ma?", "english": "May I sit here?" },
-        { "hanzi": "明天你能去学校吗？", "pinyin": "Míngtiān nǐ néng qù xuéxiào ma?", "english": "Can you go to school tomorrow?" },
-        { "hanzi": "我今天不能去商店。", "pinyin": "Wǒ jīntiān bù néng qù shāngdiàn.", "english": "I can't go to the shop today." }
+        {
+          "hanzi": "我能坐这儿吗？",
+          "pinyin": "Wǒ néng zuò zhèr ma?",
+          "english": "May I sit here?"
+        },
+        {
+          "hanzi": "明天你能去学校吗？",
+          "pinyin": "Míngtiān nǐ néng qù xuéxiào ma?",
+          "english": "Can you go to school tomorrow?"
+        },
+        {
+          "hanzi": "我今天不能去商店。",
+          "pinyin": "Wǒ jīntiān bù néng qù shāngdiàn.",
+          "english": "I can't go to the shop today."
+        }
       ],
       "patternTable": {
-        "columns": ["主语 (subject)", "能 / 不能", "动词 (verb phrase)"],
+        "columns": [
+          "主语 (subject)",
+          "能 / 不能",
+          "动词 (verb phrase)"
+        ],
         "rows": [
-          ["我", "能", "坐这儿吗？"],
-          ["你", "能", "看这本书。"],
-          ["他", "不能", "喝茶。"]
+          [
+            "我",
+            "能",
+            "坐这儿吗？"
+          ],
+          [
+            "你",
+            "能",
+            "看这本书。"
+          ],
+          [
+            "他",
+            "不能",
+            "喝茶。"
+          ]
         ]
       }
     },
     {
       "id": "hsk1_10_g_qing",
       "number": 4,
-      "title": { "hanzi": "用\"请\"表示礼貌的请求", "english": "Polite Requests with \"请\"" },
+      "title": {
+        "hanzi": "用\"请\"表示礼貌的请求",
+        "english": "Polite Requests with \"请\""
+      },
       "explanation": {
         "hanzi": "\"请\"放在句子开头，用来客气地请别人做某事：请 + 动词。",
         "english": "Put 请 at the start of a request to make it polite, like \"please\": 请 + verb. Hosts use it all the time when welcoming guests — 请坐 (have a seat), 请喝茶 (have some tea)."
       },
       "examples": [
-        { "hanzi": "请坐。", "pinyin": "Qǐng zuò.", "english": "Please sit down." },
-        { "hanzi": "请喝茶。", "pinyin": "Qǐng hē chá.", "english": "Please have some tea." },
-        { "hanzi": "请看这儿。", "pinyin": "Qǐng kàn zhèr.", "english": "Please look here." },
-        { "hanzi": "请你写你的名字。", "pinyin": "Qǐng nǐ xiě nǐ de míngzi.", "english": "Please write your name." }
+        {
+          "hanzi": "请坐。",
+          "pinyin": "Qǐng zuò.",
+          "english": "Please sit down."
+        },
+        {
+          "hanzi": "请喝茶。",
+          "pinyin": "Qǐng hē chá.",
+          "english": "Please have some tea."
+        },
+        {
+          "hanzi": "请看这儿。",
+          "pinyin": "Qǐng kàn zhèr.",
+          "english": "Please look here."
+        },
+        {
+          "hanzi": "请你写你的名字。",
+          "pinyin": "Qǐng nǐ xiě nǐ de míngzi.",
+          "english": "Please write your name."
+        }
       ]
     }
   ],
@@ -158,41 +474,109 @@
     {
       "number": 1,
       "type": "role_play",
-      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking a role each." }
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。",
+        "english": "In pairs, read the dialogues aloud, taking a role each."
+      }
     },
     {
       "number": 2,
       "type": "answer_questions",
-      "prompt": { "hanzi": "根据你的情况回答问题。", "english": "Answer the questions about yourself." },
+      "prompt": {
+        "hanzi": "根据你的情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
       "items": [
-        { "hanzi": "你的电脑在哪儿？", "pinyin": "Nǐ de diànnǎo zài nǎr?", "english": "Where is your computer?" },
-        { "hanzi": "你的桌子上有什么？", "pinyin": "Nǐ de zhuōzi shang yǒu shénme?", "english": "What's on your desk?" },
-        { "hanzi": "你家前面有商店吗？", "pinyin": "Nǐ jiā qiánmiàn yǒu shāngdiàn ma?", "english": "Is there a shop in front of your home?" },
-        { "hanzi": "你的杯子里有茶吗？", "pinyin": "Nǐ de bēizi li yǒu chá ma?", "english": "Is there tea in your cup?" },
-        { "hanzi": "你能写汉字吗？", "pinyin": "Nǐ néng xiě Hànzì ma?", "english": "Can you write Chinese characters?" }
+        {
+          "hanzi": "你的电脑在哪儿？",
+          "pinyin": "Nǐ de diànnǎo zài nǎr?",
+          "english": "Where is your computer?"
+        },
+        {
+          "hanzi": "你的桌子上有什么？",
+          "pinyin": "Nǐ de zhuōzi shang yǒu shénme?",
+          "english": "What's on your desk?"
+        },
+        {
+          "hanzi": "你家前面有商店吗？",
+          "pinyin": "Nǐ jiā qiánmiàn yǒu shāngdiàn ma?",
+          "english": "Is there a shop in front of your home?"
+        },
+        {
+          "hanzi": "你的杯子里有茶吗？",
+          "pinyin": "Nǐ de bēizi li yǒu chá ma?",
+          "english": "Is there tea in your cup?"
+        },
+        {
+          "hanzi": "你能写汉字吗？",
+          "pinyin": "Nǐ néng xiě Hànzì ma?",
+          "english": "Can you write Chinese characters?"
+        }
       ]
     },
     {
       "number": 3,
       "type": "fill_blanks",
-      "prompt": { "hanzi": "选词填空：上、里、能、没、和", "english": "Fill in the blanks with 上, 里, 能, 没 or 和." },
+      "prompt": {
+        "hanzi": "选词填空：上、里、能、没、和",
+        "english": "Fill in the blanks with 上, 里, 能, 没 or 和."
+      },
       "items": [
-        { "hanzi": "桌子____有一本书。", "english": "There's a book on the table.", "blank": "上" },
-        { "hanzi": "杯子____有茶。", "english": "There's tea in the cup.", "blank": "里" },
-        { "hanzi": "老师，我____坐这儿吗？", "english": "Teacher, may I sit here?", "blank": "能" },
-        { "hanzi": "医院前面____有商店。", "english": "There's no shop in front of the hospital.", "blank": "没" },
-        { "hanzi": "我的电脑____汉语书在桌子上。", "english": "My computer and my Chinese book are on the desk.", "blank": "和" }
+        {
+          "hanzi": "桌子____有一本书。",
+          "english": "There's a book on the table.",
+          "blank": "上"
+        },
+        {
+          "hanzi": "杯子____有茶。",
+          "english": "There's tea in the cup.",
+          "blank": "里"
+        },
+        {
+          "hanzi": "老师，我____坐这儿吗？",
+          "english": "Teacher, may I sit here?",
+          "blank": "能"
+        },
+        {
+          "hanzi": "医院前面____有商店。",
+          "english": "There's no shop in front of the hospital.",
+          "blank": "没"
+        },
+        {
+          "hanzi": "我的电脑____汉语书在桌子上。",
+          "english": "My computer and my Chinese book are on the desk.",
+          "blank": "和"
+        }
       ]
     },
     {
       "number": 4,
       "type": "match",
-      "prompt": { "hanzi": "给问题选择合适的回答。", "english": "Match each question with a suitable answer." },
+      "prompt": {
+        "hanzi": "给问题选择合适的回答。",
+        "english": "Match each question with a suitable answer."
+      },
       "items": [
-        { "hanzi": "我能坐这儿吗？ — 能，请坐！", "pinyin": "Wǒ néng zuò zhèr ma? — Néng, qǐng zuò!", "english": "May I sit here? — Sure, please sit down!" },
-        { "hanzi": "你的猫在哪儿？ — 在椅子下面。", "pinyin": "Nǐ de māo zài nǎr? — Zài yǐzi xiàmiàn.", "english": "Where's your cat? — Under the chair." },
-        { "hanzi": "这儿有医院吗？ — 没有。", "pinyin": "Zhèr yǒu yīyuàn ma? — Méiyǒu.", "english": "Is there a hospital here? — No, there isn't." },
-        { "hanzi": "桌子上有什么？ — 有一个电脑。", "pinyin": "Zhuōzi shang yǒu shénme? — Yǒu yí ge diànnǎo.", "english": "What's on the table? — A computer." }
+        {
+          "hanzi": "我能坐这儿吗？ — 能，请坐！",
+          "pinyin": "Wǒ néng zuò zhèr ma? — Néng, qǐng zuò!",
+          "english": "May I sit here? — Sure, please sit down!"
+        },
+        {
+          "hanzi": "你的猫在哪儿？ — 在椅子下面。",
+          "pinyin": "Nǐ de māo zài nǎr? — Zài yǐzi xiàmiàn.",
+          "english": "Where's your cat? — Under the chair."
+        },
+        {
+          "hanzi": "这儿有医院吗？ — 没有。",
+          "pinyin": "Zhèr yǒu yīyuàn ma? — Méiyǒu.",
+          "english": "Is there a hospital here? — No, there isn't."
+        },
+        {
+          "hanzi": "桌子上有什么？ — 有一个电脑。",
+          "pinyin": "Zhuōzi shang yǒu shénme? — Yǒu yí ge diànnǎo.",
+          "english": "What's on the table? — A computer."
+        }
       ]
     }
   ],
@@ -200,64 +584,152 @@
     "drills": [
       {
         "number": 1,
-        "title": { "hanzi": "轻声", "english": "The Neutral Tone" },
+        "title": {
+          "hanzi": "轻声",
+          "english": "The Neutral Tone"
+        },
         "explanation": {
           "hanzi": "有些音节读得又短又轻，没有原来的声调，这叫\"轻声\"。拼音里轻声不标调号。",
           "english": "Some syllables lose their own tone and are said quickly and lightly — this is the neutral tone. In pinyin it carries no tone mark. Its pitch depends on the syllable before it: a little higher after a 3rd tone, lower after a 1st, 2nd or 4th tone."
         },
         "subRules": [
           {
-            "rule": { "hanzi": "名词后缀\"子\"读轻声", "english": "The noun suffix 子 is neutral." },
+            "rule": {
+              "hanzi": "名词后缀\"子\"读轻声",
+              "english": "The noun suffix 子 is neutral."
+            },
             "examples": [
-              { "pinyin": "zhuōzi", "english": "table" },
-              { "pinyin": "yǐzi", "english": "chair" },
-              { "pinyin": "bēizi", "english": "cup" },
-              { "pinyin": "érzi", "english": "son" }
+              {
+                "pinyin": "zhuōzi",
+                "english": "table"
+              },
+              {
+                "pinyin": "yǐzi",
+                "english": "chair"
+              },
+              {
+                "pinyin": "bēizi",
+                "english": "cup"
+              },
+              {
+                "pinyin": "érzi",
+                "english": "son"
+              }
             ]
           },
           {
-            "rule": { "hanzi": "名词后面的\"上、里\"读轻声", "english": "上 and 里 after a noun are neutral." },
+            "rule": {
+              "hanzi": "名词后面的\"上、里\"读轻声",
+              "english": "上 and 里 after a noun are neutral."
+            },
             "examples": [
-              { "pinyin": "zhuōzi shang", "english": "on the table" },
-              { "pinyin": "bēizi li", "english": "in the cup" },
-              { "pinyin": "jiā li", "english": "at home" }
+              {
+                "pinyin": "zhuōzi shang",
+                "english": "on the table"
+              },
+              {
+                "pinyin": "bēizi li",
+                "english": "in the cup"
+              },
+              {
+                "pinyin": "jiā li",
+                "english": "at home"
+              }
             ]
           },
           {
-            "rule": { "hanzi": "\"前面、后面\"的\"面\"口语里常读得很轻", "english": "In everyday speech, 面 in 前面 / 后面 / 下面 is often said lightly, although dictionaries mark it with the 4th tone." },
+            "rule": {
+              "hanzi": "\"前面、后面\"的\"面\"口语里常读得很轻",
+              "english": "In everyday speech, 面 in 前面 / 后面 / 下面 is often said lightly, although dictionaries mark it with the 4th tone."
+            },
             "examples": [
-              { "pinyin": "qiánmian", "english": "front" },
-              { "pinyin": "hòumian", "english": "behind" },
-              { "pinyin": "xiàmian", "english": "under" }
+              {
+                "pinyin": "qiánmian",
+                "english": "front"
+              },
+              {
+                "pinyin": "hòumian",
+                "english": "behind"
+              },
+              {
+                "pinyin": "xiàmian",
+                "english": "under"
+              }
             ]
           }
         ]
       },
       {
         "number": 2,
-        "title": { "hanzi": "轻声练习", "english": "Neutral-tone practice: compare the pitch after each tone" },
-        "syllables": ["māma", "bēizi", "zhuōzi", "míngzi", "péngyou", "xuésheng", "yǐzi", "xǐhuan", "bàba", "xièxie"]
+        "title": {
+          "hanzi": "轻声练习",
+          "english": "Neutral-tone practice: compare the pitch after each tone"
+        },
+        "syllables": [
+          "māma",
+          "bēizi",
+          "zhuōzi",
+          "míngzi",
+          "péngyou",
+          "xuésheng",
+          "yǐzi",
+          "xǐhuan",
+          "bàba",
+          "xièxie"
+        ]
       }
     ]
   },
   "characters": {
     "strokes": [
       {
-        "name": { "hanzi": "捺", "pinyin": "nà", "english": "right-falling stroke" },
+        "name": {
+          "hanzi": "捺",
+          "pinyin": "nà",
+          "english": "right-falling stroke"
+        },
         "shape": "㇏",
         "examples": [
-          { "hanzi": "本", "pinyin": "běn", "english": "measure word for books" },
-          { "hanzi": "人", "pinyin": "rén", "english": "person" },
-          { "hanzi": "大", "pinyin": "dà", "english": "big" }
+          {
+            "hanzi": "本",
+            "pinyin": "běn",
+            "english": "measure word for books"
+          },
+          {
+            "hanzi": "人",
+            "pinyin": "rén",
+            "english": "person"
+          },
+          {
+            "hanzi": "大",
+            "pinyin": "dà",
+            "english": "big"
+          }
         ]
       },
       {
-        "name": { "hanzi": "点", "pinyin": "diǎn", "english": "dot" },
+        "name": {
+          "hanzi": "点",
+          "pinyin": "diǎn",
+          "english": "dot"
+        },
         "shape": "㇔",
         "examples": [
-          { "hanzi": "下", "pinyin": "xià", "english": "under, below" },
-          { "hanzi": "六", "pinyin": "liù", "english": "six" },
-          { "hanzi": "这", "pinyin": "zhè", "english": "this" }
+          {
+            "hanzi": "下",
+            "pinyin": "xià",
+            "english": "under, below"
+          },
+          {
+            "hanzi": "六",
+            "pinyin": "liù",
+            "english": "six"
+          },
+          {
+            "hanzi": "这",
+            "pinyin": "zhè",
+            "english": "this"
+          }
         ]
       }
     ],
@@ -296,12 +768,37 @@
       }
     ],
     "radicals": [
-      { "hanzi": "囗", "pinyin": "guózìkuàng", "english": "enclosure (the frame of 国)", "examples": ["国", "四", "回", "图", "园"] },
-      { "hanzi": "衤", "pinyin": "yīzìpáng", "english": "clothing radical (side form of 衣)", "examples": ["衬", "衫", "裤", "袜", "被"] }
+      {
+        "hanzi": "囗",
+        "pinyin": "guózìkuàng",
+        "english": "enclosure (the frame of 国)",
+        "examples": [
+          "国",
+          "四",
+          "回",
+          "图",
+          "园"
+        ]
+      },
+      {
+        "hanzi": "衤",
+        "pinyin": "yīzìpáng",
+        "english": "clothing radical (side form of 衣)",
+        "examples": [
+          "衬",
+          "衫",
+          "裤",
+          "袜",
+          "被"
+        ]
+      }
     ]
   },
   "application": {
-    "prompt": { "hanzi": "两人一组，说一说东西在哪儿。", "english": "Work in pairs and talk about where things are." },
+    "prompt": {
+      "hanzi": "两人一组，说一说东西在哪儿。",
+      "english": "Work in pairs and talk about where things are."
+    },
     "activities": [
       "Look around the classroom. A asks 桌子上有什么? / 椅子下面有什么? and B answers with 有 or 没有.",
       "Hide game: A puts a book, a cup or a pen somewhere; B asks ……在哪儿? and A answers with 上, 里, 下面, 前面 or 后面.",
@@ -310,7 +807,10 @@
     ]
   },
   "culture": {
-    "title": { "hanzi": "请坐：座位与礼让", "english": "\"Please, Have a Seat\": Seats and Courtesy" },
+    "title": {
+      "hanzi": "请坐：座位与礼让",
+      "english": "\"Please, Have a Seat\": Seats and Courtesy"
+    },
     "body": "In a Chinese home or at a restaurant table, where you sit is not random. The seat of honour is usually the one facing the door, or the place furthest from the entrance, and it goes to the oldest person present or the most important guest. Hosts typically sit close to the door so they can greet people and see to the food and tea.\n\nWhen you arrive as a guest, don't just take the nearest chair. Wait for your host to say 请坐 (qǐng zuò, \"please sit\") and point you to a seat. If you're offered the best seat, it's polite to decline at first — 不, 不, 您坐 (bù, bù, nín zuò, \"no, no, you sit\") — and accept only after your host insists a second time. This little back-and-forth is expected and shows modesty on both sides.\n\nThe same courtesy appears in everyday life. On buses and the subway, younger people are expected to give up their seats to the elderly, pregnant women and parents with small children, and many cities mark special \"courtesy seats\" for them. A simple 请坐 with a gesture toward your seat is all you need to say."
   }
 }

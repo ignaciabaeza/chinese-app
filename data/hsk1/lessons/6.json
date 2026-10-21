@@ -3,9 +3,9 @@
   "level": 1,
   "number": 6,
   "title": {
-    "hanzi": "我会说汉语",
-    "pinyin": "Wǒ huì shuō Hànyǔ",
-    "english": "I can speak Chinese"
+    "hanzi": "你会写汉字吗？",
+    "pinyin": "Nǐ huì xiě Hànzì ma?",
+    "english": "Can you write Chinese characters?"
   },
   "theme": "Abilities",
   "warmUp": {

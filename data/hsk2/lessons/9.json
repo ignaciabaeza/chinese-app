@@ -2,80 +2,103 @@
   "id": "hsk2-9",
   "level": 2,
   "number": 9,
-  "title": { "hanzi": "题太多,我没做完", "pinyin": "Tí tài duō, wǒ méi zuò wán", "english": "There were too many questions; I didn't finish all of them" },
+  "title": { "hanzi": "大家都做完了吗", "pinyin": "Dàjiā dōu zuòwán le ma", "english": "Has everyone finished?" },
   "theme": "Study & Tasks",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "instruction": { "hanzi": "读一读，说说这些词语是什么意思。", "english": "Read the words and phrases aloud and say what they mean." },
     "items": [
-      { "hanzi": "上班",   "pinyin": "shàng bān", "english": "to go to work" },
-      { "hanzi": "唱歌",   "pinyin": "chàng gē",  "english": "to sing" },
-      { "hanzi": "对错",   "pinyin": "duì cuò",   "english": "right and wrong" },
-      { "hanzi": "问题",   "pinyin": "wèntí",     "english": "question, problem" },
-      { "hanzi": "第一",   "pinyin": "dì yī",     "english": "first" },
-      { "hanzi": "跳舞",   "pinyin": "tiào wǔ",   "english": "to dance" }
+      { "hanzi": "做完了", "pinyin": "zuòwán le", "english": "finished (doing)" },
+      { "hanzi": "听懂了", "pinyin": "tīngdǒng le", "english": "understood (by listening)" },
+      { "hanzi": "看错了", "pinyin": "kàncuò le", "english": "misread, saw it wrong" },
+      { "hanzi": "第一题", "pinyin": "dì yī tí", "english": "question one" },
+      { "hanzi": "有问题", "pinyin": "yǒu wèntí", "english": "to have a question" },
+      { "hanzi": "欢迎你", "pinyin": "huānyíng nǐ", "english": "welcome" },
+      { "hanzi": "去上班", "pinyin": "qù shàng bān", "english": "to go to work" },
+      { "hanzi": "跳舞", "pinyin": "tiào wǔ", "english": "to dance" }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "打电话", "english": "On the phone" },
-      "audioRef": "09-1",
+      "title": { "hanzi": "在教室", "english": "In the classroom" },
+      "audioRef": "9-1",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你好!请问张欢在吗?",                  "pinyin": "Nǐ hǎo! Qǐngwèn Zhāng Huān zài ma?",                  "english": "Hello! May I speak to Zhang Huan?" },
-        { "speaker": "B", "hanzi": "你打错了,我们这儿没有叫张欢的。",    "pinyin": "Nǐ dǎ cuò le, wǒmen zhèr méiyǒu jiào Zhāng Huān de.","english": "You've got the wrong number. There isn't anyone named Zhang Huan here." },
-        { "speaker": "A", "hanzi": "对不起。",                              "pinyin": "Duìbuqǐ.",                                            "english": "I'm sorry." }
+        { "speaker": "A", "hanzi": "大家都做完了吗？", "pinyin": "Dàjiā dōu zuòwán le ma?", "english": "Has everyone finished?" },
+        { "speaker": "B", "hanzi": "做完了。老师，第一题我不懂。", "pinyin": "Zuòwán le. Lǎoshī, dì yī tí wǒ bù dǒng.", "english": "Yes. Ms. Liu, I don't understand question one." },
+        { "speaker": "A", "hanzi": "有什么问题？", "pinyin": "Yǒu shénme wèntí?", "english": "What's the problem?" },
+        { "speaker": "B", "hanzi": "这个字我不认识。", "pinyin": "Zhège zì wǒ bú rènshi.", "english": "I don't know this character." },
+        { "speaker": "A", "hanzi": "这是“离”字。“机场离这儿很远”的“离”。", "pinyin": "Zhè shì \"lí\" zì. \"Jīchǎng lí zhèr hěn yuǎn\" de \"lí\".", "english": "This is 离, the 离 in \"the airport is far from here\"." },
+        { "speaker": "B", "hanzi": "我看错了，我觉得是“高”字。", "pinyin": "Wǒ kàncuò le, wǒ juéde shì \"gāo\" zì.", "english": "I misread it. I thought it was 高." },
+        { "speaker": "A", "hanzi": "现在懂了吗？", "pinyin": "Xiànzài dǒng le ma?", "english": "Do you understand now?" },
+        { "speaker": "B", "hanzi": "懂了，谢谢老师！", "pinyin": "Dǒng le, xièxie lǎoshī!", "english": "Yes, thank you!" }
       ],
       "newWords": [
+        { "id": "hsk2_9_wan", "hanzi": "完", "pinyin": "wán", "pos": "v.", "english": "to finish, to end" },
+        { "id": "hsk2_9_diyi", "hanzi": "第一", "pinyin": "dì yī", "pos": "num.", "english": "first" },
+        { "id": "hsk2_9_ti", "hanzi": "题", "pinyin": "tí", "pos": "n.", "english": "question, problem" },
+        { "id": "hsk2_9_dong", "hanzi": "懂", "pinyin": "dǒng", "pos": "v.", "english": "to understand, to know" },
+        { "id": "hsk2_9_wenti", "hanzi": "问题", "pinyin": "wèntí", "pos": "n.", "english": "question, problem" },
         { "id": "hsk2_9_cuo", "hanzi": "错", "pinyin": "cuò", "pos": "adj.", "english": "wrong, incorrect" }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在学校", "english": "In the school" },
-      "audioRef": "09-2",
+      "title": { "hanzi": "在公司", "english": "At the office" },
+      "audioRef": "9-2",
       "dialogue": [
-        { "speaker": "A", "hanzi": "您从几岁开始学习跳舞?",                                  "pinyin": "Nín cóng jǐ suì kāishǐ xuéxí tiào wǔ?",                                       "english": "At what age did you start to learn dancing?" },
-        { "speaker": "B", "hanzi": "我第一次跳舞是在七岁的时候。",                            "pinyin": "Wǒ dì yī cì tiào wǔ shì zài qī suì de shíhou.",                              "english": "I was seven when I danced for the first time." },
-        { "speaker": "A", "hanzi": "我女儿今年也七岁了。我希望她能跟您学跳舞,可以吗?",     "pinyin": "Wǒ nǚ'ér jīnnián yě qī suì le. Wǒ xīwàng tā néng gēn nín xué tiào wǔ, kěyǐ ma?","english": "My daughter is seven now. I hope she can learn to dance from you. May she?" },
-        { "speaker": "B", "hanzi": "没问题,非常欢迎。",                                       "pinyin": "Méi wèntí, fēicháng huānyíng.",                                              "english": "Sure. It's my pleasure." }
+        { "speaker": "A", "hanzi": "你好，你是王明吧？欢迎你！", "pinyin": "Nǐ hǎo, nǐ shì Wáng Míng ba? Huānyíng nǐ!", "english": "Hello, you must be Wang Ming. Welcome!" },
+        { "speaker": "B", "hanzi": "您好！我什么时候开始上班？", "pinyin": "Nín hǎo! Wǒ shénme shíhou kāishǐ shàng bān?", "english": "Hello! When do I start work?" },
+        { "speaker": "A", "hanzi": "从下个星期一开始。", "pinyin": "Cóng xià ge xīngqīyī kāishǐ.", "english": "From next Monday." },
+        { "speaker": "B", "hanzi": "每天几点上班？", "pinyin": "Měi tiān jǐ diǎn shàng bān?", "english": "What time does work start each day?" },
+        { "speaker": "A", "hanzi": "你下午有时间，就从一点工作到五点，可以吗？", "pinyin": "Nǐ xiàwǔ yǒu shíjiān, jiù cóng yī diǎn gōngzuò dào wǔ diǎn, kěyǐ ma?", "english": "You're free in the afternoons, so work from one to five. Is that OK?" },
+        { "speaker": "B", "hanzi": "可以。星期六也上班吗？", "pinyin": "Kěyǐ. Xīngqīliù yě shàng bān ma?", "english": "That's fine. Do I work on Saturdays too?" },
+        { "speaker": "A", "hanzi": "不上班，星期六和星期日都休息。", "pinyin": "Bú shàng bān, xīngqīliù hé xīngqīrì dōu xiūxi.", "english": "No. Saturdays and Sundays are both days off." }
       ],
       "newWords": [
-        { "id": "hsk2_9_cong",     "hanzi": "从",   "pinyin": "cóng",     "pos": "prep.", "english": "from" },
-        { "id": "hsk2_9_tiaowu",   "hanzi": "跳舞", "pinyin": "tiào wǔ",  "pos": "v.",    "english": "to dance" },
-        { "id": "hsk2_9_diyi",     "hanzi": "第一", "pinyin": "dì yī",    "pos": "num.",  "english": "first" },
-        { "id": "hsk2_9_xiwang",   "hanzi": "希望", "pinyin": "xīwàng",   "pos": "v.",    "english": "to hope, to wish" },
-        { "id": "hsk2_9_wenti",    "hanzi": "问题", "pinyin": "wèntí",    "pos": "n.",    "english": "question, problem" },
-        { "id": "hsk2_9_huanying", "hanzi": "欢迎", "pinyin": "huānyíng", "pos": "v.",    "english": "to welcome" }
+        { "id": "hsk2_9_huanying", "hanzi": "欢迎", "pinyin": "huānyíng", "pos": "v.", "english": "to welcome" },
+        { "id": "hsk2_9_shangban", "hanzi": "上班", "pinyin": "shàng bān", "pos": "v.", "english": "to work, to do a job" },
+        { "id": "hsk2_9_cong", "hanzi": "从", "pinyin": "cóng", "pos": "prep.", "english": "from" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_9_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming" }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在家里", "english": "At home" },
-      "audioRef": "09-3",
+      "title": { "hanzi": "在学校", "english": "On campus" },
+      "audioRef": "9-3",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你知道吗?大卫找到工作了。",            "pinyin": "Nǐ zhīdào ma? Dàwèi zhǎodào gōngzuò le.",                "english": "You know what? David has got a job." },
-        { "speaker": "B", "hanzi": "太好了!他从什么时候开始上班?",         "pinyin": "Tài hǎo le! Tā cóng shénme shíhou kāishǐ shàng bān?",    "english": "That's great! When will he start to work?" },
-        { "speaker": "A", "hanzi": "从下个星期一开始。",                     "pinyin": "Cóng xià ge xīngqī yī kāishǐ.",                          "english": "Next Monday." },
-        { "speaker": "B", "hanzi": "这是他的第一个工作,希望他能喜欢。",    "pinyin": "Zhè shì tā de dì yī ge gōngzuò, xīwàng tā néng xǐhuan.", "english": "This is his first job. I hope he'll like it." }
+        { "speaker": "A", "hanzi": "安娜，你会跳舞吗？", "pinyin": "Ānnà, nǐ huì tiào wǔ ma?", "english": "Anna, can you dance?" },
+        { "speaker": "B", "hanzi": "会一点儿。我从小就喜欢跳舞。", "pinyin": "Huì yìdiǎnr. Wǒ cóng xiǎo jiù xǐhuan tiào wǔ.", "english": "A little. I've loved dancing since I was small." },
+        { "speaker": "A", "hanzi": "星期六晚上学校有舞会，你去吗？", "pinyin": "Xīngqīliù wǎnshang xuéxiào yǒu wǔhuì, nǐ qù ma?", "english": "There's a dance at school on Saturday night. Are you going?" },
+        { "speaker": "B", "hanzi": "去！我希望马克也去。", "pinyin": "Qù! Wǒ xīwàng Mǎkè yě qù.", "english": "Yes! I hope Mark goes too." },
+        { "speaker": "A", "hanzi": "他说他不会跳舞。", "pinyin": "Tā shuō tā bú huì tiào wǔ.", "english": "He says he can't dance." },
+        { "speaker": "B", "hanzi": "没关系，我教他！", "pinyin": "Méi guānxi, wǒ jiāo tā!", "english": "No problem, I'll teach him!" }
       ],
       "newWords": [
-        { "id": "hsk2_9_shangban", "hanzi": "上班", "pinyin": "shàng bān", "pos": "v.", "english": "to work, to do a job" }
+        { "id": "hsk2_9_tiaowu", "hanzi": "跳舞", "pinyin": "tiào wǔ", "pos": "v.", "english": "to dance" },
+        { "id": "hsk2_9_xiwang", "hanzi": "希望", "pinyin": "xīwàng", "pos": "v.", "english": "to hope, to wish" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_9_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" },
+        { "id": "hsk2_9_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在教室", "english": "In the classroom" },
-      "audioRef": "09-4",
+      "title": { "hanzi": "马克学跳舞", "english": "Mark learns to dance" },
+      "audioRef": "9-4",
       "dialogue": [
-        { "speaker": "A", "hanzi": "昨天的考试怎么样?你都听懂了吗?", "pinyin": "Zuótiān de kǎoshì zěnmeyàng? Nǐ dōu tīngdǒng le ma?",    "english": "How was the test yesterday? Did you understand everything you heard?" },
-        { "speaker": "B", "hanzi": "听懂了。",                          "pinyin": "Tīngdǒng le.",                                              "english": "Yes, I did." },
-        { "speaker": "A", "hanzi": "你都做完了没有?",                  "pinyin": "Nǐ dōu zuòwán le méiyǒu?",                                  "english": "Did you finish the test paper?" },
-        { "speaker": "B", "hanzi": "题太多,我没做完。",                "pinyin": "Tí tài duō, wǒ méi zuòwán.",                                "english": "There were too many questions — I didn't finish all of them." }
+        { "speaker": "A", "hanzi": "星期六晚上，我和安娜去学校跳舞。", "pinyin": "Xīngqīliù wǎnshang, wǒ hé Ānnà qù xuéxiào tiào wǔ.", "english": "On Saturday night, Anna and I went to the school dance." },
+        { "speaker": "A", "hanzi": "我不会跳舞，安娜从七点开始教我。", "pinyin": "Wǒ bú huì tiào wǔ, Ānnà cóng qī diǎn kāishǐ jiāo wǒ.", "english": "I can't dance, so Anna started teaching me at seven." },
+        { "speaker": "A", "hanzi": "开始的时候，我常常跳错。", "pinyin": "Kāishǐ de shíhou, wǒ chángcháng tiàocuò.", "english": "At first I kept getting the steps wrong." },
+        { "speaker": "A", "hanzi": "安娜说：“没关系，我们再来！”", "pinyin": "Ānnà shuō: \"Méi guānxi, wǒmen zài lái!\"", "english": "Anna said, \"Never mind, let's try again!\"" },
+        { "speaker": "A", "hanzi": "九点的时候，我会跳了！", "pinyin": "Jiǔ diǎn de shíhou, wǒ huì tiào le!", "english": "By nine o'clock, I could dance!" },
+        { "speaker": "A", "hanzi": "我希望下个星期还能和她跳舞。", "pinyin": "Wǒ xīwàng xià ge xīngqī hái néng hé tā tiào wǔ.", "english": "I hope I can dance with her again next week." }
       ],
-      "newWords": [
-        { "id": "hsk2_9_dong", "hanzi": "懂", "pinyin": "dǒng", "pos": "v.", "english": "to understand, to know" },
-        { "id": "hsk2_9_wan",  "hanzi": "完", "pinyin": "wán",  "pos": "v.", "english": "to finish, to end" },
-        { "id": "hsk2_9_ti",   "hanzi": "题", "pinyin": "tí",   "pos": "n.", "english": "question, problem" }
+      "newWords": [],
+      "properNouns": [
+        { "id": "hsk2_9_pn_anna4", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" }
       ]
     }
   ],
@@ -83,79 +106,131 @@
     {
       "id": "hsk2_9_g_complement",
       "number": 1,
-      "title": { "hanzi": "结果补语", "english": "Complements of Result" },
+      "title": { "hanzi": "结果补语", "english": "Result Complements" },
       "explanation": {
-        "hanzi": "一些动词或形容词可以放在动词后边,补充、说明动作的结果,它们叫作结果补语。否定式在补语前加\"没(有)\",句尾不能用\"了\"。表示疑问时,常在句尾加上\"(了)没有\"。",
-        "english": "Certain verbs or adjectives can follow a verb to describe the result of an action — these are complements of result. The negative form puts 没(有) before the verb, and 了 cannot appear at the end. To form a question, add (了)没有 at the end."
-      },
-      "patternTable": {
-        "columns": ["Subject", "V + Complement", "Object"],
-        "rows": [
-          ["我",   "看  见",   "你的女朋友了。"],
-          ["我",   "听  懂",   "今天的汉语课了。"],
-          ["我",   "做  好",   "饭了。"],
-          ["大卫", "找  到",   "工作了。"]
-        ]
+        "hanzi": "动词后面加一个动词或形容词，说明动作有了什么结果，叫结果补语：做完（做了，现在没有了）、听懂（听了，明白了）、看错（看了，可是错了）、找到（找了，找着了）。否定的时候用“没（有）”，不用“不”：我没听懂。问的时候说“……了吗？”或者“……了没有？”。",
+        "english": "Chinese often adds a second word after a verb to show the result of the action. This is a result complement.\n- 做完 do + finish = finished doing\n- 听懂 listen + understand = understood (what was heard)\n- 看错 look + wrong = misread, saw wrongly\n- 找到 look for + reach = found\nThe verb says what you did; the complement says what came of it. 我找了 only means \"I looked\"; 我找到了 means \"I found it\".\nNegative: use 没(有), not 不: 我没听懂 \"I didn't understand\". Questions: 你做完了吗? / 你做完了没有?"
       },
       "examples": [
-        { "hanzi": "我没看见你的女朋友。", "pinyin": "Wǒ méi kànjiàn nǐ de nǚpéngyou.",     "english": "I didn't see your girlfriend." },
-        { "hanzi": "我没听懂他说的话。",   "pinyin": "Wǒ méi tīngdǒng tā shuō de huà.",      "english": "I didn't understand what he said." },
-        { "hanzi": "你做完(考试题)了没有?","pinyin": "Nǐ zuòwán (kǎoshì tí) le méiyǒu?",    "english": "Did you finish (the test questions)?" }
-      ]
+        { "hanzi": "你做完了吗？——做完了。", "pinyin": "Nǐ zuòwán le ma? — Zuòwán le.", "english": "Have you finished? — Yes, I have." },
+        { "hanzi": "老师说的话，我没听懂。", "pinyin": "Lǎoshī shuō de huà, wǒ méi tīngdǒng.", "english": "I didn't understand what the teacher said." },
+        { "hanzi": "对不起，我看错了。", "pinyin": "Duìbuqǐ, wǒ kàncuò le.", "english": "Sorry, I read it wrong." },
+        { "hanzi": "我的手表找到了！", "pinyin": "Wǒ de shǒubiǎo zhǎodào le!", "english": "I found my watch!" }
+      ],
+      "patternTable": {
+        "columns": ["动词 Verb", "结果 Result", "例句 Example"],
+        "rows": [
+          ["做", "完", "我做完了。"],
+          ["听", "懂", "你听懂了吗？"],
+          ["看", "错", "我看错了。"],
+          ["找", "到", "他没找到。"]
+        ]
+      }
     },
     {
       "id": "hsk2_9_g_cong",
       "number": 2,
-      "title": { "hanzi": "介词\"从\"", "english": "The Preposition \"从\"" },
+      "title": { "hanzi": "介词“从”", "english": "The Preposition \"从\"" },
       "explanation": {
-        "hanzi": "介词\"从\"引出一段时间、一段路程、一件事情的经过或者一个序列的起点,后面常跟\"到\"一起搭配使用。",
-        "english": "\"从\" introduces the starting point of a period of time, a distance, a process, or a sequence. It's often paired with \"到\"."
+        "hanzi": "“从”后面加时间或者地方，表示起点，意思是“从……开始”。“从……到……”说一段时间或者一段路的开始和结束。“从”和后面的词放在动词前面。",
+        "english": "从 marks a starting point in time or place: \"from\". The 从 phrase goes before the verb: 从美国来 \"come from the US\", 从八点开始 \"start from eight\".\nPair it with 到 to give both ends of a stretch of time or distance: 从一点到五点 \"from one to five\", 从我家到学校 \"from my home to school\".\n从小 means \"since childhood\"."
       },
+      "examples": [
+        { "hanzi": "马克从美国来。", "pinyin": "Mǎkè cóng Měiguó lái.", "english": "Mark comes from the US." },
+        { "hanzi": "考试从下午两点开始。", "pinyin": "Kǎoshì cóng xiàwǔ liǎng diǎn kāishǐ.", "english": "The exam starts at two in the afternoon." },
+        { "hanzi": "从我家到公司要四十分钟。", "pinyin": "Cóng wǒ jiā dào gōngsī yào sìshí fēnzhōng.", "english": "It takes forty minutes from my home to the office." },
+        { "hanzi": "我从星期一到星期五都上班。", "pinyin": "Wǒ cóng xīngqīyī dào xīngqīwǔ dōu shàng bān.", "english": "I work from Monday to Friday." }
+      ],
       "patternTable": {
-        "columns": ["从", "A", "到", "B", "(remainder)"],
+        "columns": ["从", "起点 Start", "到", "终点 End", "动词 Verb"],
         "rows": [
-          ["从", "北京",     "到", "上海", "要坐几个小时的飞机?"],
-          ["从", "老人",     "到", "孩子", "都喜欢吃苹果。"],
-          ["从", "下个星期一","",   "",     "开始(上班)。"]
+          ["从", "美国", "", "", "来"],
+          ["从", "八点", "", "", "开始"],
+          ["从", "一点", "到", "五点", "工作"],
+          ["从", "我家", "到", "学校", "要十分钟"]
         ]
       }
     },
     {
       "id": "hsk2_9_g_di",
       "number": 3,
-      "title": { "hanzi": "\"第~\"表示顺序", "english": "\"第~\" Indicating Order" },
+      "title": { "hanzi": "“第”＋数词", "english": "\"第\" + Number for Order" },
       "explanation": {
-        "hanzi": "\"第\"常被放在数量短语前边,表示顺序。",
-        "english": "\"第\" goes before a numeral-measure-word phrase to indicate order."
+        "hanzi": "“第”放在数词前面，表示次序：第一、第二、第三……。后面常常有量词和名词：第一个人、第三本书。“第二”和“两”不一样：“两个”说数量，“第二个”说次序。“题”前面可以不用量词：第一题。",
+        "english": "Put 第 in front of a number to make an ordinal: 第一 \"first\", 第二 \"second\", 第三 \"third\"...\nA measure word and noun usually follow: 第一个人 \"the first person\", 第三本书 \"the third book\". Some nouns such as 题 and 天 can follow directly: 第一题 \"question one\", 第二天 \"the second day / the next day\".\nNote: always 第二 for order, even though you say 两个 for quantity. 两个人 is \"two people\"; 第二个人 is \"the second person\"."
       },
+      "examples": [
+        { "hanzi": "第一题我不懂。", "pinyin": "Dì yī tí wǒ bù dǒng.", "english": "I don't understand question one." },
+        { "hanzi": "他是第一个到教室的。", "pinyin": "Tā shì dì yī ge dào jiàoshì de.", "english": "He was the first one to get to the classroom." },
+        { "hanzi": "这是我的第三本汉语书。", "pinyin": "Zhè shì wǒ de dì sān běn Hànyǔ shū.", "english": "This is my third Chinese book." },
+        { "hanzi": "我们第二天去了机场。", "pinyin": "Wǒmen dì èr tiān qùle jīchǎng.", "english": "We went to the airport the next day." }
+      ],
       "patternTable": {
-        "columns": ["第", "Num", "Measure", "Noun"],
+        "columns": ["第 + 数词", "量词 Measure", "名词 Noun"],
         "rows": [
-          ["第", "一", "本", "书"],
-          ["第", "二", "个", "工作"],
-          ["第", "一", "次", "跳舞"]
+          ["第一", "个", "人"],
+          ["第三", "本", "书"],
+          ["第二", "", "天"],
+          ["第五", "", "题"]
         ]
       }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking one role each." }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据你的情况回答问题。", "english": "Answer the questions about yourself." },
       "items": [
-        { "hanzi": "老师从几岁开始学跳舞?",   "pinyin": "Lǎoshī cóng jǐ suì kāishǐ xué tiào wǔ?" },
-        { "hanzi": "老师想教她的女儿跳舞吗?", "pinyin": "Lǎoshī xiǎng jiāo tā de nǚ'ér tiào wǔ ma?" },
-        { "hanzi": "大卫什么时候去工作?",     "pinyin": "Dàwèi shénme shíhou qù gōngzuò?" },
-        { "hanzi": "这次考试她都听懂了吗?",   "pinyin": "Zhè cì kǎoshì tā dōu tīngdǒng le ma?" },
-        { "hanzi": "她考试为什么没做完?",     "pinyin": "Tā kǎoshì wèi shénme méi zuòwán?" }
+        { "hanzi": "老师说汉语，你都听懂了吗？", "pinyin": "Lǎoshī shuō Hànyǔ, nǐ dōu tīngdǒng le ma?", "english": "When the teacher speaks Chinese, do you understand everything?" },
+        { "hanzi": "你每天从几点到几点学习？", "pinyin": "Nǐ měi tiān cóng jǐ diǎn dào jǐ diǎn xuéxí?", "english": "From what time to what time do you study each day?" },
+        { "hanzi": "你会跳舞吗？", "pinyin": "Nǐ huì tiào wǔ ma?", "english": "Can you dance?" },
+        { "hanzi": "你希望明年去哪儿旅游？", "pinyin": "Nǐ xīwàng míngnián qù nǎr lǚyóu?", "english": "Where do you hope to travel next year?" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": { "hanzi": "用“完、懂、错、到、从、第”填空。", "english": "Fill in the blanks with 完, 懂, 错, 到, 从 or 第." },
+      "items": [
+        { "hanzi": "我吃____饭就去上班。", "english": "I'll go to work as soon as I've finished eating.", "blank": "完" },
+        { "hanzi": "老师说的话，我没听____。", "english": "I didn't understand what the teacher said.", "blank": "懂" },
+        { "hanzi": "对不起，这个字我写____了。", "english": "Sorry, I wrote this character wrong.", "blank": "错" },
+        { "hanzi": "你的杯子找____了吗？", "english": "Have you found your cup?", "blank": "到" },
+        { "hanzi": "安娜____美国来。", "english": "Anna comes from the US.", "blank": "从" },
+        { "hanzi": "今天我是____一个到教室的。", "english": "Today I was the first to arrive in the classroom.", "blank": "第" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": { "hanzi": "给问题选择合适的回答。", "english": "Match each question with a suitable answer." },
+      "items": [
+        { "hanzi": "你做完了吗？ — 还没做完。", "pinyin": "Nǐ zuòwán le ma? — Hái méi zuòwán.", "english": "Have you finished? — Not yet." },
+        { "hanzi": "你有什么问题？ — 第三题我不懂。", "pinyin": "Nǐ yǒu shénme wèntí? — Dì sān tí wǒ bù dǒng.", "english": "What's your question? — I don't understand question three." },
+        { "hanzi": "你什么时候上班？ — 从明天开始。", "pinyin": "Nǐ shénme shíhou shàng bān? — Cóng míngtiān kāishǐ.", "english": "When do you start work? — From tomorrow." },
+        { "hanzi": "我们去跳舞，好吗？ — 好啊！", "pinyin": "Wǒmen qù tiào wǔ, hǎo ma? — Hǎo a!", "english": "Shall we go dancing? — Sure!" }
       ]
     }
   ],
   "characters": {
     "radicals": [
-      { "hanzi": "土", "pinyin": "tí tǔ páng", "english": "earth (related to soil/land/buildings)", "examples": ["块 kuài (lump, piece)", "地 dì (earth, land, ground)"] },
-      { "hanzi": "灬", "pinyin": "sì diǎn dǐ", "english": "four-dot fire (related to fire)",        "examples": ["热 rè (hot)", "黑 hēi (black)"] }
+      { "hanzi": "土", "pinyin": "tǔzì páng", "english": "earth, soil (related to ground, places and building)", "examples": ["在 zài (at, in)", "坐 zuò (to sit)", "块 kuài (piece; yuan)", "场 chǎng (field, as in 机场)", "地 dì (ground)"] },
+      { "hanzi": "灬", "pinyin": "sìdiǎn dǐ", "english": "fire (four dots at the bottom; related to heat and fire)", "examples": ["点 diǎn (dot; o'clock)", "热 rè (hot)", "黑 hēi (black)", "照 zhào (to shine; to photograph)"] }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组，谈谈学习和工作。", "english": "In pairs, talk about study and work." },
+    "activities": [
+      "Classroom check: one partner is the teacher and asks 做完了吗？ / 听懂了吗？ / 有什么问题？; the other answers with 做完了 / 没做完, 懂了 / 没听懂, and asks about a specific question (第……题).",
+      "Describe your weekly schedule with 从……到……: when you study, work (上班) and rest.",
+      "First-day welcome: greet a new classmate or colleague with 欢迎你！ and tell them when things start (从……开始).",
+      "Tell your partner three things you hope for this year with 我希望……"
     ]
   }
 }

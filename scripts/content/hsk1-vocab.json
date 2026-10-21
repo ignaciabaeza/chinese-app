@@ -89,12 +89,6 @@
    "english": "I, me"
   },
   {
-   "hanzi": "李月",
-   "pinyin": "Lǐ Yuè",
-   "pos": "proper",
-   "english": "Li Yue, name of a person"
-  },
-  {
    "hanzi": "是",
    "pinyin": "shì",
    "pos": "v.",
@@ -264,61 +258,71 @@
    "hanzi": "一",
    "pinyin": "yī",
    "pos": "num.",
-   "english": "one"
+   "english": "one",
+   "optional": true
   },
   {
    "hanzi": "二",
    "pinyin": "èr",
    "pos": "num.",
-   "english": "two"
+   "english": "two",
+   "optional": true
   },
   {
    "hanzi": "三",
    "pinyin": "sān",
    "pos": "num.",
-   "english": "three"
+   "english": "three",
+   "optional": true
   },
   {
    "hanzi": "四",
    "pinyin": "sì",
    "pos": "num.",
-   "english": "four"
+   "english": "four",
+   "optional": true
   },
   {
    "hanzi": "五",
    "pinyin": "wǔ",
    "pos": "num.",
-   "english": "five"
+   "english": "five",
+   "optional": true
   },
   {
    "hanzi": "六",
    "pinyin": "liù",
    "pos": "num.",
-   "english": "six"
+   "english": "six",
+   "optional": true
   },
   {
    "hanzi": "七",
    "pinyin": "qī",
    "pos": "num.",
-   "english": "seven"
+   "english": "seven",
+   "optional": true
   },
   {
    "hanzi": "八",
    "pinyin": "bā",
    "pos": "num.",
-   "english": "eight"
+   "english": "eight",
+   "optional": true
   },
   {
    "hanzi": "九",
    "pinyin": "jiǔ",
    "pos": "num.",
-   "english": "nine"
+   "english": "nine",
+   "optional": true
   },
   {
    "hanzi": "十",
    "pinyin": "shí",
    "pos": "num.",
-   "english": "ten"
+   "english": "ten",
+   "optional": true
   }
  ],
  "6": [

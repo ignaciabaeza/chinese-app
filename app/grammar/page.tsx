@@ -18,7 +18,7 @@ export default function GrammarPage() {
           Grammar
         </h1>
         <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          {points.length} grammar points from the HSK Standard Course
+          {points.length} grammar points from the HSK syllabus
         </p>
       </div>
 

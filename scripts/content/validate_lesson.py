@@ -1,9 +1,11 @@
-"""Validate an authored HSK 1 lesson JSON (data/hsk1/lessons/{N}.json).
+"""Validate an authored lesson JSON (data/hsk{1,2}/lessons/{N}.json).
 
 Usage (needs `pip install pypinyin`, see scripts/requirements.txt):
     python3 scripts/content/validate_lesson.py data/hsk1/lessons/6.json [...]
 
-The official per-lesson word list lives in hsk1-vocab.json next to this file.
+The official per-lesson word lists live in hsk{level}-vocab.json next to this
+file. Entries marked "optional" (e.g. the numbers of HSK 1 L5) are allowed
+but not required as newWords.
 
 Errors (must fix):
   - schema basics, id patterns, duplicate ids
@@ -22,10 +24,14 @@ import sys
 import unicodedata
 from pathlib import Path
 
-from pypinyin import lazy_pinyin, Style
+from pypinyin import lazy_pinyin, pinyin as all_readings, Style
 
 HERE = Path(__file__).parent
-VOCAB = {int(k): v for k, v in json.load(open(HERE / "hsk1-vocab.json")).items()}
+VOCAB_BY_LEVEL = {
+    level: {int(k): v for k, v in json.load(open(HERE / f"hsk{level}-vocab.json")).items()}
+    for level in (1, 2)
+}
+TEXTS_PER_LESSON = {1: 3, 2: 4}
 HAN = re.compile(r"[㐀-鿿]")
 TONE_DIGITS = str.maketrans("", "", "012345")
 
@@ -50,23 +56,46 @@ def expected_pinyin(hanzi: str, tones: bool) -> str:
     return "".join(syllables)
 
 
+def readings_match(hanzi: str, written: str) -> bool:
+    """True if the toneless pinyin can be read as the characters, allowing any
+    dictionary reading of a polyphonic character (长 cháng/zhǎng, 得 de/dé…)
+    and erhua 儿 written as a bare r."""
+    chars = "".join(HAN.findall(hanzi))
+    target = toneless(written)
+    options = []
+    for i, (c, rs) in enumerate(zip(chars, all_readings(chars, style=Style.NORMAL, heteronym=True))):
+        opts = {toneless(r) for r in rs}
+        if c == "儿" and i > 0 and chars[i - 1] != "女" and chars[i + 1:i + 2] != "子":
+            opts.add("r")
+        options.append(opts)
+    reachable = {0}
+    for opts in options:
+        reachable = {pos + len(o) for pos in reachable for o in opts if target.startswith(o, pos)}
+        if not reachable:
+            return False
+    return len(target) in reachable
+
+
 def main(paths):
     total_err = 0
     for p in paths:
         lesson = json.load(open(p))
         n = lesson["number"]
+        level = lesson.get("level")
+        VOCAB = VOCAB_BY_LEVEL.get(level, {})
         errs, warns = [], []
         E, W = errs.append, warns.append
 
         # ── schema basics
-        for k in ("id", "level", "number", "title", "theme", "texts", "notes", "exercises", "characters"):
+        for k in ("id", "level", "number", "title", "theme", "texts", "exercises"):
             if k not in lesson:
                 E(f"missing top-level key {k}")
-        if lesson.get("id") != f"hsk1-{n}" or lesson.get("level") != 1:
+        if level not in VOCAB_BY_LEVEL or lesson.get("id") != f"hsk{level}-{n}":
             E("id/level wrong")
+            VOCAB = VOCAB_BY_LEVEL[1]
         texts = lesson.get("texts", [])
-        if len(texts) != 3:
-            E(f"expected 3 texts, got {len(texts)}")
+        if len(texts) != TEXTS_PER_LESSON.get(level, 3):
+            E(f"expected {TEXTS_PER_LESSON.get(level, 3)} texts, got {len(texts)}")
 
         ids = []
         word_ids = []
@@ -78,18 +107,18 @@ def main(paths):
                 for k in ("id", "hanzi", "pinyin", "pos", "english"):
                     if not w.get(k):
                         E(f"word {w} missing {k}")
-                if not re.fullmatch(rf"hsk1_{n}_[a-z0-9_]+", w.get("id", "")):
+                if not re.fullmatch(rf"hsk{level}_{n}_[a-z0-9_]+", w.get("id", "")):
                     E(f"bad word id {w.get('id')}")
             for pn in t.get("properNouns", []) or []:
                 ids.append(pn.get("id"))
                 proper.add(pn["hanzi"])
         for g in lesson.get("notes", []):
             ids.append(g.get("id"))
-            if not re.fullmatch(rf"hsk1_{n}_g_[a-z0-9_]+", g.get("id", "")):
+            if not re.fullmatch(rf"hsk{level}_{n}_g_[a-z0-9_]+", g.get("id", "")):
                 E(f"bad grammar id {g.get('id')}")
         for c in lesson.get("characters", {}).get("singleComponentChars", []) or []:
             ids.append(c.get("id"))
-            if not re.fullmatch(rf"hsk1_{n}_c_[a-z0-9_]+", c.get("id", "")):
+            if not re.fullmatch(rf"hsk{level}_{n}_c_[a-z0-9_]+", c.get("id", "")):
                 E(f"bad char id {c.get('id')}")
         dup = {i for i in ids if ids.count(i) > 1}
         if dup:
@@ -97,11 +126,12 @@ def main(paths):
 
         # ── official word list
         official = [w["hanzi"] for w in VOCAB[n]]
-        official_words = {h for h, w in zip(official, VOCAB[n]) if w["pos"] != "proper"}
+        official_words = {h for h, w in zip(official, VOCAB[n]) if w["pos"] != "proper" and not w.get("optional")}
+        optional_words = {h for h, w in zip(official, VOCAB[n]) if w.get("optional")}
         official_proper = {h for h, w in zip(official, VOCAB[n]) if w["pos"] == "proper"}
         got_words = [w["hanzi"] for t in texts for w in t.get("newWords", [])]
         missing = official_words - set(got_words)
-        extra = set(got_words) - official_words
+        extra = set(got_words) - official_words - optional_words
         if missing:
             E(f"official words missing from newWords: {sorted(missing)}")
         if extra:
@@ -123,8 +153,10 @@ def main(paths):
 
         # ── character coverage
         allowed = set()
-        for m in range(1, n + 1):
-            for w in VOCAB[m]:
+        cumulative = [(1, m) for m in range(1, 16)] if level == 2 else []
+        cumulative += [(level, m) for m in range(1, n + 1)]
+        for lv, m in cumulative:
+            for w in VOCAB_BY_LEVEL[lv][m]:
                 allowed |= set(HAN.findall(w["hanzi"]))
         for pn in proper:
             allowed |= set(HAN.findall(pn))
@@ -155,7 +187,7 @@ def main(paths):
             if bad:
                 E(f"{where}: characters not yet learned {bad} in {hz!r}")
             if py and HAN.search(hz) and not re.search(r"\d", hz) and "_" not in hz and "____" not in hz:
-                if toneless(py) != toneless(expected_pinyin(hz, tones=False)):
+                if toneless(py) != toneless(expected_pinyin(hz, tones=False)) and not readings_match(hz, py):
                     E(f"{where}: pinyin mismatch {hz!r} → {py!r} (expected ~{expected_pinyin(hz, False)})")
                 else:
                     exp = toneless_marked = expected_pinyin(hz, tones=True)
@@ -166,7 +198,7 @@ def main(paths):
         # ── word pinyin
         for t in texts:
             for w in t.get("newWords", []):
-                if toneless(w["pinyin"]) != toneless(expected_pinyin(w["hanzi"], False)):
+                if toneless(w["pinyin"]) != toneless(expected_pinyin(w["hanzi"], False)) and not readings_match(w["hanzi"], w["pinyin"]):
                     E(f"word {w['hanzi']} pinyin {w['pinyin']!r} looks wrong")
 
         print(f"\n=== Lesson {n}: {len(errs)} errors, {len(warns)} warnings")

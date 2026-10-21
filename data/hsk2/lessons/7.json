@@ -2,83 +2,102 @@
   "id": "hsk2-7",
   "level": 2,
   "number": 7,
-  "title": { "hanzi": "你家离公司远吗", "pinyin": "Nǐ jiā lí gōngsī yuǎn ma", "english": "Do you live far from your company" },
+  "title": { "hanzi": "走十分钟就到了", "pinyin": "Zǒu shí fēnzhōng jiù dào le", "english": "It's just a ten-minute walk" },
   "theme": "Location & Transport",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "instruction": { "hanzi": "读一读，说说这些词语是什么意思。", "english": "Read the words and phrases aloud and say what they mean." },
     "items": [
-      { "hanzi": "考试",   "pinyin": "kǎo shì", "english": "test, exam" },
-      { "hanzi": "商店",   "pinyin": "shāngdiàn","english": "shop, store" },
-      { "hanzi": "机场",   "pinyin": "jīchǎng",  "english": "airport" },
-      { "hanzi": "路",     "pinyin": "lù",       "english": "road" },
-      { "hanzi": "教室",   "pinyin": "jiàoshì",  "english": "classroom" },
-      { "hanzi": "时间",   "pinyin": "shíjiān",  "english": "time" }
+      { "hanzi": "离学校很远", "pinyin": "lí xuéxiào hěn yuǎn", "english": "far from school" },
+      { "hanzi": "走路", "pinyin": "zǒu lù", "english": "to walk, to go on foot" },
+      { "hanzi": "坐公共汽车", "pinyin": "zuò gōnggòng qìchē", "english": "to take the bus" },
+      { "hanzi": "去机场", "pinyin": "qù jīchǎng", "english": "to go to the airport" },
+      { "hanzi": "一个小时", "pinyin": "yí ge xiǎoshí", "english": "one hour" },
+      { "hanzi": "太慢了", "pinyin": "tài màn le", "english": "too slow" },
+      { "hanzi": "快一点儿", "pinyin": "kuài yìdiǎnr", "english": "a bit faster" },
+      { "hanzi": "到教室", "pinyin": "dào jiàoshì", "english": "to get to the classroom" }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在家里", "english": "At home" },
-      "audioRef": "07-1",
+      "title": { "hanzi": "在教室", "english": "In the classroom" },
+      "audioRef": "7-1",
       "dialogue": [
-        { "speaker": "A", "hanzi": "大卫回来了吗?",                       "pinyin": "Dàwèi huílai le ma?",                             "english": "Is David back?" },
-        { "speaker": "B", "hanzi": "没有,他还在教室学习呢。",              "pinyin": "Méiyǒu, tā hái zài jiàoshì xuéxí ne.",            "english": "No. He is still studying in the classroom." },
-        { "speaker": "A", "hanzi": "已经9点多了,他怎么还在学习?",         "pinyin": "Yǐjīng jiǔ diǎn duō le, tā zěnme hái zài xuéxí?", "english": "It's after 9 o'clock. Why is he still studying?" },
-        { "speaker": "B", "hanzi": "明天有考试,他说今天要好好准备。",    "pinyin": "Míngtiān yǒu kǎoshì, tā shuō jīntiān yào hǎohao zhǔnbèi.","english": "There's a test tomorrow. He says he'll prepare well today." }
+        { "speaker": "A", "hanzi": "马克，你家离学校远吗？", "pinyin": "Mǎkè, nǐ jiā lí xuéxiào yuǎn ma?", "english": "Mark, is your place far from school?" },
+        { "speaker": "B", "hanzi": "不远，走十分钟就到了。你呢？", "pinyin": "Bù yuǎn, zǒu shí fēnzhōng jiù dào le. Nǐ ne?", "english": "No, it's just a ten-minute walk. What about you?" },
+        { "speaker": "A", "hanzi": "我家离学校很远，我每天六点就起床了。", "pinyin": "Wǒ jiā lí xuéxiào hěn yuǎn, wǒ měi tiān liù diǎn jiù qǐ chuáng le.", "english": "Mine is a long way from school. I'm up by six every day." },
+        { "speaker": "B", "hanzi": "六点？太早了！", "pinyin": "Liù diǎn? Tài zǎo le!", "english": "Six? That's so early!" },
+        { "speaker": "A", "hanzi": "所以我每天七点五十就到教室了。", "pinyin": "Suǒyǐ wǒ měi tiān qī diǎn wǔshí jiù dào jiàoshì le.", "english": "That's why I'm already in the classroom at 7:50 every day." },
+        { "speaker": "B", "hanzi": "那时候教室里没有人吧？", "pinyin": "Nà shíhou jiàoshì li méiyǒu rén ba?", "english": "There's nobody in the classroom at that time, right?" },
+        { "speaker": "A", "hanzi": "对，我很喜欢在这儿看书。", "pinyin": "Duì, wǒ hěn xǐhuan zài zhèr kàn shū.", "english": "Right. I really like reading here." }
       ],
       "newWords": [
+        { "id": "hsk2_7_li", "hanzi": "离", "pinyin": "lí", "pos": "v.", "english": "to be away from" },
+        { "id": "hsk2_7_yuan", "hanzi": "远", "pinyin": "yuǎn", "pos": "adj.", "english": "far, distant" },
+        { "id": "hsk2_7_zou", "hanzi": "走", "pinyin": "zǒu", "pos": "v.", "english": "to walk" },
+        { "id": "hsk2_7_dao", "hanzi": "到", "pinyin": "dào", "pos": "v.", "english": "to arrive, to reach" },
         { "id": "hsk2_7_jiaoshi", "hanzi": "教室", "pinyin": "jiàoshì", "pos": "n.", "english": "classroom" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_7_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "去机场的路上", "english": "On the way to the airport" },
-      "audioRef": "07-2",
+      "title": { "hanzi": "在学校门口", "english": "At the school gate" },
+      "audioRef": "7-2",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你现在在哪儿呢?",                                    "pinyin": "Nǐ xiànzài zài nǎr ne?",                                          "english": "Where are you now?" },
-        { "speaker": "B", "hanzi": "在去机场的路上。你已经到了吗?",                      "pinyin": "Zài qù jīchǎng de lùshang. Nǐ yǐjīng dào le ma?",                "english": "I'm on the way to the airport. Have you arrived?" },
-        { "speaker": "A", "hanzi": "我下飞机了。你还有多长时间能到这儿?",                "pinyin": "Wǒ xià fēijī le. Nǐ hái yǒu duō cháng shíjiān néng dào zhèr?",   "english": "I've got off the plane. How many more minutes do you need to get here?" },
-        { "speaker": "B", "hanzi": "二十分钟就到。",                                       "pinyin": "Èrshí fēnzhōng jiù dào.",                                         "english": "In 20 minutes." }
+        { "speaker": "A", "hanzi": "王明，你去哪儿？", "pinyin": "Wáng Míng, nǐ qù nǎr?", "english": "Wang Ming, where are you off to?" },
+        { "speaker": "B", "hanzi": "我去我姐姐的公司，给她送一本书。", "pinyin": "Wǒ qù wǒ jiějie de gōngsī, gěi tā sòng yì běn shū.", "english": "To my sister's company, to drop off a book for her." },
+        { "speaker": "A", "hanzi": "她的公司离这儿远不远？", "pinyin": "Tā de gōngsī lí zhèr yuǎn bu yuǎn?", "english": "Is her company far from here?" },
+        { "speaker": "B", "hanzi": "不太远，坐公共汽车二十分钟就到了。", "pinyin": "Bú tài yuǎn, zuò gōnggòng qìchē èrshí fēnzhōng jiù dào le.", "english": "Not too far. It's only twenty minutes by bus." },
+        { "speaker": "A", "hanzi": "现在公共汽车慢不慢？", "pinyin": "Xiànzài gōnggòng qìchē màn bu màn?", "english": "Are the buses slow right now?" },
+        { "speaker": "B", "hanzi": "还可以，不太慢。", "pinyin": "Hái kěyǐ, bú tài màn.", "english": "They're OK, not too slow." },
+        { "speaker": "A", "hanzi": "我也去那儿，我们一起走吧！", "pinyin": "Wǒ yě qù nàr, wǒmen yìqǐ zǒu ba!", "english": "I'm going that way too. Let's go together!" }
       ],
       "newWords": [
-        { "id": "hsk2_7_jichang", "hanzi": "机场", "pinyin": "jīchǎng", "pos": "n.", "english": "airport" },
-        { "id": "hsk2_7_lu",      "hanzi": "路",   "pinyin": "lù",      "pos": "n.", "english": "road, path, way" }
+        { "id": "hsk2_7_gongsi", "hanzi": "公司", "pinyin": "gōngsī", "pos": "n.", "english": "company, firm" },
+        { "id": "hsk2_7_gonggongqiche", "hanzi": "公共汽车", "pinyin": "gōnggòng qìchē", "pos": "n.", "english": "bus" },
+        { "id": "hsk2_7_man", "hanzi": "慢", "pinyin": "màn", "pos": "adj.", "english": "slow" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_7_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming" }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在健身房", "english": "In the gym" },
-      "audioRef": "07-3",
+      "title": { "hanzi": "在出租车上", "english": "In a taxi" },
+      "audioRef": "7-3",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你家离公司远吗?",                       "pinyin": "Nǐ jiā lí gōngsī yuǎn ma?",                                     "english": "Do you live far from your company?" },
-        { "speaker": "B", "hanzi": "很远,坐公共汽车要一个多小时呢!",       "pinyin": "Hěn yuǎn, zuò gōnggòng qìchē yào yí ge duō xiǎoshí ne!",        "english": "Yes, very far. It takes more than an hour by bus." },
-        { "speaker": "A", "hanzi": "坐公共汽车太慢了,你怎么不开车?",       "pinyin": "Zuò gōnggòng qìchē tài màn le, nǐ zěnme bù kāi chē?",            "english": "Buses are slow. Why don't you drive?" },
-        { "speaker": "B", "hanzi": "开车也不快,路上车太多了!",              "pinyin": "Kāi chē yě bú kuài, lùshang chē tài duō le!",                    "english": "It's not fast either. There are too many cars on the road." }
+        { "speaker": "A", "hanzi": "先生，我去机场。", "pinyin": "Xiānsheng, wǒ qù jīchǎng.", "english": "To the airport, please." },
+        { "speaker": "B", "hanzi": "好。你是几点的飞机？", "pinyin": "Hǎo. Nǐ shì jǐ diǎn de fēijī?", "english": "Sure. What time is your flight?" },
+        { "speaker": "A", "hanzi": "十一点的。现在离机场还很远吗？", "pinyin": "Shíyī diǎn de. Xiànzài lí jīchǎng hái hěn yuǎn ma?", "english": "Eleven. Is the airport still far from here?" },
+        { "speaker": "B", "hanzi": "还很远呢，要一个小时。", "pinyin": "Hái hěn yuǎn ne, yào yí ge xiǎoshí.", "english": "Still quite far. It'll take an hour." },
+        { "speaker": "A", "hanzi": "一个小时？您能开快一点儿吗？", "pinyin": "Yí ge xiǎoshí? Nín néng kāi kuài yìdiǎnr ma?", "english": "An hour? Could you drive a bit faster?" },
+        { "speaker": "B", "hanzi": "好，我开快一点儿。", "pinyin": "Hǎo, wǒ kāi kuài yìdiǎnr.", "english": "OK, I'll go a little faster." },
+        { "speaker": "A", "hanzi": "谢谢您！", "pinyin": "Xièxie nín!", "english": "Thank you!" }
       ],
       "newWords": [
-        { "id": "hsk2_7_li",       "hanzi": "离",     "pinyin": "lí",            "pos": "v.",   "english": "to be away from" },
-        { "id": "hsk2_7_gongsi",   "hanzi": "公司",   "pinyin": "gōngsī",        "pos": "n.",   "english": "company, firm" },
-        { "id": "hsk2_7_yuan",     "hanzi": "远",     "pinyin": "yuǎn",          "pos": "adj.", "english": "far, distant" },
-        { "id": "hsk2_7_gongqiche","hanzi": "公共汽车","pinyin": "gōnggòng qìchē","pos": "n.",   "english": "bus" },
-        { "id": "hsk2_7_xiaoshi",  "hanzi": "小时",   "pinyin": "xiǎoshí",       "pos": "n.",   "english": "hour" },
-        { "id": "hsk2_7_man",      "hanzi": "慢",     "pinyin": "màn",           "pos": "adj.", "english": "slow" },
-        { "id": "hsk2_7_kuai",     "hanzi": "快",     "pinyin": "kuài",          "pos": "adj.", "english": "quick, fast" }
+        { "id": "hsk2_7_jichang", "hanzi": "机场", "pinyin": "jīchǎng", "pos": "n.", "english": "airport" },
+        { "id": "hsk2_7_xiaoshi", "hanzi": "小时", "pinyin": "xiǎoshí", "pos": "n.", "english": "hour" },
+        { "id": "hsk2_7_kuai", "hanzi": "快", "pinyin": "kuài", "pos": "adj.", "english": "quick, fast" }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在路上", "english": "On the way" },
-      "audioRef": "07-4",
+      "title": { "hanzi": "马克去接妈妈", "english": "Mark picks up his mother" },
+      "audioRef": "7-4",
       "dialogue": [
-        { "speaker": "A", "hanzi": "今天晚上我们一起吃饭吧,给你过生日。",                "pinyin": "Jīntiān wǎnshang wǒmen yìqǐ chī fàn ba, gěi nǐ guò shēngrì.",                                  "english": "Let's have dinner together tonight to celebrate your birthday." },
-        { "speaker": "B", "hanzi": "今天?离我的生日还有一个多星期呢!",                 "pinyin": "Jīntiān? Lí wǒ de shēngrì hái yǒu yí ge duō xīngqī ne!",                                       "english": "Tonight? My birthday is more than a week away!" },
-        { "speaker": "A", "hanzi": "下个星期我要去北京,今天过吧。",                      "pinyin": "Xià ge xīngqī wǒ yào qù Běijīng, jīntiān guò ba.",                                             "english": "Next week I'll be in Beijing. Let's celebrate today." },
-        { "speaker": "B", "hanzi": "好吧,离这儿不远有一个中国饭馆,走几分钟就到了。",  "pinyin": "Hǎo ba, lí zhèr bù yuǎn yǒu yí ge Zhōngguó fànguǎn, zǒu jǐ fēnzhōng jiù dào le.",             "english": "Fine. There's a Chinese restaurant nearby — only a few minutes' walk away." }
+        { "speaker": "A", "hanzi": "今天上午，我去机场接妈妈。", "pinyin": "Jīntiān shàngwǔ, wǒ qù jīchǎng jiē māma.", "english": "This morning I went to the airport to meet my mother." },
+        { "speaker": "A", "hanzi": "她的飞机十点到，我八点就出门了。", "pinyin": "Tā de fēijī shí diǎn dào, wǒ bā diǎn jiù chū mén le.", "english": "Her plane was landing at ten, so I left home as early as eight." },
+        { "speaker": "A", "hanzi": "路上车非常多，出租车很慢。", "pinyin": "Lù shang chē fēicháng duō, chūzūchē hěn màn.", "english": "There was a lot of traffic on the road, and the taxi was very slow." },
+        { "speaker": "A", "hanzi": "过了一个小时，我还在车上。", "pinyin": "Guòle yí ge xiǎoshí, wǒ hái zài chē shang.", "english": "An hour went by and I was still in the car." },
+        { "speaker": "A", "hanzi": "十点二十分，我到了机场。", "pinyin": "Shí diǎn èrshí fēn, wǒ dàole jīchǎng.", "english": "At 10:20 I got to the airport." },
+        { "speaker": "A", "hanzi": "妈妈说：“北京路上的车真多啊！”", "pinyin": "Māma shuō: \"Běijīng lù shang de chē zhēn duō a!\"", "english": "My mom said, \"Beijing's roads really are full of cars!\"" }
       ],
       "newWords": [
-        { "id": "hsk2_7_guo", "hanzi": "过", "pinyin": "guò", "pos": "v.", "english": "to pass (time), to spend (time)" },
-        { "id": "hsk2_7_zou", "hanzi": "走", "pinyin": "zǒu", "pos": "v.", "english": "to walk" },
-        { "id": "hsk2_7_dao", "hanzi": "到", "pinyin": "dào", "pos": "v.", "english": "to arrive, to reach" }
+        { "id": "hsk2_7_lu", "hanzi": "路", "pinyin": "lù", "pos": "n.", "english": "road, path, way" },
+        { "id": "hsk2_7_guo", "hanzi": "过", "pinyin": "guò", "pos": "v.", "english": "to pass (time), to spend (time)" }
       ]
     }
   ],
@@ -86,84 +105,153 @@
     {
       "id": "hsk2_7_g_hai2",
       "number": 1,
-      "title": { "hanzi": "语气副词\"还\"(2)", "english": "The Modal Adverb \"还\" (2)" },
+      "title": { "hanzi": "副词“还”（2）", "english": "The Adverb \"还\" (2): Degree" },
       "explanation": {
-        "hanzi": "表示动作或状态的延续,否定式用\"还没\"。",
-        "english": "Indicates the continuation of an action or state. The negative form is \"还没\" (\"not yet\")."
+        "hanzi": "第5课的“还”（1）表示再加上一个东西或一个动作，意思是“也、另外”：我还想买一个杯子。这一课的“还”（2）放在形容词前面，说的是程度：一、“还＋不错/可以/好”表示“过得去、比较好”，不是非常好，可是也不差；二、“还＋很＋形容词”表示到现在，程度还是那么高，没有变：离机场还很远。",
+        "english": "In Lesson 5, 还 (1) adds something more: \"also, in addition\" (我还想买一个杯子 \"I also want to buy a cup\"). 还 (2) is different: it sits in front of an adjective and tells you about degree, i.e. how much of a quality there is.\n(a) 还 + 不错 / 可以 / 好 means \"fairly, reasonably, not bad\": the speaker is satisfied, but not excited. 还不错 is weaker praise than 很好.\n(b) 还 + 很 + adjective means the degree is \"still\" that high and hasn't changed yet: 离机场还很远 \"the airport is still a long way off\".\nQuick test: if you can translate 还 as \"also / in addition\", it is 还 (1). If it describes how good, far, cold... something is, it is 还 (2)."
       },
       "examples": [
-        { "hanzi": "八点了,他还在睡觉。",     "pinyin": "Bā diǎn le, tā hái zài shuì jiào.",     "english": "It's 8 o'clock and he's still sleeping." },
-        { "hanzi": "你怎么还没吃饭?",         "pinyin": "Nǐ zěnme hái méi chī fàn?",             "english": "Why haven't you eaten yet?" },
-        { "hanzi": "他还在教室学习呢。",       "pinyin": "Tā hái zài jiàoshì xuéxí ne.",          "english": "He's still studying in the classroom." }
-      ]
+        { "hanzi": "这个菜还不错。", "pinyin": "Zhège cài hái búcuò.", "english": "This dish is pretty good." },
+        { "hanzi": "你的汉语怎么样？——还可以。", "pinyin": "Nǐ de Hànyǔ zěnmeyàng? — Hái kěyǐ.", "english": "How is your Chinese? — Not bad." },
+        { "hanzi": "现在离机场还很远。", "pinyin": "Xiànzài lí jīchǎng hái hěn yuǎn.", "english": "The airport is still a long way from here." },
+        { "hanzi": "九点了，外面还很冷。", "pinyin": "Jiǔ diǎn le, wàimian hái hěn lěng.", "english": "It's nine o'clock and it's still cold outside." }
+      ],
+      "patternTable": {
+        "columns": ["主语 Subject", "还", "形容词短语 Adj. phrase"],
+        "rows": [
+          ["这个菜", "还", "不错"],
+          ["我的汉语", "还", "可以"],
+          ["机场", "还", "很远"],
+          ["外面", "还", "很冷"]
+        ]
+      }
     },
     {
       "id": "hsk2_7_g_jiu_time",
       "number": 2,
-      "title": { "hanzi": "时间副词\"就\"", "english": "The Adverb of Time \"就\"" },
+      "title": { "hanzi": "副词“就”（时间早、快）", "english": "The Adverb \"就\": Early, Quickly, As Soon As" },
       "explanation": {
-        "hanzi": "强调说话人认为事情发生得早,进行得快、顺利。",
-        "english": "Used for emphasis — the speaker thinks something happened early, or went fast and smoothly."
+        "hanzi": "“就”放在动词前面，前面常常有一个时间词或者一段时间。它表示说话人觉得事情发生得早、快，或者时间短。句末常常有“了”。“动词＋了……就＋动词”表示前一个动作一完，后一个动作马上开始。",
+        "english": "就 goes right before the verb, usually after a time word (六点) or an amount of time (十分钟). It shows the speaker feels the action happens early, quickly, or after only a short time. A sentence about something that has happened usually ends in 了.\n六点就起床了 = \"got up as early as six\"; 十分钟就到了 = \"got there in just ten minutes\".\nWith \"verb + 了 ..., 就 + verb\", 就 means \"as soon as\": the second action follows right after the first."
       },
+      "examples": [
+        { "hanzi": "我家离学校不远，走十分钟就到了。", "pinyin": "Wǒ jiā lí xuéxiào bù yuǎn, zǒu shí fēnzhōng jiù dào le.", "english": "My home isn't far from school; it's only a ten-minute walk." },
+        { "hanzi": "他今天五点就起床了。", "pinyin": "Tā jīntiān wǔ diǎn jiù qǐ chuáng le.", "english": "He got up as early as five today." },
+        { "hanzi": "坐出租车，二十分钟就能到机场。", "pinyin": "Zuò chūzūchē, èrshí fēnzhōng jiù néng dào jīchǎng.", "english": "By taxi you can get to the airport in just twenty minutes." },
+        { "hanzi": "我吃了饭就去公司。", "pinyin": "Wǒ chīle fàn jiù qù gōngsī.", "english": "I'll go to the office as soon as I've eaten." }
+      ],
       "patternTable": {
-        "columns": ["Subject", "就……了"],
+        "columns": ["时间 Time", "就", "动词 Verb (+ 了)"],
         "rows": [
-          ["同学们", "七点半就来教室了。"],
-          ["我",     "坐飞机一个半小时就到北京了。"],
-          ["(我)",   "二十分钟就到。"]
+          ["六点", "就", "起床了"],
+          ["十分钟", "就", "到了"],
+          ["吃了饭", "就", "去公司"]
         ]
       }
     },
     {
       "id": "hsk2_7_g_li",
       "number": 3,
-      "title": { "hanzi": "离", "english": "The Verb \"离\"" },
+      "title": { "hanzi": "动词“离”", "english": "The Verb \"离\" for Distance" },
       "explanation": {
-        "hanzi": "用来表示处所、时间、目的的距离。",
-        "english": "Used to indicate the distance from a place, a moment, or a purpose."
+        "hanzi": "“A离B＋远/近”用来说两个地方之间的距离。A和B都是地方，否定形式是“A离B不远”。问的时候可以说“A离B远吗？”“A离B远不远？”或者“A离B多远？”。“离”也可以说时间：离考试还有三天。",
+        "english": "Use \"A 离 B + 远 / 不远\" to say how far place A is from place B. Both A and B are places (or people's homes). For questions say \"A 离 B 远吗?\", \"A 离 B 远不远?\" or \"A 离 B 多远?\" (how far?). The opposite of 远 is 近 jìn \"near\", which you will learn later.\n离 can also measure time up to an event: 离考试还有三天 \"there are three days left until the exam\"."
       },
+      "examples": [
+        { "hanzi": "我家离学校不远。", "pinyin": "Wǒ jiā lí xuéxiào bù yuǎn.", "english": "My home isn't far from school." },
+        { "hanzi": "机场离这儿很远吗？", "pinyin": "Jīchǎng lí zhèr hěn yuǎn ma?", "english": "Is the airport very far from here?" },
+        { "hanzi": "你的公司离你家远不远？", "pinyin": "Nǐ de gōngsī lí nǐ jiā yuǎn bu yuǎn?", "english": "Is your company far from your home?" },
+        { "hanzi": "离我的生日还有五天。", "pinyin": "Lí wǒ de shēngrì hái yǒu wǔ tiān.", "english": "There are five days left until my birthday." }
+      ],
       "patternTable": {
-        "columns": ["A", "离", "B", "(distance)"],
+        "columns": ["A", "离", "B", "远 / 不远"],
         "rows": [
-          ["我家",   "离", "学校",   "很远。"],
-          ["学校",   "离", "机场",   "有20多公里。"],
-          ["",       "离", "我的生日","还有一个多星期呢!"]
+          ["我家", "离", "学校", "不远"],
+          ["机场", "离", "这儿", "很远"],
+          ["公司", "离", "他家", "远不远？"]
         ]
       }
     },
     {
       "id": "hsk2_7_g_ne",
       "number": 4,
-      "title": { "hanzi": "语气助词\"呢\"", "english": "The Modal Particle \"呢\"" },
+      "title": { "hanzi": "语气助词“呢”", "english": "The Modal Particle \"呢\" in Statements" },
       "explanation": {
-        "hanzi": "用于陈述句尾,可用在形容词谓语句和动词谓语句后边,表示确认事实,使对方信服,含有夸张的语气。",
-        "english": "Sentence-final \"呢\" follows an adjectival or verbal predicate to confirm a fact and convince the listener, often with an exaggerated tone."
+        "hanzi": "以前学过问句里的“呢”（你呢？）。“呢”也可以放在陈述句末尾：一、和“在”一起，表示动作正在进行，情况还在继续：他在睡觉呢。二、表示说话人在提醒对方一个事实，语气比较软，常常和“还”一起用：还很远呢、还早呢。",
+        "english": "You already know 呢 in questions (你呢? \"and you?\"). 呢 can also end a statement:\n(a) Together with 在, it shows an action is in progress or a situation is still going on: 他在睡觉呢 \"he's sleeping (right now)\".\n(b) It gently points out a fact to the listener, making the sentence sound softer and more conversational. It often goes with 还: 还很远呢 \"it's still quite far, you know\", 还早呢 \"it's still early\"."
       },
       "examples": [
-        { "hanzi": "八点上课,时间还早呢。",         "pinyin": "Bā diǎn shàng kè, shíjiān hái zǎo ne.",         "english": "Class starts at eight — there's still plenty of time." },
-        { "hanzi": "医院离我们这儿还远呢。",         "pinyin": "Yīyuàn lí wǒmen zhèr hái yuǎn ne.",             "english": "The hospital is still far from us." },
-        { "hanzi": "坐公共汽车要一个多小时呢!",      "pinyin": "Zuò gōnggòng qìchē yào yí ge duō xiǎoshí ne!",  "english": "Taking the bus takes more than an hour!" }
+        { "hanzi": "妈妈在做饭呢。", "pinyin": "Māma zài zuò fàn ne.", "english": "Mom is cooking right now." },
+        { "hanzi": "王明在教室看书呢。", "pinyin": "Wáng Míng zài jiàoshì kàn shū ne.", "english": "Wang Ming is reading in the classroom." },
+        { "hanzi": "离机场还很远呢。", "pinyin": "Lí jīchǎng hái hěn yuǎn ne.", "english": "The airport is still quite a long way off." },
+        { "hanzi": "现在还早呢，我们走路去吧。", "pinyin": "Xiànzài hái zǎo ne, wǒmen zǒu lù qù ba.", "english": "It's still early, so let's walk there." }
       ]
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking one role each." }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据你的情况回答问题。", "english": "Answer the questions about yourself." },
       "items": [
-        { "hanzi": "大卫在哪儿学习呢?",                        "pinyin": "Dàwèi zài nǎr xuéxí ne?" },
-        { "hanzi": "九点多了,大卫为什么还不休息?",            "pinyin": "Jiǔ diǎn duō le, Dàwèi wèi shénme hái bù xiūxi?" },
-        { "hanzi": "坐公共汽车一个小时能到公司吗?",            "pinyin": "Zuò gōnggòng qìchē yí ge xiǎoshí néng dào gōngsī ma?" },
-        { "hanzi": "公司离家很远,她为什么不开车?",            "pinyin": "Gōngsī lí jiā hěn yuǎn, tā wèi shénme bù kāi chē?" },
-        { "hanzi": "今天不是她的生日,为什么她朋友要今天给她过生日?", "pinyin": "Jīntiān bú shì tā de shēngrì, wèi shénme tā péngyou yào jīntiān gěi tā guò shēngrì?" }
+        { "hanzi": "你家离学校远吗？", "pinyin": "Nǐ jiā lí xuéxiào yuǎn ma?", "english": "Is your home far from school?" },
+        { "hanzi": "你每天怎么去学校？", "pinyin": "Nǐ měi tiān zěnme qù xuéxiào?", "english": "How do you get to school every day?" },
+        { "hanzi": "你每天几点到教室？", "pinyin": "Nǐ měi tiān jǐ diǎn dào jiàoshì?", "english": "What time do you get to the classroom every day?" },
+        { "hanzi": "你的汉语怎么样？", "pinyin": "Nǐ de Hànyǔ zěnmeyàng?", "english": "How is your Chinese?" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": { "hanzi": "用“离、就、还、呢、过”填空。", "english": "Fill in the blanks with 离, 就, 还, 呢 or 过." },
+      "items": [
+        { "hanzi": "公司____我家不太远。", "english": "The company isn't too far from my home.", "blank": "离" },
+        { "hanzi": "坐公共汽车，十分钟____到了。", "english": "By bus it takes just ten minutes.", "blank": "就" },
+        { "hanzi": "这件衣服____不错。", "english": "This piece of clothing is pretty nice.", "blank": "还" },
+        { "hanzi": "他在睡觉____。", "english": "He's sleeping right now.", "blank": "呢" },
+        { "hanzi": "____了二十分钟，车来了。", "english": "Twenty minutes went by, and then the bus came.", "blank": "过" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": { "hanzi": "给问题选择合适的回答。", "english": "Match each question with a suitable answer." },
+      "items": [
+        { "hanzi": "你家离这儿远吗？ — 不远，走五分钟就到了。", "pinyin": "Nǐ jiā lí zhèr yuǎn ma? — Bù yuǎn, zǒu wǔ fēnzhōng jiù dào le.", "english": "Is your home far from here? — No, just a five-minute walk." },
+        { "hanzi": "你怎么去机场？ — 坐出租车。", "pinyin": "Nǐ zěnme qù jīchǎng? — Zuò chūzūchē.", "english": "How are you getting to the airport? — By taxi." },
+        { "hanzi": "那个饭店的菜怎么样？ — 还可以。", "pinyin": "Nàge fàndiàn de cài zěnmeyàng? — Hái kěyǐ.", "english": "How's the food at that restaurant? — Not bad." },
+        { "hanzi": "坐公共汽车要多少分钟？ — 要四十分钟。", "pinyin": "Zuò gōnggòng qìchē yào duōshao fēnzhōng? — Yào sìshí fēnzhōng.", "english": "How many minutes does it take by bus? — Forty minutes." }
       ]
     }
   ],
   "characters": {
+    "singleComponentChars": [
+      {
+        "id": "hsk2_7_c_zou",
+        "hanzi": "走",
+        "pinyin": "zǒu",
+        "meaning": "to walk, to go",
+        "etymology": "The oldest form shows a person swinging their arms in full stride, with a foot drawn underneath. The top part now looks like 土 and the bottom is a stretched-out foot.",
+        "strokeCount": 7
+      }
+    ],
     "radicals": [
-      { "hanzi": "彳", "pinyin": "shuāng rén páng", "english": "double-person (related to walking)",       "examples": ["行 xíng (to walk)", "往 wǎng (to go)"] },
-      { "hanzi": "攵", "pinyin": "fǎn wén páng",    "english": "tap (related to whipping or beating)",     "examples": ["放 fàng (to let go, to set free)", "收 shōu (to receive, to accept)"] }
+      { "hanzi": "彳", "pinyin": "shuāngrén páng", "english": "step (related to walking, roads and actions)", "examples": ["很 hěn (very)", "得 dé (as in 觉得)", "行 xíng (to walk; OK)", "往 wǎng (toward)", "街 jiē (street)"] },
+      { "hanzi": "攵", "pinyin": "fǎnwén páng", "english": "tap, strike (a hand holding a stick; related to actions)", "examples": ["教 jiāo / jiào (to teach; as in 教室)", "做 zuò (to do, to make)", "数 shù (number)", "放 fàng (to put)"] }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组，谈谈你们怎么去不同的地方。", "english": "In pairs, talk about how you get to different places." },
+    "activities": [
+      "Draw a quick map of your neighborhood. Ask and answer with 离: A: 你家离学校/商店/医院远吗？ B: 不远，走……分钟就到了。/ 很远，坐公共汽车要……",
+      "Taxi role play: one partner is a passenger in a hurry to get to the airport, the other is the driver. Use 还很远呢, 要……个小时 and 能快一点儿吗？",
+      "Tell your partner what time you got up and left home today, using 就 if it was early: 我六点就起床了。",
+      "Rate five things (your Chinese, the school canteen, the weather, a film...) with 很好 / 还不错 / 还可以 / 不太好."
     ]
   }
 }

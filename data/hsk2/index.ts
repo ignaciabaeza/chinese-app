@@ -1,7 +1,8 @@
 // HSK 2 lesson index. Same shape as HSK 1.
 //
-// Source: HSK Standard Course 2 (Beijing Language and Culture University Press,
-// Jiang Liping, lead author, 2014). Table of contents pages 14–17.
+// All lessons are original content: the official HSK 2 word list and grammar
+// points, in the same lesson order as HSK Standard Course 2, with newly
+// written dialogues, explanations, exercises and culture notes.
 
 import type { Lesson, LessonSummary } from "@/lib/types";
 import lesson1 from "./lessons/1.json";

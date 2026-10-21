@@ -2,88 +2,107 @@
   "id": "hsk2-1",
   "level": 2,
   "number": 1,
-  "title": { "hanzi": "九月去北京旅游最好", "pinyin": "Jiǔ yuè qù Běijīng lǚyóu zuì hǎo", "english": "September is the best time to visit Beijing" },
+  "title": { "hanzi": "我最喜欢踢足球", "pinyin": "Wǒ zuì xǐhuan tī zúqiú", "english": "Football is my favorite" },
   "theme": "Travel & Seasons",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words." },
+    "instruction": { "hanzi": "读一读，说说这些词语是什么意思。", "english": "Read the words and phrases aloud and say what they mean." },
     "items": [
-      { "hanzi": "旅游",   "pinyin": "lǚyóu",     "english": "to travel" },
-      { "hanzi": "运动",   "pinyin": "yùndòng",   "english": "sport, to exercise" },
-      { "hanzi": "眼睛",   "pinyin": "yǎnjing",   "english": "eye" },
-      { "hanzi": "足球",   "pinyin": "zúqiú",     "english": "football" },
-      { "hanzi": "椅子",   "pinyin": "yǐzi",      "english": "chair" },
-      { "hanzi": "猫",     "pinyin": "māo",       "english": "cat" }
+      { "hanzi": "去旅游", "pinyin": "qù lǚyóu", "english": "to go on a trip" },
+      { "hanzi": "我觉得", "pinyin": "wǒ juéde", "english": "I think, I feel" },
+      { "hanzi": "最好", "pinyin": "zuì hǎo", "english": "the best" },
+      { "hanzi": "为什么", "pinyin": "wèi shénme", "english": "why" },
+      { "hanzi": "踢足球", "pinyin": "tī zúqiú", "english": "to play football" },
+      { "hanzi": "一起去", "pinyin": "yìqǐ qù", "english": "to go together" },
+      { "hanzi": "新杯子", "pinyin": "xīn bēizi", "english": "a new cup" },
+      { "hanzi": "大眼睛", "pinyin": "dà yǎnjing", "english": "big eyes" }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在学校", "english": "In the school" },
+      "title": { "hanzi": "在教室", "english": "In the classroom" },
       "audioRef": "01-1",
       "dialogue": [
-        { "speaker": "A", "hanzi": "我要去北京旅游,你觉得什么时候去最好?",  "pinyin": "Wǒ yào qù Běijīng lǚyóu, nǐ juéde shénme shíhou qù zuì hǎo?", "english": "I'm thinking of a trip to Beijing. When do you think is the best time?" },
-        { "speaker": "B", "hanzi": "九月去北京旅游最好。",                   "pinyin": "Jiǔ yuè qù Běijīng lǚyóu zuì hǎo.",                          "english": "September is the best time to visit Beijing." },
-        { "speaker": "A", "hanzi": "为什么?",                                "pinyin": "Wèi shénme?",                                                "english": "Why?" },
-        { "speaker": "B", "hanzi": "九月的北京天气不冷也不热。",             "pinyin": "Jiǔ yuè de Běijīng tiānqì bù lěng yě bú rè.",                "english": "Because it's neither cold nor hot there in September." }
+        { "speaker": "A", "hanzi": "安娜，你喜欢旅游吗？", "pinyin": "Ānnà, nǐ xǐhuan lǚyóu ma?", "english": "Anna, do you like traveling?" },
+        { "speaker": "B", "hanzi": "很喜欢！我想十月去旅游。", "pinyin": "Hěn xǐhuan! Wǒ xiǎng shí yuè qù lǚyóu.", "english": "I love it! I'd like to take a trip in October." },
+        { "speaker": "A", "hanzi": "为什么十月去？", "pinyin": "Wèi shénme shí yuè qù?", "english": "Why October?" },
+        { "speaker": "B", "hanzi": "我觉得十月天气最好，不冷也不热。", "pinyin": "Wǒ juéde shí yuè tiānqì zuì hǎo, bù lěng yě bú rè.", "english": "I think October has the best weather. It's neither cold nor hot." },
+        { "speaker": "A", "hanzi": "我也觉得十月最好。你想去哪儿？", "pinyin": "Wǒ yě juéde shí yuè zuì hǎo. Nǐ xiǎng qù nǎr?", "english": "I think October is best too. Where do you want to go?" },
+        { "speaker": "B", "hanzi": "你说呢？", "pinyin": "Nǐ shuō ne?", "english": "What do you suggest?" },
+        { "speaker": "A", "hanzi": "去我家！我妈妈做的菜太好吃了。", "pinyin": "Qù wǒ jiā! Wǒ māma zuò de cài tài hǎochī le.", "english": "Come to my home! My mom's cooking is amazing." }
       ],
       "newWords": [
-        { "id": "hsk2_1_lvyou",    "hanzi": "旅游",   "pinyin": "lǚyóu",     "pos": "v.",    "english": "to travel, to take a trip" },
-        { "id": "hsk2_1_juede",    "hanzi": "觉得",   "pinyin": "juéde",     "pos": "v.",    "english": "to think, to feel" },
-        { "id": "hsk2_1_zui",      "hanzi": "最",     "pinyin": "zuì",       "pos": "adv.",  "english": "most, to the greatest extent" },
-        { "id": "hsk2_1_weishenme","hanzi": "为什么", "pinyin": "wèi shénme","pos": "phrase","english": "why" },
-        { "id": "hsk2_1_ye",       "hanzi": "也",     "pinyin": "yě",        "pos": "adv.",  "english": "also, too" }
+        { "id": "hsk2_1_lvyou", "hanzi": "旅游", "pinyin": "lǚyóu", "pos": "v.", "english": "to travel, to take a trip" },
+        { "id": "hsk2_1_weishenme", "hanzi": "为什么", "pinyin": "wèi shénme", "pos": "pron.", "english": "why" },
+        { "id": "hsk2_1_juede", "hanzi": "觉得", "pinyin": "juéde", "pos": "v.", "english": "to think, to feel" },
+        { "id": "hsk2_1_zui", "hanzi": "最", "pinyin": "zuì", "pos": "adv.", "english": "most, the most" },
+        { "id": "hsk2_1_ye", "hanzi": "也", "pinyin": "yě", "pos": "adv.", "english": "also, too" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_1_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "看照片", "english": "Looking at a picture" },
+      "title": { "hanzi": "在学校", "english": "At school" },
       "audioRef": "01-2",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你喜欢什么运动?",            "pinyin": "Nǐ xǐhuan shénme yùndòng?",         "english": "What sport do you like?" },
-        { "speaker": "B", "hanzi": "我最喜欢踢足球。",            "pinyin": "Wǒ zuì xǐhuan tī zúqiú.",           "english": "I like playing football the most." },
-        { "speaker": "A", "hanzi": "下午我们一起去踢足球吧。",    "pinyin": "Xiàwǔ wǒmen yìqǐ qù tī zúqiú ba.", "english": "Let's go play football this afternoon." },
-        { "speaker": "B", "hanzi": "好啊!",                        "pinyin": "Hǎo a!",                            "english": "Great!" }
+        { "speaker": "A", "hanzi": "王明，你喜欢运动吗？", "pinyin": "Wáng Míng, nǐ xǐhuan yùndòng ma?", "english": "Wang Ming, do you like sports?" },
+        { "speaker": "B", "hanzi": "喜欢。我最喜欢踢足球。", "pinyin": "Xǐhuan. Wǒ zuì xǐhuan tī zúqiú.", "english": "I do. Football is my favorite." },
+        { "speaker": "A", "hanzi": "我也是！明天下午我们一起去踢足球，怎么样？", "pinyin": "Wǒ yě shì! Míngtiān xiàwǔ wǒmen yìqǐ qù tī zúqiú, zěnmeyàng?", "english": "Me too! How about we go and play football together tomorrow afternoon?" },
+        { "speaker": "B", "hanzi": "好啊！几点？", "pinyin": "Hǎo a! Jǐ diǎn?", "english": "Sure! What time?" },
+        { "speaker": "A", "hanzi": "四点。我们有十几个人。", "pinyin": "Sì diǎn. Wǒmen yǒu shíjǐ ge rén.", "english": "Four o'clock. There are a dozen or so of us." },
+        { "speaker": "B", "hanzi": "太好了！明天见！", "pinyin": "Tài hǎo le! Míngtiān jiàn!", "english": "Great! See you tomorrow!" }
       ],
       "newWords": [
-        { "id": "hsk2_1_yundong",  "hanzi": "运动",   "pinyin": "yùndòng",  "pos": "n./v.", "english": "sport; to exercise, to work out" },
-        { "id": "hsk2_1_tizuqiu",  "hanzi": "踢足球", "pinyin": "tī zúqiú", "pos": "phrase","english": "to play football" },
-        { "id": "hsk2_1_yiqi",     "hanzi": "一起",   "pinyin": "yìqǐ",     "pos": "adv.",  "english": "together" }
+        { "id": "hsk2_1_yundong", "hanzi": "运动", "pinyin": "yùndòng", "pos": "n./v.", "english": "sport; to exercise, to work out" },
+        { "id": "hsk2_1_tizuqiu", "hanzi": "踢足球", "pinyin": "tī zúqiú", "pos": "v.", "english": "to play football (soccer)" },
+        { "id": "hsk2_1_yiqi", "hanzi": "一起", "pinyin": "yìqǐ", "pos": "adv.", "english": "together" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_1_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming" }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在家里", "english": "At home" },
+      "title": { "hanzi": "在商店", "english": "In a shop" },
       "audioRef": "01-3",
       "dialogue": [
-        { "speaker": "A", "hanzi": "我们要不要买几个新的椅子?", "pinyin": "Wǒmen yào bu yào mǎi jǐ ge xīn de yǐzi?", "english": "Don't you think we should buy some new chairs?" },
-        { "speaker": "B", "hanzi": "好啊。什么时候去买?",        "pinyin": "Hǎo a. Shénme shíhou qù mǎi?",            "english": "Yes. When shall we go to buy them?" },
-        { "speaker": "A", "hanzi": "明天下午怎么样?",            "pinyin": "Míngtiān xiàwǔ zěnmeyàng?",               "english": "What about tomorrow afternoon?" },
-        { "speaker": "A", "hanzi": "你明天几点能回来?",          "pinyin": "Nǐ míngtiān jǐ diǎn néng huílai?",        "english": "When will you be back tomorrow?" },
-        { "speaker": "B", "hanzi": "三点多。",                    "pinyin": "Sān diǎn duō.",                           "english": "A little after three o'clock." }
+        { "speaker": "A", "hanzi": "马克，你要买什么？", "pinyin": "Mǎkè, nǐ yào mǎi shénme?", "english": "Mark, what do you want to buy?" },
+        { "speaker": "B", "hanzi": "我要买一个新杯子。我的杯子太小了。", "pinyin": "Wǒ yào mǎi yí ge xīn bēizi. Wǒ de bēizi tài xiǎo le.", "english": "I want to buy a new cup. Mine is too small." },
+        { "speaker": "A", "hanzi": "你看，这个怎么样？很大，也很漂亮。", "pinyin": "Nǐ kàn, zhège zěnmeyàng? Hěn dà, yě hěn piàoliang.", "english": "Look, what about this one? It's big, and pretty too." },
+        { "speaker": "B", "hanzi": "多少钱？", "pinyin": "Duōshao qián?", "english": "How much is it?" },
+        { "speaker": "A", "hanzi": "三十多块。", "pinyin": "Sānshí duō kuài.", "english": "Thirty-something kuai." },
+        { "speaker": "B", "hanzi": "好，我买这个。你也要买杯子吗？", "pinyin": "Hǎo, wǒ mǎi zhège. Nǐ yě yào mǎi bēizi ma?", "english": "OK, I'll take this one. Do you want to buy a cup too?" },
+        { "speaker": "A", "hanzi": "我不想买杯子，我想买一些茶。", "pinyin": "Wǒ bù xiǎng mǎi bēizi, wǒ xiǎng mǎi yìxiē chá.", "english": "No, I don't want a cup. I'd like to buy some tea." }
       ],
       "newWords": [
-        { "id": "hsk2_1_yao", "hanzi": "要", "pinyin": "yào", "pos": "aux.", "english": "to want to, would like to" },
+        { "id": "hsk2_1_yao", "hanzi": "要", "pinyin": "yào", "pos": "mod.", "english": "to want to, would like to" },
         { "id": "hsk2_1_xin", "hanzi": "新", "pinyin": "xīn", "pos": "adj.", "english": "new" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_1_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在家里", "english": "At home" },
+      "title": { "hanzi": "小美说她的小猫", "english": "Xiaomei talks about her kitten" },
       "audioRef": "01-4",
       "dialogue": [
-        { "speaker": "A", "hanzi": "桌子下面有个猫。",                       "pinyin": "Zhuōzi xiàmiàn yǒu ge māo.",                          "english": "There is a cat under the table." },
-        { "speaker": "B", "hanzi": "那是我的猫,它叫花花。",                  "pinyin": "Nà shì wǒ de māo, tā jiào Huāhua.",                   "english": "That's my cat. It's called Huahua." },
-        { "speaker": "A", "hanzi": "它很漂亮。",                              "pinyin": "Tā hěn piàoliang.",                                   "english": "It's beautiful." },
-        { "speaker": "B", "hanzi": "是啊,我觉得它的眼睛最漂亮。",            "pinyin": "Shì a, wǒ juéde tā de yǎnjing zuì piàoliang.",        "english": "Yes. I think it has the most beautiful eyes." },
-        { "speaker": "A", "hanzi": "它多大了?",                              "pinyin": "Tā duō dà le?",                                       "english": "How old is it?" },
-        { "speaker": "B", "hanzi": "六个多月。",                              "pinyin": "Liù ge duō yuè.",                                     "english": "More than six months." }
+        { "speaker": "A", "hanzi": "我叫小美，我八岁。", "pinyin": "Wǒ jiào Xiǎoměi, wǒ bā suì.", "english": "My name is Xiaomei. I'm eight." },
+        { "speaker": "A", "hanzi": "这是我家的小猫，它叫米米。", "pinyin": "Zhè shì wǒ jiā de xiǎo māo, tā jiào Mǐmi.", "english": "This is our kitten. Her name is Mimi." },
+        { "speaker": "A", "hanzi": "它三岁多了。", "pinyin": "Tā sān suì duō le.", "english": "She's a bit over three years old." },
+        { "speaker": "A", "hanzi": "它的眼睛很大，很漂亮。", "pinyin": "Tā de yǎnjing hěn dà, hěn piàoliang.", "english": "She has big, beautiful eyes." },
+        { "speaker": "A", "hanzi": "米米最喜欢睡觉，也喜欢看电视。", "pinyin": "Mǐmi zuì xǐhuan shuì jiào, yě xǐhuan kàn diànshì.", "english": "Mimi loves sleeping more than anything, and she likes watching TV too." },
+        { "speaker": "A", "hanzi": "我觉得它是我最好的朋友。", "pinyin": "Wǒ juéde tā shì wǒ zuì hǎo de péngyou.", "english": "I think she's my best friend." }
       ],
       "newWords": [
-        { "id": "hsk2_1_ta",      "hanzi": "它",   "pinyin": "tā",      "pos": "pron.", "english": "it" },
-        { "id": "hsk2_1_yanjing", "hanzi": "眼睛", "pinyin": "yǎnjing", "pos": "n.",    "english": "eye" }
+        { "id": "hsk2_1_ta", "hanzi": "它", "pinyin": "tā", "pos": "pron.", "english": "it (for animals and things)" },
+        { "id": "hsk2_1_yanjing", "hanzi": "眼睛", "pinyin": "yǎnjing", "pos": "n.", "english": "eye" }
       ],
       "properNouns": [
-        { "id": "hsk2_1_huahua", "hanzi": "花花", "pinyin": "Huāhua", "english": "Huahua, name of a cat" }
+        { "id": "hsk2_1_pn_xiaomei", "hanzi": "小美", "pinyin": "Xiǎoměi", "english": "Xiaomei" },
+        { "id": "hsk2_1_pn_mimi", "hanzi": "米米", "pinyin": "Mǐmi", "english": "Mimi (a cat's name)" }
       ]
     }
   ],
@@ -91,74 +110,128 @@
     {
       "id": "hsk2_1_g_yao",
       "number": 1,
-      "title": { "hanzi": "助动词:要", "english": "The Auxiliary Verb \"要\"" },
+      "title": { "hanzi": "能愿动词\"要\"", "english": "The Modal Verb \"要\" (Want to, Intend to)" },
       "explanation": {
-        "hanzi": "助动词\"要\"用在动词前,表示有做某件事情的愿望。其否定形式一般为\"不想\"。",
-        "english": "The auxiliary verb \"要\" goes before a verb to indicate the desire to do something. Its negative form is usually \"不想\" (don't want to)."
-      },
-      "patternTable": {
-        "columns": ["Subject", "要 (Aux)", "Predicate"],
-        "rows": [
-          ["王方",   "要",     "学习英语。"],
-          ["我",     "要",     "吃米饭。"],
-          ["我们",   "要不要", "买几个新的椅子?"]
-        ]
+        "hanzi": "\"要\"放在动词前面，表示想做或者打算做一件事，语气比\"想\"更肯定。否定的时候一般不说\"不要\"，而说\"不想\"，因为\"不要\"常常是\"别\"的意思。",
+        "english": "Put 要 (yào) before a verb to say that you want to or intend to do something. It sounds more decided than 想 (\"would like to\"): 我要买 is closer to \"I'm going to buy\". For the negative, use 不想 (\"don't want to\"), not 不要, which usually means \"don't!\" as a command."
       },
       "examples": [
-        { "hanzi": "小王要去,我不想去。",                "pinyin": "Xiǎo Wáng yào qù, wǒ bù xiǎng qù.",                "english": "Xiao Wang wants to go, but I don't want to." },
-        { "hanzi": "A: 你要吃米饭吗? B: 我不想吃米饭。", "pinyin": "Nǐ yào chī mǐfàn ma? Wǒ bù xiǎng chī mǐfàn.",      "english": "A: Do you want to eat rice? B: I don't want to eat rice." },
-        { "hanzi": "我要去商店买椅子,你去吗?",          "pinyin": "Wǒ yào qù shāngdiàn mǎi yǐzi, nǐ qù ma?",         "english": "I want to go to the shop to buy chairs — do you want to come?" }
-      ]
+        { "hanzi": "我要去旅游。", "pinyin": "Wǒ yào qù lǚyóu.", "english": "I'm going to take a trip." },
+        { "hanzi": "你要喝什么？", "pinyin": "Nǐ yào hē shénme?", "english": "What would you like to drink?" },
+        { "hanzi": "明天我要和朋友一起踢足球。", "pinyin": "Míngtiān wǒ yào hé péngyou yìqǐ tī zúqiú.", "english": "Tomorrow I'm going to play football with my friends." },
+        { "hanzi": "我不想去商店。", "pinyin": "Wǒ bù xiǎng qù shāngdiàn.", "english": "I don't want to go to the shop." }
+      ],
+      "patternTable": {
+        "columns": ["主语 Subject", "要 / 不想", "动词 Verb", "宾语 Object"],
+        "rows": [
+          ["我", "要", "买", "新电脑"],
+          ["马克", "要", "喝", "茶"],
+          ["安娜", "不想", "看", "电影"]
+        ]
+      }
     },
     {
       "id": "hsk2_1_g_zui",
       "number": 2,
-      "title": { "hanzi": "程度副词:最", "english": "The Adverb of Degree \"最\"" },
+      "title": { "hanzi": "程度副词\"最\"", "english": "The Degree Adverb \"最\" (Most)" },
       "explanation": {
-        "hanzi": "\"最\"表示在同类事物中或某方面占第一位。",
-        "english": "\"最\" indicates the first/highest among things of the same kind or in a certain aspect."
+        "hanzi": "\"最\"放在形容词或者\"喜欢、想\"这样的动词前面，表示在一组人或东西里程度最高。",
+        "english": "最 (zuì) goes before an adjective, or before verbs of feeling such as 喜欢 and 想, to mark the highest degree within a group: \"the most\", \"-est\", \"favorite\". It replaces 很: say 这个最大, not 这个很最大."
       },
       "examples": [
-        { "hanzi": "大卫的汉语最好。",       "pinyin": "Dàwèi de Hànyǔ zuì hǎo.",        "english": "David's Chinese is the best." },
-        { "hanzi": "我最喜欢吃米饭。",       "pinyin": "Wǒ zuì xǐhuan chī mǐfàn.",       "english": "I like rice the most." },
-        { "hanzi": "它的眼睛最漂亮。",       "pinyin": "Tā de yǎnjing zuì piàoliang.",   "english": "Its eyes are the most beautiful." }
-      ]
+        { "hanzi": "我最喜欢踢足球。", "pinyin": "Wǒ zuì xǐhuan tī zúqiú.", "english": "Football is my favorite." },
+        { "hanzi": "这三个杯子，这个最大。", "pinyin": "Zhè sān ge bēizi, zhège zuì dà.", "english": "Of these three cups, this one is the biggest." },
+        { "hanzi": "你觉得哪个月天气最好？", "pinyin": "Nǐ juéde nǎge yuè tiānqì zuì hǎo?", "english": "Which month do you think has the best weather?" }
+      ],
+      "patternTable": {
+        "columns": ["主语 Subject", "最", "形容词/动词 Adj./Verb"],
+        "rows": [
+          ["这个菜", "最", "好吃"],
+          ["十月", "最", "漂亮"],
+          ["我", "最", "喜欢喝茶"]
+        ]
+      }
     },
     {
       "id": "hsk2_1_g_ji_duo",
       "number": 3,
-      "title": { "hanzi": "概数的表达:几、多", "english": "\"几\" and \"多\": expressions of approximate numbers" },
+      "title": { "hanzi": "概数：\"几\"和\"多\"", "english": "Approximate Numbers with \"几\" and \"多\"" },
       "explanation": {
-        "hanzi": "\"几\"可以表示10以内的不定个数,后边要有量词。\"几\"也可以用在\"十\"之后,表示大于10小于20的数字(如:十几个人);用在\"十\"之前,表示大于20小于100的数字(如:几十个人)。\"多\"与数量词搭配:数词是10以下的数字时,\"多\"用在量词之后(三个多星期);数词是10以上的整数时,\"多\"用在量词前(十多个月),此时\"多\"和\"几\"通用。",
-        "english": "\"几\" expresses an indefinite number under 10 (with a measure word). After 十, it means \"between 10 and 20\" (十几个人 = a dozen or so people). Before 十, it means \"between 20 and 100\" (几十个人 = dozens of people). \"多\" works with numeral-measure phrases: under 10, it goes after the measure word (三个多星期 — over three weeks); for round numbers above 10, it goes before the measure word (十多个月 — over ten months), where 多 and 几 are interchangeable."
-      },
-      "patternTable": {
-        "columns": ["几", "Measure", "Noun"],
-        "rows": [
-          ["几", "个", "人"],
-          ["几", "本", "书"],
-          ["几", "个", "新的椅子"]
-        ]
+        "hanzi": "\"几\"放在\"十\"后面（十几），表示十一到十九之间的一个数；放在\"十\"前面（几十），表示二十到九十左右。\"多\"放在整十的数后面、量词前面（二十多个、三十多岁），表示比这个数多一点儿。",
+        "english": "When you don't know (or don't need) the exact number, use 几 or 多. 十几 means \"between eleven and nineteen\" (a dozen or so), and 几十 means \"several tens\". 多 after a round number means \"a little more than\": 二十多岁 \"twenty-something years old\". Both come before the measure word: 十几个人, 三十多块钱. Here 几 is not a question."
       },
       "examples": [
-        { "hanzi": "车上有几个人。",       "pinyin": "Chē shang yǒu jǐ ge rén.",        "english": "There are a few people in the car." },
-        { "hanzi": "我想买几本书。",       "pinyin": "Wǒ xiǎng mǎi jǐ běn shū.",        "english": "I'd like to buy a few books." },
-        { "hanzi": "我们要不要买几个新的椅子?", "pinyin": "Wǒmen yào bu yào mǎi jǐ ge xīn de yǐzi?", "english": "Should we buy a few new chairs?" }
-      ]
+        { "hanzi": "我们有十几个人。", "pinyin": "Wǒmen yǒu shíjǐ ge rén.", "english": "There are a dozen or so of us." },
+        { "hanzi": "刘老师三十多岁。", "pinyin": "Liú lǎoshī sānshí duō suì.", "english": "Teacher Liu is in her thirties." },
+        { "hanzi": "这本书二十多块钱。", "pinyin": "Zhè běn shū èrshí duō kuài qián.", "english": "This book costs twenty-something kuai." },
+        { "hanzi": "我们学校有几十个中国老师。", "pinyin": "Wǒmen xuéxiào yǒu jǐshí ge Zhōngguó lǎoshī.", "english": "Our school has dozens of Chinese teachers." }
+      ],
+      "patternTable": {
+        "columns": ["数 Number", "量词 Measure", "名词 Noun"],
+        "rows": [
+          ["十几", "个", "人"],
+          ["二十多", "岁", ""],
+          ["三十多", "块", "钱"],
+          ["几十", "个", "学生"]
+        ]
+      }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking one role each." }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": { "hanzi": "根据你的情况回答问题。", "english": "Answer the questions about yourself." },
       "items": [
-        { "hanzi": "什么时候去北京旅游最好?为什么?", "pinyin": "Shénme shíhou qù Běijīng lǚyóu zuì hǎo? Wèi shénme?" },
-        { "hanzi": "他们下午要做什么?",              "pinyin": "Tāmen xiàwǔ yào zuò shénme?" },
-        { "hanzi": "他们想什么时候去买椅子?",        "pinyin": "Tāmen xiǎng shénme shíhou qù mǎi yǐzi?" },
-        { "hanzi": "花花在哪儿?",                    "pinyin": "Huāhua zài nǎr?" },
-        { "hanzi": "花花多大了?",                    "pinyin": "Huāhua duō dà le?" }
+        { "hanzi": "你喜欢旅游吗？", "pinyin": "Nǐ xǐhuan lǚyóu ma?", "english": "Do you like traveling?" },
+        { "hanzi": "你觉得哪个月天气最好？为什么？", "pinyin": "Nǐ juéde nǎge yuè tiānqì zuì hǎo? Wèi shénme?", "english": "Which month do you think has the best weather? Why?" },
+        { "hanzi": "你最喜欢什么运动？", "pinyin": "Nǐ zuì xǐhuan shénme yùndòng?", "english": "What's your favorite sport?" },
+        { "hanzi": "明天你要做什么？", "pinyin": "Míngtiān nǐ yào zuò shénme?", "english": "What are you going to do tomorrow?" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": { "hanzi": "用\"要、最、也、一起、新、为什么\"填空。", "english": "Fill in the blanks with 要, 最, 也, 一起, 新 or 为什么." },
+      "items": [
+        { "hanzi": "你____不去旅游？", "english": "Why aren't you going on the trip?", "blank": "为什么" },
+        { "hanzi": "我们____去吃饭吧。", "english": "Let's go and eat together.", "blank": "一起" },
+        { "hanzi": "我____买一个新电脑。", "english": "I'm going to buy a new computer.", "blank": "要" },
+        { "hanzi": "安娜喜欢喝茶，马克____喜欢喝茶。", "english": "Anna likes tea, and Mark does too.", "blank": "也" },
+        { "hanzi": "这三个人，王明____高兴。", "english": "Of these three, Wang Ming is the happiest.", "blank": "最" },
+        { "hanzi": "这是我的____衣服，漂亮吗？", "english": "These are my new clothes. Are they pretty?", "blank": "新" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": { "hanzi": "找出合适的回答。", "english": "Match each question with a suitable answer." },
+      "items": [
+        { "hanzi": "你为什么喜欢十月？ — 我觉得十月天气最好。", "pinyin": "Nǐ wèi shénme xǐhuan shí yuè? — Wǒ juéde shí yuè tiānqì zuì hǎo.", "english": "Why do you like October? — I think October has the best weather." },
+        { "hanzi": "你们有多少人？ — 我们有二十多个人。", "pinyin": "Nǐmen yǒu duōshao rén? — Wǒmen yǒu èrshí duō ge rén.", "english": "How many of you are there? — There are twenty-odd of us." },
+        { "hanzi": "我们一起去踢足球，怎么样？ — 好啊！", "pinyin": "Wǒmen yìqǐ qù tī zúqiú, zěnmeyàng? — Hǎo a!", "english": "How about we go and play football together? — Sure!" },
+        { "hanzi": "你的小狗叫什么名字？ — 它叫大大。", "pinyin": "Nǐ de xiǎo gǒu jiào shénme míngzi? — Tā jiào Dàda.", "english": "What's your puppy's name? — He's called Dada." }
       ]
     }
-  ]
+  ],
+  "characters": {
+    "radicals": [
+      { "hanzi": "⻊", "pinyin": "zú zì páng", "english": "foot (related to the feet and moving: kicking, running, jumping)", "examples": ["踢 tī (to kick)", "跑 pǎo (to run)", "路 lù (road)", "跳 tiào (to jump)", "足 zú (foot; the full form)"] },
+      { "hanzi": "目", "pinyin": "mù zì páng", "english": "eye (related to the eyes and seeing)", "examples": ["眼 yǎn (eye)", "睛 jīng (eyeball)", "看 kàn (to look)", "睡 shuì (to sleep)"]  }
+    ]
+  },
+  "application": {
+    "prompt": { "hanzi": "两人一组，聊聊旅游和运动。", "english": "In pairs, talk about trips and sports." },
+    "activities": [
+      "Plan a trip: A asks 你想几月去旅游？为什么？ B answers with 我觉得……最好. Then agree on a date with 我们一起去吧！",
+      "Sports survey: ask four classmates 你最喜欢什么运动？ and report back with 也: 安娜喜欢踢足球，马克也喜欢踢足球。",
+      "Guess the number: describe people and things with 十几 / 二十多 / 几十 (how old a teacher is, how many students are in the room, how much a book costs) and let your partner guess the exact number.",
+      "Show and tell: describe a pet or a toy using 它 (它叫……，它的眼睛……，它最喜欢……)."
+    ]
+  }
 }

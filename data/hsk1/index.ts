@@ -2,10 +2,9 @@
 // here with just title + theme so the course/list page can render the full
 // 15-lesson outline before every lesson is fully authored.
 //
-// Lessons 1–5 were transcribed from HSK Standard Course 1 (BLCU Press, 2014)
-// and still need replacing with original content. Lessons 6–15 are original:
-// same official word list and grammar points per lesson as the textbook, but
-// newly written dialogues, explanations, exercises and drills.
+// All lessons are original content: the official HSK 1 word list and grammar
+// points, in the same lesson order as HSK Standard Course 1, with newly
+// written dialogues, explanations, exercises and drills.
 
 import type { Lesson, LessonSummary } from "@/lib/types";
 import lesson1 from "./lessons/1.json";

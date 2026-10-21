@@ -2,124 +2,413 @@
   "id": "hsk1-2",
   "level": 1,
   "number": 2,
-  "title": { "hanzi": "谢谢你", "pinyin": "Xièxie nǐ", "english": "Thank you" },
+  "title": {
+    "hanzi": "不谢",
+    "pinyin": "Bú xiè",
+    "english": "No need to thank me"
+  },
   "theme": "Greetings",
+  "warmUp": {
+    "instruction": {
+      "hanzi": "读一读：怎么说谢谢，怎么说再见？",
+      "english": "Read these aloud: how do you say thank you, and how do you say goodbye?"
+    },
+    "items": [
+      { "hanzi": "谢谢", "pinyin": "xièxie", "english": "thank you" },
+      { "hanzi": "谢谢你", "pinyin": "xièxie nǐ", "english": "thank you (to one person)" },
+      { "hanzi": "谢谢你们", "pinyin": "xièxie nǐmen", "english": "thank you (to several people)" },
+      { "hanzi": "不客气", "pinyin": "bú kèqi", "english": "you're welcome" },
+      { "hanzi": "不谢", "pinyin": "bú xiè", "english": "no need to thank me" },
+      { "hanzi": "再见", "pinyin": "zàijiàn", "english": "goodbye" },
+      { "hanzi": "对不起", "pinyin": "duìbuqǐ", "english": "sorry" },
+      { "hanzi": "没关系", "pinyin": "méi guānxi", "english": "that's OK" }
+    ]
+  },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "致谢 (一)", "english": "Saying thanks (1)" },
-      "audioRef": "02-1",
+      "title": { "hanzi": "在宿舍楼", "english": "At the dorm building" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "谢谢!", "pinyin": "Xièxie!", "english": "Thank you!" },
-        { "speaker": "B", "hanzi": "不谢!", "pinyin": "Bú xiè!", "english": "Sure!" }
+        { "speaker": "A", "hanzi": "马克，谢谢你！", "pinyin": "Mǎkè, xièxie nǐ!", "english": "(Mark has carried Anna's suitcase upstairs) Mark, thank you!" },
+        { "speaker": "B", "hanzi": "不客气！", "pinyin": "Bú kèqi!", "english": "You're welcome!" },
+        { "speaker": "A", "hanzi": "谢谢，谢谢！", "pinyin": "Xièxie, xièxie!", "english": "Thanks so much!" },
+        { "speaker": "B", "hanzi": "不客气，安娜。", "pinyin": "Bú kèqi, Ānnà.", "english": "Don't mention it, Anna." }
       ],
       "newWords": [
-        { "id": "hsk1_2_xiexie", "hanzi": "谢谢", "pinyin": "xièxie", "pos": "v.",   "english": "to thank" },
-        { "id": "hsk1_2_bu",     "hanzi": "不",   "pinyin": "bù",     "pos": "adv.", "english": "no, not" }
+        { "id": "hsk1_2_xiexie", "hanzi": "谢谢", "pinyin": "xièxie", "pos": "v.", "english": "to thank; thank you" },
+        { "id": "hsk1_2_bukeqi", "hanzi": "不客气", "pinyin": "bú kèqi", "pos": "phrase", "english": "you're welcome, don't mention it" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_2_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark (a student of Chinese)" },
+        { "id": "hsk1_2_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna (a student of Chinese)" }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "致谢 (二)", "english": "Saying thanks (2)" },
-      "audioRef": "02-2",
+      "title": { "hanzi": "在王明家门口", "english": "At the door of Wang Ming's home" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "谢谢你!", "pinyin": "Xièxie nǐ!", "english": "Thank you!" },
-        { "speaker": "B", "hanzi": "不客气!", "pinyin": "Bú kèqi!",   "english": "You're welcome!" }
+        { "speaker": "A", "hanzi": "王明，谢谢你！", "pinyin": "Wáng Míng, xièxie nǐ!", "english": "(Anna and Mark are leaving after dinner) Wang Ming, thank you!" },
+        { "speaker": "B", "hanzi": "不客气！安娜，再见！", "pinyin": "Bú kèqi! Ānnà, zàijiàn!", "english": "My pleasure! Bye, Anna!" },
+        { "speaker": "A", "hanzi": "再见！", "pinyin": "Zàijiàn!", "english": "Bye!" },
+        { "speaker": "B", "hanzi": "马克，再见！", "pinyin": "Mǎkè, zàijiàn!", "english": "Bye, Mark!" },
+        { "speaker": "C", "hanzi": "再见，王明！谢谢！", "pinyin": "Zàijiàn, Wáng Míng! Xièxie!", "english": "(Mark) Bye, Wang Ming! Thanks!" }
       ],
       "newWords": [
-        { "id": "hsk1_2_bukeqi", "hanzi": "不客气", "pinyin": "bú kèqi", "pos": "phrase", "english": "you're welcome, don't mention it" }
+        { "id": "hsk1_2_zaijian", "hanzi": "再见", "pinyin": "zàijiàn", "pos": "v.", "english": "goodbye, see you" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_2_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming (a Chinese university student)" }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "告别", "english": "Saying goodbye" },
-      "audioRef": "02-3",
+      "title": { "hanzi": "在路上", "english": "On the street" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "再见!", "pinyin": "Zàijiàn!", "english": "Goodbye!" },
-        { "speaker": "B", "hanzi": "再见!", "pinyin": "Zàijiàn!", "english": "Bye!" }
+        { "speaker": "A", "hanzi": "对不起！", "pinyin": "Duìbuqǐ!", "english": "(bumping into a passer-by and dropping a phone) Sorry!" },
+        { "speaker": "B", "hanzi": "没关系。", "pinyin": "Méi guānxi.", "english": "That's OK." },
+        { "speaker": "A", "hanzi": "谢谢！", "pinyin": "Xièxie!", "english": "(the passer-by picks up the phone and hands it back) Thank you!" },
+        { "speaker": "B", "hanzi": "不谢，不谢。", "pinyin": "Bú xiè, bú xiè.", "english": "No need to thank me." },
+        { "speaker": "A", "hanzi": "再见！", "pinyin": "Zàijiàn!", "english": "Bye!" },
+        { "speaker": "B", "hanzi": "再见！", "pinyin": "Zàijiàn!", "english": "Bye!" }
       ],
       "newWords": [
-        { "id": "hsk1_2_zaijian", "hanzi": "再见", "pinyin": "zàijiàn", "pos": "v.", "english": "to see you around, goodbye" }
+        { "id": "hsk1_2_bu", "hanzi": "不", "pinyin": "bù", "pos": "adv.", "english": "no, not" }
       ]
     }
   ],
-  "classroomExpressions": [
-    { "hanzi": "打开书。",    "pinyin": "Dǎkāi shū.",      "english": "Open your book." },
-    { "hanzi": "请大声读。",  "pinyin": "Qǐng dà shēng dú.","english": "Read aloud." },
-    { "hanzi": "再读一遍。",  "pinyin": "Zài dú yí biàn.", "english": "Read once again. / Repeat." },
-    { "hanzi": "一起读。",    "pinyin": "Yìqǐ dú.",        "english": "Read together." },
-    { "hanzi": "有问题吗?",   "pinyin": "Yǒu wèntí ma?",   "english": "Any questions?" }
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人或三人一组，分角色朗读课文。",
+        "english": "In pairs or groups of three, read the dialogues aloud, taking a role each."
+      }
+    },
+    {
+      "number": 2,
+      "type": "match",
+      "prompt": {
+        "hanzi": "找出合适的回答。",
+        "english": "Match each line with a suitable reply."
+      },
+      "items": [
+        { "hanzi": "谢谢你！ — 不客气！", "pinyin": "Xièxie nǐ! — Bú kèqi!", "english": "Thank you! — You're welcome!" },
+        { "hanzi": "再见！ — 再见！", "pinyin": "Zàijiàn! — Zàijiàn!", "english": "Goodbye! — Goodbye!" },
+        { "hanzi": "对不起！ — 没关系。", "pinyin": "Duìbuqǐ! — Méi guānxi.", "english": "Sorry! — That's OK." },
+        { "hanzi": "谢谢！ — 不谢。", "pinyin": "Xièxie! — Bú xiè.", "english": "Thanks! — No need to thank me." },
+        { "hanzi": "你们好！ — 您好！", "pinyin": "Nǐmen hǎo! — Nín hǎo!", "english": "Hello, everyone! — Hello!" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "填空：谢、客、再、不",
+        "english": "Fill in the blanks with 谢, 客, 再 or 不."
+      },
+      "items": [
+        { "hanzi": "谢____你！", "english": "Thank you!", "blank": "谢" },
+        { "hanzi": "不____气！", "english": "You're welcome!", "blank": "客" },
+        { "hanzi": "王明，____见！", "english": "Bye, Wang Ming!", "blank": "再" },
+        { "hanzi": "____谢，____谢。", "english": "No need to thank me.", "blank": "不" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "你怎么回答？",
+        "english": "How would you reply?"
+      },
+      "items": [
+        { "hanzi": "谢谢你！", "pinyin": "Xièxie nǐ!", "english": "A friend thanks you for your help." },
+        { "hanzi": "再见！", "pinyin": "Zàijiàn!", "english": "A classmate is leaving." },
+        { "hanzi": "对不起！", "pinyin": "Duìbuqǐ!", "english": "Someone is late and apologises." },
+        { "hanzi": "你们好！", "pinyin": "Nǐmen hǎo!", "english": "Your teacher greets the class." }
+      ]
+    }
   ],
   "pinyinSection": {
     "drills": [
       {
         "number": 1,
         "title": {
-          "hanzi": "汉语拼音的声母和韵母 (2)",
-          "english": "Initials and Finals of Chinese Pinyin (2)"
+          "hanzi": "声母和韵母（二）",
+          "english": "Initials and finals (2)"
         },
         "explanation": {
-          "hanzi": "声母 (Initials): zh ch sh r / z c s。韵母 (Finals): ou iou (iu) / an ian uan üan / en in uen (un) ün / ang iang uang / eng ing ueng / ong iong。",
-          "english": "Initials introduced in this lesson: zh, ch, sh, r / z, c, s. Finals: ou, iou (iu) / an, ian, uan, üan / en, in, uen (un), ün / ang, iang, uang / eng, ing, ueng / ong, iong."
+          "hanzi": "这一课学习剩下的十个声母：j q x、zh ch sh r、z c s，还有带鼻音的韵母和更多复韵母。q、ch、c 都是送气音，发音时要送出较强的气流。",
+          "english": "This lesson completes the initials with three families: j q x, zh ch sh r, and z c s. In each family the middle one (q, ch, c) is aspirated — say it with a strong puff of air, just like p, t, k. The finals here are the nasal ones: -n is made with the tongue tip pressed up behind the teeth (like \"n\" in \"ban\"), -ng with the back of the tongue raised and the mouth left open (like \"ng\" in \"sung\"). Many words differ only in -n vs -ng, so exaggerate the difference at first."
         },
         "syllables": [
-          "zh", "ch", "sh", "r", "z", "c", "s",
-          "ou", "iou (iu)", "an", "ian", "uan", "üan",
-          "en", "in", "uen (un)", "ün",
-          "ang", "iang", "uang", "eng", "ing", "ueng", "ong", "iong",
-          "sān", "shān", "zhōng", "yáng", "líng", "cài", "shǒu", "xióng",
-          "yún", "xīng", "yuán", "rén", "chuán", "chuáng", "chī", "rè"
+          "j  q  x",
+          "zh  ch  sh  r",
+          "z  c  s",
+          "an  en  ang  eng  ong",
+          "ia  ie  iao  iu  ian  in  iang  ing  iong",
+          "ua  uo  uai  ui  uan  un  uang",
+          "üe  üan  ün",
+          "jiā  qiē  xiǎo  zhōng  chá  shān  rè  zài  cài  sān"
+        ],
+        "subRules": [
+          {
+            "rule": {
+              "hanzi": "j q x：舌面音。舌尖放在下齿后面，嘴角向两边拉开。后面只能跟 i 或 ü。",
+              "english": "j, q, x: the tongue tip rests behind the lower teeth and the lips are spread, as in a smile. They only combine with finals that start with i or ü."
+            },
+            "examples": [
+              { "pinyin": "jiā", "english": "home (家)" },
+              { "pinyin": "qī", "english": "seven (七)" },
+              { "pinyin": "xiè", "english": "to thank (谢)" },
+              { "pinyin": "jiàn", "english": "to see (见)" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "zh ch sh r：翘舌音。舌尖向上卷起，靠近上齿后面较高的地方。",
+              "english": "zh, ch, sh, r: curl the tongue tip up and back towards the roof of the mouth. r sounds somewhere between English \"r\" and the \"s\" in \"pleasure\"."
+            },
+            "examples": [
+              { "pinyin": "zhōng", "english": "middle (中)" },
+              { "pinyin": "chá", "english": "tea (茶)" },
+              { "pinyin": "shān", "english": "mountain (山)" },
+              { "pinyin": "rén", "english": "person (人)" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "z c s：平舌音。舌尖平放，碰上齿背。z 像 \"kids\" 里的 ds，c 像 \"cats\" 里的 ts。",
+              "english": "z, c, s: keep the tongue flat with its tip against the back of the upper teeth. z sounds like \"ds\" in \"kids\", c like \"ts\" in \"cats\" (with a puff of air), s like English s."
+            },
+            "examples": [
+              { "pinyin": "zài", "english": "again (再)" },
+              { "pinyin": "cài", "english": "dish (菜)" },
+              { "pinyin": "sān", "english": "three (三)" },
+              { "pinyin": "kèqi", "english": "polite (客气)" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "前鼻音 -n 和后鼻音 -ng。",
+              "english": "Front nasal -n vs. back nasal -ng."
+            },
+            "examples": [
+              { "pinyin": "fàn / fàng", "english": "meal / to put" },
+              { "pinyin": "rén / réng", "english": "person / still" },
+              { "pinyin": "xīn / xīng", "english": "new / star" },
+              { "pinyin": "guān / guāng", "english": "to close / light" }
+            ]
+          }
         ]
       },
       {
         "number": 2,
-        "title": { "hanzi": "汉语的轻声", "english": "The Neutral Tone" },
+        "title": {
+          "hanzi": "轻声",
+          "english": "The neutral tone"
+        },
         "explanation": {
-          "hanzi": "汉语中除了四声以外,还有一个读得又短又轻的声调,叫作\"轻声\"。例如:妈妈 (māma)、爷爷 (yéye)、奶奶 (nǎinai)、爸爸 (bàba)。",
-          "english": "In addition to the four tones, Mandarin has a short, light tone called the \"neutral tone\". Examples: māma (mom), yéye (grandpa), nǎinai (grandma), bàba (dad)."
+          "hanzi": "有的音节在词语里读得又轻又短，没有原来的声调，叫“轻声”。轻声在拼音上不标声调符号。轻声的高低由前面一个音节决定：在一、二、四声后面比较低，在三声后面比较高。",
+          "english": "In many words the last syllable loses its tone and is said lightly and quickly. This is the neutral tone, and in pinyin it simply has no tone mark: xièxie, nǐmen, kèqi. Its pitch depends on the syllable before it: after a 1st, 2nd or 4th tone it is short and low; after a 3rd tone it is short and a little higher, because the voice is rising out of the dip. Keep neutral syllables short — about half the length of a normal syllable."
         },
         "syllables": [
-          "zhuōzi", "fángzi", "yǐzi", "guìzi",
-          "tāmen", "rénmen", "wǒmen", "dìdi",
-          "yīfu", "érzi", "xǐhuan", "rènshi",
-          "xiānsheng", "péngyou", "wǎnshang", "piàoliang"
+          "xièxie",
+          "nǐmen",
+          "kèqi",
+          "māma",
+          "bàba",
+          "péngyou",
+          "míngzi",
+          "duìbuqǐ"
+        ],
+        "subRules": [
+          {
+            "rule": { "hanzi": "一声 + 轻声", "english": "1st tone + neutral tone" },
+            "examples": [
+              { "pinyin": "māma", "english": "mum" },
+              { "pinyin": "gēge", "english": "older brother" },
+              { "pinyin": "tāmen", "english": "they" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "二声 + 轻声", "english": "2nd tone + neutral tone" },
+            "examples": [
+              { "pinyin": "péngyou", "english": "friend" },
+              { "pinyin": "míngzi", "english": "name" },
+              { "pinyin": "shénme", "english": "what" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "三声 + 轻声", "english": "3rd tone + neutral tone" },
+            "examples": [
+              { "pinyin": "nǐmen", "english": "you (plural)" },
+              { "pinyin": "wǒmen", "english": "we" },
+              { "pinyin": "jiějie", "english": "older sister" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "四声 + 轻声", "english": "4th tone + neutral tone" },
+            "examples": [
+              { "pinyin": "xièxie", "english": "thank you" },
+              { "pinyin": "kèqi", "english": "polite" },
+              { "pinyin": "bàba", "english": "dad" }
+            ]
+          }
         ]
       },
       {
         "number": 3,
         "title": {
-          "hanzi": "拼音规则 (1):标调法和省写",
-          "english": "Rules of Pinyin (1): Tone Marking and Abbreviation"
+          "hanzi": "声调符号的位置和 iu、ui、un 的写法",
+          "english": "Where the tone mark goes, and the spellings iu, ui, un"
         },
         "explanation": {
-          "hanzi": "(1) 标调法:声调必须标在元音字母上。当韵母含有两个或更多元音字母时,调号标在开口度较大的元音上(顺序:a、o、e、i、u、ü);但 iu 是 iou 的省略形式,声调标在 u 上。轻声不标调。(2) 省写:iou、uei、uen 前面加声母时,写成 iu、ui、un。",
-          "english": "(1) Tone marks go on the vowel. With multiple vowels, mark the one with the widest mouth (order: a, o, e, i, u, ü). Exception: iu is the abbreviation of iou and the mark goes on u. Neutral-tone syllables aren't marked. (2) When iou, uei, uen follow an initial, they're written iu, ui, un (e.g., niu, gui, lun)."
+          "hanzi": "声调符号标在主要元音上。有 a 标 a；没有 a 就标 o 或 e；iu 和 ui 标在后面的字母上。i 上标声调时，去掉 i 上的点。另外，iou、uei、uen 前面有声母时，写成 iu、ui、un。",
+          "english": "The tone mark goes on the main vowel, and you can find it with a simple order of priority: if there is an a, mark the a (hǎo, guān); if not, mark the o or e (duō, xiè); in the pairs iu and ui, mark whichever comes second (liù, duì). When i carries a mark, its dot disappears (nǐ, not nǐ with a dot). Pinyin also shortens three finals when they follow an initial: iou → iu, uei → ui, uen → un. The full vowel is still faintly there in speech — liù sounds like \"l-yoh\" — but it is never written."
         },
         "syllables": [
-          "xuéxiào", "bāng máng", "lánqiú", "nǚ'ér",
-          "yóu yǒng", "shǒubiǎo", "zhōngyú", "gōngsī",
-          "shíjiān", "shēntǐ", "kǎoshì", "guójiā",
-          "bàozhǐ", "hǎochī", "xièxie", "kèqi",
-          "xiūxi", "shuì jiào", "lúnchuán", "niúnǎi",
-          "píjiǔ", "ánggui", "liúyán", "kāi huì",
-          "tǎolùn", "zúqiú", "Lúndūn", "shīrùn",
-          "cánkuì", "shuǐguǒ", "táozuì", "shùnlì"
+          "a > o / e > i / u",
+          "hǎo  guān  xiào",
+          "duō  xiè  méi",
+          "liù  jiǔ  duì  guì",
+          "l + iou → liù",
+          "d + uei → duì",
+          "ch + uen → chūn"
+        ],
+        "subRules": [
+          {
+            "rule": {
+              "hanzi": "iou → iu：有声母时写成 iu。",
+              "english": "iou → iu after an initial (without an initial it is written you)."
+            },
+            "examples": [
+              { "pinyin": "liù", "english": "six" },
+              { "pinyin": "jiǔ", "english": "nine" },
+              { "pinyin": "qiú", "english": "ball" },
+              { "pinyin": "yǒu", "english": "to have (no initial)" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "uei → ui：有声母时写成 ui。",
+              "english": "uei → ui after an initial (without an initial it is written wei)."
+            },
+            "examples": [
+              { "pinyin": "duì", "english": "right" },
+              { "pinyin": "guì", "english": "expensive" },
+              { "pinyin": "shuí", "english": "who" },
+              { "pinyin": "wèi", "english": "hello? (on the phone; no initial)" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "uen → un：有声母时写成 un。",
+              "english": "uen → un after an initial (without an initial it is written wen)."
+            },
+            "examples": [
+              { "pinyin": "chūn", "english": "spring" },
+              { "pinyin": "lùn", "english": "to discuss" },
+              { "pinyin": "dūn", "english": "to squat" },
+              { "pinyin": "wèn", "english": "to ask (no initial)" }
+            ]
+          }
         ]
       }
     ]
   },
   "characters": {
     "strokes": [
-      { "name": { "hanzi": "横折", "pinyin": "héngzhé", "english": "horizontal-turning" }, "shape": "乛", "examples": [{ "hanzi": "口", "pinyin": "kǒu", "english": "mouth" }, { "hanzi": "日", "pinyin": "rì", "english": "sun" }] },
-      { "name": { "hanzi": "竖折", "pinyin": "shùzhé",  "english": "vertical-turning" },   "shape": "𠃊", "examples": [{ "hanzi": "山", "pinyin": "shān", "english": "mountain" }, { "hanzi": "出", "pinyin": "chū", "english": "to come/go out" }] },
-      { "name": { "hanzi": "竖钩", "pinyin": "shùgōu",  "english": "vertical hook" },      "shape": "亅", "examples": [{ "hanzi": "丁", "pinyin": "dīng", "english": "man, member of a family" }, { "hanzi": "小", "pinyin": "xiǎo", "english": "small, little" }] }
+      {
+        "name": { "hanzi": "横折", "pinyin": "héngzhé", "english": "horizontal-turning stroke" },
+        "shape": "㇕",
+        "examples": [
+          { "hanzi": "口", "pinyin": "kǒu", "english": "mouth" },
+          { "hanzi": "见", "pinyin": "jiàn", "english": "to see" },
+          { "hanzi": "中", "pinyin": "zhōng", "english": "middle" }
+        ]
+      },
+      {
+        "name": { "hanzi": "竖折", "pinyin": "shùzhé", "english": "vertical-turning stroke" },
+        "shape": "㇄",
+        "examples": [
+          { "hanzi": "山", "pinyin": "shān", "english": "mountain" },
+          { "hanzi": "出", "pinyin": "chū", "english": "to go out" }
+        ]
+      },
+      {
+        "name": { "hanzi": "竖钩", "pinyin": "shùgōu", "english": "vertical hook" },
+        "shape": "㇚",
+        "examples": [
+          { "hanzi": "小", "pinyin": "xiǎo", "english": "small" },
+          { "hanzi": "水", "pinyin": "shuǐ", "english": "water" },
+          { "hanzi": "可", "pinyin": "kě", "english": "can, may" }
+        ]
+      }
     ],
     "singleComponentChars": [
-      { "id": "hsk1_2_c_kou",  "hanzi": "口", "pinyin": "kǒu",  "meaning": "mouth",       "etymology": "The basic meaning of \"口\" is \"mouth\", and the character is shaped like a mouth.", "strokeCount": 3 },
-      { "id": "hsk1_2_c_jian", "hanzi": "见", "pinyin": "jiàn", "meaning": "to see",      "etymology": "Its traditional form 見 has a 目 (eye) on top and a 人 (person) at the bottom — meaning \"watching with eyes open\".", "strokeCount": 4 },
-      { "id": "hsk1_2_c_shan", "hanzi": "山", "pinyin": "shān", "meaning": "mountain",    "etymology": "\"山\" means \"mountain\" and was originally shaped like rolling mountains.", "strokeCount": 3 },
-      { "id": "hsk1_2_c_xiao", "hanzi": "小", "pinyin": "xiǎo", "meaning": "small",       "etymology": "\"小\" was originally shaped like tiny grains of sand. Now it means \"small\", opposite to 大 (big).", "strokeCount": 3 },
-      { "id": "hsk1_2_c_bu",   "hanzi": "不", "pinyin": "bù",   "meaning": "no, not",     "etymology": "\"不\" originally referred to a tool. Now it's a negative adverb.", "strokeCount": 4 }
+      {
+        "id": "hsk1_2_c_kou",
+        "hanzi": "口",
+        "pinyin": "kǒu",
+        "meaning": "mouth; opening",
+        "etymology": "A simple picture of an open mouth, squared off over time. It also stands for any opening, like a door or a gate.",
+        "strokeCount": 3
+      },
+      {
+        "id": "hsk1_2_c_jian",
+        "hanzi": "见",
+        "pinyin": "jiàn",
+        "meaning": "to see, to meet",
+        "etymology": "The full form 見 shows a large eye sitting on top of a pair of legs — a person whose most important feature is looking. 再见 literally means \"see again\".",
+        "strokeCount": 4
+      },
+      {
+        "id": "hsk1_2_c_shan",
+        "hanzi": "山",
+        "pinyin": "shān",
+        "meaning": "mountain, hill",
+        "etymology": "Three peaks rising from a common base, with the tallest in the middle.",
+        "strokeCount": 3
+      },
+      {
+        "id": "hsk1_2_c_xiao",
+        "hanzi": "小",
+        "pinyin": "xiǎo",
+        "meaning": "small, little",
+        "etymology": "Three tiny marks, like grains of sand or specks of dust, to suggest something small.",
+        "strokeCount": 3
+      },
+      {
+        "id": "hsk1_2_c_bu",
+        "hanzi": "不",
+        "pinyin": "bù",
+        "meaning": "not, no",
+        "etymology": "Many scholars read the old form as the base of a flower with its stem hanging down. The sound was borrowed early on for the word \"not\", which became its only meaning.",
+        "strokeCount": 4
+      }
     ]
-  }
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "两人一组，表演感谢、道歉和告别的小场景。",
+      "english": "In pairs, act out short scenes of thanking, apologising and saying goodbye."
+    },
+    "activities": [
+      "Pass a pen or a book to your partner. They thank you with 谢谢！; you answer with 不客气！ or 不谢！",
+      "Swap roles: one person apologises with 对不起！ and the other replies 没关系。",
+      "At the end of class, say goodbye to three classmates by name: ……，再见！",
+      "Neutral-tone check: read xièxie, nǐmen, kèqi aloud and ask your partner whether the second syllable sounded short and light."
+    ]
+  },
+  "classroomExpressions": [
+    { "hanzi": "请听。", "pinyin": "Qǐng tīng.", "english": "Please listen." },
+    { "hanzi": "请看黑板。", "pinyin": "Qǐng kàn hēibǎn.", "english": "Please look at the board." },
+    { "hanzi": "请打开书。", "pinyin": "Qǐng dǎkāi shū.", "english": "Please open your books." },
+    { "hanzi": "我有一个问题。", "pinyin": "Wǒ yǒu yí ge wèntí.", "english": "I have a question." },
+    { "hanzi": "懂了吗？", "pinyin": "Dǒng le ma?", "english": "Do you understand?" },
+    { "hanzi": "懂了。", "pinyin": "Dǒng le.", "english": "I understand." },
+    { "hanzi": "我不懂。", "pinyin": "Wǒ bù dǒng.", "english": "I don't understand." },
+    { "hanzi": "请慢一点儿说。", "pinyin": "Qǐng màn yìdiǎnr shuō.", "english": "Please speak a bit more slowly." }
+  ]
 }

@@ -2,84 +2,401 @@
   "id": "hsk2-5",
   "level": 2,
   "number": 5,
-  "title": { "hanzi": "就买这件吧", "pinyin": "Jiù mǎi zhè jiàn ba", "english": "Take this one" },
+  "title": {
+    "hanzi": "那就六点吧！",
+    "pinyin": "Nà jiù liù diǎn ba!",
+    "english": "Six o'clock it is, then!"
+  },
   "theme": "Shopping & Decisions",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "instruction": {
+      "hanzi": "读一读，说说这些词语是什么意思。",
+      "english": "Read the words and phrases aloud and say what they mean."
+    },
     "items": [
-      { "hanzi": "鱼",     "pinyin": "yú",      "english": "fish" },
-      { "hanzi": "咖啡",   "pinyin": "kāfēi",   "english": "coffee" },
-      { "hanzi": "考试",   "pinyin": "kǎo shì", "english": "test, exam" },
-      { "hanzi": "衣服",   "pinyin": "yīfu",    "english": "clothes" },
-      { "hanzi": "打球",   "pinyin": "dǎ qiú",  "english": "to play ball" },
-      { "hanzi": "休息",   "pinyin": "xiūxi",   "english": "to rest" }
+      {
+        "hanzi": "一件衣服",
+        "pinyin": "yí jiàn yīfu",
+        "english": "a piece of clothing"
+      },
+      {
+        "hanzi": "还可以",
+        "pinyin": "hái kěyǐ",
+        "english": "not bad, OK"
+      },
+      {
+        "hanzi": "不错",
+        "pinyin": "búcuò",
+        "english": "pretty good"
+      },
+      {
+        "hanzi": "有点儿大",
+        "pinyin": "yǒudiǎnr dà",
+        "english": "a bit too big"
+      },
+      {
+        "hanzi": "在外面吃饭",
+        "pinyin": "zài wàimiàn chī fàn",
+        "english": "to eat out"
+      },
+      {
+        "hanzi": "喝咖啡",
+        "pinyin": "hē kāfēi",
+        "english": "to drink coffee"
+      },
+      {
+        "hanzi": "汉语考试",
+        "pinyin": "Hànyǔ kǎoshì",
+        "english": "Chinese exam"
+      },
+      {
+        "hanzi": "有意思",
+        "pinyin": "yǒu yìsi",
+        "english": "interesting, fun"
+      }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在家里", "english": "At home" },
-      "audioRef": "05-1",
+      "title": {
+        "hanzi": "在服装店",
+        "english": "In a clothes shop"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "晚上我们去饭馆吃饭,怎么样?", "pinyin": "Wǎnshang wǒmen qù fànguǎn chī fàn, zěnmeyàng?", "english": "Let's go to a restaurant for dinner. What do you think?" },
-        { "speaker": "B", "hanzi": "我不想去外面吃,我想在家吃。", "pinyin": "Wǒ bù xiǎng qù wàimiàn chī, wǒ xiǎng zài jiā chī.","english": "I don't want to eat out. I want to eat at home." },
-        { "speaker": "A", "hanzi": "那你准备做什么呢?",            "pinyin": "Nà nǐ zhǔnbèi zuò shénme ne?",                  "english": "What are you planning to cook?" },
-        { "speaker": "B", "hanzi": "就做你爱吃的鱼吧。",            "pinyin": "Jiù zuò nǐ ài chī de yú ba.",                   "english": "I'm thinking of fish, your favorite." }
+        {
+          "speaker": "A",
+          "hanzi": "王明，你看，这件衣服怎么样？",
+          "pinyin": "Wáng Míng, nǐ kàn, zhè jiàn yīfu zěnmeyàng?",
+          "english": "Wang Ming, look — what do you think of this one?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "还可以，可是有点儿大。",
+          "pinyin": "Hái kěyǐ, kěshì yǒudiǎnr dà.",
+          "english": "It's OK, but it's a bit big."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那件红色的呢？",
+          "pinyin": "Nà jiàn hóngsè de ne?",
+          "english": "What about that red one?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "那件不错，颜色很漂亮。",
+          "pinyin": "Nà jiàn búcuò, yánsè hěn piàoliang.",
+          "english": "That one's nice. The colour is lovely."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "多少钱？",
+          "pinyin": "Duōshao qián?",
+          "english": "How much is it?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我看看……180块。",
+          "pinyin": "Wǒ kànkan……yìbǎi bāshí kuài.",
+          "english": "Let me see... 180 yuan."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "好，我就要这件！",
+          "pinyin": "Hǎo, wǒ jiù yào zhè jiàn!",
+          "english": "OK, I'll take this one!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_5_waimian", "hanzi": "外面", "pinyin": "wàimiàn", "pos": "n.",    "english": "outside" },
-        { "id": "hsk2_5_zhunbei", "hanzi": "准备", "pinyin": "zhǔnbèi", "pos": "v.",    "english": "to intend, to plan" },
-        { "id": "hsk2_5_jiu",     "hanzi": "就",   "pinyin": "jiù",     "pos": "adv.",  "english": "used to indicate a conclusion or resolution" },
-        { "id": "hsk2_5_yu",      "hanzi": "鱼",   "pinyin": "yú",      "pos": "n.",    "english": "fish" },
-        { "id": "hsk2_5_ba",      "hanzi": "吧",   "pinyin": "ba",      "pos": "part.", "english": "sentence-final particle for consultation, suggestion, request or command" }
+        {
+          "id": "hsk2_5_jian",
+          "hanzi": "件",
+          "pinyin": "jiàn",
+          "pos": "m.",
+          "english": "(measure word for clothes, matters, etc.) piece"
+        },
+        {
+          "id": "hsk2_5_hai",
+          "hanzi": "还",
+          "pinyin": "hái",
+          "pos": "adv.",
+          "english": "passably, fairly; still, also"
+        },
+        {
+          "id": "hsk2_5_keyi",
+          "hanzi": "可以",
+          "pinyin": "kěyǐ",
+          "pos": "adj.",
+          "english": "not bad, OK"
+        },
+        {
+          "id": "hsk2_5_bucuo",
+          "hanzi": "不错",
+          "pinyin": "búcuò",
+          "pos": "adj.",
+          "english": "pretty good, not bad"
+        },
+        {
+          "id": "hsk2_5_jiu",
+          "hanzi": "就",
+          "pinyin": "jiù",
+          "pos": "adv.",
+          "english": "(marks a decision or emphasis) just, then, exactly"
+        },
+        {
+          "id": "hsk2_5_ba",
+          "hanzi": "吧",
+          "pinyin": "ba",
+          "pos": "part.",
+          "english": "sentence-final particle for suggestions, requests or decisions"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_5_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming"
+        }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在商店", "english": "In a store" },
-      "audioRef": "05-2",
+      "title": {
+        "hanzi": "在路上",
+        "english": "On the way home"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "帮我看一下这件衣服怎么样。", "pinyin": "Bāng wǒ kàn yíxià zhè jiàn yīfu zěnmeyàng.","english": "What do you think of this garment?" },
-        { "speaker": "B", "hanzi": "颜色还可以,就是有点儿大。", "pinyin": "Yánsè hái kěyǐ, jiùshì yǒudiǎnr dà.",       "english": "The color is OK, but it seems too large." },
-        { "speaker": "A", "hanzi": "这件小的怎么样?",           "pinyin": "Zhè jiàn xiǎo de zěnmeyàng?",               "english": "What about this small one?" },
-        { "speaker": "B", "hanzi": "这件不错,就买这件吧。",     "pinyin": "Zhè jiàn búcuò, jiù mǎi zhè jiàn ba.",      "english": "This one is good. Take this one." }
+        {
+          "speaker": "A",
+          "hanzi": "王明，今天晚上我们去外面吃饭吧？",
+          "pinyin": "Wáng Míng, jīntiān wǎnshang wǒmen qù wàimiàn chī fàn ba?",
+          "english": "Wang Ming, shall we eat out tonight?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好啊，马克！你想吃什么？",
+          "pinyin": "Hǎo a, Mǎkè! Nǐ xiǎng chī shénme?",
+          "english": "Sure, Mark! What do you feel like?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想吃鱼。学校旁边那个饭店的鱼很好吃。",
+          "pinyin": "Wǒ xiǎng chī yú. Xuéxiào pángbiān nàge fàndiàn de yú hěn hǎochī.",
+          "english": "I fancy fish. The fish at that restaurant next to the school is really good."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你准备几点去？",
+          "pinyin": "Nǐ zhǔnbèi jǐ diǎn qù?",
+          "english": "What time are you planning to go?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "六点，怎么样？",
+          "pinyin": "Liù diǎn, zěnmeyàng?",
+          "english": "How about six?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我下午要去医院看一个朋友，五点以后就有时间了。",
+          "pinyin": "Wǒ xiàwǔ yào qù yīyuàn kàn yí ge péngyou, wǔ diǎn yǐhòu jiù yǒu shíjiān le.",
+          "english": "I'm visiting a friend in hospital this afternoon. I'll be free after five."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那就六点吧！",
+          "pinyin": "Nà jiù liù diǎn ba!",
+          "english": "Six it is, then!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_5_jian",   "hanzi": "件",   "pinyin": "jiàn",   "pos": "m.",   "english": "(used for clothes among other items) piece" },
-        { "id": "hsk2_5_hai",    "hanzi": "还",   "pinyin": "hái",    "pos": "adv.", "english": "passably, fairly, rather" },
-        { "id": "hsk2_5_keyi",   "hanzi": "可以", "pinyin": "kěyǐ",   "pos": "adj.", "english": "not bad, OK" },
-        { "id": "hsk2_5_bucuo",  "hanzi": "不错", "pinyin": "búcuò",  "pos": "adj.", "english": "pretty good, not bad" }
+        {
+          "id": "hsk2_5_waimian",
+          "hanzi": "外面",
+          "pinyin": "wàimiàn",
+          "pos": "n.",
+          "english": "outside"
+        },
+        {
+          "id": "hsk2_5_yu",
+          "hanzi": "鱼",
+          "pinyin": "yú",
+          "pos": "n.",
+          "english": "fish"
+        },
+        {
+          "id": "hsk2_5_zhunbei",
+          "hanzi": "准备",
+          "pinyin": "zhǔnbèi",
+          "pos": "v.",
+          "english": "to intend, to plan"
+        },
+        {
+          "id": "hsk2_5_yihou",
+          "hanzi": "以后",
+          "pinyin": "yǐhòu",
+          "pos": "n.",
+          "english": "after, afterwards, later"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_5_pn_wangming_2",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming"
+        },
+        {
+          "id": "hsk2_5_pn_make",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark"
+        }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在教室", "english": "In the classroom" },
-      "audioRef": "05-3",
+      "title": {
+        "hanzi": "在咖啡店",
+        "english": "At a café"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "今天去不去打球?",                              "pinyin": "Jīntiān qù bu qù dǎ qiú?",                                                "english": "Will you go to play ball today?" },
-        { "speaker": "B", "hanzi": "这两天有点儿累,不去打球了。",                  "pinyin": "Zhè liǎng tiān yǒudiǎnr lèi, bú qù dǎ qiú le.",                           "english": "No, I won't. I've been feeling tired lately." },
-        { "speaker": "A", "hanzi": "你在做什么呢?是在想昨天的考试吗?",            "pinyin": "Nǐ zài zuò shénme ne? Shì zài xiǎng zuótiān de kǎoshì ma?",               "english": "What are you doing? Are you thinking about yesterday's test?" },
-        { "speaker": "B", "hanzi": "是啊,我觉得听和说还可以,读和写不好,很多字我都不知道是什么意思。", "pinyin": "Shì a, wǒ juéde tīng hé shuō hái kěyǐ, dú hé xiě bù hǎo, hěn duō zì wǒ dōu bù zhīdào shì shénme yìsi.","english": "Yes. I think I did OK on listening and speaking, but not on reading and writing — I didn't know the meanings of many characters." }
+        {
+          "speaker": "A",
+          "hanzi": "马克，你每天都喝咖啡吗？",
+          "pinyin": "Mǎkè, nǐ měi tiān dōu hē kāfēi ma?",
+          "english": "Mark, do you drink coffee every day?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "是啊，早上一杯，下午还有一杯。",
+          "pinyin": "Shì a, zǎoshang yì bēi, xiàwǔ hái yǒu yì bēi.",
+          "english": "Yes — one cup in the morning and another in the afternoon."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "喝太多咖啡对身体不好。",
+          "pinyin": "Hē tài duō kāfēi duì shēntǐ bù hǎo.",
+          "english": "Drinking too much coffee isn't good for you."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "安娜，我知道。可是早上没有咖啡，我就不想起床！",
+          "pinyin": "Ānnà, wǒ zhīdào. Kěshì zǎoshang méiyǒu kāfēi, wǒ jiù bù xiǎng qǐ chuáng!",
+          "english": "I know, Anna. But without coffee in the morning I just don't want to get up!"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你看，这个咖啡叫“大眼睛”。是什么意思？",
+          "pinyin": "Nǐ kàn, zhège kāfēi jiào \"Dà Yǎnjing\". Shì shénme yìsi?",
+          "english": "Look, this coffee is called \"Big Eyes\". What does that mean?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "意思是喝了以后，你的眼睛就大了！",
+          "pinyin": "Yìsi shì hēle yǐhòu, nǐ de yǎnjing jiù dà le!",
+          "english": "It means that once you've drunk it, your eyes open wide!"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "真有意思！我也要一杯。",
+          "pinyin": "Zhēn yǒu yìsi! Wǒ yě yào yì bēi.",
+          "english": "That's fun! I'll have one too."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_5_kaoshi", "hanzi": "考试", "pinyin": "kǎoshì", "pos": "n.", "english": "test, exam" },
-        { "id": "hsk2_5_yisi",   "hanzi": "意思", "pinyin": "yìsi",   "pos": "n.", "english": "meaning" }
+        {
+          "id": "hsk2_5_kafei",
+          "hanzi": "咖啡",
+          "pinyin": "kāfēi",
+          "pos": "n.",
+          "english": "coffee"
+        },
+        {
+          "id": "hsk2_5_dui",
+          "hanzi": "对",
+          "pinyin": "duì",
+          "pos": "prep.",
+          "english": "(used before a noun or pronoun) to, for"
+        },
+        {
+          "id": "hsk2_5_yisi",
+          "hanzi": "意思",
+          "pinyin": "yìsi",
+          "pos": "n.",
+          "english": "meaning"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_5_pn_make_2",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark"
+        },
+        {
+          "id": "hsk2_5_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在公司", "english": "In the company" },
-      "audioRef": "05-4",
+      "title": {
+        "hanzi": "考试前一天",
+        "english": "The night before the exam"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "休息一下吧,喝咖啡吗?",          "pinyin": "Xiūxi yíxià ba, hē kāfēi ma?",          "english": "Let's take a rest. Would you like some coffee?" },
-        { "speaker": "B", "hanzi": "不喝了,我已经喝两杯了。",        "pinyin": "Bù hē le, wǒ yǐjīng hē liǎng bēi le.",  "english": "No, thanks. I've already had two cups." },
-        { "speaker": "A", "hanzi": "是啊,咖啡喝多了对身体不好。",    "pinyin": "Shì a, kāfēi hē duō le duì shēntǐ bù hǎo.","english": "Yes — too much coffee is bad for our health." },
-        { "speaker": "B", "hanzi": "以后我少喝一点儿,每天喝一杯。",  "pinyin": "Yǐhòu wǒ shǎo hē yìdiǎnr, měi tiān hē yì bēi.","english": "I'll drink less coffee. One cup a day." }
+        {
+          "speaker": "A",
+          "hanzi": "我是安娜。明天我有汉语考试。",
+          "pinyin": "Wǒ shì Ānnà. Míngtiān wǒ yǒu Hànyǔ kǎoshì.",
+          "english": "I'm Anna. I have a Chinese exam tomorrow."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "今天晚上我不准备出去了，就在家里看书。",
+          "pinyin": "Jīntiān wǎnshang wǒ bù zhǔnbèi chūqu le, jiù zài jiā li kàn shū.",
+          "english": "I'm not planning to go out tonight; I'll just stay in and study."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我已经学习了三个小时了，还有很多汉字不会写。",
+          "pinyin": "Wǒ yǐjīng xuéxíle sān ge xiǎoshí le, hái yǒu hěn duō Hànzì bú huì xiě.",
+          "english": "I've been studying for three hours already, and there are still lots of characters I can't write."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "现在已经十一点了，有点儿晚了。",
+          "pinyin": "Xiànzài yǐjīng shíyī diǎn le, yǒudiǎnr wǎn le.",
+          "english": "It's already eleven o'clock — getting a bit late."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "考试以后，我就和马克、王明去外面喝咖啡！",
+          "pinyin": "Kǎoshì yǐhòu, wǒ jiù hé Mǎkè, Wáng Míng qù wàimiàn hē kāfēi!",
+          "english": "After the exam I'm going straight out for coffee with Mark and Wang Ming!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_5_kafei", "hanzi": "咖啡", "pinyin": "kāfēi", "pos": "n.",    "english": "coffee" },
-        { "id": "hsk2_5_dui",   "hanzi": "对",   "pinyin": "duì",   "pos": "prep.", "english": "(used before a noun or pronoun) to, for" },
-        { "id": "hsk2_5_yihou", "hanzi": "以后", "pinyin": "yǐhòu", "pos": "n.",    "english": "after, afterwards, later" }
+        {
+          "id": "hsk2_5_kaoshi",
+          "hanzi": "考试",
+          "pinyin": "kǎoshì",
+          "pos": "n.",
+          "english": "test, exam"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_5_pn_anna_2",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        }
       ]
     }
   ],
@@ -87,80 +404,353 @@
     {
       "id": "hsk2_5_g_jiu",
       "number": 1,
-      "title": { "hanzi": "副词\"就\"", "english": "The Adverb \"就\"" },
+      "title": {
+        "hanzi": "副词“就”：表示决定和强调",
+        "english": "The Adverb 就: Making a Decision, Adding Emphasis"
+      },
       "explanation": {
-        "hanzi": "\"就+动词\"表示承接上文,得出结论。注意:在\"颜色还可以,就是有点儿大\"这句话中,\"就是\"表示让步。",
-        "english": "\"就 + verb\" introduces a conclusion or resolution following from what was just said. Note: in \"颜色还可以,就是有点儿大\", \"就是\" expresses concession (\"…it's just that…\")."
+        "hanzi": "“就”放在动词前面。1. 说话人想好了、决定了，常说“就……吧”，比如“就买这件吧”。2. “就是”表示“不是别的，正是这个”，用来强调，比如“那个人就是王明”。3. “就在……”表示很近，比如“商店就在前面”。",
+        "english": "就 always sits right before the verb (or before 是 / 在). Three everyday uses: (1) DECIDING — after weighing options, 就 + verb + 吧 announces your choice: 就买这件吧 \"I'll go with this one\", 那就六点吧 \"Six it is, then\". (2) EMPHASIS — 就是 means \"none other than, precisely\": 那个人就是王明 \"That's Wang Ming right there\". (3) CLOSENESS — 就在 + place means \"right (there)\": 商店就在前面 \"The shop is just ahead\"."
       },
       "examples": [
-        { "hanzi": "你不想去,就在家休息吧。",  "pinyin": "Nǐ bù xiǎng qù, jiù zài jiā xiūxi ba.",     "english": "If you don't want to go, then just rest at home." },
-        { "hanzi": "这儿的咖啡不错,就喝咖啡吧。","pinyin": "Zhèr de kāfēi búcuò, jiù hē kāfēi ba.",     "english": "The coffee here is good — let's just have coffee." },
-        { "hanzi": "就做你爱吃的鱼吧。",         "pinyin": "Jiù zuò nǐ ài chī de yú ba.",                "english": "Let's just make the fish you love." }
-      ]
+        {
+          "hanzi": "这件很漂亮，就要这件吧！",
+          "pinyin": "Zhè jiàn hěn piàoliang, jiù yào zhè jiàn ba!",
+          "english": "This one's pretty — let's just take it!"
+        },
+        {
+          "hanzi": "我们就在这儿吃吧。",
+          "pinyin": "Wǒmen jiù zài zhèr chī ba.",
+          "english": "Let's just eat here."
+        },
+        {
+          "hanzi": "那个人就是王明。",
+          "pinyin": "Nàge rén jiù shì Wáng Míng.",
+          "english": "That's Wang Ming right there."
+        },
+        {
+          "hanzi": "我家就在学校旁边。",
+          "pinyin": "Wǒ jiā jiù zài xuéxiào pángbiān.",
+          "english": "My home is right next to the school."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Pattern",
+          "Example"
+        ],
+        "rows": [
+          [
+            "就 + V + 吧",
+            "就买这件吧！"
+          ],
+          [
+            "那就 + choice + 吧",
+            "那就六点吧！"
+          ],
+          [
+            "就是 + N",
+            "他就是马克。"
+          ],
+          [
+            "就在 + Place",
+            "商店就在前面。"
+          ]
+        ]
+      }
     },
     {
       "id": "hsk2_5_g_hai",
       "number": 2,
-      "title": { "hanzi": "语气副词\"还\"(1)", "english": "The Modal Adverb \"还\" (1)" },
+      "title": {
+        "hanzi": "语气副词“还”（1）",
+        "english": "The Adverb 还 (1): \"Fairly\", \"Still\", \"Also\""
+      },
       "explanation": {
-        "hanzi": "\"还+形容词\"表示勉强过得去,意思是还可以、还行。",
-        "english": "\"还 + adjective\" means \"passable\" or \"acceptable\" — barely OK, but tolerable."
+        "hanzi": "“还”放在形容词或者动词前面。1. “还 + 可以 / 不错 / 好”表示“不太好也不太差”，说的时候比较客气。2. “还 + 动词”表示“也、另外”，比如“还有一杯”“还想买……”。3. “还在 + 动词”表示事情没有完，比如“他还在睡觉”。",
+        "english": "还 goes before an adjective or verb. (1) Before 可以, 不错 or 好 it softens a judgement to \"fairly / passably\": 还可以 \"it's OK, not bad\", 还不错 \"pretty decent\". It sounds polite and a little reserved — not great, not bad. (2) Before a verb it means \"also, in addition\": 下午还有一杯 \"and another cup in the afternoon\", 我还想买一个杯子 \"I'd also like to buy a cup\". (3) It can mean \"still\": 他还在睡觉 \"He's still asleep\"."
       },
       "examples": [
-        { "hanzi": "A: 你身体怎么样? B: 还好。",              "pinyin": "Nǐ shēntǐ zěnmeyàng? Hái hǎo.",                "english": "How's your health? — Not bad." },
-        { "hanzi": "A: 这件衣服大吗? B: 还行,不太大。",       "pinyin": "Zhè jiàn yīfu dà ma? Hái xíng, bú tài dà.",    "english": "Is this garment too big? — It's OK, not too big." },
-        { "hanzi": "A: 昨天的考试怎么样? B: 我觉得听和说还可以,读和写不好。", "pinyin": "Zuótiān de kǎoshì zěnmeyàng? Wǒ juéde tīng hé shuō hái kěyǐ, dú hé xiě bù hǎo.","english": "How was yesterday's test? — Listening and speaking were OK, but reading and writing weren't great." }
-      ]
+        {
+          "hanzi": "这件衣服还可以。",
+          "pinyin": "Zhè jiàn yīfu hái kěyǐ.",
+          "english": "This top is OK."
+        },
+        {
+          "hanzi": "那个饭店的鱼还不错。",
+          "pinyin": "Nàge fàndiàn de yú hái búcuò.",
+          "english": "The fish at that restaurant is pretty decent."
+        },
+        {
+          "hanzi": "我想买一件衣服，还想买一个杯子。",
+          "pinyin": "Wǒ xiǎng mǎi yí jiàn yīfu, hái xiǎng mǎi yí ge bēizi.",
+          "english": "I want to buy a top, and also a cup."
+        },
+        {
+          "hanzi": "现在十一点了，他还在睡觉。",
+          "pinyin": "Xiànzài shíyī diǎn le, tā hái zài shuì jiào.",
+          "english": "It's eleven o'clock and he's still asleep."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "还 +",
+          "Example",
+          "Meaning"
+        ],
+        "rows": [
+          [
+            "还 + 可以 / 不错",
+            "这个饭店还可以。",
+            "fairly, passably"
+          ],
+          [
+            "还 + 有 / 想 / 要",
+            "我还想喝一杯咖啡。",
+            "also, in addition"
+          ],
+          [
+            "还 + 在 + V",
+            "她还在看书。",
+            "still"
+          ]
+        ]
+      }
     },
     {
       "id": "hsk2_5_g_youdianr",
       "number": 3,
-      "title": { "hanzi": "程度副词\"有点儿\"", "english": "The Adverbial Modifier \"有点儿\"" },
+      "title": {
+        "hanzi": "“有点儿”+ 形容词",
+        "english": "有点儿 + Adjective: \"A Bit (Too) …\""
+      },
       "explanation": {
-        "hanzi": "\"有点儿+形容词/动词\",一般表示说话人消极、不满的情绪。",
-        "english": "\"有点儿 + adjective/verb\" usually expresses the speaker's negative mood or complaint (\"a bit too…\")."
+        "hanzi": "“有点儿”放在形容词前面，表示程度不高，常常说的是说话人不太满意、不太喜欢的事情。注意：“有点儿”在形容词前面，“一点儿”常常在形容词后面，比如“大一点儿”。",
+        "english": "有点儿 (yǒudiǎnr) before an adjective means \"a little, slightly\" — and it usually signals that the speaker isn't happy about it: 有点儿大 \"a bit too big\", 有点儿冷 \"a bit chilly\". So you say 有点儿忙 or 有点儿贵, but rarely 有点儿漂亮. Don't confuse it with 一点儿, which comes AFTER an adjective to compare (大一点儿 \"a bit bigger\") or after a verb (吃一点儿 \"eat a little\")."
       },
       "examples": [
-        { "hanzi": "今天天气有点儿冷。",   "pinyin": "Jīntiān tiānqì yǒudiǎnr lěng.",   "english": "The weather is a bit cold today." },
-        { "hanzi": "我昨天有点儿累。",     "pinyin": "Wǒ zuótiān yǒudiǎnr lèi.",        "english": "I was a bit tired yesterday." },
-        { "hanzi": "(这件衣服)有点儿大。","pinyin": "(Zhè jiàn yīfu) yǒudiǎnr dà.",   "english": "(This garment) is a bit too big." }
-      ]
+        {
+          "hanzi": "这件衣服有点儿大。",
+          "pinyin": "Zhè jiàn yīfu yǒudiǎnr dà.",
+          "english": "This top is a bit big."
+        },
+        {
+          "hanzi": "今天有点儿冷，我们就在家吧。",
+          "pinyin": "Jīntiān yǒudiǎnr lěng, wǒmen jiù zài jiā ba.",
+          "english": "It's a bit cold today. Let's just stay home."
+        },
+        {
+          "hanzi": "这个星期我有点儿忙。",
+          "pinyin": "Zhège xīngqī wǒ yǒudiǎnr máng.",
+          "english": "I'm a bit busy this week."
+        },
+        {
+          "hanzi": "我的房间有点儿小。",
+          "pinyin": "Wǒ de fángjiān yǒudiǎnr xiǎo.",
+          "english": "My room is a bit small."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Subject",
+          "有点儿",
+          "Adjective"
+        ],
+        "rows": [
+          [
+            "这件衣服",
+            "有点儿",
+            "大"
+          ],
+          [
+            "今天",
+            "有点儿",
+            "冷"
+          ],
+          [
+            "这个咖啡",
+            "有点儿",
+            "热"
+          ],
+          [
+            "现在",
+            "有点儿",
+            "晚了"
+          ]
+        ]
+      }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。第四段课文请一个人读给大家听。",
+        "english": "In pairs, read dialogues 1–3 aloud, taking turns with each role. One student reads text 4 to the class."
+      }
+    },
+    {
+      "number": 2,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用“就、还、有点儿、对、吧”填空。",
+        "english": "Fill in the blanks with 就, 还, 有点儿, 对 or 吧."
+      },
       "items": [
-        { "hanzi": "今天晚上他们在哪儿吃饭?",   "pinyin": "Jīntiān wǎnshang tāmen zài nǎr chī fàn?" },
-        { "hanzi": "她觉得那件衣服怎么样?",     "pinyin": "Tā juéde nà jiàn yīfu zěnmeyàng?" },
-        { "hanzi": "她今天为什么不去打球了?",   "pinyin": "Tā jīntiān wèi shénme bú qù dǎ qiú le?" },
-        { "hanzi": "她觉得昨天的考试怎么样?",   "pinyin": "Tā juéde zuótiān de kǎoshì zěnmeyàng?" },
-        { "hanzi": "他为什么以后每天就喝一杯咖啡?", "pinyin": "Tā wèi shénme yǐhòu měi tiān jiù hē yì bēi kāfēi?" }
+        {
+          "hanzi": "这件衣服很漂亮，我____买这件吧！",
+          "english": "This top is lovely — I'll take this one!",
+          "blank": "就"
+        },
+        {
+          "hanzi": "今天____冷，我们在家吃饭吧。",
+          "english": "It's a bit cold today. Let's eat at home.",
+          "blank": "有点儿"
+        },
+        {
+          "hanzi": "这个饭店的菜怎么样？——____可以。",
+          "english": "How's the food at this restaurant? — It's OK.",
+          "blank": "还"
+        },
+        {
+          "hanzi": "喝太多咖啡____身体不好。",
+          "english": "Drinking too much coffee is bad for you.",
+          "blank": "对"
+        },
+        {
+          "hanzi": "晚上我们一起去外面吃饭____！",
+          "english": "Let's eat out together tonight!",
+          "blank": "吧"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据课文回答问题。",
+        "english": "Answer the questions based on the texts."
+      },
+      "items": [
+        {
+          "hanzi": "王明觉得那件大的衣服怎么样？",
+          "pinyin": "Wáng Míng juéde nà jiàn dà de yīfu zěnmeyàng?",
+          "english": "What did Wang Ming think of the big top?"
+        },
+        {
+          "hanzi": "安娜买了哪件衣服？",
+          "pinyin": "Ānnà mǎile nǎ jiàn yīfu?",
+          "english": "Which top did Anna buy?"
+        },
+        {
+          "hanzi": "马克想吃什么？他们准备几点去？",
+          "pinyin": "Mǎkè xiǎng chī shénme? Tāmen zhǔnbèi jǐ diǎn qù?",
+          "english": "What does Mark want to eat? What time are they planning to go?"
+        },
+        {
+          "hanzi": "马克为什么每天都喝咖啡？",
+          "pinyin": "Mǎkè wèi shénme měi tiān dōu hē kāfēi?",
+          "english": "Why does Mark drink coffee every day?"
+        },
+        {
+          "hanzi": "安娜考试以后准备做什么？",
+          "pinyin": "Ānnà kǎoshì yǐhòu zhǔnbèi zuò shénme?",
+          "english": "What is Anna planning to do after the exam?"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据实际情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
+      "items": [
+        {
+          "hanzi": "你喜欢喝咖啡还是喝茶？",
+          "pinyin": "Nǐ xǐhuan hē kāfēi háishi hē chá?",
+          "english": "Do you prefer coffee or tea?"
+        },
+        {
+          "hanzi": "你今天晚上准备做什么？",
+          "pinyin": "Nǐ jīntiān wǎnshang zhǔnbèi zuò shénme?",
+          "english": "What are you planning to do tonight?"
+        },
+        {
+          "hanzi": "你觉得今天的天气怎么样？",
+          "pinyin": "Nǐ juéde jīntiān de tiānqì zěnmeyàng?",
+          "english": "What do you think of today's weather? (Try answering with 有点儿 or 还.)"
+        },
+        {
+          "hanzi": "你喜欢在外面吃饭还是在家吃饭？",
+          "pinyin": "Nǐ xǐhuan zài wàimiàn chī fàn háishi zài jiā chī fàn?",
+          "english": "Do you prefer eating out or eating at home?"
+        }
       ]
     }
   ],
   "characters": {
     "singleComponentChars": [
-      { "id": "hsk2_5_c_yu", "hanzi": "鱼", "pinyin": "yú", "meaning": "fish",      "etymology": "The original form looks like a whole fish. It means \"fish\".",                                       "strokeCount": 8 },
-      { "id": "hsk2_5_c_yi", "hanzi": "衣", "pinyin": "yī", "meaning": "clothing",  "etymology": "The original form looks like an ancient Chinese upper garment. Now it refers to all kinds of clothes.","strokeCount": 6 }
+      {
+        "id": "hsk2_5_c_yu",
+        "hanzi": "鱼",
+        "pinyin": "yú",
+        "meaning": "fish",
+        "etymology": "A picture of a fish standing on its nose: the pointed top is the head, the middle box with a cross is the scaly body, and the bottom stroke was once a fanned tail.",
+        "strokeCount": 8
+      },
+      {
+        "id": "hsk2_5_c_yi",
+        "hanzi": "衣",
+        "pinyin": "yī",
+        "meaning": "clothes, garment",
+        "etymology": "Drawn from a traditional robe seen from the front: the dot and line on top are the collar, and the strokes below are the two overlapping front panels and sleeves. As a side component it shrinks to 衤.",
+        "strokeCount": 6
+      }
     ],
     "radicals": [
-      { "hanzi": "子", "pinyin": "zǐ zì páng",   "english": "child (related to children)",  "examples": ["孩 hái (child)", "孙 sūn (grandson)"] },
-      { "hanzi": "广", "pinyin": "guǎng zì tóu", "english": "shelter (related to buildings)","examples": ["店 diàn (shop, store)", "床 chuáng (bed)"] }
+      {
+        "hanzi": "子",
+        "pinyin": "zǐzìpáng",
+        "english": "child radical (children, family, learning)",
+        "examples": [
+          "字",
+          "学",
+          "好",
+          "孩"
+        ]
+      },
+      {
+        "hanzi": "广",
+        "pinyin": "guǎngzìtóu",
+        "english": "shelter radical (buildings with a roof open on one side)",
+        "examples": [
+          "店",
+          "床",
+          "座",
+          "度"
+        ]
+      }
     ]
   },
   "application": {
-    "prompt": { "hanzi": "两人一组,询问对方的喜好。", "english": "Work in pairs and ask about your partner's likes." },
+    "prompt": {
+      "hanzi": "两人一组：一个人是售货员，一个人买东西。看看、问问，最后决定买什么。",
+      "english": "Work in pairs: one person runs a shop, the other is a customer. Look, ask, compare — then make a decision."
+    },
     "activities": [
-      "A: 你喜欢吃鱼吗? B: 还可以。",
-      "A: 你喜欢喝咖啡吗? B: 不喜欢,咖啡有点儿苦。",
-      "Group: ask each other's opinions on different things (旅游、看电影、打篮球、吃中国菜)."
+      "Shop role-play: the customer tries on clothes and comments with 还可以 / 不错 / 有点儿大 / 有点儿小, asks 多少钱？ and finally decides with 就买这件吧！",
+      "Café order: one person is the waiter. The customer asks what an item on a made-up menu means (……是什么意思？) and orders 一杯咖啡 or 一杯茶.",
+      "Weekend plan: in groups of three, suggest two or three options (在外面吃饭？看电影？打电话给朋友？), say what you think of each, and settle it with 那就……吧！"
     ]
   },
   "culture": {
-    "title": { "hanzi": "中国人的餐桌礼仪", "english": "Chinese Table Manners" },
-    "body": "Chinese people prefer round tables when dining — at home or in a restaurant — so everyone can sit face-to-face.\n\nIn a restaurant, the host has the most important guest on their right hand, and the second-most important guest on their left. The seat opposite the host (where dishes are served) is usually not offered to a guest.\n\nYou can also tell the host from the guests by the dishes. If there's a fish dish on the table, the head of the fish should point toward the most important guest — a sign of the host's respect."
+    "title": {
+      "hanzi": "扫一扫：手机付款",
+      "english": "Scan to Pay: Mobile Payment in Everyday China"
+    },
+    "body": "Walk into almost any shop, market stall or café in a Chinese city and you'll see a small printed QR code taped to the counter. Most people in China pay for everyday things with their phones rather than cash or cards. You open a payment app, scan the shop's code — 扫一扫 (sǎo yi sǎo, \"give it a scan\") — type in the amount and confirm. For bigger shops it works the other way round: you show a code on your own phone and the cashier scans it.\n\nThis habit spread very quickly in the 2010s and now reaches everywhere: street-food sellers, taxi drivers, vending machines, even people busking in the street. Splitting a bill among friends is just as easy — one person pays, and the others transfer their share in seconds. A common question at the till is simply 扫码还是现金？ (sǎo mǎ háishi xiànjīn? \"Scan or cash?\").\n\nFor visitors, the main payment apps can now be linked to many foreign bank cards, and it is worth setting one up before you arrive. Cash is still legal tender and shops must accept it, but carry small notes: a stallholder may not have change for a 100-yuan note. With a phone in your hand, deciding to buy something can take just a few seconds — 就买这个吧！"
   }
 }

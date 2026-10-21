@@ -2,134 +2,455 @@
   "id": "hsk1-1",
   "level": 1,
   "number": 1,
-  "title": { "hanzi": "你好", "pinyin": "Nǐ hǎo", "english": "Hello" },
+  "title": {
+    "hanzi": "王明，你好",
+    "pinyin": "Wáng Míng, nǐ hǎo",
+    "english": "Hi, Wang Ming"
+  },
   "theme": "Greetings",
+  "warmUp": {
+    "instruction": {
+      "hanzi": "听一听，读一读：下面是最常用的问候语和道歉语。",
+      "english": "Listen and read along: these are the most common ways to greet someone and to apologise."
+    },
+    "items": [
+      { "hanzi": "你好", "pinyin": "nǐ hǎo", "english": "hello" },
+      { "hanzi": "您好", "pinyin": "nín hǎo", "english": "hello (polite)" },
+      { "hanzi": "你们好", "pinyin": "nǐmen hǎo", "english": "hello, everyone" },
+      { "hanzi": "对不起", "pinyin": "duìbuqǐ", "english": "sorry" },
+      { "hanzi": "没关系", "pinyin": "méi guānxi", "english": "that's OK" },
+      { "hanzi": "安娜，你好", "pinyin": "Ānnà, nǐ hǎo", "english": "hi, Anna" },
+      { "hanzi": "马克，你好", "pinyin": "Mǎkè, nǐ hǎo", "english": "hi, Mark" }
+    ]
+  },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "问候 (一)", "english": "Greeting (1)" },
-      "audioRef": "01-1",
+      "title": { "hanzi": "在校门口", "english": "At the school gate" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "你好!", "pinyin": "Nǐ hǎo!", "english": "Hello!" },
-        { "speaker": "B", "hanzi": "你好!", "pinyin": "Nǐ hǎo!", "english": "Hello!" }
+        { "speaker": "A", "hanzi": "王明，你好！", "pinyin": "Wáng Míng, nǐ hǎo!", "english": "Hi, Wang Ming!" },
+        { "speaker": "B", "hanzi": "你好，安娜！", "pinyin": "Nǐ hǎo, Ānnà!", "english": "Hi, Anna!" },
+        { "speaker": "A", "hanzi": "马克，你好！", "pinyin": "Mǎkè, nǐ hǎo!", "english": "(Mark walks up) Hi, Mark!" },
+        { "speaker": "C", "hanzi": "你好！你好！", "pinyin": "Nǐ hǎo! Nǐ hǎo!", "english": "Hi! Hi there!" }
       ],
       "newWords": [
-        { "id": "hsk1_1_ni",  "hanzi": "你", "pinyin": "nǐ",  "pos": "pron.", "english": "(singular) you" },
-        { "id": "hsk1_1_hao", "hanzi": "好", "pinyin": "hǎo", "pos": "adj.",  "english": "good, fine" }
+        { "id": "hsk1_1_ni", "hanzi": "你", "pinyin": "nǐ", "pos": "pron.", "english": "you (singular)" },
+        { "id": "hsk1_1_hao", "hanzi": "好", "pinyin": "hǎo", "pos": "adj.", "english": "good, fine, well" }
+      ],
+      "properNouns": [
+        { "id": "hsk1_1_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming (a Chinese university student)" },
+        { "id": "hsk1_1_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna (a student of Chinese)" },
+        { "id": "hsk1_1_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark (a student of Chinese)" }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "问候 (二)", "english": "Greeting (2)" },
-      "audioRef": "01-2",
+      "title": { "hanzi": "在教室", "english": "In the classroom" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "您好!",   "pinyin": "Nín hǎo!",   "english": "Hello!" },
-        { "speaker": "B", "hanzi": "你们好!", "pinyin": "Nǐmen hǎo!", "english": "Hello!" }
+        { "speaker": "A", "hanzi": "你们好！", "pinyin": "Nǐmen hǎo!", "english": "(Ms. Liu, the teacher, comes in) Hello, everyone!" },
+        { "speaker": "B", "hanzi": "您好！", "pinyin": "Nín hǎo!", "english": "(the class) Hello!" },
+        { "speaker": "A", "hanzi": "安娜，你好！", "pinyin": "Ānnà, nǐ hǎo!", "english": "Hello, Anna!" },
+        { "speaker": "C", "hanzi": "您好！", "pinyin": "Nín hǎo!", "english": "(Anna) Hello!" }
       ],
       "newWords": [
-        { "id": "hsk1_1_nin",   "hanzi": "您",   "pinyin": "nín",   "pos": "pron.", "english": "(polite) you" },
-        { "id": "hsk1_1_nimen", "hanzi": "你们", "pinyin": "nǐmen", "pos": "pron.", "english": "(plural) you" }
+        { "id": "hsk1_1_nin", "hanzi": "您", "pinyin": "nín", "pos": "pron.", "english": "you (polite)" },
+        { "id": "hsk1_1_nimen", "hanzi": "你们", "pinyin": "nǐmen", "pos": "pron.", "english": "you (plural)" }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "道歉", "english": "Apologizing" },
-      "audioRef": "01-3",
+      "title": { "hanzi": "在食堂", "english": "In the canteen" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "对不起!", "pinyin": "Duìbuqǐ!",   "english": "I'm sorry!" },
-        { "speaker": "B", "hanzi": "没关系!", "pinyin": "Méi guānxi!", "english": "That's OK!" }
+        { "speaker": "A", "hanzi": "对不起！", "pinyin": "Duìbuqǐ!", "english": "(bumping into someone) Sorry!" },
+        { "speaker": "B", "hanzi": "没关系。", "pinyin": "Méi guānxi.", "english": "That's OK." },
+        { "speaker": "A", "hanzi": "安娜！", "pinyin": "Ānnà!", "english": "Anna!" },
+        { "speaker": "B", "hanzi": "马克，你好！", "pinyin": "Mǎkè, nǐ hǎo!", "english": "Mark, hi!" },
+        { "speaker": "A", "hanzi": "你好！对不起，对不起！", "pinyin": "Nǐ hǎo! Duìbuqǐ, duìbuqǐ!", "english": "Hi! I'm so sorry!" },
+        { "speaker": "B", "hanzi": "没关系！", "pinyin": "Méi guānxi!", "english": "Don't worry about it!" }
       ],
       "newWords": [
-        { "id": "hsk1_1_duibuqi",  "hanzi": "对不起", "pinyin": "duìbuqǐ",  "pos": "v.",   "english": "to be sorry" },
-        { "id": "hsk1_1_meiguanxi","hanzi": "没关系", "pinyin": "méi guānxi","pos": "phrase","english": "that's OK, it doesn't matter" }
+        { "id": "hsk1_1_duibuqi", "hanzi": "对不起", "pinyin": "duìbuqǐ", "pos": "v.", "english": "to be sorry; sorry" },
+        { "id": "hsk1_1_meiguanxi", "hanzi": "没关系", "pinyin": "méi guānxi", "pos": "phrase", "english": "that's OK, it doesn't matter" }
       ]
     }
   ],
-  "classroomExpressions": [
-    { "hanzi": "上课!",     "pinyin": "Shàng kè!",       "english": "Class begins!" },
-    { "hanzi": "下课!",     "pinyin": "Xià kè!",         "english": "Class is over!" },
-    { "hanzi": "现在休息!", "pinyin": "Xiànzài xiūxi!",  "english": "Take a break now!" },
-    { "hanzi": "看黑板!",   "pinyin": "Kàn hēibǎn!",     "english": "Look at the blackboard!" },
-    { "hanzi": "跟我读!",   "pinyin": "Gēn wǒ dú!",      "english": "Read after me!" }
+  "exercises": [
+    {
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "三人一组，分角色朗读课文，然后用自己的名字再说一遍。",
+        "english": "In groups of three, read the dialogues aloud taking a role each, then do them again using your own names."
+      }
+    },
+    {
+      "number": 2,
+      "type": "match",
+      "prompt": {
+        "hanzi": "找出合适的回答。",
+        "english": "Match each line with a suitable reply."
+      },
+      "items": [
+        { "hanzi": "你好！ — 你好！", "pinyin": "Nǐ hǎo! — Nǐ hǎo!", "english": "Hello! — Hello!" },
+        { "hanzi": "你们好！ — 您好！", "pinyin": "Nǐmen hǎo! — Nín hǎo!", "english": "Hello, everyone! — Hello! (to the teacher)" },
+        { "hanzi": "对不起！ — 没关系。", "pinyin": "Duìbuqǐ! — Méi guānxi.", "english": "Sorry! — That's OK." },
+        { "hanzi": "安娜，你好！ — 马克，你好！", "pinyin": "Ānnà, nǐ hǎo! — Mǎkè, nǐ hǎo!", "english": "Hi, Anna! — Hi, Mark!" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "填空：你、您、们、不、关",
+        "english": "Fill in the blanks with 你, 您, 们, 不 or 关."
+      },
+      "items": [
+        { "hanzi": "王明，____好！", "english": "Hi, Wang Ming!", "blank": "你" },
+        { "hanzi": "你____好！", "english": "Hello, everyone!", "blank": "们" },
+        { "hanzi": "对____起！", "english": "Sorry!", "blank": "不" },
+        { "hanzi": "没____系。", "english": "That's OK.", "blank": "关" },
+        { "hanzi": "____好！", "english": "(to your teacher) Hello!", "blank": "您" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "你怎么回答？",
+        "english": "How would you reply?"
+      },
+      "items": [
+        { "hanzi": "你好！", "pinyin": "Nǐ hǎo!", "english": "A classmate says hello." },
+        { "hanzi": "你们好！", "pinyin": "Nǐmen hǎo!", "english": "Your teacher greets the whole class." },
+        { "hanzi": "对不起！", "pinyin": "Duìbuqǐ!", "english": "Someone steps on your foot and apologises." }
+      ]
+    }
   ],
   "pinyinSection": {
     "drills": [
       {
         "number": 1,
         "title": {
-          "hanzi": "汉语拼音的声母和韵母 (1)",
-          "english": "Initials and Finals of Chinese Pinyin (1)"
+          "hanzi": "声母和韵母（一）",
+          "english": "Initials and finals (1)"
         },
         "explanation": {
-          "hanzi": "声母 (Initials): b p m f / d t n l / g k h / j q x。韵母 (Finals): i u ü er / a ia ua / o uo / e ie üe / ai uai / ei uei (ui) / ao iao。",
-          "english": "Initials introduced in this lesson: b, p, m, f / d, t, n, l / g, k, h / j, q, x. Finals: i, u, ü, er / a, ia, ua / o, uo / e, ie, üe / ai, uai / ei, uei (ui) / ao, iao."
+          "hanzi": "汉语的音节一般分成两部分：开头的辅音叫“声母”，后面的部分叫“韵母”。这一课先学十一个声母 b p m f d t n l g k h 和六个单韵母 a o e i u ü，再学几个复韵母。注意 b/p、d/t、g/k 的区别：p、t、k 发音时要送出一股较强的气流（送气），b、d、g 不送气。",
+          "english": "A Chinese syllable usually has two parts: the consonant at the start is the \"initial\" (声母), and everything after it is the \"final\" (韵母). This lesson covers 11 initials — b p m f d t n l g k h — and the 6 simple finals a o e i u ü, plus a few compound finals. The key contrast is b/p, d/t, g/k. They are NOT voiced vs. voiceless as in English: b, d, g are plain and unaspirated (close to the p in \"spy\"), while p, t, k come with a strong puff of air (like the p in \"pie\"). Hold a sheet of paper in front of your mouth: it should flutter for p, t, k and stay still for b, d, g."
         },
         "syllables": [
-          "b", "p", "m", "f", "d", "t", "n", "l", "g", "k", "h", "j", "q", "x",
-          "i", "u", "ü", "er", "a", "ia", "ua", "o", "uo", "e", "ie", "üe",
-          "ai", "uai", "ei", "uei (ui)", "ao", "iao"
+          "b  p  m  f",
+          "d  t  n  l",
+          "g  k  h",
+          "a  o  e  i  u  ü",
+          "ai  ei  ao  ou",
+          "bā  pā  mā  fā",
+          "dé  tè  ně  lè",
+          "gǔ  kǔ  hú  lǜ  nǚ"
+        ],
+        "subRules": [
+          {
+            "rule": {
+              "hanzi": "双唇音和唇齿音：b p m 用两片嘴唇发音；f 用上齿碰下唇。",
+              "english": "Lip sounds: b, p, m are made with both lips; f is made with the upper teeth on the lower lip."
+            },
+            "examples": [
+              { "pinyin": "bō", "english": "b + o" },
+              { "pinyin": "pò", "english": "p + o (with a puff of air)" },
+              { "pinyin": "mǎ", "english": "m + a" },
+              { "pinyin": "fù", "english": "f + u" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "舌尖音：d t n l 用舌尖碰上齿后面的地方。",
+              "english": "Tongue-tip sounds: d, t, n, l touch the ridge just behind the upper teeth."
+            },
+            "examples": [
+              { "pinyin": "dà", "english": "d + a" },
+              { "pinyin": "tā", "english": "t + a (with a puff of air)" },
+              { "pinyin": "nǐ", "english": "n + i" },
+              { "pinyin": "lù", "english": "l + u" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "舌根音：g k h 用舌头后部发音；h 比英语的 h 更有摩擦感。",
+              "english": "Back-of-tongue sounds: g, k, h are made at the back of the mouth. Chinese h is rougher than English h — closer to the ch in Scottish \"loch\"."
+            },
+            "examples": [
+              { "pinyin": "gē", "english": "g + e" },
+              { "pinyin": "kě", "english": "k + e (with a puff of air)" },
+              { "pinyin": "hǎo", "english": "h + ao" },
+              { "pinyin": "hē", "english": "h + e" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "单韵母：a 口张大；o 圆唇；e 不圆唇，像轻轻的“呃”；i 像 see 的 ee；u 像 food 的 oo；ü 舌头像发 i，嘴唇像发 u。",
+              "english": "Simple finals: a — mouth wide open, as in \"father\"; o — rounded lips, like \"aw\" with a hint of \"w\"; e — unrounded, a relaxed \"uh\" from the back of the throat; i — like \"ee\" in \"see\"; u — like \"oo\" in \"food\"; ü — say \"ee\" and then round your lips without moving your tongue."
+            },
+            "examples": [
+              { "pinyin": "ā" },
+              { "pinyin": "ō" },
+              { "pinyin": "ē" },
+              { "pinyin": "yī", "english": "i on its own is written yi" },
+              { "pinyin": "wū", "english": "u on its own is written wu" },
+              { "pinyin": "yú", "english": "ü on its own is written yu" },
+              { "pinyin": "nǚ", "english": "after n and l the two dots stay" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "复韵母：两个元音连在一起，从第一个滑向第二个。",
+              "english": "Compound finals: two vowels glide smoothly into each other, with the first one stronger."
+            },
+            "examples": [
+              { "pinyin": "ài", "english": "like \"eye\"" },
+              { "pinyin": "mèi", "english": "like \"may\"" },
+              { "pinyin": "hǎo", "english": "like \"how\"" },
+              { "pinyin": "dōu", "english": "like \"dough\"" }
+            ]
+          }
         ]
       },
       {
         "number": 2,
-        "title": { "hanzi": "汉语的声调 (四声)", "english": "Tones (Four Tones)" },
+        "title": {
+          "hanzi": "声调",
+          "english": "The four tones"
+        },
         "explanation": {
-          "hanzi": "汉语的基本声调有四个,分别是第一声(55)、第二声(35)、第三声(214)和第四声(51)。声调有区别意义的作用。例如:mā(妈)mother、má(麻)fibrous crops、mǎ(马)horse、mà(骂)to scold。",
-          "english": "Mandarin has four basic tones: 1st tone (high level, 55), 2nd tone (rising, 35), 3rd tone (falling-rising, 214), 4th tone (falling, 51). Tone changes meaning — mā (mother), má (fibrous crops), mǎ (horse), mà (to scold)."
+          "hanzi": "汉语是有声调的语言。同一个音节，声调不同，意思就不同。普通话有四个基本声调，用标在元音上的符号表示：一声 ˉ（高平），二声 ˊ（上升），三声 ˇ（先降后升），四声 ˋ（下降）。",
+          "english": "Mandarin is a tonal language: the same syllable with a different pitch is a different word. There are four basic tones, marked over the vowel. Think of your voice range as five steps, 1 (low) to 5 (high). 1st tone ˉ — high and level (5-5), as if singing one note. 2nd tone ˊ — rising (3-5), like asking \"What?\" in surprise. 3rd tone ˇ — low dip and rise (2-1-4); start low and go lower before coming back up. 4th tone ˋ — a sharp fall from top to bottom (5-1), like a firm \"No!\". Say each tone with a hand gesture tracing its shape until it feels automatic."
         },
         "syllables": [
-          "ā", "á", "ǎ", "à",
-          "ō", "ó", "ǒ", "ò",
-          "ē", "é", "ě", "è",
-          "ī", "í", "ǐ", "ì",
-          "ū", "ú", "ǔ", "ù",
-          "ǖ", "ǘ", "ǚ", "ǜ"
+          "mā  má  mǎ  mà",
+          "bā  bá  bǎ  bà",
+          "yī  yí  yǐ  yì",
+          "wū  wú  wǔ  wù",
+          "hāo  háo  hǎo  hào",
+          "nī  ní  nǐ  nì"
+        ],
+        "subRules": [
+          {
+            "rule": { "hanzi": "一声：高而平。", "english": "1st tone: high and flat." },
+            "examples": [
+              { "pinyin": "mā", "english": "mother (妈)" },
+              { "pinyin": "gē", "english": "older brother (哥)" },
+              { "pinyin": "fēi", "english": "to fly (飞)" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "二声：从中间升到高。", "english": "2nd tone: rises from the middle to the top." },
+            "examples": [
+              { "pinyin": "má", "english": "hemp (麻)" },
+              { "pinyin": "nín", "english": "you, polite (您)" },
+              { "pinyin": "méi", "english": "not have (没)" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "三声：先降到最低，再升起来。", "english": "3rd tone: dips to the bottom, then comes back up." },
+            "examples": [
+              { "pinyin": "mǎ", "english": "horse (马)" },
+              { "pinyin": "nǐ", "english": "you (你)" },
+              { "pinyin": "hǎo", "english": "good (好)" }
+            ]
+          },
+          {
+            "rule": { "hanzi": "四声：从最高降到最低，又快又短。", "english": "4th tone: falls fast from the top to the bottom." },
+            "examples": [
+              { "pinyin": "mà", "english": "to scold (骂)" },
+              { "pinyin": "duì", "english": "right, correct (对)" },
+              { "pinyin": "bù", "english": "not (不)" }
+            ]
+          }
         ]
       },
       {
         "number": 3,
-        "title": { "hanzi": "汉语的音节", "english": "Chinese Syllables" },
+        "title": {
+          "hanzi": "汉语音节的结构",
+          "english": "How a Chinese syllable is built"
+        },
         "explanation": {
-          "hanzi": "汉语的音节一般由声母、韵母、声调三部分组成。一般来说,一个汉字对应一个音节。汉语的一个音节可以没有声母,但是一定要有韵母和声调。注意:i 和 ü 自成音节时,韵母前增加 y,ü 上的两点去掉;u 自成音节时,韵母前增加 w。",
-          "english": "A Chinese syllable usually consists of an initial, a final, and a tone. Generally each Chinese character corresponds to one syllable. A syllable may have no initial but must have a final and a tone. Note: when i or ü stands alone, y is added (and ü loses its umlaut); when u stands alone, w is added."
+          "hanzi": "汉语的一个音节 = 声母 + 韵母 + 声调。一个汉字一般读一个音节。有的音节没有声母，只有韵母和声调，比如 ā、è、ài、ǒu。声调符号写在韵母的主要元音上。",
+          "english": "Every Chinese syllable is built from three pieces: initial + final + tone. One character is (almost always) one syllable, so learning to hear these three pieces lets you spell any character you hear. Some syllables have no initial at all — just a final and a tone, such as ā, è, ài, ǒu. The tone mark always sits on the main vowel of the final. Practise by breaking the syllables below into their parts, then putting them back together."
         },
         "syllables": [
-          "yī", "wǔ", "yú", "ěr", "bǐ", "māo", "dǎo", "huā", "jī", "qī", "xié", "xuě"
+          "n + i + ˇ = nǐ",
+          "h + ao + ˇ = hǎo",
+          "m + ei + ˊ = méi",
+          "d + ui + ˋ = duì",
+          "b + u + ˋ = bù",
+          "ài  (no initial)",
+          "ǒu  (no initial)"
+        ],
+        "subRules": [
+          {
+            "rule": {
+              "hanzi": "声调可以区别意思：声母和韵母一样，声调不一样，就是不同的字。",
+              "english": "Tone changes meaning: same initial and final, different tone, different word."
+            },
+            "examples": [
+              { "pinyin": "tāng", "english": "soup (汤)" },
+              { "pinyin": "táng", "english": "sugar (糖)" },
+              { "pinyin": "tǎng", "english": "to lie down (躺)" },
+              { "pinyin": "tàng", "english": "hot, scalding (烫)" }
+            ]
+          },
+          {
+            "rule": {
+              "hanzi": "声母可以区别意思：韵母和声调一样，声母不一样，也是不同的字。",
+              "english": "The initial changes meaning too: same final and tone, different initial."
+            },
+            "examples": [
+              { "pinyin": "bà", "english": "dad (爸)" },
+              { "pinyin": "pà", "english": "to be afraid (怕)" },
+              { "pinyin": "dà", "english": "big (大)" },
+              { "pinyin": "tā", "english": "he, she (他/她)" }
+            ]
+          }
         ]
       },
       {
         "number": 4,
         "title": {
-          "hanzi": "两个三声音节的连读变调",
-          "english": "Tone Sandhi: 3rd tone + 3rd tone"
+          "hanzi": "三声变调：三声 + 三声",
+          "english": "Third-tone sandhi: 3rd tone + 3rd tone"
         },
         "explanation": {
-          "hanzi": "当两个第三声音节连读时,第一个音节变为第二声(3+3 变为 2+3)。例如\"nǐ\"+\"hǎo\"变为\"ní hǎo\"。注音时,要标原调。",
-          "english": "When two 3rd-tone syllables come together, the first turns into a 2nd tone — 3+3 → 2+3. For example nǐ + hǎo is pronounced ní hǎo, although the written form keeps the original tone."
+          "hanzi": "两个三声音节连在一起读的时候，第一个三声要读成二声，第二个不变。拼音里还是写两个三声符号，只是说的时候变调。“你好”写 nǐ hǎo，读 ní hǎo。",
+          "english": "Saying two full dipping tones in a row is awkward, so when a 3rd-tone syllable is followed by another 3rd tone, the first one rises like a 2nd tone. The spelling does not change — pinyin still prints two 3rd-tone marks — you only change it in speech. That is why 你好, written nǐ hǎo, is actually pronounced \"ní hǎo\". Read the pairs below: left as written, right as said."
         },
         "syllables": [
-          "nǐ hǎo", "kěyǐ", "fǔdǎo", "xiǎojiě",
-          "kǒuyǔ", "yǔfǎ", "Fǎyǔ", "tǎo hǎo",
-          "liǎojiě", "yǒuhǎo", "yǔsǎn", "shǒubiǎo"
+          "nǐ hǎo → ní hǎo",
+          "kěyǐ → kéyǐ",
+          "shuǐguǒ → shuíguǒ",
+          "lǎohǔ → láohǔ",
+          "xǐzǎo → xízǎo",
+          "hǎojiǔ → háojiǔ",
+          "yǔsǎn → yúsǎn"
         ]
       }
     ]
   },
   "characters": {
     "strokes": [
-      { "name": { "hanzi": "横", "pinyin": "héng", "english": "horizontal" },           "shape": "一", "examples": [{ "hanzi": "一", "pinyin": "yī", "english": "one" }, { "hanzi": "二", "pinyin": "èr", "english": "two" }] },
-      { "name": { "hanzi": "竖", "pinyin": "shù",  "english": "vertical" },             "shape": "丨", "examples": [{ "hanzi": "十", "pinyin": "shí", "english": "ten" }, { "hanzi": "工", "pinyin": "gōng", "english": "work, labor" }] },
-      { "name": { "hanzi": "撇", "pinyin": "piě",  "english": "left-falling" },         "shape": "丿", "examples": [{ "hanzi": "人", "pinyin": "rén", "english": "human" }, { "hanzi": "八", "pinyin": "bā", "english": "eight" }] },
-      { "name": { "hanzi": "点", "pinyin": "diǎn", "english": "dot" },                  "shape": "丶", "examples": [{ "hanzi": "不", "pinyin": "bù", "english": "no, not" }, { "hanzi": "六", "pinyin": "liù", "english": "six" }] },
-      { "name": { "hanzi": "捺", "pinyin": "nà",   "english": "right-falling" },        "shape": "乀", "examples": [{ "hanzi": "大", "pinyin": "dà", "english": "big" }, { "hanzi": "天", "pinyin": "tiān", "english": "sky" }] }
+      {
+        "name": { "hanzi": "横", "pinyin": "héng", "english": "horizontal stroke" },
+        "shape": "㇐",
+        "examples": [
+          { "hanzi": "一", "pinyin": "yī", "english": "one" },
+          { "hanzi": "二", "pinyin": "èr", "english": "two" },
+          { "hanzi": "三", "pinyin": "sān", "english": "three" }
+        ]
+      },
+      {
+        "name": { "hanzi": "竖", "pinyin": "shù", "english": "vertical stroke" },
+        "shape": "㇑",
+        "examples": [
+          { "hanzi": "十", "pinyin": "shí", "english": "ten" },
+          { "hanzi": "中", "pinyin": "zhōng", "english": "middle" }
+        ]
+      },
+      {
+        "name": { "hanzi": "撇", "pinyin": "piě", "english": "left-falling stroke" },
+        "shape": "㇒",
+        "examples": [
+          { "hanzi": "八", "pinyin": "bā", "english": "eight" },
+          { "hanzi": "六", "pinyin": "liù", "english": "six" },
+          { "hanzi": "人", "pinyin": "rén", "english": "person" }
+        ]
+      },
+      {
+        "name": { "hanzi": "点", "pinyin": "diǎn", "english": "dot" },
+        "shape": "㇔",
+        "examples": [
+          { "hanzi": "六", "pinyin": "liù", "english": "six" },
+          { "hanzi": "小", "pinyin": "xiǎo", "english": "small" }
+        ]
+      },
+      {
+        "name": { "hanzi": "捺", "pinyin": "nà", "english": "right-falling stroke" },
+        "shape": "㇏",
+        "examples": [
+          { "hanzi": "八", "pinyin": "bā", "english": "eight" },
+          { "hanzi": "人", "pinyin": "rén", "english": "person" },
+          { "hanzi": "大", "pinyin": "dà", "english": "big" }
+        ]
+      }
     ],
     "singleComponentChars": [
-      { "id": "hsk1_1_c_yi",   "hanzi": "一", "pinyin": "yī",   "meaning": "one",   "etymology": "\"一\" is one of the basic strokes of Chinese characters. The single-component character \"一\" means \"one\".", "strokeCount": 1 },
-      { "id": "hsk1_1_c_er",   "hanzi": "二", "pinyin": "èr",   "meaning": "two",   "etymology": "\"二\" means \"two\".",                                                                                            "strokeCount": 2 },
-      { "id": "hsk1_1_c_san",  "hanzi": "三", "pinyin": "sān",  "meaning": "three", "etymology": "\"三\" means \"three\".",                                                                                          "strokeCount": 3 },
-      { "id": "hsk1_1_c_shi",  "hanzi": "十", "pinyin": "shí",  "meaning": "ten",   "etymology": "\"十\" means \"ten\".",                                                                                            "strokeCount": 2 },
-      { "id": "hsk1_1_c_ba",   "hanzi": "八", "pinyin": "bā",   "meaning": "eight", "etymology": "\"八\" means \"eight\".",                                                                                          "strokeCount": 2 },
-      { "id": "hsk1_1_c_liu",  "hanzi": "六", "pinyin": "liù",  "meaning": "six",   "etymology": "\"六\" means \"six\".",                                                                                            "strokeCount": 4 }
+      {
+        "id": "hsk1_1_c_yi",
+        "hanzi": "一",
+        "pinyin": "yī",
+        "meaning": "one",
+        "etymology": "A single horizontal line, like one counting stick laid on a table — one of the simplest characters there is.",
+        "strokeCount": 1
+      },
+      {
+        "id": "hsk1_1_c_er",
+        "hanzi": "二",
+        "pinyin": "èr",
+        "meaning": "two",
+        "etymology": "Two counting sticks stacked one above the other. The top line is written a little shorter than the bottom one.",
+        "strokeCount": 2
+      },
+      {
+        "id": "hsk1_1_c_san",
+        "hanzi": "三",
+        "pinyin": "sān",
+        "meaning": "three",
+        "etymology": "Three stacked strokes, following the same tally idea as 一 and 二. The middle line is the shortest and the bottom one the longest.",
+        "strokeCount": 3
+      },
+      {
+        "id": "hsk1_1_c_shi",
+        "hanzi": "十",
+        "pinyin": "shí",
+        "meaning": "ten",
+        "etymology": "In the oldest inscriptions ten was a single upright line, sometimes with a knot or dot in the middle; over time the dot stretched into a full crossbar.",
+        "strokeCount": 2
+      },
+      {
+        "id": "hsk1_1_c_ba",
+        "hanzi": "八",
+        "pinyin": "bā",
+        "meaning": "eight",
+        "etymology": "Two strokes leaning away from each other, which first meant \"to split apart\". Its sound was borrowed to write the number eight.",
+        "strokeCount": 2
+      },
+      {
+        "id": "hsk1_1_c_liu",
+        "hanzi": "六",
+        "pinyin": "liù",
+        "meaning": "six",
+        "etymology": "Early forms look like a simple hut with a pointed roof. The word for this shape sounded like \"six\", so the character was borrowed for the number.",
+        "strokeCount": 4
+      }
     ]
-  }
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "在教室里走一走，跟同学和老师打招呼。",
+      "english": "Walk around the classroom and greet your classmates and your teacher."
+    },
+    "activities": [
+      "Greet three classmates by name: ……，你好！ — ……，你好！",
+      "Greet your teacher politely with 您好！, then let the teacher greet the whole class with 你们好！",
+      "Mini-scene: walk past a partner and \"bump\" into them. Apologise with 对不起！ and answer with 没关系。",
+      "Tone game: one person says mā, má, mǎ or mà; the others show the tone with a hand gesture."
+    ]
+  },
+  "classroomExpressions": [
+    { "hanzi": "上课！", "pinyin": "Shàng kè!", "english": "Class begins!" },
+    { "hanzi": "老师好！", "pinyin": "Lǎoshī hǎo!", "english": "Hello, teacher!" },
+    { "hanzi": "同学们好！", "pinyin": "Tóngxuémen hǎo!", "english": "Hello, class!" },
+    { "hanzi": "请跟我读。", "pinyin": "Qǐng gēn wǒ dú.", "english": "Please read after me." },
+    { "hanzi": "请再说一遍。", "pinyin": "Qǐng zài shuō yí biàn.", "english": "Please say it again." },
+    { "hanzi": "很好！", "pinyin": "Hěn hǎo!", "english": "Very good!" },
+    { "hanzi": "下课！", "pinyin": "Xià kè!", "english": "Class is over!" }
+  ]
 }

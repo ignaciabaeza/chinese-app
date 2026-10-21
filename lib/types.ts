@@ -1,5 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Content types — mirror the HSK Standard Course lesson structure.
+// Content types — one lesson = warm-up, situational dialogues, grammar notes,
+// exercises, pronunciation, characters, application and culture.
 // All lesson content lives in /data as static JSON; these types describe it.
 // ─────────────────────────────────────────────────────────────────────────────
 

@@ -2,83 +2,111 @@
   "id": "hsk2-6",
   "level": 2,
   "number": 6,
-  "title": { "hanzi": "你怎么不吃了", "pinyin": "Nǐ zěnme bù chī le", "english": "Why don't you eat more" },
+  "title": {
+    "hanzi": "你怎么天天打篮球？",
+    "pinyin": "Nǐ zěnme tiāntiān dǎ lánqiú?",
+    "english": "How come you play basketball every day?"
+  },
   "theme": "Food & Sports",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the phrases." },
+    "instruction": {
+      "hanzi": "读一读，说说这些词语是什么意思。",
+      "english": "Read the words and phrases aloud and say what they mean."
+    },
     "items": [
-      { "hanzi": "喝牛奶",   "pinyin": "hē niúnǎi",   "english": "to drink milk" },
-      { "hanzi": "起床",     "pinyin": "qǐ chuáng",   "english": "to get up" },
-      { "hanzi": "跑步",     "pinyin": "pǎo bù",      "english": "to run, to jog" },
-      { "hanzi": "看报纸",   "pinyin": "kàn bàozhǐ",  "english": "to read the newspaper" },
-      { "hanzi": "吃药",     "pinyin": "chī yào",     "english": "to take medicine" },
-      { "hanzi": "打篮球",   "pinyin": "dǎ lánqiú",   "english": "to play basketball" }
+      { "hanzi": "羊肉面条", "pinyin": "yángròu miàntiáo", "english": "lamb noodles" },
+      { "hanzi": "很好吃", "pinyin": "hěn hǎochī", "english": "delicious" },
+      { "hanzi": "打篮球", "pinyin": "dǎ lánqiú", "english": "to play basketball" },
+      { "hanzi": "去游泳", "pinyin": "qù yóu yǒng", "english": "to go swimming" },
+      { "hanzi": "自行车", "pinyin": "zìxíngchē", "english": "bicycle" },
+      { "hanzi": "门外", "pinyin": "mén wài", "english": "outside the door / gate" },
+      { "hanzi": "经常", "pinyin": "jīngcháng", "english": "often" },
+      { "hanzi": "80公斤", "pinyin": "bāshí gōngjīn", "english": "80 kilograms" }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在学校", "english": "In the school" },
-      "audioRef": "06-1",
+      "title": { "hanzi": "在面馆", "english": "At a noodle shop" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "你知道小王今天什么时候来学校吗?", "pinyin": "Nǐ zhīdào Xiǎo Wáng jīntiān shénme shíhou lái xuéxiào ma?", "english": "Do you know when Xiao Wang will come to school today?" },
-        { "speaker": "B", "hanzi": "他已经来了。",                       "pinyin": "Tā yǐjīng lái le.",                                         "english": "He's already here." },
-        { "speaker": "A", "hanzi": "你怎么知道他来了?",                  "pinyin": "Nǐ zěnme zhīdào tā lái le?",                                "english": "How do you know?" },
-        { "speaker": "B", "hanzi": "我在门外看见他的自行车了。",         "pinyin": "Wǒ zài mén wài kànjiàn tā de zìxíngchē le.",                "english": "I saw his bike outside the door." }
+        { "speaker": "A", "hanzi": "马克，你今天想吃什么？", "pinyin": "Mǎkè, nǐ jīntiān xiǎng chī shénme?", "english": "Mark, what do you feel like eating today?" },
+        { "speaker": "B", "hanzi": "我想吃面条。这儿什么面条好吃？", "pinyin": "Wǒ xiǎng chī miàntiáo. Zhèr shénme miàntiáo hǎochī?", "english": "I'd like noodles. Which noodles are good here?" },
+        { "speaker": "A", "hanzi": "羊肉面条最好吃，我天天都来吃！", "pinyin": "Yángròu miàntiáo zuì hǎochī, wǒ tiāntiān dōu lái chī!", "english": "The lamb noodles are the best — I come and eat them every day!" },
+        { "speaker": "B", "hanzi": "好，那我就要羊肉面条吧。", "pinyin": "Hǎo, nà wǒ jiù yào yángròu miàntiáo ba.", "english": "OK, then I'll have the lamb noodles." },
+        { "speaker": "A", "hanzi": "你怎么不吃了？不好吃吗？", "pinyin": "Nǐ zěnme bù chī le? Bù hǎochī ma?", "english": "How come you've stopped eating? Don't you like it?" },
+        { "speaker": "B", "hanzi": "很好吃，可是太多了！", "pinyin": "Hěn hǎochī, kěshì tài duō le!", "english": "It's delicious, but there's way too much!" }
       ],
       "newWords": [
-        { "id": "hsk2_6_men",       "hanzi": "门",     "pinyin": "mén",      "pos": "n.", "english": "door, gate" },
-        { "id": "hsk2_6_wai",       "hanzi": "外",     "pinyin": "wài",      "pos": "n.", "english": "outer, outside" },
-        { "id": "hsk2_6_zixingche", "hanzi": "自行车", "pinyin": "zìxíngchē","pos": "n.", "english": "bike" }
+        { "id": "hsk2_6_miantiao", "hanzi": "面条", "pinyin": "miàntiáo", "pos": "n.", "english": "noodles" },
+        { "id": "hsk2_6_haochi", "hanzi": "好吃", "pinyin": "hǎochī", "pos": "adj.", "english": "delicious, tasty" },
+        { "id": "hsk2_6_yangrou", "hanzi": "羊肉", "pinyin": "yángròu", "pos": "n.", "english": "mutton, lamb" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_6_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在饭馆", "english": "In a restaurant" },
-      "audioRef": "06-2",
+      "title": { "hanzi": "在学校", "english": "At school" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "今天的羊肉很好吃,你怎么不吃了?",    "pinyin": "Jīntiān de yángròu hěn hǎochī, nǐ zěnme bù chī le?",      "english": "The mutton today is excellent. Why don't you eat more?" },
-        { "speaker": "B", "hanzi": "这个星期天天都吃羊肉,不想吃了。",  "pinyin": "Zhège xīngqī tiāntiān dōu chī yángròu, bù xiǎng chī le.", "english": "I've eaten mutton every day this week. I don't want any more." },
-        { "speaker": "A", "hanzi": "那你还想吃什么?",                     "pinyin": "Nà nǐ hái xiǎng chī shénme?",                              "english": "What would you like then?" },
-        { "speaker": "B", "hanzi": "来一点儿面条吧。",                     "pinyin": "Lái yìdiǎnr miàntiáo ba.",                                 "english": "Some noodles please." }
+        { "speaker": "A", "hanzi": "马克，你怎么天天都去打篮球？", "pinyin": "Mǎkè, nǐ zěnme tiāntiān dōu qù dǎ lánqiú?", "english": "Mark, how come you go and play basketball every single day?" },
+        { "speaker": "B", "hanzi": "因为我很喜欢运动，所以经常去打篮球。", "pinyin": "Yīnwèi wǒ hěn xǐhuan yùndòng, suǒyǐ jīngcháng qù dǎ lánqiú.", "english": "I love sport, so I often go and play basketball." },
+        { "speaker": "A", "hanzi": "你一个星期打几天？", "pinyin": "Nǐ yí ge xīngqī dǎ jǐ tiān?", "english": "How many days a week do you play?" },
+        { "speaker": "B", "hanzi": "四五天吧。安娜，你也来打吧！", "pinyin": "Sì-wǔ tiān ba. Ānnà, nǐ yě lái dǎ ba!", "english": "Four or five, I suppose. Come and play too, Anna!" },
+        { "speaker": "A", "hanzi": "我不会打篮球，我喜欢跑步。", "pinyin": "Wǒ bú huì dǎ lánqiú, wǒ xǐhuan pǎo bù.", "english": "I can't play basketball. I prefer running." },
+        { "speaker": "B", "hanzi": "没关系，我帮你！", "pinyin": "Méi guānxi, wǒ bāng nǐ!", "english": "No problem, I'll help you!" }
       ],
       "newWords": [
-        { "id": "hsk2_6_yangrou",  "hanzi": "羊肉",  "pinyin": "yángròu",  "pos": "n.",   "english": "mutton" },
-        { "id": "hsk2_6_haochi",   "hanzi": "好吃",  "pinyin": "hǎochī",   "pos": "adj.", "english": "delicious, yummy" },
-        { "id": "hsk2_6_miantiao", "hanzi": "面条",  "pinyin": "miàntiáo", "pos": "n.",   "english": "noodles" }
+        { "id": "hsk2_6_da_lanqiu", "hanzi": "打篮球", "pinyin": "dǎ lánqiú", "pos": "phrase", "english": "to play basketball" },
+        { "id": "hsk2_6_yinwei", "hanzi": "因为", "pinyin": "yīnwèi", "pos": "conj.", "english": "because, since" },
+        { "id": "hsk2_6_suoyi", "hanzi": "所以", "pinyin": "suǒyǐ", "pos": "conj.", "english": "so, therefore" },
+        { "id": "hsk2_6_jingchang", "hanzi": "经常", "pinyin": "jīngcháng", "pos": "adv.", "english": "often, frequently" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_6_pn_make_2", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" },
+        { "id": "hsk2_6_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在健身房", "english": "In the gym" },
-      "audioRef": "06-3",
+      "title": { "hanzi": "在学校门口", "english": "At the school gate" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "昨天你们怎么都没去打篮球?",                "pinyin": "Zuótiān nǐmen zěnme dōu méi qù dǎ lánqiú?",                          "english": "Why didn't you guys go to play basketball yesterday?" },
-        { "speaker": "B", "hanzi": "因为昨天下雨,所以我们都没去。我去游泳了。", "pinyin": "Yīnwèi zuótiān xià yǔ, suǒyǐ wǒmen dōu méi qù. Wǒ qù yóu yǒng le.", "english": "Because it rained yesterday. I went swimming." },
-        { "speaker": "A", "hanzi": "你经常游泳吗?",                            "pinyin": "Nǐ jīngcháng yóu yǒng ma?",                                          "english": "Do you often swim?" },
-        { "speaker": "B", "hanzi": "这个月我天天游泳,我现在七十公斤了。",     "pinyin": "Zhège yuè wǒ tiāntiān yóu yǒng, wǒ xiànzài qīshí gōngjīn le.",      "english": "I swim every day this month. I weigh 70 kilograms now." }
+        { "speaker": "A", "hanzi": "安娜，门外那个人是谁？", "pinyin": "Ānnà, mén wài nàge rén shì shéi?", "english": "Anna, who's that person outside the gate?" },
+        { "speaker": "B", "hanzi": "是我姐姐！她来北京旅游。", "pinyin": "Shì wǒ jiějie! Tā lái Běijīng lǚyóu.", "english": "It's my older sister! She's visiting Beijing." },
+        { "speaker": "A", "hanzi": "你姐姐也学习汉语吗？", "pinyin": "Nǐ jiějie yě xuéxí Hànyǔ ma?", "english": "Does your sister study Chinese too?" },
+        { "speaker": "B", "hanzi": "她不学汉语，可是很喜欢中国菜。", "pinyin": "Tā bù xué Hànyǔ, kěshì hěn xǐhuan Zhōngguó cài.", "english": "She doesn't, but she loves Chinese food." },
+        { "speaker": "A", "hanzi": "门外的自行车也是她的吗？", "pinyin": "Mén wài de zìxíngchē yě shì tā de ma?", "english": "Is the bike outside the gate hers too?" },
+        { "speaker": "B", "hanzi": "是，是她昨天买的。", "pinyin": "Shì, shì tā zuótiān mǎi de.", "english": "Yes, she bought it yesterday." },
+        { "speaker": "A", "hanzi": "那我们一起去吃羊肉面条吧！", "pinyin": "Nà wǒmen yìqǐ qù chī yángròu miàntiáo ba!", "english": "Then let's all go and have lamb noodles together!" }
       ],
       "newWords": [
-        { "id": "hsk2_6_dalanqiu",  "hanzi": "打篮球", "pinyin": "dǎ lánqiú",  "pos": "phrase","english": "to play basketball" },
-        { "id": "hsk2_6_yinwei",    "hanzi": "因为",   "pinyin": "yīnwèi",     "pos": "conj.", "english": "because, since" },
-        { "id": "hsk2_6_suoyi",     "hanzi": "所以",   "pinyin": "suǒyǐ",      "pos": "conj.", "english": "so, therefore" },
-        { "id": "hsk2_6_youyong",   "hanzi": "游泳",   "pinyin": "yóu yǒng",   "pos": "v.",    "english": "to swim" },
-        { "id": "hsk2_6_jingchang", "hanzi": "经常",   "pinyin": "jīngcháng",  "pos": "adv.",  "english": "often, frequently" },
-        { "id": "hsk2_6_gongjin",   "hanzi": "公斤",   "pinyin": "gōngjīn",    "pos": "m.",    "english": "kilogram" }
+        { "id": "hsk2_6_men", "hanzi": "门", "pinyin": "mén", "pos": "n.", "english": "door, gate" },
+        { "id": "hsk2_6_wai", "hanzi": "外", "pinyin": "wài", "pos": "n.", "english": "outer, outside" },
+        { "id": "hsk2_6_jiejie", "hanzi": "姐姐", "pinyin": "jiějie", "pos": "n.", "english": "elder sister" },
+        { "id": "hsk2_6_zixingche", "hanzi": "自行车", "pinyin": "zìxíngchē", "pos": "n.", "english": "bicycle, bike" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_6_pn_anna_2", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna" },
+        { "id": "hsk2_6_pn_beijing", "hanzi": "北京", "pinyin": "Běijīng", "english": "Beijing" }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在办公室", "english": "In the office" },
-      "audioRef": "06-4",
+      "title": { "hanzi": "马克说运动", "english": "Mark on sport and food" },
       "dialogue": [
-        { "speaker": "A", "hanzi": "这两天怎么没看见小张?",          "pinyin": "Zhè liǎng tiān zěnme méi kànjiàn Xiǎo Zhāng?",      "english": "I haven't seen Xiao Zhang for days. What's going on?" },
-        { "speaker": "B", "hanzi": "他去北京了。",                     "pinyin": "Tā qù Běijīng le.",                                  "english": "He's gone to Beijing." },
-        { "speaker": "A", "hanzi": "去北京了?是去旅游吗?",            "pinyin": "Qù Běijīng le? Shì qù lǚyóu ma?",                    "english": "Gone to Beijing? For traveling?" },
-        { "speaker": "B", "hanzi": "不是,听说是去看他姐姐。",         "pinyin": "Bú shì, tīngshuō shì qù kàn tā jiějie.",             "english": "No. Visiting his elder sister, as far as I've heard." }
+        { "speaker": "A", "hanzi": "我叫马克，我非常喜欢运动。", "pinyin": "Wǒ jiào Mǎkè, wǒ fēicháng xǐhuan yùndòng.", "english": "My name is Mark, and I'm really into sport." },
+        { "speaker": "A", "hanzi": "我经常打篮球，星期六和星期天还去游泳。", "pinyin": "Wǒ jīngcháng dǎ lánqiú, xīngqīliù hé xīngqītiān hái qù yóu yǒng.", "english": "I often play basketball, and at weekends I go swimming as well." },
+        { "speaker": "A", "hanzi": "因为我天天运动，所以身体很好。", "pinyin": "Yīnwèi wǒ tiāntiān yùndòng, suǒyǐ shēntǐ hěn hǎo.", "english": "Because I exercise every day, I'm very fit." },
+        { "speaker": "A", "hanzi": "可是我也很喜欢吃！上个月我80公斤，现在已经85公斤了。", "pinyin": "Kěshì wǒ yě hěn xǐhuan chī! Shàng ge yuè wǒ bāshí gōngjīn, xiànzài yǐjīng bāshíwǔ gōngjīn le.", "english": "But I also love eating! Last month I weighed 80 kilos; now I'm already 85." },
+        { "speaker": "A", "hanzi": "我姐姐问我：“你怎么天天吃这么多？”", "pinyin": "Wǒ jiějie wèn wǒ: \"Nǐ zěnme tiāntiān chī zhème duō?\"", "english": "My sister asked me, \"How come you eat so much every day?\"" },
+        { "speaker": "A", "hanzi": "好吧，那就明天开始少吃一点儿吧！", "pinyin": "Hǎo ba, nà jiù míngtiān kāishǐ shǎo chī yìdiǎnr ba!", "english": "All right — tomorrow I'll start eating a bit less!" }
       ],
       "newWords": [
-        { "id": "hsk2_6_jiejie", "hanzi": "姐姐", "pinyin": "jiějie", "pos": "n.", "english": "elder sister" }
+        { "id": "hsk2_6_youyong", "hanzi": "游泳", "pinyin": "yóu yǒng", "pos": "v.", "english": "to swim" },
+        { "id": "hsk2_6_gongjin", "hanzi": "公斤", "pinyin": "gōngjīn", "pos": "m.", "english": "kilogram" }
+      ],
+      "properNouns": [
+        { "id": "hsk2_6_pn_make_3", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark" }
       ]
     }
   ],
@@ -86,77 +114,173 @@
     {
       "id": "hsk2_6_g_zenme",
       "number": 1,
-      "title": { "hanzi": "疑问代词\"怎么\"", "english": "The Interrogative Pronoun \"怎么\"" },
+      "title": { "hanzi": "疑问代词“怎么”：问原因", "english": "怎么 Asking \"How Come?\"" },
       "explanation": {
-        "hanzi": "用\"怎么+动词/形容词\"询问事情的原因,多表示奇怪、惊讶的语气。",
-        "english": "The structure \"怎么 + verb/adjective\" asks about the reason for something, often expressing surprise or astonishment."
+        "hanzi": "在HSK 1里，“怎么 + 动词”问方法，比如“这个字怎么读？”。“怎么”也可以问原因，意思和“为什么”差不多，可是常常表示说话人觉得奇怪、没想到。“怎么”放在主语后面、动词或形容词前面，比如“你怎么不吃了？”。",
+        "english": "You already know 怎么 + verb asking HOW to do something (这个字怎么读?). 怎么 can also ask WHY — like 为什么, but with a note of surprise: \"How come …?\" The speaker has noticed something unexpected. It goes after the subject and before the verb or adjective, and often comes with 不 / 没 / 还 / 这么: 你怎么不吃了? (How come you've stopped eating?), 他怎么还没来? (Why isn't he here yet?). Use 为什么 for a neutral question about reasons; use 怎么 when you're surprised."
       },
+      "examples": [
+        { "hanzi": "你怎么天天打篮球？", "pinyin": "Nǐ zěnme tiāntiān dǎ lánqiú?", "english": "How come you play basketball every day?" },
+        { "hanzi": "他怎么还没来？", "pinyin": "Tā zěnme hái méi lái?", "english": "How come he's not here yet?" },
+        { "hanzi": "今天怎么这么冷？", "pinyin": "Jīntiān zěnme zhème lěng?", "english": "Why is it so cold today?" },
+        { "hanzi": "你怎么不喝咖啡了？", "pinyin": "Nǐ zěnme bù hē kāfēi le?", "english": "How come you've stopped drinking coffee?" }
+      ],
       "patternTable": {
-        "columns": ["Subject", "怎么", "Verb/Adj (Predicate)"],
+        "columns": ["Subject", "怎么", "(不 / 没 / 还) + Verb / Adjective"],
         "rows": [
-          ["你",       "怎么", "不高兴?"],
-          ["今天",     "怎么", "这么热?"],
-          ["昨天你们", "怎么", "都没去打篮球?"]
+          ["你", "怎么", "不吃了？"],
+          ["他", "怎么", "还没来？"],
+          ["今天", "怎么", "这么冷？"],
+          ["你", "怎么", "天天打篮球？"]
         ]
       }
     },
     {
       "id": "hsk2_6_g_reduplicate_m",
       "number": 2,
-      "title": { "hanzi": "量词的重叠", "english": "Reduplication of Measure Words" },
+      "title": { "hanzi": "量词重叠：天天、个个", "english": "Reduplicated Measure Words: \"Every\" (天天, 个个)" },
       "explanation": {
-        "hanzi": "量词重叠后表示\"每一\"的意思,常用来强调在某个范围内的每个成员都具有某种特征,后面一般用\"都\"。",
-        "english": "A reduplicated measure word means \"every/each\", emphasizing that every member of a group shares a feature. It's usually followed by \"都\"."
+        "hanzi": "有的量词和名词可以说两次，表示“每一……”，比如“天天”就是“每天”，“个个”就是“每个”，“件件”就是“每件”。后面常常有“都”。",
+        "english": "Say certain measure words (or time words) twice and they mean \"every one, without exception\": 天天 = 每天 \"every day\", 个个 = 每个 \"every one\", 件件 = 每件 \"every piece\", 人人 \"everyone\", 年年 \"every year\". The doubled word usually comes before the verb and is followed by 都. It sounds a little livelier than 每…… . Note: it can't be followed by a noun — say 个个都很大, not 个个苹果."
       },
+      "examples": [
+        { "hanzi": "马克天天都去打篮球。", "pinyin": "Mǎkè tiāntiān dōu qù dǎ lánqiú.", "english": "Mark goes to play basketball every day." },
+        { "hanzi": "这些苹果个个都很大。", "pinyin": "Zhèxiē píngguǒ gège dōu hěn dà.", "english": "Every one of these apples is big." },
+        { "hanzi": "她的衣服件件都很漂亮。", "pinyin": "Tā de yīfu jiànjiàn dōu hěn piàoliang.", "english": "Every one of her clothes is beautiful." },
+        { "hanzi": "这儿的羊肉面条人人都说好吃。", "pinyin": "Zhèr de yángròu miàntiáo rénrén dōu shuō hǎochī.", "english": "Everyone says the lamb noodles here are delicious." }
+      ],
       "patternTable": {
-        "columns": ["Subject", "AA", "都……"],
+        "columns": ["Measure word", "Doubled", "Example"],
         "rows": [
-          ["同学们",           "个个", "都很高兴。"],
-          ["这个商店的衣服",   "件件", "都很漂亮。"],
-          ["这个星期(我)",     "天天", "都吃羊肉。"]
+          ["天", "天天", "我天天都喝茶。"],
+          ["个", "个个", "我的同学个个都会说汉语。"],
+          ["件", "件件", "这些衣服件件都不错。"],
+          ["人", "人人", "人人都喜欢她。"]
         ]
       }
     },
     {
       "id": "hsk2_6_g_yinwei_suoyi",
       "number": 3,
-      "title": { "hanzi": "关联词\"因为……,所以……\"", "english": "The Pair of Conjunctions \"因为……,所以……\"" },
+      "title": { "hanzi": "“因为……，所以……”", "english": "因为……，所以……: \"Because …, (so) …\"" },
       "explanation": {
-        "hanzi": "连接两个表示因果关系的分句,前一分句表示原因,后一分句表示结果。使用时可以成对出现,也可以省略其中一个。",
-        "english": "These conjunctions link two clauses in a cause-and-effect relation. The first clause is the cause; the second is the result. They may be used together or one of them omitted."
+        "hanzi": "“因为”说原因，“所以”说结果。原因在前面，结果在后面。“因为”和“所以”可以一起用，也可以只用一个。",
+        "english": "因为 introduces the cause and 所以 introduces the result. In Chinese the cause normally comes first and the result second. Unlike English, it's perfectly natural to use both words in the same sentence (因为……，所以……). You can also drop one of them: 因为下雨了，我们不去了 / 下雨了，所以我们不去了. When the reason comes second, use only 因为: 我今天没去学校，因为我生病了."
       },
+      "examples": [
+        { "hanzi": "因为下雨了，所以我们不去打篮球了。", "pinyin": "Yīnwèi xià yǔ le, suǒyǐ wǒmen bú qù dǎ lánqiú le.", "english": "It's raining, so we're not going to play basketball." },
+        { "hanzi": "因为他经常游泳，所以身体很好。", "pinyin": "Yīnwèi tā jīngcháng yóu yǒng, suǒyǐ shēntǐ hěn hǎo.", "english": "He swims a lot, so he's very fit." },
+        { "hanzi": "因为这个饭店的鱼很好吃，所以人很多。", "pinyin": "Yīnwèi zhège fàndiàn de yú hěn hǎochī, suǒyǐ rén hěn duō.", "english": "The fish at this restaurant is delicious, so it's always busy." },
+        { "hanzi": "我今天没去学校，因为我生病了。", "pinyin": "Wǒ jīntiān méi qù xuéxiào, yīnwèi wǒ shēng bìng le.", "english": "I didn't go to school today because I was ill." }
+      ],
       "patternTable": {
-        "columns": ["因为……,", "所以……"],
+        "columns": ["因为", "Cause", "所以", "Result"],
         "rows": [
-          ["因为她生病了,",         "所以没去学校。"],
-          ["因为他每天跑步,",       "所以身体很好。"],
-          ["因为昨天下雨,",         "所以我们都没去(打篮球)。"]
+          ["因为", "下雨了", "所以", "我们在家"],
+          ["因为", "他天天运动", "所以", "身体很好"],
+          ["因为", "面条太多了", "所以", "我不吃了"]
         ]
       }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。第四段课文请一个人读给大家听。",
+        "english": "In pairs, read dialogues 1–3 aloud, taking turns with each role. One student reads text 4 to the class."
+      }
+    },
+    {
+      "number": 2,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用“怎么、因为、所以、经常、天天、公斤”填空。",
+        "english": "Fill in the blanks with 怎么, 因为, 所以, 经常, 天天 or 公斤."
+      },
       "items": [
-        { "hanzi": "小王今天来学校了吗?",       "pinyin": "Xiǎo Wáng jīntiān lái xuéxiào le ma?" },
-        { "hanzi": "他看见小王了没有?",         "pinyin": "Tā kànjiàn Xiǎo Wáng le méiyǒu?" },
-        { "hanzi": "为什么他今天不想吃羊肉?",   "pinyin": "Wèi shénme tā jīntiān bù xiǎng chī yángròu?" },
-        { "hanzi": "为什么昨天他们都没去打篮球?","pinyin": "Wèi shénme zuótiān tāmen dōu méi qù dǎ lánqiú?" },
-        { "hanzi": "小张为什么去北京?",          "pinyin": "Xiǎo Zhāng wèi shénme qù Běijīng?" }
+        { "hanzi": "你____不喝茶了？", "english": "How come you've stopped drinking tea?", "blank": "怎么" },
+        { "hanzi": "____今天下雨，所以我们不去游泳了。", "english": "Because it's raining today, we won't go swimming.", "blank": "因为" },
+        { "hanzi": "因为他很喜欢吃面条，____他天天都吃。", "english": "He loves noodles, so he eats them every day.", "blank": "所以" },
+        { "hanzi": "王明____和朋友一起打篮球。", "english": "Wang Ming often plays basketball with friends.", "blank": "经常" },
+        { "hanzi": "我____都喝两杯咖啡。", "english": "I drink two cups of coffee every day.", "blank": "天天" },
+        { "hanzi": "这些苹果有3____。", "english": "These apples weigh 3 kilos.", "blank": "公斤" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据课文回答问题。",
+        "english": "Answer the questions based on the texts."
+      },
+      "items": [
+        { "hanzi": "那个饭店什么面条最好吃？", "pinyin": "Nàge fàndiàn shénme miàntiáo zuì hǎochī?", "english": "Which noodles are best at that restaurant?" },
+        { "hanzi": "马克为什么不吃了？", "pinyin": "Mǎkè wèi shénme bù chī le?", "english": "Why did Mark stop eating?" },
+        { "hanzi": "马克一个星期打几天篮球？", "pinyin": "Mǎkè yí ge xīngqī dǎ jǐ tiān lánqiú?", "english": "How many days a week does Mark play basketball?" },
+        { "hanzi": "门外的自行车是谁的？", "pinyin": "Mén wài de zìxíngchē shì shéi de?", "english": "Whose is the bike outside the gate?" },
+        { "hanzi": "马克现在多少公斤？", "pinyin": "Mǎkè xiànzài duōshao gōngjīn?", "english": "How much does Mark weigh now?" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据实际情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
+      "items": [
+        { "hanzi": "你经常做什么运动？", "pinyin": "Nǐ jīngcháng zuò shénme yùndòng?", "english": "What sport do you do often?" },
+        { "hanzi": "你会游泳吗？会打篮球吗？", "pinyin": "Nǐ huì yóu yǒng ma? Huì dǎ lánqiú ma?", "english": "Can you swim? Can you play basketball?" },
+        { "hanzi": "你喜欢吃面条吗？为什么？", "pinyin": "Nǐ xǐhuan chī miàntiáo ma? Wèi shénme?", "english": "Do you like noodles? Why (not)?" },
+        { "hanzi": "你天天都做什么？", "pinyin": "Nǐ tiāntiān dōu zuò shénme?", "english": "What do you do every day?" }
       ]
     }
   ],
   "characters": {
     "singleComponentChars": [
-      { "id": "hsk2_6_c_men",  "hanzi": "门", "pinyin": "mén",  "meaning": "door, gate","etymology": "\"门\" originally referred to the two panels of a door at the entrance of a house, which can open and close.","strokeCount": 3 },
-      { "id": "hsk2_6_c_yang", "hanzi": "羊", "pinyin": "yáng", "meaning": "sheep",     "etymology": "The original form of \"羊\" looks like a sheep's head facing forward. It means \"sheep\".",                          "strokeCount": 6 }
+      {
+        "id": "hsk2_6_c_men",
+        "hanzi": "门",
+        "pinyin": "mén",
+        "meaning": "door, gate",
+        "etymology": "The traditional form 門 is a clear picture of a double door with two swinging leaves. The simplified form keeps the outline: a dot for the top of the left leaf and a frame with a hook for the right.",
+        "strokeCount": 3
+      },
+      {
+        "id": "hsk2_6_c_yang",
+        "hanzi": "羊",
+        "pinyin": "yáng",
+        "meaning": "sheep, goat",
+        "etymology": "A front view of a sheep's head: the two dots at the top are curling horns, the horizontal lines are the face and ears, and the long vertical stroke runs down the middle of the head.",
+        "strokeCount": 6
+      }
     ],
     "radicals": [
-      { "hanzi": "犭", "pinyin": "fǎn quǎn páng", "english": "dog (related to animals)",                   "examples": ["猫 māo (cat)", "狗 gǒu (dog)"] },
-      { "hanzi": "心", "pinyin": "xīn zì dǐ",     "english": "heart (related to mental activity, emotions)","examples": ["想 xiǎng (to think)", "念 niàn (to miss)"] }
+      {
+        "hanzi": "犭",
+        "pinyin": "fǎnquǎnpáng",
+        "english": "dog radical (animals, especially four-legged ones)",
+        "examples": ["狗", "猫", "猪", "狮"]
+      },
+      {
+        "hanzi": "心",
+        "pinyin": "xīnzìdǐ",
+        "english": "heart radical at the bottom (thoughts and feelings)",
+        "examples": ["想", "您", "思", "意", "忘"]
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "小组活动：问问同学喜欢吃什么、经常做什么运动，然后说说为什么。",
+      "english": "Group activity: find out what your classmates like to eat and what sport they do — and why."
+    },
+    "activities": [
+      "Survey: ask three classmates 你经常做什么运动？ 一个星期几天？ and 你最喜欢吃什么？ Report back with 因为……，所以…… .",
+      "Surprise questions: one person mimes something unexpected (not eating, yawning, carrying a basketball). The others ask 你怎么……？ and the mimer answers with 因为…… .",
+      "Every-day habits: take turns saying one thing you do 天天 and one thing your family members 个个都…… (e.g. 我的家人个个都喜欢吃面条)."
     ]
   }
 }

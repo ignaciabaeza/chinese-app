@@ -2,80 +2,289 @@
   "id": "hsk1-11",
   "level": 1,
   "number": 11,
-  "title": { "hanzi": "现在几点？", "pinyin": "Xiànzài jǐ diǎn?", "english": "What time is it now?" },
+  "title": {
+    "hanzi": "我们中午12点吃饭",
+    "pinyin": "Wǒmen zhōngwǔ shí'èr diǎn chī fàn",
+    "english": "We'll have lunch at twelve"
+  },
   "theme": "Time",
   "warmUp": {
-    "instruction": { "hanzi": "读一读下面的时间和短语", "english": "Read the following times and phrases aloud." },
+    "instruction": {
+      "hanzi": "读一读下面的时间和短语",
+      "english": "Read the following times and phrases aloud."
+    },
     "items": [
-      { "hanzi": "现在", "pinyin": "xiànzài", "english": "now" },
-      { "hanzi": "8点", "pinyin": "bā diǎn", "english": "8 o'clock" },
-      { "hanzi": "10点30分", "pinyin": "shí diǎn sānshí fēn", "english": "10:30" },
-      { "hanzi": "中午", "pinyin": "zhōngwǔ", "english": "noon" },
-      { "hanzi": "吃饭", "pinyin": "chī fàn", "english": "to have a meal" },
-      { "hanzi": "看电影", "pinyin": "kàn diànyǐng", "english": "to watch a film" },
-      { "hanzi": "回家", "pinyin": "huí jiā", "english": "to go home" },
-      { "hanzi": "三天前", "pinyin": "sān tiān qián", "english": "three days ago" }
+      {
+        "hanzi": "现在",
+        "pinyin": "xiànzài",
+        "english": "now"
+      },
+      {
+        "hanzi": "8点",
+        "pinyin": "bā diǎn",
+        "english": "8 o'clock"
+      },
+      {
+        "hanzi": "10点30分",
+        "pinyin": "shí diǎn sānshí fēn",
+        "english": "10:30"
+      },
+      {
+        "hanzi": "中午",
+        "pinyin": "zhōngwǔ",
+        "english": "noon"
+      },
+      {
+        "hanzi": "吃饭",
+        "pinyin": "chī fàn",
+        "english": "to have a meal"
+      },
+      {
+        "hanzi": "看电影",
+        "pinyin": "kàn diànyǐng",
+        "english": "to watch a film"
+      },
+      {
+        "hanzi": "回家",
+        "pinyin": "huí jiā",
+        "english": "to go home"
+      },
+      {
+        "hanzi": "三天前",
+        "pinyin": "sān tiān qián",
+        "english": "three days ago"
+      }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在教室", "english": "In the classroom" },
+      "title": {
+        "hanzi": "在教室",
+        "english": "In the classroom"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "王明，现在几点？", "pinyin": "Wáng Míng, xiànzài jǐ diǎn?", "english": "Wang Ming, what time is it?" },
-        { "speaker": "B", "hanzi": "现在11点40分。", "pinyin": "Xiànzài shíyī diǎn sìshí fēn.", "english": "It's 11:40." },
-        { "speaker": "A", "hanzi": "我们中午12点吃饭，好吗？", "pinyin": "Wǒmen zhōngwǔ shí'èr diǎn chī fàn, hǎo ma?", "english": "Shall we eat at twelve, at noon?" },
-        { "speaker": "B", "hanzi": "好。我们去哪儿吃饭？", "pinyin": "Hǎo. Wǒmen qù nǎr chī fàn?", "english": "OK. Where shall we go to eat?" },
-        { "speaker": "A", "hanzi": "学校后面。那儿的菜很好吃。", "pinyin": "Xuéxiào hòumiàn. Nàr de cài hěn hǎochī.", "english": "Behind the school. The food there is really good." }
+        {
+          "speaker": "A",
+          "hanzi": "王明，现在几点？",
+          "pinyin": "Wáng Míng, xiànzài jǐ diǎn?",
+          "english": "Wang Ming, what time is it?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "现在11点40分。",
+          "pinyin": "Xiànzài shíyī diǎn sìshí fēn.",
+          "english": "It's 11:40."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我们中午12点吃饭，好吗？",
+          "pinyin": "Wǒmen zhōngwǔ shí'èr diǎn chī fàn, hǎo ma?",
+          "english": "Shall we eat at twelve, at noon?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好。我们去哪儿吃饭？",
+          "pinyin": "Hǎo. Wǒmen qù nǎr chī fàn?",
+          "english": "OK. Where shall we go to eat?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "学校后面。那儿的菜很好吃。",
+          "pinyin": "Xuéxiào hòumiàn. Nàr de cài hěn hǎochī.",
+          "english": "Behind the school. The food there is really good."
+        }
       ],
       "newWords": [
-        { "id": "hsk1_11_xianzai", "hanzi": "现在", "pinyin": "xiànzài", "pos": "n.", "english": "now" },
-        { "id": "hsk1_11_dian", "hanzi": "点", "pinyin": "diǎn", "pos": "m.", "english": "o'clock" },
-        { "id": "hsk1_11_fen", "hanzi": "分", "pinyin": "fēn", "pos": "m.", "english": "minute" },
-        { "id": "hsk1_11_women", "hanzi": "我们", "pinyin": "wǒmen", "pos": "pron.", "english": "we, us" },
-        { "id": "hsk1_11_zhongwu", "hanzi": "中午", "pinyin": "zhōngwǔ", "pos": "n.", "english": "noon" },
-        { "id": "hsk1_11_chifan", "hanzi": "吃饭", "pinyin": "chī fàn", "pos": "v.", "english": "to eat a meal" }
+        {
+          "id": "hsk1_11_xianzai",
+          "hanzi": "现在",
+          "pinyin": "xiànzài",
+          "pos": "n.",
+          "english": "now"
+        },
+        {
+          "id": "hsk1_11_dian",
+          "hanzi": "点",
+          "pinyin": "diǎn",
+          "pos": "m.",
+          "english": "o'clock"
+        },
+        {
+          "id": "hsk1_11_fen",
+          "hanzi": "分",
+          "pinyin": "fēn",
+          "pos": "m.",
+          "english": "minute"
+        },
+        {
+          "id": "hsk1_11_women",
+          "hanzi": "我们",
+          "pinyin": "wǒmen",
+          "pos": "pron.",
+          "english": "we, us"
+        },
+        {
+          "id": "hsk1_11_zhongwu",
+          "hanzi": "中午",
+          "pinyin": "zhōngwǔ",
+          "pos": "n.",
+          "english": "noon"
+        },
+        {
+          "id": "hsk1_11_chifan",
+          "hanzi": "吃饭",
+          "pinyin": "chī fàn",
+          "pos": "v.",
+          "english": "to eat a meal"
+        }
       ],
       "properNouns": [
-        { "id": "hsk1_11_pn_wangming", "hanzi": "王明", "pinyin": "Wáng Míng", "english": "Wang Ming (a Chinese university student)" }
+        {
+          "id": "hsk1_11_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming (a Chinese university student)"
+        }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在学校门口", "english": "At the school gate" },
+      "title": {
+        "hanzi": "在学校门口",
+        "english": "At the school gate"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "安娜，你什么时候回家？", "pinyin": "Ānnà, nǐ shénme shíhou huí jiā?", "english": "Anna, when are you going home?" },
-        { "speaker": "B", "hanzi": "下午5点。你呢？", "pinyin": "Xiàwǔ wǔ diǎn. Nǐ ne?", "english": "At five this afternoon. And you?" },
-        { "speaker": "A", "hanzi": "我想去看电影。", "pinyin": "Wǒ xiǎng qù kàn diànyǐng.", "english": "I'd like to go and see a film." },
-        { "speaker": "B", "hanzi": "几点的电影？", "pinyin": "Jǐ diǎn de diànyǐng?", "english": "What time is the film?" },
-        { "speaker": "A", "hanzi": "7点20分的。你想去吗？", "pinyin": "Qī diǎn èrshí fēn de. Nǐ xiǎng qù ma?", "english": "The 7:20 one. Do you want to come?" },
-        { "speaker": "B", "hanzi": "想！我们6点50分在学校前面见。", "pinyin": "Xiǎng! Wǒmen liù diǎn wǔshí fēn zài xuéxiào qiánmiàn jiàn.", "english": "Yes! Let's meet in front of the school at 6:50." }
+        {
+          "speaker": "A",
+          "hanzi": "安娜，你什么时候回家？",
+          "pinyin": "Ānnà, nǐ shénme shíhou huí jiā?",
+          "english": "Anna, when are you going home?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "下午5点。你呢？",
+          "pinyin": "Xiàwǔ wǔ diǎn. Nǐ ne?",
+          "english": "At five this afternoon. And you?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我想去看电影。",
+          "pinyin": "Wǒ xiǎng qù kàn diànyǐng.",
+          "english": "I'd like to go and see a film."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "几点的电影？",
+          "pinyin": "Jǐ diǎn de diànyǐng?",
+          "english": "What time is the film?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "7点20分的。你想去吗？",
+          "pinyin": "Qī diǎn èrshí fēn de. Nǐ xiǎng qù ma?",
+          "english": "The 7:20 one. Do you want to come?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "想！我们6点50分在学校前面见。",
+          "pinyin": "Xiǎng! Wǒmen liù diǎn wǔshí fēn zài xuéxiào qiánmiàn jiàn.",
+          "english": "Yes! Let's meet in front of the school at 6:50."
+        }
       ],
       "newWords": [
-        { "id": "hsk1_11_shihou", "hanzi": "时候", "pinyin": "shíhou", "pos": "n.", "english": "time, moment" },
-        { "id": "hsk1_11_hui", "hanzi": "回", "pinyin": "huí", "pos": "v.", "english": "to return, to go back" },
-        { "id": "hsk1_11_dianying", "hanzi": "电影", "pinyin": "diànyǐng", "pos": "n.", "english": "film, movie" }
+        {
+          "id": "hsk1_11_shihou",
+          "hanzi": "时候",
+          "pinyin": "shíhou",
+          "pos": "n.",
+          "english": "time, moment"
+        },
+        {
+          "id": "hsk1_11_hui",
+          "hanzi": "回",
+          "pinyin": "huí",
+          "pos": "v.",
+          "english": "to return, to go back"
+        },
+        {
+          "id": "hsk1_11_dianying",
+          "hanzi": "电影",
+          "pinyin": "diànyǐng",
+          "pos": "n.",
+          "english": "film, movie"
+        }
       ],
       "properNouns": [
-        { "id": "hsk1_11_pn_anna", "hanzi": "安娜", "pinyin": "Ānnà", "english": "Anna (a student of Chinese)" }
+        {
+          "id": "hsk1_11_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna (a student of Chinese)"
+        }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在老师的办公室", "english": "In the teacher's office" },
+      "title": {
+        "hanzi": "在老师的办公室",
+        "english": "In the teacher's office"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "马克，你现在住在哪儿？", "pinyin": "Mǎkè, nǐ xiànzài zhù zài nǎr?", "english": "Mark, where are you living now?" },
-        { "speaker": "B", "hanzi": "我住在学校里。三个月前，我住在朋友家。", "pinyin": "Wǒ zhù zài xuéxiào li. Sān ge yuè qián, wǒ zhù zài péngyou jiā.", "english": "I live on campus. Three months ago I was living at a friend's place." },
-        { "speaker": "A", "hanzi": "你朋友是哪国人？", "pinyin": "Nǐ péngyou shì nǎ guó rén?", "english": "Where is your friend from?" },
-        { "speaker": "B", "hanzi": "他是中国人，是北京人。", "pinyin": "Tā shì Zhōngguó rén, shì Běijīng rén.", "english": "He's Chinese — from Beijing." }
+        {
+          "speaker": "A",
+          "hanzi": "马克，你现在住在哪儿？",
+          "pinyin": "Mǎkè, nǐ xiànzài zhù zài nǎr?",
+          "english": "Mark, where are you living now?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "我住在学校里。三个月前，我住在朋友家。",
+          "pinyin": "Wǒ zhù zài xuéxiào li. Sān ge yuè qián, wǒ zhù zài péngyou jiā.",
+          "english": "I live on campus. Three months ago I was living at a friend's place."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你朋友是哪国人？",
+          "pinyin": "Nǐ péngyou shì nǎ guó rén?",
+          "english": "Where is your friend from?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "他是中国人，是北京人。",
+          "pinyin": "Tā shì Zhōngguó rén, shì Běijīng rén.",
+          "english": "He's Chinese — from Beijing."
+        }
       ],
       "newWords": [
-        { "id": "hsk1_11_zhu", "hanzi": "住", "pinyin": "zhù", "pos": "v.", "english": "to live, to stay" },
-        { "id": "hsk1_11_qian", "hanzi": "前", "pinyin": "qián", "pos": "n.", "english": "before, ago" }
+        {
+          "id": "hsk1_11_zhu",
+          "hanzi": "住",
+          "pinyin": "zhù",
+          "pos": "v.",
+          "english": "to live, to stay"
+        },
+        {
+          "id": "hsk1_11_qian",
+          "hanzi": "前",
+          "pinyin": "qián",
+          "pos": "n.",
+          "english": "before, ago"
+        }
       ],
       "properNouns": [
-        { "id": "hsk1_11_pn_make", "hanzi": "马克", "pinyin": "Mǎkè", "english": "Mark (a student of Chinese)" },
-        { "id": "hsk1_11_pn_beijing", "hanzi": "北京", "pinyin": "Běijīng", "english": "Beijing, capital of China" }
+        {
+          "id": "hsk1_11_pn_make",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark (a student of Chinese)"
+        },
+        {
+          "id": "hsk1_11_pn_beijing",
+          "hanzi": "北京",
+          "pinyin": "Běijīng",
+          "english": "Beijing, capital of China"
+        }
       ]
     }
   ],
@@ -83,63 +292,160 @@
     {
       "id": "hsk1_11_g_telling_time",
       "number": 1,
-      "title": { "hanzi": "时间的表达", "english": "Telling the Time" },
+      "title": {
+        "hanzi": "时间的表达",
+        "english": "Telling the Time"
+      },
       "explanation": {
         "hanzi": "说时间用\"……点……分\"。问时间用\"几点\"：现在几点？两点说\"两点\"，不说\"二点\"。",
         "english": "Hours are counted with 点 (o'clock) and minutes with 分: 8点15分 = bā diǎn shíwǔ fēn (8:15). To ask the time, say 现在几点? Note that 2 o'clock is 两点 liǎng diǎn, not 二点. On the hour you can stop after 点: 9点 (9:00)."
       },
       "examples": [
-        { "hanzi": "现在几点？", "pinyin": "Xiànzài jǐ diǎn?", "english": "What time is it now?" },
-        { "hanzi": "现在8点。", "pinyin": "Xiànzài bā diǎn.", "english": "It's 8 o'clock." },
-        { "hanzi": "现在10点15分。", "pinyin": "Xiànzài shí diǎn shíwǔ fēn.", "english": "It's 10:15." },
-        { "hanzi": "电影几点？", "pinyin": "Diànyǐng jǐ diǎn?", "english": "What time is the film?" }
+        {
+          "hanzi": "现在几点？",
+          "pinyin": "Xiànzài jǐ diǎn?",
+          "english": "What time is it now?"
+        },
+        {
+          "hanzi": "现在8点。",
+          "pinyin": "Xiànzài bā diǎn.",
+          "english": "It's 8 o'clock."
+        },
+        {
+          "hanzi": "现在10点15分。",
+          "pinyin": "Xiànzài shí diǎn shíwǔ fēn.",
+          "english": "It's 10:15."
+        },
+        {
+          "hanzi": "电影几点？",
+          "pinyin": "Diànyǐng jǐ diǎn?",
+          "english": "What time is the film?"
+        }
       ],
       "patternTable": {
-        "columns": ["时间 (time)", "汉字 (hanzi)", "拼音 (pinyin)"],
+        "columns": [
+          "时间 (time)",
+          "汉字 (hanzi)",
+          "拼音 (pinyin)"
+        ],
         "rows": [
-          ["8:00", "8点", "bā diǎn"],
-          ["2:00", "2点", "liǎng diǎn"],
-          ["9:30", "9点30分", "jiǔ diǎn sānshí fēn"],
-          ["12:45", "12点45分", "shí'èr diǎn sìshíwǔ fēn"]
+          [
+            "8:00",
+            "8点",
+            "bā diǎn"
+          ],
+          [
+            "2:00",
+            "2点",
+            "liǎng diǎn"
+          ],
+          [
+            "9:30",
+            "9点30分",
+            "jiǔ diǎn sānshí fēn"
+          ],
+          [
+            "12:45",
+            "12点45分",
+            "shí'èr diǎn sìshíwǔ fēn"
+          ]
         ]
       }
     },
     {
       "id": "hsk1_11_g_time_adverbial",
       "number": 2,
-      "title": { "hanzi": "时间词作状语", "english": "Time Words Before the Verb" },
+      "title": {
+        "hanzi": "时间词作状语",
+        "english": "Time Words Before the Verb"
+      },
       "explanation": {
         "hanzi": "表示时间的词语要放在动词前面，可以放在主语后面，也可以放在句子开头，但不能放在句子最后。",
         "english": "In Chinese, \"when\" comes before \"what you do\". A time word goes either right after the subject or at the very start of the sentence — never at the end as in English. 我们中午12点吃饭 and 中午12点我们吃饭 are both correct; *我们吃饭中午12点 is wrong."
       },
       "examples": [
-        { "hanzi": "我们中午12点吃饭。", "pinyin": "Wǒmen zhōngwǔ shí'èr diǎn chī fàn.", "english": "We eat at 12 noon." },
-        { "hanzi": "明天下午我去商店。", "pinyin": "Míngtiān xiàwǔ wǒ qù shāngdiàn.", "english": "I'm going to the shop tomorrow afternoon." },
-        { "hanzi": "她星期六看电影。", "pinyin": "Tā xīngqīliù kàn diànyǐng.", "english": "She's watching a film on Saturday." },
-        { "hanzi": "你几点回家？", "pinyin": "Nǐ jǐ diǎn huí jiā?", "english": "What time are you going home?" }
+        {
+          "hanzi": "我们中午12点吃饭。",
+          "pinyin": "Wǒmen zhōngwǔ shí'èr diǎn chī fàn.",
+          "english": "We eat at 12 noon."
+        },
+        {
+          "hanzi": "明天下午我去商店。",
+          "pinyin": "Míngtiān xiàwǔ wǒ qù shāngdiàn.",
+          "english": "I'm going to the shop tomorrow afternoon."
+        },
+        {
+          "hanzi": "她星期六看电影。",
+          "pinyin": "Tā xīngqīliù kàn diànyǐng.",
+          "english": "She's watching a film on Saturday."
+        },
+        {
+          "hanzi": "你几点回家？",
+          "pinyin": "Nǐ jǐ diǎn huí jiā?",
+          "english": "What time are you going home?"
+        }
       ],
       "patternTable": {
-        "columns": ["时间 (time)", "主语 (subject)", "时间 (time)", "动词 (verb phrase)"],
+        "columns": [
+          "时间 (time)",
+          "主语 (subject)",
+          "时间 (time)",
+          "动词 (verb phrase)"
+        ],
         "rows": [
-          ["", "我们", "中午12点", "吃饭"],
-          ["中午12点", "我们", "", "吃饭"],
-          ["", "他", "明天", "回北京"]
+          [
+            "",
+            "我们",
+            "中午12点",
+            "吃饭"
+          ],
+          [
+            "中午12点",
+            "我们",
+            "",
+            "吃饭"
+          ],
+          [
+            "",
+            "他",
+            "明天",
+            "回北京"
+          ]
         ]
       }
     },
     {
       "id": "hsk1_11_g_qian",
       "number": 3,
-      "title": { "hanzi": "\"前\"表示时间", "english": "\"前\" Meaning \"Before\" or \"Ago\"" },
+      "title": {
+        "hanzi": "\"前\"表示时间",
+        "english": "\"前\" Meaning \"Before\" or \"Ago\""
+      },
       "explanation": {
         "hanzi": "\"前\"放在时间段或动作后面：\"数量 + 时间 + 前\"表示\"……以前\"（三天前）；\"动词短语 + 前\"表示做这件事以前（吃饭前）。",
         "english": "前 comes after the expression it modifies — the opposite of English. Number + time unit + 前 means \"... ago\": 三天前 (three days ago). Verb phrase + 前 means \"before doing ...\": 吃饭前 (before eating)."
       },
       "examples": [
-        { "hanzi": "三天前，她在北京。", "pinyin": "Sān tiān qián, tā zài Běijīng.", "english": "Three days ago she was in Beijing." },
-        { "hanzi": "五年前，我是学生。", "pinyin": "Wǔ nián qián, wǒ shì xuésheng.", "english": "Five years ago I was a student." },
-        { "hanzi": "吃饭前，我们喝茶。", "pinyin": "Chī fàn qián, wǒmen hē chá.", "english": "Before the meal, we drink tea." },
-        { "hanzi": "回家前，我去商店买杯子。", "pinyin": "Huí jiā qián, wǒ qù shāngdiàn mǎi bēizi.", "english": "Before going home, I'm going to the shop to buy a cup." }
+        {
+          "hanzi": "三天前，她在北京。",
+          "pinyin": "Sān tiān qián, tā zài Běijīng.",
+          "english": "Three days ago she was in Beijing."
+        },
+        {
+          "hanzi": "五年前，我是学生。",
+          "pinyin": "Wǔ nián qián, wǒ shì xuésheng.",
+          "english": "Five years ago I was a student."
+        },
+        {
+          "hanzi": "吃饭前，我们喝茶。",
+          "pinyin": "Chī fàn qián, wǒmen hē chá.",
+          "english": "Before the meal, we drink tea."
+        },
+        {
+          "hanzi": "回家前，我去商店买杯子。",
+          "pinyin": "Huí jiā qián, wǒ qù shāngdiàn mǎi bēizi.",
+          "english": "Before going home, I'm going to the shop to buy a cup."
+        }
       ]
     }
   ],
@@ -147,41 +453,109 @@
     {
       "number": 1,
       "type": "role_play",
-      "prompt": { "hanzi": "两人一组，分角色读课文。", "english": "In pairs, read the dialogues aloud, taking a role each." }
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。",
+        "english": "In pairs, read the dialogues aloud, taking a role each."
+      }
     },
     {
       "number": 2,
       "type": "answer_questions",
-      "prompt": { "hanzi": "根据你的情况回答问题。", "english": "Answer the questions about yourself." },
+      "prompt": {
+        "hanzi": "根据你的情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
       "items": [
-        { "hanzi": "现在几点？", "pinyin": "Xiànzài jǐ diǎn?", "english": "What time is it now?" },
-        { "hanzi": "你中午几点吃饭？", "pinyin": "Nǐ zhōngwǔ jǐ diǎn chī fàn?", "english": "What time do you have lunch?" },
-        { "hanzi": "你住在哪儿？", "pinyin": "Nǐ zhù zài nǎr?", "english": "Where do you live?" },
-        { "hanzi": "你今天什么时候回家？", "pinyin": "Nǐ jīntiān shénme shíhou huí jiā?", "english": "When are you going home today?" },
-        { "hanzi": "你星期几看电影？", "pinyin": "Nǐ xīngqī jǐ kàn diànyǐng?", "english": "On what day do you watch films?" }
+        {
+          "hanzi": "现在几点？",
+          "pinyin": "Xiànzài jǐ diǎn?",
+          "english": "What time is it now?"
+        },
+        {
+          "hanzi": "你中午几点吃饭？",
+          "pinyin": "Nǐ zhōngwǔ jǐ diǎn chī fàn?",
+          "english": "What time do you have lunch?"
+        },
+        {
+          "hanzi": "你住在哪儿？",
+          "pinyin": "Nǐ zhù zài nǎr?",
+          "english": "Where do you live?"
+        },
+        {
+          "hanzi": "你今天什么时候回家？",
+          "pinyin": "Nǐ jīntiān shénme shíhou huí jiā?",
+          "english": "When are you going home today?"
+        },
+        {
+          "hanzi": "你星期几看电影？",
+          "pinyin": "Nǐ xīngqī jǐ kàn diànyǐng?",
+          "english": "On what day do you watch films?"
+        }
       ]
     },
     {
       "number": 3,
       "type": "fill_blanks",
-      "prompt": { "hanzi": "选词填空：分、中午、前、时候、住", "english": "Fill in the blanks with 分, 中午, 前, 时候 or 住." },
+      "prompt": {
+        "hanzi": "选词填空：分、中午、前、时候、住",
+        "english": "Fill in the blanks with 分, 中午, 前, 时候 or 住."
+      },
       "items": [
-        { "hanzi": "现在8点10____。", "english": "It's 8:10 now.", "blank": "分" },
-        { "hanzi": "我们____12点吃饭。", "english": "We eat at 12 noon.", "blank": "中午" },
-        { "hanzi": "三个月____，我在北京。", "english": "Three months ago I was in Beijing.", "blank": "前" },
-        { "hanzi": "你什么____去商店？", "english": "When are you going to the shop?", "blank": "时候" },
-        { "hanzi": "王明____在学校后面。", "english": "Wang Ming lives behind the school.", "blank": "住" }
+        {
+          "hanzi": "现在8点10____。",
+          "english": "It's 8:10 now.",
+          "blank": "分"
+        },
+        {
+          "hanzi": "我们____12点吃饭。",
+          "english": "We eat at 12 noon.",
+          "blank": "中午"
+        },
+        {
+          "hanzi": "三个月____，我在北京。",
+          "english": "Three months ago I was in Beijing.",
+          "blank": "前"
+        },
+        {
+          "hanzi": "你什么____去商店？",
+          "english": "When are you going to the shop?",
+          "blank": "时候"
+        },
+        {
+          "hanzi": "王明____在学校后面。",
+          "english": "Wang Ming lives behind the school.",
+          "blank": "住"
+        }
       ]
     },
     {
       "number": 4,
       "type": "match",
-      "prompt": { "hanzi": "给问题选择合适的回答。", "english": "Match each question with a suitable answer." },
+      "prompt": {
+        "hanzi": "给问题选择合适的回答。",
+        "english": "Match each question with a suitable answer."
+      },
       "items": [
-        { "hanzi": "现在几点？ — 9点20分。", "pinyin": "Xiànzài jǐ diǎn? — Jiǔ diǎn èrshí fēn.", "english": "What time is it? — 9:20." },
-        { "hanzi": "你什么时候回家？ — 下午4点。", "pinyin": "Nǐ shénme shíhou huí jiā? — Xiàwǔ sì diǎn.", "english": "When are you going home? — At 4 p.m." },
-        { "hanzi": "你朋友住在哪儿？ — 他住在北京。", "pinyin": "Nǐ péngyou zhù zài nǎr? — Tā zhù zài Běijīng.", "english": "Where does your friend live? — He lives in Beijing." },
-        { "hanzi": "你想看电影吗？ — 想。", "pinyin": "Nǐ xiǎng kàn diànyǐng ma? — Xiǎng.", "english": "Do you want to watch a film? — Yes." }
+        {
+          "hanzi": "现在几点？ — 9点20分。",
+          "pinyin": "Xiànzài jǐ diǎn? — Jiǔ diǎn èrshí fēn.",
+          "english": "What time is it? — 9:20."
+        },
+        {
+          "hanzi": "你什么时候回家？ — 下午4点。",
+          "pinyin": "Nǐ shénme shíhou huí jiā? — Xiàwǔ sì diǎn.",
+          "english": "When are you going home? — At 4 p.m."
+        },
+        {
+          "hanzi": "你朋友住在哪儿？ — 他住在北京。",
+          "pinyin": "Nǐ péngyou zhù zài nǎr? — Tā zhù zài Běijīng.",
+          "english": "Where does your friend live? — He lives in Beijing."
+        },
+        {
+          "hanzi": "你想看电影吗？ — 想。",
+          "pinyin": "Nǐ xiǎng kàn diànyǐng ma? — Xiǎng.",
+          "english": "Do you want to watch a film? — Yes."
+        }
       ]
     }
   ],
@@ -189,44 +563,112 @@
     "drills": [
       {
         "number": 1,
-        "title": { "hanzi": "zh、ch、sh、r 和 z、c、s", "english": "zh, ch, sh, r versus z, c, s" },
+        "title": {
+          "hanzi": "zh、ch、sh、r 和 z、c、s",
+          "english": "zh, ch, sh, r versus z, c, s"
+        },
         "explanation": {
           "hanzi": "发 z、c、s 时，舌尖放在上牙后面；发 zh、ch、sh、r 时，舌尖向上卷起，靠近口腔上部。c 和 ch 是送气音。",
           "english": "For z, c, s the tip of the tongue rests just behind the upper front teeth — flat and forward. For zh, ch, sh, r the tongue tip curls up and back toward the roof of the mouth. c and ch are aspirated: a puff of air follows. Listen to the contrast in each pair."
         },
-        "syllables": ["zī — zhī", "cī — chī", "sī — shī", "zǎo — zhǎo", "cài — chài", "sān — shān", "zuò — zhuō", "rì", "rén", "ròu"]
+        "syllables": [
+          "zī — zhī",
+          "cī — chī",
+          "sī — shī",
+          "zǎo — zhǎo",
+          "cài — chài",
+          "sān — shān",
+          "zuò — zhuō",
+          "rì",
+          "rén",
+          "ròu"
+        ]
       },
       {
         "number": 2,
-        "title": { "hanzi": "词语练习", "english": "Word practice from this lesson and earlier ones" },
+        "title": {
+          "hanzi": "词语练习",
+          "english": "Word practice from this lesson and earlier ones"
+        },
         "subRules": [
           {
-            "rule": { "hanzi": "zh、ch、sh、r", "english": "Curled tongue: zh, ch, sh, r" },
+            "rule": {
+              "hanzi": "zh、ch、sh、r",
+              "english": "Curled tongue: zh, ch, sh, r"
+            },
             "examples": [
-              { "pinyin": "zhōngwǔ", "english": "noon" },
-              { "pinyin": "zhù", "english": "to live" },
-              { "pinyin": "chī fàn", "english": "to eat a meal" },
-              { "pinyin": "shíhou", "english": "time" },
-              { "pinyin": "rén", "english": "person" }
+              {
+                "pinyin": "zhōngwǔ",
+                "english": "noon"
+              },
+              {
+                "pinyin": "zhù",
+                "english": "to live"
+              },
+              {
+                "pinyin": "chī fàn",
+                "english": "to eat a meal"
+              },
+              {
+                "pinyin": "shíhou",
+                "english": "time"
+              },
+              {
+                "pinyin": "rén",
+                "english": "person"
+              }
             ]
           },
           {
-            "rule": { "hanzi": "z、c、s", "english": "Flat tongue: z, c, s" },
+            "rule": {
+              "hanzi": "z、c、s",
+              "english": "Flat tongue: z, c, s"
+            },
             "examples": [
-              { "pinyin": "xiànzài", "english": "now" },
-              { "pinyin": "zuò", "english": "to sit" },
-              { "pinyin": "cài", "english": "dish" },
-              { "pinyin": "sì", "english": "four" },
-              { "pinyin": "suì", "english": "years old" }
+              {
+                "pinyin": "xiànzài",
+                "english": "now"
+              },
+              {
+                "pinyin": "zuò",
+                "english": "to sit"
+              },
+              {
+                "pinyin": "cài",
+                "english": "dish"
+              },
+              {
+                "pinyin": "sì",
+                "english": "four"
+              },
+              {
+                "pinyin": "suì",
+                "english": "years old"
+              }
             ]
           },
           {
-            "rule": { "hanzi": "对比", "english": "Minimal pairs" },
+            "rule": {
+              "hanzi": "对比",
+              "english": "Minimal pairs"
+            },
             "examples": [
-              { "pinyin": "zhù — zuò", "english": "to live — to sit" },
-              { "pinyin": "shì — sì", "english": "to be — four" },
-              { "pinyin": "chá — cài", "english": "tea — dish" },
-              { "pinyin": "shí — sì", "english": "ten — four" }
+              {
+                "pinyin": "zhù — zuò",
+                "english": "to live — to sit"
+              },
+              {
+                "pinyin": "shì — sì",
+                "english": "to be — four"
+              },
+              {
+                "pinyin": "chá — cài",
+                "english": "tea — dish"
+              },
+              {
+                "pinyin": "shí — sì",
+                "english": "ten — four"
+              }
             ]
           }
         ]
@@ -236,21 +678,53 @@
   "characters": {
     "strokes": [
       {
-        "name": { "hanzi": "撇", "pinyin": "piě", "english": "left-falling stroke" },
+        "name": {
+          "hanzi": "撇",
+          "pinyin": "piě",
+          "english": "left-falling stroke"
+        },
         "shape": "㇒",
         "examples": [
-          { "hanzi": "午", "pinyin": "wǔ", "english": "noon" },
-          { "hanzi": "八", "pinyin": "bā", "english": "eight" },
-          { "hanzi": "人", "pinyin": "rén", "english": "person" }
+          {
+            "hanzi": "午",
+            "pinyin": "wǔ",
+            "english": "noon"
+          },
+          {
+            "hanzi": "八",
+            "pinyin": "bā",
+            "english": "eight"
+          },
+          {
+            "hanzi": "人",
+            "pinyin": "rén",
+            "english": "person"
+          }
         ]
       },
       {
-        "name": { "hanzi": "竖弯钩", "pinyin": "shùwāngōu", "english": "vertical-curve-hook" },
+        "name": {
+          "hanzi": "竖弯钩",
+          "pinyin": "shùwāngōu",
+          "english": "vertical-curve-hook"
+        },
         "shape": "㇟",
         "examples": [
-          { "hanzi": "电", "pinyin": "diàn", "english": "electricity" },
-          { "hanzi": "七", "pinyin": "qī", "english": "seven" },
-          { "hanzi": "儿", "pinyin": "ér", "english": "son, child" }
+          {
+            "hanzi": "电",
+            "pinyin": "diàn",
+            "english": "electricity"
+          },
+          {
+            "hanzi": "七",
+            "pinyin": "qī",
+            "english": "seven"
+          },
+          {
+            "hanzi": "儿",
+            "pinyin": "ér",
+            "english": "son, child"
+          }
         ]
       }
     ],
@@ -273,12 +747,37 @@
       }
     ],
     "radicals": [
-      { "hanzi": "阝", "pinyin": "zuǒ'ěrpáng / yòu'ěrpáng", "english": "\"ear\" radical: on the left it relates to hills and terrain, on the right to towns and places", "examples": ["院", "阳", "那", "都", "邮"] },
-      { "hanzi": "亻", "pinyin": "dānrénpáng", "english": "standing-person radical (side form of 人)", "examples": ["你", "他", "们", "住", "候"] }
+      {
+        "hanzi": "阝",
+        "pinyin": "zuǒ'ěrpáng / yòu'ěrpáng",
+        "english": "\"ear\" radical: on the left it relates to hills and terrain, on the right to towns and places",
+        "examples": [
+          "院",
+          "阳",
+          "那",
+          "都",
+          "邮"
+        ]
+      },
+      {
+        "hanzi": "亻",
+        "pinyin": "dānrénpáng",
+        "english": "standing-person radical (side form of 人)",
+        "examples": [
+          "你",
+          "他",
+          "们",
+          "住",
+          "候"
+        ]
+      }
     ]
   },
   "application": {
-    "prompt": { "hanzi": "两人一组，说一说你的一天。", "english": "Work in pairs and talk about your day." },
+    "prompt": {
+      "hanzi": "两人一组，说一说你的一天。",
+      "english": "Work in pairs and talk about your day."
+    },
     "activities": [
       "Draw clock faces showing different times; your partner reads each one aloud with 点 and 分.",
       "Tell your partner your schedule: 我8点去学校, 中午12点吃饭, 下午5点回家…… Your partner writes it down and reads it back.",

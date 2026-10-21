@@ -2,79 +2,333 @@
   "id": "hsk2-12",
   "level": 2,
   "number": 12,
-  "title": { "hanzi": "你穿得太少了", "pinyin": "Nǐ chuān de tài shǎo le", "english": "You wear too little" },
+  "title": {
+    "hanzi": "外面下雪了！",
+    "pinyin": "Wàimiàn xià xuě le!",
+    "english": "It's snowing outside!"
+  },
   "theme": "Weather & Clothing",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "instruction": {
+      "hanzi": "读一读，说说这些词语是什么意思。",
+      "english": "Read the words and phrases aloud and say what they mean."
+    },
     "items": [
-      { "hanzi": "妻子",   "pinyin": "qīzi",      "english": "wife" },
-      { "hanzi": "睡觉",   "pinyin": "shuì jiào", "english": "to sleep" },
-      { "hanzi": "房间",   "pinyin": "fángjiān",  "english": "room" },
-      { "hanzi": "下雪",   "pinyin": "xià xuě",   "english": "to snow" },
-      { "hanzi": "起床",   "pinyin": "qǐ chuáng", "english": "to get up" },
-      { "hanzi": "房子",   "pinyin": "fángzi",    "english": "house" }
+      {
+        "hanzi": "下雪",
+        "pinyin": "xià xuě",
+        "english": "to snow"
+      },
+      {
+        "hanzi": "零下五度",
+        "pinyin": "líng xià wǔ dù",
+        "english": "five degrees below zero"
+      },
+      {
+        "hanzi": "穿衣服",
+        "pinyin": "chuān yīfu",
+        "english": "to put on clothes"
+      },
+      {
+        "hanzi": "请进",
+        "pinyin": "qǐng jìn",
+        "english": "please come in"
+      },
+      {
+        "hanzi": "妻子",
+        "pinyin": "qīzi",
+        "english": "wife"
+      },
+      {
+        "hanzi": "弟弟",
+        "pinyin": "dìdi",
+        "english": "younger brother"
+      },
+      {
+        "hanzi": "很近",
+        "pinyin": "hěn jìn",
+        "english": "very close"
+      },
+      {
+        "hanzi": "说得很快",
+        "pinyin": "shuō de hěn kuài",
+        "english": "to speak fast"
+      }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在教室", "english": "In the classroom" },
+      "title": {
+        "hanzi": "在宿舍门口",
+        "english": "At the dorm entrance"
+      },
       "audioRef": "12-1",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你每天早上几点起床?",                                "pinyin": "Nǐ měi tiān zǎoshang jǐ diǎn qǐ chuáng?",                          "english": "When do you get up every morning?" },
-        { "speaker": "B", "hanzi": "六点多。",                                              "pinyin": "Liù diǎn duō.",                                                     "english": "A few minutes past six." },
-        { "speaker": "A", "hanzi": "你比我早起一个小时。",                                  "pinyin": "Nǐ bǐ wǒ zǎo qǐ yí ge xiǎoshí.",                                   "english": "You get up one hour earlier than I do." },
-        { "speaker": "B", "hanzi": "我睡得也早,我每天晚上十点就睡觉。早睡早起身体好。",  "pinyin": "Wǒ shuì de yě zǎo, wǒ měi tiān wǎnshang shí diǎn jiù shuì jiào. Zǎo shuì zǎo qǐ shēntǐ hǎo.","english": "I go to bed early too — at 10pm every night. Early to bed, early to rise is healthy." }
+        {
+          "speaker": "A",
+          "hanzi": "安娜，你看，外面下雪了！",
+          "pinyin": "Ānnà, nǐ kàn, wàimiàn xià xuě le!",
+          "english": "Anna, look, it's snowing outside!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "真漂亮！我们出去看看吧。",
+          "pinyin": "Zhēn piàoliang! Wǒmen chūqu kànkan ba.",
+          "english": "It's beautiful! Let's go out and have a look."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "等一下，你穿得太少了，外面很冷。",
+          "pinyin": "Děng yíxià, nǐ chuān de tài shǎo le, wàimiàn hěn lěng.",
+          "english": "Wait a moment, you're not wearing enough. It's cold out there."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没关系，我穿了两件衣服。",
+          "pinyin": "Méi guānxi, wǒ chuānle liǎng jiàn yīfu.",
+          "english": "It's fine, I've got two layers on."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "别生病了，再穿一件吧。",
+          "pinyin": "Bié shēng bìng le, zài chuān yí jiàn ba.",
+          "english": "Don't go getting sick. Put on one more."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好吧，听你的。",
+          "pinyin": "Hǎo ba, tīng nǐ de.",
+          "english": "All right, you win."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_12_de", "hanzi": "得", "pinyin": "de", "pos": "part.", "english": "used after a verb or adjective to introduce a complement of result or degree" }
+        {
+          "id": "hsk2_12_xue",
+          "hanzi": "雪",
+          "pinyin": "xuě",
+          "pos": "n.",
+          "english": "snow"
+        },
+        {
+          "id": "hsk2_12_chuan",
+          "hanzi": "穿",
+          "pinyin": "chuān",
+          "pos": "v.",
+          "english": "to wear, to put on"
+        },
+        {
+          "id": "hsk2_12_de",
+          "hanzi": "得",
+          "pinyin": "de",
+          "pos": "part.",
+          "english": "particle linking a verb to a complement of degree"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_12_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在朋友家", "english": "At a friend's home" },
+      "title": {
+        "hanzi": "在王明哥哥家",
+        "english": "At Wang Ming's brother's home"
+      },
       "audioRef": "12-2",
       "dialogue": [
-        { "speaker": "A", "hanzi": "再来点儿米饭吧,你吃得太少了。",        "pinyin": "Zài lái diǎnr mǐfàn ba, nǐ chī de tài shǎo le.",             "english": "Have more rice — you've eaten too little." },
-        { "speaker": "B", "hanzi": "不少了,今天吃得很好,太谢谢你了。",   "pinyin": "Bù shǎo le, jīntiān chī de hěn hǎo, tài xièxie nǐ le.",      "english": "Not a little, actually. I've enjoyed the meal a lot. Thanks so much." },
-        { "speaker": "A", "hanzi": "你做饭做得怎么样?",                     "pinyin": "Nǐ zuò fàn zuò de zěnmeyàng?",                                "english": "How well can you cook?" },
-        { "speaker": "B", "hanzi": "不怎么样,我妻子比我做得好。",          "pinyin": "Bù zěnmeyàng, wǒ qīzi bǐ wǒ zuò de hǎo.",                    "english": "Not very well — my wife cooks better than me." }
+        {
+          "speaker": "A",
+          "hanzi": "请进！外面很冷吧？",
+          "pinyin": "Qǐng jìn! Wàimiàn hěn lěng ba?",
+          "english": "Come in! It's cold outside, isn't it?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "很冷，雪下得很大。",
+          "pinyin": "Hěn lěng, xuě xià de hěn dà.",
+          "english": "Very cold. It's snowing heavily."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "快进来喝杯热茶。这是我妻子。",
+          "pinyin": "Kuài jìnlai hē bēi rè chá. Zhè shì wǒ qīzi.",
+          "english": "Come in quickly and have a cup of hot tea. This is my wife."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你好！你们家真漂亮。",
+          "pinyin": "Nǐ hǎo! Nǐmen jiā zhēn piàoliang.",
+          "english": "Hello! Your home is really lovely."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我妻子做饭做得很好，今天你多吃一点儿。",
+          "pinyin": "Wǒ qīzi zuò fàn zuò de hěn hǎo, jīntiān nǐ duō chī yìdiǎnr.",
+          "english": "My wife is a great cook, so eat plenty today."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "太谢谢你们了！",
+          "pinyin": "Tài xièxie nǐmen le!",
+          "english": "Thank you both so much!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_12_qizi", "hanzi": "妻子", "pinyin": "qīzi", "pos": "n.", "english": "wife" }
-      ]
+        {
+          "id": "hsk2_12_jin_enter",
+          "hanzi": "进",
+          "pinyin": "jìn",
+          "pos": "v.",
+          "english": "to enter, to come in"
+        },
+        {
+          "id": "hsk2_12_qizi",
+          "hanzi": "妻子",
+          "pinyin": "qīzi",
+          "pos": "n.",
+          "english": "wife"
+        }
+      ],
+      "properNouns": []
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在家门口", "english": "At the door of the house" },
+      "title": {
+        "hanzi": "在去学校的路上",
+        "english": "On the way to school"
+      },
       "audioRef": "12-3",
       "dialogue": [
-        { "speaker": "A", "hanzi": "下雪了,今天真冷。",                  "pinyin": "Xià xuě le, jīntiān zhēn lěng.",                "english": "It's snowing. It's really cold today." },
-        { "speaker": "B", "hanzi": "有零下10度吧?",                       "pinyin": "Yǒu líng xià shí dù ba?",                       "english": "The temperature must be about minus 10 degrees, right?" },
-        { "speaker": "A", "hanzi": "是啊,你穿得太少了,我们进房间吧。",  "pinyin": "Shì a, nǐ chuān de tài shǎo le, wǒmen jìn fángjiān ba.","english": "Yes. You're wearing too little. Let's go inside the house, OK?" },
-        { "speaker": "B", "hanzi": "好吧。",                              "pinyin": "Hǎo ba.",                                       "english": "OK." }
+        {
+          "speaker": "A",
+          "hanzi": "王明，你弟弟今年多大了？",
+          "pinyin": "Wáng Míng, nǐ dìdi jīnnián duō dà le?",
+          "english": "Wang Ming, how old is your younger brother this year?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "十六岁，比我小五岁。",
+          "pinyin": "Shíliù suì, bǐ wǒ xiǎo wǔ suì.",
+          "english": "Sixteen, five years younger than me."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "他的学校离你家远吗？",
+          "pinyin": "Tā de xuéxiào lí nǐ jiā yuǎn ma?",
+          "english": "Is his school far from your home?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不远，很近，走路十分钟就到了。",
+          "pinyin": "Bù yuǎn, hěn jìn, zǒu lù shí fēnzhōng jiù dào le.",
+          "english": "Not far, it's very close. It's only a ten-minute walk."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "他学习怎么样？",
+          "pinyin": "Tā xuéxí zěnmeyàng?",
+          "english": "How is he doing at school?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "他学习很好，跑步也跑得很快。他还比我高呢！",
+          "pinyin": "Tā xuéxí hěn hǎo, pǎo bù yě pǎo de hěn kuài. Tā hái bǐ wǒ gāo ne!",
+          "english": "He's a good student and a fast runner too. He's even taller than me!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_12_xue",   "hanzi": "雪",   "pinyin": "xuě",   "pos": "n.",   "english": "snow" },
-        { "id": "hsk2_12_ling",  "hanzi": "零",   "pinyin": "líng",  "pos": "num.", "english": "zero" },
-        { "id": "hsk2_12_du",    "hanzi": "度",   "pinyin": "dù",    "pos": "n.",   "english": "degree" },
-        { "id": "hsk2_12_chuan", "hanzi": "穿",   "pinyin": "chuān", "pos": "v.",   "english": "to wear, to put on" },
-        { "id": "hsk2_12_jin",   "hanzi": "进",   "pinyin": "jìn",   "pos": "v.",   "english": "to enter, to come/go in" }
+        {
+          "id": "hsk2_12_didi",
+          "hanzi": "弟弟",
+          "pinyin": "dìdi",
+          "pos": "n.",
+          "english": "younger brother"
+        },
+        {
+          "id": "hsk2_12_jin_near",
+          "hanzi": "近",
+          "pinyin": "jìn",
+          "pos": "adj.",
+          "english": "near, close"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_12_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming"
+        }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在家里", "english": "At home" },
+      "title": {
+        "hanzi": "安娜说北京的天气",
+        "english": "Anna talks about Beijing's weather"
+      },
       "audioRef": "12-4",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你在忙什么呢?",                                          "pinyin": "Nǐ zài máng shénme ne?",                                                    "english": "What are you busy with?" },
-        { "speaker": "B", "hanzi": "我弟弟让我帮他找个房子,现在他家离公司有点儿远。",      "pinyin": "Wǒ dìdi ràng wǒ bāng tā zhǎo ge fángzi, xiànzài tā jiā lí gōngsī yǒudiǎnr yuǎn.","english": "My younger brother asked me to find him an apartment. He now lives a bit far from the company." },
-        { "speaker": "A", "hanzi": "住得远真的很累!",                                       "pinyin": "Zhù de yuǎn zhēn de hěn lèi!",                                              "english": "It's really exhausting to live far away." },
-        { "speaker": "B", "hanzi": "是啊,他也希望能住得近一点儿。",                          "pinyin": "Shì a, tā yě xīwàng néng zhù de jìn yìdiǎnr.",                             "english": "True. He also wants to live nearer." }
+        {
+          "speaker": "A",
+          "hanzi": "今天北京零下八度，我家那儿是二十五度。",
+          "pinyin": "Jīntiān Běijīng líng xià bā dù, wǒ jiā nàr shì èrshíwǔ dù.",
+          "english": "Today it's minus eight degrees in Beijing; back home it's twenty-five."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "北京没有我家那儿热，可是我很喜欢北京的雪。",
+          "pinyin": "Běijīng méiyǒu wǒ jiā nàr rè, kěshì wǒ hěn xǐhuan Běijīng de xuě.",
+          "english": "Beijing isn't as warm as my hometown, but I love Beijing's snow."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "今天的雪比昨天的还大。",
+          "pinyin": "Jīntiān de xuě bǐ zuótiān de hái dà.",
+          "english": "Today's snow is even heavier than yesterday's."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我穿了很多衣服，走得很慢。",
+          "pinyin": "Wǒ chuānle hěn duō yīfu, zǒu de hěn màn.",
+          "english": "I'm wearing lots of clothes, so I walk very slowly."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "王明说，明天会比今天还冷，可能零下十度。",
+          "pinyin": "Wáng Míng shuō, míngtiān huì bǐ jīntiān hái lěng, kěnéng líng xià shí dù.",
+          "english": "Wang Ming says tomorrow will be even colder than today, maybe minus ten."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_12_didi", "hanzi": "弟弟", "pinyin": "dìdi", "pos": "n.",   "english": "younger brother" },
-        { "id": "hsk2_12_jin2", "hanzi": "近",   "pinyin": "jìn",  "pos": "adj.", "english": "near, close" }
+        {
+          "id": "hsk2_12_ling",
+          "hanzi": "零",
+          "pinyin": "líng",
+          "pos": "num.",
+          "english": "zero"
+        },
+        {
+          "id": "hsk2_12_du",
+          "hanzi": "度",
+          "pinyin": "dù",
+          "pos": "n.",
+          "english": "degree (of temperature)"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_12_pn_beijing",
+          "hanzi": "北京",
+          "pinyin": "Běijīng",
+          "english": "Beijing"
+        }
       ]
     }
   ],
@@ -82,68 +336,298 @@
     {
       "id": "hsk2_12_g_degree",
       "number": 1,
-      "title": { "hanzi": "程度补语", "english": "Complements of Degree" },
-      "explanation": {
-        "hanzi": "程度补语是用来表示程度的,在形式上常用结构助词\"得\"连接程度补语。如果有宾语,要把宾语提前,或者重复动词。否定形式:V+得+不+Adj。疑问形式:V+得+Adj+不+Adj。",
-        "english": "A complement of degree describes the extent of something. The particle 得 links the verb (or adjective) to the complement. If the verb has an object, put the object first, or repeat the verb (V O V 得 Adj). Negative: V 得 不 Adj. Yes/no question: V 得 Adj + 不 + Adj."
+      "title": {
+        "hanzi": "状态补语（程度补语）\"得\"",
+        "english": "Complements of Degree with \"得\""
       },
-      "patternTable": {
-        "columns": ["Subject", "V", "得", "Adj"],
-        "rows": [
-          ["他", "说", "得", "很好。"],
-          ["我", "起", "得", "很早。"],
-          ["我", "睡", "得", "也早。"]
-        ]
+      "explanation": {
+        "hanzi": "\"动词＋得＋形容词短语\"用来评价一个动作做得怎么样，比如\"说得很快\"、\"穿得太少\"。如果动词有宾语，要重复动词：\"做饭做得很好\"，或者把宾语放在前面：\"饭做得很好\"。否定是\"动词＋得＋不＋形容词\"；问题可以用\"动词＋得＋怎么样\"。",
+        "english": "\"Verb + 得 + adjective phrase\" comments on how an action is done: 说得很快 \"speaks fast\", 穿得太少 \"isn't wearing enough\". The adjective usually takes 很, 太 or another degree word. If the verb has an object, repeat the verb (做饭做得很好), or put the object first and drop the first verb (饭做得很好). For the negative, put 不 after 得: 唱得不好 \"doesn't sing well\". To ask, use 得怎么样？"
       },
       "examples": [
-        { "hanzi": "他(说)汉语说得很好。",   "pinyin": "Tā (shuō) Hànyǔ shuō de hěn hǎo.",   "english": "He speaks Chinese very well." },
-        { "hanzi": "我写汉字写得不好。",       "pinyin": "Wǒ xiě Hànzì xiě de bù hǎo.",         "english": "I don't write Chinese characters well." },
-        { "hanzi": "姐姐唱歌唱得不错。",       "pinyin": "Jiějie chàng gē chàng de búcuò.",     "english": "My elder sister sings pretty well." },
-        { "hanzi": "他说得好不好?",            "pinyin": "Tā shuō de hǎo bu hǎo?",              "english": "Does he speak well?" },
-        { "hanzi": "你住得远不远?",            "pinyin": "Nǐ zhù de yuǎn bu yuǎn?",             "english": "Do you live far?" }
-      ]
+        {
+          "hanzi": "刘老师说得很慢。",
+          "pinyin": "Liú lǎoshī shuō de hěn màn.",
+          "english": "Professor Liu speaks slowly."
+        },
+        {
+          "hanzi": "我妻子做饭做得很好。",
+          "pinyin": "Wǒ qīzi zuò fàn zuò de hěn hǎo.",
+          "english": "My wife cooks very well."
+        },
+        {
+          "hanzi": "马克汉语说得怎么样？",
+          "pinyin": "Mǎkè Hànyǔ shuō de zěnmeyàng?",
+          "english": "How well does Mark speak Chinese?"
+        },
+        {
+          "hanzi": "他唱歌唱得不好。",
+          "pinyin": "Tā chàng gē chàng de bù hǎo.",
+          "english": "He doesn't sing well."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "主语 Subject",
+          "(动词＋宾语 Verb + object)",
+          "动词＋得 Verb + 得",
+          "形容词短语 Adj. phrase"
+        ],
+        "rows": [
+          [
+            "你",
+            "",
+            "穿得",
+            "太少了"
+          ],
+          [
+            "我妻子",
+            "做饭",
+            "做得",
+            "很好"
+          ],
+          [
+            "他",
+            "跑步",
+            "跑得",
+            "很快"
+          ],
+          [
+            "她",
+            "唱歌",
+            "唱得",
+            "不好"
+          ]
+        ]
+      }
     },
     {
       "id": "hsk2_12_g_bi2",
       "number": 2,
-      "title": { "hanzi": "\"比\"字句(2)", "english": "The \"比\" Sentence (2)" },
-      "explanation": {
-        "hanzi": "如果动词带程度补语,\"比\"可以放在动词前,也可放在补语前。两种结构通用。",
-        "english": "When a verb has a complement of degree, \"比\" can come before the verb (A 比 B V 得 Adj) or before the complement (A V 得 比 B Adj). Both forms are equivalent."
+      "title": {
+        "hanzi": "\"比\"字句（2）",
+        "english": "Comparisons with \"比\" (2)"
       },
-      "patternTable": {
-        "columns": ["A", "比", "B", "V + 得 + Adj"],
-        "rows": [
-          ["他",       "比", "我", "学得好。"],
-          ["姐姐",     "比", "我", "跑得快。"],
-          ["我妻子",   "比", "我", "做得好。"]
-        ]
+      "explanation": {
+        "hanzi": "在\"A 比 B + 形容词\"里，可以在形容词前面加\"更\"或者\"还\"，意思是 B 已经很怎么样了，A 比 B 程度更高。\"还\"的语气比\"更\"强，常常带有意外的感觉。否定比较常用\"A 没有 B + 形容词\"，意思是 A 不如 B。",
+        "english": "In \"A 比 B + adjective\" you can put 更 (gèng) or 还 (hái) before the adjective to mean \"even more\": B is already quite something, and A goes further. 还 is a bit stronger and often sounds surprised: 他还比我高呢！\"He's even taller than me!\" (Remember: never 很 here.) To say A is not as ... as B, use \"A 没有 B + adjective\": 北京没有我家那儿热 \"Beijing isn't as hot as my hometown.\""
       },
       "examples": [
-        { "hanzi": "他学得比我好。",       "pinyin": "Tā xué de bǐ wǒ hǎo.",         "english": "He studies better than me." },
-        { "hanzi": "姐姐跑得比我快。",     "pinyin": "Jiějie pǎo de bǐ wǒ kuài.",   "english": "Elder sister runs faster than me." },
-        { "hanzi": "我妻子做得比我好。",   "pinyin": "Wǒ qīzi zuò de bǐ wǒ hǎo.",   "english": "My wife cooks better than me." }
-      ]
+        {
+          "hanzi": "今天比昨天还冷。",
+          "pinyin": "Jīntiān bǐ zuótiān hái lěng.",
+          "english": "Today is even colder than yesterday."
+        },
+        {
+          "hanzi": "弟弟比哥哥还高。",
+          "pinyin": "Dìdi bǐ gēge hái gāo.",
+          "english": "The younger brother is even taller than the older one."
+        },
+        {
+          "hanzi": "北京没有我家那儿热。",
+          "pinyin": "Běijīng méiyǒu wǒ jiā nàr rè.",
+          "english": "Beijing isn't as hot as where I'm from."
+        },
+        {
+          "hanzi": "这件衣服没有那件便宜。",
+          "pinyin": "Zhè jiàn yīfu méiyǒu nà jiàn piányi.",
+          "english": "This piece of clothing isn't as cheap as that one."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "A",
+          "比 / 没有",
+          "B",
+          "(还)",
+          "形容词 Adj."
+        ],
+        "rows": [
+          [
+            "今天",
+            "比",
+            "昨天",
+            "还",
+            "冷"
+          ],
+          [
+            "弟弟",
+            "比",
+            "我",
+            "还",
+            "高"
+          ],
+          [
+            "北京",
+            "没有",
+            "我家那儿",
+            "",
+            "热"
+          ],
+          [
+            "学校",
+            "没有",
+            "医院",
+            "",
+            "近"
+          ]
+        ]
+      }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。",
+        "english": "In pairs, read the dialogues aloud, taking one role each."
+      }
+    },
+    {
+      "number": 2,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据你的情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
       "items": [
-        { "hanzi": "她为什么每天晚上十点就睡觉?",   "pinyin": "Tā wèi shénme měi tiān wǎnshang shí diǎn jiù shuì jiào?" },
-        { "hanzi": "他们家谁做饭做得好?",           "pinyin": "Tāmen jiā shéi zuò fàn zuò de hǎo?" },
-        { "hanzi": "今天天气怎么样?",               "pinyin": "Jīntiān tiānqì zěnmeyàng?" },
-        { "hanzi": "她这两天在忙什么呢?",           "pinyin": "Tā zhè liǎng tiān zài máng shénme ne?" },
-        { "hanzi": "她弟弟为什么要找新的房子?",     "pinyin": "Tā dìdi wèi shénme yào zhǎo xīn de fángzi?" }
+        {
+          "hanzi": "今天多少度？你穿了几件衣服？",
+          "pinyin": "Jīntiān duōshao dù? Nǐ chuānle jǐ jiàn yīfu?",
+          "english": "What's the temperature today? How many layers are you wearing?"
+        },
+        {
+          "hanzi": "你家那儿下雪吗？",
+          "pinyin": "Nǐ jiā nàr xià xuě ma?",
+          "english": "Does it snow where you're from?"
+        },
+        {
+          "hanzi": "你家离学校近吗？",
+          "pinyin": "Nǐ jiā lí xuéxiào jìn ma?",
+          "english": "Is your home close to school?"
+        },
+        {
+          "hanzi": "你汉语说得怎么样？",
+          "pinyin": "Nǐ Hànyǔ shuō de zěnmeyàng?",
+          "english": "How well do you speak Chinese?"
+        },
+        {
+          "hanzi": "你有弟弟吗？他比你小几岁？",
+          "pinyin": "Nǐ yǒu dìdi ma? Tā bǐ nǐ xiǎo jǐ suì?",
+          "english": "Do you have a younger brother? How many years younger is he?"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用\"得、穿、进、近、没有、还\"填空。",
+        "english": "Fill in the blanks with 得, 穿, 进, 近, 没有 or 还."
+      },
+      "items": [
+        {
+          "hanzi": "他跑步跑____很快。",
+          "english": "He runs fast.",
+          "blank": "得"
+        },
+        {
+          "hanzi": "外面下雪了，你多____一件衣服吧。",
+          "english": "It's snowing outside; put on another layer.",
+          "blank": "穿"
+        },
+        {
+          "hanzi": "请____！请坐！",
+          "english": "Come in! Have a seat!",
+          "blank": "进"
+        },
+        {
+          "hanzi": "我家离医院很____。",
+          "english": "My home is very close to the hospital.",
+          "blank": "近"
+        },
+        {
+          "hanzi": "今天____昨天冷。",
+          "english": "Today isn't as cold as yesterday.",
+          "blank": "没有"
+        },
+        {
+          "hanzi": "今天比昨天____热。",
+          "english": "Today is even hotter than yesterday.",
+          "blank": "还"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": {
+        "hanzi": "给问题找到合适的回答。",
+        "english": "Match each question with a suitable answer."
+      },
+      "items": [
+        {
+          "hanzi": "今天多少度？ — 零下三度。",
+          "pinyin": "Jīntiān duōshao dù? — Líng xià sān dù.",
+          "english": "What's the temperature today? — Three below zero."
+        },
+        {
+          "hanzi": "她是谁？ — 她是我妻子。",
+          "pinyin": "Tā shì shéi? — Tā shì wǒ qīzi.",
+          "english": "Who is she? — She's my wife."
+        },
+        {
+          "hanzi": "你弟弟唱歌唱得怎么样？ — 唱得很好。",
+          "pinyin": "Nǐ dìdi chàng gē chàng de zěnmeyàng? — Chàng de hěn hǎo.",
+          "english": "How well does your younger brother sing? — Very well."
+        },
+        {
+          "hanzi": "饭店离这儿远吗？ — 不远，很近。",
+          "pinyin": "Fàndiàn lí zhèr yuǎn ma? — Bù yuǎn, hěn jìn.",
+          "english": "Is the restaurant far from here? — No, it's very close."
+        }
       ]
     }
   ],
   "characters": {
     "radicals": [
-      { "hanzi": "止", "pinyin": "zhǐ zì páng", "english": "stop (related to toes/feet)",                "examples": ["趾 zhǐ (toe)", "步 bù (step)"] },
-      { "hanzi": "冂", "pinyin": "tóng zì tóu", "english": "frame (often about relations among things)", "examples": ["同 tóng (same)", "网 wǎng (net)"] }
+      {
+        "hanzi": "止",
+        "pinyin": "zhǐ zì páng",
+        "english": "stop; foot (related to feet and walking)",
+        "examples": [
+          "正 zhèng (straight; as in 正在)",
+          "步 bù (step, as in 跑步)",
+          "此 cǐ (this)",
+          "武 wǔ (martial)",
+          "肯 kěn (willing)"
+        ]
+      },
+      {
+        "hanzi": "冂",
+        "pinyin": "tóng zì kuàng",
+        "english": "borders, frame (an enclosure open at the bottom)",
+        "examples": [
+          "同 tóng (same, as in 同学)",
+          "肉 ròu (meat)",
+          "再 zài (again)",
+          "网 wǎng (net)",
+          "内 nèi (inside)"
+        ]
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "两人一组，谈谈天气和衣服。",
+      "english": "In pairs, talk about the weather and what to wear."
+    },
+    "activities": [
+      "Weather comparison: each partner picks a city. Compare today's temperatures with 比……还…… and 没有……, e.g. 北京没有……热.",
+      "Get-dressed advice: A describes the weather (下雪了, 零下……度); B checks what A is wearing and comments with 你穿得太少了 / 穿得很漂亮.",
+      "Talent show: say how well people you know do things with 得: 我弟弟唱歌唱得……, 我妈妈做饭做得…….",
+      "Visiting a home: role-play arriving at a friend's place in the snow (请进！外面冷吧？), meeting family members, and saying thank you."
     ]
   }
 }

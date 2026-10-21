@@ -2,77 +2,319 @@
   "id": "hsk2-14",
   "level": 2,
   "number": 14,
-  "title": { "hanzi": "你看过那个电影吗", "pinyin": "Nǐ kànguo nàge diànyǐng ma", "english": "Have you seen that movie" },
+  "title": {
+    "hanzi": "我去过两次",
+    "pinyin": "Wǒ qùguo liǎng cì",
+    "english": "I've been there twice"
+  },
   "theme": "Experience & Frequency",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "instruction": {
+      "hanzi": "读一读，说说这些词语是什么意思。",
+      "english": "Read the words and phrases aloud and say what they mean."
+    },
     "items": [
-      { "hanzi": "电影院", "pinyin": "diànyǐngyuàn", "english": "cinema" },
-      { "hanzi": "等",     "pinyin": "děng",         "english": "to wait" },
-      { "hanzi": "晴",     "pinyin": "qíng",         "english": "sunny" },
-      { "hanzi": "一百",   "pinyin": "yìbǎi",        "english": "one hundred" },
-      { "hanzi": "打电话", "pinyin": "dǎ diànhuà",   "english": "to make a phone call" },
-      { "hanzi": "玩儿",   "pinyin": "wánr",         "english": "to play" }
+      {
+        "hanzi": "去过两次",
+        "pinyin": "qùguo liǎng cì",
+        "english": "have been there twice"
+      },
+      {
+        "hanzi": "没看过",
+        "pinyin": "méi kànguo",
+        "english": "have never seen"
+      },
+      {
+        "hanzi": "很有意思",
+        "pinyin": "hěn yǒu yìsi",
+        "english": "very interesting"
+      },
+      {
+        "hanzi": "去外面玩儿",
+        "pinyin": "qù wàimiàn wánr",
+        "english": "to go out and have fun"
+      },
+      {
+        "hanzi": "晴天",
+        "pinyin": "qíngtiān",
+        "english": "a sunny day"
+      },
+      {
+        "hanzi": "一百天",
+        "pinyin": "yìbǎi tiān",
+        "english": "a hundred days"
+      },
+      {
+        "hanzi": "虽然……但是……",
+        "pinyin": "suīrán……dànshì……",
+        "english": "although ..., (still) ..."
+      }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在教室", "english": "In the classroom" },
+      "title": {
+        "hanzi": "在学校门口",
+        "english": "At the school gate"
+      },
       "audioRef": "14-1",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你看过那个电影没有?",       "pinyin": "Nǐ kànguo nàge diànyǐng méiyǒu?",      "english": "Have you seen that movie?" },
-        { "speaker": "B", "hanzi": "没看过,听说很有意思。",     "pinyin": "Méi kànguo, tīngshuō hěn yǒu yìsi.",    "english": "No. I was told it's interesting." },
-        { "speaker": "A", "hanzi": "那我们下个星期一起去看吧?", "pinyin": "Nà wǒmen xià ge xīngqī yìqǐ qù kàn ba?","english": "Why don't we see it together next week?" },
-        { "speaker": "B", "hanzi": "可以,但是我女朋友也想去。", "pinyin": "Kěyǐ, dànshì wǒ nǚpéngyou yě xiǎng qù.", "english": "OK. But my girlfriend also wants to go." }
+        {
+          "speaker": "A",
+          "hanzi": "安娜，你去过学校旁边那个新饭馆吗？",
+          "pinyin": "Ānnà, nǐ qùguo xuéxiào pángbiān nàge xīn fànguǎn ma?",
+          "english": "Anna, have you been to that new restaurant next to the school?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "去过两次。那儿的鱼非常好吃。",
+          "pinyin": "Qùguo liǎng cì. Nàr de yú fēicháng hǎochī.",
+          "english": "I've been twice. Their fish is really good."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我还没去过呢。这个星期六我们一起去吧？",
+          "pinyin": "Wǒ hái méi qùguo ne. Zhège xīngqīliù wǒmen yìqǐ qù ba?",
+          "english": "I haven't been yet. Shall we go together this Saturday?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好啊！吃完饭我们去哪儿玩儿？",
+          "pinyin": "Hǎo a! Chīwán fàn wǒmen qù nǎr wánr?",
+          "english": "Sure! Where shall we go for fun after we eat?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我们去看电影，怎么样？",
+          "pinyin": "Wǒmen qù kàn diànyǐng, zěnmeyàng?",
+          "english": "How about a movie?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，我还没在中国看过电影呢。",
+          "pinyin": "Hǎo, wǒ hái méi zài Zhōngguó kànguo diànyǐng ne.",
+          "english": "Great. I've never seen a movie in China."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_14_youyisi", "hanzi": "有意思", "pinyin": "yǒu yìsi", "pos": "adj.",  "english": "interesting, fun" },
-        { "id": "hsk2_14_danshi",  "hanzi": "但是",   "pinyin": "dànshì",   "pos": "conj.", "english": "but, still, yet" }
+        {
+          "id": "hsk2_14_ci",
+          "hanzi": "次",
+          "pinyin": "cì",
+          "pos": "m.",
+          "english": "time (occurrence)"
+        },
+        {
+          "id": "hsk2_14_wanr",
+          "hanzi": "玩儿",
+          "pinyin": "wánr",
+          "pos": "v.",
+          "english": "to play, to have fun"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_14_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在办公室", "english": "In the office" },
+      "title": {
+        "hanzi": "在宿舍",
+        "english": "In the dorm"
+      },
       "audioRef": "14-2",
       "dialogue": [
-        { "speaker": "A", "hanzi": "听说你去过中国,还想去吗?",                "pinyin": "Tīngshuō nǐ qùguo Zhōngguó, hái xiǎng qù ma?",            "english": "It's said you've been to China. Do you want to go again?" },
-        { "speaker": "B", "hanzi": "我虽然去过好几次,但是还想再去玩儿玩儿。", "pinyin": "Wǒ suīrán qùguo hǎojǐ cì, dànshì hái xiǎng zài qù wánrwanr.","english": "Although I've been there several times, I still want to go again for fun." },
-        { "speaker": "A", "hanzi": "那我们一起去吧。",                          "pinyin": "Nà wǒmen yìqǐ qù ba.",                                    "english": "Then let's go together." },
-        { "speaker": "B", "hanzi": "好啊,到时候我给你打电话。",                "pinyin": "Hǎo a, dào shíhou wǒ gěi nǐ dǎ diànhuà.",                 "english": "Great. I'll call you then." }
+        {
+          "speaker": "A",
+          "hanzi": "王明，你看过这个电影吗？",
+          "pinyin": "Wáng Míng, nǐ kànguo zhège diànyǐng ma?",
+          "english": "Wang Ming, have you seen this movie?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "看过一次。虽然有三个小时，但是非常有意思。",
+          "pinyin": "Kànguo yí cì. Suīrán yǒu sān ge xiǎoshí, dànshì fēicháng yǒu yìsi.",
+          "english": "Once. It's three hours long, but really interesting."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我也想看，但是我可能听不懂。",
+          "pinyin": "Wǒ yě xiǎng kàn, dànshì wǒ kěnéng tīng bu dǒng.",
+          "english": "I'd like to see it too, but I might not understand it."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "你不是学了一年汉语了吗？",
+          "pinyin": "Nǐ bú shì xuéle yì nián Hànyǔ le ma?",
+          "english": "Haven't you been studying Chinese for a year?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "虽然我学了一年，但是电影里的人说话太快了。",
+          "pinyin": "Suīrán wǒ xuéle yì nián, dànshì diànyǐng li de rén shuōhuà tài kuài le.",
+          "english": "I have, but people in movies talk way too fast."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "没关系，我们一起看，有问题你就问我。",
+          "pinyin": "Méi guānxi, wǒmen yìqǐ kàn, yǒu wèntí nǐ jiù wèn wǒ.",
+          "english": "No problem. We'll watch it together, and you can ask me if anything's unclear."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_14_suiran", "hanzi": "虽然", "pinyin": "suīrán", "pos": "conj.", "english": "although, though" },
-        { "id": "hsk2_14_ci",     "hanzi": "次",   "pinyin": "cì",     "pos": "m.",    "english": "time (occurrence)" },
-        { "id": "hsk2_14_wanr",   "hanzi": "玩儿", "pinyin": "wánr",   "pos": "v.",    "english": "to play, to have fun" }
+        {
+          "id": "hsk2_14_suiran",
+          "hanzi": "虽然",
+          "pinyin": "suīrán",
+          "pos": "conj.",
+          "english": "although, though"
+        },
+        {
+          "id": "hsk2_14_danshi",
+          "hanzi": "但是",
+          "pinyin": "dànshì",
+          "pos": "conj.",
+          "english": "but, still, yet"
+        },
+        {
+          "id": "hsk2_14_youyisi",
+          "hanzi": "有意思",
+          "pinyin": "yǒu yìsi",
+          "pos": "adj.",
+          "english": "interesting, fun"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_14_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming"
+        }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在房间", "english": "In the room" },
+      "title": {
+        "hanzi": "在电话里",
+        "english": "On the phone"
+      },
       "audioRef": "14-3",
       "dialogue": [
-        { "speaker": "A", "hanzi": "明天天气怎么样?",                          "pinyin": "Míngtiān tiānqì zěnmeyàng?",                                "english": "How will the weather be tomorrow?" },
-        { "speaker": "B", "hanzi": "虽然是晴天,但是很冷。",                    "pinyin": "Suīrán shì qíngtiān, dànshì hěn lěng.",                     "english": "It will be sunny, but cold." },
-        { "speaker": "A", "hanzi": "那还能去跑步吗?",                          "pinyin": "Nà hái néng qù pǎo bù ma?",                                 "english": "Then is it OK to go jogging?" },
-        { "speaker": "B", "hanzi": "可以,但是你自己去吧,我还有很多事情要做。", "pinyin": "Kěyǐ, dànshì nǐ zìjǐ qù ba, wǒ hái yǒu hěn duō shìqing yào zuò.","english": "I think so. But please go by yourself — I still have a lot to do." }
+        {
+          "speaker": "A",
+          "hanzi": "马克，明天天气怎么样？",
+          "pinyin": "Mǎkè, míngtiān tiānqì zěnmeyàng?",
+          "english": "Mark, what's the weather like tomorrow?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "手机上说明天是晴天，不冷也不热。",
+          "pinyin": "Shǒujī shang shuō míngtiān shì qíngtiān, bù lěng yě bú rè.",
+          "english": "My phone says it'll be sunny tomorrow, not cold and not hot."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "太好了！我们去外面玩儿吧。你踢过足球吗？",
+          "pinyin": "Tài hǎo le! Wǒmen qù wàimiàn wánr ba. Nǐ tīguo zúqiú ma?",
+          "english": "Great! Let's do something outdoors. Have you ever played soccer?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "踢过很多次！但是来中国以后我一次也没踢过。",
+          "pinyin": "Tīguo hěn duō cì! Dànshì lái Zhōngguó yǐhòu wǒ yí cì yě méi tīguo.",
+          "english": "Lots of times! But I haven't played once since I came to China."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "那明天我们叫王明一起去踢足球。",
+          "pinyin": "Nà míngtiān wǒmen jiào Wáng Míng yìqǐ qù tī zúqiú.",
+          "english": "Then tomorrow let's get Wang Ming and go play soccer."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好！晴天踢足球最好了。",
+          "pinyin": "Hǎo! Qíngtiān tī zúqiú zuì hǎo le.",
+          "english": "Sounds good! A sunny day is perfect for soccer."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_14_qing", "hanzi": "晴", "pinyin": "qíng", "pos": "adj.", "english": "sunny, fine, clear" }
+        {
+          "id": "hsk2_14_qing",
+          "hanzi": "晴",
+          "pinyin": "qíng",
+          "pos": "adj.",
+          "english": "sunny, fine, clear"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_14_pn_make",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark"
+        }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在商店", "english": "In a store" },
+      "title": {
+        "hanzi": "马克的一百天",
+        "english": "Mark's first hundred days"
+      },
       "audioRef": "14-4",
       "dialogue": [
-        { "speaker": "A", "hanzi": "你在这个商店买过东西没有?",                  "pinyin": "Nǐ zài zhège shāngdiàn mǎiguo dōngxi méiyǒu?",                "english": "Have you ever bought anything in this store?" },
-        { "speaker": "B", "hanzi": "买过一次,这儿的东西还可以,就是不便宜。",   "pinyin": "Mǎiguo yí cì, zhèr de dōngxi hái kěyǐ, jiùshì bù piányi.",   "english": "Once. Things here are OK — just not cheap." },
-        { "speaker": "A", "hanzi": "我喜欢这件衣服,但是觉得有点儿贵。",          "pinyin": "Wǒ xǐhuan zhè jiàn yīfu, dànshì juéde yǒudiǎnr guì.",         "english": "I like this garment, but I think it's a bit expensive." },
-        { "speaker": "B", "hanzi": "两百块还可以,喜欢就买吧。",                    "pinyin": "Liǎngbǎi kuài hái kěyǐ, xǐhuan jiù mǎi ba.",                  "english": "Two hundred yuan isn't bad. If you like it, just buy it." }
+        {
+          "speaker": "A",
+          "hanzi": "我来北京已经一百天了。",
+          "pinyin": "Wǒ lái Běijīng yǐjīng yìbǎi tiān le.",
+          "english": "I've been in Beijing for a hundred days now."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "这一百天里，我坐过很多次公共汽车，也坐过两次飞机。",
+          "pinyin": "Zhè yìbǎi tiān li, wǒ zuòguo hěn duō cì gōnggòng qìchē, yě zuòguo liǎng cì fēijī.",
+          "english": "In these hundred days I've taken the bus lots of times, and I've flown twice."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我去过三次王明家，他妈妈做的菜非常好吃。",
+          "pinyin": "Wǒ qùguo sān cì Wáng Míng jiā, tā māma zuò de cài fēicháng hǎochī.",
+          "english": "I've been to Wang Ming's home three times. His mom's cooking is delicious."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "北京的天气不错，晴天很多。",
+          "pinyin": "Běijīng de tiānqì búcuò, qíngtiān hěn duō.",
+          "english": "The weather in Beijing is nice. There are lots of sunny days."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "虽然我的汉语还不太好，但是我每天都很快乐。",
+          "pinyin": "Suīrán wǒ de Hànyǔ hái bú tài hǎo, dànshì wǒ měi tiān dōu hěn kuàilè.",
+          "english": "My Chinese still isn't very good, but I'm happy every day."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我觉得在北京学习汉语非常有意思！",
+          "pinyin": "Wǒ juéde zài Běijīng xuéxí Hànyǔ fēicháng yǒu yìsi!",
+          "english": "I think studying Chinese in Beijing is great fun!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_14_bai", "hanzi": "百", "pinyin": "bǎi", "pos": "num.", "english": "hundred" }
+        {
+          "id": "hsk2_14_bai",
+          "hanzi": "百",
+          "pinyin": "bǎi",
+          "pos": "num.",
+          "english": "hundred"
+        }
       ]
     }
   ],
@@ -80,73 +322,324 @@
     {
       "id": "hsk2_14_g_guo",
       "number": 1,
-      "title": { "hanzi": "结构助词\"过\"", "english": "The Structural Particle \"过\"" },
-      "explanation": {
-        "hanzi": "动词后边加上结构助词\"过\",一般用来表示过去有过的经历,这些动作行为没有持续到现在。否定:\"没(有)\"+V+过。疑问:V+过+O+没有。",
-        "english": "Verb + 过 marks a past experience that didn't continue into the present. Negative: 没(有) + V + 过 (e.g. 我没去过中国). Yes/no question: V + 过 + O + 没有 (e.g. 你去过中国没有?)."
+      "title": {
+        "hanzi": "动态助词\"过\"",
+        "english": "The Particle \"过\" (Past Experience)"
       },
+      "explanation": {
+        "hanzi": "\"动词＋过\"表示过去有过这样的经历，常常翻译成\"曾经……\"。否定形式是\"没（有）＋动词＋过\"，不用\"不\"。问别人的经历可以说\"……过……吗？\"或者\"……过……没有？\"。",
+        "english": "Verb + 过 (guo, neutral tone) says that something has happened at least once in the past, so it's part of your experience: 我去过那个饭馆 \"I've been to that restaurant (before)\". It doesn't say when; it's about having had the experience. The negative uses 没(有), never 不: 我没吃过羊肉 \"I've never eaten lamb\". To ask, add 吗 or 没有 at the end: 你看过这个电影吗? / 你看过这个电影没有? Compare 了, which reports that a specific action got done."
+      },
+      "examples": [
+        {
+          "hanzi": "我去过学校旁边的那个饭馆。",
+          "pinyin": "Wǒ qùguo xuéxiào pángbiān de nàge fànguǎn.",
+          "english": "I've been to that restaurant next to the school."
+        },
+        {
+          "hanzi": "小美没坐过飞机。",
+          "pinyin": "Xiǎoměi méi zuòguo fēijī.",
+          "english": "Xiaomei has never been on a plane."
+        },
+        {
+          "hanzi": "你看过中国电影吗？",
+          "pinyin": "Nǐ kànguo Zhōngguó diànyǐng ma?",
+          "english": "Have you ever seen a Chinese movie?"
+        },
+        {
+          "hanzi": "马克以前没学过汉语。",
+          "pinyin": "Mǎkè yǐqián méi xuéguo Hànyǔ.",
+          "english": "Mark had never studied Chinese before."
+        }
+      ],
       "patternTable": {
-        "columns": ["Subject", "V", "过", "Object"],
+        "columns": [
+          "主语 Subject",
+          "（没）动词＋过 (没) Verb + 过",
+          "宾语 Object"
+        ],
         "rows": [
-          ["他们", "来", "过", "我家。"],
-          ["我",   "看", "过", "那个电影。"],
-          ["我",   "去", "过", "中国。"]
+          [
+            "我",
+            "去过",
+            "那个饭馆"
+          ],
+          [
+            "安娜",
+            "吃过",
+            "羊肉"
+          ],
+          [
+            "小美",
+            "没坐过",
+            "飞机"
+          ],
+          [
+            "你",
+            "看过",
+            "这个电影吗？"
+          ]
         ]
       }
     },
     {
       "id": "hsk2_14_g_suiran_danshi",
       "number": 2,
-      "title": { "hanzi": "关联词\"虽然……,但是……\"", "english": "The Pair of Conjunctions \"虽然……,但是……\"" },
+      "title": {
+        "hanzi": "关联词\"虽然……，但是……\"",
+        "english": "The Pattern \"虽然……，但是……\""
+      },
       "explanation": {
-        "hanzi": "\"虽然……,但是……\"连接两个分句,构成一种转折关系。",
-        "english": "\"虽然……,但是……\" links two clauses, expressing an adversative relation (\"although…, …\")."
+        "hanzi": "\"虽然A，但是B\"表示先承认A是真的，可是B还是这样，B是说话人想强调的意思。\"虽然\"可以放在主语前面，也可以放在主语后面。英语只用一个词（although 或者 but），汉语两个词常常一起用。",
+        "english": "虽然 A，但是 B means \"although A, B (anyway)\": you admit A is true, then say B still holds. B is the point you really want to make. Unlike English, which uses either \"although\" or \"but\", Chinese normally uses both words together. 虽然 can come before or after the subject of the first clause: 虽然我学了一年 / 我虽然学了一年. 但是 always starts the second clause."
       },
       "examples": [
-        { "hanzi": "虽然外面很冷,但是房间里很热。",     "pinyin": "Suīrán wàimian hěn lěng, dànshì fángjiān li hěn rè.",   "english": "Although it's cold outside, it's hot inside." },
-        { "hanzi": "虽然汉字很难,但是我很喜欢写汉字。", "pinyin": "Suīrán Hànzì hěn nán, dànshì wǒ hěn xǐhuan xiě Hànzì.","english": "Although Chinese characters are hard, I really enjoy writing them." },
-        { "hanzi": "虽然是晴天,但是很冷。",             "pinyin": "Suīrán shì qíngtiān, dànshì hěn lěng.",                  "english": "Although it's sunny, it's very cold." }
-      ]
+        {
+          "hanzi": "虽然外面很冷，但是教室里很热。",
+          "pinyin": "Suīrán wàimiàn hěn lěng, dànshì jiàoshì li hěn rè.",
+          "english": "Although it's cold outside, it's warm in the classroom."
+        },
+        {
+          "hanzi": "这件衣服虽然有点儿贵，但是很漂亮。",
+          "pinyin": "Zhè jiàn yīfu suīrán yǒudiǎnr guì, dànshì hěn piàoliang.",
+          "english": "This piece of clothing is a bit expensive, but it's really pretty."
+        },
+        {
+          "hanzi": "虽然王明是中国人，但是他不喜欢喝茶。",
+          "pinyin": "Suīrán Wáng Míng shì Zhōngguórén, dànshì tā bù xǐhuan hē chá.",
+          "english": "Although Wang Ming is Chinese, he doesn't like tea."
+        },
+        {
+          "hanzi": "虽然下雨了，但是我们还是去踢足球了。",
+          "pinyin": "Suīrán xià yǔ le, dànshì wǒmen háishi qù tī zúqiú le.",
+          "english": "It rained, but we still went to play soccer."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "虽然 + A",
+          "但是 + B"
+        ],
+        "rows": [
+          [
+            "虽然有三个小时",
+            "但是非常有意思"
+          ],
+          [
+            "虽然有点儿贵",
+            "但是很漂亮"
+          ],
+          [
+            "虽然学了一年",
+            "但是还听不懂"
+          ]
+        ]
+      }
     },
     {
       "id": "hsk2_14_g_ci",
       "number": 3,
-      "title": { "hanzi": "动量补语\"次\"", "english": "The Complement of Frequency \"次\"" },
-      "explanation": {
-        "hanzi": "动量补语\"次\"常放在谓语动词的后边,用来表示动作发生、进行的次数。宾语是表示地点的名词时,动量补语可放在宾语前或宾语后;宾语是人称代词时,动量补语要放在宾语后。",
-        "english": "\"次\" (\"time\") follows the verb to indicate how many times an action occurs. When the object is a place name, the frequency complement can come before or after the object. When the object is a personal pronoun, the complement must come after it."
+      "title": {
+        "hanzi": "动量补语\"次\"",
+        "english": "次 as a Frequency Complement"
       },
+      "explanation": {
+        "hanzi": "\"数词＋次\"放在动词（或者\"动词＋过/了\"）后面，说明动作做了几次。宾语是一般的东西时，\"几次\"放在宾语前面：看过两次电影。宾语是人称代词时，\"几次\"放在宾语后面：见过他一次。宾语是地方时，两种都可以：去过两次北京／去过北京两次。",
+        "english": "To say how many times something happens, put number + 次 after the verb (and after 过 or 了 if there is one): 去过两次 \"have been twice\". Where does the object go? With an ordinary object, the count comes first: 看过两次电影 \"have seen two movies / gone to the movies twice\". With a pronoun, the count comes after it: 见过他一次 \"have met him once\". With a place name, both orders are fine: 去过两次北京 or 去过北京两次. To ask, use 几次: 你去过几次? \"How many times have you been?\""
+      },
+      "examples": [
+        {
+          "hanzi": "我去过两次机场。",
+          "pinyin": "Wǒ qùguo liǎng cì jīchǎng.",
+          "english": "I've been to the airport twice."
+        },
+        {
+          "hanzi": "这个电影我看过三次。",
+          "pinyin": "Zhège diànyǐng wǒ kànguo sān cì.",
+          "english": "I've seen this movie three times."
+        },
+        {
+          "hanzi": "我见过他一次。",
+          "pinyin": "Wǒ jiànguo tā yí cì.",
+          "english": "I've met him once."
+        },
+        {
+          "hanzi": "马克每个星期打两次篮球。",
+          "pinyin": "Mǎkè měi ge xīngqī dǎ liǎng cì lánqiú.",
+          "english": "Mark plays basketball twice a week."
+        }
+      ],
       "patternTable": {
-        "columns": ["Subject", "V", "过", "Num + 次", "Object"],
+        "columns": [
+          "动词（＋过）Verb (+ 过)",
+          "数词＋次 Number + 次",
+          "宾语 Object"
+        ],
         "rows": [
-          ["我们", "看", "过", "三次", "电影。"],
-          ["他们", "坐", "过", "一次", "飞机。"],
-          ["我",   "(在这个商店)买", "过", "一次", "(东西)。"],
-          ["我们", "去", "过", "三次", "北京。"],
-          ["我们", "找", "过", "他三次。", ""],
-          ["老师", "叫", "过", "我两次。", ""]
+          [
+            "去过",
+            "两次",
+            "机场"
+          ],
+          [
+            "看过",
+            "三次",
+            "电影"
+          ],
+          [
+            "见过他",
+            "一次",
+            ""
+          ],
+          [
+            "打",
+            "两次",
+            "篮球"
+          ]
         ]
       }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。",
+        "english": "In pairs, read the dialogues aloud, taking one role each."
+      }
+    },
+    {
+      "number": 2,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用\"过、次、虽然、有意思、晴\"填空。",
+        "english": "Fill in the blanks with 过, 次, 虽然, 有意思 or 晴."
+      },
       "items": [
-        { "hanzi": "他们看过那个电影吗?",       "pinyin": "Tāmen kànguo nàge diànyǐng ma?" },
-        { "hanzi": "他们想几个人去看电影?",     "pinyin": "Tāmen xiǎng jǐ ge rén qù kàn diànyǐng?" },
-        { "hanzi": "他们想来中国做什么?",       "pinyin": "Tāmen xiǎng lái Zhōngguó zuò shénme?" },
-        { "hanzi": "为什么她明天不能去跑步?",   "pinyin": "Wèi shénme tā míngtiān bù néng qù pǎo bù?" },
-        { "hanzi": "女的觉得这个商店的东西怎么样?","pinyin": "Nǚ de juéde zhège shāngdiàn de dōngxi zěnmeyàng?" }
+        {
+          "hanzi": "我去____那个饭馆，菜很好吃。",
+          "english": "I've been to that restaurant. The food is good.",
+          "blank": "过"
+        },
+        {
+          "hanzi": "这个电影我看过两____。",
+          "english": "I've seen this movie twice.",
+          "blank": "次"
+        },
+        {
+          "hanzi": "____外面很冷，但是教室里很热。",
+          "english": "Although it's cold outside, it's warm in the classroom.",
+          "blank": "虽然"
+        },
+        {
+          "hanzi": "这本书很____，你也看看吧。",
+          "english": "This book is really interesting. You should read it too.",
+          "blank": "有意思"
+        },
+        {
+          "hanzi": "今天是____天，我们去外面玩儿吧。",
+          "english": "It's a sunny day today. Let's go out and have fun.",
+          "blank": "晴"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据你的情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
+      "items": [
+        {
+          "hanzi": "你去过中国吗？去过几次？",
+          "pinyin": "Nǐ qùguo Zhōngguó ma? Qùguo jǐ cì?",
+          "english": "Have you been to China? How many times?"
+        },
+        {
+          "hanzi": "你坐过飞机吗？",
+          "pinyin": "Nǐ zuòguo fēijī ma?",
+          "english": "Have you ever been on a plane?"
+        },
+        {
+          "hanzi": "你看过中国电影吗？有意思吗？",
+          "pinyin": "Nǐ kànguo Zhōngguó diànyǐng ma? Yǒu yìsi ma?",
+          "english": "Have you seen any Chinese movies? Were they interesting?"
+        },
+        {
+          "hanzi": "晴天的时候，你喜欢去哪儿玩儿？",
+          "pinyin": "Qíngtiān de shíhou, nǐ xǐhuan qù nǎr wánr?",
+          "english": "On sunny days, where do you like to go for fun?"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "match",
+      "prompt": {
+        "hanzi": "找出合适的回答。",
+        "english": "Match each question with a suitable answer."
+      },
+      "items": [
+        {
+          "hanzi": "你吃过羊肉吗？ — 吃过，吃过很多次。",
+          "pinyin": "Nǐ chīguo yángròu ma? — Chīguo, chīguo hěn duō cì.",
+          "english": "Have you ever eaten lamb? — Yes, many times."
+        },
+        {
+          "hanzi": "这个电影怎么样？ — 虽然我不太懂，但是很有意思。",
+          "pinyin": "Zhège diànyǐng zěnmeyàng? — Suīrán wǒ bú tài dǒng, dànshì hěn yǒu yìsi.",
+          "english": "How's this movie? — I didn't really understand it, but it's very interesting."
+        },
+        {
+          "hanzi": "你来过这儿吗？ — 没来过，这是第一次。",
+          "pinyin": "Nǐ láiguo zhèr ma? — Méi láiguo, zhè shì dì-yī cì.",
+          "english": "Have you been here before? — No, this is my first time."
+        },
+        {
+          "hanzi": "明天天气怎么样？ — 是晴天，不冷。",
+          "pinyin": "Míngtiān tiānqì zěnmeyàng? — Shì qíngtiān, bù lěng.",
+          "english": "What's the weather like tomorrow? — Sunny, and not cold."
+        }
       ]
     }
   ],
   "characters": {
     "radicals": [
-      { "hanzi": "⻗", "pinyin": "yǔ zì tóu",   "english": "rain (related to weather like rain/clouds)",                "examples": ["雪 xuě (snow)", "雾 wù (fog, mist)"] },
-      { "hanzi": "贝", "pinyin": "bèi zì páng", "english": "shell (related to money or ancient cooking vessels)",         "examples": ["财 cái (wealth, money)", "货 huò (goods, commodity)"] }
+      {
+        "hanzi": "⻗",
+        "pinyin": "yǔ zì tóu",
+        "english": "rain (a squashed form of 雨 on top; related to weather)",
+        "examples": [
+          "雪 xuě (snow)",
+          "零 líng (zero)",
+          "雷 léi (thunder)",
+          "需 xū (to need)"
+        ]
+      },
+      {
+        "hanzi": "贝",
+        "pinyin": "bèi zì páng",
+        "english": "cowrie shell (shells were once used as money; related to money and value)",
+        "examples": [
+          "贵 guì (expensive)",
+          "员 yuán (member, staff)",
+          "费 fèi (fee, cost)",
+          "财 cái (wealth)"
+        ]
+      }
+    ]
+  },
+  "application": {
+    "prompt": {
+      "hanzi": "小组活动：说说你的经历。",
+      "english": "Group work: talk about your experiences."
+    },
+    "activities": [
+      "\"Have you ever...?\" survey: each person writes five questions with 过 (你吃过……吗？/ 你去过……吗？). Walk around and ask; when someone says yes, follow up with 去过几次？/ 吃过几次？ Report the most interesting answer to the group.",
+      "Recommend a movie, book or restaurant to your partner using 虽然……，但是……: 这个电影虽然……，但是很有意思。",
+      "Write and read aloud a short \"My first hundred days\" paragraph like Mark's: where you've been, what you've done and how many times."
     ]
   }
 }

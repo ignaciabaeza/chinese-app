@@ -14,10 +14,10 @@ export default function CoursePage() {
     <div className="space-y-6 animate-fade-up">
       <div className="text-center pt-2 pb-2">
         <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontFamily: "Cormorant Garamond, serif", color: "var(--accent-gold)", letterSpacing: "0.06em" }}>
-          HSK Standard Course
+          HSK Course
         </h1>
         <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          标准教程 · Beijing Language and Culture University Press
+          Follows the official HSK syllabus · same lesson order as the HSK Standard Course books
         </p>
       </div>
 
@@ -69,8 +69,8 @@ export default function CoursePage() {
       </Link>
 
       <p className="text-xs text-center" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-        Lesson content is extracted from your HSK Standard Course textbooks.
-        Lessons marked as outline-only are coming soon.
+        Original lessons built on the official HSK word lists — use them on their own
+        or alongside the HSK Standard Course textbooks.
       </p>
     </div>
   );

@@ -2,83 +2,400 @@
   "id": "hsk2-4",
   "level": 2,
   "number": 4,
-  "title": { "hanzi": "这个工作是他帮我介绍的", "pinyin": "Zhège gōngzuò shì tā bāng wǒ jièshào de", "english": "He recommended me for this job" },
+  "title": {
+    "hanzi": "我已经工作两个月了",
+    "pinyin": "Wǒ yǐjīng gōngzuò liǎng ge yuè le",
+    "english": "I've already been working for two months"
+  },
   "theme": "Work & Time",
   "warmUp": {
-    "instruction": { "hanzi": "给下面的词语选择对应的图片", "english": "Match the pictures with the words/phrases." },
+    "instruction": {
+      "hanzi": "读一读，说说这些词语是什么意思。",
+      "english": "Read the words and phrases aloud and say what they mean."
+    },
     "items": [
-      { "hanzi": "生日",     "pinyin": "shēngrì",      "english": "birthday" },
-      { "hanzi": "晚上",     "pinyin": "wǎnshang",     "english": "evening, night" },
-      { "hanzi": "两个儿子", "pinyin": "liǎng ge érzi","english": "two sons" },
-      { "hanzi": "电话",     "pinyin": "diànhuà",      "english": "telephone, phone call" },
-      { "hanzi": "看书",     "pinyin": "kàn shū",      "english": "to read books" },
-      { "hanzi": "工作",     "pinyin": "gōngzuò",      "english": "work, job" }
+      {
+        "hanzi": "生日快乐",
+        "pinyin": "shēngrì kuàilè",
+        "english": "happy birthday"
+      },
+      {
+        "hanzi": "晚上",
+        "pinyin": "wǎnshang",
+        "english": "evening"
+      },
+      {
+        "hanzi": "开始工作",
+        "pinyin": "kāishǐ gōngzuò",
+        "english": "to start work"
+      },
+      {
+        "hanzi": "帮我介绍",
+        "pinyin": "bāng wǒ jièshào",
+        "english": "to recommend (someone) for me"
+      },
+      {
+        "hanzi": "去接你",
+        "pinyin": "qù jiē nǐ",
+        "english": "to go and pick you up"
+      },
+      {
+        "hanzi": "送给你",
+        "pinyin": "sòng gěi nǐ",
+        "english": "to give (as a present) to you"
+      },
+      {
+        "hanzi": "两个月",
+        "pinyin": "liǎng ge yuè",
+        "english": "two months"
+      },
+      {
+        "hanzi": "非常漂亮",
+        "pinyin": "fēicháng piàoliang",
+        "english": "really beautiful"
+      }
     ]
   },
   "texts": [
     {
       "situationNumber": 1,
-      "title": { "hanzi": "在教室", "english": "In the classroom" },
-      "audioRef": "04-1",
+      "title": {
+        "hanzi": "在学校旁边",
+        "english": "Near the campus"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "生日快乐!这是送给你的!", "pinyin": "Shēngrì kuàilè! Zhè shì sòng gěi nǐ de!", "english": "Happy birthday! This is for you." },
-        { "speaker": "B", "hanzi": "是什么?是一本书吗?",      "pinyin": "Shì shénme? Shì yì běn shū ma?",         "english": "What is it? Is it a book?" },
-        { "speaker": "A", "hanzi": "对,这本书是我写的。",     "pinyin": "Duì, zhè běn shū shì wǒ xiě de.",        "english": "Yes. A book written by me." },
-        { "speaker": "B", "hanzi": "太谢谢你了!",             "pinyin": "Tài xièxie nǐ le!",                      "english": "Thank you so much!" }
+        {
+          "speaker": "A",
+          "hanzi": "王明，听说你有新工作了？",
+          "pinyin": "Wáng Míng, tīngshuō nǐ yǒu xīn gōngzuò le?",
+          "english": "Wang Ming, I hear you've got a new job?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "是啊，我在学校旁边的商店工作。",
+          "pinyin": "Shì a, wǒ zài xuéxiào pángbiān de shāngdiàn gōngzuò.",
+          "english": "Yes, I work at the shop next to the school."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "这个工作是刘老师帮你介绍的吗？",
+          "pinyin": "Zhège gōngzuò shì Liú lǎoshī bāng nǐ jièshào de ma?",
+          "english": "Did Professor Liu recommend you for this job?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不是，是我的一个同学介绍的。",
+          "pinyin": "Bú shì, shì wǒ de yí ge tóngxué jièshào de.",
+          "english": "No, a classmate of mine did."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你每天几点开始工作？",
+          "pinyin": "Nǐ měi tiān jǐ diǎn kāishǐ gōngzuò?",
+          "english": "What time do you start work every day?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "下午五点开始，九点回家。",
+          "pinyin": "Xiàwǔ wǔ diǎn kāishǐ, jiǔ diǎn huí jiā.",
+          "english": "I start at five in the afternoon and go home at nine."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "工作的时候你忙吗？",
+          "pinyin": "Gōngzuò de shíhou nǐ máng ma?",
+          "english": "Are you busy when you're working?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "不太忙。我很喜欢这个工作。",
+          "pinyin": "Bú tài máng. Wǒ hěn xǐhuan zhège gōngzuò.",
+          "english": "Not too busy. I really like the job."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_4_shengri", "hanzi": "生日", "pinyin": "shēngrì", "pos": "n.",    "english": "birthday" },
-        { "id": "hsk2_4_kuaile",  "hanzi": "快乐", "pinyin": "kuàilè",  "pos": "adj.",  "english": "happy, glad" },
-        { "id": "hsk2_4_gei",     "hanzi": "给",   "pinyin": "gěi",     "pos": "prep.", "english": "(used after a verb) to, for" }
+        {
+          "id": "hsk2_4_bang",
+          "hanzi": "帮",
+          "pinyin": "bāng",
+          "pos": "v.",
+          "english": "to help, to assist"
+        },
+        {
+          "id": "hsk2_4_jieshao",
+          "hanzi": "介绍",
+          "pinyin": "jièshào",
+          "pos": "v.",
+          "english": "to introduce, to recommend"
+        },
+        {
+          "id": "hsk2_4_kaishi",
+          "hanzi": "开始",
+          "pinyin": "kāishǐ",
+          "pos": "v.",
+          "english": "to begin, to start"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_4_pn_wangming",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming"
+        },
+        {
+          "id": "hsk2_4_pn_liulaoshi",
+          "hanzi": "刘老师",
+          "pinyin": "Liú lǎoshī",
+          "english": "Professor Liu"
+        }
       ]
     },
     {
       "situationNumber": 2,
-      "title": { "hanzi": "在家里", "english": "At home" },
-      "audioRef": "04-2",
+      "title": {
+        "hanzi": "打电话",
+        "english": "A phone call"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "早上有你一个电话。",         "pinyin": "Zǎoshang yǒu nǐ yí ge diànhuà.",         "english": "Someone called you this morning." },
-        { "speaker": "B", "hanzi": "电话是谁打的?",               "pinyin": "Diànhuà shì shéi dǎ de?",                "english": "Who?" },
-        { "speaker": "A", "hanzi": "不知道,是儿子接的。",          "pinyin": "Bù zhīdào, shì érzi jiē de.",            "english": "I don't know. Our son answered it." },
-        { "speaker": "B", "hanzi": "好,晚上我问一下儿子。",       "pinyin": "Hǎo, wǎnshang wǒ wèn yíxià érzi.",       "english": "OK. I'll ask him about it this evening." }
+        {
+          "speaker": "A",
+          "hanzi": "喂，安娜，生日快乐！",
+          "pinyin": "Wéi, Ānnà, shēngrì kuàilè!",
+          "english": "Hello, Anna? Happy birthday!"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "谢谢你，马克！你是怎么知道的？",
+          "pinyin": "Xièxie nǐ, Mǎkè! Nǐ shì zěnme zhīdào de?",
+          "english": "Thank you, Mark! How did you know?"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我昨天问了王明。",
+          "pinyin": "Wǒ zuótiān wènle Wáng Míng.",
+          "english": "I asked Wang Ming yesterday."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "今天晚上我们想请你吃饭，你有时间吗？",
+          "pinyin": "Jīntiān wǎnshang wǒmen xiǎng qǐng nǐ chī fàn, nǐ yǒu shíjiān ma?",
+          "english": "We'd like to take you out to dinner tonight. Are you free?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "有时间！太好了！",
+          "pinyin": "Yǒu shíjiān! Tài hǎo le!",
+          "english": "Yes, I'm free! That's great!"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "六点我和王明去接你，好吗？",
+          "pinyin": "Liù diǎn wǒ hé Wáng Míng qù jiē nǐ, hǎo ma?",
+          "english": "Wang Ming and I will come and pick you up at six, OK?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "好，六点见！",
+          "pinyin": "Hǎo, liù diǎn jiàn!",
+          "english": "OK, see you at six!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_4_jie",      "hanzi": "接",   "pinyin": "jiē",      "pos": "v.", "english": "to receive, to take, to accept" },
-        { "id": "hsk2_4_wanshang", "hanzi": "晚上", "pinyin": "wǎnshang", "pos": "n.", "english": "evening, night" },
-        { "id": "hsk2_4_wen",      "hanzi": "问",   "pinyin": "wèn",      "pos": "v.", "english": "to ask" }
+        {
+          "id": "hsk2_4_shengri",
+          "hanzi": "生日",
+          "pinyin": "shēngrì",
+          "pos": "n.",
+          "english": "birthday"
+        },
+        {
+          "id": "hsk2_4_kuaile",
+          "hanzi": "快乐",
+          "pinyin": "kuàilè",
+          "pos": "adj.",
+          "english": "happy, glad"
+        },
+        {
+          "id": "hsk2_4_wen",
+          "hanzi": "问",
+          "pinyin": "wèn",
+          "pos": "v.",
+          "english": "to ask"
+        },
+        {
+          "id": "hsk2_4_wanshang",
+          "hanzi": "晚上",
+          "pinyin": "wǎnshang",
+          "pos": "n.",
+          "english": "evening, night"
+        },
+        {
+          "id": "hsk2_4_jie",
+          "hanzi": "接",
+          "pinyin": "jiē",
+          "pos": "v.",
+          "english": "to meet, to pick up (someone)"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_4_pn_anna",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        },
+        {
+          "id": "hsk2_4_pn_make",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark"
+        }
       ]
     },
     {
       "situationNumber": 3,
-      "title": { "hanzi": "在运动场", "english": "On the playground" },
-      "audioRef": "04-3",
+      "title": {
+        "hanzi": "在饭店",
+        "english": "At a restaurant"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "你喜欢踢足球吗?",                    "pinyin": "Nǐ xǐhuan tī zúqiú ma?",                              "english": "Do you like playing football?" },
-        { "speaker": "B", "hanzi": "非常喜欢。",                          "pinyin": "Fēicháng xǐhuan.",                                    "english": "Yes, very much." },
-        { "speaker": "A", "hanzi": "你是什么时候开始踢足球的?",          "pinyin": "Nǐ shì shénme shíhou kāishǐ tī zúqiú de?",            "english": "When did you begin to play football?" },
-        { "speaker": "B", "hanzi": "我十一岁的时候开始踢足球,已经踢了十年了。", "pinyin": "Wǒ shíyī suì de shíhou kāishǐ tī zúqiú, yǐjīng tī le shí nián le.", "english": "I was 11 when I started playing football. It's been 10 years." }
+        {
+          "speaker": "A",
+          "hanzi": "安娜，这个杯子是我和马克送给你的。",
+          "pinyin": "Ānnà, zhège bēizi shì wǒ hé Mǎkè sòng gěi nǐ de.",
+          "english": "Anna, this cup is a present from Mark and me."
+        },
+        {
+          "speaker": "B",
+          "hanzi": "非常漂亮！谢谢你们！",
+          "pinyin": "Fēicháng piàoliang! Xièxie nǐmen!",
+          "english": "It's really beautiful! Thank you both!"
+        },
+        {
+          "speaker": "A",
+          "hanzi": "你来中国多长时间了？",
+          "pinyin": "Nǐ lái Zhōngguó duō cháng shíjiān le?",
+          "english": "How long have you been in China?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "一年多了。",
+          "pinyin": "Yì nián duō le.",
+          "english": "Over a year now."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "生日的时候，你想家吗？",
+          "pinyin": "Shēngrì de shíhou, nǐ xiǎng jiā ma?",
+          "english": "Do you miss home on your birthday?"
+        },
+        {
+          "speaker": "B",
+          "hanzi": "有一点儿想。今天早上我妈妈给我打了两个电话！",
+          "pinyin": "Yǒu yìdiǎnr xiǎng. Jīntiān zǎoshang wǒ māma gěi wǒ dǎle liǎng ge diànhuà!",
+          "english": "A little. My mum called me twice this morning!"
+        }
       ],
       "newWords": [
-        { "id": "hsk2_4_feichang", "hanzi": "非常", "pinyin": "fēicháng","pos": "adv.", "english": "very, extremely" },
-        { "id": "hsk2_4_kaishi",   "hanzi": "开始", "pinyin": "kāishǐ",  "pos": "v.",   "english": "to begin, to start" },
-        { "id": "hsk2_4_yijing",   "hanzi": "已经", "pinyin": "yǐjīng",  "pos": "adv.", "english": "already" }
+        {
+          "id": "hsk2_4_gei",
+          "hanzi": "给",
+          "pinyin": "gěi",
+          "pos": "prep.",
+          "english": "(used after a verb) to, for"
+        },
+        {
+          "id": "hsk2_4_feichang",
+          "hanzi": "非常",
+          "pinyin": "fēicháng",
+          "pos": "adv.",
+          "english": "very, extremely"
+        },
+        {
+          "id": "hsk2_4_chang",
+          "hanzi": "长",
+          "pinyin": "cháng",
+          "pos": "adj.",
+          "english": "long"
+        },
+        {
+          "id": "hsk2_4_liang",
+          "hanzi": "两",
+          "pinyin": "liǎng",
+          "pos": "num.",
+          "english": "two"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_4_pn_anna_2",
+          "hanzi": "安娜",
+          "pinyin": "Ānnà",
+          "english": "Anna"
+        },
+        {
+          "id": "hsk2_4_pn_make_2",
+          "hanzi": "马克",
+          "pinyin": "Mǎkè",
+          "english": "Mark"
+        }
       ]
     },
     {
       "situationNumber": 4,
-      "title": { "hanzi": "在公司", "english": "In the company" },
-      "audioRef": "04-4",
+      "title": {
+        "hanzi": "王明说他的工作",
+        "english": "Wang Ming talks about his job"
+      },
       "dialogue": [
-        { "speaker": "A", "hanzi": "你在这儿工作多长时间了?",        "pinyin": "Nǐ zài zhèr gōngzuò duō cháng shíjiān le?",             "english": "How long have you been working here?" },
-        { "speaker": "B", "hanzi": "已经两年多了,我是2011年来的。",  "pinyin": "Yǐjīng liǎng nián duō le, wǒ shì èr líng yī yī nián lái de.", "english": "More than two years, since 2011." },
-        { "speaker": "A", "hanzi": "你认识谢先生吗?",                 "pinyin": "Nǐ rènshi Xiè xiānsheng ma?",                            "english": "Do you know Mr. Xie?" },
-        { "speaker": "B", "hanzi": "认识,我们是大学同学,这个工作是他帮我介绍的。","pinyin": "Rènshi, wǒmen shì dàxué tóngxué, zhège gōngzuò shì tā bāng wǒ jièshào de.","english": "Yes. He's my college classmate. He recommended me for this job." }
+        {
+          "speaker": "A",
+          "hanzi": "我叫王明，是大学生。",
+          "pinyin": "Wǒ jiào Wáng Míng, shì dàxuéshēng.",
+          "english": "My name is Wang Ming and I'm a university student."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我在学校旁边的一个商店工作，已经工作两个月了。",
+          "pinyin": "Wǒ zài xuéxiào pángbiān de yí ge shāngdiàn gōngzuò, yǐjīng gōngzuò liǎng ge yuè le.",
+          "english": "I work in a shop next to the school, and I've been there for two months already."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "我每个星期工作三天，下午五点开始，九点回家。",
+          "pinyin": "Wǒ měi ge xīngqī gōngzuò sān tiān, xiàwǔ wǔ diǎn kāishǐ, jiǔ diǎn huí jiā.",
+          "english": "I work three days a week. I start at five in the afternoon and go home at nine."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "商店里的人都很好，我不会做的时候，他们都来帮我。",
+          "pinyin": "Shāngdiàn li de rén dōu hěn hǎo, wǒ bú huì zuò de shíhou, tāmen dōu lái bāng wǒ.",
+          "english": "Everyone at the shop is really nice. Whenever I don't know how to do something, they come and help me."
+        },
+        {
+          "speaker": "A",
+          "hanzi": "今天，我已经给妈妈买了一块新手表。",
+          "pinyin": "Jīntiān, wǒ yǐjīng gěi māma mǎile yí kuài xīn shǒubiǎo.",
+          "english": "Today I've already bought my mum a new watch."
+        }
       ],
       "newWords": [
-        { "id": "hsk2_4_chang",   "hanzi": "长",   "pinyin": "cháng",   "pos": "adj.", "english": "long" },
-        { "id": "hsk2_4_liang",   "hanzi": "两",   "pinyin": "liǎng",   "pos": "num.", "english": "two" },
-        { "id": "hsk2_4_bang",    "hanzi": "帮",   "pinyin": "bāng",    "pos": "v.",   "english": "to help, to assist" },
-        { "id": "hsk2_4_jieshao", "hanzi": "介绍", "pinyin": "jièshào", "pos": "v.",   "english": "to introduce, to recommend" }
+        {
+          "id": "hsk2_4_yijing",
+          "hanzi": "已经",
+          "pinyin": "yǐjīng",
+          "pos": "adv.",
+          "english": "already"
+        }
+      ],
+      "properNouns": [
+        {
+          "id": "hsk2_4_pn_wangming_2",
+          "hanzi": "王明",
+          "pinyin": "Wáng Míng",
+          "english": "Wang Ming"
+        }
       ]
     }
   ],
@@ -86,91 +403,381 @@
     {
       "id": "hsk2_4_g_shi_de",
       "number": 1,
-      "title": { "hanzi": "\"是……的\"句:强调施事", "english": "The Structure \"是……的\": emphasizing the agent of an action" },
-      "explanation": {
-        "hanzi": "在已经知道事情发生的情况下,可以用\"是……的\"强调动作的发出者。否定形式在\"是\"的前边加\"不\"。",
-        "english": "When the occurrence of an action is already known, \"是……的\" can highlight who performed the action. The negative form puts \"不\" before \"是\"."
+      "title": {
+        "hanzi": "“是……的”句：强调是谁做的",
+        "english": "The 是……的 Construction: Stressing Who Did It"
       },
-      "patternTable": {
-        "columns": ["Object", "是 (V)", "Who", "Action (V)", "的"],
-        "rows": [
-          ["这本书", "是", "我",   "买", "的。"],
-          ["晚饭",   "是", "妈妈", "做", "的。"],
-          ["电话",   "是", "谁",   "打", "的?"]
-        ]
+      "explanation": {
+        "hanzi": "在HSK 1里，我们用“是……的”强调一件已经发生的事是什么时候、在哪儿、怎么做的。“是……的”也可以强调这件事是谁做的：把做事的人放在“是”的后面，动词后面加“的”。问的时候用“是谁……的？”。否定句用“不是……的”。",
+        "english": "In HSK 1 you used 是……的 to highlight WHEN, WHERE or HOW something already happened. The same frame can highlight WHO did it. Put the thing you're talking about first, then 是 + the person + the verb + 的. To ask, put 谁 after 是: 这些菜是谁做的? (Who made these dishes?). The answer often drops the topic: 是我妈妈做的. The negative is 不是……的. Remember: the action itself is already known; the new information is the person."
       },
       "examples": [
-        { "hanzi": "这个汉字不是大卫写的。", "pinyin": "Zhège Hànzì bú shì Dàwèi xiě de.",     "english": "This Chinese character wasn't written by David." },
-        { "hanzi": "苹果不是王方买的。",     "pinyin": "Píngguǒ bú shì Wáng Fāng mǎi de.",     "english": "The apples weren't bought by Wang Fang." },
-        { "hanzi": "电话不是我接的。",       "pinyin": "Diànhuà bú shì wǒ jiē de.",            "english": "The phone wasn't answered by me." }
-      ]
+        {
+          "hanzi": "这些菜是谁做的？",
+          "pinyin": "Zhèxiē cài shì shéi zuò de?",
+          "english": "Who made these dishes?"
+        },
+        {
+          "hanzi": "是我妈妈做的。",
+          "pinyin": "Shì wǒ māma zuò de.",
+          "english": "My mum made them."
+        },
+        {
+          "hanzi": "这个杯子是马克送给我的。",
+          "pinyin": "Zhège bēizi shì Mǎkè sòng gěi wǒ de.",
+          "english": "This cup was a present from Mark."
+        },
+        {
+          "hanzi": "这个工作不是刘老师介绍的，是我同学介绍的。",
+          "pinyin": "Zhège gōngzuò bú shì Liú lǎoshī jièshào de, shì wǒ tóngxué jièshào de.",
+          "english": "It wasn't Professor Liu who recommended me for this job; it was my classmate."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Topic",
+          "是",
+          "Who",
+          "Verb (+ Object)",
+          "的"
+        ],
+        "rows": [
+          [
+            "这些菜",
+            "是",
+            "谁",
+            "做",
+            "的？"
+          ],
+          [
+            "这个杯子",
+            "是",
+            "马克",
+            "送给我",
+            "的"
+          ],
+          [
+            "这些汉字",
+            "是",
+            "安娜",
+            "写",
+            "的"
+          ],
+          [
+            "这个工作",
+            "不是",
+            "刘老师",
+            "介绍",
+            "的"
+          ]
+        ]
+      }
     },
     {
       "id": "hsk2_4_g_deshihou",
       "number": 2,
-      "title": { "hanzi": "表示时间:……的时候", "english": "\"……的时候\" Indicating Time" },
+      "title": {
+        "hanzi": "“……的时候”",
+        "english": "……的时候: \"When …\""
+      },
       "explanation": {
-        "hanzi": "\"数量+的时候\"表示时间。\"动词+的时候\"也表示时间。",
-        "english": "\"Number-Measure + 的时候\" indicates a time, as does \"Verb + 的时候\"."
+        "hanzi": "“……的时候”放在一个词或者一个句子后面，说明后面的事在什么时间发生，意思是“在……那个时间”。“……的时候”要放在句子前面或者主语后面，不能放在句子最后。",
+        "english": "Add 的时候 after a verb phrase, a short clause or a noun to say \"(at the time) when …\". The 的时候 part always comes BEFORE the main action — at the start of the sentence or right after the subject — never at the end as in English \"… when I eat\". So \"I like watching TV when I eat\" is 我吃饭的时候喜欢看电视. It works for the past, present and future alike."
       },
       "examples": [
-        { "hanzi": "今天早上八点的时候我没在家。", "pinyin": "Jīntiān zǎoshang bā diǎn de shíhou wǒ méi zài jiā.", "english": "I wasn't home at 8 this morning." },
-        { "hanzi": "我十八岁的时候一个人来到北京。","pinyin": "Wǒ shíbā suì de shíhou yí ge rén lái dào Běijīng.","english": "I came to Beijing alone when I was eighteen." },
-        { "hanzi": "我十一岁的时候开始踢足球。",   "pinyin": "Wǒ shíyī suì de shíhou kāishǐ tī zúqiú.",          "english": "I started playing football when I was eleven." },
-        { "hanzi": "我睡觉的时候,我妈妈在做饭。","pinyin": "Wǒ shuì jiào de shíhou, wǒ māma zài zuò fàn.",     "english": "While I was sleeping, my mother was cooking." },
-        { "hanzi": "麦克到学校的时候下雨了。",    "pinyin": "Màikè dào xuéxiào de shíhou xià yǔ le.",            "english": "It started raining when Mike arrived at school." }
-      ]
+        {
+          "hanzi": "我吃饭的时候喜欢看电视。",
+          "pinyin": "Wǒ chī fàn de shíhou xǐhuan kàn diànshì.",
+          "english": "I like watching TV while I eat."
+        },
+        {
+          "hanzi": "工作的时候，王明不看手机。",
+          "pinyin": "Gōngzuò de shíhou, Wáng Míng bú kàn shǒujī.",
+          "english": "Wang Ming doesn't look at his phone when he's working."
+        },
+        {
+          "hanzi": "下雨的时候，我们在家看电影。",
+          "pinyin": "Xià yǔ de shíhou, wǒmen zài jiā kàn diànyǐng.",
+          "english": "When it rains, we watch films at home."
+        },
+        {
+          "hanzi": "她在北京的时候，住在大学里。",
+          "pinyin": "Tā zài Běijīng de shíhou, zhù zài dàxué li.",
+          "english": "When she was in Beijing, she lived on campus."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Time clause",
+          "的时候",
+          "Main clause"
+        ],
+        "rows": [
+          [
+            "我吃饭",
+            "的时候",
+            "喜欢看电视"
+          ],
+          [
+            "下雨",
+            "的时候",
+            "我们不出去"
+          ],
+          [
+            "他在北京",
+            "的时候",
+            "住在大学里"
+          ],
+          [
+            "你生日",
+            "的时候",
+            "想做什么？"
+          ]
+        ]
+      }
     },
     {
       "id": "hsk2_4_g_yijing",
       "number": 3,
-      "title": { "hanzi": "时间副词\"已经\"", "english": "The Adverb of Time \"已经\"" },
+      "title": {
+        "hanzi": "时间副词“已经”",
+        "english": "The Time Adverb 已经 (Already)"
+      },
       "explanation": {
-        "hanzi": "\"已经\"表示动作完成或者达到某种程度。",
-        "english": "\"已经\" indicates that an action has been completed or has reached a certain degree."
+        "hanzi": "“已经”表示一件事在说话以前就完成了，或者时间、年龄等已经到了一个点。“已经”放在动词或者时间词前面，句子最后常常有“了”。",
+        "english": "已经 means \"already\": the action is finished, or a time, age or amount has been reached, earlier than you might expect. It goes before the verb (or before a time word or number), and the sentence usually ends with 了. Typical frames: 已经 + verb + 了 (电影已经开始了), 已经 + time/amount + 了 (现在已经十点了), and 已经 + verb + duration + 了 to say how long something has been going on (我已经工作两个月了)."
       },
       "examples": [
-        { "hanzi": "王老师已经回家了。",       "pinyin": "Wáng lǎoshī yǐjīng huí jiā le.",      "english": "Mr. Wang has already gone home." },
-        { "hanzi": "我的身体已经好了。",       "pinyin": "Wǒ de shēntǐ yǐjīng hǎo le.",         "english": "I'm already well." },
-        { "hanzi": "(足球我)已经踢了十年了。","pinyin": "(Zúqiú wǒ) yǐjīng tī le shí nián le.","english": "(Football) — I've already been playing it for ten years." }
-      ]
+        {
+          "hanzi": "电影已经开始了！",
+          "pinyin": "Diànyǐng yǐjīng kāishǐ le!",
+          "english": "The film has already started!"
+        },
+        {
+          "hanzi": "我已经吃饭了，不想吃了。",
+          "pinyin": "Wǒ yǐjīng chī fàn le, bù xiǎng chī le.",
+          "english": "I've already eaten; I don't want any more."
+        },
+        {
+          "hanzi": "现在已经十一点了，我们回家吧。",
+          "pinyin": "Xiànzài yǐjīng shíyī diǎn le, wǒmen huí jiā ba.",
+          "english": "It's already eleven o'clock. Let's go home."
+        },
+        {
+          "hanzi": "王明已经工作两个月了。",
+          "pinyin": "Wáng Míng yǐjīng gōngzuò liǎng ge yuè le.",
+          "english": "Wang Ming has been working for two months already."
+        }
+      ],
+      "patternTable": {
+        "columns": [
+          "Subject",
+          "已经",
+          "Verb / Time / Amount",
+          "了"
+        ],
+        "rows": [
+          [
+            "电影",
+            "已经",
+            "开始",
+            "了"
+          ],
+          [
+            "她",
+            "已经",
+            "回家",
+            "了"
+          ],
+          [
+            "现在",
+            "已经",
+            "十点",
+            "了"
+          ],
+          [
+            "我",
+            "已经",
+            "工作两个月",
+            "了"
+          ]
+        ]
+      }
     }
   ],
   "exercises": [
-    { "number": 1, "type": "role_play", "prompt": { "hanzi": "分角色朗读课文", "english": "Role-play the dialogues." } },
     {
-      "number": 2, "type": "answer_questions",
-      "prompt": { "hanzi": "根据课文内容回答问题", "english": "Answer the questions based on the dialogs." },
+      "number": 1,
+      "type": "role_play",
+      "prompt": {
+        "hanzi": "两人一组，分角色读课文。第四段课文请一个人读给大家听。",
+        "english": "In pairs, read dialogues 1–3 aloud, taking turns with each role. One student reads text 4 to the class."
+      }
+    },
+    {
+      "number": 2,
+      "type": "fill_blanks",
+      "prompt": {
+        "hanzi": "用“已经、的时候、接、介绍、快乐”填空。",
+        "english": "Fill in the blanks with 已经, 的时候, 接, 介绍 or 快乐."
+      },
       "items": [
-        { "hanzi": "这本书是谁写的?",         "pinyin": "Zhè běn shū shì shéi xiě de?" },
-        { "hanzi": "早上的电话是谁接的?",     "pinyin": "Zǎoshang de diànhuà shì shéi jiē de?" },
-        { "hanzi": "他是什么时候开始踢足球的?","pinyin": "Tā shì shénme shíhou kāishǐ tī zúqiú de?" },
-        { "hanzi": "他在那儿工作多长时间了?", "pinyin": "Tā zài nàr gōngzuò duō cháng shíjiān le?" },
-        { "hanzi": "工作是谁帮他介绍的?",     "pinyin": "Gōngzuò shì shéi bāng tā jièshào de?" }
+        {
+          "hanzi": "电影____开始了，我们快去吧！",
+          "english": "The film has already started. Let's hurry!",
+          "blank": "已经"
+        },
+        {
+          "hanzi": "我吃饭____，不喜欢看手机。",
+          "english": "I don't like looking at my phone while I eat.",
+          "blank": "的时候"
+        },
+        {
+          "hanzi": "晚上六点我开车去____你。",
+          "english": "I'll drive over and pick you up at six this evening.",
+          "blank": "接"
+        },
+        {
+          "hanzi": "这个工作是我同学帮我____的。",
+          "english": "My classmate recommended me for this job.",
+          "blank": "介绍"
+        },
+        {
+          "hanzi": "安娜，生日____！",
+          "english": "Anna, happy birthday!",
+          "blank": "快乐"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据课文回答问题。",
+        "english": "Answer the questions based on the texts."
+      },
+      "items": [
+        {
+          "hanzi": "王明的工作是谁介绍的？",
+          "pinyin": "Wáng Míng de gōngzuò shì shéi jièshào de?",
+          "english": "Who recommended Wang Ming for his job?"
+        },
+        {
+          "hanzi": "王明每天几点开始工作？",
+          "pinyin": "Wáng Míng měi tiān jǐ diǎn kāishǐ gōngzuò?",
+          "english": "What time does Wang Ming start work?"
+        },
+        {
+          "hanzi": "马克和王明几点去接安娜？",
+          "pinyin": "Mǎkè hé Wáng Míng jǐ diǎn qù jiē Ānnà?",
+          "english": "What time are Mark and Wang Ming picking Anna up?"
+        },
+        {
+          "hanzi": "安娜的妈妈今天给她打了几个电话？",
+          "pinyin": "Ānnà de māma jīntiān gěi tā dǎle jǐ ge diànhuà?",
+          "english": "How many times did Anna's mum call her today?"
+        },
+        {
+          "hanzi": "王明已经工作几个月了？",
+          "pinyin": "Wáng Míng yǐjīng gōngzuò jǐ ge yuè le?",
+          "english": "How many months has Wang Ming been working?"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "answer_questions",
+      "prompt": {
+        "hanzi": "根据实际情况回答问题。",
+        "english": "Answer the questions about yourself."
+      },
+      "items": [
+        {
+          "hanzi": "你学习汉语几年了？",
+          "pinyin": "Nǐ xuéxí Hànyǔ jǐ nián le?",
+          "english": "How many years have you been studying Chinese?"
+        },
+        {
+          "hanzi": "你生日的时候喜欢做什么？",
+          "pinyin": "Nǐ shēngrì de shíhou xǐhuan zuò shénme?",
+          "english": "What do you like to do on your birthday?"
+        },
+        {
+          "hanzi": "你今天已经吃午饭了吗？",
+          "pinyin": "Nǐ jīntiān yǐjīng chī wǔfàn le ma?",
+          "english": "Have you already had lunch today?"
+        },
+        {
+          "hanzi": "你的手表是谁送给你的？",
+          "pinyin": "Nǐ de shǒubiǎo shì shéi sòng gěi nǐ de?",
+          "english": "Who gave you your watch?"
+        }
       ]
     }
   ],
   "characters": {
-    "strokes": [
-      { "name": { "hanzi": "竖提", "pinyin": "shùtí", "english": "vertical-rising" },                "shape": "𠄌", "examples": [{ "hanzi": "长", "pinyin": "cháng", "english": "long" }, { "hanzi": "民", "pinyin": "mín", "english": "people" }] },
-      { "name": { "hanzi": "竖折折钩", "pinyin": "shùzhézhégōu", "english": "vertical-double-turning hook" }, "shape": "𠃑", "examples": [{ "hanzi": "马", "pinyin": "mǎ", "english": "horse" }, { "hanzi": "写", "pinyin": "xiě", "english": "to write" }] }
-    ],
     "singleComponentChars": [
-      { "id": "hsk2_4_c_liang", "hanzi": "两", "pinyin": "liǎng",       "meaning": "two, double",     "etymology": "\"两\" originally looked like a yoke fastened across two horses' necks. It means \"two\" or \"double\".", "strokeCount": 7 },
-      { "id": "hsk2_4_c_le",    "hanzi": "乐", "pinyin": "yuè / lè",    "meaning": "music; happy",    "etymology": "The complex form 樂 originally referred to musical instruments or music (yuè). It also came to mean joyous/happy (lè).",            "strokeCount": 5 },
-      { "id": "hsk2_4_c_chang", "hanzi": "长", "pinyin": "cháng / zhǎng","meaning": "long; old",      "etymology": "\"长\" originally referred to an old person with a walking stick. Now it means \"old\" (zhǎng) and \"a long distance between two sections\" (cháng).", "strokeCount": 4 }
+      {
+        "id": "hsk2_4_c_liang",
+        "hanzi": "两",
+        "pinyin": "liǎng",
+        "meaning": "two, a pair",
+        "etymology": "A common explanation is that the early form showed a yoke for harnessing two horses side by side, so it came to mean \"a pair\". You can still see two small 人-like shapes sitting inside the frame.",
+        "strokeCount": 7
+      },
+      {
+        "id": "hsk2_4_c_le",
+        "hanzi": "乐",
+        "pinyin": "lè / yuè",
+        "meaning": "happy; music",
+        "etymology": "The traditional form 樂 showed strings of silk stretched over a wooden frame, which was a musical instrument. Music brings joy, so the character is read yuè for \"music\" and lè for \"happy\", as in 快乐.",
+        "strokeCount": 5
+      },
+      {
+        "id": "hsk2_4_c_chang",
+        "hanzi": "长",
+        "pinyin": "cháng / zhǎng",
+        "meaning": "long; to grow",
+        "etymology": "Early versions drew an old person with long, flowing hair. From that image come both readings: cháng \"long\" and zhǎng \"to grow; elder\".",
+        "strokeCount": 4
+      }
     ],
     "radicals": [
-      { "hanzi": "纟", "pinyin": "jiǎosī páng",     "english": "silk (related to silk)",                        "examples": ["给 gěi (to give)", "结 jié (to tie, to knot)"] },
-      { "hanzi": "忄", "pinyin": "shù xīn páng",    "english": "standing heart (related to mentality)",         "examples": ["忙 máng (busy)", "快 kuài (quick, fast)"] }
+      {
+        "hanzi": "纟",
+        "pinyin": "jiǎosīpáng",
+        "english": "silk radical (thread, weaving, connecting)",
+        "examples": [
+          "给",
+          "红",
+          "纸",
+          "绍",
+          "经"
+        ]
+      },
+      {
+        "hanzi": "忄",
+        "pinyin": "shùxīnpáng",
+        "english": "upright heart radical (feelings, states of mind)",
+        "examples": [
+          "忙",
+          "快",
+          "怕",
+          "情"
+        ]
+      }
     ]
   },
   "application": {
-    "prompt": { "hanzi": "两人一组,对同学桌子上的东西进行提问。", "english": "Work in pairs and ask about the items on your partner's desk." },
+    "prompt": {
+      "hanzi": "两人一组，互相问问对方的工作、学习和生日，然后向大家介绍。",
+      "english": "Work in pairs: ask each other about work or study and birthdays, then tell the group what you found out."
+    },
     "activities": [
-      "A: 这个笔是你买的吗? B: 不是,是我妈妈买的。",
-      "A: 这个汉字是你写的吗? B: 对,是我写的。",
-      "Group: bring a photo of a birthday party and describe how it was prepared."
+      "Interview: 你在哪儿工作/学习？ 已经多长时间了？ 你每天几点开始？ 这个工作是谁帮你介绍的？",
+      "Birthday chat: ask 你的生日是几月几号？ 生日的时候你喜欢做什么？ and practise wishing each other 生日快乐！",
+      "Gift game: put a few objects from your bags on the table. Others guess the owner with 是……的 — 这个杯子是谁的？ 是谁送给你的？",
+      "Plan an evening: agree on a time, decide who will pick up (接) whom, and say what you'll do 晚上."
     ]
   }
 }
