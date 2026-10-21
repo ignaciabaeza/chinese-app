@@ -52,3 +52,7 @@ next-env.d.ts
 
 # raw downloaded data sources (re-fetched via npm run db:download)
 /data/sources/
+
+# python bytecode
+__pycache__/
+*.pyc
