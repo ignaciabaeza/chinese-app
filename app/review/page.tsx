@@ -521,11 +521,14 @@ function ReviewCard({
             </ol>
             <Link
               href={`/vocab/${encodeURIComponent(card.simplified)}`}
+              // New tab so the review session (queue position, counts) survives.
+              target="_blank"
+              rel="noopener"
               className="mt-4 text-xs"
               onClick={(e) => e.stopPropagation()}
               style={{ color: "#7A6855", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.05em" }}
             >
-              full detail →
+              full detail ↗
             </Link>
           </div>
         </div>

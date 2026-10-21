@@ -476,6 +476,8 @@ function VocabStep({
             <div className="flex-1 min-w-0">
               <div className="flex items-baseline gap-2 flex-wrap">
                 <Link href={`/vocab/${encodeURIComponent(w.simplified)}`}
+                      target="_blank"
+                      rel="noopener"
                       className="font-display text-base"
                       style={{ color: "var(--text-parchment)" }}>
                   {w.simplified}

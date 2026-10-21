@@ -285,11 +285,13 @@ function WordPopover({
           <div className="flex gap-2 pt-1">
             <Link
               href={`/vocab/${encodeURIComponent(word.simplified)}`}
+              target="_blank"
+              rel="noopener"
               className="text-xs px-3 py-1.5 rounded"
               style={{ border: "1px solid var(--accent-gold)", color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}
               onClick={() => onClose()}
             >
-              Full detail →
+              Full detail ↗
             </Link>
             {!word.in_deck && (
               <button
