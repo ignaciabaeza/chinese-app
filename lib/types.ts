@@ -178,38 +178,3 @@ export interface LessonSummary {
   grammarCount: number;
   stub: boolean;
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Progress types — what gets stored per-user. Cards can be vocab, characters,
-// grammar points, or sentences. The card_id is globally unique across types.
-// ─────────────────────────────────────────────────────────────────────────────
-
-export type CardType = "word" | "character" | "grammar" | "sentence";
-
-/** Stable card ID convention: `${type}:${entity_id}` — e.g. "word:hsk1_3_jiao". */
-export function cardId(type: CardType, entityId: string): string {
-  return `${type}:${entityId}`;
-}
-
-export interface CardProgress {
-  cardId: string;
-  cardType: CardType;
-  easeFactor: number;
-  interval: number;
-  repetitions: number;
-  nextReview: number;
-  lastReview: number;
-  correct: number;
-  incorrect: number;
-}
-
-export interface StudySession {
-  date: string;             // ISO date "YYYY-MM-DD"
-  cardsStudied: number;
-  correct: number;
-  incorrect: number;
-  /** Where the session was scoped: "hsk1-lesson-3" | "hsk1" | "all" | ... */
-  scope: string;
-  cardType: CardType;
-  cardIds?: string[];
-}

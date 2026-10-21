@@ -16,6 +16,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 import HanziQuiz from "@/components/HanziQuiz";
+import { submitGrade } from "@/lib/review-client";
 
 interface WritingCard {
   id: number;
@@ -54,7 +55,12 @@ export default function WritingPage() {
   const [perCharMistakes, setPerCharMistakes] = useState<number[]>([]);
   const [resetKey, setResetKey] = useState(0);
   const [sessionStats, setSessionStats] = useState({ again: 0, hard: 0, good: 0, easy: 0 });
-  const startedAt = useRef<number>(Date.now());
+  const [submitting, setSubmitting] = useState(false);
+  // State updates are async, so two taps in the same tick both see
+  // submitting=false; the ref is the real guard.
+  const submittingRef = useRef(false);
+  const [gradeError, setGradeError] = useState<string | null>(null);
+  const startedAt = useRef<number>(0);
 
   const loadQueue = useCallback(async (lvl: "all" | 1 | 2 = level) => {
     setError(null);
@@ -110,7 +116,20 @@ export default function WritingPage() {
 
   const grade = useCallback(
     async (rating: 1 | 2 | 3 | 4) => {
-      if (!current) return;
+      // Ignore double taps while the previous grade is in flight.
+      if (!current || submittingRef.current) return;
+      submittingRef.current = true;
+      setSubmitting(true);
+      setGradeError(null);
+      const elapsedMs = Date.now() - startedAt.current;
+      try {
+        await submitGrade(current.id, rating, elapsedMs);
+      } catch (e) {
+        setGradeError((e as Error).message);
+        submittingRef.current = false;
+        setSubmitting(false);
+        return;
+      }
       setSessionStats((s) => ({
         ...s,
         again: rating === 1 ? s.again + 1 : s.again,
@@ -118,16 +137,8 @@ export default function WritingPage() {
         good:  rating === 3 ? s.good + 1  : s.good,
         easy:  rating === 4 ? s.easy + 1  : s.easy,
       }));
-      const elapsedMs = Date.now() - startedAt.current;
-      try {
-        await fetch("/api/review/grade", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ cardId: current.id, rating, elapsedMs }),
-        });
-      } catch {
-        // ignore
-      }
+      submittingRef.current = false;
+      setSubmitting(false);
       if (index + 1 >= queue.length) {
         setPhase("finished");
       } else {
@@ -219,12 +230,20 @@ export default function WritingPage() {
           />
         </div>
       ) : (
-        <GradeButtons
-          mistakes={perCharMistakes.reduce((a, b) => a + b, 0)}
-          totalChars={chars.length}
-          word={current.simplified}
-          onGrade={grade}
-        />
+        <>
+          {gradeError && (
+            <div className="rounded-xl p-3" style={{ background: "rgba(196,133,122,0.08)", border: "1px solid rgba(196,133,122,0.4)" }}>
+              <p className="text-sm text-center" style={{ color: "var(--accent-rose)", fontFamily: "Spectral, serif" }}>{gradeError}</p>
+            </div>
+          )}
+          <GradeButtons
+            mistakes={perCharMistakes.reduce((a, b) => a + b, 0)}
+            totalChars={chars.length}
+            word={current.simplified}
+            disabled={submitting}
+            onGrade={grade}
+          />
+        </>
       )}
     </div>
   );
@@ -335,11 +354,12 @@ function Stat({ label, value, color, highlight }: { label: string; value: number
 // ─── Grade buttons ───────────────────────────────────────────────────────────
 
 function GradeButtons({
-  mistakes, totalChars, word, onGrade,
+  mistakes, totalChars, word, disabled, onGrade,
 }: {
   mistakes: number;
   totalChars: number;
   word: string;
+  disabled: boolean;
   onGrade: (r: 1 | 2 | 3 | 4) => void;
 }) {
   // suggested rating based on mistake count
@@ -363,8 +383,10 @@ function GradeButtons({
           <button
             key={r}
             onClick={() => onGrade(r)}
+            disabled={disabled}
             className="py-3 rounded-xl text-sm font-semibold transition-all"
             style={{
+              opacity: disabled ? 0.5 : 1,
               background: r === suggested ? colors[r] : "transparent",
               border: `1.5px solid ${colors[r]}`,
               color: r === suggested ? "var(--bg-parchment)" : colors[r],

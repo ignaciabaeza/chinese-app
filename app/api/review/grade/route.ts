@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAuthFromRequest } from "@/lib/auth";
-import { gradeCard, type GradeRating } from "@/lib/fsrs";
+import { gradeCard, CardNotFoundError, DuplicateGradeError, type GradeRating } from "@/lib/fsrs";
 
 /**
  * POST /api/review/grade
@@ -17,16 +17,26 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
   const { cardId, rating, elapsedMs } = body;
-  if (typeof cardId !== "number") return NextResponse.json({ error: "cardId required" }, { status: 400 });
+  if (typeof cardId !== "number" || !Number.isInteger(cardId)) return NextResponse.json({ error: "cardId required" }, { status: 400 });
   if (rating !== 1 && rating !== 2 && rating !== 3 && rating !== 4) {
     return NextResponse.json({ error: "rating must be 1-4" }, { status: 400 });
   }
 
+  const elapsed = typeof elapsedMs === "number" && Number.isFinite(elapsedMs) && elapsedMs >= 0
+    ? Math.min(Math.round(elapsedMs), 3_600_000)
+    : undefined;
+
   try {
-    const result = await gradeCard(auth.userId, cardId, rating as GradeRating, elapsedMs);
+    const result = await gradeCard(auth.userId, cardId, rating as GradeRating, elapsed);
     return NextResponse.json(result);
   } catch (err) {
-    const msg = err instanceof Error ? err.message : "grade failed";
-    return NextResponse.json({ error: msg }, { status: 400 });
+    if (err instanceof CardNotFoundError) {
+      return NextResponse.json({ error: "Card not found" }, { status: 404 });
+    }
+    if (err instanceof DuplicateGradeError) {
+      return NextResponse.json({ error: "Already graded" }, { status: 409 });
+    }
+    console.error("Grade error:", err);
+    return NextResponse.json({ error: "Could not save your answer" }, { status: 500 });
   }
 }

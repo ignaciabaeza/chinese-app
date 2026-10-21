@@ -4,6 +4,7 @@
 import "server-only";
 import { fsrs, createEmptyCard, type Card, type RecordLogItem, type Grade } from "ts-fsrs";
 import { pool } from "@/lib/db";
+import { getUserDay } from "@/lib/user-time";
 
 const scheduler = fsrs();
 
@@ -135,19 +136,19 @@ export async function getDueQueue(
   userId: string,
   { cardType = "recognition", newPerDay = 15, limit = 30, hskLevel = null }: QueueOptions = {},
 ): Promise<ReviewCard[]> {
-  // Count new cards already reviewed today, in local time. We count cards
-  // whose state has been moved out of "new" today.
+  // Count new cards introduced today (first-ever review since the user's
+  // local midnight).
+  const { todayStart } = await getUserDay(userId);
   const { rows: todayRows } = await pool.query<{ n: number }>(
-    `SELECT COUNT(DISTINCT rl.card_id)::int AS n
-     FROM review_log rl
-     JOIN cards c ON c.id = rl.card_id
-     WHERE c.user_id = $1
-       AND c.card_type = $2
-       AND rl.reviewed_at >= date_trunc('day', NOW())
-       AND rl.id IN (
-         SELECT MIN(id) FROM review_log GROUP BY card_id
-       )`,
-    [userId, cardType],
+    `SELECT COUNT(*)::int AS n FROM (
+       SELECT rl.card_id
+       FROM review_log rl
+       JOIN cards c ON c.id = rl.card_id
+       WHERE c.user_id = $1 AND c.card_type = $2
+       GROUP BY rl.card_id
+       HAVING MIN(rl.reviewed_at) >= $3
+     ) first_today`,
+    [userId, cardType, todayStart],
   );
   const reviewedNewToday = todayRows[0]?.n ?? 0;
   const remainingNewSlots = Math.max(0, newPerDay - reviewedNewToday);
@@ -166,9 +167,9 @@ export async function getDueQueue(
               w.hsk2_level, w.hsk3_level, w.audio_path,
               CASE
                 WHEN c.state IN (1, 3) THEN 0     -- learning / relearning first
-                WHEN c.state = 2       THEN 1     -- review second
-                ELSE                        2     -- new last
-              END AS bucket
+                ELSE                        1     -- review second
+              END AS bucket,
+              ROW_NUMBER() OVER (ORDER BY c.due) AS ord   -- most overdue first
        FROM cards c
        JOIN words w ON w.id = c.word_id
        WHERE c.user_id = $1
@@ -176,12 +177,16 @@ export async function getDueQueue(
          AND (c.state != 0 AND c.due <= NOW())
          ${audioFilter}
          ${levelFilter}
-       ORDER BY bucket, c.due
      ),
      new_cards AS (
        SELECT c.*, w.simplified, w.traditional, w.pinyin, w.meanings,
               w.hsk2_level, w.hsk3_level, w.audio_path,
-              2 AS bucket
+              2 AS bucket,
+              ROW_NUMBER() OVER (
+                ORDER BY COALESCE(w.hsk2_level, 99),
+                         COALESCE(w.frequency_rank, 999999),
+                         w.simplified
+              ) AS ord
        FROM cards c
        JOIN words w ON w.id = c.word_id
        WHERE c.user_id = $1
@@ -197,7 +202,7 @@ export async function getDueQueue(
      SELECT * FROM due_ranked
      UNION ALL
      SELECT * FROM new_cards
-     ORDER BY bucket
+     ORDER BY bucket, ord
      LIMIT $4`,
     params,
   );
@@ -218,9 +223,16 @@ export interface GradeResult {
   };
 }
 
+export class CardNotFoundError extends Error {}
+/** The same card was graded moments ago — almost certainly a double tap. */
+export class DuplicateGradeError extends Error {}
+
+const DUPLICATE_WINDOW_MS = 2000;
+
 /**
- * Apply a rating to a card. Looks up the card, asks FSRS for the next state,
- * persists the new state + a review_log row, and returns the new schedule.
+ * Apply a rating to a card. Locks the card row, asks FSRS for the next
+ * state, persists the new state + a review_log row, and returns the new
+ * schedule. Concurrent grades of the same card serialize on the row lock.
  */
 export async function gradeCard(
   userId: string,
@@ -228,24 +240,29 @@ export async function gradeCard(
   rating: GradeRating,
   elapsedMs?: number,
 ): Promise<GradeResult> {
-  const { rows } = await pool.query(
-    `SELECT id, due, stability, difficulty, elapsed_days, scheduled_days,
-            learning_steps, reps, lapses, state, last_review
-     FROM cards
-     WHERE id = $1 AND user_id = $2`,
-    [cardId, userId],
-  );
-  if (rows.length === 0) throw new Error(`card ${cardId} not found for user`);
-  const row = rows[0];
-  const card = dbToCard(row);
-
-  const now = new Date();
-  const result: RecordLogItem = scheduler.next(card, now, rating as Grade);
-  const nextCard = result.card;
-
   const client = await pool.connect();
+  let nextCard: Card;
   try {
     await client.query("BEGIN");
+    const { rows } = await client.query(
+      `SELECT id, due, stability, difficulty, elapsed_days, scheduled_days,
+              learning_steps, reps, lapses, state, last_review
+       FROM cards
+       WHERE id = $1 AND user_id = $2
+       FOR UPDATE`,
+      [cardId, userId],
+    );
+    if (rows.length === 0) throw new CardNotFoundError(`card ${cardId} not found`);
+    const row = rows[0];
+
+    const now = new Date();
+    if (row.last_review && now.getTime() - new Date(row.last_review).getTime() < DUPLICATE_WINDOW_MS) {
+      throw new DuplicateGradeError(`card ${cardId} was just graded`);
+    }
+
+    const result: RecordLogItem = scheduler.next(dbToCard(row), now, rating as Grade);
+    nextCard = result.card;
+
     await client.query(
       `UPDATE cards
        SET due = $1, stability = $2, difficulty = $3,
@@ -313,8 +330,9 @@ export async function getReviewStats(
   const needsWordJoin = cardType === "listening" || hskLevel === 1 || hskLevel === 2;
   const join = needsWordJoin ? "JOIN words w ON w.id = c.word_id" : "";
   const audioFilter = cardType === "listening" ? "AND w.audio_path IS NOT NULL" : "";
-  const levelFilter = hskLevel === 1 || hskLevel === 2 ? "AND w.hsk2_level = $3" : "";
-  const params: unknown[] = [userId, cardType];
+  const levelFilter = hskLevel === 1 || hskLevel === 2 ? "AND w.hsk2_level = $4" : "";
+  const { todayStart } = await getUserDay(userId);
+  const params: unknown[] = [userId, cardType, todayStart];
   if (levelFilter) params.push(hskLevel);
 
   const { rows } = await pool.query<ReviewStats>(
@@ -327,7 +345,7 @@ export async function getReviewStats(
        (SELECT COUNT(*)::int FROM review_log rl
           JOIN cards c2 ON c2.id = rl.card_id
           WHERE c2.user_id = $1 AND c2.card_type = $2
-            AND rl.reviewed_at >= date_trunc('day', NOW()))                AS reviewed_today
+            AND rl.reviewed_at >= $3)                                      AS reviewed_today
      FROM cards c
      ${join}
      WHERE c.user_id = $1 AND c.card_type = $2

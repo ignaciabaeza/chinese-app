@@ -26,23 +26,33 @@ export default function LessonStepper({ level, number, detail, initialProgress, 
   const [activeIdx, setActiveIdx] = useState(0);
   const [completed, setCompleted] = useState<Set<StepKey>>(new Set(initialProgress));
   const [words, setWords] = useState<LessonWord[]>(detail.words);
+  const [saveError, setSaveError] = useState(false);
 
-  // Persist step completion to the server (best-effort) every time the
-  // user advances past a step. Silently no-ops for signed-out users.
+  // Persist step completion to the server every time the user advances past
+  // a step. Signed-out users only get the in-page stamp. If the save fails,
+  // un-stamp the step so the rail never shows progress that wasn't stored.
   const markComplete = useCallback(async (step: StepKey) => {
+    if (completed.has(step)) return;
     setCompleted((prev) => {
-      if (prev.has(step)) return prev;
       const next = new Set(prev); next.add(step); return next;
     });
     if (!signedIn) return;
+    let ok = false;
     try {
-      await fetch(`/api/lessons/${level}/${number}/progress`, {
+      const res = await fetch(`/api/lessons/${level}/${number}/progress`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ step }),
       });
-    } catch { /* swallow — UI state already reflects completion */ }
-  }, [signedIn, level, number]);
+      ok = res.ok;
+    } catch { /* handled below */ }
+    setSaveError(!ok);
+    if (!ok) {
+      setCompleted((prev) => {
+        const next = new Set(prev); next.delete(step); return next;
+      });
+    }
+  }, [completed, signedIn, level, number]);
 
   function goTo(idx: number) {
     if (idx < 0 || idx >= STEPS.length) return;
@@ -58,6 +68,12 @@ export default function LessonStepper({ level, number, detail, initialProgress, 
 
   return (
     <div className="space-y-6 mt-6">
+      {saveError && (
+        <p className="text-xs text-center" style={{ color: "var(--accent-rose)", fontFamily: "Spectral, serif" }}>
+          Couldn&apos;t save your lesson progress — check your connection or sign in again.
+        </p>
+      )}
+
       {/* Stepper rail */}
       <ol className="grid grid-cols-5 gap-1.5">
         {STEPS.map((s, i) => {
@@ -151,19 +167,28 @@ function ListenStep({ detail }: { detail: LessonDetail }) {
   const [revealed, setRevealed] = useState(false);
   const [playingLineId, setPlayingLineId] = useState<number | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  // Pending "next line" timer, so stopping during the gap between lines
+  // doesn't resume playback.
+  const gapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Flatten all lines across all dialogues in order; used by "Play full".
   const allPlayable: DialogueLine[] = detail.dialogues.flatMap((d) => d.lines).filter((l) => l.audio_path);
 
   // Stop playback if the user navigates away from the step.
   useEffect(() => {
+    const el = audioRef.current;
     return () => {
-      audioRef.current?.pause();
-      setPlayingLineId(null);
+      if (gapTimerRef.current) clearTimeout(gapTimerRef.current);
+      if (el) { el.onended = null; el.pause(); }
     };
   }, []);
 
   function stop() {
-    audioRef.current?.pause();
+    if (gapTimerRef.current) clearTimeout(gapTimerRef.current);
+    gapTimerRef.current = null;
+    if (audioRef.current) {
+      audioRef.current.onended = null;
+      audioRef.current.pause();
+    }
     setPlayingLineId(null);
   }
 
@@ -180,7 +205,7 @@ function ListenStep({ detail }: { detail: LessonDetail }) {
         i++;
         if (i < lines.length) {
           // 250ms pause between lines
-          setTimeout(playOne, 250);
+          gapTimerRef.current = setTimeout(playOne, 250);
         } else {
           setPlayingLineId(null);
           el.onended = null;

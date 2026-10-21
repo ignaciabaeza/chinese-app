@@ -39,9 +39,10 @@ A mobile-first HSK learning app built around the official **HSK Standard Course*
 
 **Content is static; user state is in Postgres.**
 
-- **Lesson content** (vocabulary, dialogues, grammar, characters, exercises, culture notes) lives as JSON files under `data/hsk{N}/lessons/{M}.json`. Each level has an `index.ts` that combines authored lessons with stubs and exports the full lesson list. `lib/content.ts` is the single entry point.
-- **User state** (accounts, card progress, study sessions) lives in Postgres. The same SRS engine tracks any reviewable item via `card_id` + `card_type` (`word | character | grammar | sentence`).
-- **Offline-first:** unauthenticated users get full functionality via localStorage; on login, server data is fetched and overwrites local.
+- **Lesson content** (vocabulary, dialogues, grammar, characters, exercises, culture notes) lives as JSON files under `data/hsk{N}/lessons/{M}.json` — the source of truth. Each level has an `index.ts` that combines authored lessons with stubs. `lib/content.ts` is the entry point for JSON lookups.
+- **Derived DB content:** `npm run db:import-lessons` (scripts/05) copies the JSON into `lessons` / `lesson_dialogues` / `dialogue_lines` / `lesson_words` (course stepper) and `texts` (reader). `words` / `sentences` / `characters` come from the open-data pipeline (scripts 01–03: HSK lists, CC-CEDICT, Tatoeba, makemeahanzi).
+- **One progress system: FSRS** (`lib/fsrs.ts`, `ts-fsrs`) over `cards` + `review_log`. Card types in use: `recognition`, `listening`, `writing`, one card per (user, word, type). Every page that tracks progress (/review, /writing, dashboard, /practice badges) reads these tables. Signed-out users can browse but nothing is saved.
+- **"Today" is per-user local time:** `users.timezone` (reported by the browser via `POST /api/auth/timezone` from `AuthProvider`); use `getUserDay(userId)` from `lib/user-time.ts` for anything daily (new-card quota, reviewed today, streak). Never use `date_trunc('day', NOW())` — the server is UTC.
 
 Content source: HSK Standard Course textbooks (PDFs in `/Users/ignaciabaeza/Documents/chino/hsk1/…hsk4/`). Each lesson mirrors the book's 8 sections — Warm-up, Text (4 situational dialogues + new words), Notes (grammar with pattern tables), Exercises, Pinyin/Pronunciation, Characters (strokes + single-component chars + radicals), Application (pair/group work), Culture (every 5 lessons).
 
@@ -92,60 +93,36 @@ Content source: HSK Standard Course textbooks (PDFs in `/Users/ignaciabaeza/Docu
 ```
 chinese_app/
 ├── app/
-│   ├── globals.css                          # Design system tokens + component classes
-│   ├── layout.tsx                           # Root layout (fonts, AuthProvider, Navigation)
-│   ├── page.tsx                             # Dashboard (stats, due cards, level grid, quick actions)
-│   ├── auth/page.tsx                        # Login / register
-│   ├── course/
-│   │   ├── page.tsx                         # Level picker (HSK 1–4)
-│   │   └── [level]/
-│   │       ├── page.tsx                     # Lesson list for a level
-│   │       └── lesson/[number]/page.tsx     # Full lesson view with all 8 sections
-│   ├── library/
-│   │   └── vocabulary/page.tsx              # Vocabulary browser (filter by level / lesson, search)
-│   ├── practice/
-│   │   ├── flashcards/page.tsx              # SRS flashcards, scope = ?scope=hsk1-lesson-3
-│   │   └── exam/page.tsx                    # Mock HSK exam runner
-│   └── api/
-│       ├── auth/
-│       │   ├── register/route.ts            # POST — create account, set JWT cookie
-│       │   ├── login/route.ts               # POST — verify password, set JWT cookie
-│       │   ├── logout/route.ts              # POST — clear JWT cookie
-│       │   └── me/route.ts                  # GET  — return current user from cookie
-│       └── progress/
-│           ├── route.ts                     # GET fetch all / POST bulk upsert card progress
-│           └── sessions/route.ts            # GET fetch sessions / POST save session
-├── components/
-│   ├── AuthProvider.tsx                     # React context: user, login, register, logout
-│   └── Navigation.tsx                       # Sticky nav: Dashboard / Course / Flashcards /
-│                                            # Mock Exam / Vocabulary
-├── data/
-│   ├── hsk1/
-│   │   ├── index.ts                         # 15-lesson registry (real + stubs)
-│   │   ├── lessons/{1..15}.json             # Lessons 1–5 authored; 6–15 are stubs
-│   │   └── exams/sample1.ts                 # Sample HSK 1 mock paper (10 questions)
-│   └── hsk2/
-│       ├── index.ts                         # 15-lesson registry
-│       └── lessons/{1..15}.json             # All 15 lessons fully authored
+│   ├── page.tsx                  # Home dashboard (due cards, streak, coverage, weakest words)
+│   ├── auth/                     # Login / register
+│   ├── course/                   # Course tab: levels → lessons → guided LessonStepper
+│   ├── workbook/                 # HSK 2 workbook quiz (components/HSK2Quiz.jsx + data/quizData.js)
+│   ├── practice/page.tsx         # Practice tab hub
+│   ├── review/                   # FSRS review (recognition + listening cards)
+│   ├── writing/                  # FSRS stroke-order cards (HanziWriter)
+│   ├── listening/                # Dictation + tone drills
+│   ├── shadowing/                # Listen / record / compare
+│   ├── flashcards/               # Free shuffled deck — does NOT touch the FSRS schedule
+│   ├── library/page.tsx          # Library tab hub
+│   ├── vocab/                    # Dictionary (DB words) + word detail
+│   ├── reader/                   # Tap-to-read texts + paste importer
+│   ├── grammar/                  # Grammar points + sentence scramble
+│   └── api/                      # auth/*, review/*, dashboard, cards, lessons/*, flashcards, …
+├── components/                   # Navigation (4 tabs), AuthProvider, HubPage, drills, …
+├── data/hsk{1,2}/                # Authored lesson JSON + registries
 ├── lib/
-│   ├── auth.ts                              # JWT sign/verify, bcrypt, cookie helpers
-│   ├── db.ts                                # pg connection pool singleton (hot-reload safe)
-│   ├── types.ts                             # ALL content + progress types — Lesson, Word,
-│   │                                        # GrammarPoint, CharacterTaught, CardProgress, etc.
-│   ├── content.ts                           # Single entry point for lesson lookups
-│   │                                        # (getLesson / getLessonSummaries / getAllWords /
-│   │                                        # getAllGrammar / getAllCharacters)
-│   └── progress.ts                          # SM-2 algorithm + localStorage + server sync
-├── scripts/
-│   ├── setup.sh                             # EC2 server setup (embeds the schema SQL)
-│   ├── migrations/                          # Versioned SQL migrations applied by deploy.sh
-│   │   └── 001_phase0_card_type.sql         # Clean rebuild of card_progress with card_id + card_type
-│   │                                        # (drops old sentences / sessions tables)
-│   └── deploy.sh                            # Re-deploy latest code on server
-├── .env                                     # DATABASE_URL, JWT_SECRET
-├── AGENTS.md                                # Top-of-file reminder about Next.js 16 breaking changes
-└── CLAUDE.md                                # This file
+│   ├── fsrs.ts                   # FSRS seeding, queue, grading (row-locked), stats
+│   ├── dashboard.ts              # Dashboard aggregation
+│   ├── user-time.ts              # getUserDay(): user's local "today"
+│   ├── review-client.ts          # Client submitGrade() — throws a user-facing message on failure
+│   ├── rate-limit.ts             # In-memory auth rate limiter
+│   ├── content.ts / types.ts     # JSON lesson content lookups + content types
+│   └── auth.ts / db.ts           # JWT + bcrypt helpers; pg pool
+└── scripts/                      # Data pipeline 01–05, migrations/, deploy.sh, auto-deploy.sh,
+                                  # backup.sh, harden.sh, setup.sh
 ```
+
+**Navigation** (`components/Navigation.tsx`) has four tabs — Home, Course, Practice, Library. Each tool keeps its own URL; a tab's `match` prefixes decide when it's highlighted. New tools go into a hub page (`/practice` or `/library` via `components/HubPage.tsx`), not into the nav.
 
 **Source PDFs** (not in repo): `/Users/ignaciabaeza/Documents/chino/hsk{1,2,3,4}/HSK-N-Textbook.pdf` and `…Workbook.pdf`. HSK 4 ships as 4A and 4B.
 
@@ -210,56 +187,20 @@ interface Lesson {
 
 ## Data Model (Postgres)
 
-### `users`
-| Column | Type | Notes |
-|---|---|---|
-| id | TEXT | Primary key, `randomUUID()` |
-| email | TEXT | Unique |
-| password_hash | TEXT | bcrypt, 12 rounds |
-| created_at | TIMESTAMPTZ | Auto |
-| updated_at | TIMESTAMPTZ | Auto |
+Schema lives in `scripts/migrations/` (001 baseline → 008). Key tables:
 
-### `card_progress` (rebuilt in Phase 0)
-Generalized SRS — the same row schema tracks vocab, characters, grammar points, and sentences.
+| Table | Purpose |
+|---|---|
+| `users` | id (UUID text), email (lowercased, unique), password_hash, **timezone** (IANA, default `'UTC'`) |
+| `words` / `sentences` / `sentence_words` / `characters` | Open-data vocabulary, example sentences, stroke data |
+| `cards` | FSRS state per (user_id, word_id, card_type): due, stability, difficulty, state (0 new, 1 learning, 2 review, 3 relearning), reps, lapses, last_review |
+| `review_log` | One row per grade (card_id, rating 1–4, reviewed_at, elapsed_ms) — source for streaks and "reviewed today" |
+| `lessons` / `lesson_dialogues` / `dialogue_lines` / `lesson_words` | Course stepper content (imported from JSON) |
+| `lesson_progress` | Per-user completed stepper steps |
+| `texts` | Reader texts (lessons + user-pasted) |
+| `exercises` / `exercise_attempts` | Orphaned: from the removed DB-backed workbook (migration 007, not in repo). Still holds data; no code reads it |
 
-| Column | Type | Notes |
-|---|---|---|
-| id | TEXT | Primary key, `randomUUID()` |
-| user_id | TEXT | FK → users (CASCADE delete) |
-| card_id | TEXT | e.g. `"word:hsk1_3_jiao"`, `"character:hsk1_2_c_kou"`, `"grammar:hsk1_3_g_shi"` |
-| card_type | TEXT | `'word' | 'character' | 'grammar' | 'sentence'` |
-| ease_factor | DOUBLE PRECISION | SM-2 ease factor, default 2.5 |
-| interval | INTEGER | Days until next review |
-| repetitions | INTEGER | Successful review count |
-| next_review | BIGINT | Unix timestamp (ms) — pg returns as string, use `Number()` |
-| last_review | BIGINT | Unix timestamp (ms) — pg returns as string, use `Number()` |
-| correct | INTEGER | Lifetime correct count |
-| incorrect | INTEGER | Lifetime incorrect count |
-| updated_at | TIMESTAMPTZ | Auto |
-
-**Unique constraint:** `(user_id, card_id)`
-**Indexes:** `(user_id, card_type)` and `(user_id, next_review)`
-**Card ID convention:** `${type}:${entity_id}`. Use the helper `cardId(type, entityId)` from `lib/types.ts`.
-
-### `study_sessions`
-| Column | Type | Notes |
-|---|---|---|
-| id | TEXT | Primary key, `randomUUID()` |
-| user_id | TEXT | FK → users (CASCADE delete) |
-| date | TEXT | ISO date "YYYY-MM-DD" (use `todayISO()` from `lib/progress.ts`) |
-| cards_studied | INTEGER | Total cards in session |
-| correct | INTEGER | |
-| incorrect | INTEGER | |
-| scope | TEXT | e.g. `"hsk1-lesson-3"`, `"hsk2"`, `"all"` |
-| card_type | TEXT | Default `'word'` |
-| card_ids | TEXT[] | The cards reviewed in this session |
-| created_at | TIMESTAMPTZ | Auto |
-
-**Index:** `(user_id, date DESC)`
-
-**BIGINT note:** `pg` returns BIGINT columns as strings (not JS BigInt). Always wrap with `Number(row.next_review)` before returning JSON.
-
-**No `sentences` table.** Sentences are part of authored lesson dialogues, not a separate DB table.
+`card_progress` and `study_sessions` (the old SM-2 system) were dropped in migration 008.
 
 ---
 
@@ -277,58 +218,17 @@ Generalized SRS — the same row schema tracks vocab, characters, grammar points
 
 ---
 
-## Progress Sync Strategy
-
-**Offline-first:** localStorage is the primary store (keys `hanyu_progress_v2`, `hanyu_sessions_v2`); the server is authoritative on login.
-
-### `lib/progress.ts` exports
-- `loadProgress()` / `saveProgress(progress)` — localStorage read/write, keyed by `cardId`
-- `loadSessions()` / `saveSession(session)` — localStorage read/write for sessions (last 60)
-- `updateCardProgress(prior, cardId, cardType, quality)` — SM-2 algorithm (quality 0–3)
-- `syncProgressToServer(progress)` — POST to `/api/progress`, fire-and-forget
-- `loadProgressFromServer()` — GET from `/api/progress`, overwrites localStorage
-- `saveSessionWithSync(session)` — saves locally then POSTs to `/api/progress/sessions`
-- `loadSessionsFromServer()` — GET sessions, overwrites localStorage
-- `getDueCards(cardIds, progress)` — returns cards with `nextReview <= now`
-- `getStats(cardIds, progress)` — `{ total, seen, learned, due, unseen }`
-- `todayISO()` — local-time ISO date "YYYY-MM-DD" for session records
-- `computeStreak(sessions)` — consecutive days ending today
-
-### Flow
-1. User opens app without account → everything uses localStorage
-2. User registers/logs in → `loadProgressFromServer()` fetches server data and overwrites local
-3. During study → `saveProgress()` writes locally; `syncProgressToServer()` syncs in background
-4. At session end → `saveSessionWithSync()` saves locally and POSTs the session
-
----
-
-## SM-2 Spaced Repetition Algorithm
-
-Quality ratings: `0` = blackout, `1` = wrong, `2` = hard, `3` = easy
-
-- **Correct (quality ≥ 2):** interval grows by ease factor; ease factor adjusts toward the 1.3–2.5 range
-  - rep 0 → 1 day, rep 1 → 6 days, rep n → `round(interval × easeFactor)`, capped at 30 days
-- **Incorrect (quality < 2):** reset to rep 0, next review in 10 minutes
-- A card is "learned" when `repetitions >= 3`
-
-Works identically for any `card_type` — the same function handles vocab, characters, grammar, and sentences.
-
----
-
 ## Pages & Routes
 
-| Path | Purpose |
+| Tab | Paths |
 |---|---|
-| `/` | Dashboard: due-now banner, level grid (HSK 1–4 progress), quick actions |
-| `/auth` | Login / register |
-| `/course` | Level picker — HSK 1–4 cards with authored / total counts |
-| `/course/[level]` | Lesson list for a level (stubs shown with "outline" badge) |
-| `/course/[level]/lesson/[number]` | Full lesson view — renders all 8 sections that the JSON provides |
-| `/library/vocabulary` | Browse all authored words, filter by level/lesson, free-text search |
-| `/practice/flashcards` | SRS flashcards. URL: `?scope=hsk{N}-lesson-{M}` or `?scope=hsk{N}` or `?scope=all` |
-| `/practice/exam` | Mock exam runner (currently one HSK 1 Lesson 3 sample paper) |
+| Home | `/` |
+| Course | `/course`, `/course/[level]`, `/course/[level]/lesson/[number]`, `/workbook` |
+| Practice | `/practice` (hub), `/review`, `/writing`, `/listening`, `/shadowing`, `/flashcards` |
+| Library | `/library` (hub), `/vocab`, `/vocab/[word]`, `/reader`, `/reader/[textId]`, `/grammar`, `/grammar/[gpId]` |
+| — | `/auth` |
 
-The lesson detail page (`app/course/[level]/lesson/[number]/page.tsx`) renders sections conditionally — any absent field is skipped, so partial-lesson JSON still renders cleanly.
+**Grading contract:** `POST /api/review/grade` returns 409 if the same card was graded < 2 s ago (double tap — client treats as saved), 404 for someone else's card, 500 on DB failure. Pages must not advance or count a card until `submitGrade()` resolves.
 
 ---
 
@@ -367,7 +267,7 @@ for m in scripts/migrations/*.sql; do psql $DATABASE_URL -f "$m"; done
 npm run dev
 ```
 
-**Existing deployments** running the pre-Phase-0 schema (`card_progress.word_id`) will have the migration applied automatically by `scripts/deploy.sh` — it detects pending migrations under `scripts/migrations/`, takes a `pg_dump` backup to `/var/backups/chinese-app/`, briefly stops the app, applies them all in **one transaction** (`psql -1`), records each in `schema_migrations`, and restarts. deploy.sh builds into `.next-build` (via `NEXT_DIST_DIR`, read in `next.config.ts`) while the live app keeps serving `.next`, then swaps and health-checks; build/migration/health failures roll back to the previous commit. It also installs `/etc/cron.d/chinese-app-backup` (nightly `scripts/backup.sh`, optional S3 copy via `/etc/chinese-app-backup.env`). **Deploys are pull-based:** CI (`.github/workflows/deploy.yml`, job `check`) only runs `tsc --noEmit`; the server's `chinese-app-autodeploy.timer` runs `scripts/auto-deploy.sh` every 2 min, which deploys a new `origin/main` commit once its `check` run succeeded (a failed deploy is skipped until the next push). Logs: `journalctl -u chinese-app-autodeploy`. Server hardening (fail2ban, sshd, nginx) lives in idempotent `scripts/harden.sh`. The Phase 0 migration drops `sentences` and rebuilds `card_progress` + `study_sessions` from scratch — existing card progress is lost (intentional; the old vocab was bad).
+**Deploys:** `scripts/deploy.sh` detects pending migrations under `scripts/migrations/`, takes a `pg_dump` backup to `/var/backups/chinese-app/`, briefly stops the app, applies them all in **one transaction** (`psql -1`), records each in `schema_migrations`, and restarts. deploy.sh builds into `.next-build` (via `NEXT_DIST_DIR`, read in `next.config.ts`) while the live app keeps serving `.next`, then swaps and health-checks; build/migration/health failures roll back to the previous commit. It also installs `/etc/cron.d/chinese-app-backup` (nightly `scripts/backup.sh`, optional S3 copy via `/etc/chinese-app-backup.env`). **Deploys are pull-based:** CI (`.github/workflows/deploy.yml`, job `check`) only runs `tsc --noEmit`; the server's `chinese-app-autodeploy.timer` runs `scripts/auto-deploy.sh` every 2 min, which deploys a new `origin/main` commit once its `check` run succeeded (a failed deploy is skipped until the next push). Logs: `journalctl -u chinese-app-autodeploy`. Server hardening (fail2ban, sshd, nginx) lives in idempotent `scripts/harden.sh`.
 
 ---
 
@@ -400,8 +300,8 @@ npm run dev
 ## Key Patterns & Gotchas
 
 - **Database client:** `lib/db.ts` exports a `pg` connection pool singleton stored on `globalThis` to survive Next.js hot reloads. Use `pool.query(sql, params)` for simple queries; `pool.connect()` + manual `BEGIN/COMMIT/ROLLBACK` for transactions.
-- **BIGINT columns:** `pg` returns PostgreSQL BIGINT as a string. Always wrap with `Number(row.next_review)` before returning JSON — do NOT use JS `BigInt`.
-- **Column naming:** Postgres returns snake_case (`card_id`, `card_type`, `ease_factor`, `next_review`). Map to camelCase manually when building response objects.
+- **BIGINT columns:** `pg` returns PostgreSQL BIGINT as a string. Always wrap with `Number(...)` before returning JSON — do NOT use JS `BigInt`.
+- **Column naming:** Postgres returns snake_case; the FSRS/dashboard code passes snake_case straight through to the client types.
 - **IDs:** generated with `randomUUID()` from Node.js built-in `crypto` module for DB rows. For lesson content, IDs are hand-chosen stable slugs (see "Adding a New Lesson").
 - **Auth in route handlers:** use `getAuthFromRequest(request)` — reads cookie synchronously from `NextRequest`.
 - **Setting cookies:** only possible on `NextResponse`, not returned from `request`.
@@ -409,6 +309,5 @@ npm run dev
 - **JSON imports:** `tsconfig.json` has `resolveJsonModule: true`. Lesson JSON files are imported directly: `import lesson3 from "./lessons/3.json"`.
 - **Async route params:** in Next.js 16, route segment params are a Promise. `LessonPage` does `const { level, number } = await params;`.
 - **Stub lessons render cleanly:** lessons marked `stub: true` show a small "Outline" notice + the word-hint chips from the warm-up array. Do not render any other section for stub lessons.
-- **Flashcard scope:** the flashcards page reads `?scope=` from the URL. Parser is `parseScope` in `app/practice/flashcards/page.tsx` — recognizes `all`, `hsk{N}`, and `hsk{N}-lesson-{M}`. Card pool builder is `buildCardPool`.
-- **Session date format:** the new `study_sessions.date` is `"YYYY-MM-DD"`, **not** `Date.toDateString()`. Use `todayISO()` from `lib/progress.ts`.
+- **Double-tap guards:** grading pages guard with a `useRef` flag, not state — two taps in the same tick both see stale state.
 - **No server components reading cookies directly** — auth is handled entirely in API routes + client context.

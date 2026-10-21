@@ -25,6 +25,7 @@ export default function CoursePage() {
         {LEVELS.map(({ level, words, hours }) => {
           const summaries = getLessonSummaries(level);
           const authored = summaries.filter((s) => !s.stub).length;
+          const pct = summaries.length > 0 ? (authored / summaries.length) * 100 : 0;
           return (
             <Link
               key={level}
@@ -36,19 +37,36 @@ export default function CoursePage() {
                 <span className="text-3xl font-bold" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
                   HSK {level}
                 </span>
-                <span className="badge-gold">{summaries.length} lessons</span>
+                <span className="badge-gold">{summaries.length > 0 ? `${summaries.length} lessons` : "Coming soon"}</span>
               </div>
               <div className="text-xs space-y-1 mb-3" style={{ color: "var(--text-muted)" }}>
                 <div>{words} words · {hours} class hours</div>
-                <div>{authored > 0 ? `${authored} of ${summaries.length} authored` : "Outline only"}</div>
+                <div>{authored > 0 ? `${authored} of ${summaries.length} authored` : summaries.length > 0 ? "Outline only" : "Not available yet"}</div>
               </div>
               <div className="progress-ink">
-                <div className="progress-ink-fill" style={{ width: `${(authored / summaries.length) * 100}%` }} />
+                <div className="progress-ink-fill" style={{ width: `${pct}%` }} />
               </div>
             </Link>
           );
         })}
       </div>
+
+      <Link
+        href="/workbook"
+        className="flex items-center gap-4 rounded-xl px-5 py-4 transition-all"
+        style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
+      >
+        <span className="font-display text-3xl shrink-0" style={{ color: "var(--ink)" }}>练</span>
+        <div className="flex-1">
+          <div className="font-semibold" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.04em" }}>
+            HSK 2 Workbook
+          </div>
+          <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
+            Picture matching, fill-in-the-blank and true/false for every lesson
+          </div>
+        </div>
+        <span style={{ color: "var(--text-muted)" }}>→</span>
+      </Link>
 
       <p className="text-xs text-center" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
         Lesson content is extracted from your HSK Standard Course textbooks.

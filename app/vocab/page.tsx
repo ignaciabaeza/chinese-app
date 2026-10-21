@@ -33,10 +33,6 @@ export default async function VocabPage({
         </h1>
         <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {total.toLocaleString()} {query || level !== "all" ? "matching" : "total"} words
-          {" · "}
-          <Link href="/library/vocabulary" style={{ color: "var(--accent-gold)" }}>
-            view authored lesson words →
-          </Link>
         </p>
       </div>
 

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 import AudioButton from "@/components/AudioButton";
+import { submitGrade } from "@/lib/review-client";
 
 type Mode = "recognition" | "listening";
 type Level = "all" | 1 | 2;
@@ -53,7 +54,10 @@ export default function ReviewPage() {
   const [transitioning, setTransitioning] = useState(false);
   const [seededCount, setSeededCount] = useState(0);
   const [error, setError] = useState<string | null>(null);
-  const startedAt = useRef<number>(Date.now());
+  const [gradeError, setGradeError] = useState<string | null>(null);
+  // Synchronous guard against double taps (state updates land a render later).
+  const gradingRef = useRef(false);
+  const startedAt = useRef<number>(0);
 
   // ── fetch initial queue for the current mode + level ──
   const loadQueue = useCallback(async (m: Mode = mode, lvl: Level = level) => {
@@ -93,12 +97,24 @@ export default function ReviewPage() {
   // ── grading ──
   const grade = useCallback(
     async (rating: 1 | 2 | 3 | 4) => {
-      if (phase !== "review" || !flipped || transitioning) return;
+      if (phase !== "review" || !flipped || gradingRef.current) return;
       const card = queue[index];
       if (!card) return;
+      gradingRef.current = true;
       setTransitioning(true);
+      setGradeError(null);
 
-      // optimistic counter bump
+      const elapsedMs = Date.now() - startedAt.current;
+      try {
+        await submitGrade(card.id, rating, elapsedMs);
+      } catch (e) {
+        // Keep the card on screen so the user can retry.
+        setGradeError((e as Error).message);
+        gradingRef.current = false;
+        setTransitioning(false);
+        return;
+      }
+
       setSessionStats((s) => ({
         ...s,
         again: rating === 1 ? s.again + 1 : s.again,
@@ -106,17 +122,6 @@ export default function ReviewPage() {
         good:  rating === 3 ? s.good + 1  : s.good,
         easy:  rating === 4 ? s.easy + 1  : s.easy,
       }));
-
-      const elapsedMs = Date.now() - startedAt.current;
-      try {
-        await fetch("/api/review/grade", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ cardId: card.id, rating, elapsedMs }),
-        });
-      } catch {
-        // ignore — server-side error will surface on next queue load
-      }
 
       // advance
       setTimeout(() => {
@@ -127,10 +132,11 @@ export default function ReviewPage() {
           setFlipped(false);
           startedAt.current = Date.now();
         }
+        gradingRef.current = false;
         setTransitioning(false);
       }, 220);
     },
-    [phase, flipped, transitioning, queue, index],
+    [phase, flipped, queue, index],
   );
 
   // ── keyboard shortcuts ──
@@ -214,15 +220,26 @@ export default function ReviewPage() {
   const current = queue[index];
   if (!current) return null;
   return (
-    <ReviewCard
-      card={current}
-      index={index}
-      total={queue.length}
-      flipped={flipped}
-      onReveal={() => setFlipped(true)}
-      onGrade={(r) => void grade(r)}
-      sessionStats={sessionStats}
-    />
+    <>
+      {gradeError && <GradeErrorBanner message={gradeError} />}
+      <ReviewCard
+        card={current}
+        index={index}
+        total={queue.length}
+        flipped={flipped}
+        onReveal={() => setFlipped(true)}
+        onGrade={(r) => void grade(r)}
+        sessionStats={sessionStats}
+      />
+    </>
+  );
+}
+
+function GradeErrorBanner({ message }: { message: string }) {
+  return (
+    <div className="max-w-xl mx-auto mb-4 rounded-xl p-3" style={{ background: "rgba(196,133,122,0.08)", border: "1px solid rgba(196,133,122,0.4)" }}>
+      <p className="text-sm text-center" style={{ color: "var(--accent-rose)", fontFamily: "Spectral, serif" }}>{message}</p>
+    </div>
   );
 }
 

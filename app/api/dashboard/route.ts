@@ -8,6 +8,10 @@ import { getDashboard } from "@/lib/dashboard";
 export async function GET(request: NextRequest) {
   const auth = getAuthFromRequest(request);
   if (!auth) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const data = await getDashboard(auth.userId);
-  return NextResponse.json(data);
+  try {
+    return NextResponse.json(await getDashboard(auth.userId));
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    return NextResponse.json({ error: "Could not load stats" }, { status: 500 });
+  }
 }

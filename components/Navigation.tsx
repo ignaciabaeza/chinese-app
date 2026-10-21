@@ -5,17 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
 
+// Four top-level sections. Each tool keeps its own URL; `match` lists the
+// route prefixes that light up the tab.
 const links = [
-  { href: "/",                       label: "Dashboard" },
-  { href: "/review",                 label: "Review" },
-  { href: "/flashcards",             label: "Flashcards" },
-  { href: "/workbook",               label: "Workbook" },
-  { href: "/shadowing",              label: "Shadowing" },
-  { href: "/listening",              label: "Listening" },
-  { href: "/writing",                label: "Writing" },
-  { href: "/reader",                 label: "Reader" },
-  { href: "/grammar",                label: "Grammar" },
-  { href: "/vocab",                  label: "Dictionary" },
+  { href: "/",         label: "Home",     match: ["/"] },
+  { href: "/course",   label: "Course",   match: ["/course", "/workbook"] },
+  { href: "/practice", label: "Practice", match: ["/practice", "/review", "/writing", "/listening", "/shadowing", "/flashcards"] },
+  { href: "/library",  label: "Library",  match: ["/library", "/vocab", "/reader", "/grammar"] },
 ];
 
 function CloudMotif({ className = "" }: { className?: string }) {
@@ -31,9 +27,10 @@ function CloudMotif({ className = "" }: { className?: string }) {
   );
 }
 
-function isActive(pathname: string, href: string): boolean {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(href + "/");
+function isActive(pathname: string, match: string[]): boolean {
+  return match.some((prefix) =>
+    prefix === "/" ? pathname === "/" : pathname === prefix || pathname.startsWith(prefix + "/"),
+  );
 }
 
 export default function Navigation() {
@@ -124,15 +121,15 @@ export default function Navigation() {
             <CloudMotif className="hidden sm:block animate-drift opacity-70 scale-x-[-1]" />
           </Link>
 
-          {/* Desktop nav (≥ lg) */}
-          <div className="hidden lg:flex items-center gap-1">
+          {/* Desktop nav (≥ md) */}
+          <div className="hidden md:flex items-center gap-1">
             {links.map((link) => {
-              const active = isActive(pathname, link.href);
+              const active = isActive(pathname, link.match);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-2.5 py-1 text-xs rounded-md transition-all"
+                  className="px-3.5 py-1 text-sm rounded-md transition-all"
                   style={{
                     fontFamily: "Cormorant Garamond, serif",
                     letterSpacing: "0.06em",
@@ -157,9 +154,9 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* Desktop auth dropdown (≥ lg) */}
+          {/* Desktop auth dropdown (≥ md) */}
           <div
-            className="hidden lg:flex items-center ml-2 pl-3 relative"
+            className="hidden md:flex items-center ml-2 pl-3 relative"
             style={{ borderLeft: "1px solid var(--border-subtle)" }}
             ref={userMenuRef}
           >
@@ -198,9 +195,9 @@ export default function Navigation() {
             )}
           </div>
 
-          {/* Mobile / tablet hamburger (< lg) */}
+          {/* Mobile / tablet hamburger (< md) */}
           <button
-            className="lg:hidden flex flex-col gap-1 p-2 rounded shrink-0"
+            className="md:hidden flex flex-col gap-1 p-2 rounded shrink-0"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
@@ -218,21 +215,21 @@ export default function Navigation() {
       </div>
     </nav>
 
-    {/* Mobile / tablet drawer (< lg). Rendered OUTSIDE the <nav> so the
+    {/* Mobile / tablet drawer (< md). Rendered OUTSIDE the <nav> so the
         nav's stacking context (created by backdrop-blur) can't trap it
         underneath the page content. Both backdrop and drawer use
         position: fixed with z-index > 50 so they sit above everything. */}
     {mobileOpen && (
       <>
         <div
-          className="lg:hidden fixed inset-0"
+          className="md:hidden fixed inset-0"
           style={{ background: "rgba(42, 38, 32, 0.35)", top: 48, zIndex: 90 }}
           aria-hidden="true"
           onClick={() => setMobileOpen(false)}
         />
         <div
           ref={mobileDrawerRef}
-          className="lg:hidden fixed rounded-xl overflow-hidden"
+          className="md:hidden fixed rounded-xl overflow-hidden"
           style={{
             top: 56,
             left: 8,
@@ -247,7 +244,7 @@ export default function Navigation() {
         >
           <div className="flex flex-col py-2 px-2 gap-1">
             {links.map((link) => {
-              const active = isActive(pathname, link.href);
+              const active = isActive(pathname, link.match);
               return (
                 <Link
                   key={link.href}

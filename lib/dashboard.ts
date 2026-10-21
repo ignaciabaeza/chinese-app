@@ -3,6 +3,7 @@
 
 import "server-only";
 import { pool } from "@/lib/db";
+import { getUserDay, type UserDay } from "@/lib/user-time";
 
 export interface TypeStats {
   due_now: number;
@@ -33,6 +34,7 @@ export interface WeakestWord {
 export interface DashboardData {
   recognition: TypeStats;
   listening: TypeStats;
+  writing: TypeStats;
   streak: number;
   reviews_today: number;
   coverage: {
@@ -42,7 +44,7 @@ export interface DashboardData {
   weakest: WeakestWord[];
 }
 
-async function getTypeStats(userId: string, cardType: string): Promise<TypeStats> {
+async function getTypeStats(userId: string, cardType: string, day: UserDay): Promise<TypeStats> {
   // Listening cards are tied to audio_path. Recognition cards aren't.
   const join = cardType === "listening" ? "JOIN words w ON w.id = c.word_id" : "";
   const audioFilter = cardType === "listening" ? "AND w.audio_path IS NOT NULL" : "";
@@ -58,41 +60,42 @@ async function getTypeStats(userId: string, cardType: string): Promise<TypeStats
        (SELECT COUNT(*)::int FROM review_log rl
           JOIN cards c2 ON c2.id = rl.card_id
           WHERE c2.user_id = $1 AND c2.card_type = $2
-            AND rl.reviewed_at >= date_trunc('day', NOW()))                        AS reviewed_today
+            AND rl.reviewed_at >= $3)                                              AS reviewed_today
      FROM cards c
      ${join}
      WHERE c.user_id = $1 AND c.card_type = $2
        ${audioFilter}`,
-    [userId, cardType],
+    [userId, cardType, day.todayStart],
   );
   return rows[0] ?? {
     due_now: 0, new_total: 0, learning: 0, review: 0, mature: 0, total: 0, reviewed_today: 0,
   };
 }
 
-/** Consecutive days ending today with at least one review_log entry. */
-async function getStreak(userId: string): Promise<number> {
+/**
+ * Consecutive local days with at least one review. A streak that ran through
+ * yesterday is still alive today until the user's local midnight, so the
+ * count doesn't drop to 0 every morning before the first review.
+ */
+async function getStreak(userId: string, day: UserDay): Promise<number> {
   const { rows } = await pool.query<{ d: string }>(
-    `SELECT DISTINCT DATE(rl.reviewed_at AT TIME ZONE 'UTC')::text AS d
+    `SELECT DISTINCT (rl.reviewed_at AT TIME ZONE $2)::date::text AS d
      FROM review_log rl
      JOIN cards c ON c.id = rl.card_id
      WHERE c.user_id = $1
      ORDER BY d DESC
-     LIMIT 365`,
-    [userId],
+     LIMIT 366`,
+    [userId, day.tz],
   );
   if (rows.length === 0) return 0;
-  // Walk back from today (UTC) one day at a time, counting consecutive days.
   const days = new Set(rows.map((r) => r.d));
+  // Calendar arithmetic on the local date string, done in UTC so DST can't skew it.
+  const cursor = new Date(`${day.today}T00:00:00Z`);
+  if (!days.has(day.today)) cursor.setUTCDate(cursor.getUTCDate() - 1);
   let streak = 0;
-  const today = new Date();
-  today.setUTCHours(0, 0, 0, 0);
-  for (let i = 0; i < 365; i++) {
-    const d = new Date(today);
-    d.setUTCDate(today.getUTCDate() - i);
-    const iso = d.toISOString().slice(0, 10);
-    if (days.has(iso)) streak++;
-    else break;
+  while (days.has(cursor.toISOString().slice(0, 10))) {
+    streak++;
+    cursor.setUTCDate(cursor.getUTCDate() - 1);
   }
   return streak;
 }
@@ -147,13 +150,15 @@ async function getWeakest(userId: string, limit = 8): Promise<WeakestWord[]> {
 }
 
 export async function getDashboard(userId: string): Promise<DashboardData> {
-  const [recognition, listening, streak, coverage, weakest] = await Promise.all([
-    getTypeStats(userId, "recognition"),
-    getTypeStats(userId, "listening"),
-    getStreak(userId),
+  const day = await getUserDay(userId);
+  const [recognition, listening, writing, streak, coverage, weakest] = await Promise.all([
+    getTypeStats(userId, "recognition", day),
+    getTypeStats(userId, "listening", day),
+    getTypeStats(userId, "writing", day),
+    getStreak(userId, day),
     getCoverage(userId),
     getWeakest(userId),
   ]);
-  const reviews_today = recognition.reviewed_today + listening.reviewed_today;
-  return { recognition, listening, streak, reviews_today, coverage, weakest };
+  const reviews_today = recognition.reviewed_today + listening.reviewed_today + writing.reviewed_today;
+  return { recognition, listening, writing, streak, reviews_today, coverage, weakest };
 }

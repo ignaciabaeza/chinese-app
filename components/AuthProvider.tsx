@@ -42,6 +42,20 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       .finally(() => setLoading(false));
   }, []);
 
+  // Report the browser's timezone so "today" (new-card quota, streak) rolls
+  // over at the user's local midnight rather than UTC.
+  const userId = user?.id;
+  useEffect(() => {
+    if (!userId) return;
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (!timezone) return;
+    fetch("/api/auth/timezone", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ timezone }),
+    }).catch(() => {});
+  }, [userId]);
+
   const login = useCallback(async (email: string, password: string) => {
     const res = await fetch("/api/auth/login", {
       method: "POST",
