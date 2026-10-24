@@ -21,7 +21,7 @@ export default function CoursePage() {
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {LEVELS.map(({ level, words, hours }) => {
           const summaries = getLessonSummaries(level);
           const authored = summaries.filter((s) => !s.stub).length;

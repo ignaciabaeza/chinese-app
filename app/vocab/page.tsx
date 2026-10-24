@@ -100,7 +100,7 @@ export default async function VocabPage({
           </p>
         </div>
       ) : (
-        <div className="grid sm:grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {rows.map((w) => (
             <Link
               key={w.id}

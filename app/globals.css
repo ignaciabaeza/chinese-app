@@ -116,8 +116,10 @@ body::before {
   -webkit-mask-image: radial-gradient(125% 115% at 80% 20%, #000 42%, transparent 80%);
   mask-image: radial-gradient(125% 115% at 80% 20%, #000 42%, transparent 80%);
 }
-/* keep all real content above the backdrop */
-body > * { position: relative; z-index: 1; }
+/* keep all real content above the backdrop. Unlayered, so it beats Tailwind's
+   `fixed` / `sticky` utilities: skip those (they set their own z-index), or the
+   sticky nav scrolls away and the mobile menu drops into the page flow. */
+body > :not(.fixed, .sticky) { position: relative; z-index: 1; }
 
 /* ─── Seigaiha wave band (signature blue border) ─── */
 .seigaiha-band {

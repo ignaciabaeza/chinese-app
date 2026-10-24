@@ -165,12 +165,13 @@ export default function DeckEditorPage() {
               <li key={c.id} className="flex items-center gap-3 px-3 py-2" style={{ borderColor: "var(--border-subtle)" }}>
                 <span className="font-display text-xl shrink-0" style={{ color: "var(--text-primary)" }}>{c.simplified}</span>
                 <div className="flex-1 min-w-0">
-                  <div className="font-pinyin text-sm" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>{c.pinyin}</div>
+                  <div className="font-pinyin text-sm" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
+                    {c.pinyin}{c.custom && <span className="badge-gold not-italic text-[10px] ml-2">custom</span>}
+                  </div>
                   <div className="text-xs truncate" style={{ color: "var(--text-primary)", fontFamily: "Spectral, serif" }}>
                     {c.meanings.slice(0, 2).join("; ")}
                   </div>
                 </div>
-                {c.custom && <span className="badge-gold text-[10px] shrink-0">custom</span>}
                 <button
                   onClick={() => void removeCard(c.id)}
                   aria-label={`Remove ${c.simplified}`}
@@ -225,7 +226,7 @@ function Header({ deck, onRename, onDelete }: {
         </form>
       ) : (
         <div className="flex items-baseline gap-3">
-          <h1 className="text-2xl flex-1 min-w-0 truncate" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.06em" }}>
+          <h1 className="text-2xl flex-1 min-w-0 break-words" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.06em" }}>
             {deck.name}
           </h1>
           <button onClick={() => setEditing(true)} className="text-xs" style={label}>Rename</button>

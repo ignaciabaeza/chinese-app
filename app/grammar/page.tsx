@@ -57,7 +57,7 @@ export default function GrammarPage() {
                   <div className="text-xs mb-2" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.05em" }}>
                     Lesson {lessonNumber} · <span className="font-display" style={{ color: "var(--text-primary)" }}>{slot.title}</span>
                   </div>
-                  <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {slot.pts.map((p) => (
                       <Link
                         key={p.gpId}

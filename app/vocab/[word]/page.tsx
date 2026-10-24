@@ -89,7 +89,7 @@ export default async function WordDetailPage({
       {chars.length > 0 && (
         <section>
           <SectionHeader chinese="汉字" english="Characters" />
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {chars.map((c, i) => {
               const info = charMap.get(c);
               return (

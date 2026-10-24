@@ -54,15 +54,10 @@ export default function HubPage({ title, subtitle, items, footer }: {
               <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
                 {item.sub}
               </div>
+              {/* Phones: badge under the text so the description keeps the width. */}
+              {item.badge && <Badge item={item} className="sm:hidden inline-block mt-1.5" />}
             </div>
-            {item.badge && (
-              <span
-                className="badge-gold shrink-0"
-                style={item.highlight ? { background: "transparent", borderColor: "var(--accent-rose)", color: "var(--accent-rose)" } : undefined}
-              >
-                {item.badge}
-              </span>
-            )}
+            {item.badge && <Badge item={item} className="hidden sm:inline-block shrink-0" />}
             <span className="shrink-0" style={{ color: item.highlight ? "var(--accent-rose)" : "var(--text-muted)" }}>→</span>
           </Link>
         ))}
@@ -70,5 +65,16 @@ export default function HubPage({ title, subtitle, items, footer }: {
 
       {footer}
     </div>
+  );
+}
+
+function Badge({ item, className }: { item: HubItem; className: string }) {
+  return (
+    <span
+      className={`badge-gold ${className}`}
+      style={item.highlight ? { background: "transparent", borderColor: "var(--accent-rose)", color: "var(--accent-rose)" } : undefined}
+    >
+      {item.badge}
+    </span>
   );
 }

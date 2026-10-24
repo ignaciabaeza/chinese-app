@@ -333,7 +333,8 @@ function DialogueListenCard({
             {revealed ? (
               <span className="font-display text-lg" style={{ color: "var(--text-parchment)" }}>{l.simplified}</span>
             ) : (
-              <span className="flex gap-1">
+              // Wraps like the revealed text, so long lines don't widen the page on phones.
+              <span className="flex flex-wrap gap-1 min-w-0">
                 {Array.from(l.simplified).map((_, i) => (
                   <span key={i} className="inline-block rounded-sm" style={{ width: 16, height: 16, background: "rgba(60,48,30,0.10)" }} />
                 ))}
@@ -375,7 +376,7 @@ function ReadStep({ detail, readerTextId }: { detail: LessonDetail; readerTextId
               Situation {d.position}{d.title_hanzi ? ` · ${d.title_hanzi}` : ""}{d.title_english ? ` — ${d.title_english}` : ""}
             </div>
             {d.lines.map((l) => (
-              <div key={l.id} className="grid grid-cols-[auto_1fr_auto] gap-3 items-start py-1">
+              <div key={l.id} className="grid grid-cols-[auto_minmax(0,1fr)_auto] gap-3 items-start py-1">
                 <SpeakerBadge speaker={l.speaker ?? ""} />
                 <div className="min-w-0">
                   <div className="font-display text-lg" style={{ color: "var(--text-parchment)" }}>{l.simplified}</div>
@@ -469,7 +470,7 @@ function VocabStep({
         </p>
       )}
 
-      <ul className="grid sm:grid-cols-2 gap-2">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {words.map((w) => (
           <li key={w.word_id} className="rounded-lg px-3 py-2 flex items-start gap-3"
               style={{ background: "var(--bg-parchment)", border: "1px solid var(--border-subtle)" }}>
@@ -548,7 +549,7 @@ function DoneStep({ detail, completed, words }: { detail: LessonDetail; complete
       <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
         {done}/{total} steps · {inDeck}/{words.length} vocab in your deck
       </p>
-      <div className="grid sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {detail.prev && (
           <Link href={`/course/${detail.prev.level}/lesson/${detail.prev.number}`}
                 className="block rounded-xl p-4 text-left"

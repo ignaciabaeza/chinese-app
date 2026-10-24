@@ -69,7 +69,7 @@ export default function PracticeStep({ extras }: { extras: LessonExtras | null }
       {hasChars && characters && (
         <Section title="Characters" hanzi="汉字">
           {characters.singleComponentChars && characters.singleComponentChars.length > 0 && (
-            <div className="grid sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {characters.singleComponentChars.map((c) => (
                 <Card key={c.id}>
                   <div className="flex gap-3 items-start">

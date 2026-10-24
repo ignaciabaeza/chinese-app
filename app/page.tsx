@@ -141,7 +141,7 @@ function SignedInStats({ data, fetching, totalDue }: { data: DashboardData; fetc
 
       {/* Per-type breakdown */}
       <Section title="By Card Type">
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <TypeBreakdownCard label="Recognition" stats={data.recognition} href="/review?type=recognition" />
           <TypeBreakdownCard label="Listening"   stats={data.listening}   href="/review?type=listening" />
         </div>
@@ -149,7 +149,7 @@ function SignedInStats({ data, fetching, totalDue }: { data: DashboardData; fetc
 
       {/* Coverage */}
       <Section title="Mastery">
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <CoverageCard level={1} block={data.coverage.hsk1} />
           <CoverageCard level={2} block={data.coverage.hsk2} />
         </div>
