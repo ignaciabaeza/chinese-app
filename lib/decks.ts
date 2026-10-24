@@ -260,28 +260,63 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 /**
- * Dictionary search for the deck editor: exact hanzi first, then hanzi
- * prefix, then everything else (pinyin with or without tones, English) by
- * frequency.
+ * Dictionary search for the deck editor. Matching is loose: every word of the
+ * query must appear somewhere (hanzi, pinyin with tone marks, numbers or no
+ * tones at all, or the English meanings), so "chinese", "chin" and "lang chin"
+ * all find 汉语, and so do "hanyu" / "han yu". Ranking does the rest:
+ *   0 exact hanzi           1 exact pinyin (any form)    2 hanzi prefix
+ *   3 a meaning IS the query ("eat" → "to eat", "chinese" → "Chinese")
+ *   4 a meaning starts with it ("chinese" → "Chinese language")
+ *   5 whole word inside a meaning   6 word prefix inside a meaning
+ *   7 pinyin prefix                 8 anything else
+ * then common words first: HSK level, then frequency.
  */
 export async function searchWordsForDeck(query: string, limit = 20): Promise<WordSearchResult[]> {
-  const q = query.trim();
+  const q = query.trim().toLowerCase().replace(/\s+/g, " ");
   if (!q) return [];
-  const escaped = q.replace(/[\\%_]/g, (ch) => `\\${ch}`);
+  const tokens = q.split(" ").slice(0, 6);
+  const like = (t: string) => `%${t.replace(/[\\%_]/g, (ch) => `\\${ch}`)}%`;
+  const re = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const compact = q.replace(/[\s0-9]/g, "");
+
+  // $1 query, $2 regex-escaped query, $3 query without spaces/tone numbers,
+  // $4 LIKE pattern for $3, $5 limit, $6.. one LIKE pattern per token.
+  const params: unknown[] = [q, re(q), compact, like(compact), limit];
+  const tokenConds = tokens.map((t) => {
+    params.push(like(t));
+    const p = `$${params.length}`;
+    return `(simplified LIKE ${p} OR traditional LIKE ${p} OR lower(pinyin) LIKE ${p}
+             OR pn LIKE ${p} OR bare LIKE ${p} OR lower(meanings::text) LIKE ${p})`;
+  });
+  const meaning = (cond: string) =>
+    `EXISTS (SELECT 1 FROM jsonb_array_elements_text(meanings) m WHERE ${cond})`;
+
   const { rows } = await pool.query<WordSearchResult>(
-    `SELECT id, simplified, pinyin, meanings, hsk2_level
-     FROM words
-     WHERE simplified LIKE $2 OR traditional LIKE $2
-        OR pinyin ILIKE $2 OR pinyin_numbered ILIKE $2
-        OR replace(pinyin_numbered, ' ', '') ILIKE $2
-        OR meanings::text ILIKE $2
-     ORDER BY (simplified = $1) DESC,
-              (simplified LIKE $3) DESC,
-              (lower(pinyin) = lower($1) OR lower(replace(pinyin_numbered, ' ', '')) = lower($1)) DESC,
-              COALESCE(frequency_rank, 999999),
-              simplified
-     LIMIT $4`,
-    [q, `%${escaped}%`, `${escaped}%`, limit],
+    `WITH w AS (
+       SELECT id, simplified, traditional, pinyin, meanings, hsk2_level, hsk3_level, frequency_rank,
+              lower(COALESCE(pinyin_numbered, '')) AS pn,
+              regexp_replace(lower(COALESCE(pinyin_numbered, '')), '[0-9 ]', '', 'g') AS bare
+       FROM words
+     )
+     SELECT id, simplified, pinyin, meanings, hsk2_level
+     FROM w
+     WHERE (${tokenConds.join(" AND ")})
+        OR ($3 <> '' AND bare LIKE $4)
+     ORDER BY CASE
+                WHEN simplified = $1 OR traditional = $1 THEN 0
+                WHEN lower(pinyin) = $1 OR pn = $1 OR ($3 <> '' AND bare = $3) THEN 1
+                WHEN left(simplified, length($1)) = $1 THEN 2
+                WHEN ${meaning(`lower(m) ~ ('^(to |a |an |the )?' || $2 || '$')`)} THEN 3
+                WHEN ${meaning(`lower(m) ~ ('^(to |a |an |the )?' || $2 || '\\M')`)} THEN 4
+                WHEN ${meaning(`lower(m) ~ ('\\m' || $2 || '\\M')`)} THEN 5
+                WHEN ${meaning(`lower(m) ~ ('\\m' || $2)`)} THEN 6
+                WHEN $3 <> '' AND left(bare, length($3)) = $3 THEN 7
+                ELSE 8
+              END,
+              COALESCE(hsk2_level, 99), COALESCE(hsk3_level, 99),
+              COALESCE(frequency_rank, 999999), simplified
+     LIMIT $5`,
+    params,
   );
   return rows;
 }

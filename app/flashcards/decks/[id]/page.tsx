@@ -285,7 +285,7 @@ function WordSearch({ inDeck, onAdd }: { inDeck: Set<number>; onAdd: (wordId: nu
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search 汉字, pinyin (ni3hao3) or English"
+        placeholder="Search 汉字, pinyin (hanyu, hàn yǔ) or English"
         className="input-parchment w-full"
       />
       {q && (
