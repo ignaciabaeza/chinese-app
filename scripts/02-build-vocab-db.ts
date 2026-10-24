@@ -16,22 +16,13 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { Pool } from "pg";
 import { loadEnv } from "./lib/env";
+import { buildWordRow, cedictKey, loadTaught, type HSKForm } from "./lib/word-forms";
 
 loadEnv();
 
 const SOURCES_DIR = join(process.cwd(), "data", "sources");
 
 // ─── Types matching source formats ──────────────────────────────────────────
-
-interface HSKForm {
-  traditional?: string;
-  transcriptions?: {
-    pinyin?: string;
-    numeric?: string;
-  };
-  meanings?: string[];
-  classifiers?: string[];
-}
 
 interface HSKEntry {
   simplified: string;
@@ -85,11 +76,12 @@ function loadCedictMap(): Map<string, string[]> {
   for (const line of content.split("\n")) {
     const entry = parseCedictLine(line);
     if (!entry) continue;
-    const existing = map.get(entry.simp) ?? [];
-    map.set(entry.simp, [...existing, ...entry.meanings]);
+    // Keyed by reading too: 离 [li2] and 离 [chi1] are different words.
+    const key = cedictKey(entry.simp, entry.pinyin);
+    map.set(key, [...(map.get(key) ?? []), ...entry.meanings]);
     parsed++;
   }
-  console.log(`  ${parsed.toLocaleString()} entries, ${map.size.toLocaleString()} unique simplified forms`);
+  console.log(`  ${parsed.toLocaleString()} entries, ${map.size.toLocaleString()} unique readings`);
   return map;
 }
 
@@ -122,6 +114,8 @@ function loadMakeMeAHanzi(): MMHEntry[] {
 
 async function insertWords(pool: Pool, hskEntries: HSKEntry[], cedict: Map<string, string[]>) {
   console.log("Inserting words…");
+  // Polyphonic entries: prefer the reading our lessons teach (see word-forms.ts).
+  const taught = loadTaught(process.cwd());
   const client = await pool.connect();
   let inserted = 0;
   let skipped = 0;
@@ -132,37 +126,14 @@ async function insertWords(pool: Pool, hskEntries: HSKEntry[], cedict: Map<strin
         skipped++;
         continue;
       }
-      const form = entry.forms?.[0];
-      const pinyin = form?.transcriptions?.pinyin ?? "";
-      if (!pinyin) {
+      const row = buildWordRow(entry, cedict, taught.get(entry.simplified));
+      if (!row) {
         skipped++;
         continue;
       }
-      const traditional = form?.traditional ?? null;
-      const pinyin_numbered = form?.transcriptions?.numeric ?? null;
+      const { traditional, pinyin, pinyin_numbered, meanings } = row;
       const hsk2 = pickHSKLevel(entry.level, "old");
       const hsk3 = pickHSKLevel(entry.level, "new");
-
-      // Merge primary meanings with CEDICT glosses for richer context.
-      let meanings = (form?.meanings ?? []).filter(Boolean);
-      if (meanings.length < 2) {
-        const extra = cedict.get(entry.simplified) ?? [];
-        const seen = new Set(meanings.map((m) => m.toLowerCase()));
-        for (const m of extra) {
-          const k = m.toLowerCase();
-          if (!seen.has(k)) {
-            meanings.push(m);
-            seen.add(k);
-            if (meanings.length >= 5) break;
-          }
-        }
-      }
-      // Cap meanings list — keep payloads sane.
-      meanings = meanings.slice(0, 8);
-      if (meanings.length === 0) {
-        skipped++;
-        continue;
-      }
 
       await client.query(
         `INSERT INTO words
