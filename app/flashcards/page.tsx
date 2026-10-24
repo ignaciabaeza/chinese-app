@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useEffectEvent, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import AudioButton from "@/components/AudioButton";
@@ -133,23 +133,25 @@ function FlashcardsInner() {
     back();
   }
 
-  // Keyboard shortcuts.
+  // Keyboard shortcuts. An effect event always sees the current render's state:
+  // a listener that captured a stale `flipped` advanced without flipping back,
+  // so keys 1/2 showed the next card's answer on the still-visible back face.
+  const onKey = useEffectEvent((e: KeyboardEvent) => {
+    if (e.code === "Space") { e.preventDefault(); if (!transitioning) setFlipped((f) => !f); return; }
+    if (mode === "drill") {
+      if (e.key === "1") next("skipped");
+      if (e.key === "2") next("passed");
+    } else {
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft")  prev();
+    }
+  });
   useEffect(() => {
     if (phase !== "card") return;
-    function onKey(e: KeyboardEvent) {
-      if (e.code === "Space") { e.preventDefault(); if (!transitioning) setFlipped((f) => !f); return; }
-      if (mode === "drill") {
-        if (e.key === "1") next("skipped");
-        if (e.key === "2") next("passed");
-      } else {
-        if (e.key === "ArrowRight") next();
-        if (e.key === "ArrowLeft")  prev();
-      }
-    }
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, mode, index, deck.length, transitioning]);
+    const handler = (e: KeyboardEvent) => onKey(e);
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [phase]);
 
   if (phase === "setup") {
     return (
