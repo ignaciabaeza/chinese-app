@@ -16,7 +16,7 @@ export interface FlashcardSentence {
 }
 
 export interface Flashcard {
-  word_id: number;
+  word_id: number | null;   // null for a custom word in a user deck
   simplified: string;
   pinyin: string;
   meanings: string[];
@@ -67,7 +67,7 @@ export async function getLessonFlashcardDeck(book: string, lessonNumber: number)
   return { lesson, deck };
 }
 
-async function attachExamples(wordRows: Array<{
+export async function attachExamples(wordRows: Array<{
   id: number; simplified: string; pinyin: string;
   meanings: string[]; hsk2_level: number | null; audio_path: string | null;
 }>): Promise<Flashcard[]> {

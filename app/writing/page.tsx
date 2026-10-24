@@ -5,17 +5,15 @@
  *
  * Mirrors /review but uses `writing` card type. Each card asks the user to
  * draw every character of the word in turn via HanziWriter's quiz mode.
- * Per-character mistake counts are aggregated into an auto-rating:
- *   0 mistakes total → Good (3)
- *   1-2 mistakes     → Hard (2)
- *   ≥3 mistakes      → Again (1)
- * The user can override before submitting.
+ * Per-character mistake counts suggest a grade — 0–2 mistakes "Know it"
+ * (Good, 3), ≥3 "Don't know" (Again, 1) — which the user confirms or overrides.
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 import HanziQuiz from "@/components/HanziQuiz";
+import KnowButtons from "@/components/KnowButtons";
 import { submitGrade } from "@/lib/review-client";
 
 interface WritingCard {
@@ -31,6 +29,11 @@ interface WritingCard {
   hsk2_level: number | null;
   hsk3_level: number | null;
 }
+
+// "Don't know" / "Know it" grade the card Again / Good.
+type Rating = 1 | 3;
+type SessionStats = { missed: number; known: number };
+const NO_STATS: SessionStats = { missed: 0, known: 0 };
 
 interface ReviewStats {
   due_now: number;
@@ -54,7 +57,7 @@ export default function WritingPage() {
   const [charIndex, setCharIndex] = useState(0);
   const [perCharMistakes, setPerCharMistakes] = useState<number[]>([]);
   const [resetKey, setResetKey] = useState(0);
-  const [sessionStats, setSessionStats] = useState({ again: 0, hard: 0, good: 0, easy: 0 });
+  const [sessionStats, setSessionStats] = useState<SessionStats>(NO_STATS);
   const [submitting, setSubmitting] = useState(false);
   // State updates are async, so two taps in the same tick both see
   // submitting=false; the ref is the real guard.
@@ -115,7 +118,7 @@ export default function WritingPage() {
   );
 
   const grade = useCallback(
-    async (rating: 1 | 2 | 3 | 4) => {
+    async (rating: Rating) => {
       // Ignore double taps while the previous grade is in flight.
       if (!current || submittingRef.current) return;
       submittingRef.current = true;
@@ -130,13 +133,9 @@ export default function WritingPage() {
         setSubmitting(false);
         return;
       }
-      setSessionStats((s) => ({
-        ...s,
-        again: rating === 1 ? s.again + 1 : s.again,
-        hard:  rating === 2 ? s.hard + 1  : s.hard,
-        good:  rating === 3 ? s.good + 1  : s.good,
-        easy:  rating === 4 ? s.easy + 1  : s.easy,
-      }));
+      setSessionStats((s) => rating === 1
+        ? { ...s, missed: s.missed + 1 }
+        : { ...s, known: s.known + 1 });
       submittingRef.current = false;
       setSubmitting(false);
       if (index + 1 >= queue.length) {
@@ -151,6 +150,17 @@ export default function WritingPage() {
     },
     [current, index, queue.length],
   );
+
+  // Keys 1 / 2 = Don't know / Know it once every character is drawn.
+  useEffect(() => {
+    if (phase !== "review" || !allCharsDone) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "1") void grade(1);
+      if (e.key === "2") void grade(3);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [phase, allCharsDone, grade]);
 
   if (loading || phase === "loading") return null;
 
@@ -184,7 +194,7 @@ export default function WritingPage() {
         setIndex(0);
         setCharIndex(0);
         setPerCharMistakes([]);
-        setSessionStats({ again: 0, hard: 0, good: 0, easy: 0 });
+        setSessionStats(NO_STATS);
         startedAt.current = Date.now();
       }}
     />
@@ -360,12 +370,9 @@ function GradeButtons({
   totalChars: number;
   word: string;
   disabled: boolean;
-  onGrade: (r: 1 | 2 | 3 | 4) => void;
+  onGrade: (r: Rating) => void;
 }) {
-  // suggested rating based on mistake count
-  const suggested: 1 | 2 | 3 = mistakes === 0 ? 3 : mistakes <= 2 ? 2 : 1;
-  const labels = { 1: "Again", 2: "Hard", 3: "Good", 4: "Easy" } as const;
-  const colors = { 1: "var(--accent-rose)", 2: "var(--wave)", 3: "var(--accent-gold)", 4: "var(--accent-gold)" } as const;
+  const suggested = mistakes <= 2 ? "know" : "miss";
 
   return (
     <div className="rounded-2xl p-5 space-y-4" style={{ background: "var(--bg-parchment)", border: "1px solid var(--accent-gold)" }}>
@@ -374,31 +381,13 @@ function GradeButtons({
         <div className="text-sm" style={{ color: "#7A6855", fontFamily: "Spectral, serif" }}>
           {mistakes === 0 ? "Perfect — no mistakes" : `${mistakes} mistake${mistakes === 1 ? "" : "s"} across ${totalChars} character${totalChars === 1 ? "" : "s"}`}
         </div>
-        <div className="text-xs" style={{ color: "#7A6855", fontFamily: "Cormorant Garamond, serif" }}>
-          Suggested: <span style={{ color: colors[suggested] }}>{labels[suggested]}</span>
-        </div>
       </div>
-      <div className="grid grid-cols-4 gap-2">
-        {([1, 2, 3, 4] as const).map((r) => (
-          <button
-            key={r}
-            onClick={() => onGrade(r)}
-            disabled={disabled}
-            className="py-3 rounded-xl text-sm font-semibold transition-all"
-            style={{
-              opacity: disabled ? 0.5 : 1,
-              background: r === suggested ? colors[r] : "transparent",
-              border: `1.5px solid ${colors[r]}`,
-              color: r === suggested ? "var(--bg-parchment)" : colors[r],
-              fontFamily: "Cormorant Garamond, serif",
-              letterSpacing: "0.05em",
-            }}
-          >
-            <div>{labels[r]}</div>
-            <div className="text-xs opacity-60 mt-0.5">[{r}]</div>
-          </button>
-        ))}
-      </div>
+      <KnowButtons
+        onMiss={() => onGrade(1)}
+        onKnow={() => onGrade(3)}
+        disabled={disabled}
+        suggested={suggested}
+      />
     </div>
   );
 }
@@ -408,12 +397,11 @@ function GradeButtons({
 function Finished({
   stats, onAgain,
 }: {
-  stats: { again: number; hard: number; good: number; easy: number };
+  stats: SessionStats;
   onAgain: () => void;
 }) {
-  const total = stats.again + stats.hard + stats.good + stats.easy;
-  const correct = stats.hard + stats.good + stats.easy;
-  const acc = total > 0 ? Math.round((correct / total) * 100) : 0;
+  const total = stats.missed + stats.known;
+  const acc = total > 0 ? Math.round((stats.known / total) * 100) : 0;
 
   return (
     <div className="max-w-md mx-auto text-center space-y-6 animate-fade-up">
@@ -423,12 +411,10 @@ function Finished({
       <h2 style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", fontSize: "1.4rem", letterSpacing: "0.08em" }}>
         Writing Session Complete
       </h2>
-      <div className="rounded-2xl p-6 grid grid-cols-4 gap-3" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
+      <div className="rounded-2xl p-6 grid grid-cols-2 gap-3" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
         {([
-          { label: "Again", value: stats.again, color: "var(--accent-rose)" },
-          { label: "Hard",  value: stats.hard,  color: "var(--wave)" },
-          { label: "Good",  value: stats.good,  color: "var(--accent-gold)" },
-          { label: "Easy",  value: stats.easy,  color: "var(--accent-gold)" },
+          { label: "Don't know", value: stats.missed, color: "var(--accent-rose)" },
+          { label: "Know it",    value: stats.known,  color: "var(--accent-gold)" },
         ] as const).map((s) => (
           <div key={s.label}>
             <div className="text-2xl font-bold" style={{ color: s.color, fontFamily: "Cormorant Garamond, serif" }}>{s.value}</div>

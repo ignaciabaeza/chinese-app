@@ -43,7 +43,7 @@ export default function PracticePage() {
         },
         { href: "/listening", hanzi: "听", title: "Listening", sub: "Dictation and tone drills" },
         { href: "/shadowing", hanzi: "说", title: "Shadowing", sub: "Listen, record yourself, compare" },
-        { href: "/flashcards", hanzi: "卡", title: "Free flashcards", sub: "Shuffle a deck without affecting your schedule" },
+        { href: "/flashcards", hanzi: "卡", title: "Free flashcards", sub: "Shuffle an HSK deck or build your own — no effect on your schedule" },
       ]}
     />
   );

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
 import AudioButton from "@/components/AudioButton";
 import MoonHanzi from "@/components/MoonHanzi";
+import KnowButtons from "@/components/KnowButtons";
+import { useBackFace } from "@/lib/use-back-face";
 import { submitGrade } from "@/lib/review-client";
 
 type Mode = "recognition" | "listening";
@@ -34,12 +36,10 @@ interface ReviewStats {
   reviewed_today: number;
 }
 
-const RATING_LABELS: Record<number, { label: string; key: string; color: string }> = {
-  1: { label: "Again",  key: "1", color: "var(--accent-rose)" },
-  2: { label: "Hard",   key: "2", color: "var(--wave)" },
-  3: { label: "Good",   key: "3", color: "var(--accent-gold)" },
-  4: { label: "Easy",   key: "4", color: "var(--accent-gold)" },
-};
+// "Don't know" / "Know it" grade the card Again / Good.
+type Rating = 1 | 3;
+type SessionStats = { missed: number; known: number };
+const NO_STATS: SessionStats = { missed: 0, known: 0 };
 
 export default function ReviewPage() {
   const { user, loading } = useAuth();
@@ -51,7 +51,7 @@ export default function ReviewPage() {
   const [stats, setStats] = useState<ReviewStats | null>(null);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
-  const [sessionStats, setSessionStats] = useState({ again: 0, hard: 0, good: 0, easy: 0 });
+  const [sessionStats, setSessionStats] = useState<SessionStats>(NO_STATS);
   const [transitioning, setTransitioning] = useState(false);
   const [seededCount, setSeededCount] = useState(0);
   const [error, setError] = useState<string | null>(null);
@@ -97,7 +97,7 @@ export default function ReviewPage() {
 
   // ── grading ──
   const grade = useCallback(
-    async (rating: 1 | 2 | 3 | 4) => {
+    async (rating: Rating) => {
       if (phase !== "review" || !flipped || gradingRef.current) return;
       const card = queue[index];
       if (!card) return;
@@ -116,29 +116,27 @@ export default function ReviewPage() {
         return;
       }
 
-      setSessionStats((s) => ({
-        ...s,
-        again: rating === 1 ? s.again + 1 : s.again,
-        hard:  rating === 2 ? s.hard + 1  : s.hard,
-        good:  rating === 3 ? s.good + 1  : s.good,
-        easy:  rating === 4 ? s.easy + 1  : s.easy,
-      }));
+      setSessionStats((s) => rating === 1
+        ? { ...s, missed: s.missed + 1 }
+        : { ...s, known: s.known + 1 });
 
-      // Flip back first, and only swap in the next card once the flip is past
-      // its 90° midpoint (card-inner transition is 600ms; backface-visibility
-      // hides both faces there). Swapping in the same render as the unflip
-      // briefly showed the NEXT card's answer on the back face.
+      // Flip back and swap in the next card in the same render: the front is
+      // facing away at that moment, and the back face keeps showing the graded
+      // card until the next reveal (useBackFace). Reveals stay blocked until
+      // the 600ms flip-back has finished.
       setFlipped(false);
-      setTimeout(() => {
-        if (index + 1 >= queue.length) {
-          setPhase("finished");
-        } else {
-          setIndex((i) => i + 1);
-          startedAt.current = Date.now();
-        }
+      if (index + 1 >= queue.length) {
+        setPhase("finished");
         gradingRef.current = false;
         setTransitioning(false);
-      }, 320);
+        return;
+      }
+      setIndex((i) => i + 1);
+      startedAt.current = Date.now();
+      setTimeout(() => {
+        gradingRef.current = false;
+        setTransitioning(false);
+      }, 600);
     },
     [phase, flipped, queue, index],
   );
@@ -159,9 +157,7 @@ export default function ReviewPage() {
       }
       if (flipped && !transitioning) {
         if (e.key === "1") void grade(1);
-        if (e.key === "2") void grade(2);
-        if (e.key === "3") void grade(3);
-        if (e.key === "4") void grade(4);
+        if (e.key === "2") void grade(3);
       }
     }
     window.addEventListener("keydown", onKey);
@@ -208,7 +204,7 @@ export default function ReviewPage() {
       setPhase("review");
       setIndex(0);
       setFlipped(false);
-      setSessionStats({ again: 0, hard: 0, good: 0, easy: 0 });
+      setSessionStats(NO_STATS);
       startedAt.current = Date.now();
     }}
   />;
@@ -409,14 +405,14 @@ function ReviewCard({
   total: number;
   flipped: boolean;
   onReveal: () => void;
-  onGrade: (r: 1 | 2 | 3 | 4) => void;
-  sessionStats: { again: number; hard: number; good: number; easy: number };
+  onGrade: (r: Rating) => void;
+  sessionStats: SessionStats;
 }) {
-  const totalCorrect = sessionStats.good + sessionStats.easy + sessionStats.hard;
-  const acc = totalCorrect + sessionStats.again > 0
-    ? Math.round((totalCorrect / (totalCorrect + sessionStats.again)) * 100)
-    : 0;
+  const graded = sessionStats.known + sessionStats.missed;
+  const acc = graded > 0 ? Math.round((sessionStats.known / graded) * 100) : 0;
   const isListening = card.card_type === "listening";
+  // The answer side never shows the next card while turning back.
+  const back = useBackFace(card, flipped);
 
   // Replay shortcut (keyboard 'R'): re-fire the underlying <audio> by toggling key.
   const [replayKey, setReplayKey] = useState(0);
@@ -438,10 +434,9 @@ function ReviewCard({
       </div>
 
       <div className="flex justify-center gap-6 text-sm" style={{ fontFamily: "Cormorant Garamond, serif" }}>
-        <span style={{ color: "var(--accent-rose)" }}>↺ {sessionStats.again}</span>
-        <span style={{ color: "var(--wave)" }}>⌽ {sessionStats.hard}</span>
-        <span style={{ color: "var(--accent-gold)" }}>✓ {sessionStats.good + sessionStats.easy}</span>
-        {totalCorrect + sessionStats.again > 0 && (
+        <span style={{ color: "var(--accent-rose)" }}>↺ {sessionStats.missed}</span>
+        <span style={{ color: "var(--accent-gold)" }}>✓ {sessionStats.known}</span>
+        {graded > 0 && (
           <span style={{ color: "var(--text-muted)" }}>{acc}%</span>
         )}
       </div>
@@ -489,22 +484,22 @@ function ReviewCard({
             style={{ background: "var(--bg-parchment)", border: "1px solid var(--accent-gold)" }}
           >
             <div className="badge-gold mb-3" style={{ background: "rgba(201,168,76,0.15)" }}>
-              {stateLabel(card.state)}
+              {stateLabel(back.state)}
             </div>
             <div className="chinese-md font-bold mb-1 text-center" style={{ color: "var(--text-parchment)", fontFamily: "Noto Serif SC, serif" }}>
-              {card.simplified}
+              {back.simplified}
             </div>
-            {card.traditional && card.traditional !== card.simplified && (
-              <div className="text-sm mb-1" style={{ color: "#7A6855" }}>繁 {card.traditional}</div>
+            {back.traditional && back.traditional !== back.simplified && (
+              <div className="text-sm mb-1" style={{ color: "#7A6855" }}>繁 {back.traditional}</div>
             )}
             <div className="flex items-center gap-2 mb-3">
               <div className="text-xl font-pinyin" style={{ color: "#5A3F20", fontStyle: "italic" }}>
-                {card.pinyin}
+                {back.pinyin}
               </div>
-              {card.audio_path && flipped && (
+              {back.audio_path && flipped && (
                 <AudioButton
-                  key={`back-${card.id}`}
-                  src={card.audio_path}
+                  key={`back-${back.id}`}
+                  src={back.audio_path}
                   autoPlay={!isListening}  /* recognition: autoplay on flip; listening already played on front */
                   size="sm"
                   label="Play word"
@@ -512,7 +507,7 @@ function ReviewCard({
               )}
             </div>
             <ol className="space-y-1 text-base text-center max-w-md" style={{ fontFamily: "Spectral, serif", color: "var(--text-parchment)" }}>
-              {card.meanings.slice(0, 4).map((m, i) => (
+              {back.meanings.slice(0, 4).map((m, i) => (
                 <li key={i}>
                   <span style={{ color: "#7A6855", fontFamily: "Cormorant Garamond, serif" }}>{i + 1}.</span>{" "}
                   {m}
@@ -520,7 +515,7 @@ function ReviewCard({
               ))}
             </ol>
             <Link
-              href={`/vocab/${encodeURIComponent(card.simplified)}`}
+              href={`/vocab/${encodeURIComponent(back.simplified)}`}
               // New tab so the review session (queue position, counts) survives.
               target="_blank"
               rel="noopener"
@@ -535,28 +530,7 @@ function ReviewCard({
       </div>
 
       {flipped ? (
-        <div className="grid grid-cols-4 gap-2">
-          {([1, 2, 3, 4] as const).map((r) => {
-            const meta = RATING_LABELS[r];
-            return (
-              <button
-                key={r}
-                onClick={() => onGrade(r)}
-                className="py-3 rounded-xl text-sm font-semibold transition-all"
-                style={{
-                  background: "transparent",
-                  border: `1.5px solid ${meta.color}`,
-                  color: meta.color,
-                  fontFamily: "Cormorant Garamond, serif",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                <div>{meta.label}</div>
-                <div className="text-xs opacity-60 mt-0.5">[{meta.key}]</div>
-              </button>
-            );
-          })}
-        </div>
+        <KnowButtons onMiss={() => onGrade(1)} onKnow={() => onGrade(3)} />
       ) : (
         <button
           onClick={onReveal}
@@ -590,12 +564,11 @@ function stateLabel(state: 0 | 1 | 2 | 3): string {
 function Finished({
   stats, onAgain,
 }: {
-  stats: { again: number; hard: number; good: number; easy: number };
+  stats: SessionStats;
   onAgain: () => void;
 }) {
-  const total = stats.again + stats.hard + stats.good + stats.easy;
-  const correct = stats.hard + stats.good + stats.easy;
-  const acc = total > 0 ? Math.round((correct / total) * 100) : 0;
+  const total = stats.missed + stats.known;
+  const acc = total > 0 ? Math.round((stats.known / total) * 100) : 0;
 
   return (
     <div className="max-w-md mx-auto text-center space-y-6 animate-fade-up">
@@ -606,12 +579,10 @@ function Finished({
         Session Complete
       </h2>
 
-      <div className="rounded-2xl p-6 grid grid-cols-4 gap-3" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
+      <div className="rounded-2xl p-6 grid grid-cols-2 gap-3" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
         {([
-          { label: "Again", value: stats.again, color: "var(--accent-rose)" },
-          { label: "Hard",  value: stats.hard,  color: "var(--wave)" },
-          { label: "Good",  value: stats.good,  color: "var(--accent-gold)" },
-          { label: "Easy",  value: stats.easy,  color: "var(--accent-gold)" },
+          { label: "Don't know", value: stats.missed, color: "var(--accent-rose)" },
+          { label: "Know it",    value: stats.known,  color: "var(--accent-gold)" },
         ] as const).map((s) => (
           <div key={s.label}>
             <div className="text-2xl font-bold" style={{ color: s.color, fontFamily: "Cormorant Garamond, serif" }}>{s.value}</div>

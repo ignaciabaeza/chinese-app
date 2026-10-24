@@ -102,7 +102,7 @@ chinese_app/
 │   ├── writing/                  # FSRS stroke-order cards (HanziWriter)
 │   ├── listening/                # Dictation + tone drills
 │   ├── shadowing/                # Listen / record / compare
-│   ├── flashcards/               # Free shuffled deck — does NOT touch the FSRS schedule
+│   ├── flashcards/               # Free shuffled deck + user-made decks (decks/[id] editor) — does NOT touch FSRS
 │   ├── library/page.tsx          # Library tab hub
 │   ├── vocab/                    # Dictionary (DB words) + word detail
 │   ├── reader/                   # Tap-to-read texts + paste importer
@@ -187,7 +187,7 @@ interface Lesson {
 
 ## Data Model (Postgres)
 
-Schema lives in `scripts/migrations/` (001 baseline → 008). Key tables:
+Schema lives in `scripts/migrations/` (001 baseline → 009). Key tables:
 
 | Table | Purpose |
 |---|---|
@@ -198,6 +198,7 @@ Schema lives in `scripts/migrations/` (001 baseline → 008). Key tables:
 | `lessons` / `lesson_dialogues` / `dialogue_lines` / `lesson_words` | Course stepper content (imported from JSON) |
 | `lesson_progress` | Per-user completed stepper steps |
 | `texts` | Reader texts (lessons + user-pasted) |
+| `user_decks` / `user_deck_cards` | User-made /flashcards decks; a card is a dictionary word (`word_id`) or a custom word (`simplified` + `meaning`, optional `pinyin`). No FSRS |
 | `exercises` / `exercise_attempts` | Orphaned: from the removed DB-backed workbook (migration 007, not in repo). Still holds data; no code reads it |
 
 `card_progress` and `study_sessions` (the old SM-2 system) were dropped in migration 008.
@@ -224,7 +225,7 @@ Schema lives in `scripts/migrations/` (001 baseline → 008). Key tables:
 |---|---|
 | Home | `/` |
 | Course | `/course`, `/course/[level]`, `/course/[level]/lesson/[number]`, `/workbook` |
-| Practice | `/practice` (hub), `/review`, `/writing`, `/listening`, `/shadowing`, `/flashcards` |
+| Practice | `/practice` (hub), `/review`, `/writing`, `/listening`, `/shadowing`, `/flashcards` (`?deck=ID` studies a user deck), `/flashcards/decks/[id]` |
 | Library | `/library` (hub), `/vocab`, `/vocab/[word]`, `/reader`, `/reader/[textId]`, `/grammar`, `/grammar/[gpId]` |
 | — | `/auth` |
 

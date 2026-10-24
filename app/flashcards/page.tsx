@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import AudioButton from "@/components/AudioButton";
 import MoonHanzi from "@/components/MoonHanzi";
+import KnowButtons from "@/components/KnowButtons";
+import { useBackFace } from "@/lib/use-back-face";
+import YourDecks from "./YourDecks";
 
 type Level = "all" | 1 | 2;
 type Size = 10 | 20 | "all";
@@ -19,7 +22,7 @@ interface Sentence {
 }
 
 interface Flashcard {
-  word_id: number;
+  word_id: number | null;   // null for a custom word in a user deck
   simplified: string;
   pinyin: string;
   meanings: string[];
@@ -45,6 +48,8 @@ function FlashcardsInner() {
   const searchParams = useSearchParams();
   const lessonParam = searchParams.get("lesson");
   const lessonScope: LessonScope | null = lessonParam ? { param: lessonParam, title: null } : null;
+  // ?deck=ID studies one of the user's own decks (takes precedence over ?lesson=).
+  const deckParam = searchParams.get("deck");
 
   const [phase, setPhase] = useState<"setup" | "card" | "finished">("setup");
   const [level, setLevel] = useState<Level>("all");
@@ -65,7 +70,9 @@ function FlashcardsInner() {
   const loadDeck = useCallback(async () => {
     setLoading(true); setError(null);
     try {
-      const qs = lessonScope ? `lesson=${encodeURIComponent(lessonScope.param)}` : `level=${level}&size=${size}`;
+      const qs = deckParam ? `deck=${encodeURIComponent(deckParam)}`
+        : lessonScope ? `lesson=${encodeURIComponent(lessonScope.param)}`
+        : `level=${level}&size=${size}`;
       const res = await fetch(`/api/flashcards/deck?${qs}`);
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -74,13 +81,17 @@ function FlashcardsInner() {
       }
       const data = await res.json();
       if (!data.deck || data.deck.length === 0) {
-        setError(lessonScope
+        setError(deckParam
+          ? "This deck has no words yet — add some first."
+          : lessonScope
           ? "This lesson has no vocab linked yet — try a different lesson."
           : "No cards matched. Try a different level or larger size.");
         return;
       }
       setDeck(data.deck);
-      if (data.scope === "lesson" && data.lesson) {
+      if (data.scope === "user_deck" && data.userDeck) {
+        setLessonTitle(data.userDeck.name);
+      } else if (data.scope === "lesson" && data.lesson) {
         setLessonTitle(`HSK ${data.lesson.book.replace("hsk","")} · 第${data.lesson.number}课 ${data.lesson.title_hanzi}`);
       }
       setIndex(0);
@@ -90,12 +101,18 @@ function FlashcardsInner() {
     } catch (e) {
       setError((e as Error).message);
     } finally { setLoading(false); }
-  }, [level, size, lessonScope]);
+  }, [level, size, lessonScope, deckParam]);
 
-  // Card-flip animation duration in globals.css is 600ms. To avoid flashing
-  // the NEXT card's back content while the CURRENT card is mid-flip-back,
-  // we flip first, wait ~half the animation (so we're at 90° where neither
-  // face is visible due to backface-visibility:hidden), then swap content.
+  // Moving on from a flipped card flips it back and swaps the card in the same
+  // render: the front is facing away then, and CardView's back face keeps the
+  // old answer until the next flip (useBackFace). Taps are ignored until the
+  // 600ms flip-back (globals.css) has finished.
+  function settle() {
+    setTransitioning(true);
+    setFlipped(false);
+    window.setTimeout(() => setTransitioning(false), 600);
+  }
+
   function next(record: "passed" | "skipped" | null = null) {
     if (transitioning) return;
     if (record === "passed") setStats((s) => ({ ...s, passed: s.passed + 1 }));
@@ -105,32 +122,22 @@ function FlashcardsInner() {
       if (index + 1 >= deck.length) setPhase("finished");
       else setIndex((i) => i + 1);
     };
-    if (flipped) {
-      setTransitioning(true);
-      setFlipped(false);
-      window.setTimeout(() => { advance(); setTransitioning(false); }, 320);
-    } else {
-      advance();
-    }
+    if (flipped) settle();
+    advance();
   }
 
   function prev() {
     if (transitioning || index === 0) return;
     const back = () => setIndex((i) => i - 1);
-    if (flipped) {
-      setTransitioning(true);
-      setFlipped(false);
-      window.setTimeout(() => { back(); setTransitioning(false); }, 320);
-    } else {
-      back();
-    }
+    if (flipped) settle();
+    back();
   }
 
   // Keyboard shortcuts.
   useEffect(() => {
     if (phase !== "card") return;
     function onKey(e: KeyboardEvent) {
-      if (e.code === "Space") { e.preventDefault(); setFlipped((f) => !f); return; }
+      if (e.code === "Space") { e.preventDefault(); if (!transitioning) setFlipped((f) => !f); return; }
       if (mode === "drill") {
         if (e.key === "1") next("skipped");
         if (e.key === "2") next("passed");
@@ -142,7 +149,7 @@ function FlashcardsInner() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, mode, index, deck.length]);
+  }, [phase, mode, index, deck.length, transitioning]);
 
   if (phase === "setup") {
     return (
@@ -151,6 +158,7 @@ function FlashcardsInner() {
         size={size} onSizeChange={setSize}
         mode={mode} onModeChange={setMode}
         lessonScope={lessonScope}
+        deckId={deckParam}
         loading={loading}
         error={error}
         onStart={loadDeck}
@@ -198,12 +206,13 @@ function FlashcardsInner() {
 // ─── Setup screen ────────────────────────────────────────────────────────────
 
 function Setup({
-  level, onLevelChange, size, onSizeChange, mode, onModeChange, lessonScope, loading, error, onStart,
+  level, onLevelChange, size, onSizeChange, mode, onModeChange, lessonScope, deckId, loading, error, onStart,
 }: {
   level: Level; onLevelChange: (l: Level) => void;
   size: Size; onSizeChange: (s: Size) => void;
   mode: Mode; onModeChange: (m: Mode) => void;
   lessonScope: LessonScope | null;
+  deckId: string | null;
   loading: boolean; error: string | null;
   onStart: () => void;
 }) {
@@ -214,13 +223,32 @@ function Setup({
           Flashcards
         </h1>
         <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          {lessonScope
+          {deckId
+            ? "Practising your own deck — shuffled, no SRS."
+            : lessonScope
             ? "Practising the vocab from this lesson — shuffled, no SRS."
             : "One-shot deck — shuffled, no SRS. Pick a level, a size, and a mode."}
         </p>
       </div>
 
-      {lessonScope ? (
+      {deckId ? (
+        <div className="rounded-xl p-3 flex items-center justify-between"
+             style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.4)" }}>
+          <div className="text-xs uppercase tracking-widest" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif" }}>
+            Your deck
+          </div>
+          <div className="flex gap-4">
+            <Link href={`/flashcards/decks/${deckId}`} className="text-xs"
+                  style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
+              Edit deck
+            </Link>
+            <Link href="/flashcards" className="text-xs"
+                  style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
+              All decks →
+            </Link>
+          </div>
+        </div>
+      ) : lessonScope ? (
         <div className="rounded-xl p-3 flex items-center justify-between"
              style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.4)" }}>
           <div>
@@ -238,6 +266,12 @@ function Setup({
         </div>
       ) : (
         <>
+          <YourDecks />
+
+          <div className="pt-2 text-xs uppercase tracking-widest" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif", borderTop: "1px solid var(--border-subtle)" }}>
+            Or shuffle an HSK deck
+          </div>
+
           <Picker label="HSK level"
             items={[{ k: "all", l: "All" }, { k: 1, l: "HSK 1" }, { k: 2, l: "HSK 2" }]}
             value={level} onChange={(v) => onLevelChange(v as Level)} />
@@ -250,7 +284,7 @@ function Setup({
 
       <Picker label="Mode"
         items={[
-          { k: "drill",  l: "Drill",  hint: "Pass / Skip to track yourself" },
+          { k: "drill",  l: "Drill",  hint: "Know it / Don't know to track yourself" },
           { k: "browse", l: "Browse", hint: "Prev / Next, no scoring" },
         ]}
         value={mode} onChange={(v) => onModeChange(v as Mode)} />
@@ -347,6 +381,8 @@ function CardView({
   stats: { passed: number; skipped: number };
   lessonTitle: string | null;
 }) {
+  // The answer side never shows the next card while turning back.
+  const back = useBackFace(card, flipped);
 
   return (
     <div className="max-w-xl mx-auto space-y-5 animate-fade-up">
@@ -415,24 +451,24 @@ function CardView({
             style={{ background: "var(--bg-parchment)", border: "1px solid var(--accent-gold)" }}
           >
             <div className="flex items-baseline gap-2 mb-2 flex-wrap">
-              <span className="font-display text-2xl" style={{ color: "var(--text-parchment)" }}>{card.simplified}</span>
-              <span className="font-pinyin text-base" style={{ color: "#7A6855", fontStyle: "italic" }}>{card.pinyin}</span>
-              {card.audio_path && (
+              <span className="font-display text-2xl" style={{ color: "var(--text-parchment)" }}>{back.simplified}</span>
+              <span className="font-pinyin text-base" style={{ color: "#7A6855", fontStyle: "italic" }}>{back.pinyin}</span>
+              {back.audio_path && (
                 <span onClick={(e) => e.stopPropagation()}>
-                  <AudioButton src={card.audio_path} size="sm" label="Play word" />
+                  <AudioButton src={back.audio_path} size="sm" label="Play word" />
                 </span>
               )}
             </div>
 
             <ol className="space-y-0.5 text-sm mb-3" style={{ fontFamily: "Spectral, serif", color: "var(--text-parchment)" }}>
-              {card.meanings.slice(0, 4).map((m, i) => (
+              {back.meanings.slice(0, 4).map((m, i) => (
                 <li key={i}>
                   <span style={{ color: "#7A6855", fontFamily: "Cormorant Garamond, serif" }}>{i + 1}.</span> {m}
                 </li>
               ))}
             </ol>
 
-            {card.example ? (
+            {back.example ? (
               <div
                 className="rounded-lg p-3 space-y-1"
                 style={{ background: "rgba(247, 242, 230, 0.6)", border: "1px solid var(--border-subtle)" }}
@@ -443,22 +479,22 @@ function CardView({
                 <div className="flex items-start gap-2">
                   <div className="flex-1 min-w-0">
                     <div className="font-display text-base" style={{ color: "var(--text-parchment)" }}>
-                      {card.example.simplified}
+                      {back.example.simplified}
                     </div>
-                    {card.example.pinyin && (
+                    {back.example.pinyin && (
                       <div className="text-xs font-pinyin" style={{ color: "#7A6855", fontStyle: "italic" }}>
-                        {card.example.pinyin}
+                        {back.example.pinyin}
                       </div>
                     )}
                     {showEnglishBack && (
                       <div className="text-xs mt-0.5" style={{ color: "#7A6855", fontFamily: "Spectral, serif" }}>
-                        {card.example.english}
+                        {back.example.english}
                       </div>
                     )}
                   </div>
-                  {card.example.audio_path && (
+                  {back.example.audio_path && (
                     <span onClick={(e) => e.stopPropagation()}>
-                      <AudioButton src={card.example.audio_path} size="sm" label="Play sentence" />
+                      <AudioButton src={back.example.audio_path} size="sm" label="Play sentence" />
                     </span>
                   )}
                 </div>
@@ -486,22 +522,7 @@ function CardView({
 
       {/* Action buttons */}
       {mode === "drill" ? (
-        <div className="grid grid-cols-2 gap-2">
-          <button
-            onClick={() => onNext("skipped")}
-            className="py-3 rounded-xl text-sm"
-            style={{ background: "transparent", border: "1.5px solid var(--accent-rose)", color: "var(--accent-rose)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.06em" }}
-          >
-            Skip · 1
-          </button>
-          <button
-            onClick={() => onNext("passed")}
-            className="py-3 rounded-xl text-sm"
-            style={{ background: "transparent", border: "1.5px solid var(--accent-gold)", color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.06em" }}
-          >
-            Pass · 2
-          </button>
-        </div>
+        <KnowButtons onMiss={() => onNext("skipped")} onKnow={() => onNext("passed")} />
       ) : (
         <div className="grid grid-cols-2 gap-2">
           <button
@@ -550,11 +571,11 @@ function Finished({
       {mode === "drill" ? (
         <div className="rounded-2xl p-6 grid grid-cols-3 gap-3" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
           <Stat label="Total"   value={total}   color="var(--ink)" />
-          <Stat label="Pass"    value={passed}  color="var(--accent-gold)" />
-          <Stat label="Skip"    value={skipped} color="var(--accent-rose)" />
+          <Stat label="Know it"    value={passed}  color="var(--accent-gold)" />
+          <Stat label="Don't know" value={skipped} color="var(--accent-rose)" />
           {passed + skipped > 0 && (
             <div className="col-span-3 text-sm" style={{ color: "var(--text-muted)", fontFamily: "Cormorant Garamond, serif" }}>
-              {acc}% pass rate
+              {acc}% known
             </div>
           )}
         </div>
