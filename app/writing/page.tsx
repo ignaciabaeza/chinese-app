@@ -308,7 +308,7 @@ function Setup({
           Writing
         </h1>
         <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          Stroke-order practice · Leitner boxes
+          Stroke-order practice · saves your progress
         </p>
       </div>
 

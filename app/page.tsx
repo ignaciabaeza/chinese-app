@@ -69,6 +69,9 @@ export default function Dashboard() {
         <p className="text-sm" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           HSK course · {totalAuthored} lessons available
         </p>
+        <Link href="/guide" className="inline-block text-xs mt-2 underline underline-offset-4" style={{ color: "var(--accent-gold)", fontFamily: "Spectral, serif" }}>
+          New here? How to use the app →
+        </Link>
       </div>
 
       {/* Signed-in stats. Signed-out: sign-in nudge. */}
@@ -96,7 +99,7 @@ export default function Dashboard() {
       {/* Quick actions */}
       <Section title="Practice">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <QuickAction href="/review" title="Review" sub={totalDue > 0 ? `${totalDue} due` : "Leitner boxes"} highlight={totalDue > 0} />
+          <QuickAction href="/review" title="Review" sub={totalDue > 0 ? `${totalDue} due` : "Today's cards"} highlight={totalDue > 0} />
           <QuickAction href="/practice" title="All practice" sub="Writing, listening, shadowing" />
           <QuickAction href="/library" title="Library" sub="Dictionary, reader, grammar" />
         </div>
@@ -118,7 +121,7 @@ function SignedInStats({ data, fetching, totalDue }: { data: DashboardData; fetc
         <StatCard value={data.reviews_today} label="Reviewed Today" color="var(--accent-gold)" />
         <StatCard
           value={data.recognition.boxes[4] + data.listening.boxes[4] + data.writing.boxes[4]}
-          label="In Box 5"
+          label="Mastered"
           color="var(--wave)"
         />
         <StatCard value={data.streak} label={`Day Streak${data.streak >= 7 ? " ✦" : ""}`} color="var(--wave)" />
@@ -144,7 +147,7 @@ function SignedInStats({ data, fetching, totalDue }: { data: DashboardData; fetc
       )}
 
       {/* Per-type breakdown */}
-      <Section title="Your Leitner Boxes">
+      <Section title="How Well You Know Your Words">
         <div className="grid grid-cols-1 gap-3">
           <TypeBreakdownCard label="Recognition" stats={data.recognition} href="/review?type=recognition" />
           <TypeBreakdownCard label="Listening"   stats={data.listening}   href="/review?type=listening" />
@@ -212,7 +215,7 @@ function SignInPrompt() {
             Sign in to track progress
           </div>
           <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-            Streaks, Leitner boxes, and coverage stats sync across devices.
+            Streaks, word progress, and coverage stats sync across devices.
           </div>
         </div>
         <span style={{ color: "var(--accent-gold)", fontSize: "1.25rem" }}>→</span>
@@ -289,7 +292,7 @@ function CoverageCard({ level, block }: { level: number; block: CoverageBlock })
         <div className="progress-ink-fill" style={{ width: `${block.pct}%` }} />
       </div>
       <div className="text-xs" style={{ color: "var(--text-muted)" }}>
-        {block.mature} in box 5 · {block.studied} studied · {block.total} total
+        {block.mature} mastered · {block.studied} studied · {block.total} total
       </div>
     </div>
   );

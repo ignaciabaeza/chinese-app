@@ -598,8 +598,8 @@ function StateBadge({ state }: { state: LessonWord["state"] }) {
     unseen:   { color: "var(--text-muted)",   label: "—" },
     new:      { color: "var(--accent-gold)",  label: "new" },
     learning: { color: "var(--wave)",         label: "learning" },
-    review:   { color: "var(--ink-soft)",     label: "review" },
-    mature:   { color: "var(--ink)",          label: "mature" },
+    review:   { color: "var(--ink-soft)",     label: "known" },
+    mature:   { color: "var(--ink)",          label: "mastered" },
   };
   const p = palette[state];
   return (

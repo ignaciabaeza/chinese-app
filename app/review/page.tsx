@@ -10,6 +10,7 @@ import KnowButtons from "@/components/KnowButtons";
 import DeckPicker from "@/components/DeckPicker";
 import BoxStrip from "@/components/BoxStrip";
 import BoxMoveNote from "@/components/BoxMoveNote";
+import { boxName } from "@/lib/leitner-rules";
 import { useBackFace } from "@/lib/use-back-face";
 import { submitGrade, type GradeOutcome } from "@/lib/review-client";
 
@@ -199,7 +200,7 @@ function ReviewInner() {
           Review
         </h1>
         <p style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          Sign in to keep your words in Leitner boxes across sessions.
+          Sign in to save your progress across sessions.
         </p>
         <Link
           href="/auth"
@@ -288,7 +289,7 @@ function Setup({
 }) {
   const subtitle = mode === "listening"
     ? "Audio-first cards — hear, then identify"
-    : "Recognition cards in Leitner boxes";
+    : "See the word, remember the meaning";
   return (
     <div className="max-w-md mx-auto space-y-6 animate-fade-up">
       <div className="text-center">
@@ -581,7 +582,7 @@ function ReviewCard({
 }
 
 function boxLabel(box: number): string {
-  return box === 0 ? "new" : `box ${box}`;
+  return boxName(box).toLowerCase();
 }
 
 // ─── Finished ────────────────────────────────────────────────────────────────

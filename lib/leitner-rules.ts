@@ -13,6 +13,16 @@ export const BOX_DAYS = [0, 1, 2, 4, 8, 16] as const;
 /** Box 5 cards known again come back after this many days. */
 export const MASTERED_DAYS = 30;
 
+/**
+ * What the UI calls each box (index = box). Users never see "box N": the
+ * names say how well they know the word.
+ */
+export const BOX_NAMES = ["New", "Learning", "Familiar", "Known", "Strong", "Mastered"] as const;
+
+export function boxName(box: number): string {
+  return BOX_NAMES[Math.min(Math.max(box, 0), TOP_BOX)];
+}
+
 export interface BoxMove {
   box: number;
   /** Whole local days from today until it's due; 0 = due again today. */

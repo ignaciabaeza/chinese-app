@@ -37,7 +37,7 @@ function ListeningInner() {
         <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {mode === "dictation"
             ? deck != null ? "Hear sentences that use your deck's words, write them back" : "Hear it, write it back"
-            : "Hear the tones — identify the pattern. Answers move the word's listening box."}
+            : "Hear the tones — identify the pattern. Answers update the word's listening progress."}
         </p>
       </div>
 

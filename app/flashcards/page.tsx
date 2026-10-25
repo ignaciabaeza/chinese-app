@@ -281,7 +281,7 @@ function Setup({
             ? "Practising the vocab from this lesson, shuffled."
             : "A shuffled deck. Pick a level, a size, and a mode."}
           {" "}
-          {signedIn ? "Drill answers move your Leitner boxes." : "Sign in to keep your answers in Leitner boxes."}
+          {signedIn ? "Drill answers update your word progress." : "Sign in to save your answers."}
         </p>
       </div>
 
@@ -338,7 +338,7 @@ function Setup({
 
       <Picker label="Mode"
         items={[
-          { k: "drill",  l: "Drill",  hint: "Know it / Don't know moves the word's box" },
+          { k: "drill",  l: "Drill",  hint: "Know it / Don't know updates the word's progress" },
           { k: "browse", l: "Browse", hint: "Prev / Next, no scoring" },
         ]}
         value={mode} onChange={(v) => onModeChange(v as Mode)} />

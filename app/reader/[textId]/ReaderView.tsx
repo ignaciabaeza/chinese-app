@@ -69,7 +69,7 @@ export default function ReaderView({ segments, initialKnowledge, signedIn }: Pro
           <>
             <Legend color="var(--accent-gold)" label="new" />
             <Legend color="var(--wave)" label="learning" />
-            <Legend color="var(--text-muted)" label="mature" />
+            <Legend color="var(--text-muted)" label="mastered" />
           </>
         )}
       </div>

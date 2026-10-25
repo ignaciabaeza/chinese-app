@@ -11,7 +11,7 @@ const links = [
   { href: "/",         label: "Home",     match: ["/"] },
   { href: "/course",   label: "Course",   match: ["/course", "/workbook"] },
   { href: "/practice", label: "Practice", match: ["/practice", "/review", "/writing", "/listening", "/shadowing", "/flashcards"] },
-  { href: "/library",  label: "Library",  match: ["/library", "/vocab", "/reader", "/grammar"] },
+  { href: "/library",  label: "Library",  match: ["/library", "/vocab", "/reader", "/grammar", "/guide"] },
 ];
 
 function CloudMotif({ className = "" }: { className?: string }) {
