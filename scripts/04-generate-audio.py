@@ -26,6 +26,7 @@ Workflow (Mac → EC2):
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 import sys
 from pathlib import Path
@@ -46,6 +47,12 @@ ROOT = Path(__file__).resolve().parent.parent
 WORDS_DIR = ROOT / "public" / "audio" / "words"
 SENTS_DIR = ROOT / "public" / "audio" / "sentences"
 DIALOGUE_DIR = ROOT / "public" / "audio" / "dialogue"
+
+# Polyphones the voice misreads alone (长 → zhǎng) use committed audio from
+# scripts/content/gen-word-audio.py instead of TTS of the bare character.
+WORD_AUDIO_OVERRIDES = json.loads(
+    (ROOT / "scripts" / "content" / "word-audio-overrides.json").read_text("utf8")
+)
 
 # Words and Tatoeba sentences use Xiaoxiao. Dialogue lines alternate by
 # speaker so HSK textbook dialogues sound like an actual conversation.
@@ -172,6 +179,13 @@ async def main() -> None:
     conn = psycopg2.connect(DB_URL)
     conn.autocommit = False
     cur = conn.cursor(cursor_factory=RealDictCursor)
+
+    for word, o in WORD_AUDIO_OVERRIDES.items():
+        cur.execute(
+            "UPDATE words SET audio_path = %s WHERE simplified = %s",
+            (f"/audio-fixed/words/{o['pinyin']}.mp3", word),
+        )
+    conn.commit()
 
     await process(
         conn, cur,
