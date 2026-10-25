@@ -1,23 +1,28 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import AudioButton from "@/components/AudioButton";
 import MoonHanzi from "@/components/MoonHanzi";
 import KnowButtons from "@/components/KnowButtons";
+import DeckPicker from "@/components/DeckPicker";
+import BoxStrip from "@/components/BoxStrip";
+import BoxMoveNote from "@/components/BoxMoveNote";
 import { useBackFace } from "@/lib/use-back-face";
-import { submitGrade } from "@/lib/review-client";
+import { submitGrade, type GradeOutcome } from "@/lib/review-client";
 
 type Mode = "recognition" | "listening";
 type Level = "all" | 1 | 2;
 
 interface ReviewCard {
   id: number;
-  word_id: number;
+  word_id: number | null;
+  deck_card_id: number | null;
   card_type: Mode;
   due: string;
-  state: 0 | 1 | 2 | 3;
+  box: number;
   simplified: string;
   traditional: string | null;
   pinyin: string;
@@ -30,23 +35,35 @@ interface ReviewCard {
 interface ReviewStats {
   due_now: number;
   new_total: number;
-  learning: number;
-  mature: number;
+  boxes: number[];
   total_cards: number;
   reviewed_today: number;
 }
 
-// "Don't know" / "Know it" grade the card Again / Good.
-type Rating = 1 | 3;
 type SessionStats = { missed: number; known: number };
 const NO_STATS: SessionStats = { missed: 0, known: 0 };
 
 export default function ReviewPage() {
+  return (
+    <Suspense fallback={null}>
+      <ReviewInner />
+    </Suspense>
+  );
+}
+
+function ReviewInner() {
   const { user, loading } = useAuth();
+  const searchParams = useSearchParams();
 
   const [phase, setPhase] = useState<"setup" | "review" | "finished" | "loading">("loading");
-  const [mode, setMode] = useState<Mode>("recognition");
+  const [mode, setMode] = useState<Mode>(() => (searchParams.get("type") === "listening" ? "listening" : "recognition"));
   const [level, setLevel] = useState<Level>("all");
+  // ?deck=ID (from a deck's "Review" link) preselects one of the user's decks.
+  const [deckId, setDeckId] = useState<number | null>(() => {
+    const d = searchParams.get("deck");
+    return d && /^\d+$/.test(d) ? Number(d) : null;
+  });
+  const [lastMove, setLastMove] = useState<{ word: string; outcome: GradeOutcome | null } | null>(null);
   const [queue, setQueue] = useState<ReviewCard[]>([]);
   const [stats, setStats] = useState<ReviewStats | null>(null);
   const [index, setIndex] = useState(0);
@@ -61,14 +78,18 @@ export default function ReviewPage() {
   const startedAt = useRef<number>(0);
 
   // ── fetch initial queue for the current mode + level ──
-  const loadQueue = useCallback(async (m: Mode = mode, lvl: Level = level) => {
+  const loadQueue = useCallback(async (m: Mode = mode, lvl: Level = level, deck: number | null = deckId) => {
     setError(null);
     try {
-      const qs = `type=${m}&limit=30${lvl !== "all" ? `&level=${lvl}` : ""}`;
+      const qs = `type=${m}&limit=30${deck != null ? `&deck=${deck}` : lvl !== "all" ? `&level=${lvl}` : ""}`;
       const res = await fetch(`/api/review/queue?${qs}`);
       if (!res.ok) {
         if (res.status === 401) {
           setError("Sign in to track your reviews.");
+        } else if (res.status === 404) {
+          setError("That deck doesn't exist anymore — pick another one.");
+          setQueue([]);
+          setStats(null);
         } else {
           setError(`Queue failed: ${res.status}`);
         }
@@ -84,7 +105,7 @@ export default function ReviewPage() {
       setError(`Network error: ${(e as Error).message}`);
       setPhase("setup");
     }
-  }, [mode, level]);
+  }, [mode, level, deckId]);
 
   useEffect(() => {
     if (loading) return;
@@ -92,12 +113,12 @@ export default function ReviewPage() {
       setPhase("setup");
       return;
     }
-    loadQueue(mode, level);
-  }, [user, loading, mode, level, loadQueue]);
+    loadQueue(mode, level, deckId);
+  }, [user, loading, mode, level, deckId, loadQueue]);
 
   // ── grading ──
   const grade = useCallback(
-    async (rating: Rating) => {
+    async (known: boolean) => {
       if (phase !== "review" || !flipped || gradingRef.current) return;
       const card = queue[index];
       if (!card) return;
@@ -107,7 +128,8 @@ export default function ReviewPage() {
 
       const elapsedMs = Date.now() - startedAt.current;
       try {
-        await submitGrade(card.id, rating, elapsedMs);
+        const outcome = await submitGrade({ cardId: card.id }, known, elapsedMs);
+        setLastMove({ word: card.simplified, outcome });
       } catch (e) {
         // Keep the card on screen so the user can retry.
         setGradeError((e as Error).message);
@@ -116,9 +138,9 @@ export default function ReviewPage() {
         return;
       }
 
-      setSessionStats((s) => rating === 1
-        ? { ...s, missed: s.missed + 1 }
-        : { ...s, known: s.known + 1 });
+      setSessionStats((s) => known
+        ? { ...s, known: s.known + 1 }
+        : { ...s, missed: s.missed + 1 });
 
       // Flip back and swap in the next card in the same render: the front is
       // facing away at that moment, and the back face keeps showing the graded
@@ -156,8 +178,8 @@ export default function ReviewPage() {
         window.dispatchEvent(new CustomEvent("review-replay"));
       }
       if (flipped && !transitioning) {
-        if (e.key === "1") void grade(1);
-        if (e.key === "2") void grade(3);
+        if (e.key === "1") void grade(false);
+        if (e.key === "2") void grade(true);
       }
     }
     window.addEventListener("keydown", onKey);
@@ -177,7 +199,7 @@ export default function ReviewPage() {
           Review
         </h1>
         <p style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          Sign in to track FSRS-scheduled vocabulary review across sessions.
+          Sign in to keep your words in Leitner boxes across sessions.
         </p>
         <Link
           href="/auth"
@@ -195,6 +217,8 @@ export default function ReviewPage() {
     onModeChange={(m) => { setMode(m); setPhase("loading"); }}
     level={level}
     onLevelChange={(l) => { setLevel(l); setPhase("loading"); }}
+    deckId={deckId}
+    onDeckChange={(d) => { setDeckId(d); setPhase("loading"); }}
     queue={queue}
     stats={stats}
     seeded={seededCount}
@@ -205,6 +229,7 @@ export default function ReviewPage() {
       setIndex(0);
       setFlipped(false);
       setSessionStats(NO_STATS);
+      setLastMove(null);
       startedAt.current = Date.now();
     }}
   />;
@@ -212,7 +237,7 @@ export default function ReviewPage() {
   if (phase === "finished") return (
     <Finished
       stats={sessionStats}
-      onAgain={() => { void loadQueue(mode, level); }}
+      onAgain={() => { void loadQueue(mode, level, deckId); }}
     />
   );
 
@@ -228,8 +253,9 @@ export default function ReviewPage() {
         total={queue.length}
         flipped={flipped}
         onReveal={() => { if (!gradingRef.current) setFlipped(true); }}
-        onGrade={(r) => void grade(r)}
+        onGrade={(known) => void grade(known)}
         sessionStats={sessionStats}
+        lastMove={lastMove}
       />
     </>
   );
@@ -246,12 +272,14 @@ function GradeErrorBanner({ message }: { message: string }) {
 // ─── Setup screen ────────────────────────────────────────────────────────────
 
 function Setup({
-  mode, onModeChange, level, onLevelChange, queue, stats, seeded, error, onStart,
+  mode, onModeChange, level, onLevelChange, deckId, onDeckChange, queue, stats, seeded, error, onStart,
 }: {
   mode: Mode;
   onModeChange: (m: Mode) => void;
   level: Level;
   onLevelChange: (l: Level) => void;
+  deckId: number | null;
+  onDeckChange: (d: number | null) => void;
   queue: ReviewCard[];
   stats: ReviewStats | null;
   seeded: number;
@@ -260,7 +288,7 @@ function Setup({
 }) {
   const subtitle = mode === "listening"
     ? "Audio-first cards — hear, then identify"
-    : "FSRS-scheduled recognition cards";
+    : "Recognition cards in Leitner boxes";
   return (
     <div className="max-w-md mx-auto space-y-6 animate-fade-up">
       <div className="text-center">
@@ -296,8 +324,10 @@ function Setup({
         })}
       </div>
 
-      {/* HSK level tabs */}
-      <LevelTabs level={level} onChange={onLevelChange} />
+      <DeckPicker value={deckId} onChange={onDeckChange} />
+
+      {/* HSK level tabs (the HSK list only) */}
+      {deckId == null && <LevelTabs level={level} onChange={onLevelChange} />}
 
       {error && (
         <div className="rounded-xl p-4" style={{ background: "rgba(196,133,122,0.08)", border: "1px solid rgba(196,133,122,0.4)" }}>
@@ -312,11 +342,9 @@ function Setup({
       )}
 
       {stats && (
-        <div className="grid grid-cols-2 gap-3">
-          <StatCard label="Due Now"        value={stats.due_now}        color="var(--accent-rose)" highlight={stats.due_now > 0} />
-          <StatCard label="New Available"  value={stats.new_total}      color="var(--wave)" />
-          <StatCard label="Learning"       value={stats.learning}       color="var(--accent-gold)" />
-          <StatCard label="Mature"         value={stats.mature}         color="var(--ink)" />
+        <div className="space-y-3">
+          <StatCard label="Due now" value={stats.due_now} color="var(--accent-rose)" highlight={stats.due_now > 0} />
+          <BoxStrip boxes={stats.boxes} newCount={stats.new_total} />
         </div>
       )}
 
@@ -398,15 +426,16 @@ function StatCard({ label, value, color, highlight }: { label: string; value: nu
 // ─── Review card ─────────────────────────────────────────────────────────────
 
 function ReviewCard({
-  card, index, total, flipped, onReveal, onGrade, sessionStats,
+  card, index, total, flipped, onReveal, onGrade, sessionStats, lastMove,
 }: {
   card: ReviewCard;
   index: number;
   total: number;
   flipped: boolean;
   onReveal: () => void;
-  onGrade: (r: Rating) => void;
+  onGrade: (known: boolean) => void;
   sessionStats: SessionStats;
+  lastMove: { word: string; outcome: GradeOutcome | null } | null;
 }) {
   const graded = sessionStats.known + sessionStats.missed;
   const acc = graded > 0 ? Math.round((sessionStats.known / graded) * 100) : 0;
@@ -440,6 +469,7 @@ function ReviewCard({
           <span style={{ color: "var(--text-muted)" }}>{acc}%</span>
         )}
       </div>
+      {lastMove && <BoxMoveNote word={lastMove.word} outcome={lastMove.outcome} />}
 
       <div className="card-flip" style={{ height: "420px" }} onClick={onReveal}>
         <div className={`card-inner relative h-full cursor-pointer ${flipped ? "flipped" : ""}`}>
@@ -449,9 +479,9 @@ function ReviewCard({
             style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}
           >
             <div className="badge-gold mb-5">
-              {card.hsk2_level != null ? `HSK ${card.hsk2_level}` : card.hsk3_level != null ? `HSK 3.0 · ${card.hsk3_level}` : "Vocab"}
+              {card.hsk2_level != null ? `HSK ${card.hsk2_level}` : card.hsk3_level != null ? `HSK 3.0 · ${card.hsk3_level}` : card.deck_card_id != null ? "Your word" : "Vocab"}
               {" · "}
-              {stateLabel(card.state)}
+              {boxLabel(card.box)}
               {isListening && <span> · 听</span>}
             </div>
             {isListening ? (
@@ -484,7 +514,7 @@ function ReviewCard({
             style={{ background: "var(--bg-parchment)", border: "1px solid var(--accent-gold)" }}
           >
             <div className="badge-gold mb-3" style={{ background: "rgba(201,168,76,0.15)" }}>
-              {stateLabel(back.state)}
+              {boxLabel(back.box)}
             </div>
             <div className="chinese-md font-bold mb-1 text-center" style={{ color: "var(--text-parchment)", fontFamily: "Noto Serif SC, serif" }}>
               {back.simplified}
@@ -514,7 +544,7 @@ function ReviewCard({
                 </li>
               ))}
             </ol>
-            <Link
+            {back.word_id != null && <Link
               href={`/vocab/${encodeURIComponent(back.simplified)}`}
               // New tab so the review session (queue position, counts) survives.
               target="_blank"
@@ -524,13 +554,13 @@ function ReviewCard({
               style={{ color: "#7A6855", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.05em" }}
             >
               full detail ↗
-            </Link>
+            </Link>}
           </div>
         </div>
       </div>
 
       {flipped ? (
-        <KnowButtons onMiss={() => onGrade(1)} onKnow={() => onGrade(3)} />
+        <KnowButtons onMiss={() => onGrade(false)} onKnow={() => onGrade(true)} />
       ) : (
         <button
           onClick={onReveal}
@@ -550,13 +580,8 @@ function ReviewCard({
   );
 }
 
-function stateLabel(state: 0 | 1 | 2 | 3): string {
-  switch (state) {
-    case 0: return "new";
-    case 1: return "learning";
-    case 2: return "review";
-    case 3: return "relearning";
-  }
+function boxLabel(box: number): string {
+  return box === 0 ? "new" : `box ${box}`;
 }
 
 // ─── Finished ────────────────────────────────────────────────────────────────

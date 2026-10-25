@@ -6,6 +6,7 @@
 
 import "server-only";
 import { pool } from "@/lib/db";
+import { knowledgeFromBox } from "@/lib/leitner-rules";
 import { getAllGrammar } from "@/lib/content";
 import type { HSKLevel, GrammarPoint } from "@/lib/types";
 
@@ -126,11 +127,10 @@ export async function getLessonDetail(
     meanings: string[];
     hsk2_level: number | null;
     audio_path: string | null;
-    card_state: number | null;
-    card_stability: number | null;
+    card_box: number | null;
   }>(
     `SELECT lw.word_id, w.simplified, w.pinyin, w.meanings, w.hsk2_level, w.audio_path,
-            c.state AS card_state, c.stability AS card_stability
+            c.box AS card_box
      FROM lesson_words lw
      JOIN words w ON w.id = lw.word_id
      LEFT JOIN cards c
@@ -142,13 +142,7 @@ export async function getLessonDetail(
     [lesson.id, userId],
   );
   const words: LessonWord[] = wordRows.map((w) => {
-    let state: LessonWord["state"] = "unseen";
-    if (w.card_state !== null && w.card_state !== undefined) {
-      if (w.card_state === 0) state = "new";
-      else if (w.card_state === 1 || w.card_state === 3) state = "learning";
-      else if (w.card_state === 2 && (w.card_stability ?? 0) >= 21) state = "mature";
-      else state = "review";
-    }
+    const state: LessonWord["state"] = w.card_box == null ? "unseen" : knowledgeFromBox(w.card_box);
     return {
       word_id: w.word_id,
       simplified: w.simplified,

@@ -5,23 +5,28 @@
  *
  * Mirrors /review but uses `writing` card type. Each card asks the user to
  * draw every character of the word in turn via HanziWriter's quiz mode.
- * Per-character mistake counts suggest a grade — 0–2 mistakes "Know it"
- * (Good, 3), ≥3 "Don't know" (Again, 1) — which the user confirms or overrides.
+ * Per-character mistake counts suggest a grade — 0–2 mistakes "Know it",
+ * ≥3 "Don't know" — which the user confirms or overrides.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/AuthProvider";
 import HanziQuiz from "@/components/HanziQuiz";
 import KnowButtons from "@/components/KnowButtons";
-import { submitGrade } from "@/lib/review-client";
+import DeckPicker from "@/components/DeckPicker";
+import BoxStrip from "@/components/BoxStrip";
+import BoxMoveNote from "@/components/BoxMoveNote";
+import { submitGrade, type GradeOutcome } from "@/lib/review-client";
 
 interface WritingCard {
   id: number;
-  word_id: number;
+  word_id: number | null;
+  deck_card_id: number | null;
   card_type: string;
   due: string;
-  state: 0 | 1 | 2 | 3;
+  box: number;
   simplified: string;
   traditional: string | null;
   pinyin: string;
@@ -30,25 +35,36 @@ interface WritingCard {
   hsk3_level: number | null;
 }
 
-// "Don't know" / "Know it" grade the card Again / Good.
-type Rating = 1 | 3;
 type SessionStats = { missed: number; known: number };
 const NO_STATS: SessionStats = { missed: 0, known: 0 };
 
 interface ReviewStats {
   due_now: number;
   new_total: number;
-  learning: number;
-  mature: number;
+  boxes: number[];
   total_cards: number;
   reviewed_today: number;
 }
 
 export default function WritingPage() {
+  return (
+    <Suspense fallback={null}>
+      <WritingInner />
+    </Suspense>
+  );
+}
+
+function WritingInner() {
   const { user, loading } = useAuth();
+  const searchParams = useSearchParams();
 
   const [phase, setPhase] = useState<"setup" | "review" | "finished" | "loading">("loading");
   const [level, setLevel] = useState<"all" | 1 | 2>("all");
+  const [deckId, setDeckId] = useState<number | null>(() => {
+    const d = searchParams.get("deck");
+    return d && /^\d+$/.test(d) ? Number(d) : null;
+  });
+  const [lastMove, setLastMove] = useState<{ word: string; outcome: GradeOutcome | null } | null>(null);
   const [queue, setQueue] = useState<WritingCard[]>([]);
   const [stats, setStats] = useState<ReviewStats | null>(null);
   const [seeded, setSeeded] = useState(0);
@@ -65,13 +81,14 @@ export default function WritingPage() {
   const [gradeError, setGradeError] = useState<string | null>(null);
   const startedAt = useRef<number>(0);
 
-  const loadQueue = useCallback(async (lvl: "all" | 1 | 2 = level) => {
+  const loadQueue = useCallback(async (lvl: "all" | 1 | 2 = level, deck: number | null = deckId) => {
     setError(null);
     try {
-      const qs = `type=writing&limit=20${lvl !== "all" ? `&level=${lvl}` : ""}`;
+      const qs = `type=writing&limit=20${deck != null ? `&deck=${deck}` : lvl !== "all" ? `&level=${lvl}` : ""}`;
       const res = await fetch(`/api/review/queue?${qs}`);
       if (!res.ok) {
         if (res.status === 401) setError("Sign in to track your writing reviews.");
+        else if (res.status === 404) { setError("That deck doesn't exist anymore — pick another one."); setQueue([]); setStats(null); }
         else setError(`Queue failed: ${res.status}`);
         setPhase("setup");
         return;
@@ -85,7 +102,7 @@ export default function WritingPage() {
       setError(`Network error: ${(e as Error).message}`);
       setPhase("setup");
     }
-  }, [level]);
+  }, [level, deckId]);
 
   useEffect(() => {
     if (loading) return;
@@ -93,8 +110,8 @@ export default function WritingPage() {
       setPhase("setup");
       return;
     }
-    loadQueue(level);
-  }, [user, loading, level, loadQueue]);
+    loadQueue(level, deckId);
+  }, [user, loading, level, deckId, loadQueue]);
 
   const current = queue[index];
   const chars = current ? Array.from(current.simplified).filter((c) => /\p{Script=Han}/u.test(c)) : [];
@@ -118,7 +135,7 @@ export default function WritingPage() {
   );
 
   const grade = useCallback(
-    async (rating: Rating) => {
+    async (known: boolean) => {
       // Ignore double taps while the previous grade is in flight.
       if (!current || submittingRef.current) return;
       submittingRef.current = true;
@@ -126,16 +143,17 @@ export default function WritingPage() {
       setGradeError(null);
       const elapsedMs = Date.now() - startedAt.current;
       try {
-        await submitGrade(current.id, rating, elapsedMs);
+        const outcome = await submitGrade({ cardId: current.id }, known, elapsedMs);
+        setLastMove({ word: current.simplified, outcome });
       } catch (e) {
         setGradeError((e as Error).message);
         submittingRef.current = false;
         setSubmitting(false);
         return;
       }
-      setSessionStats((s) => rating === 1
-        ? { ...s, missed: s.missed + 1 }
-        : { ...s, known: s.known + 1 });
+      setSessionStats((s) => known
+        ? { ...s, known: s.known + 1 }
+        : { ...s, missed: s.missed + 1 });
       submittingRef.current = false;
       setSubmitting(false);
       if (index + 1 >= queue.length) {
@@ -155,8 +173,8 @@ export default function WritingPage() {
   useEffect(() => {
     if (phase !== "review" || !allCharsDone) return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "1") void grade(1);
-      if (e.key === "2") void grade(3);
+      if (e.key === "1") void grade(false);
+      if (e.key === "2") void grade(true);
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -184,6 +202,8 @@ export default function WritingPage() {
     <Setup
       level={level}
       onLevelChange={(l) => { setLevel(l); setPhase("loading"); }}
+      deckId={deckId}
+      onDeckChange={(d) => { setDeckId(d); setPhase("loading"); }}
       queue={queue}
       stats={stats}
       seeded={seeded}
@@ -195,12 +215,13 @@ export default function WritingPage() {
         setCharIndex(0);
         setPerCharMistakes([]);
         setSessionStats(NO_STATS);
+        setLastMove(null);
         startedAt.current = Date.now();
       }}
     />
   );
 
-  if (phase === "finished") return <Finished stats={sessionStats} onAgain={() => { void loadQueue(level); }} />;
+  if (phase === "finished") return <Finished stats={sessionStats} onAgain={() => { void loadQueue(level, deckId); }} />;
 
   // phase === "review"
   if (!current) return null;
@@ -215,6 +236,7 @@ export default function WritingPage() {
           {index + 1} / {queue.length}
         </span>
       </div>
+      {lastMove && <BoxMoveNote word={lastMove.word} outcome={lastMove.outcome} />}
 
       <div className="text-center space-y-1">
         <div className="font-pinyin text-xl" style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
@@ -262,10 +284,12 @@ export default function WritingPage() {
 // ─── Setup screen ────────────────────────────────────────────────────────────
 
 function Setup({
-  level, onLevelChange, queue, stats, seeded, error, onStart,
+  level, onLevelChange, deckId, onDeckChange, queue, stats, seeded, error, onStart,
 }: {
   level: "all" | 1 | 2;
   onLevelChange: (l: "all" | 1 | 2) => void;
+  deckId: number | null;
+  onDeckChange: (d: number | null) => void;
   queue: WritingCard[];
   stats: ReviewStats | null;
   seeded: number;
@@ -284,12 +308,14 @@ function Setup({
           Writing
         </h1>
         <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          Stroke-order practice · FSRS-scheduled
+          Stroke-order practice · Leitner boxes
         </p>
       </div>
 
-      {/* HSK level tabs */}
-      <div className="grid grid-cols-3 gap-1 p-1 rounded-xl" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
+      <DeckPicker value={deckId} onChange={onDeckChange} />
+
+      {/* HSK level tabs (the HSK list only) */}
+      {deckId == null && <div className="grid grid-cols-3 gap-1 p-1 rounded-xl" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
         {items.map(({ key, label }) => {
           const active = key === level;
           return (
@@ -310,7 +336,7 @@ function Setup({
             </button>
           );
         })}
-      </div>
+      </div>}
 
       {error && (
         <div className="rounded-xl p-4" style={{ background: "rgba(196,133,122,0.08)", border: "1px solid rgba(196,133,122,0.4)" }}>
@@ -325,11 +351,9 @@ function Setup({
       )}
 
       {stats && (
-        <div className="grid grid-cols-2 gap-3">
-          <Stat label="Due Now"        value={stats.due_now}        color="var(--accent-rose)" highlight={stats.due_now > 0} />
-          <Stat label="New Available"  value={stats.new_total}      color="var(--wave)" />
-          <Stat label="Learning"       value={stats.learning}       color="var(--accent-gold)" />
-          <Stat label="Mature"         value={stats.mature}         color="var(--ink)" />
+        <div className="space-y-3">
+          <Stat label="Due now" value={stats.due_now} color="var(--accent-rose)" highlight={stats.due_now > 0} />
+          <BoxStrip boxes={stats.boxes} newCount={stats.new_total} />
         </div>
       )}
 
@@ -370,7 +394,7 @@ function GradeButtons({
   totalChars: number;
   word: string;
   disabled: boolean;
-  onGrade: (r: Rating) => void;
+  onGrade: (known: boolean) => void;
 }) {
   const suggested = mistakes <= 2 ? "know" : "miss";
 
@@ -383,8 +407,8 @@ function GradeButtons({
         </div>
       </div>
       <KnowButtons
-        onMiss={() => onGrade(1)}
-        onKnow={() => onGrade(3)}
+        onMiss={() => onGrade(false)}
+        onKnow={() => onGrade(true)}
         disabled={disabled}
         suggested={suggested}
       />

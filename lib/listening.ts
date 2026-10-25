@@ -32,8 +32,27 @@ export async function pickShadowingSentence(excludeId?: number): Promise<ShadowS
   return rows[0] ?? null;
 }
 
-/** Same as shadowing — dictation just rebrands the picker for clarity. */
-export const pickDictationSentence = pickShadowingSentence;
+/**
+ * Dictation sentence: like shadowing, or — with a deck — a sentence with audio
+ * that uses at least one of the deck's words. Deck ownership is the caller's job.
+ */
+export async function pickDictationSentence(excludeId?: number, deckId?: number | null): Promise<ShadowSentence | null> {
+  if (!deckId) return pickShadowingSentence(excludeId);
+  const { rows } = await pool.query<ShadowSentence>(
+    `SELECT s.id, s.simplified, s.pinyin, s.english, s.audio_path, s.max_hsk_level
+     FROM sentences s
+     WHERE s.audio_path IS NOT NULL
+       AND s.length >= 4 AND s.length <= 18
+       AND ($1::int IS NULL OR s.id <> $1)
+       AND s.id IN (SELECT sw.sentence_id FROM sentence_words sw
+                    JOIN user_deck_cards dc ON dc.word_id = sw.word_id
+                    WHERE dc.deck_id = $2)
+     ORDER BY random()
+     LIMIT 1`,
+    [excludeId ?? null, deckId],
+  );
+  return rows[0] ?? null;
+}
 
 export interface ToneDrill {
   word_id: number;
@@ -48,11 +67,16 @@ export interface ToneDrill {
 }
 
 /**
- * Random multi-syllable HSK 1-2 word with audio. Generates the correct
- * tone pattern + 3 distractors, shuffles, and returns the index of the
- * correct answer. Excludes single-character words (too easy to guess).
+ * A word with audio for the tone drill, with its tone pattern + 3 distractors
+ * shuffled and the index of the correct one. HSK mode: multi-syllable HSK 1–2
+ * words (single characters are too easy to guess). Deck mode: any deck word
+ * with audio. Signed in, words whose listening card is due come first, since
+ * the answer grades that card. Deck ownership is the caller's job.
  */
-export async function pickToneWord(excludeWordId?: number): Promise<ToneDrill | null> {
+export async function pickToneWord(
+  excludeWordId?: number,
+  { userId = null, deckId = null }: { userId?: string | null; deckId?: number | null } = {},
+): Promise<ToneDrill | null> {
   const { rows } = await pool.query<{
     id: number;
     simplified: string;
@@ -60,21 +84,24 @@ export async function pickToneWord(excludeWordId?: number): Promise<ToneDrill | 
     meanings: string[];
     audio_path: string;
   }>(
-    `SELECT id, simplified, pinyin, meanings, audio_path
-     FROM words
-     WHERE audio_path IS NOT NULL
-       AND hsk2_level IN (1, 2)
-       AND CHAR_LENGTH(simplified) BETWEEN 2 AND 3
-       AND ($1::int IS NULL OR id <> $1)
-     ORDER BY random()
+    `SELECT w.id, w.simplified, w.pinyin, w.meanings, w.audio_path
+     FROM words w
+     LEFT JOIN cards c ON c.word_id = w.id AND c.user_id = $2 AND c.card_type = 'listening'
+     WHERE w.audio_path IS NOT NULL
+       AND ($1::int IS NULL OR w.id <> $1)
+       AND CASE WHEN $3::int IS NULL
+             THEN w.hsk2_level IN (1, 2) AND CHAR_LENGTH(w.simplified) BETWEEN 2 AND 3
+             ELSE w.id IN (SELECT word_id FROM user_deck_cards WHERE deck_id = $3)
+           END
+     ORDER BY (c.box > 0 AND c.due <= NOW()) IS TRUE DESC, random()
      LIMIT 1`,
-    [excludeWordId ?? null],
+    [excludeWordId ?? null, userId, deckId],
   );
   const w = rows[0];
   if (!w) return null;
 
   const correct = tonePattern(w.pinyin);
-  if (correct.length < 2) return null;          // wrong syllable count somehow
+  if (correct.length === 0) return null;        // no readable syllables
 
   const distractors = tonePatternDistractors(correct, 3);
   const options = [correct, ...distractors];

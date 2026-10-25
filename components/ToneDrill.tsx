@@ -1,7 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useAuth } from "@/components/AuthProvider";
+import BoxMoveNote from "@/components/BoxMoveNote";
 import { formatTonePattern } from "@/lib/pinyin";
+import { submitGrade, type GradeOutcome } from "@/lib/review-client";
 
 interface Drill {
   word_id: number;
@@ -13,21 +16,31 @@ interface Drill {
   options: number[][];
 }
 
-export default function ToneDrill() {
+/**
+ * Hear a word, pick its tone pattern. Signed in, the answer grades the word's
+ * listening card (right = "Know it", wrong = "Don't know"), like /review.
+ */
+export default function ToneDrill({ deckId = null }: { deckId?: number | null }) {
+  const { user } = useAuth();
   const [drill, setDrill] = useState<Drill | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [picked, setPicked] = useState<number | null>(null);
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [lastMove, setLastMove] = useState<{ word: string; outcome: GradeOutcome | null } | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const loadNext = useCallback(async (excludeId?: number) => {
     setError(null);
     setLoading(true);
     setPicked(null);
+    setSaveError(null);
     try {
-      const qs = excludeId ? `?exclude=${excludeId}` : "";
-      const res = await fetch(`/api/listening/tones/next${qs}`);
+      const params = new URLSearchParams();
+      if (excludeId) params.set("exclude", String(excludeId));
+      if (deckId != null) params.set("deck", String(deckId));
+      const res = await fetch(`/api/listening/tones/next?${params}`);
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setError(data.error || `Fetch failed: ${res.status}`);
@@ -41,7 +54,7 @@ export default function ToneDrill() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [deckId]);
 
   useEffect(() => { loadNext(); }, [loadNext]);
 
@@ -56,6 +69,17 @@ export default function ToneDrill() {
     if (picked !== null || !drill) return;
     setPicked(i);
     setScore((s) => ({ correct: s.correct + (i === drill.answerIndex ? 1 : 0), total: s.total + 1 }));
+    if (user) void save(drill, i === drill.answerIndex);
+  }
+
+  async function save(d: Drill, known: boolean) {
+    setSaveError(null);
+    try {
+      const outcome = await submitGrade({ wordId: d.word_id, cardType: "listening" }, known);
+      setLastMove({ word: d.simplified, outcome });
+    } catch (e) {
+      setSaveError((e as Error).message);
+    }
   }
 
   return (
@@ -137,6 +161,14 @@ export default function ToneDrill() {
                 <span className="font-pinyin text-base" style={{ color: "#7A6855", fontStyle: "italic" }}>{drill.pinyin}</span>
               </div>
               <div className="text-sm" style={{ color: "#7A6855", fontFamily: "Spectral, serif" }}>{drill.english}</div>
+              {saveError ? (
+                <p className="text-xs" style={{ color: "var(--accent-rose)", fontFamily: "Spectral, serif" }}>
+                  {saveError}{" "}
+                  <button onClick={() => void save(drill, picked === drill.answerIndex)} className="underline">Retry</button>
+                </p>
+              ) : (
+                lastMove?.word === drill.simplified && <BoxMoveNote word={lastMove.word} outcome={lastMove.outcome} />
+              )}
               <button
                 onClick={() => loadNext(drill.word_id)}
                 className="mt-2 w-full py-2 rounded-lg text-sm"

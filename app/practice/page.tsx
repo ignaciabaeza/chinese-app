@@ -33,17 +33,17 @@ export default function PracticePage() {
       items={[
         {
           href: "/review", hanzi: "复", title: "Review",
-          sub: "Your daily FSRS deck — recognition and listening cards",
+          sub: "Today's cards from your Leitner boxes — recognition and listening",
           badge: dueBadge(reviewDue), highlight: reviewDue > 0,
         },
         {
           href: "/writing", hanzi: "写", title: "Writing",
-          sub: "Stroke-order practice, scheduled like your reviews",
+          sub: "Stroke-order practice, in the same boxes",
           badge: dueBadge(writingDue), highlight: writingDue > 0,
         },
-        { href: "/listening", hanzi: "听", title: "Listening", sub: "Dictation and tone drills" },
+        { href: "/listening", hanzi: "听", title: "Listening", sub: "Dictation and tone drills, from HSK or your decks" },
         { href: "/shadowing", hanzi: "说", title: "Shadowing", sub: "Listen, record yourself, compare" },
-        { href: "/flashcards", hanzi: "卡", title: "Free flashcards", sub: "Shuffle an HSK deck or build your own — no effect on your schedule" },
+        { href: "/flashcards", hanzi: "卡", title: "Flashcards", sub: "Shuffle an HSK deck or build your own — answers move your boxes" },
       ]}
     />
   );

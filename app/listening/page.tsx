@@ -1,13 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useAuth } from "@/components/AuthProvider";
+import DeckPicker from "@/components/DeckPicker";
 import DictationDrill from "@/components/DictationDrill";
 import ToneDrill from "@/components/ToneDrill";
 
 type Mode = "dictation" | "tones";
 
 export default function ListeningPage() {
+  return (
+    <Suspense fallback={null}>
+      <ListeningInner />
+    </Suspense>
+  );
+}
+
+function ListeningInner() {
+  const { user } = useAuth();
+  const searchParams = useSearchParams();
   const [mode, setMode] = useState<Mode>("dictation");
+  // ?deck=ID preselects one of the user's decks.
+  const [deckId, setDeckId] = useState<number | null>(() => {
+    const d = searchParams.get("deck");
+    return d && /^\d+$/.test(d) ? Number(d) : null;
+  });
+  const deck = user ? deckId : null;
 
   return (
     <div className="max-w-xl mx-auto space-y-6 animate-fade-up">
@@ -16,9 +35,13 @@ export default function ListeningPage() {
           Listening
         </h1>
         <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
-          {mode === "dictation" ? "Hear it, write it back" : "Hear the tones — identify the pattern"}
+          {mode === "dictation"
+            ? deck != null ? "Hear sentences that use your deck's words, write them back" : "Hear it, write it back"
+            : "Hear the tones — identify the pattern. Answers move the word's listening box."}
         </p>
       </div>
+
+      {user && <DeckPicker value={deckId} onChange={setDeckId} />}
 
       {/* Mode tabs */}
       <div className="grid grid-cols-2 gap-1 p-1 rounded-xl" style={{ background: "var(--bg-secondary)", border: "1px solid var(--border-subtle)" }}>
@@ -44,7 +67,9 @@ export default function ListeningPage() {
         })}
       </div>
 
-      {mode === "dictation" ? <DictationDrill /> : <ToneDrill />}
+      {mode === "dictation"
+        ? <DictationDrill key={`d-${deck ?? "hsk"}`} deckId={deck} />
+        : <ToneDrill key={`t-${deck ?? "hsk"}`} deckId={deck} />}
     </div>
   );
 }

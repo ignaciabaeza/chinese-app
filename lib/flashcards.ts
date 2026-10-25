@@ -1,8 +1,6 @@
-// Server-only helper for the casual /flashcards module.
-//
-// Distinct from /review (FSRS): this returns a one-shot shuffled deck of
-// vocab words with an example sentence, used for browsing or self-drilling
-// without affecting the user's SRS schedule.
+// Server-only helper for the /flashcards module: a one-shot shuffled deck of
+// vocab words with an example sentence. Drill answers are graded client-side
+// through /api/review/grade, so they move the same Leitner boxes as /review.
 
 import "server-only";
 import { pool } from "@/lib/db";
@@ -17,6 +15,7 @@ export interface FlashcardSentence {
 
 export interface Flashcard {
   word_id: number | null;   // null for a custom word in a user deck
+  deck_card_id: number | null; // set for a custom word in a user deck
   simplified: string;
   pinyin: string;
   meanings: string[];
@@ -89,7 +88,7 @@ export async function attachExamples(wordRows: Array<{
     });
   }
   return wordRows.map((w) => ({
-    word_id: w.id, simplified: w.simplified, pinyin: w.pinyin, meanings: w.meanings,
+    word_id: w.id, deck_card_id: null, simplified: w.simplified, pinyin: w.pinyin, meanings: w.meanings,
     hsk2_level: w.hsk2_level, audio_path: w.audio_path,
     example: examples.get(w.id) ?? null,
   }));

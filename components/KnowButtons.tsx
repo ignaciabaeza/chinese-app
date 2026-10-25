@@ -2,7 +2,7 @@
 
 /**
  * The one self-grading format used by every card page: "Don't know" / "Know it"
- * (keys 1 / 2). FSRS pages map these to Again (1) / Good (3).
+ * (keys 1 / 2). Graded cards move between Leitner boxes (lib/leitner-rules.ts).
  */
 export default function KnowButtons({
   onMiss, onKnow, disabled = false, suggested,

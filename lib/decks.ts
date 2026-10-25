@@ -243,7 +243,7 @@ export async function getDeckFlashcards(userId: string, deckId: number): Promise
       return card ? [card] : [];
     }
     return [{
-      word_id: null, simplified: c.simplified, pinyin: c.pinyin, meanings: c.meanings,
+      word_id: null, deck_card_id: c.id, simplified: c.simplified, pinyin: c.pinyin, meanings: c.meanings,
       hsk2_level: null, audio_path: null, example: null,
     }];
   });

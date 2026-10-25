@@ -1,12 +1,15 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useEffectEvent, useState } from "react";
+import { Suspense, useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useAuth } from "@/components/AuthProvider";
 import AudioButton from "@/components/AudioButton";
 import MoonHanzi from "@/components/MoonHanzi";
 import KnowButtons from "@/components/KnowButtons";
+import BoxMoveNote from "@/components/BoxMoveNote";
 import { useBackFace } from "@/lib/use-back-face";
+import { submitGrade, type GradeOutcome, type GradeTarget } from "@/lib/review-client";
 import YourDecks from "./YourDecks";
 
 type Level = "all" | 1 | 2;
@@ -23,6 +26,7 @@ interface Sentence {
 
 interface Flashcard {
   word_id: number | null;   // null for a custom word in a user deck
+  deck_card_id: number | null;
   simplified: string;
   pinyin: string;
   meanings: string[];
@@ -44,8 +48,18 @@ interface LessonScope {
   title: string | null; // resolved after first fetch
 }
 
+type LastMove = { word: string; outcome: GradeOutcome | null };
+
+/** The recognition card a drill answer grades, or null if it can't be saved. */
+function gradeTarget(card: Flashcard): GradeTarget | null {
+  if (card.word_id != null) return { wordId: card.word_id, cardType: "recognition" };
+  if (card.deck_card_id != null) return { deckCardId: card.deck_card_id, cardType: "recognition" };
+  return null;
+}
+
 function FlashcardsInner() {
   const searchParams = useSearchParams();
+  const { user } = useAuth();
   const lessonParam = searchParams.get("lesson");
   const lessonScope: LessonScope | null = lessonParam ? { param: lessonParam, title: null } : null;
   // ?deck=ID studies one of the user's own decks (takes precedence over ?lesson=).
@@ -66,6 +80,11 @@ function FlashcardsInner() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lessonTitle, setLessonTitle] = useState<string | null>(null);
+  const [lastMove, setLastMove] = useState<LastMove | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  // Ref, not state: two taps in the same tick must both see the save in flight.
+  const savingRef = useRef(false);
+  const shownAt = useRef(0);
 
   const loadDeck = useCallback(async () => {
     setLoading(true); setError(null);
@@ -97,6 +116,9 @@ function FlashcardsInner() {
       setIndex(0);
       setFlipped(false);
       setStats({ passed: 0, skipped: 0 });
+      setLastMove(null);
+      setSaveError(null);
+      shownAt.current = Date.now();
       setPhase("card");
     } catch (e) {
       setError((e as Error).message);
@@ -124,6 +146,29 @@ function FlashcardsInner() {
     };
     if (flipped) settle();
     advance();
+    shownAt.current = Date.now();
+  }
+
+  // A drill answer moves the word's Leitner box (signed in). The card only
+  // advances once the grade is saved; on failure it stays with an error.
+  async function answer(known: boolean) {
+    if (transitioning || savingRef.current) return;
+    const card = deck[index];
+    const target = user && card ? gradeTarget(card) : null;
+    if (target) {
+      savingRef.current = true;
+      try {
+        const outcome = await submitGrade(target, known, Date.now() - shownAt.current);
+        setLastMove({ word: card.simplified, outcome });
+        setSaveError(null);
+      } catch (e) {
+        setSaveError((e as Error).message);
+        return;
+      } finally {
+        savingRef.current = false;
+      }
+    }
+    next(known ? "passed" : "skipped");
   }
 
   function prev() {
@@ -139,8 +184,8 @@ function FlashcardsInner() {
   const onKey = useEffectEvent((e: KeyboardEvent) => {
     if (e.code === "Space") { e.preventDefault(); if (!transitioning) setFlipped((f) => !f); return; }
     if (mode === "drill") {
-      if (e.key === "1") next("skipped");
-      if (e.key === "2") next("passed");
+      if (e.key === "1") void answer(false);
+      if (e.key === "2") void answer(true);
     } else {
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft")  prev();
@@ -161,6 +206,7 @@ function FlashcardsInner() {
         mode={mode} onModeChange={setMode}
         lessonScope={lessonScope}
         deckId={deckParam}
+        signedIn={!!user}
         loading={loading}
         error={error}
         onStart={loadDeck}
@@ -197,10 +243,13 @@ function FlashcardsInner() {
       showEnglishBack={showEnglishBack}
       onToggleEnglishBack={() => setShowEnglishBack((v) => !v)}
       onPrev={prev}
-      onNext={(record) => next(record)}
+      onNext={() => next(null)}
+      onAnswer={(known) => void answer(known)}
       onQuit={() => setPhase("setup")}
       stats={stats}
       lessonTitle={lessonTitle}
+      lastMove={lastMove}
+      saveError={saveError}
     />
   );
 }
@@ -208,13 +257,14 @@ function FlashcardsInner() {
 // ─── Setup screen ────────────────────────────────────────────────────────────
 
 function Setup({
-  level, onLevelChange, size, onSizeChange, mode, onModeChange, lessonScope, deckId, loading, error, onStart,
+  level, onLevelChange, size, onSizeChange, mode, onModeChange, lessonScope, deckId, signedIn, loading, error, onStart,
 }: {
   level: Level; onLevelChange: (l: Level) => void;
   size: Size; onSizeChange: (s: Size) => void;
   mode: Mode; onModeChange: (m: Mode) => void;
   lessonScope: LessonScope | null;
   deckId: string | null;
+  signedIn: boolean;
   loading: boolean; error: string | null;
   onStart: () => void;
 }) {
@@ -226,10 +276,12 @@ function Setup({
         </h1>
         <p className="text-xs mt-1" style={{ color: "var(--text-muted)", fontFamily: "Spectral, serif" }}>
           {deckId
-            ? "Practising your own deck — shuffled, no SRS."
+            ? "Practising your own deck, shuffled."
             : lessonScope
-            ? "Practising the vocab from this lesson — shuffled, no SRS."
-            : "One-shot deck — shuffled, no SRS. Pick a level, a size, and a mode."}
+            ? "Practising the vocab from this lesson, shuffled."
+            : "A shuffled deck. Pick a level, a size, and a mode."}
+          {" "}
+          {signedIn ? "Drill answers move your Leitner boxes." : "Sign in to keep your answers in Leitner boxes."}
         </p>
       </div>
 
@@ -286,7 +338,7 @@ function Setup({
 
       <Picker label="Mode"
         items={[
-          { k: "drill",  l: "Drill",  hint: "Know it / Don't know to track yourself" },
+          { k: "drill",  l: "Drill",  hint: "Know it / Don't know moves the word's box" },
           { k: "browse", l: "Browse", hint: "Prev / Next, no scoring" },
         ]}
         value={mode} onChange={(v) => onModeChange(v as Mode)} />
@@ -311,7 +363,7 @@ function Setup({
       </button>
 
       <p className="text-xs text-center" style={{ color: "var(--text-muted)" }}>
-        For spaced repetition use <Link href="/review" style={{ color: "var(--accent-gold)" }}>Review →</Link>
+        For the words due today use <Link href="/review" style={{ color: "var(--accent-gold)" }}>Review →</Link>
       </p>
     </div>
   );
@@ -365,7 +417,7 @@ function Picker<T extends string | number>({
 function CardView({
   card, index, total, mode, flipped, onFlip,
   showPinyinFront, onTogglePinyinFront, showEnglishBack, onToggleEnglishBack,
-  onPrev, onNext, onQuit, stats, lessonTitle,
+  onPrev, onNext, onAnswer, onQuit, stats, lessonTitle, lastMove, saveError,
 }: {
   card: Flashcard;
   index: number;
@@ -378,10 +430,13 @@ function CardView({
   showEnglishBack: boolean;
   onToggleEnglishBack: () => void;
   onPrev: () => void;
-  onNext: (record?: "passed" | "skipped" | null) => void;
+  onNext: () => void;
+  onAnswer: (known: boolean) => void;
   onQuit: () => void;
   stats: { passed: number; skipped: number };
   lessonTitle: string | null;
+  lastMove: LastMove | null;
+  saveError: string | null;
 }) {
   // The answer side never shows the next card while turning back.
   const back = useBackFace(card, flipped);
@@ -417,6 +472,7 @@ function CardView({
           <span style={{ color: "var(--accent-rose)" }}>↺ {stats.skipped}</span>
         </div>
       )}
+      {mode === "drill" && lastMove && <BoxMoveNote word={lastMove.word} outcome={lastMove.outcome} />}
 
       {/* Card flip surface */}
       <div className="card-flip" style={{ height: "440px" }} onClick={onFlip}>
@@ -523,8 +579,13 @@ function CardView({
       </div>
 
       {/* Action buttons */}
+      {saveError && (
+        <div className="rounded-xl p-3" style={{ background: "rgba(196,133,122,0.08)", border: "1px solid rgba(196,133,122,0.4)" }}>
+          <p className="text-sm text-center" style={{ color: "var(--accent-rose)", fontFamily: "Spectral, serif" }}>{saveError}</p>
+        </div>
+      )}
       {mode === "drill" ? (
-        <KnowButtons onMiss={() => onNext("skipped")} onKnow={() => onNext("passed")} />
+        <KnowButtons onMiss={() => onAnswer(false)} onKnow={() => onAnswer(true)} />
       ) : (
         <div className="grid grid-cols-2 gap-2">
           <button
@@ -543,7 +604,7 @@ function CardView({
             ← Prev
           </button>
           <button
-            onClick={() => onNext(null)}
+            onClick={onNext}
             className="py-3 rounded-xl text-sm"
             style={{ background: "transparent", border: "1.5px solid var(--accent-gold)", color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.06em" }}
           >

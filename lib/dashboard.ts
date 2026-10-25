@@ -4,20 +4,19 @@
 import "server-only";
 import { pool } from "@/lib/db";
 import { getUserDay, type UserDay } from "@/lib/user-time";
+import { TOP_BOX } from "@/lib/leitner-rules";
 
 export interface TypeStats {
   due_now: number;
-  new_total: number;
-  learning: number;     // state 1 or 3
-  review: number;       // state 2 with stability < 21
-  mature: number;       // state 2 with stability >= 21
+  new_total: number;    // box 0
+  boxes: number[];      // cards in boxes 1–5 (index 0 = box 1)
   total: number;
   reviewed_today: number;
 }
 
 export interface CoverageBlock {
-  mature: number;       // mature recognition cards in this level
-  studied: number;      // any recognition card in this level (not state 0)
+  mature: number;       // recognition cards in the top box at this level
+  studied: number;      // any recognition card at this level past box 0
   total: number;        // total words at this level in the DB
   pct: number;          // mature / total, rounded
 }
@@ -44,18 +43,19 @@ export interface DashboardData {
   weakest: WeakestWord[];
 }
 
+/** "COUNT(*) FILTER (WHERE c.box = 1), …" for boxes 1–5. */
+const BOX_COUNTS = Array.from({ length: TOP_BOX }, (_, i) => `COUNT(*) FILTER (WHERE c.box = ${i + 1})`).join(", ");
+
 async function getTypeStats(userId: string, cardType: string, day: UserDay): Promise<TypeStats> {
   // Listening cards are tied to audio_path. Recognition cards aren't.
   const join = cardType === "listening" ? "JOIN words w ON w.id = c.word_id" : "";
   const audioFilter = cardType === "listening" ? "AND w.audio_path IS NOT NULL" : "";
 
-  const { rows } = await pool.query<TypeStats>(
+  const { rows } = await pool.query<Omit<TypeStats, "boxes"> & { boxes: number[] | null }>(
     `SELECT
-       COUNT(*) FILTER (WHERE c.state != 0 AND c.due <= NOW())::int                AS due_now,
-       COUNT(*) FILTER (WHERE c.state = 0)::int                                    AS new_total,
-       COUNT(*) FILTER (WHERE c.state IN (1, 3))::int                              AS learning,
-       COUNT(*) FILTER (WHERE c.state = 2 AND c.stability < 21)::int               AS review,
-       COUNT(*) FILTER (WHERE c.state = 2 AND c.stability >= 21)::int              AS mature,
+       COUNT(*) FILTER (WHERE c.box > 0 AND c.due <= NOW())::int                   AS due_now,
+       COUNT(*) FILTER (WHERE c.box = 0)::int                                      AS new_total,
+       ARRAY[${BOX_COUNTS}]::int[]                                                 AS boxes,
        COUNT(*)::int                                                               AS total,
        (SELECT COUNT(*)::int FROM review_log rl
           JOIN cards c2 ON c2.id = rl.card_id
@@ -67,9 +67,10 @@ async function getTypeStats(userId: string, cardType: string, day: UserDay): Pro
        ${audioFilter}`,
     [userId, cardType, day.todayStart],
   );
-  return rows[0] ?? {
-    due_now: 0, new_total: 0, learning: 0, review: 0, mature: 0, total: 0, reviewed_today: 0,
-  };
+  const r = rows[0];
+  return r
+    ? { ...r, boxes: r.boxes ?? Array(TOP_BOX).fill(0) }
+    : { due_now: 0, new_total: 0, boxes: Array(TOP_BOX).fill(0), total: 0, reviewed_today: 0 };
 }
 
 /**
@@ -109,8 +110,8 @@ async function getCoverage(userId: string): Promise<DashboardData["coverage"]> {
   }>(
     `SELECT
        w.hsk2_level,
-       COUNT(*) FILTER (WHERE c.state = 2 AND c.stability >= 21)::int AS mature,
-       COUNT(*) FILTER (WHERE c.state IS NOT NULL AND c.state != 0)::int AS studied,
+       COUNT(*) FILTER (WHERE c.box = ${TOP_BOX})::int AS mature,
+       COUNT(*) FILTER (WHERE c.box > 0)::int AS studied,
        COUNT(*)::int AS total
      FROM words w
      LEFT JOIN cards c

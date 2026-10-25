@@ -4,6 +4,7 @@
 
 import "server-only";
 import { pool } from "@/lib/db";
+import { knowledgeFromBox, type KnowledgeState as BoxKnowledge } from "@/lib/leitner-rules";
 
 export type Segment = { t: string; w?: number; p?: true };
 
@@ -63,16 +64,12 @@ export async function getText(id: number, userId: string | null): Promise<FullTe
 
 // ─── Knowledge state ─────────────────────────────────────────────────────────
 
-export type KnowledgeState = "new" | "learning" | "review" | "mature" | "unknown";
+export type KnowledgeState = BoxKnowledge | "unknown";
 
 /**
  * Returns a map of word_id → knowledge state for any word that appears in
- * this user's `cards` table. Words not in the map are "unknown".
- *
- *   state 0       → new (in deck but never reviewed)
- *   state 1, 3    → learning
- *   state 2 + stability < 21 → review
- *   state 2 + stability >= 21 → mature
+ * this user's `cards` table (knowledgeFromBox: box 0 new, 1–2 learning,
+ * 3–4 review, 5 mature). Words not in the map are "unknown".
  */
 export async function getUserKnowledgeMap(
   userId: string,
@@ -81,21 +78,14 @@ export async function getUserKnowledgeMap(
   if (wordIds.length === 0) return new Map();
   // For each word_id, pick the "most advanced" card across all card_types,
   // so a recognition-card-only word still gets a state.
-  const { rows } = await pool.query<{ word_id: number; state: number; stability: number | null }>(
-    `SELECT DISTINCT ON (word_id) word_id, state, stability
+  const { rows } = await pool.query<{ word_id: number; box: number }>(
+    `SELECT word_id, MAX(box)::int AS box
      FROM cards
      WHERE user_id = $1 AND word_id = ANY($2::int[])
-     ORDER BY word_id, state DESC, stability DESC NULLS LAST`,
+     GROUP BY word_id`,
     [userId, wordIds],
   );
-  const out = new Map<number, KnowledgeState>();
-  for (const r of rows) {
-    if (r.state === 0) out.set(r.word_id, "new");
-    else if (r.state === 1 || r.state === 3) out.set(r.word_id, "learning");
-    else if (r.state === 2 && (r.stability ?? 0) >= 21) out.set(r.word_id, "mature");
-    else out.set(r.word_id, "review");
-  }
-  return out;
+  return new Map(rows.map((r) => [r.word_id, knowledgeFromBox(r.box)]));
 }
 
 // ─── Lookup for popovers ─────────────────────────────────────────────────────
@@ -124,12 +114,11 @@ export async function lookupWord(
     hsk2_level: number | null;
     hsk3_level: number | null;
     audio_path: string | null;
-    card_state: number | null;
-    card_stability: number | null;
+    card_box: number | null;
   }>(
     `SELECT w.id, w.simplified, w.pinyin, w.meanings, w.hsk2_level, w.hsk3_level,
             w.audio_path,
-            c.state AS card_state, c.stability AS card_stability
+            c.box AS card_box
      FROM words w
      LEFT JOIN cards c
        ON c.word_id = w.id
@@ -140,13 +129,7 @@ export async function lookupWord(
   );
   const r = rows[0];
   if (!r) return null;
-  let state: KnowledgeState = "unknown";
-  if (r.card_state !== null && r.card_state !== undefined) {
-    if (r.card_state === 0) state = "new";
-    else if (r.card_state === 1 || r.card_state === 3) state = "learning";
-    else if (r.card_state === 2 && (r.card_stability ?? 0) >= 21) state = "mature";
-    else state = "review";
-  }
+  const state: KnowledgeState = r.card_box == null ? "unknown" : knowledgeFromBox(r.card_box);
   return {
     id: r.id,
     simplified: r.simplified,
@@ -155,7 +138,7 @@ export async function lookupWord(
     hsk2_level: r.hsk2_level,
     hsk3_level: r.hsk3_level,
     audio_path: r.audio_path,
-    in_deck: r.card_state !== null && r.card_state !== undefined,
+    in_deck: r.card_box != null,
     state,
   };
 }

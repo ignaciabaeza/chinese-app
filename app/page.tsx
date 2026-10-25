@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/components/AuthProvider";
+import BoxStrip from "@/components/BoxStrip";
 import { getLessonSummaries } from "@/lib/content";
 import type { HSKLevel } from "@/lib/types";
 
@@ -13,9 +14,7 @@ const LEVELS: HSKLevel[] = [1, 2, 3, 4];
 interface TypeStats {
   due_now: number;
   new_total: number;
-  learning: number;
-  review: number;
-  mature: number;
+  boxes: number[];      // boxes 1–5
   total: number;
   reviewed_today: number;
 }
@@ -31,6 +30,7 @@ interface WeakestWord {
 interface DashboardData {
   recognition: TypeStats;
   listening: TypeStats;
+  writing: TypeStats;
   streak: number;
   reviews_today: number;
   coverage: { hsk1: CoverageBlock; hsk2: CoverageBlock };
@@ -96,7 +96,7 @@ export default function Dashboard() {
       {/* Quick actions */}
       <Section title="Practice">
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <QuickAction href="/review" title="Review" sub={totalDue > 0 ? `${totalDue} due` : "FSRS-scheduled"} highlight={totalDue > 0} />
+          <QuickAction href="/review" title="Review" sub={totalDue > 0 ? `${totalDue} due` : "Leitner boxes"} highlight={totalDue > 0} />
           <QuickAction href="/practice" title="All practice" sub="Writing, listening, shadowing" />
           <QuickAction href="/library" title="Library" sub="Dictionary, reader, grammar" />
         </div>
@@ -116,7 +116,11 @@ function SignedInStats({ data, fetching, totalDue }: { data: DashboardData; fetc
           <StatCard value={totalDue} label="Due Now" color="var(--accent-rose)" highlight={totalDue > 0} clickable />
         </Link>
         <StatCard value={data.reviews_today} label="Reviewed Today" color="var(--accent-gold)" />
-        <StatCard value={data.recognition.mature + data.listening.mature} label="Mature Cards" color="var(--wave)" />
+        <StatCard
+          value={data.recognition.boxes[4] + data.listening.boxes[4] + data.writing.boxes[4]}
+          label="In Box 5"
+          color="var(--wave)"
+        />
         <StatCard value={data.streak} label={`Day Streak${data.streak >= 7 ? " ✦" : ""}`} color="var(--wave)" />
       </div>
 
@@ -140,10 +144,11 @@ function SignedInStats({ data, fetching, totalDue }: { data: DashboardData; fetc
       )}
 
       {/* Per-type breakdown */}
-      <Section title="By Card Type">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <Section title="Your Leitner Boxes">
+        <div className="grid grid-cols-1 gap-3">
           <TypeBreakdownCard label="Recognition" stats={data.recognition} href="/review?type=recognition" />
           <TypeBreakdownCard label="Listening"   stats={data.listening}   href="/review?type=listening" />
+          <TypeBreakdownCard label="Writing"     stats={data.writing}     href="/writing" />
         </div>
       </Section>
 
@@ -207,7 +212,7 @@ function SignInPrompt() {
             Sign in to track progress
           </div>
           <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-            Streaks, FSRS scheduling, and coverage stats sync across devices.
+            Streaks, Leitner boxes, and coverage stats sync across devices.
           </div>
         </div>
         <span style={{ color: "var(--accent-gold)", fontSize: "1.25rem" }}>→</span>
@@ -262,24 +267,12 @@ function TypeBreakdownCard({ label, stats, href }: { label: string; stats: TypeS
         <span className="text-sm" style={{ color: "var(--accent-gold)", fontFamily: "Cormorant Garamond, serif", letterSpacing: "0.05em" }}>
           {label}
         </span>
-        <span className="text-xs" style={{ color: "var(--text-muted)" }}>{stats.total} total</span>
+        <span className="text-xs" style={{ color: stats.due_now > 0 ? "var(--accent-rose)" : "var(--text-muted)" }}>
+          {stats.due_now} due · {stats.total} total
+        </span>
       </div>
-      <div className="grid grid-cols-4 gap-2 text-center">
-        <Mini value={stats.due_now}   label="Due"      color="var(--accent-rose)" />
-        <Mini value={stats.new_total} label="New"      color="var(--wave)" />
-        <Mini value={stats.learning}  label="Learning" color="var(--accent-gold)" />
-        <Mini value={stats.mature}    label="Mature"   color="var(--ink)" />
-      </div>
+      <BoxStrip boxes={stats.boxes} newCount={stats.new_total} />
     </Link>
-  );
-}
-
-function Mini({ value, label, color }: { value: number; label: string; color: string }) {
-  return (
-    <div>
-      <div className="text-lg font-bold" style={{ color, fontFamily: "Cormorant Garamond, serif" }}>{value}</div>
-      <div className="text-xs" style={{ color: "var(--text-muted)" }}>{label}</div>
-    </div>
   );
 }
 
@@ -296,7 +289,7 @@ function CoverageCard({ level, block }: { level: number; block: CoverageBlock })
         <div className="progress-ink-fill" style={{ width: `${block.pct}%` }} />
       </div>
       <div className="text-xs" style={{ color: "var(--text-muted)" }}>
-        {block.mature} mature · {block.studied} studied · {block.total} total
+        {block.mature} in box 5 · {block.studied} studied · {block.total} total
       </div>
     </div>
   );

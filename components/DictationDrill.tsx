@@ -10,7 +10,7 @@ interface Sentence {
   audio_path: string;
 }
 
-export default function DictationDrill() {
+export default function DictationDrill({ deckId = null }: { deckId?: number | null }) {
   const [sentence, setSentence] = useState<Sentence | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,8 +26,10 @@ export default function DictationDrill() {
     setRevealed(false);
     setInput("");
     try {
-      const qs = excludeId ? `?exclude=${excludeId}` : "";
-      const res = await fetch(`/api/listening/dictation/next${qs}`);
+      const params = new URLSearchParams();
+      if (excludeId) params.set("exclude", String(excludeId));
+      if (deckId != null) params.set("deck", String(deckId));
+      const res = await fetch(`/api/listening/dictation/next?${params}`);
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setError(data.error || `Fetch failed: ${res.status}`);
@@ -45,7 +47,7 @@ export default function DictationDrill() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [deckId]);
 
   useEffect(() => { loadNext(); }, [loadNext]);
 

@@ -41,7 +41,7 @@ A mobile-first HSK learning app built around the official **HSK Standard Course*
 
 - **Lesson content** (vocabulary, dialogues, grammar, characters, exercises, culture notes) lives as JSON files under `data/hsk{N}/lessons/{M}.json` — the source of truth. Each level has an `index.ts` that combines authored lessons with stubs. `lib/content.ts` is the entry point for JSON lookups.
 - **Derived DB content:** `npm run db:import-lessons` (scripts/05) copies the JSON into `lessons` / `lesson_dialogues` / `dialogue_lines` / `lesson_words` (course stepper) and `texts` (reader). `words` / `sentences` / `characters` come from the open-data pipeline (scripts 01–03: HSK lists, CC-CEDICT, Tatoeba, makemeahanzi).
-- **One progress system: FSRS** (`lib/fsrs.ts`, `ts-fsrs`) over `cards` + `review_log`. Card types in use: `recognition`, `listening`, `writing`, one card per (user, word, type). Every page that tracks progress (/review, /writing, dashboard, /practice badges) reads these tables. Signed-out users can browse but nothing is saved.
+- **One study method: Leitner boxes** (`lib/leitner.ts` server, rules in `lib/leitner-rules.ts`) over `cards` + `review_log`. Box 0 = never studied; boxes 1–5 are due again 1/2/4/8/16 local days later. "Know it" on a due card moves it up one box (box 5 stays, next check in 30 days); "Know it" on a card that isn't due yet changes nothing; "Don't know" sends it to box 1, due again today. Card types: `recognition`, `listening`, `writing`, one card per (user, word or custom deck word, type). Everything that grades moves these boxes: /review, /writing, /flashcards drill (recognition), the /listening tone drill (listening). Every study page can be scoped to one of the user's decks (`DeckPicker`, `?deck=ID`). Signed-out users can browse but nothing is saved. The old FSRS columns on `cards` (state, stability, …) are unused since migration 012.
 - **"Today" is per-user local time:** `users.timezone` (reported by the browser via `POST /api/auth/timezone` from `AuthProvider`); use `getUserDay(userId)` from `lib/user-time.ts` for anything daily (new-card quota, reviewed today, streak). Never use `date_trunc('day', NOW())` — the server is UTC.
 
 Content source: HSK Standard Course textbooks (PDFs in `/Users/ignaciabaeza/Documents/chino/hsk1/…hsk4/`). Each lesson mirrors the book's 8 sections — Warm-up, Text (4 situational dialogues + new words), Notes (grammar with pattern tables), Exercises, Pinyin/Pronunciation, Characters (strokes + single-component chars + radicals), Application (pair/group work), Culture (every 5 lessons).
@@ -98,11 +98,11 @@ chinese_app/
 │   ├── course/                   # Course tab: levels → lessons → guided LessonStepper
 │   ├── workbook/                 # HSK 2 workbook quiz (components/HSK2Quiz.jsx + data/quizData.js)
 │   ├── practice/page.tsx         # Practice tab hub
-│   ├── review/                   # FSRS review (recognition + listening cards)
-│   ├── writing/                  # FSRS stroke-order cards (HanziWriter)
+│   ├── review/                   # Leitner review (recognition + listening cards)
+│   ├── writing/                  # Leitner stroke-order cards (HanziWriter)
 │   ├── listening/                # Dictation + tone drills
 │   ├── shadowing/                # Listen / record / compare
-│   ├── flashcards/               # Free shuffled deck + user-made decks (decks/[id] editor) — does NOT touch FSRS
+│   ├── flashcards/               # Shuffled deck + user-made decks (decks/[id] editor); drill answers move boxes
 │   ├── library/page.tsx          # Library tab hub
 │   ├── vocab/                    # Dictionary (DB words) + word detail
 │   ├── reader/                   # Tap-to-read texts + paste importer
@@ -111,7 +111,8 @@ chinese_app/
 ├── components/                   # Navigation (4 tabs), AuthProvider, HubPage, drills, …
 ├── data/hsk{1,2}/                # Authored lesson JSON + registries
 ├── lib/
-│   ├── fsrs.ts                   # FSRS seeding, queue, grading (row-locked), stats
+│   ├── leitner.ts                # Leitner seeding, queue, grading (row-locked), stats
+│   ├── leitner-rules.ts          # Box intervals + nextBox() (isomorphic)
 │   ├── dashboard.ts              # Dashboard aggregation
 │   ├── user-time.ts              # getUserDay(): user's local "today"
 │   ├── review-client.ts          # Client submitGrade() — throws a user-facing message on failure
@@ -187,18 +188,18 @@ interface Lesson {
 
 ## Data Model (Postgres)
 
-Schema lives in `scripts/migrations/` (001 baseline → 011). Key tables:
+Schema lives in `scripts/migrations/` (001 baseline → 012). Key tables:
 
 | Table | Purpose |
 |---|---|
 | `users` | id (UUID text), email (lowercased, unique), password_hash, **timezone** (IANA, default `'UTC'`) |
 | `words` / `sentences` / `sentence_words` / `characters` | Open-data vocabulary, example sentences, stroke data |
-| `cards` | FSRS state per (user_id, word_id, card_type): due, stability, difficulty, state (0 new, 1 learning, 2 review, 3 relearning), reps, lapses, last_review |
+| `cards` | Leitner state per (user_id, word_id or deck_card_id, card_type): box (0–5), due, reps, lapses, last_review. `deck_card_id` = a custom word in a user deck |
 | `review_log` | One row per grade (card_id, rating 1–4, reviewed_at, elapsed_ms) — source for streaks and "reviewed today" |
 | `lessons` / `lesson_dialogues` / `dialogue_lines` / `lesson_words` | Course stepper content (imported from JSON) |
 | `lesson_progress` | Per-user completed stepper steps |
 | `texts` | Reader texts (lessons + user-pasted) |
-| `user_decks` / `user_deck_cards` | User-made /flashcards decks; a card is a dictionary word (`word_id`) or a custom word (`simplified` + `meaning`, optional `pinyin`). No FSRS |
+| `user_decks` / `user_deck_cards` | User-made /flashcards decks; a card is a dictionary word (`word_id`) or a custom word (`simplified` + `meaning`, optional `pinyin`). Studied with the same Leitner boxes |
 | `exercises` / `exercise_attempts` | Orphaned: from the removed DB-backed workbook (migration 007, not in repo). Still holds data; no code reads it |
 
 `card_progress` and `study_sessions` (the old SM-2 system) were dropped in migration 008.
@@ -225,11 +226,11 @@ Schema lives in `scripts/migrations/` (001 baseline → 011). Key tables:
 |---|---|
 | Home | `/` |
 | Course | `/course`, `/course/[level]`, `/course/[level]/lesson/[number]`, `/workbook` |
-| Practice | `/practice` (hub), `/review`, `/writing`, `/listening`, `/shadowing`, `/flashcards` (`?deck=ID` studies a user deck), `/flashcards/decks/[id]` |
+| Practice | `/practice` (hub), `/review`, `/writing`, `/listening`, `/shadowing`, `/flashcards`, `/flashcards/decks/[id]` — `?deck=ID` scopes review/writing/listening/flashcards to a user deck |
 | Library | `/library` (hub), `/vocab`, `/vocab/[word]`, `/reader`, `/reader/[textId]`, `/grammar`, `/grammar/[gpId]` |
 | — | `/auth` |
 
-**Grading contract:** `POST /api/review/grade` returns 409 if the same card was graded < 2 s ago (double tap — client treats as saved), 404 for someone else's card, 500 on DB failure. Pages must not advance or count a card until `submitGrade()` resolves.
+**Grading contract:** `POST /api/review/grade` takes `{ cardId, rating }` or `{ wordId | deckCardId, cardType, rating }` (rating 1 = Don't know, 3 = Know it) and returns the box move `{ from, to, moved, due }`; 409 if the same card was graded < 2 s ago (double tap — client treats as saved), 404 for someone else's card, 500 on DB failure. Pages must not advance or count a card until `submitGrade()` resolves.
 
 ---
 
@@ -310,7 +311,7 @@ The lesson page is a stepper: Listen → Read → Vocab → Grammar → **Practi
 - **Polyphone audio:** word audio is edge-tts of the bare character, which reads some polyphones alone in another reading (长 zhǎng, 着 zhāo). Those words use committed MP3s in `public/audio-fixed/words/` from `scripts/content/gen-word-audio.py` (texts in `word-audio-overrides.json`, e.g. 长 → 常); `04-generate-audio.py` points them there, existing rows need a migration (see 011). Same voice + same text gives identical audio, so a reading can be checked by comparing against a single-reading homophone.
 - **Database client:** `lib/db.ts` exports a `pg` connection pool singleton stored on `globalThis` to survive Next.js hot reloads. Use `pool.query(sql, params)` for simple queries; `pool.connect()` + manual `BEGIN/COMMIT/ROLLBACK` for transactions.
 - **BIGINT columns:** `pg` returns PostgreSQL BIGINT as a string. Always wrap with `Number(...)` before returning JSON — do NOT use JS `BigInt`.
-- **Column naming:** Postgres returns snake_case; the FSRS/dashboard code passes snake_case straight through to the client types.
+- **Column naming:** Postgres returns snake_case; the Leitner/dashboard code passes snake_case straight through to the client types.
 - **IDs:** generated with `randomUUID()` from Node.js built-in `crypto` module for DB rows. For lesson content, IDs are hand-chosen stable slugs (see "Adding a New Lesson").
 - **Auth in route handlers:** use `getAuthFromRequest(request)` — reads cookie synchronously from `NextRequest`.
 - **Setting cookies:** only possible on `NextResponse`, not returned from `request`.
