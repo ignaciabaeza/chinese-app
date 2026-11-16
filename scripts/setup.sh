@@ -107,8 +107,10 @@ SQL
 # Handles both old (peer) and new (scram-sha-256) default formats
 PG_HBA=$(find /etc/postgresql -name "pg_hba.conf" 2>/dev/null | head -1)
 if [[ -n "$PG_HBA" ]]; then
-  sed -i 's/peer/md5/g' "$PG_HBA"
-  sed -i 's/scram-sha-256/md5/g' "$PG_HBA"
+  # Leave the postgres superuser on peer auth: this script (and deploy.sh)
+  # run `sudo -u postgres psql`, which would otherwise hang on a password prompt.
+  sed -i -E '/^local[[:space:]]+all[[:space:]]+postgres[[:space:]]/! s/peer/md5/g' "$PG_HBA"
+  sed -i -E '/^local[[:space:]]+all[[:space:]]+postgres[[:space:]]/! s/scram-sha-256/md5/g' "$PG_HBA"
   systemctl restart postgresql
 fi
 success "Database '${DB_NAME}' and user '${DB_USER}' ready"
